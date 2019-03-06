@@ -1,0 +1,75 @@
+# Navigation Links
+#   To link a homepage widget, specify the URL as a hash `#` followed by the filename of the
+#     desired widget in your `content/home/` folder.
+#   The weight parameter defines the order that the links will appear in.
+
+[[main]]
+  name = "Home"
+  url = "#hero_carousel"
+  weight = 1
+
+[[main]]
+  name = "About"
+  url = "#about"
+  weight = 2
+
+[[main]]
+  name = "Why Volcano?"
+  url = "#required"
+  weight = 3
+
+[[main]]
+  name = "Blogs"
+  url = "posts/"
+  weight = 4
+
+[[main]]
+  name = "Documentation"
+  url = "docs/"
+  weight = 5
+
+# Right Menu
+[[main_right]]
+  name = "<i class=\"fab fa-github-alt\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
+  post = ""
+  url = "https://github.com/volcano-sh/volcano"
+  weight = 10
+
+[[main_right]]
+  name = "<i class=\"fab fa-twitter\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
+  post = ""
+  url = "https://twitter.com/Volcano"
+  weight = 20
+
+[[main_right]]
+  name = "<i class=\"fab fa-slack\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
+  post = ""
+  url = "https://volcano.slack.com"
+  weight = 30
+  
+# Documentation 
+
+[[docs]]
+  name = "Welcome"
+  weight = 5
+  identifier = "welcome"
+
+[[docs]]
+  name = "Concepts"
+  weight = 10
+  identifier = "concepts"
+
+
+
+
+# Blogs
+
+[[posts]]
+  name = "Tutorials"
+  weight = 5
+  identifier = "tutorials"
+
+[[posts]]
+  name = "Customers"
+  weight = 10
+  identifier = "customers"
