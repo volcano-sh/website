@@ -37,4 +37,30 @@
 
   .featured .col-sm-4 p{
     text-align: justify;
-}
+  }
+
+/*************************************************
+ *  Biography
+ **************************************************/
+ 
+ #profile {
+  padding-top: 20px;
+ }
+ 
+ #profile .portrait {
+  width: 250px;
+  height: 250px;
+  border-radius: 0%;
+ }
+
+ #profile .portrait-title h2 {
+  display: none;
+ }
+
+ #profile .portrait-title h3 {
+  margin-top: 0px;
+ }
+
+ #profile .network-icon {
+  margin-top: 10px;
+ }
