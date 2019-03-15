@@ -1,6 +1,6 @@
 +++
 # Display name
-name = "Admin"
+name = "Volcano"
 
 # Is this the primary user of the site?
 superuser = true
