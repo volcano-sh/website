@@ -1,6 +1,6 @@
 +++
 # Hero Carousel widget.
-widget = "hero_carousel"
+widget = "slider"
 active = true
 date = 2017-10-15T00:00:00
 
@@ -32,7 +32,7 @@ height = "350px"
   #   Activate the button by specifying a URL and button label below.
   #   Deactivate by commenting out parameters, prefixing lines with `#`.
   cta_label = "Learn More About Volcano"
-  cta_url = "/en/docs/volcano/"
+  cta_url = "/en/docs/"
   cta_icon_pack = "fas"
   cta_icon = "graduation-cap"
 
@@ -49,7 +49,7 @@ height = "350px"
 [[item]]
   title = "Efficient Scheduling"
   content = "Co-scheduling, Fair-Share, Gang scheduling, Topologies, Reserve/BackFill, Data ware Scheduling"
-  align = "left"
+  align = "center"
 
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
@@ -58,7 +58,7 @@ height = "350px"
 [[item]]
   title = "Job Management"
   content = "Manages jobs with multiple template......"
-  align = "left"
+  align = "center"
 
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
@@ -76,7 +76,7 @@ height = "350px"
 [[item]]
   title = "Extensive Observability"
   content = "Logging, Metric & Dashboard"
-  align = "left"
+  align = "center"
 
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.

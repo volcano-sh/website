@@ -18,7 +18,7 @@ weight = 3
 
 # Call to action button (optional).
 #   Activate the button by specifying a URL and button label below.
-#   Deactivate by commenting out parameters, prefi;ing lines with `#`.
+#   Deactivate by commenting out parameters, prefixing lines with `#`.
 [cta]
   url = "/en/docs/setup/"
   label = '<i class="fas fa-download"></i> Install Now'
