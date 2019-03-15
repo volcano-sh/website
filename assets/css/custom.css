@@ -40,7 +40,15 @@
   }
 
 /*************************************************
- *  Biography
+ *  Home Sections
+ **************************************************/
+
+ .section-heading p {
+  color: #fe2a77;
+ } 
+
+/*************************************************
+ *  About widget
  **************************************************/
  
  #profile {
@@ -64,3 +72,72 @@
  #profile .network-icon {
   margin-top: 10px;
  }
+
+ /*************************************************
+ *  Author profile card
+ **************************************************/
+
+ .author-card .portrait {
+  border-radius: 0%;
+}
+
+ /*************************************************
+ *  Custom css
+ **************************************************/
+
+footer {
+  margin: 0px;
+}
+.border-bottom {
+  border-bottom: 1px solid #ddd;
+}
+
+ul.share li i {
+  color: #f0326b;
+}
+
+.wg-hero .btn {
+  color: #fff;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  background-color: transparent;
+}
+
+.wg-hero .btn:hover {
+  color: #212529;
+  border-color: #d3d9df;
+}
+
+.blog-author-card {
+  margin-top: 1rem;
+  padding-top: 1rem;
+}
+
+.blog-author-card .portrait {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+  border-radius: 0%;
+  object-fit: cover;
+}
+
+.blog-author-card .card-title {
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.84);
+}
+
+.blog-author-card .card-subtitle {
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.54);
+  margin-bottom: 7px;
+}
+
+.dark .blog-author-card .card-subtitle {
+  color: rgba(255, 255, 255, 0.54);
+}
+
+.article-metadata, .article .article-metadata {
+  margin-bottom: 10px;
+}

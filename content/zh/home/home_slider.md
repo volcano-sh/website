@@ -1,6 +1,6 @@
 +++
 # Hero Carousel widget.
-widget = "hero_carousel"
+widget = "slider"
 active = true
 date = 2017-10-15T00:00:00
 
@@ -49,7 +49,7 @@ height = "350px"
 [[item]]
   title = "Efficient Scheduling"
   content = "Co-scheduling, Fair-Share, Gang scheduling, Topologies, Reserve/BackFill, Data ware Scheduling"
-  align = "left"
+  align = "center"
 
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
@@ -58,7 +58,7 @@ height = "350px"
 [[item]]
   title = "Job Management"
   content = "Manages jobs with multiple template......"
-  align = "left"
+  align = "center"
 
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
@@ -76,7 +76,7 @@ height = "350px"
 [[item]]
   title = "Extensive Observability"
   content = "Logging, Metric & Dashboard"
-  align = "left"
+  align = "center"
 
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
@@ -85,6 +85,6 @@ height = "350px"
 +++
 
 <div class="mt-3">
-  <a class="github-button" href="https://github.com/volcano-sh/volcano\" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a>
+  <a class="github-button" href="https://github.com/volcano-sh/volcano" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a>
 </div>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
