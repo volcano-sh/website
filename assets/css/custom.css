@@ -141,3 +141,36 @@ ul.share li i {
 .article-metadata, .article .article-metadata {
   margin-bottom: 10px;
 }
+
+/*********************************
+* Blog list 
+**********************************/
+
+.blog-list {
+  margin-top: 0.97rem;
+}
+
+.blog-list .card-main {
+  padding: 0px;
+}
+
+.blog-list .card {
+  margin-bottom: 1rem;
+}
+
+.blog-list .card .card-title {
+  margin: 0 0 .5rem 0;
+}
+
+.blog-list .h7 {
+  font-size: 0.8rem;
+}
+
+.blog-list .card .card-text {
+  padding: 0px;
+  margin-bottom: 0.25rem;
+}
+
+.blog-list .read-more a {
+  font-size: 16px;
+}

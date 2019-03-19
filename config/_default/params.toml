@@ -99,7 +99,7 @@ zoom = 15
 #   E.g. To load `/assets/css/custom.css`, set `plugins_css = ["custom"]`.
 #   E.g. To load `/assets/js/custom.js`, set `plugins_js = ["custom"]`.
 plugins_css = ["custom"]
-plugins_js  = []
+plugins_js  = ["custom"]
 
 ############################
 ## Advanced options       ##

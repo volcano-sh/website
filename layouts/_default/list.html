@@ -9,25 +9,53 @@
 
 {{ partial "page_header.html" . }}
 
-<div class="container">
+<div class="container {{ if or (eq .Type `blogList`) (eq .Type `tags`) }}blog-list{{ end }}">
   {{ with .Content }}
   <div class="article-style" itemprop="articleBody">{{ . }}</div>
   {{ end }}
 
   {{ $paginator := .Paginate .Data.Pages }}
   {{ range $paginator.Pages }}
-  <div>
-    <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
-    <div class="article-style">
-      {{ if .Params.summary }}
-      {{ .Params.summary | plainify | emojify }}
-      {{ else if .Params.abstract }}
-      {{ .Params.abstract | plainify | emojify | truncate 250 }}
-      {{ else if .Summary }}
-      {{ .Summary | plainify | emojify }}
+    {{ if eq .Type "posts" }}
+      {{ $first_author := "" }}
+      {{ if .Params.authors }}
+        {{ $first_author = index .Params.authors 0 }}
       {{ end }}
-    </div>
-  </div>
+      {{ $date := dateFormat .Site.Params.date_format .Params.lastmod }}
+      <div class="col-md-12 card-main">
+        <div class="card">
+            <div class="card-body">
+                <a class="card-link" href="{{ .RelPermalink }}">
+                    <h5 class="card-title">{{ .Title }}</h5>
+                </a>
+                <div class="text-muted h7 mb-2"><span class="pr-4"><i class="fas fa-user"></i> {{ $first_author }}</span><i class='fas fa-calendar-alt'></i> {{ $date }}</div>
+                <p class="card-text">
+                    {{ if .Params.summary }}
+                    {{ .Params.summary | plainify | emojify }}
+                    {{ else if .Params.abstract }}
+                    {{ .Params.abstract | plainify | emojify | truncate 250 }}
+                    {{ else if .Summary }}
+                    {{ .Summary | plainify | emojify }}
+                    {{ end }}
+                </p>
+                <div class="read-more"><a href="{{ .RelPermalink }}">{{ i18n "read_more" }}</a></div>
+            </div>
+        </div>
+      </div>
+    {{ else }}
+      <div>
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        <div class="article-style">
+          {{ if .Params.summary }}
+          {{ .Params.summary | plainify | emojify }}
+          {{ else if .Params.abstract }}
+          {{ .Params.abstract | plainify | emojify | truncate 250 }}
+          {{ else if .Summary }}
+          {{ .Summary | plainify | emojify }}
+          {{ end }}
+        </div>
+      </div>
+    {{ end }}
   {{ end }}
 
   {{ partial "pagination" . }}
