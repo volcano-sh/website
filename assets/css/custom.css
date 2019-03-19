@@ -47,6 +47,11 @@
   color: #fe2a77;
  } 
 
+ .nav-item a[href="/"], .network-icon a[href="/"]{
+   pointer-events: none;
+   cursor: default;
+}
+
 /*************************************************
  *  About widget
  **************************************************/
