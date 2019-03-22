@@ -32,19 +32,19 @@
 [[main_right]]
   name = "<i class=\"fab fa-github-alt\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
-  url = "https://github.com/volcano-sh/volcano"
+  #url = "https://github.com/volcano-sh/volcano"
   weight = 10
 
 [[main_right]]
   name = "<i class=\"fab fa-twitter\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
-  url = "https://twitter.com/Volcano"
+  #url = "https://twitter.com/Volcano"
   weight = 20
 
 [[main_right]]
   name = "<i class=\"fab fa-slack\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
-  url = "https://volcano.slack.com"
+  url = "https://volcano-sh.slack.com"
   weight = 30
   
 # Documentation 

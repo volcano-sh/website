@@ -78,7 +78,7 @@
 
   {{/* Wider container for nodes */}}
   {{ $ctnr := "container" }}
-<div class="{{$ctnr}} pt-3 border-bottom">
+<div class="{{$ctnr}} pt-3 {{if eq .Type `posts` }} border-bottom {{end}}">
   <h1 itemprop="name">{{ $title }}</h1>
 
   {{ with $page.Params.subtitle }}

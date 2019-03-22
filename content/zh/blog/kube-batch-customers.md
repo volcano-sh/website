@@ -9,7 +9,7 @@ lastmod = 2019-01-29
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
-authors = ["admin"]
+authors = ["Volcano"]
 
 tags = ["Tutorials"]
 summary = "A wide range of customer base for kube-batch"

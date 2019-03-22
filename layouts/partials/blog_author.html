@@ -17,7 +17,7 @@
 {{ $person_page_path := (printf "/author/%s" $author_urlize) }}
 {{ $person_page := $.Site.GetPage $person_page_path }}
 {{ with $person_page }}
-{{ $link := printf "/en/authors/%s" $author_urlize | relURL }}
+{{ $link := printf "/authors/%s" $author_urlize | relURL }}
 {{ $avatar := ($person_page.Resources.ByType "image").GetMatch "*blog-avatar*" }}
 <div class="blog-author-card" itemscope itemtype="http://schema.org/Person">
   <div class="row">
