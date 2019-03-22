@@ -1,5 +1,7 @@
-# Creating and updating the docs
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8cf65901-dae4-4826-b32b-17feeebddc86/deploy-status)](https://app.netlify.com/sites/kind-montalcini-bed86a/deploys)
 
+
+# Creating and updating the docs 
 Welcome to the GitHub repository for Volcano's public website. The docs are
 hosted at https://volcano.sh.
 
@@ -98,5 +100,4 @@ Useful Hugo docs:
 - [Hugo site directory structure](https://gohugo.io/getting-started/directory-structure/)
 - [hugo server reference](https://gohugo.io/commands/hugo_server/)
 - [hugo new reference](https://gohugo.io/commands/hugo_new/)
-
 
