@@ -24,9 +24,9 @@ height = "350px"
 
   # Overlay a color or image (optional).
   #   Deactivate an option by commenting out the line, prefixing it with `#`.
-  overlay_color = "#666"  # An HTML color value.
-  overlay_img = "headers/volcano-slide-1.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.01  # Darken the image. Value in range 0-1.
+#  overlay_color = "#666"  # An HTML color value.
+#  overlay_img = "headers/volcano-slide-1.png"  # Image path relative to your `static/img/` folder.
+#  overlay_filter = 0.01  # Darken the image. Value in range 0-1.
 
   # Call to action button (optional).
   #   Activate the button by specifying a URL and button label below.
@@ -42,7 +42,7 @@ height = "350px"
   align = "right"
 
   #overlay_color = "#555"  # An HTML color value.
-  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
+  #  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
   #overlay_img = "headers/header-edge-2.jpg"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.15  # Darken the image. Value in range 0-1.
 
@@ -51,36 +51,36 @@ height = "350px"
   content = "Co-scheduling, Fair-Share, Gang scheduling, Topologies, Reserve/BackFill, Data ware Scheduling"
   align = "center"
 
-  overlay_color = "#333"  # An HTML color value.
-  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.20  # Darken the image. Value in range 0-1.
+  #overlay_color = "#333"  # An HTML color value.
+  #overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
+  #overlay_filter = 0.20  # Darken the image. Value in range 0-1.
   
 [[item]]
   title = "Job Management"
   content = "Manages jobs with multiple template......"
   align = "center"
 
-  overlay_color = "#333"  # An HTML color value.
-  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.25  # Darken the image. Value in range 0-1.
+#  overlay_color = "#333"  # An HTML color value.
+#  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
+#  overlay_filter = 0.25  # Darken the image. Value in range 0-1.
 
 [[item]]
   title = "Multiple Runtime"
   content = "Singularity and GPU Accelerators"
   align = "center"
 
-  overlay_color = "#333"  # An HTML color value.
-  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.35  # Darken the image. Value in range 0-1.
+#  overlay_color = "#333"  # An HTML color value.
+#  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
+#  overlay_filter = 0.35  # Darken the image. Value in range 0-1.
 
 [[item]]
   title = "Extensive Observability"
   content = "Logging, Metric & Dashboard"
   align = "center"
 
-  overlay_color = "#333"  # An HTML color value.
-  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.45  # Darken the image. Value in range 0-1.
+#  overlay_color = "#333"  # An HTML color value.
+#  overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
+#  overlay_filter = 0.45  # Darken the image. Value in range 0-1.
 
 +++
 

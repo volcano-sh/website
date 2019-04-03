@@ -5,7 +5,7 @@
         if (currentUrl.indexOf(link.href) !== -1) {
             link.classList.add('active')
         } else {
-            if(currentUrl.indexOf("blog") !== -1 && link.href.indexOf("#posts")!== -1) {
+            if(currentUrl.indexOf("blog") !== -1 && link.href.indexOf("#blog")!== -1) {
                 link.classList.add('active')
             }
         }
