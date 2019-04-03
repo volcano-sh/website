@@ -1,7 +1,7 @@
 {{ partial "header.html" . }}
 {{ partial "navbar.html" . }}
 
-<article class="article" itemscope itemtype="http://schema.org/Article">
+<article class="article {{ if eq .Type `posts` }}single-blog{{ end }}" itemscope itemtype="http://schema.org/Article">
   <div class="container">
     <div class="row">
       {{ if eq .Type "posts" }}

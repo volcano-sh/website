@@ -7,7 +7,7 @@
  .featured {
     font-size: 0.8rem;
     line-height: 1.5;
-    color: #555;
+    color: #0f0f0f;
     text-align: center;
   }
   
@@ -44,7 +44,7 @@
  **************************************************/
 
  .section-heading p {
-  color: #fe2a77;
+  color: #eb1616;
  } 
 
  .nav-item a[href="/"], .network-icon a[href="/"]{
@@ -72,10 +72,21 @@
 
  #profile .portrait-title h3 {
   margin-top: 0px;
+  color: #3f3f3f;
  }
 
  #profile .network-icon {
   margin-top: 10px;
+ }
+
+ #about {
+  background-image: linear-gradient(#fff 60%, #f6a1a4);
+  background-color: transparent;
+ }
+
+ section#blog {
+  background-image: radial-gradient(#f6a1a4, #fff);
+  background-color: transparent;
  }
 
  /*************************************************
@@ -90,6 +101,15 @@
  *  Custom css
  **************************************************/
 
+.wg-hero {
+  background-image: radial-gradient(#ece1e1, #f4997a, #ec1616);
+  background-color: transparent;
+}
+
+.wg-hero .hero-title, .wg-hero .hero-lead, .wg-hero .hero-cta-alt, .wg-hero .hero-note, .wg-hero .btn {
+  color: #0f0f0f;
+}
+
 footer {
   margin: 0px;
 }
@@ -98,18 +118,12 @@ footer {
 }
 
 ul.share li i {
-  color: #f0326b;
-}
-
-.wg-hero .btn {
-  color: #fff;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-  background-color: transparent;
+  color: #eb1616;
 }
 
 .wg-hero .btn:hover {
-  color: #212529;
-  border-color: #d3d9df;
+  color: #eb1616;;
+  border-color: #fff;
 }
 
 .blog-author-card {
@@ -147,12 +161,39 @@ ul.share li i {
   margin-bottom: 10px;
 }
 
+.article-title a {
+  color: #0f0f0f;
+}
+
+.card-simple {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.docs-article-container {
+  max-width: 100%;
+}
+
+article.single-blog {
+  background-image: linear-gradient(#fff 80%,#f6a1a4);
+}
+
+.badge-light {
+  background: #f8f9fa;
+}
+
+.article-widget {
+  padding-bottom: 1rem;
+}
+
 /*********************************
 * Blog list 
 **********************************/
 
 .blog-list {
   margin-top: 0.97rem;
+  background-image: linear-gradient(#fff 60%,#f6a1a4);
+  padding-bottom: 0.97rem;
 }
 
 .blog-list .card-main {
@@ -178,4 +219,12 @@ ul.share li i {
 
 .blog-list .read-more a {
   font-size: 16px;
+}
+
+h5.card-title:hover {
+  color: #eb1616;
+}
+
+.blog-author-card .card-subtitle {
+  color: #3f3f3f;
 }

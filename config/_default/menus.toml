@@ -5,7 +5,7 @@
 
 [[main]]
   name = "Home"
-  url = "#home_slider"
+  url = "#home"
   weight = 1
 
 [[main]]
@@ -15,12 +15,12 @@
 
 [[main]]
   name = "Why Volcano?"
-  url = "#required"
+  url = "#why_volcano"
   weight = 3
 
 [[main]]
   name = "Blog"
-  url = "#posts"
+  url = "#blog"
   weight = 4
 
 [[main]]
@@ -30,19 +30,19 @@
 
 # Right Menu
 [[main_right]]
-  name = "<i class=\"fab fa-github-alt\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-github-alt\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   #url = "https://github.com/volcano-sh/volcano"
   weight = 10
 
 [[main_right]]
-  name = "<i class=\"fab fa-twitter\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-twitter\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   #url = "https://twitter.com/Volcano"
   weight = 20
 
 [[main_right]]
-  name = "<i class=\"fab fa-slack\" style=\"color: #f0326b; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-slack\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   url = "https://volcano-sh.slack.com"
   weight = 30
