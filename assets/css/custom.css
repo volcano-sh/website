@@ -228,3 +228,19 @@ h5.card-title:hover {
 .blog-author-card .card-subtitle {
   color: #3f3f3f;
 }
+
+/******************************
+* Releases 
+*******************************/
+
+.release-toc-link {
+  display: block;
+  padding: .25rem 1.5rem;
+  color: rgba(0, 0, 0, .65);
+}
+
+.release-toc-item a:hover, .release-toc-item a.active {
+  color: #eb1616;
+  text-decoration: none;
+}
+

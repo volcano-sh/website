@@ -28,6 +28,11 @@
   url = "docs/"
   weight = 5
 
+[[main]]
+  name = "Releases"
+  url = "release/release_notes"
+  weight = 6
+
 # Right Menu
 [[main_right]]
   name = "<i class=\"fab fa-github-alt\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
