@@ -7,7 +7,7 @@
  .featured {
     font-size: 0.8rem;
     line-height: 1.5;
-    color: #555;
+    color: #0f0f0f;
     text-align: center;
   }
   
@@ -44,7 +44,7 @@
  **************************************************/
 
  .section-heading p {
-  color: #fe2a77;
+  color: #eb1616;
  } 
 
  .nav-item a[href="/"], .network-icon a[href="/"]{
@@ -72,6 +72,7 @@
 
  #profile .portrait-title h3 {
   margin-top: 0px;
+  color: #3f3f3f;
  }
 
  #profile .network-icon {
@@ -98,7 +99,7 @@ footer {
 }
 
 ul.share li i {
-  color: #f0326b;
+  color: #eb1616;
 }
 
 .wg-hero .btn {
@@ -147,6 +148,12 @@ ul.share li i {
   margin-bottom: 10px;
 }
 
+.article-title a {
+  color: #0f0f0f;
+}
+.docs-article-container {
+  max-width: 100%;
+}
 /*********************************
 * Blog list 
 **********************************/
