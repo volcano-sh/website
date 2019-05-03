@@ -19,7 +19,7 @@ height = "350px"
 # Duplicate an `[[item]]` block to add more slides.
 [[item]]
   title = "Volcano"
-  content = "Erupt with Computing Power <br /> <a class=\"github-button\" href=\"https://github.com/kubernetes-sigs/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
+  content = "Erupt with Computing Power <br /> <a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
   align = "center"  # Choose `center`, `left`, or `right`.
 
   # Overlay a color or image (optional).
