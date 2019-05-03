@@ -24,5 +24,5 @@ linktitle = "Deployment"
 ### Deployment Overview
 1. Volcano is bootstrapped by Kubernetes, e.g. Deployment, kube-scheduler
 2. Dedicated nodes and hardware/accelerator for high performance workload, e.g. GPU, FPGA
-3. Launch high performance workload by Volcano for faire-sharing, gang-scheduling, and so on
+3. Launch high performance workload by Volcano for fair-sharing, gang-scheduling, and so on
 4. Deploy other components by Kubernetes, e.g. Dashboard, log, monitoring, in other nodes
