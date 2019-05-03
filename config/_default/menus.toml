@@ -32,13 +32,13 @@
 [[main_right]]
   name = "<i class=\"fab fa-github-alt\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
-  #url = "https://github.com/volcano-sh/volcano"
+  url = "https://github.com/volcano-sh/"
   weight = 10
 
 [[main_right]]
   name = "<i class=\"fab fa-twitter\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
-  #url = "https://twitter.com/Volcano"
+  url = "https://twitter.com/volcano_sh"
   weight = 20
 
 [[main_right]]
