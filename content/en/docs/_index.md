@@ -48,7 +48,7 @@ and platforms, combined with best-of-breed ideas and practices from
 the open source community.
 
 
-Volcano is a Kubernetes Native System for High Performance Workload. It is a deployment/installation framework in K8s which maps domain specific framework term's/concept into common k8s concept of Jobs and Queue. It enables the domain specific features for framework using multiple scheduling options like faire-share, gang-scheduling for Tensor Flow training.  
+Volcano is a Kubernetes Native System for High Performance Workload. It is a deployment/installation framework in K8s which maps domain specific framework term's/concept into common k8s concept of Jobs and Queue. It enables the domain specific features for framework using multiple scheduling options like fair-share, gang-scheduling for Tensor Flow training.  
 
  
 It provides common services to HPW like enhanced job management with multiple pod-template, job management and job life-cycle management. It also provides alternative container runtime like Singularity.   
