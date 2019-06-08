@@ -46,34 +46,25 @@ volcanosh/volcano-controllers   latest              7b11606ebfb8        10 secon
 example, if you are using [kind cluster](https://github.com/kubernetes-sigs/kind),
 try command ```kind load docker-image <image-name>:<tag> ``` for each of the images.
 ### 2. Helm charts
-Second, install the required helm plugin and generate valid
-certificate, volcano uses a helm plugin **gen-admission-secret** to
-generate certificate for admission service to communicate with
-kubernetes API server.
-```
-#1. Install helm plugin
-helm plugin install installer/chart/volcano/plugins/gen-admission-secret
-#2. Generate secret within service name
-helm gen-admission-secret --service <specified-name>-admission-service --namespace <namespace>
-## For eg:
-kubectl create namespace volcano-trial
-helm gen-admission-secret --service volcano-trial-admission-service --namespace volcano-trial
-```
+
 Finally, install helm chart.
 ```
 helm install installer/chart/volcano --namespace <namespace> --name <specified-name>
 For eg :
 helm install installer/chart/volcano --namespace volcano-trial --name volcano-trial
 ```
-**NOTE**:The ```<specified-name>``` used in the two commands above should be identical.
+
 To Verify your installation run the following commands:
 ```
 #1. Verify the Running Pods
+
 # kubectl get pods --namespace <namespace>
 NAME                                                READY   STATUS    RESTARTS   AGE
 <specified-name>-admission-84fd9b9dd8-9trxn          1/1     Running   0          43s
 <specified-name>-controllers-75dcc8ff89-42v6r        1/1     Running   0          43s
 <specified-name>-scheduler-b94cdb867-89pm2           1/1     Running   0          43s
+<specified-name>--admission-init-qbtmb               0/1     Completed 0          43s
+
 #2. Verify the Services
 # kubectl get services --namespace <namespace>
 NAME                                     TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
