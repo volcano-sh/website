@@ -49,9 +49,9 @@ try command ```kind load docker-image <image-name>:<tag> ``` for each of the ima
 
 Finally, install helm chart.
 ```
-helm install installer/chart/volcano --namespace <namespace> --name <specified-name>
+helm install installer/chart --namespace <namespace> --name <specified-name>
 For eg :
-helm install installer/chart/volcano --namespace volcano-trial --name volcano-trial
+helm install installer/chart --namespace volcano-trial --name volcano-trial
 ```
 
 To Verify your installation run the following commands:
