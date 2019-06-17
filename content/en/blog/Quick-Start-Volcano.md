@@ -37,10 +37,10 @@ cd $GOPATH/src/volcano.sh/volcano
 make images
 ## Verify your images
 # docker images
-REPOSITORY                      TAG                 IMAGE ID            CREATED             SIZE
-volcanosh/volcano-admission     latest              a83338506638        8 seconds ago       41.4MB
-volcanosh/volcano-scheduler     latest              faa3c2a25ac3        9 seconds ago       49.6MB
-volcanosh/volcano-controllers   latest              7b11606ebfb8        10 seconds ago      44.2MB
+REPOSITORY                 TAG                 IMAGE ID            CREATED             SIZE
+volcanosh/vk-admission     latest              a83338506638        8 seconds ago       41.4MB
+volcanosh/vk-scheduler     latest              faa3c2a25ac3        9 seconds ago       49.6MB
+volcanosh/vk-controllers   latest              7b11606ebfb8        10 seconds ago      44.2MB
 ```
 **NOTE**: You need ensure the images are correctly loaded in your kubernetes cluster, for
 example, if you are using [kind cluster](https://github.com/kubernetes-sigs/kind),
