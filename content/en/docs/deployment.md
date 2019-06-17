@@ -13,7 +13,7 @@ type = "docs"  # Do not modify.
 linktitle = "Deployment"
 [menu.docs]
   parent = "concepts"
-  weight = 4
+  weight = 5
 +++
 
 ## Overall Architecture
