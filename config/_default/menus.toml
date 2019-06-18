@@ -59,6 +59,11 @@
   weight = 10
   identifier = "concepts"
 
+[[docs]]
+  name = "Scheduler"
+  weight = 15
+  identifier = "scheduler"
+
 
 
 
