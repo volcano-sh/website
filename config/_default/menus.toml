@@ -51,13 +51,18 @@
 
 [[docs]]
   name = "Welcome"
-  weight = 5
+  weight = 1
   identifier = "welcome"
 
 [[docs]]
   name = "Concepts"
-  weight = 10
+  weight = 2
   identifier = "concepts"
+
+[[docs]]
+  name = "Scheduler"
+  weight = 3
+  identifier = "scheduler"
 
 
 

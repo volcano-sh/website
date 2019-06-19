@@ -16,14 +16,13 @@ linktitle = "Job Management"
   weight = 4
 +++
 
-## Job Management
 
 `Job` is the fundamental object of high performance workload; this document provides the definition of `Job` in Volcano.
 
 The definition of `Job` follow Kuberentes's style, e.g. Status, Spec; the follow sections will only describe
 the major functions of `Job`.
 
-### Multiple Pod Template
+## Multiple Pod Template
 
 As most jobs of high performance workload include different type of tasks, e.g. TensorFlow (ps/worker), Spark (driver/executor);
 `Job` introduces `taskSpecs` to support multiple pod template, defined as follow.  The `Policies` will describe in
@@ -84,7 +83,7 @@ spec:
           image: worker-img
 ```
 
-### Job Input/Output
+## Job Input/Output
 
 Most of high performance workload will handle data which is considering as input/output of a Job.
 The following types are introduced for Job's input/output.
@@ -113,7 +112,7 @@ type JobSpec struct{
 
 The `Volumes` of Job can be `nil` which means user will manage data themselves. If `*VolumeSpec.volumeClaim` is `nil` and `*VolumeSpec.volumeClaimName` is `nil` or not exist in PersistentVolumeClaim，`emptyDir` volume will be used for each Task/Pod.
 
-### Conditions and Phases
+## Conditions and Phases
 
 The following phases are introduced to give a simple, high-level summary of where the Job is in its lifecycle; and the conditions array,
 the reason and message field contain more detail about the job's status. 
@@ -178,7 +177,7 @@ phase if the cell is empty.
 `Restarting`, `Aborting` and `Terminating` are temporary states to avoid race condition, e.g. there'll be several 
 `PodeEvictedEvent`s because of `TerminateJobAction` which should not be handled again.
 
-### Error Handling
+## Error Handling
 
 After Job was created in system, there'll be several events related to the Job, e.g. Pod succeeded, Pod failed;
 and some events are critical to the Job, e.g. Pod of MPIJob failed. So `LifecyclePolicy` is introduced to handle different
@@ -329,9 +328,9 @@ spec:
         restartPolicy: OnFailure
 ```
 
-## Features Interaction
+### Features Interaction
 
-### Admission Controller
+## Admission Controller
 
 The following validations must be included to make sure expected behaviours:   
 
@@ -339,7 +338,7 @@ The following validations must be included to make sure expected behaviours:
 * no duplicated name in `spec.taskSpecs` array
 * no duplicated event handler in `LifecyclePolicy` array, both job policies and task policies
  
-### CoScheduling
+## CoScheduling
 
 CoScheduling (or Gang-scheduling) is required by most of high performance workload, e.g. TF training job, MPI job.
 The `spec.minAvailable` is used to identify how many pods will be scheduled together. The default value of `spec.minAvailable`
@@ -373,7 +372,7 @@ spec:
           image: "worker-img"
 ```
 
-### Task Priority within Job
+## Task Priority within Job
 
 In addition to multiple pod template, the priority of each task maybe different. `PriorityClass` of `PodTemplate` is reused
 to define the priority of task within a job. This's an example to run spark job: 1 driver with 5 executors, the driver's
@@ -409,7 +408,7 @@ spec:
 condition between different kubelets that low priority pod maybe launched early; the job/task dependency will be introduced
 later to handle such kind of race condition.
 
-### Resource sharing between Job
+## Resource sharing between Job
 
 By default, the `spec.minAvailable` is set to the summary of `spec.tasks.replicas`; if it's set to a smaller value,
 the pod beyond `spec.minAvailable` will share resource between jobs.
@@ -439,7 +438,7 @@ spec:
           image: executor-img
 ```
 
-### Plugins for Job
+## Plugins for Job
 
 As many jobs of AI frame, e.g. TensorFlow, MPI, Mxnet, need set env, pods communicate, ssh sign in without password. 
 We provide Job api plugins to give users a better focus on core business.
