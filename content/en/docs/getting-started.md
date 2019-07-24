@@ -109,11 +109,6 @@ job.batch/volcano-admission-init   1/1           28s        6m10s
 
 ```
 
-Volcano scheduler utilize `queues.scheduling.incubator.k8s.io` to share resource, therefore default queue is required before usage.
-```go
-# kubectl apply -f default-queue.yaml 
-queue.scheduling.incubator.k8s.io/default created
-```
 You are all set now, you can start using the Volcano to deploy the AI/ML and Big Data Workloads.
 
 ### Installation using Helm Charts
