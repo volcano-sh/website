@@ -66,13 +66,8 @@
   identifier = "scheduler"
 
 [[docs]]
-  name = "SimpleDeployment"
-  weight = 4
-  identifier = "simpledeployment"
-
-[[docs]]
   name = "Contribution"
-  weight = 5
+  weight = 4
   identifier = "contribution"
 
 

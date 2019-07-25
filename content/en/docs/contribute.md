@@ -50,14 +50,15 @@ The goal of the community is to develop a volcano system which is useful for run
 
 # Getting started
 
-- Read the [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/basicdeployment.md) for build/deploy instructions.
+- Read the [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/deployment.md) for build/deploy instructions.
 
 
 # Your First Contribution
 
 We will help you to contribute in different areas like filing issues, developing features, fixing critical bugs and getting your work reviewed and merged.
 
-If you have questions about the development process, feel free to jump into our [Slack Channel](https://github.com/volcano-sh/volcano/blob/master/slack-invitation) or join our [mailing list](https://groups.google.com/forum/#!forum/volcano-sh).
+If you have questions about the development process, feel free to jump into our [Slack Channel](https://volcano-sh.slack.com) or (Signup [here](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk)) 
+or join our [mailing list](https://groups.google.com/forum/#!forum/volcano-sh).
 
 ## Find something to work on
 
