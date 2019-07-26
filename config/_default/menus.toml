@@ -28,6 +28,7 @@
   url = "docs/"
   weight = 5
 
+
 # Right Menu
 [[main_right]]
   name = "<i class=\"fab fa-github-alt\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
@@ -55,14 +56,24 @@
   identifier = "welcome"
 
 [[docs]]
-  name = "Concepts"
+  name = "Getting Started"
   weight = 2
+  identifier = "getting-started"
+
+[[docs]]
+  name = "Concepts"
+  weight = 3
   identifier = "concepts"
 
 [[docs]]
   name = "Scheduler"
-  weight = 3
+  weight = 4
   identifier = "scheduler"
+
+[[docs]]
+  name = "Contribution"
+  weight = 4
+  identifier = "contribution"
 
 
 
