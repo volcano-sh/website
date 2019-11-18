@@ -14,7 +14,7 @@
   weight = 2
 
 [[main]]
-  name = "Why Volcano?"
+  name = "Why Volcano"
   url = "#required"
   weight = 3
 
