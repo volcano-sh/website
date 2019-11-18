@@ -26,7 +26,7 @@ height = "350px"
   #   Deactivate an option by commenting out the line, prefixing it with `#`.
   overlay_color = "#666"  # An HTML color value.
   overlay_img = "headers/volcano-slide-1.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.25  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.30  # Darken the image. Value in range 0-1.
 
   # Call to action button (optional).
   #   Activate the button by specifying a URL and button label below.
@@ -41,9 +41,7 @@ height = "350px"
   content = "Convert domain specific jobs to k8s workloads and Schedules the jobs in batches for optimal performance."
   align = "right"
 
-  #overlay_color = "#555"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
-  #overlay_img = "headers/header-edge-2.jpg"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.25  # Darken the image. Value in range 0-1.
 
 [[item]]
