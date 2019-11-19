@@ -44,7 +44,7 @@
  **************************************************/
 
  .section-heading p {
-  color: #B93C21;
+  color: #b93c21;
  } 
 
  .nav-item a[href="/"], .network-icon a[href="/"]{
@@ -99,7 +99,7 @@ footer {
 }
 
 ul.share li i {
-  color: #B93C21;
+  color: #b93c21;
 }
 
 .wg-hero .btn {

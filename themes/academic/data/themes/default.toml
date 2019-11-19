@@ -5,13 +5,13 @@ name = "Default"
 light = true
 
 # Primary
-primary = "#eb1616"
+primary = "#b93c21"
 primary_light = "#768fff"
 primary_dark = "#212529"
 
 # Menu
 menu_primary = "#fff"
-menu_text = "#eb1616"
+menu_text = "#b93c21"
 menu_text_active = "rgb(37, 38, 45)"
 menu_title = "#2b2b2b"
 
