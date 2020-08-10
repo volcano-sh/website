@@ -1712,7 +1712,7 @@ a.badge:hover {
  **************************************************/
 
 .navbar {
-  min-height: 70px !important;
+  min-height: 125px !important;
 }
 
 .navbar-light {
@@ -1736,6 +1736,7 @@ a.badge:hover {
 .dropdown-menu,
 nav#navbar-main li.nav-item {
   font-size: {{ .Get "font_size_small" }}px;
+  height:55px;
 }
 
 .navbar-light .navbar-nav>.nav-item>.nav-link,
@@ -1766,16 +1767,54 @@ nav#navbar-main li.nav-item {
   background-color: transparent !important; /* Override Bootstrap. */
 }
 
+
+/*******************change*/
+.container .changeicon{
+  display: inline-flex !important;
+  margin: 10px 0 5px;
+  float: right;
+  height: 35px;
+}
+.container .changesearch{
+  width: 200px;
+  border-radius: 5px;
+  height: 35px;
+  line-height: 35px;
+  background-color: #F2F2F3 !important;
+  color: #B1B3BA;
+  font-size: 14px;
+  padding-left: 10px;
+  margin: 15px 10px 0 0 ; 
+}
+.container .changesearch a{
+  color:#5A606F;
+  float: right;
+}
+
+.container .changehover .nav-item a{
+  color: #444957 !important;
+  font-weight: normal !important;
+  margin-right: 25px;
+  position: relative;
+  top: -5px;
+}
+.container .changehover .nav-item a:hover{
+  border-bottom: 3px solid #eb1616 !important;
+  color: #eb1616 !important;
+}
+
+/*******************change over*/
+
 .navbar-brand,
 .navbar-nav li.nav-item a.nav-link {
   height: inherit;
-  line-height: 50px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  line-height: 49px;
+ /* padding-top: 10px;
+  padding-bottom: 10px;*/
 }
 
 .navbar-brand img {
-  max-height: 50px;
+  max-height: 35px;
 }
 
 .navbar-light .navbar-toggler .icon-bar {

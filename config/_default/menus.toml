@@ -24,14 +24,18 @@
   weight = 4
 
 [[main]]
-  name = "Documentation"
+  name = "Talk"
   url = "docs/"
   weight = 5
 
+[[main]]
+  name = "Documentation"
+  url = "docs/"
+  weight = 6
 
-# Right Menu
+
 [[main_right]]
-  name = "<i class=\"fab fa-github-alt\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<img src=\"D:/summer2020/clone_code/website/static/img/github.png\" class=\"\" style=\"font-size: 1rem; line-height: 1.25;margin-top:13px;\"/>"
   post = ""
   url = "https://github.com/volcano-sh/"
   weight = 10
