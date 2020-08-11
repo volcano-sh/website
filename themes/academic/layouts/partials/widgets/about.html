@@ -17,9 +17,9 @@
 {{ $avatar := ($person_page.Resources.ByType "image").GetMatch "*avatar*" }}
 
 <!-- About widget -->
-<div class="newtitle" style="width: 100%;text-align: center;font-size: 20px;font-weight: bold;">About Valcano</div>
+<div class="newtitle" style="width: 100%;text-align: center;font-size: 22px;font-weight: bold;padding-bottom: 30px;">About Valcano</div>
 <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person" itemref="{{ if $.Site.Params.email }}person-email{{ end }}{{ if $.Site.Params.phone }} person-telephone{{ end }}{{ if $.Site.Params.address}} person-address{{ end }}">
-  <div class="col-12 col-lg-4">
+  <div class="col-12 col-lg-6">
     <div id="profile">
 
       {{ if $.Site.Params.gravatar }}
@@ -31,7 +31,7 @@
 
       <div class="portrait-title">
         <h2 itemprop="name">{{ $person.name }}</h2>
-        {{ with $person.role }}<h3 itemprop="jobTitle">{{ . }}</h3>{{ end }}
+        <!-- {{ with $person.role }}<h3 itemprop="jobTitle">{{ . }}</h3>{{ end }}
 
         {{ range $person.organizations }}
         <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
@@ -39,7 +39,7 @@
           <span itemprop="name">{{ .name }}</span>
           {{ if .url }}</a>{{ end }}
         </h3>
-        {{ end }}
+        {{ end }} -->
       </div>
 
       <link itemprop="url" href="{{ .Permalink }}">
@@ -69,10 +69,14 @@
 
     </div>
   </div>
-  <div class="col-12 col-lg-8" itemprop="description">
+  <div class="col-12 col-lg-6 fontsizee" itemprop="description">
+
+
+    {{ with $person.role }}<p itemprop="jobTitle" style="font-weight: bold;font-size: 15px;">{{ . }}</p>{{ end }}
+
 
     {{/* Only display widget title in explicit instances of about widget, not in author pages. */}}
-    {{ if and $page.Params.widget $page.Title }}<h1>{{ $page.Title | markdownify | emojify }}</h1>{{ end }}
+    {{ if and $page.Params.widget $page.Title }}<p>{{ $page.Title | markdownify | emojify }}</p>{{ end }}
 
     {{ $person_page.Content }}
 

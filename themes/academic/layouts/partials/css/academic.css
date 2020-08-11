@@ -26,6 +26,7 @@ body {
   line-height: inherit;
   color: inherit;
   background-color: {{ .Get "background" }};
+  /*background-color:#fff;*/
   margin-top: 70px; /* Offset body content by navbar height. */
   padding-top: 0;
   counter-reset: captions;
@@ -481,8 +482,10 @@ a[data-fancybox] img {
 }
 
 .home-section {
-  background-color: {{ .Get "home_section_odd" }};
-  padding: 110px 0 110px 0;
+  /*background-color: {{ .Get "home_section_odd" }};*/
+  background-color: #414550;
+  /*background-image: ;*/
+  padding: 50px 0 110px 0;
   animation: intro 0.3s both;
   animation-delay: 0.15s;
 }
@@ -530,7 +533,8 @@ a[data-fancybox] img {
 }
 
 .home-section:nth-of-type(even) {
-  background-color: {{ .Get "home_section_even" }};
+  /*background-color: {{ .Get "home_section_even" }};*/
+  background-color:#fff;
 }
 
 .dark .home-section {
@@ -655,6 +659,16 @@ a.hero-cta-alt:hover {
  *  Featurette Widget
  **************************************************/
 
+/********************change*/
+.featured .section-heading h1{
+ font-size: 22px;
+ color: #fff;
+}
+
+.featured .section-heading p{
+ color: #fff;
+}
+/********************change  over*/
 .featurette {
   font-size: 0.8rem;
   line-height: 1.5;
@@ -685,7 +699,16 @@ a.hero-cta-alt:hover {
 /*************************************************
  *  About widget
  **************************************************/
+/********************change*/
+.row .fontsizee{
+ font-size: 12px;
+}
 
+.row .fontsizee hr{
+  background: #f2f2f3 !important;
+  background-image: none !important;
+}
+/********************change  over*/
 #profile {
   text-align: center;
   padding: 30px 10px;

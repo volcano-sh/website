@@ -4,7 +4,7 @@
 <div class="row featurette">
   {{ with $page.Title }}
   <div class="col-md-12 section-heading">
-    <h1>{{ . | markdownify | emojify }}</h1>
+    <h4>{{ . | markdownify | emojify }}</h4>
     {{ if $page.Params.subtitle }}<p>{{ $page.Params.subtitle | markdownify | emojify }}</p>{{ end }}
   </div>
   {{ end }}
