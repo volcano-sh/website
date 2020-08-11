@@ -661,14 +661,23 @@ a.hero-cta-alt:hover {
 
 /********************change*/
 .featured .section-heading h1{
- font-size: 22px;
- color: #fff;
+   font-size: 22px;
+   color: #fff;
 }
 
 .featured .section-heading p{
- color: #fff;
+   color: #fff;
+   font-size: 14px;
+   width: 60%;
+   margin: 25px 20%;
+}
+.featured .section-heading .col-sm-3{
+      background-color: #fff;
+    margin: 0 10px;
+}
 }
 /********************change  over*/
+
 .featurette {
   font-size: 0.8rem;
   line-height: 1.5;
