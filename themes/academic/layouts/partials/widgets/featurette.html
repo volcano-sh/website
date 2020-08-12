@@ -2,29 +2,29 @@
 {{ $page := .page }}
 
 <div class="row featurette">
-  {{ with $page.Title }}
+  <!-- {{ with $page.Title }} -->
   <div class="col-md-12 section-heading">
-    <h4>{{ . | markdownify | emojify }}</h4>
+    <!-- <h4>{{ . | markdownify | emojify }}</h4> -->
     {{ if $page.Params.subtitle }}<p>{{ $page.Params.subtitle | markdownify | emojify }}</p>{{ end }}
   </div>
   {{ end }}
 
-  {{ with $page.Content }}
+  <!-- {{ with $page.Content }}
   <div class="col-md-12">
     <p>{{ . | markdownify }}</p>
   </div>
-  {{ end }}
+  {{ end }} -->
 
-  {{ range $page.Params.feature }}
+  <!-- {{ range $page.Params.feature }}
   {{ $pack := or .icon_pack "fas" }}
   {{ $pack_prefix := $pack }}
   {{ if in (slice "fab" "fas" "far" "fal") $pack }}
     {{ $pack_prefix = "fa" }}
   {{ end }}
-  <div class="col-12 col-sm-3">
+  <div class="col-12 col-sm-3"><div style="margin: 0 15px;background-color: #fff;">
       {{ with .icon }}<div class="featurette-icon"><i class="{{ $pack }} {{ $pack_prefix }}-{{ . }}"></i></div>{{ end }}
       <h3>{{ .name | markdownify | emojify }}</h3>
       {{ with .description }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
-  </div>
-  {{ end }}
+  </div></div>
+  {{ end }} -->
 </div>
