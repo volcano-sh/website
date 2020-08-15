@@ -9,6 +9,8 @@
 
 {{ partial "page_header.html" . }}
 
+
+
 <div class="container {{ if or (eq .Type `blogList`) (eq .Type `tags`) }}blog-list{{ end }}">
   {{ with .Content }}
   <div class="article-style" itemprop="articleBody">{{ . }}</div>
@@ -25,20 +27,73 @@
       <div class="col-md-12 card-main">
         <div class="card">
             <div class="card-body">
-                <a class="card-link" href="{{ .RelPermalink }}">
-                    <h5 class="card-title">{{ .Title }}</h5>
-                </a>
-                <div class="text-muted h7 mb-2"><span class="pr-4"><i class="fas fa-user"></i> {{ $first_author }}</span><i class='fas fa-calendar-alt'></i> {{ $date }}</div>
-                <p class="card-text">
+              <div class="col-12 col-sm-2 stream-meta article-metadata" style="float: left;">
+                    <!-- time -->
+                  <div itemprop="author">  
+                    
+                    <div class="article-metadata" style="border-right: 1px solid #ccc;">
+
+
+                      <span class="article-date">
+                      
+                        <div style="width: 35%;float: left;font-size: 40px;font-weight: bold;color: #212529;text-align: center;">{{ .Params.Dateday }}</div>
+                        <div style="float: left;margin-top: 12px;">
+                          <div style="font-size: 27px;color: #ddd;float: left;">/</div>
+                          <div style="float: left;margin: 2px 0 0 10px;text-align: right;">
+                            <div style="color: #000;font-weight: bold;">{{ .Params.Datemonth }}</div>
+                          <div style="color: #333;">{{ .Params.Dateyear }}</div>
+                          </div>
+                        </div>
+                      </span>
+                     
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                  </div>
+                </div>
+
+
+                <div class="col-12 col-sm-10" style="float: left;padding: 20px 0 10px 30px;">
+                  <div style="display: flex;">
+                    <h3 class="article-title mb-0 mt-0" itemprop="name" style="font-size: 18px;padding-bottom: 10px;float: left;width: 80%;">
+                      <a href="{{ .RelPermalink }}" itemprop="url">{{ .Title }}</a>
+                    </h3>
+                     <div style="float: left;padding-right: 20px;font-size: 12px;">
+                     {{ $first_author }}
+                    </div>
+                    <div style="color: #999;font-size: 12px;">
+                     浏览量
+                    </div>
+                  </div>
+              
+                  <div class="article-style" itemprop="articleBody" style="font-size: 12px;">
                     {{ if .Params.summary }}
-                    {{ .Params.summary | plainify | emojify }}
+                        {{ .Params.summary | plainify | emojify }}
                     {{ else if .Params.abstract }}
-                    {{ .Params.abstract | plainify | emojify | truncate 250 }}
+                        {{ .Params.abstract | plainify | emojify | truncate 250 }}
                     {{ else if .Summary }}
-                    {{ .Summary | plainify | emojify }}
+                        {{ .Summary | plainify | emojify }}
                     {{ end }}
-                </p>
-                <div class="read-more"><a href="{{ .RelPermalink }}">{{ i18n "read_more" }}</a></div>
+                    <!-- {{ . | truncate 135 }} -->
+                  </div>
+          
+      
+
+                </div>
+
+
+
+
+
             </div>
         </div>
       </div>

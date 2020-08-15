@@ -485,7 +485,7 @@ a[data-fancybox] img {
   /*background-color: {{ .Get "home_section_odd" }};*/
   background-color: #414550;
   /*background-image: ;*/
-  padding: 50px 0 110px 0;
+  padding: 50px 0 50px 0;
   animation: intro 0.3s both;
   animation-delay: 0.15s;
 }
@@ -667,13 +667,32 @@ a.hero-cta-alt:hover {
 
 .featured .section-heading p{
    color: #fff;
-   font-size: 14px;
-   width: 60%;
-   margin: 25px 20%;
+   font-size: 18px;
+   width: 80%;
+   margin: 25px 10%;
 }
 .featured .section-heading .col-sm-3{
       background-color: #fff;
     margin: 0 10px;
+}
+.featured .titlename{
+  width: 30%;
+  margin-left: 35%;
+  height: 10%;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.featured h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 400;
+    text-align: center;
+    border: 2px solid;
+    color: #ccc !important;
+    width: 10%;
+    margin-left: 45%;
+    /*height: 10%;*/
 }
 
 /********************change  over*/
@@ -685,13 +704,6 @@ a.hero-cta-alt:hover {
   text-align: center;
 }
 
-.featurette h3 {
-  margin-top: 0;
-  margin-bottom: 5px;
-  font-weight: 400;
-  color: #333;
-}
-
 .dark .featurette,
 .dark .featurette h3 {
   color: #fff;
@@ -700,6 +712,7 @@ a.hero-cta-alt:hover {
 .featurette-icon {
   display: block;
   width: 100%;
+  height: 25%;
   color: {{ .Get "primary" }};
   font-size: 3rem;
   text-align: center;
@@ -1295,6 +1308,12 @@ article .article-metadata {
 .experience .m-2 .border.exp-fill {
   background-color: {{ .Get "primary" }} !important;
 }
+/*************************************************
+ * posts
+ **************************************************/
+#posts .media-body{
+  border-bottom: 1px solid #ccc;
+}
 
 /*************************************************
  * Talks
@@ -1303,6 +1322,11 @@ article .article-metadata {
 .talk-metadata {
   color: #4b4f56;
   font-size: 0.8rem;
+}
+.talkswords{
+    font-size: 12px;
+    color: #000;
+    margin: 50px 0 0px;
 }
 
 /*************************************************

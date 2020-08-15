@@ -25,7 +25,7 @@
 
 [[main]]
   name = "Talk"
-  url = "docs/"
+  url = "#talks"
   weight = 5
 
 [[main]]
@@ -35,7 +35,7 @@
 
 
 [[main_right]]
-  name = "<img src=\"D:/summer2020/clone_code/website/static/img/github.png\" class=\"\" style=\"font-size: 1rem; line-height: 1.25;margin-top:13px;\"/>"
+  name = "<i class=\"fab fa-github\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   url = "https://github.com/volcano-sh/"
   weight = 10

@@ -21,10 +21,13 @@
   {{ $height := .img_height}}
   {{ $image_src = printf "img/%s" $image_src | relURL }}
   
-  <div class="col-12 col-sm-4">
-    {{ with .img_src }}<div class="featured-icon" ><img src="{{ $image_src }}" alt="" width="{{ $width }}" height="{{ $height }}"/></div>{{ end }}
-    <h3>{{ .name | markdownify | emojify }}</h3>
+  <div class="col-12 col-sm-4" style="height: 455px;"><div style="padding: 40px 30px 20px;background-color: #fff;">
+    {{ with .img_src }}<div class="featured-icon" ><img src="{{ $image_src }}" alt="" width="{{ $width }}" height="{{ $height }}"/>{{ end }}
+      <div class="titlename">{{ .name | markdownify | emojify }}</div>
+    </div>
+
+    <h3></h3>
     {{ with .description }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
-  </div>
+  </div></div>
   {{ end }}
 </div>

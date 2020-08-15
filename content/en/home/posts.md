@@ -7,7 +7,7 @@ active = true  # Activate this widget? true/false
 weight = 40  # Order that this section will appear.
 
 title = "Recent Posts"
-subtitle = "[View all](blog/)"
+subtitle = "[View all  ->](blog/)"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
