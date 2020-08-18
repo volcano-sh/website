@@ -50,7 +50,7 @@ spec:
 * schedulerName
 schedulerName表示该job的pod所使用的调度器，默认值为volcano，也可指定为default。它也是tasks.template.spec.schedulerName的默认值
 * minAvailable
-minAvailable表示运行该pod所要运行的**最少**pod数量。若集群资源等因素限制使得当前环境能运行的pod数小于minAvailable，则不调度该job中的pod，
+minAvailable表示运行该job所要运行的**最少**pod数量。若集群资源等因素限制使得当前环境能运行的pod数小于minAvailable，则不调度该job中的pod，
 job处于pending状态，直到环境满足要求
 * volumes
 volumes表示该job的挂卷配置。volumes配置遵从kubernetes volumes配置要求
@@ -92,4 +92,196 @@ terminated表示job因为某种内部原因已经处于终止状态，job没有�
 * failed
 failed表示job经过了maxRetry次重启，依然没有正常启动
 #### 使用场景
+* tensorflow workload
+以tensorflow为例，创建一个具有1个ps和2个worker的工作负载
+```
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: tensorflow-dist-mnist
+spec:
+  minAvailable: 3   // 该job的3个pod必须都可用
+  schedulerName: volcano    // 指定volcano为调度器
+  plugins:
+    env: []
+    svc: []
+  policies: 
+    - event: PodEvicted // 当pod被驱逐时，重启该job
+      action: RestartJob
+  tasks:
+    - replicas: 1   // 指定1个ps pod
+      name: ps
+      template: // ps pod的具体定义
+        spec:
+          containers:
+            - command:
+                - sh
+                - -c
+                - |
+                  PS_HOST=`cat /etc/volcano/ps.host | sed 's/$/&:2222/g' | sed 's/^/"/;s/$/"/' | tr "\n" ","`;
+                  WORKER_HOST=`cat /etc/volcano/worker.host | sed 's/$/&:2222/g' | sed 's/^/"/;s/$/"/' | tr "\n" ","`;
+                  export TF_CONFIG={\"cluster\":{\"ps\":[${PS_HOST}],\"worker\":[${WORKER_HOST}]},\"task\":{\"type\":\"ps\",\"index\":${VK_TASK_INDEX}},\"environment\":\"cloud\"};
+                  python /var/tf_dist_mnist/dist_mnist.py
+              image: volcanosh/dist-mnist-tf-example:0.0.1
+              name: tensorflow
+              ports:
+                - containerPort: 2222
+                  name: tfjob-port
+              resources: {}
+          restartPolicy: Never
+    - replicas: 2   // 指定2个worker pod
+      name: worker
+      policies:
+        - event: TaskCompleted  // 2个worker完成任务时认为该job完成任务
+          action: CompleteJob
+      template: // worker pod的具体定义
+        spec:
+          containers:
+            - command:
+                - sh
+                - -c
+                - |
+                  PS_HOST=`cat /etc/volcano/ps.host | sed 's/$/&:2222/g' | sed 's/^/"/;s/$/"/' | tr "\n" ","`;
+                  WORKER_HOST=`cat /etc/volcano/worker.host | sed 's/$/&:2222/g' | sed 's/^/"/;s/$/"/' | tr "\n" ","`;
+                  export TF_CONFIG={\"cluster\":{\"ps\":[${PS_HOST}],\"worker\":[${WORKER_HOST}]},\"task\":{\"type\":\"worker\",\"index\":${VK_TASK_INDEX}},\"environment\":\"cloud\"};
+                  python /var/tf_dist_mnist/dist_mnist.py
+              image: volcanosh/dist-mnist-tf-example:0.0.1
+              name: tensorflow
+              ports:
+                - containerPort: 2222
+                  name: tfjob-port
+              resources: {}
+          restartPolicy: Never
+```
+* argo workload
+以argo为例，创建一个具有2个pod副本的工作负载，要求1个可用即可
+```
+apiVersion: argoproj.io/v1alpha1
+kind: Workflow
+metadata:
+  generateName: volcano-step-job-
+spec:
+  entrypoint: volcano-step-job
+  serviceAccountName: argo
+  templates:
+  - name: volcano-step-job
+    steps:
+    - - name: hello-1
+        template: hello-tmpl
+        arguments:
+          parameters: [{name: message, value: hello1}, {name: task, value: hello1}]
+    - - name: hello-2a
+        template: hello-tmpl
+        arguments:
+          parameters: [{name: message, value: hello2a}, {name: task, value: hello2a}]
+      - name: hello-2b
+        template: hello-tmpl
+        arguments:
+          parameters: [{name: message, value: hello2b}, {name: task, value: hello2b}]
+  - name: hello-tmpl
+    inputs:
+      parameters:
+      - name: message
+      - name: task
+    resource:
+      action: create
+      successCondition: status.state.phase = Completed
+      failureCondition: status.state.phase = Failed
+      manifest: |           // volcano job的具体定义
+        apiVersion: batch.volcano.sh/v1alpha1
+        kind: Job
+        metadata:
+          generateName: step-job-{{inputs.parameters.task}}-
+          ownerReferences:
+          - apiVersion: argoproj.io/v1alpha1
+            blockOwnerDeletion: true
+            kind: Workflow
+            name: "{{workflow.name}}"
+            uid: "{{workflow.uid}}"
+        spec:
+          minAvailable: 1
+          schedulerName: volcano
+          policies:
+          - event: PodEvicted
+            action: RestartJob
+          plugins:
+            ssh: []
+            env: []
+            svc: []
+          maxRetry: 1
+          queue: default
+          tasks:
+          - replicas: 2
+            name: "default-hello"
+            template:
+              metadata:
+                name: helloworld
+              spec:
+                containers:
+                - image: docker/whalesay
+                  imagePullPolicy: IfNotPresent
+                  command: [cowsay]
+                  args: ["{{inputs.parameters.message}}"]
+                  name: hello
+                  resources:
+                    requests:
+                      cpu: "100m"
+                restartPolicy: OnFailure
+
+```
+* mindspore
+以mindspore为例，创建一个具有8个pod副本的工作负载，要求1个可用即可
+```
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: mindspore-cpu
+spec:
+  minAvailable: 1
+  schedulerName: volcano
+  policies:
+    - event: PodEvicted
+      action: RestartJob
+  plugins:
+    ssh: []
+    env: []
+    svc: []
+  maxRetry: 5
+  queue: default
+  tasks:
+    - replicas: 8
+      name: "pod"
+      template:
+        spec:
+          containers:
+            - command: ["/bin/bash", "-c", "python /tmp/lenet.py"]
+              image: lyd911/mindspore-cpu-example:0.2.0
+              imagePullPolicy: IfNotPresent
+              name: mindspore-cpu-job
+              resources:
+                limits:
+                  cpu: "1"
+                requests:
+                  cpu: "1"
+          restartPolicy: OnFailure
+
+```
 #### 说明事项
+* volcano job支持的计算框架
+volcano job对当前主流的计算框架均能很好的支持，具体如下：
+1. tensorflow
+2. pytorch
+3. mindspore
+4. PaddlePaddle
+5. spark
+6. flink
+7. openMPI
+8. horovod
+9. mxnet
+10. kubeflow
+11. argo
+12. kubeGene
+...
+* volcano job和kubernetes job的选择
+volcano job在批处理能力方面对kubernetes job进行了升级，更加适合机器学习、大数据、科学计算等场景，建议在高性能计算场景下选择volcano job；
+其他场景下两者皆可
