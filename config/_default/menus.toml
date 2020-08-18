@@ -45,7 +45,7 @@
 [[main_right]]
   name = "<i class=\"fab fa-slack\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
-  url = "https://volcano-sh.slack.com"
+  url = "https://cloud-native.slack.com/messages/volcano"
   weight = 30
   
 # Documentation 
