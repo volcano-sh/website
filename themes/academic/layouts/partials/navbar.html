@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
-  <div class="container">
+  <div class="container" style="display: block;">
 
     <!-- Brand and toggle get grouped for better mobile display -->
       <a class="navbar-brand" href="{{ "/" | relLangURL }}">
@@ -17,11 +17,86 @@
       {{ end }}
 
     <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="navbar">
+    <div class="collapse navbar-collapse changeicon" id="navbar">
+      <ul class="navbar-nav ml-auto">
+     
+        {{ if .Site.Params.search.engine }}
+        <li class="nav-item">
+          <div class="changesearch">Search
+            <a class="nav-link js-search" href="#" ><i class="fas fa-search" aria-hidden="true" style="position: relative;"></i></a>
+          </div>
+
+
+
+          
+        </li>
+        {{ end }}
+
+
+
+        {{ range .Site.Menus.main_right }}
+
+        {{/* Set target for link. */}}
+        {{ $.Scratch.Set "target" "" }}
+        {{ if gt (len .URL) 4 }}
+        {{ if eq "http" (slicestr .URL 0 4) }}
+        {{ $.Scratch.Set "target" " target=\"_blank\" rel=\"noopener\"" }}
+        {{ end }}
+        {{ end }}
+
+
+
+
+        <li class="nav-item">
+          <a class="nav-link" href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}{{ ($.Scratch.Get "target") | safeHTMLAttr }}>
+          {{ .Pre }}
+          <span>{{ .Name | safeHTML }}</span>
+          {{ .Post }}
+          </a>
+        </li>
+
+        {{ end }}
+
+        
+
+        {{ if .IsTranslated }}
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+            <i class="fas fa-globe" aria-hidden="true"></i>
+            <span>{{ index .Site.Data.i18n.languages .Lang }}</span>
+          </a>
+          <ul class="dropdown-menu">
+            {{ range .Translations }}
+            <li class="dropdown-item my-0 py-0 mx-0 px-0">
+              <a href="{{ .Permalink }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
+                <span>{{ index .Site.Data.i18n.languages .Lang }}</span>
+              </a>
+            </li>
+            {{ end }}
+          </ul>
+        </li>
+        {{ end }}
+
+        {{ if .Site.Params.day_night }}
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        {{ end }}
+
+      </ul>
+    </div>
+
+
+
+    <div class="collapse navbar-collapse changehover" id="navbar" style="height: 40px; padding-top: 28px;">
+
+
+
+
 
       <!-- Left Nav Bar -->
       {{ $align_right := .Site.Params.menu_align_right | default true }}
-      <ul class="navbar-nav {{ if $align_right }}ml-auto{{ else }}mr-auto{{ end }}">
+      <ul class="navbar-nav {{ if $align_right }}ml-auto{{ else }}mr-auto{{ end }}" style="">
         {{ range .Site.Menus.main }}
 
         {{ if .HasChildren }}
@@ -68,60 +143,13 @@
 
       {{ if not $align_right | and (.IsTranslated | or .Site.Menus.main_right | or .Site.Params.search.engine | or .Site.Params.day_night) }}
       </ul>
-      <ul class="navbar-nav ml-auto">
-      {{ end }}
+       {{ end }}
+      
 
-        {{ range .Site.Menus.main_right }}
 
-        {{/* Set target for link. */}}
-        {{ $.Scratch.Set "target" "" }}
-        {{ if gt (len .URL) 4 }}
-        {{ if eq "http" (slicestr .URL 0 4) }}
-        {{ $.Scratch.Set "target" " target=\"_blank\" rel=\"noopener\"" }}
-        {{ end }}
-        {{ end }}
 
-        <li class="nav-item">
-          <a class="nav-link" href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}{{ ($.Scratch.Get "target") | safeHTMLAttr }}>
-          {{ .Pre }}
-          <span>{{ .Name | safeHTML }}</span>
-          {{ .Post }}
-          </a>
-        </li>
 
-        {{ end }}
 
-        {{ if .Site.Params.search.engine }}
-        <li class="nav-item">
-          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
-        </li>
-        {{ end }}
-
-        {{ if .IsTranslated }}
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
-            <i class="fas fa-globe" aria-hidden="true"></i>
-            <span>{{ index .Site.Data.i18n.languages .Lang }}</span>
-          </a>
-          <ul class="dropdown-menu">
-            {{ range .Translations }}
-            <li class="dropdown-item my-0 py-0 mx-0 px-0">
-              <a href="{{ .Permalink }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
-                <span>{{ index .Site.Data.i18n.languages .Lang }}</span>
-              </a>
-            </li>
-            {{ end }}
-          </ul>
-        </li>
-        {{ end }}
-
-        {{ if .Site.Params.day_night }}
-        <li class="nav-item">
-          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
-        </li>
-        {{ end }}
-
-      </ul>
 
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->

@@ -27,16 +27,26 @@
   .featured-icon {
     display: block;
     width: 100%;
-    height: 40%;
+    height: 30%; 
     font-size: 3rem;
     text-align: center;
   }
   .featured-icon img{
     margin: 0 auto;
+    /*width: 20%;*/
   }
+  /*.featured-icon .a{
+    margin: 0 40%;
+    width: 20%;
+  }
+  .featured-icon .b{
+    margin: 0 37%;
+    width: 26%;
+  }*/
 
   .featured .col-sm-4 p{
     text-align: justify;
+    height: 220px;
   }
 
 /*************************************************

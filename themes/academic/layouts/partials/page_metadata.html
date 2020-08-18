@@ -1,33 +1,41 @@
 {{ $is_list := .is_list }}
 {{ $share := .share | default false }}
 {{ $ := .content }}
+{{ $st := .page }}
 
 <meta content="{{ $.Params.Date }}" itemprop="datePublished">
 <meta content="{{ $.Params.LastMod }}" itemprop="dateModified">
 
-<div class="article-metadata">
+<div class="article-metadata" style="border-right: 1px solid #ccc;">
 
   {{/* If `authors` is set and is not empty. */}}
   {{ if $.Params.authors }}
   {{ $authorLen := len $.Params.authors }}
   {{ if gt $authorLen 0 }}
-  <div>
+  <!-- <div>
     {{ partial "page_metadata_authors" $ }}
-  </div>
-  {{ end }}
+  </div> -->
+  {{ end }} 
   {{ end }}
 
   {{ if not (in (slice "talk" "page") $.Type) }}
   <span class="article-date">
-    {{ $date := $.Lastmod.Format $.Site.Params.date_format }}
-    {{ if eq $.Type "publication" }}
-      {{ $date = $.Date.Format ($.Site.Params.publications.date_format | default "January, 2006") }}
-    {{ else }}
-      {{ if ne $.Params.Lastmod $.Params.Date }}
+    <!-- {{ $date := $.Lastmod.Format $.Site.Params.date_format }} -->
+    <!-- {{ if eq $.Type "publication" }} -->
+      <!-- {{ $date = $.Date.Format ($.Site.Params.publications.date_format | default "January, 2006") }} -->
+    <!-- {{ else }} -->
+     <!--  {{ if ne $.Params.Lastmod $.Params.Date }}
           {{ i18n "last_updated" }}
-      {{ end }}
-    {{ end }}
-    <time>{{ $date }}</time>
+      {{ end }} -->
+    <!-- {{ end }} -->
+    <div style="width: 35%;float: left;font-size: 40px;font-weight: bold;color: #212529;text-align: center;">{{ $.Params.Dateday }}</div>
+    <div style="float: left;margin-top: 12px;">
+      <div style="font-size: 27px;color: #ddd;float: left;">/</div>
+      <div style="float: left;margin: 2px 0 0 10px;text-align: right;">
+        <div style="color: #000;font-weight: bold;">{{ $.Params.Datemonth }}</div>
+      <div style="color: #333;">{{ $.Params.Dateyear }}</div>
+      </div>
+    </div>
   </span>
   {{ end }}
 

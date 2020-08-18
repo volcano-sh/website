@@ -78,8 +78,8 @@
 
   {{/* Wider container for nodes */}}
   {{ $ctnr := "container" }}
-<div class="{{$ctnr}} pt-3 {{if eq .Type `posts` }} border-bottom {{end}}">
-  <h1 itemprop="name">{{ $title }}</h1>
+<div class="{{$ctnr}} pt-3 {{if eq .Type `posts` }} border-bottom {{end}}" style="padding-top: 70px!important;">
+  <h1 itemprop="name" style="font-size: 20px;font-weight: bold;border-left: 2px solid red;padding-left: 10px;">{{ $title }}</h1>
 
   {{ with $page.Params.subtitle }}
   <p class="page-subtitle">{{ . | markdownify | emojify }}</p>
