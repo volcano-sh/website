@@ -54,12 +54,14 @@ Kubernetes.  It provides a suite of mechanisms currently missing from
 Kubernetes that are commonly required by many classes of high
 performance workload including:
 
--  Machine Learning/Deep Learning,
--  Bioinformatics/Genomics, and 
--  Other "big data" applications.
+\-  Machine Learning/Deep Learning,   
+\-  Bioinformatics/Genomics, and    
+\-  Other "big data" applications.
 
 These types of applications typically run on generalized domain
 frameworks like Tensorflow, Spark, PyTorch, MPI, etc, which Volcano integrates with.
+
+***
 
 Volcano builds upon a decade and a half of experience running a wide
 variety of high performance workloads at scale using several systems

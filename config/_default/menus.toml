@@ -24,14 +24,18 @@
   weight = 4
 
 [[main]]
-  name = "Documentation"
-  url = "docs/"
+  name = "Talk"
+  url = "#talks"
   weight = 5
 
+[[main]]
+  name = "Documentation"
+  url = "docs/"
+  weight = 6
 
-# Right Menu
+
 [[main_right]]
-  name = "<i class=\"fab fa-github-alt\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-github\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   url = "https://github.com/volcano-sh/"
   weight = 10
@@ -45,7 +49,7 @@
 [[main_right]]
   name = "<i class=\"fab fa-slack\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
-  url = "https://volcano-sh.slack.com"
+  url = "https://cloud-native.slack.com/messages/volcano"
   weight = 30
   
 # Documentation 

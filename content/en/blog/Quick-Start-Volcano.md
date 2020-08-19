@@ -4,7 +4,10 @@ description = "Bring up the Volcano in any K8s Cluster within few mins"
 subtitle =""
 
 date = 2019-03-28
-lastmod = 2019-03-29
+lastmod = 2019-03-29 
+datemonth = "Mar"
+dateyear = "2019"
+dateday = 28
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false

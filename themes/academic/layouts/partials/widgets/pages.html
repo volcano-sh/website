@@ -1,5 +1,5 @@
 {{/* Pages Widget */}}
-
+{{ $item := . }}
 {{/* Initialise */}}
 {{ $ := .root }}
 {{ $st := .page }}
@@ -66,7 +66,43 @@
 {{ end }}
 
 <div class="row">
-  <div class="col-12 col-lg-4 section-heading">
+  <!-- change -->
+  <div class="col-12 section-heading" style="text-align: center;padding-bottom: 10px;">
+  <h1 style="font-size: 22px !important;font-weight: bold;">{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1>
+  
+  </div>
+  <div class="col-12">
+
+    {{ with $st.Content }}<p>{{ . }}</p>{{ end }}
+
+    {{ range $post := $query }}
+      {{ if eq $st.Params.design.view 1 }}
+        {{ partial "li_list" . }}
+      {{ else if eq $st.Params.design.view 3 }}
+        {{ partial "li_card" . }}
+      {{ else if eq $st.Params.design.view 3 | and (eq $st.Type "publication") }}
+        {{ partial "li_citation" . }}
+      {{ else }}
+        {{ partial "li_compact" . }}
+      {{ end }}
+    {{end}}
+
+<!-- view all -->
+  {{ with $st.Params.subtitle }}<p style="text-align: center;font-size: 16px;">{{ . | markdownify | emojify }}</p>{{ end }}
+
+    {{ if gt $count $items_count }}
+    <div class="see-all">
+      <a href="{{ $archive_page.RelPermalink }}">
+        {{ i18n $i18n | default "See all" }}
+        <i class="fas fa-angle-right"></i>
+      </a>
+    </div>
+    {{ end }}
+
+  </div>
+  <!-- change over-->
+
+  <!-- <div class="col-12 col-lg-4 section-heading">
     <h1>{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1>
     {{ with $st.Params.subtitle }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
   </div>
@@ -95,5 +131,5 @@
     </div>
     {{ end }}
 
-  </div>
+  </div> -->
 </div>

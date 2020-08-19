@@ -22,24 +22,24 @@ weight = 7
 # * ai - academic icons (see https://jpswalsh.github.io/academicons/)
 
 [[featured]]
-  img_src = "kubeflow.svg"
+  img_src = "kubeflow.png"
   img_width = "100px"
-  img_height = "200px"
-  name = "" 
+  img_height = "60px"
+  name = "kubeflow" 
   description = "The Kubeflow project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable and scalable. Our goal is not to recreate other services, but to provide a straightforward way to deploy best-of-breed open-source systems for ML to diverse infrastructures."
   
 [[featured]]
   img_src = "spark-logo-hd.png"
   img_width = "100px"
-  img_height = "200px"
-  name = ""
+  img_height = "60px"
+  name = "spark"
   description = "Spark is a fast and general cluster computing system for Big Data. It provides high-level APIs in Scala, Java, Python, and R, and an optimized engine that supports general computation graphs for data analysis.It also supports a rich set of higher-level tools including Spark SQL, MLlib, GraphX and Spark Streaming."  
   
 [[featured]]
   img_src = "kubegene_logo.png"
   img_width = "100px"
-  img_height = "200px"
-  name = ""
+  img_height = "60px"
+  name = "kubegene"
   description = "KubeGene is dedicated to making genome sequencing process simple, portable and scalable. It provides a complete solution for genome sequencing on the kubernetes and supports mainstream biological genome sequencing scenarios such as DNA, RNA, and liquid biopsy."
 
 +++
