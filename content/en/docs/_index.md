@@ -2,7 +2,7 @@
 title = "Introduction"
 
 date = 2019-01-28
-lastmod = 2019-01-29
+lastmod = 2020-08-27
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -10,47 +10,77 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 [menu.docs]
-  parent = "welcome"
+  parent = "home"
   weight = 1
 +++
 
-Volcano is system for runnning high performance workloads on
-Kubernetes.  It provides a suite of mechanisms currently missing from
-Kubernetes that are commonly required by many classes of high
-performance workload including:
-
-1. machine learning/deep learning,
-2. bioinformatics/genomics, and 
-3. other "big data" applications.
-
-These types of applications typically run on generalized domain
-frameworks like Tensorflow, Spark, PyTorch, MPI, etc, which Volcano integrates with.
-
-Some examples of the mechanisms and features that Volcano adds to Kubernetes are:
-
-1. Scheduling extensions, e.g:
-    1. Co-scheduling
-    2. Fair-share scheduling
-    3. Queue scheduling
-    4. Preemption and reclaims
-    5. Reservartions and backfills
-    6. Topology-based scheduling
-1. Job management extensions and improvements, e.g:
-    1. Multi-pod jobs
-    1. Improved error handling
-    1. Indexed jobs
-1. Others (in upstream)
-    1. Optimizations for throughput, round-trip latency, etc.
-
-Volcano builds upon a decade and a half of experience running a wide
-variety of high performance workloads at scale using several systems
-and platforms, combined with best-of-breed ideas and practices from
-the open source community.
-
-
-Volcano is a Kubernetes Native System for High Performance Workload. It is a deployment/installation framework in K8s which maps domain specific framework term's/concept into common k8s concept of Jobs and Queue. It enables the domain specific features for framework using multiple scheduling options like fair-share, gang-scheduling for Tensor Flow training.  
-
+## What is Volcano
+Volcano is a Kubernetes native system for high performance workload, which has been accepted by [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) 
+as the first and unique container batch calculation project. It provides a suite of mechanisms currently missing from 
+Kubernetes that are commonly required by many categories of high performance workload such as machine learning / big data 
+application / scientific computing / special effects rendering, etc. As a general batch computing platform, volcano integrates 
+with almost all mainstream computing frameworks such as [Spark](http://spark.apache.org/) / [TensorFlow](https://tensorflow.google.cn/) / 
+[PyTorch](https://pytorch.org/) / [Flink](https://flink.apache.org/) / [Argo](https://argoproj.github.io/) / [MindSpore](https://www.mindspore.cn/) / 
+[PaddlePaddle](https://www.paddlepaddle.org.cn/), etc. It can also provide powerful hybrid scheduling capabilities for 
+heterogeneous devices include CPU / GPU of various mainstream architectures. Volcano builds upon a decade and a half of 
+experience running a wide variety of high performance workloads at scale using several systems and platforms, combined 
+with best-of-breed ideas and practices from the open source community.
  
-It provides common services to HPW like enhanced job management with multiple pod-template, job management and job life-cycle management. It also provides alternative container runtime like Singularity.   
+## Why is Volcano
+Since the growing requirement of high performance workload from lots of new scenes, job scheduling and management tends 
+to be necessary and complex. Common requirements are listed as follows:
+* diversity of scheduling algorithm
+* more efficient scheduling performance
+* no intrusive support for mainstream computing frameworks
+* support for heterogeneous devices
 
-It has special enhancements for heterogeneous computing and high performance workloads and is specifically designed to support the deployment of BigData/AI/ML Jobs
+Volcano is designed according to these demands. Besides, volcano inherits the interface style and design concept of 
+kubernetes. So you can enjoy the efficiency and convenience of volcano without changing any habits of using Kubernetes.
+## Feature
+### Rich scheduling strategy
+Volcano supports various scheduling strategy including:
+* Co-scheduling
+* Fair-share scheduling
+* Queue scheduling
+* Preemption scheduling
+* Topology-based scheduling
+* Reclaims
+* Backfill
+* Resource Reservation
+
+Benefit from extensible framework, volcano allows users to implement custom plugins and actions to support more scheduling
+algorithms.
+### Enhanced job management 
+volcano provides enhanced job type to adapt to high performance computing scenarios. The features are as follows:
+* Multi-pod job
+* Improved error handling
+* Indexed job
+
+### Support for heterogeneous devices and architectures
+Volcano can provide hybrid scheduling capability of computing resources based on multiple architectures:
+* x86
+* ARM
+* Kunpeng
+* Ascends
+* GPU
+
+### Performance optimization
+Comparing traditional queue scheduler, volcano improves the average scheduling delay by a series of optimization measures.
+
+## Ecology
+Volcano has already support almost all mainstream computing frameworks:
+* [Spark](http://spark.apache.org/)
+* [TensorFlow](https://tensorflow.google.cn/)
+* [PyTorch](https://pytorch.org/)
+* [Flink](https://flink.apache.org/)
+* [Argo](https://argoproj.github.io/)
+* [MindSpore](https://www.mindspore.cn/)
+* [PaddlePaddle](https://www.paddlepaddle.org.cn/)
+* [OpenMPI](https://www.open-mpi.org/)
+* [Horovod](https://horovod.readthedocs.io/)
+* [mxnet](https://mxnet.apache.org/)
+* [Kubeflow](https://www.kubeflow.org/)
+* [KubeGene](https://kubegene.io/)
+* [Cromwell](https://cromwell.readthedocs.io/)
+
+In addition, volcano has been used as infrastructure base by several companies and organizations.
