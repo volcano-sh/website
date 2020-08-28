@@ -39,7 +39,7 @@ height = "350px"
 [[item]]
   title = "Deploy High Performance Workloads effortlessly in Kubernetes"
   content = "Convert domain specific jobs to k8s workloads and Schedules the jobs in batches for optimal performance."
-  align = "right"
+  align = "center"
 
   #overlay_color = "#555"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
@@ -57,7 +57,7 @@ height = "350px"
   
 [[item]]
   title = "Job Management"
-  content = "Manages jobs with multiple template......"
+  content = "Manages jobs with multiple template"
   align = "center"
 
   overlay_color = "#333"  # An HTML color value.
