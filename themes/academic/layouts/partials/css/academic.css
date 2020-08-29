@@ -283,7 +283,7 @@ small,
 }
 
 .search-results > .container {
-  padding-top: 70px;  /* Navbar height. */
+  padding-top: 110px;  /* Navbar height. */
 }
 @media screen and (max-width: 1200px) {
   .search-results > .container {
