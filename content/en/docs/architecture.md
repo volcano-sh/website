@@ -43,7 +43,7 @@ ControllerManager / VCJob ControllerManager.
 volcano admission is responsible for the CRD API validation.
 
 ##### vcctl
-vcctl is the commandline client for volcano.
+vcctl is the commandline client for volcano. 
 
 
 
