@@ -19,7 +19,6 @@ linktitle = "PodGroup"
 ## Introduction
 PodGroup is a group of pods with strong association, which is mainly used in batch scheduling. For example, the ps task 
 and worker tasks in Tensorflow. PodGroup is a CRD type.
-for volcano.
 ## Example
 ```
 apiVersion: scheduling.volcano.sh/v1beta1
