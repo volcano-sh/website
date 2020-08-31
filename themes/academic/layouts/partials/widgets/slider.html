@@ -1,7 +1,7 @@
 {{ $ := .root }}
 {{ $page := .page }}
 
-<section id="{{ $page.File.TranslationBaseName }}" class="carousel slide" data-ride="carousel" data-interval="{{if isset $page.Params "interval"}}{{$page.Params.interval}}{{else}}5000{{end}}">
+<section id="{{ $page.File.TranslationBaseName }}" class="carousel slide" data-ride="carousel" data-interval="{{if isset $page.Params "interval"}}{{$page.Params.interval}}{{else}}5000{{end}}" style="padding-top: 55px;">
 
   <!-- Indicators -->
   <ol class="carousel-indicators">
