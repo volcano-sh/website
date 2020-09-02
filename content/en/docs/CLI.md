@@ -24,7 +24,6 @@ Volcano also provides commandline client to manage resources.
 file is under the path volcano-{version}-linux-gnu\bin\amd64 after unzipping the package. Of course, you can also make
 your own executable file by cloning the code from github and execute the following command under the project root 
 directory:
-
 ```
 # make vcctl
 ``` 
