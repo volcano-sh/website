@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Introduction"
+linktitle = "Scheduler"
 [menu.docs]
   parent = "scheduler"
   weight = 1
