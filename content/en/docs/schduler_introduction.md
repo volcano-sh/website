@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 linktitle = "Introduction"
 [menu.docs]
-  parent = scheduler
+  parent = "scheduler"
   weight = 1
 +++
 

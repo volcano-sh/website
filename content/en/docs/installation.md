@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 linktitle = "Installation"
 [menu.docs]
-  parent = getting-started
+  parent = "getting-started"
   weight = 1
 +++
 

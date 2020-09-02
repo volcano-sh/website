@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 linktitle = "PodGroup"
 [menu.docs]
-  parent = concepts
+  parent = "concepts"
   weight = 2
 +++
 
