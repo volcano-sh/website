@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "CLI"
+linktitle = "Commandline"
 [menu.docs]
   parent = "cli"
   weight = 1
@@ -28,7 +28,6 @@ directory:
 ```
 # make vcctl
 ``` 
-
 2. Copy the executable file to $PATH so that you can use it anywhere.
 
 ## Commandline List
