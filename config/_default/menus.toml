@@ -75,18 +75,13 @@
   identifier = "scheduler"
 
 [[docs]]
-  name = "ControllerManager"
-  weight = 5
-  identifier = "controller-manager"
-
-[[docs]]
   name = "CLI"
-  weight = 6
+  weight = 5
   identifier = "cli"
 
 [[docs]]
   name = "Contribution"
-  weight = 7
+  weight = 6
   identifier = "contribution"
 
 
