@@ -1,7 +1,28 @@
-#### 定义
-volcano job，简称vcjob，是volcano自定义的job资源类型。区别于kubernetes job，vcjob提供了更多高级功能，如可指定调度器、支持最小运行pod数、
-支持task、支持生命周期管理、支持指定队列、支持优先级调度等。volcano job更加适用于机器学习、大数据、科学计算等高性能计算场景          
-#### 样例
++++
+title = "VolcanoJob"
+
+
+date = 2019-01-28
+lastmod = 2020-08-31
+
+draft = false  # Is this a draft? true/false
+toc = true  # Show table of contents? true/false
+type = "docs"  # Do not modify.
+
+# Add menu entry to sidebar.
+linktitle = "VolcanoJob"
+[menu.docs]
+  parent = "concepts"
+  weight = 3
++++
+
+## Introduction
+Volcano job, referred to as vcjob, is a CRD type for Volcano. Different from Kubernetes Job, it provides more advanced 
+features such as specified scheduler / minimum member number / task definition / lifecycle management / specified queue
+/ specified priority. Volcano job is designed for high performance computing such as machine learning / Big Data 
+application / scientific computing.
+
+## Example
 ```
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -46,53 +67,73 @@ spec:
                   cpu: "1"
           restartPolicy: OnFailure
 ```
-#### 关键字段
-* schedulerName
-schedulerName表示该job的pod所使用的调度器，默认值为volcano，也可指定为default。它也是tasks.template.spec.schedulerName的默认值
-* minAvailable
-minAvailable表示运行该job所要运行的**最少**pod数量。只有当job中处于running状态的pod数量不小于minAvailable时，才认为该job运行正常。
-* volumes
-volumes表示该job的挂卷配置。volumes配置遵从kubernetes volumes配置要求
-* tasks.replicas
-tasks.replicas表示某个task pod的副本数
-* tasks.template
-tasks.template表示某个task pod的具体配置定义
-* tasks.policies
-tasks.policies表示某个task的生命周期策略
-* policies
-policies表示job中所有task的默认生命周期策略，在tasks.policies不配置时使用该策略
-* plugins
-plugins表示该job在调度过程中使用的插件
-* queue
-queue表示该job所属的队列
-* priorityClassName
-priorityClassName表示该job优先级，在抢占调度和优先级排序中生效
-* maxRetry
-maxRetry表示当该job可以进行的最大重启次数
-#### 资源状态
-* pending
-pending表示job还在等待调度中，处于排队的状态
-* aborting
-aborting表示job因为某种外界原因正处于中止状态，即将进入aborted状态
-* aborted
-aborted表示job因为某种外界原因已处于中止状态
-* running
-running表示job中至少有minAvailable个pod正在运行状态
-* restarting
-restarting表示job正处于重启状态，正在中止当前的job实例并重新创建新的实例
-* completing
-completing表示job中至少有minAvailable个数的task已经完成，该job正在进行最后的清理工作
-* completed
-completing表示job中至少有minAvailable个数的task已经完成，该job已经完成了最后的清理工作
-* terminating
-terminating表示job因为某种内部原因正处于终止状态，正在等到pod或task释放资源
-* terminated
-terminated表示job因为某种内部原因已经处于终止状态，job没有达到预期就结束了
-* failed
-failed表示job经过了maxRetry次重启，依然没有正常启动
-#### 使用场景
-* tensorflow workload
-以tensorflow为例，创建一个具有1个ps和2个worker的工作负载
+## Key Field
+### schedulerName
+schedulerName means which scheduler will schedule the job. The default value is Volcano. Current optional values are 
+"volcano" and "default".
+
+### minAvailable
+minAvailable represents the minimum number of running Pods to run the job. Only when the number of running Pods is not 
+less than minAvailable can the job be considered as running. 
+
+### tasks.replicas
+tasks.replicas indicates the replicas number of the task.
+
+### tasks.template
+tasks.template defines the configuration of a task replicas, it's same as Pod template in Kubernetes.
+
+### tasks.policies
+tasks.policies defines the lifecycle strategy of the task.
+
+### policies
+policies is the default lifecycle strategy for all tasks when tasks.policies is not set.
+  
+### plugins
+plugins indicates the plugins used by Volcano when scheduling the job.
+
+### queue
+queue means the queue the job belongs to. 
+
+### priorityClassName
+priorityClassName indicates the priority of the job which is used in preemption scheduling.
+
+### maxRetry
+maxRetry indicates the max retries of the job if fails.
+
+## Status
+### pending
+pending means the job is waiting for to be scheduled.
+
+### aborting
+aborting means the job is being aborted because of some outer factor.
+
+### aborted
+aborting means the job has already been aborted because of some outer factor.
+
+### running
+running indicates there are at least "minAvailable" Pods running.
+
+### restarting
+restarting means the job is restarting.
+
+### completing
+completing means there are at least "minAvailable" Pods in completing status. Job is doing some cleanup. 
+
+### completing
+completing means there are at least "minAvailable" Pods in completed status. Job has finished cleaning up.
+
+### terminating
+terminating means job is in exiting process because of some internal factor. Job is waiting pods releasing resources.
+
+### terminated
+terminated means job has already exited because of some internal factor.
+
+### failed
+failed means job still cannot start after maxRetry tries. 
+
+## Usage
+### tensorflow workload
+Create a tensorflow workload with a ps and three workers.
 ```
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -152,8 +193,8 @@ spec:
               resources: {}
           restartPolicy: Never
 ```
-* argo workload
-以argo为例，创建一个具有2个pod副本的工作负载，要求1个可用即可
+### argo workload
+Create an argo workload with two tasks and only one work well is enough.
 ```
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
@@ -226,10 +267,9 @@ spec:
                     requests:
                       cpu: "100m"
                 restartPolicy: OnFailure
-
-```
-* mindspore
-以mindspore为例，创建一个具有8个pod副本的工作负载，要求1个可用即可
+```  
+### Mindspore workload
+Create a Mindspore workload with eight replicases and only one work well is enough.
 ```
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -265,22 +305,23 @@ spec:
           restartPolicy: OnFailure
 
 ```
-#### 说明事项
-* volcano job支持的计算框架
-volcano job对当前主流的计算框架均能很好的支持，具体如下：
-1. tensorflow
-2. pytorch
-3. mindspore
-4. PaddlePaddle
-5. spark
-6. flink
-7. openMPI
-8. horovod
-9. mxnet
-10. kubeflow
-11. argo
-12. kubeGene
+## Note
+### Frameworks Supported
+Volcano support almost all mainstream computing frameworks including:
+* tensorflow
+* pytorch
+* mindspore
+* PaddlePaddle
+* spark
+* flink
+* openMPI
+* horovod
+* mxnet
+* kubeflow
+* argo
+* kubeGene
 ...
-* volcano job和kubernetes job的选择
-volcano job在批处理能力方面对kubernetes job进行了升级，更加适合机器学习、大数据、科学计算等场景，建议在高性能计算场景下选择volcano job；
-其他场景下两者皆可
+
+### Volcano or default-scheduler
+Volcano is enhanced in batch computing comparing to default-scheduler. It's more suitable for high performance computing 
+such as machine learning / Big Data application / scientific computing.

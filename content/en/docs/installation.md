@@ -1,16 +1,16 @@
 +++
-title =  "Getting Started with Volcano"
+title =  "Installation"
 
 
-date = 2019-07-18
-lastmod = 2019-07-18
+date = 2019-01-28
+lastmod = 2020-08-29
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Installation Using Release"
+linktitle = "Installation"
 [menu.docs]
   parent = "getting-started"
   weight = 1

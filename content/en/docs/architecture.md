@@ -3,7 +3,7 @@ title =  "Architecture"
 
 
 date = 2019-01-28
-lastmod = 2019-01-29
+lastmod = 2020-08-28
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -12,27 +12,35 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 linktitle = "Architecture"
 [menu.docs]
-  parent = "concepts"
-  weight = 3
+  parent = "home"
+  weight = 2
 +++
 
 ## Overall Architecture
 
 
-{{<figure library="1" src="arch.png" title="">}}
+{{<figure library="1" src="arch_1.png" title="application scenarios of Volcano">}}
 
-### Common Service for high performance workload :
-- Batch Scheduler, e.g. fair-share, gang-scheduling
-- Batch Job Management, e.g. multiple pod template, job dependency
-- Command Line, e.g. suspend/resume, view
-- Runtime, e.g. Singularity
-- Accelerator, e.g. GPU, FPGA
-- Kuberentes enhancements, e.g. throughput
 
-{{<figure library="1" src="arch-2.png" title="">}}
+Volcano is designed for high performance workload and works with Kubernetes naturally. It follows the design philosophy 
+and style of Kubernetes.
 
-1. Kubectl creates a JobEx object in apiserver if all admission passed
-2. JobExController create Pods based on its replicas and templates
-3. vk-scheduler get the “notification” of Pod from apiserver
-4. vk-scheduler chooses one host for the Pod of JobEx based on its policy
-5. kubelet gets the notification of Pod from apiserver; and then start the container
+
+{{<figure library="1" src="arch_2.PNG" title="Volcano architecture">}}
+
+
+Volcano consists of **scheduler** / **controllermanager** / **admission** / **vcctl**.
+
+##### scheduler
+Volcano scheduler aims to schedule jobs to the most suitable node throughout a series of actions and plugins. What makes 
+it different from default scheduler is its various scheduling algorithms for job.
+
+##### controllermanager
+Volcano controllermanager manages the lifecycle of CRD resource. It mainly includes **Queue ControllerManager** / **PodGroup 
+ControllerManager** / **VCJob ControllerManager**.
+
+##### admission
+Volcano admission is responsible for the CRD API validation.
+
+##### vcctl
+vcctl is the commandline client for Volcano. 

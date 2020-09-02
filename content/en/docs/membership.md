@@ -1,10 +1,9 @@
-
 +++
-title =  "Community Membership"
+title = "Community Membership"
 
 
 date = 2019-01-28
-lastmod = 2019-01-29
+lastmod = 2020-09-01
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
