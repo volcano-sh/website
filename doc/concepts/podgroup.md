@@ -45,7 +45,7 @@ status:
 ```
 #### 关键字段
 * minMember
-miniMember表示该podgroup下**最少**需要运行的pod或任务数量。如果集群资源不满足miniMember数量任务的运行需求，调度器将不会调度任何一个该podgroup内的任务
+minMember表示该podgroup下**最少**需要运行的pod或任务数量。如果集群资源不满足miniMember数量任务的运行需求，调度器将不会调度任何一个该podgroup内的任务
 * queue
 queue表示该podgroup所属的queue。queue必须提前已创建且状态为open
 * priorityClassName

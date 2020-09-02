@@ -55,9 +55,9 @@
 # Documentation 
 
 [[docs]]
-  name = "Welcome"
+  name = "Home"
   weight = 1
-  identifier = "welcome"
+  identifier = "home"
 
 [[docs]]
   name = "Getting Started"
@@ -75,8 +75,13 @@
   identifier = "scheduler"
 
 [[docs]]
+  name = "CLI"
+  weight = 5
+  identifier = "cli"
+
+[[docs]]
   name = "Contribution"
-  weight = 4
+  weight = 6
   identifier = "contribution"
 
 

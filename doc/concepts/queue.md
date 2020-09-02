@@ -34,7 +34,7 @@ reclaimable表示该queue在资源使用量超过该queue所应得的资源份�
 该queue当前处于不可用状态，不可接收新的podgroup
 * Closing
 该Queue正在转化为不可用状态，不可接收新的podgroup
-* Unknow
+* Unknown
 该queue当前处于不可知状态，可能是网络或其他原因导致queue的状态暂时无法感知
 ##### 使用场景
 * weight的资源划分-1
