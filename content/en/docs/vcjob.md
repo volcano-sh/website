@@ -1,5 +1,5 @@
 +++
-title = "VCJob"
+title = "VolcanoJob"
 
 
 date = 2019-01-28
@@ -10,14 +10,14 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "VCJob"
+linktitle = "VolcanoJob"
 [menu.docs]
   parent = "concepts"
   weight = 3
 +++
 
 ## Introduction
-Volcano job, referred to as vcjob, is a CRD type for volcano. Different from Kubernetes Job, it provides more advanced 
+Volcano job, referred to as vcjob, is a CRD type for Volcano. Different from Kubernetes Job, it provides more advanced 
 features such as specified scheduler / minimum member number / task definition / lifecycle management / specified queue
 / specified priority. Volcano job is designed for high performance computing such as machine learning / Big Data 
 application / scientific computing.
@@ -69,7 +69,7 @@ spec:
 ```
 ## Key Field
 ### schedulerName
-schedulerName means which scheduler will schedule the job. The default value is volcano. Current optional values are 
+schedulerName means which scheduler will schedule the job. The default value is Volcano. Current optional values are 
 "volcano" and "default".
 
 ### minAvailable
@@ -89,7 +89,7 @@ tasks.policies defines the lifecycle strategy of the task.
 policies is the default lifecycle strategy for all tasks when tasks.policies is not set.
   
 ### plugins
-plugins indicates the plugins used by volcano when scheduling the job.
+plugins indicates the plugins used by Volcano when scheduling the job.
 
 ### queue
 queue means the queue the job belongs to. 
@@ -307,7 +307,7 @@ spec:
 ```
 ## Note
 ### Frameworks Supported
-volcano support almost all mainstream computing frameworks including:
+Volcano support almost all mainstream computing frameworks including:
 * tensorflow
 * pytorch
 * mindspore
@@ -322,6 +322,6 @@ volcano support almost all mainstream computing frameworks including:
 * kubeGene
 ...
 
-### volcano or default-scheduler
-volcano is enhanced in batch computing comparing to default-scheduler. It's more suitable for high performance computing 
+### Volcano or default-scheduler
+Volcano is enhanced in batch computing comparing to default-scheduler. It's more suitable for high performance computing 
 such as machine learning / Big Data application / scientific computing.

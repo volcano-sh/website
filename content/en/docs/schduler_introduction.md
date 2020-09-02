@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Scheduler"
+linktitle = "Overview"
 [menu.docs]
   parent = "scheduler"
   weight = 1
@@ -21,10 +21,11 @@ Volcano scheduler is the component responsible for Pod scheduling. It consists o
 define what action should be executed in every step. Plugins provide the action algorithm detail in different scenes.
 Volcano scheduler is highly scalable. You can specify and implement actions and plugins according the needs.
 ## Workflow
-{{<figure library="1" src="scheduler.PNG" title="volcano scheduler workflow">}}
+{{<figure library="1" src="scheduler.PNG" title="Volcano scheduler workflow">}}
 
 
-volcano scheduler works as follows:
+Volcano scheduler works as follows:
+
 1. Jobs submitted by client are watched by scheduler and cached
 2. Open sessions periodically and a scheduling cycle begins
 3. Send jobs not scheduled in cache to to-be-scheduled-queue in session
@@ -32,6 +33,7 @@ volcano scheduler works as follows:
 suitable node for each job. Bind the job to the node. The specific algorithm logic executed in action depends on the 
 implementation of each function in the registered plugins.
 5. Close this session
+
 ## Actions
 ### enqueue
 Enqueue action is responsible for filtering out the tasks to be scheduled that meet the requirements through a series of 
@@ -71,14 +73,18 @@ Volcano scheduler is highly scalable because of its composition pattern design. 
 to use according to their personal needs, and they can also implement customization based on the interface Action or plugin. 
 The scheduler configuration is located in the configmap named volucano-scheduler-configmap, which is mounted in the path
 /volcano.scheduler in the scheduler container as volume.
-### How to get configuration of volcano scheduler
+### How to get configuration of Volcano scheduler
+
 1. get the configmap named volcano-scheduler-configmap
+
 ```
 # kubectl get configmap -nvolcano-system
 NAME                          DATA   AGE
 volcano-scheduler-configmap   1      6d2h
 ```
+
 2. view the data part detail of configmap
+
 ```
 # kubectl get configmap volcano-scheduler-configmap -nvolcano-system -oyaml
 apiVersion: v1
@@ -108,7 +114,8 @@ metadata:
   selfLink: /api/v1/namespaces/volcano-system/configmaps/volcano-scheduler-configmap
   uid: 1effe4d6-126c-42d6-a3a4-b811075c30f5
 ```
+
 It includes actions and tiers in volcano-scheduler.conf. In actions, the comma is used as a separator to configure the 
 actions to be executed by the scheduler. It should be noted that the order of configuration is the order of the scheduler's 
-execution, and volcano itself will not check the rationality of the order. The list of plugins configured in tiers is the 
+execution, and Volcano itself will not check the rationality of the order. The list of plugins configured in tiers is the 
 plugins registered with the scheduler. The specific algorithm implementation defined in plugins will be called in actions.

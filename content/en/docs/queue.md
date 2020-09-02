@@ -61,23 +61,30 @@ Unknown means the queue status is imperceptible because of some unexpected situa
 ## Usage
 ### Weight For Cluster Resource Division - 1
 #### Premise
+
 * The total amount of CPU resource in Cluster is 4C.
-* Default queue named "default" has already been created by volcano, whose default weight is 1.
+* Default queue named "default" has already been created by Volcano, whose default weight is 1.
 * No running tasks in cluster.
+
 #### Operation
+
 1. Under current situation, queue "default" can make use of all CPUs.
 2. Create custom queue named "test" whose weight is 3. So resource share for queue "default" changes to 1C and queue 
 "test" is 3C because weight(default) : weight(test) = 1 : 3.
 3. Create PodGroup "p1" and "p2". "p1" enters queue "default" while "p2" enters to queue "test".
 4. Create job "j1" which belongs to "p1" and request 1C.
 5. Create job "j2" which belongs to "p2" and request 3C.
-6. Observe the status of "j1" and "j2". They are both running well.    
+6. Observe the status of "j1" and "j2". They are both running well. 
+   
 ### Weight For Cluster Resource Division - 2
 #### Premise
+
 * The total amount of CPU resource in Cluster is 4C.
-* Default queue named "default" has already been created by volcano, whose default weight is 1.
+* Default queue named "default" has already been created by Volcano, whose default weight is 1.
 * No running tasks in cluster.
+
 #### Operation
+
 1. Under current situation, queue "default" can make use of all CPUs.
 2. Create PodGroup "p1" who enters queue "default".
 3. Create job "j1" requesting 1C and job "j2" requesting 3C, who both belongs to "p1". They are running wll.
@@ -86,33 +93,42 @@ Unknown means the queue status is imperceptible because of some unexpected situa
 can still run well.
 5. Create PodGroup "p2" who enters queue "test".
 6. Create job "j2" who belongs to "p2" and requests 3C. "j2" will be evicted to return resource to queue "test".
+
 ### Capability For Overuse Of Resource
 #### Premise
+
 * The total amount of CPU resource in Cluster is 4C.
-* Default queue named "default" has already been created by volcano, whose default weight is 1.
+* Default queue named "default" has already been created by Volcano, whose default weight is 1.
 * No running tasks in cluster.
+
 #### Operation
+
 1. Create queue "test" whose capability is 2C.
 2. Create PodGroup "p1" entering queue "test".
 3. Create job "j1" who belongs to "p1" and requesting 1C. "j1" runs well.
 4. Create job "j2" who belongs to "p1" and requesting 2C. "j2" becomes "pending" because the limit of capability.
+
 ### Reclaimable For Resource Return
 #### Premise
+
 * The total amount of CPU resource in Cluster is 4C.
-* Default queue named "default" has already been created by volcano, whose default weight is 1.
+* Default queue named "default" has already been created by Volcano, whose default weight is 1.
 * No running tasks in cluster.
+
 #### Operation
+
 1. Create queue named "test" whose "reclaimable" is false and weight is 1. So resource share for queue "default" and 
 "test" are both 2C.
 2. Create PodGroup "p1" and "p2". "p1" enters queue "test" while "p2" enters to queue "default".
 3. Create job "j1" who belongs to "p1" and requests 3C. "j1" runs well because of no tasks in queue "default".
 4. Create job "j2" who belongs to "p2" and requests 2C. The status of "j2" is "pending" because queue test's "reclaimable"
-is false. It will NOT return resource to other queues immediately until some tasks in it finishes.  
+is false. It will NOT return resource to other queues immediately until some tasks in it finishes.
+  
 ## Note
 #### default queue
-When volcano starts, it will create a queue named "default". Its weight is 1. The following jobs without assigned to a 
+When Volcano starts, it will create a queue named "default". Its weight is 1. The following jobs without assigned to a 
 queue will be assigned to queue "default".
 #### soft constraint about weight
 weight determines the resource share of a queue, but not the upper limit. As examples above, a queue can make use of 
-resource more than its share when there is idle resource in other queues. It's a good character for volcano to have a 
+resource more than its share when there is idle resource in other queues. It's a good character for Volcano to have a 
 better resource usage of cluster resource.

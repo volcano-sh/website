@@ -87,7 +87,7 @@ succeed is the number of succeed Pods or Tasks in PodGroup.
 failed is the number of failed Pods or Tasks in PodGroup.
 ## Status
 ### pending
-pending means the PodGroup has been accepted by volcano but its resource requirement cannot be satisfied at soon. Once
+pending means the PodGroup has been accepted by Volcano but its resource requirement cannot be satisfied at soon. Once
 satisfied, the status will turn to be running.
 ### running
 running means there are at least **minMember** number of Pods or Tasks are running for the PodGroup.
@@ -109,5 +109,5 @@ In some scenes such as Big Data analysis, only if available resource achieving a
 "minResources" is just for it.
 ## Note
 #### Creation Automatically
-If no PodGroup specified when creating a volcano job is created, volcano will create a PodGroup with the same name for 
-volcano job.  
+If no PodGroup specified when creating a Volcano job is created, Volcano will create a PodGroup with the same name for 
+Volcano job.  
