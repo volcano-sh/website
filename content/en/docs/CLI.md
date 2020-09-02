@@ -10,9 +10,9 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Commandline"
+linktitle = "CLI"
 [menu.docs]
-  parent = "CLI"
+  parent = "cli"
   weight = 1
 +++
 
