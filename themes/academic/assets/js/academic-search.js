@@ -64,6 +64,7 @@ function initSearch(force, fuse) {
   // Do search.
   $('#search-hits').empty();
   searchAcademic(query, fuse);
+  //新网址
   let newURL = window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(query) + window.location.hash;
   updateURL(newURL);
 }
@@ -73,7 +74,7 @@ function searchAcademic(query, fuse) {
   let results = fuse.search(query);
   // console.log({"results": results});
 
-  if (results.length > 0) {
+  if (results.length > 0) { 
     $('#search-hits').append('<h3 class="mt-0">' + results.length + ' ' + i18n.results + '</h3>');
     parseResults(query, results);
   } else {

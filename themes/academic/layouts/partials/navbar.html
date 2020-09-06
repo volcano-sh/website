@@ -22,9 +22,30 @@
      
         {{ if .Site.Params.search.engine }}
         <li class="nav-item">
-          <div class="changesearch"  style="margin: 8px 10px 0 0;">Search
+          <!-- div class="changesearch"  style="margin: 8px 10px 0 0;">Search
             <a class="nav-link js-search" href="#" ><i class="fas fa-search" aria-hidden="true" style="position: relative;top: -15px;"></i></a>
-          </div>    
+          </div>   -->  
+          <div class="changesearch">
+           <!--  <input type="text" name="search_name"  placeholder="Search" class="inputt"> -->
+            <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search" class="inputt" onkeydown="enterIn(event);">
+            <a class="nav-link js-search" href="#" >
+              <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
+            </a>
+        <!--     <button class="nav-link js-search" href="#" type="submit">
+              <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
+            </button> -->
+          </div>
+
+ <section class="section-search-results">
+
+      <div id="search-hits">
+        <!-- Search results will appear here -->
+      </div>
+
+    </section>
+
+
         </li>
         {{ end }}
 
@@ -150,3 +171,16 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>
+<script type="text/javascript">
+  function enterIn(e){
+  var e=e?e:(window.event?window.event:null);//兼容IE和FF
+  if (e.keyCode==13){
+  // var obj ;
+  // queryDistrict(obj,2);
+  var sear = document.getElementById("searchquery").value;
+  //console.log(sear);
+
+  window.open(window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(sear) + window.location.hash);    
+  }
+}
+</script>

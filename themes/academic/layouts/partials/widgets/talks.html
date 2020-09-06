@@ -3,9 +3,9 @@
 {{ $talks_len := len (where $.Site.RegularPages "Type" "talk") }}
 
 <!-- Talks widget -->
-<div class="row">
+<!-- <div class="row">
   <div class="col-12 col-lg-4 section-heading">
-    <h1>{{ with $page.Title }}{{ . | markdownify }}{{ end }}</h1>
+    <h1 style="color: #fff;font-weight: normal;">{{ with $page.Title }}{{ . | markdownify }}{{ end }}</h1>
     {{ with $page.Params.subtitle }}<p>{{ . | markdownify }}</p>{{ end }}
     {{ if gt $talks_len $page.Params.count }}
     <p class="view-all">
@@ -14,8 +14,8 @@
         <i class="fas fa-angle-double-right"></i>
       </a>
     </p>
-    {{ end }}
-  </div>
+    {{ end }} -->
+ <!--  </div>
   <div class="col-12 col-lg-8">
     {{ with $page.Content }}<p>{{ . | markdownify }}</p>{{ end }}
 
@@ -37,3 +37,4 @@
     {{ end }}
   </div>
 </div>
+ -->

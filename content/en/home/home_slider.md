@@ -9,7 +9,7 @@ weight = 1
 
 # Slide interval.
 # Use `false` to disable animation or enter a time in ms, e.g. `5000` (5s).
-interval = 6000
+interval = 600000
 
 # Minimum slide height.
 # Specify a height to ensure a consistent height for each slide.
@@ -19,7 +19,7 @@ height = "350px"
 # Duplicate an `[[item]]` block to add more slides.
 [[item]]
   title = "Volcano"
-  content = "Erupt with Computing Power <br /> <a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
+  content = "Erupt with Computing Power <br /> <a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\" background-color=\"red\" style=\" background:none !important; color:white;border-color:red; \" >Star</a>"
   align = "center"  # Choose `center`, `left`, or `right`.
 
   # Overlay a color or image (optional).
@@ -84,7 +84,8 @@ height = "350px"
 
 +++
 
-<div class="mt-3">
+<!-- <div class="mt-3">
   <a class="github-button" href="https://github.com/volcano-sh/volcano" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star this on GitHub">Star</a>
 </div>
 <script async defer src="https://buttons.github.io/buttons.js"></script>
+ -->

@@ -24,7 +24,7 @@
       {{ end }}
       ;">
       <div class="container" style="text-align: {{$item.align | default "left"}};">
-          <h1 class="hero-title" itemprop="headline">
+         <!--  <h1 class="hero-title" itemprop="headline">
             {{ with $item.title }}{{ . | markdownify | emojify }}{{ end }}
           </h1>
 
@@ -33,7 +33,7 @@
             {{ . | markdownify | emojify }}
           </p>
           {{ end }}
-
+ 
           {{ if $item.cta_url }}
           {{ $pack := or .icon_pack "fa" }}
           <p>
@@ -42,8 +42,8 @@
               {{- $item.cta_label | emojify | safeHTML -}}
             </a>
           </p>
-          {{ end }}
-        </div>
+          {{ end }} -->
+      </div>
     </div>
     {{ end }}
   </div>

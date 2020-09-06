@@ -24,7 +24,7 @@ The easiest way to get started with Volcano is to download the [release](https:/
  - [Optional] Helm should be installed in your cluster, you can follow the steps over [here](https://helm.sh/docs/using_helm/#install-helm) to install helm.(Only needed if you are installing using helm mode of deployment)
  - Download the latest release from [here](https://github.com/volcano-sh/volcano/releases)
  - Untar the release file
-    ```
+    ```sql
     #tar -xvf volcano-{Version}-linux-gnu.tar.gz
     
     #cd volcano-{Version}-linux-gnu
@@ -52,7 +52,7 @@ The easiest way to get started with Volcano is to download the [release](https:/
 
 Create the deployment using the `volcano-{Version}.yaml` file present inside the release.
 
-```go
+```sql
 # kubectl apply -f volcano-{Version}.yaml 
 namespace/volcano-system created
 configmap/volcano-scheduler-configmap created
@@ -79,7 +79,7 @@ customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
 
 ```
 Verify the running components of Volcano
-```go
+```sql
 # kubectl get all -n volcano-system
 NAME                                       READY   STATUS      RESTARTS   AGE
 pod/volcano-admission-5bd5756f79-p89tx     1/1     Running     0          6m10s
@@ -118,7 +118,7 @@ If you want to use helm to deploy Volcano then make sure you have helm installed
 ###### Prerequisite:
 If your helm already has serviceaccount configured then you can skip this step, otherwise execute the following command to create a serviceaccount for tiller.
 
-```go
+```shell
 # helm init --service-account tiller --kubeconfig ${KUBECONFIG} --wait --upgrade
 $HELM_HOME has been configured at /root/.helm.
 
@@ -132,7 +132,7 @@ For more information on securing your installation see: https://docs.helm.sh/usi
 
 ###### Step: 1 
 Create a new namespace
-```go
+```shell
 # kubectl create namespace volcano-system
 namespace/volcano-system created
 
@@ -140,7 +140,7 @@ namespace/volcano-system created
 
 ###### Step: 2
 Installing using helm charts
-```go
+```shell
 # helm install helm/chart/volcano --namespace volcano-system --name volcano
 NAME:   volcano
 LAST DEPLOYED: Tue Jul 23 20:07:29 2019
@@ -211,7 +211,9 @@ https://volcano.sh/
 ###### Step: 3 
 
 Verify the running components of Volcano
-```go
+
+```sql
+
 # kubectl get all -n volcano-system
 NAME                                       READY   STATUS              RESTARTS   AGE
 pod/volcano-admission-b45b7b76-84jmw       0/1     ContainerCreating   0          4m42s
@@ -238,6 +240,7 @@ replicaset.apps/volcano-scheduler-bb4467966      1         1         0       4m4
 
 NAME                               COMPLETIONS   DURATION   AGE
 job.batch/volcano-admission-init   0/1           4m42s      4m42s
+
 
 ```
 

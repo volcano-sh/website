@@ -25,8 +25,8 @@ linktitle = "Customers of Kube-Batch"
 +++
 ## Who is using kube-batch?
 
-| Organization | Contact (Github User Name) | Environment | Description of Use |
-| ------------- | ------------- | ------------- | ------------- |
+| Organization | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Contact&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </br>(Github User Name)| Environment | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Description of Use |
+| :-------------: | :-------------: | :-------------: | :-------------: |
 | [Baidu Inc](http://www.baidu.com) |[@tizhou86](https://github.com/tizhou86)| Production | The scheduler for PaddlePaddle offline training |
 | [Tusimple](https://www.tusimple.com)| [@suleisl2000](https://github.com/suleisl2000) | | The scheduler for MxNet offline training |
 | [FfDL](https://github.com/IBM/FfDL)| [@animeshsingh](https://github.com/animeshsingh)| |  |
