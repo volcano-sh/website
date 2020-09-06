@@ -29,9 +29,9 @@ Volcano scheduler works as follows:
 1. Jobs submitted by client are watched by scheduler and cached
 2. Open sessions periodically and a scheduling cycle begins
 3. Send jobs not scheduled in cache to to-be-scheduled-queue in session
-4. Traverse all jobs to be scheduled. Execute enqueue / allocate / preempt / reclaim / backfill actions and find the most
-suitable node for each job. Bind the job to the node. The specific algorithm logic executed in action depends on the 
-implementation of each function in the registered plugins.
+4. Traverse all jobs to be scheduled. Execute enqueue / allocate / preempt / reclaim / backfill actions in order they are
+defined and find the most suitable node for each job. Bind the job to the node. The specific algorithm logic executed in 
+action depends on the implementation of each function in the registered plugins.
 5. Close this session
 
 ## Actions
@@ -47,31 +47,32 @@ Preempt action is responsible for preemptive scheduling of high priority tasks i
 Reclaim action is responsible for reclaiming the resources due to the cluster based on the queue weight when a new task 
 enters the queue and the cluster resources cannot meet the needs of the current queue.
 ### backfill
-The backfill action is responsible for backfilling the tasks in the pending state into the cluster node to maximize the 
+Backfill action is responsible for backfilling the tasks in the pending state into the cluster node to maximize the 
 resource utilization of the node.
+
 ## Plugins
 ### gang
-The gang plugin considers tasks that are not in ready state to have a higher priority. It will decide whether to schedule 
-the task by checking if the resources due to the queue can meet the resources required by the task to run minavailable 
-pods after trying to reclaim resources.
+The gang plugin considers tasks that are not in ready state(including Binding / Bound / Running / Allocated / Succeed / 
+Pipelined) to have a higher priority. It will decide whether to schedule the task by checking if the resources due to the 
+queue can meet the resources required by the task to run minavailable pods after trying to reclaim resources.
 ### conformance
 The conformance plugin considers the tasks in namespace kube-system have higher priority. These tasks will not be preempted.
 ### DRF
 The DRF plugin considers that tasks with fewer resources have higher priority. It tries to calculate the total amount of 
 resources allocated by the preemptor and the preempted, and triggers the preemption when the preemptor has less resources.
 ### nodeorder
-Nodeorder plugin returns the scores of all nodes for a task after passing a series of dimension scoring algorithms. The 
+The Nodeorder plugin returns the scores of all nodes for a task after passing a series of dimension scoring algorithms. The 
 node with the highest score is considered to be the most suitable node for the task.
 ### predicates
 The predictions plugin determines whether a task is bound to a node through a series of dimensional evaluation algorithms.
 ### priority
-The priority plugin is used to compare the priority of two tasks. For two jobs, it decides whose priority is higher by 
+The priority plugin is used to compare the priority of two jobs / tasks. For two jobs, it decides whose priority is higher by 
 comparing job.spec.priorityClassName. For two tasks, it decides whose priority is higher by comparing task.priorityClassName
 / task.createTime / task.id in order.
 ## Configuration
 Volcano scheduler is highly scalable because of its composition pattern design. Users can decide which actions and plugins 
 to use according to their personal needs, and they can also implement customization based on the interface Action or plugin. 
-The scheduler configuration is located in the configmap named volucano-scheduler-configmap, which is mounted in the path
+The scheduler configuration is located in the configmap named **volcano-scheduler-configmap**, which is mounted in the path
 /volcano.scheduler in the scheduler container as volume.
 ### How to get configuration of Volcano scheduler
 
