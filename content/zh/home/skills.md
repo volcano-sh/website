@@ -3,8 +3,8 @@
 widget = "featurette"  # Do not modify this line!
 active = false  # Activate this widget? true/false
 
-title = "Why Volcano"
-subtitle = "Are you planning to Deploy any of the below workloads on Kubernetes?"
+title = "为什么选择Volcano"
+subtitle = "您是否计划在Kubernetes集群中部署高性能负载?"
 
 # Order that this section will appear in.
 weight = 6
