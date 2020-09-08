@@ -1,17 +1,17 @@
 +++
-# A Recent Blog Posts section created with the Pages widget.
-# This section displays recent blog posts from `content/post/`.
+# A Recent and Upcoming Talks section created with the Pages widget.
+# This section displays recent talks from `content/talk/`.
 
 widget = "pages"  # Do not modify this line!
 active = true  # Activate this widget? true/false
-weight = 40  # Order that this section will appear.
+weight = 70  # Order that this section will appear.
 
-title = "近期活动"
-subtitle = "[查看所有活动](blog/)"
+title = "历史和近期讲座"
+subtitle = "[查看所有活动  ->](talk/)"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
-  page_type = "posts"
+  page_type = "talk"
   
   # Choose how much pages you would like to display (0 = all pages)
   count = 5
@@ -28,7 +28,9 @@ subtitle = "[查看所有活动](blog/)"
     category = ""
     publication_type = ""
     exclude_featured = false
-  
+    exclude_past = false
+    exclude_future = false
+    
 [design]
   # Toggle between the various page layout types.
   #   1 = List
@@ -42,7 +44,7 @@ subtitle = "[查看所有活动](blog/)"
   #   Uncomment (by removing `#`) an option to apply it.
   #   Choose a light or dark text color by setting `text_color_light`.
   #   Any HTML color name or Hex value is valid.
-  
+
   # Background color.
   # color = "navy"
   

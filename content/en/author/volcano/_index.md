@@ -6,7 +6,7 @@ name = "Volcano"
 superuser = true
 
 # Role/position
-role = "A Kuberenetes native system for High Performance Workload"
+role = "A Kubernetes native system for High Performance Workload"
 
 # Organizations/Affiliations
 #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
@@ -49,14 +49,14 @@ interests = []
 #   link = "files/cv.pdf"
 
 +++
-Volcano is system for runnning high performance workloads on
+Volcano is system for running high performance workloads on
 Kubernetes.  It provides a suite of mechanisms currently missing from
 Kubernetes that are commonly required by many classes of high
 performance workload including:
 
-\-  Machine Learning/Deep Learning,   
-\-  Bioinformatics/Genomics, and    
-\-  Other "big data" applications.
+\-  Machine Learning/Deep Learning   
+\-  Bioinformatics/Genomics
+\-  Other "big data" applications
 
 These types of applications typically run on generalized domain
 frameworks like Tensorflow, Spark, PyTorch, MPI, etc, which Volcano integrates with.

@@ -41,7 +41,7 @@ kubernetes. So you can enjoy the efficiency and convenience of Volcano without c
 ### Rich scheduling strategy
 Volcano supports various scheduling strategy including:
 
-* Co-scheduling
+* Gang-scheduling
 * Fair-share scheduling
 * Queue scheduling
 * Preemption scheduling

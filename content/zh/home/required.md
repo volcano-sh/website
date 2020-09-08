@@ -6,8 +6,8 @@ widget = "featured"
 active = true
 date = 2016-04-20T00:00:00
 
-title = "Why Volcano??"
-subtitle = "Are you planning to Deploy any of the below workloads on Kubernetes? &#13;&#10; If Yes then Volcano is the right choice for your Deployment framework. "
+title = "为什么选择Volcano"
+subtitle = "在Kubernetes集群中部署高性能应用的最佳解决方案"
 
 # Order that this section will appear in.
 weight = 7
