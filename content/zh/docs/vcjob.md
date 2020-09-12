@@ -20,7 +20,7 @@ linktitle = "VolcanoJob"
 volcano job，简称vcjob，是volcano自定义的job资源类型。区别于kubernetes job，vcjob提供了更多高级功能，如可指定调度器、支持最小运行pod数、
 支持task、支持生命周期管理、支持指定队列、支持优先级调度等。volcano job更加适用于机器学习、大数据、科学计算等高性能计算场景。          
 ### 样例
-```
+```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
@@ -154,7 +154,7 @@ failed表示job经过了maxRetry次重启，依然没有正常启动。
 * tensorflow workload
 
 以tensorflow为例，创建一个具有1个ps和2个worker的工作负载。
-```
+```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
@@ -217,7 +217,7 @@ spec:
 * argo workload
 
 以argo为例，创建一个具有2个pod副本的工作负载，要求1个可用即可。
-```
+```shell
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
@@ -294,7 +294,7 @@ spec:
 * mindspore
 
 以mindspore为例，创建一个具有8个pod副本的工作负载，要求1个可用即可。
-```
+```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:

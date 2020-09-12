@@ -67,7 +67,7 @@ task.priorityClassName、task.createTime、task.id in order来决定谁的优先
 
 1. 查看名为volcano-scheduler-configmap的configmap
 
-```
+```shell
 # kubectl get configmap -nvolcano-system
 NAME                          DATA   AGE
 volcano-scheduler-configmap   1      6d2h
@@ -75,7 +75,7 @@ volcano-scheduler-configmap   1      6d2h
 
 2. 查看configmap的data部分详情
 
-```
+```shell
 # kubectl get configmap volcano-scheduler-configmap -nvolcano-system -oyaml
 apiVersion: v1
 data:
