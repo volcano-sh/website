@@ -30,6 +30,10 @@
 
         <div class="docs-article-container">
           <h1 itemprop="name">{{ .Title }}</h1>
+          <!-- 更新日期 -->
+          <div class="body-footer">
+              {{ i18n "last_updated" }} {{ $.Lastmod.Format $.Site.Params.date_format }}
+          </div>
 
           <div class="article-style" itemprop="articleBody">
             {{ .Content }}
@@ -38,9 +42,9 @@
           {{ partial "tags.html" . }}
         </div>
 
-        <div class="body-footer">
+        <!-- <div class="body-footer">
           {{ i18n "last_updated" }} {{ $.Lastmod.Format $.Site.Params.date_format }}
-        </div>
+        </div> -->
 
       </article>
 

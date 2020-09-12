@@ -1,7 +1,7 @@
 {{ $ := .root }}
 {{ $page := .page }}
 
-<div class="row featured">
+<div class="row featured" style="width: 110%;margin-left: -5%;">
   {{ with $page.Title }}
   <div class="col-md-12 section-heading">
     <h1>{{ . | markdownify | emojify }}</h1>
@@ -10,24 +10,34 @@
   {{ end }}
 
   {{ with $page.Content }}
-  <div class="col-md-12">
+  <div class="col-md-12" style="height: 100px;">
     <p>{{ . | markdownify }}</p>
   </div>
   {{ end }}
 
   {{ range $page.Params.featured }}
   {{ $image_src := .img_src}}
+  {{ $url := .url}}
   {{ $width := .img_width}}
   {{ $height := .img_height}}
   {{ $image_src = printf "img/%s" $image_src | relURL }}
   
-  <div class="col-12 col-sm-4" style="height: 455px;"><div style="padding: 40px 30px 20px;background-color: #fff;">
-    {{ with .img_src }}<div class="featured-icon" ><img src="{{ $image_src }}" alt="" width="{{ $width }}" height="{{ $height }}"/>{{ end }}
+  <div class="col-12 col-sm-3" style="height: 335px !important;margin-top: 30px;padding: 0 10px;">
+    {{ with .url }}
+    <div style="padding: 20px 17px 10px;background-color: #fff;max-height: 335px;border-bottom-right-radius: 15px;border-top-left-radius: 15px;" onclick="window.open('{{ $url }}')">{{ end }}
+      {{ with .img_src }}
+      <div class="featured-icon" >
+        <img src="{{ $image_src }}" alt="" width="{{ $width }}" height="{{ $height }}"/>{{ end }}
       <div class="titlename">{{ .name | markdownify | emojify }}</div>
+      </div>
+      <h3></h3>
+      <div style="height: 165px;">
+        {{ with .description }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
+      </div>
     </div>
-
-    <h3></h3>
-    {{ with .description }}<p>{{ . | markdownify | emojify }}</p>{{ end }}
-  </div></div>
+  </div>
   {{ end }}
 </div>
+<!-- <script type="text/javascript">
+  var heightforwords = 
+</script> -->
