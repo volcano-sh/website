@@ -20,7 +20,7 @@ linktitle = "Queue"
 queue是容纳一组**podgroup**的队列，也是该组podgroup获取集群资源的划分依据
 
 ### 样例
-```
+```shell
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: Queue
 metadata:

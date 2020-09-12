@@ -20,7 +20,7 @@ linktitle = "PodGroup"
 podgroup是一组强关联pod的集合，主要用于批处理工作负载场景，比如Tensorflow中的一组ps和worker。它是volcano自定义资源类型。
 
 ### 样例
-```
+```shell
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: PodGroup
 metadata:

@@ -78,7 +78,7 @@ The scheduler configuration is located in the configmap named **volcano-schedule
 
 1. get the configmap named volcano-scheduler-configmap
 
-```
+```shell
 # kubectl get configmap -nvolcano-system
 NAME                          DATA   AGE
 volcano-scheduler-configmap   1      6d2h
@@ -86,7 +86,7 @@ volcano-scheduler-configmap   1      6d2h
 
 2. view the data part detail of configmap
 
-```
+```shell
 # kubectl get configmap volcano-scheduler-configmap -nvolcano-system -oyaml
 apiVersion: v1
 data:

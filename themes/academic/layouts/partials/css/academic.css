@@ -2145,6 +2145,13 @@ div.alert a {
   max-width: 760px;
 }
 
+#doc_article-style_change figure:first-child h4{
+    padding-left: calc(50% - 170px);
+}
+#doc_article-style_change figure h4{
+    padding-left: calc(50% - 105px);
+}
+
 /* Documentation: article footer. */
 
 .docs .body-footer {

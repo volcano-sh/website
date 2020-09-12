@@ -24,7 +24,7 @@ linktitle = "Installation"
  helm模式进行安装时需要)
  - 下载最新版本volcano[下载链接](https://github.com/volcano-sh/volcano/releases)
  - 解压release文件
-    ```
+    ```shell
     #tar -xvf volcano-{Version}-linux-gnu.tar.gz
     
     #cd volcano-{Version}-linux-gnu
@@ -52,7 +52,7 @@ linktitle = "Installation"
  ### 通过Deployment Yaml文件方式安装
  使用release内的文件`volcano-{Version}.yaml`创建deployment。
  
- ```go
+ ```shell
  # kubectl apply -f volcano-{Version}.yaml 
  namespace/volcano-system created
  configmap/volcano-scheduler-configmap created
@@ -79,7 +79,7 @@ linktitle = "Installation"
  
  ```
 验证Volcano各组件的运行状态
-```go
+```shell
 # kubectl get all -n volcano-system
 NAME                                       READY   STATUS      RESTARTS   AGE
 pod/volcano-admission-5bd5756f79-p89tx     1/1     Running     0          6m10s
@@ -117,7 +117,7 @@ job.batch/volcano-admission-init   1/1           28s        6m10s
 ###### 准备
 如果您的Helm已经配置了serviceaccount，您可以跳过这一步。否则，请执行以下命令为tiller创建一个serviceaccount。
 
-```go
+```shell
 # helm init --service-account tiller --kubeconfig ${KUBECONFIG} --wait --upgrade
 $HELM_HOME has been configured at /root/.helm.
 
@@ -131,7 +131,7 @@ Tiller (Helm内部的服务侧组件)已经安装到您的Kubernetes集群。
 
 ###### 步骤：1
 创建一个新的命名空间。
-```go
+```shell
 # kubectl create namespace volcano-system
 namespace/volcano-system created
 
@@ -139,7 +139,7 @@ namespace/volcano-system created
 
 ###### 步骤：2
 使用Helm进行安装。
-```go
+```shell
 # helm install helm/chart/volcano --namespace volcano-system --name volcano
 NAME:   volcano
 LAST DEPLOYED: Tue Jul 23 20:07:29 2019
@@ -209,7 +209,7 @@ https://volcano.sh/
 
 ###### 步骤：3
 验证Volcano各组件的运行状态。
-```go
+```shell
 # kubectl get all -n volcano-system
 NAME                                       READY   STATUS              RESTARTS   AGE
 pod/volcano-admission-b45b7b76-84jmw       0/1     ContainerCreating   0          4m42s

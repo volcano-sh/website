@@ -20,7 +20,7 @@ linktitle = "Tutorials"
 
 ### 步骤：1
 创建一个名为“test”的自定义队列。
-```
+```shell
 # kubectl create -f queue.yaml
 // queue.yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -36,7 +36,7 @@ spec:
 
 ### 步骤：2 
 创建一个名为“job-1”的Volcano job。
-```
+```shell
 # kubectl create -f vcjob.yaml
 // vcjob.yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -73,7 +73,7 @@ spec:
 
 ### 步骤：3
 检查自定义job的状态。 
-```
+```shell
 # kubectl get vcjob job-1 -oyaml
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -150,7 +150,7 @@ status:
 
 ### 步骤：4
 检查名为”job-1“的PodGroup的状态 
-```
+```shell
 # kubectl get podgroup job-1 -oyaml
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: PodGroup
@@ -229,7 +229,7 @@ status:
 
 ### 步骤：5
 检查队列“test”的状态。 
-```
+```shell
 # kubectl get queue test -oyaml
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: Queue
