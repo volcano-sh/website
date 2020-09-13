@@ -1,5 +1,5 @@
 +++
-title =  "Tutorials"
+title =  "讲解"
 
 
 date = 2019-01-28
@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Tutorials"
+linktitle = "讲解"
 [menu.docs]
   parent = "getting-started"
   weight = 2
