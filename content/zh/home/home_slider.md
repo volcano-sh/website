@@ -39,7 +39,7 @@ height = "350px"
 [[item]]
   title = "在Kubernetes上轻松部署高性能负载"
   content = "将特定领域作业转化为Kubernetes负载，并以绝佳的性能进行调度"
-  align = "right"
+  align = "center"
 
   #overlay_color = "#555"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
