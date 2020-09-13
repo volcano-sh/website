@@ -1,5 +1,5 @@
 +++
-title =  "Installation"
+title =  "安装"
 
 
 date = 2019-01-28
@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Installation"
+linktitle = "安装"
 [menu.docs]
   parent = "getting-started"
   weight = 1
