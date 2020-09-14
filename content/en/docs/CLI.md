@@ -33,7 +33,7 @@ directory:
 ### list all jobs
 vcctl job list
 
-```
+```html
 # vcctl job list
 Name    Creation       Phase       JobType     Replicas    Min   Pending   Running   Succeeded   Failed    Unknown     RetryCount
 job-1   2020-09-01     Running     Batch       1           1     0         1         0           0         0           0        
@@ -42,7 +42,7 @@ job-1   2020-09-01     Running     Batch       1           1     0         1    
 ### delete a job with job name
 vcctl job delete --name job-name [--namespace job-namespace] 
 
-```
+```html
 # vcctl delete job --name job-1 --namespaces default
 delete job job-1 successfully
 ```
@@ -50,28 +50,28 @@ delete job job-1 successfully
 ### abort a job
 vcctl job suspend --name job-name [--namespace job-namespace]
 
-```
+```html
 # vcctl job suspend --name job-1 --namespace default
 ```
 
 ### resume a job (opposite to "vcctl job suspend")
 vcctl job suspend --name job-name [--namespace job-namespace]
 
-```
+```html
 # vcctl job suspend --name job-1 --namespace default
 ```
 
 ### run a job
 vcctl job run --name job-name [--namespace job-namespace]
 
-```
+```html
 # vcctl job run --name job-1 --namespace default
 ```
 
 ## Note
 For more details please type as follows:
 
-```
+```html
 # vcctl -h
 # vcctl [command] -h
 ```

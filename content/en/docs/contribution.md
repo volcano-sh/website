@@ -127,7 +127,7 @@ To make it easier for your PR to receive reviews, consider the reviewers will ne
 We follow a rough convention for commit messages that is designed to answer two questions: what changed and why.
 The subject line should feature the what and the body of the commit should describe the why.
 
-```
+```shell
 scripts: add test codes for metamanager
 
 this add some unit test codes to imporve code coverage for metamanager
@@ -137,7 +137,7 @@ Fixes #12
 
 The format can be described more formally as follows:
 
-```
+```shell
 <subsystem>: <what changed>
 <BLANK LINE>
 <why this change was made>

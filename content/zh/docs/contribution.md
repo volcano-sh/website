@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "对火山的贡献"
+linktitle = "向volcano做贡献"
 [menu.docs]
   parent = "contribution"
   weight = 1
@@ -130,7 +130,7 @@ Volcano机器人也会给出一些有用的命令建议，这些命令将会在�
 我们对提交消息遵循一个粗略的约定，旨在回答两个问题：做了哪些修改，为什么做这些修改。
 主题中应该描述做了什么，commit中应该描述为什么做这些。
 
-```
+```shell
 scripts: add test codes for metamanager
 
 this add some unit test codes to imporve code coverage for metamanager
@@ -140,7 +140,7 @@ Fixes #12
 
 也可以采用以下更加正式的格式:
 
-```
+```shell
 <subsystem>: <what changed>
 <BLANK LINE>
 <why this change was made>

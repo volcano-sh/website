@@ -10,7 +10,7 @@ title = "为什么选择Volcano"
 subtitle = "在Kubernetes集群中部署高性能应用的最佳解决方案"
 
 # Order that this section will appear in.
-weight = 7
+weight = 720
 
 # Showcase personal skills or business features.
 # 
