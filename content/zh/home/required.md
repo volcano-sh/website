@@ -20,26 +20,101 @@ weight = 7
 # * fas - Font Awesome standard icons (see https://fontawesome.com/icons)
 # * fab - Font Awesome brand icons (see https://fontawesome.com/icons)
 # * ai - academic icons (see https://jpswalsh.github.io/academicons/)
+[[featured]]
+  img_src = "kubeflow.png"
+  img_width = "100px"
+  img_height = "60px"
+  name = "kubeflow" 
+  url = "https://www.kubeflow.org/ "
+  description = "Kubeflow项目致力于使Kubernetes上的机器学习（ML）工作流部署简单，可移植且可扩展."
 
 [[featured]]
-  img_src = "kubeflow.svg"
+  img_src = "volcano_flink.PNG"
   img_width = "100px"
-  img_height = "200px"
-  name = "" 
-  description = "The Kubeflow project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable and scalable. Our goal is not to recreate other services, but to provide a straightforward way to deploy best-of-breed open-source systems for ML to diverse infrastructures."
-  
+  img_height = "60px"
+  name = "flink"
+  url = "https://flink.apache.org/ "
+  description = "Apache Flink是一个框架和分布式处理引擎，用于无限制和有限制的数据流上的状态计算."
+
 [[featured]]
-  img_src = "spark-logo-hd.png"
+  img_src = "volcano_argo-horizontal-color.png"
   img_width = "100px"
-  img_height = "200px"
-  name = ""
-  description = "Spark is a fast and general cluster computing system for Big Data. It provides high-level APIs in Scala, Java, Python, and R, and an optimized engine that supports general computation graphs for data analysis.It also supports a rich set of higher-level tools including Spark SQL, MLlib, GraphX and Spark Streaming."  
-  
+  img_height = "60px"
+  name = "argo"
+  url = "https://argoproj.github.io/ "
+  description = "Argo Workflows是一个开源容器原生工作流引擎，用于在Kubernetes上协调并行作业。 Argo Workflows作为Kubernetes CRD实施."
+
+
+[[featured]]
+  img_src = "volcano_openMPI.jpg"
+  img_width = "100px"
+  img_height = "60px"
+  name = "OpenMPI"
+  url = "https://www.open-mpi.org/software/ompi/v4.0/ "
+  description = "OpenMPI项目是一个开源消息传递接口实现，由学术，研究和行业合作伙伴联盟开发和维护."
+
+[[featured]]
+  img_src = "volcano_horovod.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "Horovod"
+  url = "https://github.com/horovod/horovod "
+  description = "Horovod是针对TensorFlow，Keras，PyTorch和Apache MXNet的分布式深度学习培训框架."
+
+[[featured]]
+  img_src = "volcano_paddle.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "PaddlePaddle"
+  url = "https://www.paddlepaddle.org.cn/ "
+  description = "PaddlePaddle是一个由百度发起的工业实践衍生的开源深度学习平台."
+
+[[featured]]
+  img_src = "volcano_mxnet.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "Mxnet"
+  url = "https://mxnet.apache.org/versions/1.6/ "
+  description = "一个真正的开源深度学习框架，适用于灵活的研究原型和生产."
+
 [[featured]]
   img_src = "kubegene_logo.png"
   img_width = "100px"
-  img_height = "200px"
-  name = ""
-  description = "KubeGene is dedicated to making genome sequencing process simple, portable and scalable. It provides a complete solution for genome sequencing on the kubernetes and supports mainstream biological genome sequencing scenarios such as DNA, RNA, and liquid biopsy."
+  img_height = "60px"
+  name = "kubegene"
+  url = "https://github.com/kubegene/kubegene "
+  description = "KubeGene致力于简化，便携式和可扩展的基因组测序过程."
+
+[[featured]]
+  img_src = "spark-logo-hd.png"
+  img_width = "100px"
+  img_height = "60px"
+  name = "spark"
+  url = "https://spark.apache.org/ "
+  description = "Apache Spark™是用于大规模数据处理的统一分析引擎."  
+
+[[featured]]
+  img_src = "volcano_mindspore.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "Mindspore"
+  url = "https://www.mindspore.cn/en "
+  description = "华为开发的全场景深度学习框架."
+
+[[featured]]
+  img_src = "volcano_pytorch.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "PyTorch"
+  url = "https://pytorch.org/ "
+  description = "一个开源的机器学习框架，可加快从研究原型到生产部署的过程."
+
+[[featured]]
+  img_src = "volcano_tensorflow.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "TensorFlow"
+  url = "https://www.tensorflow.org/ "
+  description = "端到端开源机器学习平台."
 
 +++

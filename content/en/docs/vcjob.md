@@ -23,7 +23,7 @@ features such as specified scheduler / minimum member number / task definition /
 application / scientific computing.
 
 ## Example
-```
+```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
@@ -134,7 +134,7 @@ failed means job still cannot start after maxRetry tries.
 ## Usage
 ### tensorflow workload
 Create a tensorflow workload with a ps and three workers.
-```
+```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
@@ -195,7 +195,7 @@ spec:
 ```
 ### argo workload
 Create an argo workload with two tasks and only one work well is enough.
-```
+```shell
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
 metadata:
@@ -270,7 +270,7 @@ spec:
 ```  
 ### Mindspore workload
 Create a Mindspore workload with eight replicases and only one work well is enough.
-```
+```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:

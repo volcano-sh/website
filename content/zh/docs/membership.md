@@ -1,5 +1,5 @@
 +++
-title = "Community Membership"
+title = "社区会员"
 
 
 date = 2019-01-28
@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Community Membership"
+linktitle = "社区会员"
 [menu.docs]
   parent = "contribution"
   weight = 2

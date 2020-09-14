@@ -19,7 +19,7 @@ linktitle = "Queue"
 ## Introduction
 Queue is a collection of PodGroup, which works as FIFO. It's also the basic unit of the resource division.
 ## Example
-```
+```shell
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: Queue
 metadata:

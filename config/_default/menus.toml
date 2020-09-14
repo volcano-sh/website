@@ -13,10 +13,7 @@
   url = "#about"
   weight = 2
 
-[[main]]
-  name = "Why Volcano?"
-  url = "#required"
-  weight = 3
+
 
 [[main]]
   name = "Blog"
@@ -26,6 +23,11 @@
 [[main]]
   name = "Talk"
   url = "#talks"
+  weight = 3
+
+[[main]]
+  name = "Why Volcano"
+  url = "#required"
   weight = 5
 
 [[main]]

@@ -1,5 +1,5 @@
 +++
-title =  "Queue"
+title =  "队列"
 
 
 date = 2019-01-28
@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Queue"
+linktitle = "队列"
 [menu.docs]
   parent = "concepts"
   weight = 1
@@ -20,7 +20,7 @@ linktitle = "Queue"
 queue是容纳一组**podgroup**的队列，也是该组podgroup获取集群资源的划分依据
 
 ### 样例
-```
+```shell
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: Queue
 metadata:
