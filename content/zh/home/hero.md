@@ -24,10 +24,10 @@ weight = 3
   label = '<i class="fas fa-download"></i> Install Now'
 +++
 
-An open platform to enable Edge computing :rocket:
+一个基于Kubernetes的批量容器计算引擎 :rocket:
 <div style="margin-top: -0.5rem;">
   <a id="academic-release" href="https://github.com/volcano-sh/volcano" data-repo="volcano-sh/volcano">
-  Latest release <!-- V -->
+  最新版本 <!-- V -->
   </a>
 </div>
 <div class="mt-3">

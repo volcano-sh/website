@@ -15,7 +15,7 @@ type = "posts"  # Do not modify.
 authors = ["Volcano"]
 
 tags = ["Tutorials"]
-summary = "A wide range of customer base for kube-batch"
+summary = "A wide range of customer base for Kube-Batch"
 
 # Add menu entry to sidebar.
 linktitle = "Customers of Kube-Batch"
@@ -23,7 +23,7 @@ linktitle = "Customers of Kube-Batch"
   parent = "customers"
   weight = 1
 +++
-## Who is using kube-batch?
+## Who is using Kube-Batch?
 
 | Organization | Contact (Github User Name) | Environment | Description of Use |
 | ------------- | ------------- | ------------- | ------------- |

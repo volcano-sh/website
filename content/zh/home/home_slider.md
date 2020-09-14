@@ -19,7 +19,7 @@ height = "350px"
 # Duplicate an `[[item]]` block to add more slides.
 [[item]]
   title = "Volcano"
-  content = "Erupt with Computing Power <br /> <a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
+  content = "让算力爆发 <br /> <a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
   align = "center"  # Choose `center`, `left`, or `right`.
 
   # Overlay a color or image (optional).
@@ -31,15 +31,15 @@ height = "350px"
   # Call to action button (optional).
   #   Activate the button by specifying a URL and button label below.
   #   Deactivate by commenting out parameters, prefixing lines with `#`.
-  cta_label = "Learn More About Volcano"
+  cta_label = "深入了解Volcano"
   cta_url = "/en/docs/"
   cta_icon_pack = "fas"
   cta_icon = "graduation-cap"
 
 [[item]]
-  title = "Deploy High Performance Workloads effortlessly in Kubernetes"
-  content = "Convert domain specific jobs to k8s workloads and Schedules the jobs in batches for optimal performance."
-  align = "right"
+  title = "在Kubernetes上轻松部署高性能负载"
+  content = "将特定领域作业转化为Kubernetes负载，并以绝佳的性能进行调度"
+  align = "center"
 
   #overlay_color = "#555"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
@@ -47,7 +47,7 @@ height = "350px"
   overlay_filter = 0.15  # Darken the image. Value in range 0-1.
 
 [[item]]
-  title = "Efficient Scheduling"
+  title = "高效调度"
   content = "Co-scheduling, Fair-Share, Gang scheduling, Topologies, Reserve/BackFill, Data ware Scheduling"
   align = "center"
 
@@ -56,8 +56,8 @@ height = "350px"
   overlay_filter = 0.20  # Darken the image. Value in range 0-1.
   
 [[item]]
-  title = "Job Management"
-  content = "Manages jobs with multiple template......"
+  title = "Job管理"
+  content = "多模板Job管理"
   align = "center"
 
   overlay_color = "#333"  # An HTML color value.
@@ -65,8 +65,8 @@ height = "350px"
   overlay_filter = 0.25  # Darken the image. Value in range 0-1.
 
 [[item]]
-  title = "Multiple Runtime"
-  content = "Singularity and GPU Accelerators"
+  title = "多运行时支持"
+  content = "Singularity和GPU加速器"
   align = "center"
 
   overlay_color = "#333"  # An HTML color value.
@@ -74,8 +74,8 @@ height = "350px"
   overlay_filter = 0.35  # Darken the image. Value in range 0-1.
 
 [[item]]
-  title = "Extensive Observability"
-  content = "Logging, Metric & Dashboard"
+  title = "丰富的监控手段"
+  content = "日志、监控指标和仪表盘"
   align = "center"
 
   overlay_color = "#333"  # An HTML color value.

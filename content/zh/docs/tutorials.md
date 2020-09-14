@@ -1,25 +1,25 @@
 +++
-title =  "Tutorials"
+title =  "讲解"
 
 
 date = 2019-01-28
-lastmod = 2020-08-29
+lastmod = 2020-09-03
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "Tutorials"
+linktitle = "讲解"
 [menu.docs]
   parent = "getting-started"
   weight = 2
 +++
 
-Here is a simple example how to use Volcano with CRD resources.
+这里演示的是一个如何使用Volcano CRD资源的简单例子。
 
-### Step: 1 
-Create a custom Queue named "test"
+### 步骤：1
+创建一个名为“test”的自定义队列。
 ```shell
 # kubectl create -f queue.yaml
 // queue.yaml
@@ -34,8 +34,8 @@ spec:
     cpu: 2
 ```
 
-### Step: 2 
-Create a Volcano job named "job-1"
+### 步骤：2 
+创建一个名为“job-1”的Volcano job。
 ```shell
 # kubectl create -f vcjob.yaml
 // vcjob.yaml
@@ -71,8 +71,8 @@ spec:
                   cpu: 1
 ```
 
-### Step: 3 
-Check the status of custom job
+### 步骤：3
+检查自定义job的状态。 
 ```shell
 # kubectl get vcjob job-1 -oyaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -148,8 +148,8 @@ status:
     phase: Running
 ```
 
-### Step: 4 
-Check the PodGroup status for "job-1"
+### 步骤：4
+检查名为”job-1“的PodGroup的状态 
 ```shell
 # kubectl get podgroup job-1 -oyaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -227,8 +227,8 @@ status:
   running: 1
 ```
 
-### Step: 5 
-Check status of Queue "test"
+### 步骤：5
+检查队列“test”的状态。 
 ```shell
 # kubectl get queue test -oyaml
 apiVersion: scheduling.volcano.sh/v1beta1

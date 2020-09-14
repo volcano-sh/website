@@ -1,3 +1,4 @@
+
 +++
 title = "PodGroup"
 
@@ -20,7 +21,7 @@ linktitle = "PodGroup"
 PodGroup is a group of pods with strong association, which is mainly used in batch scheduling. For example, the ps task 
 and worker tasks in Tensorflow. PodGroup is a CRD type.
 ## Example
-```
+```shell
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: PodGroup
 metadata:

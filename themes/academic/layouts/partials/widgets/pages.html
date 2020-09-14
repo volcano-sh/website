@@ -68,7 +68,12 @@
 <div class="row">
   <!-- change -->
   <div class="col-12 section-heading" style="text-align: center;padding-bottom: 10px;">
-  <h1 style="font-size: 22px !important;font-weight: bold;">{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1>
+  <!-- <h1 style="font-size: 22px !important;font-weight: bold;">{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1> -->
+  {{ if eq  $st.Title  "Recent & Upcoming Talks" }}
+  <h1 style="font-size: 22px !important;color:#fff;">{{ $st.Title | markdownify | emojify }}</h1>
+  {{ else }}
+  <h1 style="font-size: 22px !important;font-weight: bold;">{{ $st.Title | markdownify | emojify }}</h1>
+  {{ end }}
   
   </div>
   <div class="col-12">

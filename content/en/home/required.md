@@ -6,11 +6,11 @@ widget = "featured"
 active = true
 date = 2016-04-20T00:00:00
 
-title = "Why Volcano??"
+title = "Why Volcano"
 subtitle = "Are you planning to Deploy any of the below workloads on Kubernetes? &#13;&#10; If Yes then Volcano is the right choice for your Deployment framework. "
 
 # Order that this section will appear in.
-weight = 7
+weight = 72
 
 # Showcase personal skills or business features.
 # 
@@ -26,20 +26,96 @@ weight = 7
   img_width = "100px"
   img_height = "60px"
   name = "kubeflow" 
-  description = "The Kubeflow project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable and scalable. Our goal is not to recreate other services, but to provide a straightforward way to deploy best-of-breed open-source systems for ML to diverse infrastructures."
-  
+  url = "https://www.kubeflow.org/ "
+  description = "The Kubeflow project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable and scalable."
+
 [[featured]]
-  img_src = "spark-logo-hd.png"
+  img_src = "volcano_flink.PNG"
   img_width = "100px"
   img_height = "60px"
-  name = "spark"
-  description = "Spark is a fast and general cluster computing system for Big Data. It provides high-level APIs in Scala, Java, Python, and R, and an optimized engine that supports general computation graphs for data analysis.It also supports a rich set of higher-level tools including Spark SQL, MLlib, GraphX and Spark Streaming."  
-  
+  name = "flink"
+  url = "https://flink.apache.org/ "
+  description = "Apache Flink is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams."
+
+[[featured]]
+  img_src = "volcano_argo-horizontal-color.png"
+  img_width = "100px"
+  img_height = "60px"
+  name = "argo"
+  url = "https://argoproj.github.io/ "
+  description = "Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. Argo Workflows is implemented as a Kubernetes CRD."
+
+
+[[featured]]
+  img_src = "volcano_openMPI.jpg"
+  img_width = "100px"
+  img_height = "60px"
+  name = "OpenMPI"
+  url = "https://www.open-mpi.org/software/ompi/v4.0/ "
+  description = "The OpenMPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners."
+
+[[featured]]
+  img_src = "volcano_horovod.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "Horovod"
+  url = "https://github.com/horovod/horovod "
+  description = "Horovod is a distributed deep learning training framework for TensorFlow, Keras, PyTorch, and Apache MXNet."
+
+[[featured]]
+  img_src = "volcano_paddle.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "PaddlePaddle"
+  url = "https://www.paddlepaddle.org.cn/ "
+  description = "PaddlePaddle is an open source deep learning platform derived from industrial practice initiated by Baidu."
+
+[[featured]]
+  img_src = "volcano_mxnet.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "Mxnet"
+  url = "https://mxnet.apache.org/versions/1.6/ "
+  description = "A truly open source deep learning framework suited for flexible research prototyping and production."
+
 [[featured]]
   img_src = "kubegene_logo.png"
   img_width = "100px"
   img_height = "60px"
   name = "kubegene"
-  description = "KubeGene is dedicated to making genome sequencing process simple, portable and scalable. It provides a complete solution for genome sequencing on the kubernetes and supports mainstream biological genome sequencing scenarios such as DNA, RNA, and liquid biopsy."
+  url = "https://github.com/kubegene/kubegene "
+  description = "The KubeGene is dedicated to making genome sequencing process simple, portable and scalable."
+
+[[featured]]
+  img_src = "spark-logo-hd.png"
+  img_width = "100px"
+  img_height = "60px"
+  name = "spark"
+  url = "https://spark.apache.org/ "
+  description = "Apache Spark™ is a unified analytics engine for large-scale data processing."  
+
+[[featured]]
+  img_src = "volcano_mindspore.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "Mindspore"
+  url = "https://www.mindspore.cn/en "
+  description = "The all-scenario deep learning framework developed by Huawei."
+
+[[featured]]
+  img_src = "volcano_pytorch.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "PyTorch"
+  url = "https://pytorch.org/ "
+  description = "An open source machine learning framework that accelerates the path from research prototyping to production deployment."
+
+[[featured]]
+  img_src = "volcano_tensorflow.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "TensorFlow"
+  url = "https://www.tensorflow.org/ "
+  description = "An end-to-end open source machine learning platform."
 
 +++

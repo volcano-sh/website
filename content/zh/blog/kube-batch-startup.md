@@ -1,10 +1,13 @@
 +++
-title =  "Bringing Up Kube-Batch"
-description = "A Batch Scheduler for Kubernetes"
+title =  "Kube-Batch新手教程"
+description = "基于Kubernetes的调度器"
 subtitle =""
 
 date = 2019-01-28
-lastmod = 2019-01-29
+lastmod = 2020-09-07
+datemonth = "Sep"
+dateyear = "2020"
+dateday = 07
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -12,36 +15,39 @@ type = "posts"  # Do not modify.
 authors = ["Volcano"]
 
 tags = ["Tutorials"]
-summary = "Bring up the Batch Scheduler for scheduling batch workloads"
+summary = "批量工作负载调度新手教程"
 
 # Add menu entry to sidebar.
-linktitle = "Bringing Up Kube-Batch"
+linktitle = "Kube-Batch新手教程"
 [menu.posts]
   parent = "tutorials"
   weight = 4
 +++
-# Tutorial of kube-batch
+# Kube-Batch新手速成
 
-This doc will show how to run `kube-batch` as a kubernetes batch scheduler. It is for [master](https://github.com/kubernetes-sigs/kube-batch/tree/master) branch.
+本文档将展示如何将`kube-batch`作为基于Kubernetes的批量调度引擎运行起来。代码请参考[master](https://github.com/kubernetes-sigs/kube-batch/tree/master) 。
 
-## 1. Pre-condition
-To run `kube-batch`, a Kubernetes cluster must start up. Here is a document on [Using kubeadm to Create a Cluster](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/). Additionally, for common purposes and testing and deploying on local machine, one can use Minikube. This is a document on [Running Kubernetes Locally via Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/). Besides, you can also use [kind](https://github.com/kubernetes-sigs/kind) which is a tool for running local Kubernetes clusters using Docker container "nodes".
+## 1. 前置条件
 
-`kube-batch` need to run as a kubernetes scheduler. The next step will show how to run `kube-batch` as kubernetes scheduler quickly. Refer [Configure Multiple Schedulers](https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/) to get more details.
+运行`kube-batch`之前，必须先启动一个Kubernetes集群。关于如何搭建集群请参考[使用kubeadm创建一个集群](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)。
+另外，为了本地调试的目的，您可以使用Minikube，请参考[使用Minikube在本地运行Kubernetes](https://kubernetes.io/docs/getting-started-guides/minikube/)。
+您还可以使用[kind](https://github.com/kubernetes-sigs/kind) 。 它是一个将Docker容器作为节点并运行本地Kubernetes集群的工具。
 
-## 2. Config kube-batch for Kubernetes
+接下来将展示怎样快速将`kube-batch`作为Kubernetes调度器运行起来。请参考[配置多调度器](https://kubernetes.io/docs/tasks/administer-cluster/configure-multiple-schedulers/) 获取更多细节。
 
-### (1) kube-batch image
+## 2. 为Kubernetes配置kube-batch
 
-An official kube-batch image is provided and you can download it from [DockerHub](https://hub.docker.com/r/kubesigs/kube-batch/). The version is `v0.4` now.
+### (1) kube-batch镜像
+
+kube-batch提供了官方镜像，您可以通过[DockerHub](https://hub.docker.com/r/kubesigs/kube-batch/) 下载。当前版本为`v0.4`。
 
 ```bash
 # docker pull kubesigs/kube-batch:v0.4
 ```
 
-### (2) Create a Kubernetes Deployment for kube-batch
+### (2) 为kube-batch创建一个Kubernetes Deployment
 
-#### Download kube-batch
+#### 下载kube-batch
 
 ```bash
 # mkdir -p $GOPATH/src/github.com/kubernetes-sigs/
@@ -49,15 +55,15 @@ An official kube-batch image is provided and you can download it from [DockerHub
 # git clone http://github.com/kubernetes-sigs/kube-batch
 ```
 
-#### Deploy `kube-batch` by Helm
+#### 使用Helm部署`kube-batch`
 
-Run the `kube-batch` as kubernetes scheduler
+将`kube-batch`作为Kubernetes调度器运行起来
 
 ```bash
 # helm install $GOPATH/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch --namespace kube-system
 ```
 
-Verify the release
+验证版本
 
 ```bash
 # helm list
@@ -65,11 +71,13 @@ NAME        	REVISION	UPDATED                 	STATUS  	CHART                	NA
 dozing-otter	1       	Thu Jun 14 18:52:15 2018	DEPLOYED	kube-batch-0.4.0    	kube-system
 ```
 
-NOTE: `kube-batch` need to collect cluster information(such as Pod, Node, CRD, etc) for scheduling, so the service account used by the deployment must have permission to access those cluster resources, otherwise, `kube-batch` will fail to startup. For users who are not familiar with Kubernetes RBAC, please copy the example/role.yaml into `$GOPATH/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates/` and reinstall batch.
+请注意：`kube-batch`需要收集集群信息（如Pod、Node、CRD等），所以用于该deployment的serviceaccount必须有权限访问这些集群资源，否则`kube-batch`
+将无法启动。对于不太了解Kubernetes RBAC的用户，请将example/role.yaml拷贝到`$GOPATH/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch/templates/`
+并重装。
 
-### (3) Create a Job
+### (3) 创建Job
 
-Create a file named `job-01.yaml` with the following content:
+创建一个名为`job-01.yaml`的文件，内容如下：
 
 ```yaml
 apiVersion: batch/v1
@@ -103,15 +111,17 @@ spec:
   minMember: 6
 ```
 
-The yaml file means a Job named `qj-01` to create 6 pods(it is specified by `parallelism`), these pods will be scheduled by scheduler `kube-batch` (it is specified by `schedulerName`). `kube-batch` will watch `PodGroup`, and the annotation `scheduling.k8s.io/group-name` identify which group the pod belongs to. `kube-batch` will start `.spec.minMember` pods for a Job at the same time; otherwise, such as resources are not sufficient, `kube-batch` will not start any pods for the Job.
+yaml文件表示一个名为`qj-01`的Job将创建6个pod（由`parallelism`指定），这些pod将由调度器`kube-batch`调度（由`schedulerName`指定）。`kube-batch`
+将监视`PodGroup`和名为`scheduling.k8s.io/group name`的annotation，该annotation标识pod属于哪个组。`kube-batch`将为Job同时启动数量为
+`.spec.minMember`的Pod；否则，在诸如资源不足等情况下，`kube-batch`将不会为该Job启动任何pod。
 
-Create the Job
+创建该Job
 
 ```bash
 # kubectl create -f job-01.yaml
 ```
 
-Check job status
+检查Job状态
 
 ```bash
 # kubectl get jobs
@@ -119,18 +129,18 @@ NAME      DESIRED   SUCCESSFUL   AGE
 qj-1      6         6            2h 
 ```
 
-Check the pods status
+检查pods状态
 
 ```bash
 # kubectl get pod --all-namespaces
 ```
 
 
-## 4. Create PriorityClass for Pod
+## 4. 为Pod创建PriorityClass
 
-`kube-batch` scheduler will start pods by their priority in the same QueueJob, pods with higher priority will start first. Here is sample to show `PriorityClass` usage:
+`kube-batch`将根据优先级启动同一个QueueJob中的Pod。高优先级的Pod会先被启动。下面是个展示`PriorityClass`用法的例子：
 
-Create a `priority_1000.yaml` with the following contents:
+创建一个名为`priority_1000.yaml`的文件，内容如下：
 
 ```yaml
 apiVersion: scheduling.k8s.io/v1beta1
@@ -141,13 +151,13 @@ metadata:
 value: 1000
 ```
 
-Create the PriorityClass with priority 1000.
+创建PriorityClass，优先级值设为1000.
 
 ```
 # kubectl create -f priority_1000.yaml
 ```
 
-Create a Pod configuration file (say `pod-config-ns01-r01.yaml`):
+创建一个Pod配置文件（假设名为`pod-config-ns01-r01.yaml`）：
 
 ```yaml
 apiVersion: v1
@@ -170,15 +180,15 @@ spec:
   priorityClassName: high-priority
 ```
 
-Create the Pod with priority 1000.
+创建该Pod，优先级设置为1000。
 
 ```
 # kubectl create -f pod-config-ns01-r01.yaml
 ```
 
 
-NOTE:
+请注意:
 
-* `PriorityClass` is supported in kubernetes 1.9 or later.
-* The pod in same Deployment/RS/Job share the same pod template, so they have the same `PriorityClass`.
-  To specify a different `PriorityClass` for pods in same QueueJob, users need to create controllers by themselves.
+* `PriorityClass` 仅在kubernetes 1.9+中支持.
+* 在同一个Deployment/RS/Job中的Pod共享该Pod模板，因此它们有同样的`PriorityClass`。为了给同一个QueueJob中的Pod设置不同的`PriorityClass`，
+用户需要自己创建控制器。

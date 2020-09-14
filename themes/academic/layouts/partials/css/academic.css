@@ -669,7 +669,7 @@ a.hero-cta-alt:hover {
    color: #fff;
    font-size: 18px;
    width: 80%;
-   margin: 25px 10%;
+   margin: 25px 10% -10px;
 }
 .featured .section-heading .col-sm-3{
       background-color: #fff;
@@ -723,7 +723,7 @@ a.hero-cta-alt:hover {
  **************************************************/
 /********************change*/
 .row .fontsizee{
- font-size: 12px;
+ font-size: 16px;
 }
 
 .row .fontsizee hr{
@@ -735,16 +735,19 @@ a.hero-cta-alt:hover {
   text-align: center;
   padding: 30px 10px;
   position: relative;
+  padding-top: 40px !important;
 }
 
-.portrait {
-  width: 200px;
-  height: 200px;
+#profile .portrait{
+  width: auto !important;
+  height: 270px !important;
   margin: 0 auto;
   border-radius: 50%;
   object-fit: cover;
 }
-
+.portrait-title{
+  height: 40px;
+}
 .portrait-title h2 {
   font-size: 1.75em;
   font-weight: 300;
@@ -773,7 +776,7 @@ ul.network-icon {
 }
 
 .network-icon li {
-  margin-right: 10px;
+  margin-right: 40px;
 }
 
 .network-icon li:last-of-type {
@@ -1099,6 +1102,9 @@ article .article-metadata {
   margin-top: 0;
   margin-bottom: 0;
 }
+/*.article-style  pre code{
+  color: #333 !important;
+}*/
 
 .article-widget {
   padding-top: 1rem;
@@ -1325,8 +1331,8 @@ article .article-metadata {
 }
 .talkswords{
     font-size: 12px;
-    color: #000;
-    margin: 50px 0 0px;
+    color: #d0cdcd;
+    margin: 30px 0 0px;
 }
 
 /*************************************************
@@ -1839,12 +1845,20 @@ nav#navbar-main li.nav-item {
   background-color: #F2F2F3 !important;
   color: #B1B3BA;
   font-size: 14px;
-  padding-left: 10px;
+  /*padding-left: 10px;*/
   margin: 15px 10px 0 0 ; 
 }
 .container .changesearch a{
   color:#5A606F;
   float: right;
+}
+.container .changesearch .inputt{
+  width: 85%;
+  height: 35px;
+  background: none;
+  border: none;
+  padding-left: 10px;
+  z-index: 0;
 }
 
 .container .changehover .nav-item a{
@@ -1854,6 +1868,11 @@ nav#navbar-main li.nav-item {
   position: relative;
   top: -5px;
 }
+/*.container .changehover .nav-item a i{
+  position: absolute;
+  margin-left: -10px;
+}*/
+
 .container .changehover .nav-item a:hover{
   border-bottom: 3px solid #eb1616 !important;
   color: #eb1616 !important;
@@ -2126,12 +2145,22 @@ div.alert a {
   max-width: 760px;
 }
 
+#doc_article-style_change figure:first-child h4{
+    padding-left: calc(50% - 170px);
+}
+#doc_article-style_change figure h4{
+    padding-left: calc(50% - 105px);
+}
+
 /* Documentation: article footer. */
 
 .docs .body-footer {
-  border-top: 1px solid #e8e8e8;
-  margin-top: 30px;
-  padding-top: 10px;
+  border-bottom: 1px solid #e8e8e8;
+  margin-top: -10px;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  text-align: right;
+  padding-right: 30px;
   font-size: 14px;
   color: #707070;
 }
