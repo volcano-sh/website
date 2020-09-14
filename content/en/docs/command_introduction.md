@@ -1,3 +1,21 @@
+title = "Command Line Introduction"
+
+date = 2020-09-12
+lastmod = 2020-09-12
+
+draft = false  # Is this a draft? true/false
+toc = true  # Show table of contents? true/false
+type = "docs"  # Do not modify.
+
+# Add menu entry to sidebar.
+
+linktitle = "Commandline Introduction"
+[menu.docs]
+  parent = "cli"
+  weight = 2
+
++++
+
 # CommandLine of Volcano
 
 The current version of Volcano commands mainly include **vcctl，vsub，vcancel，vsuspend，vresume，vjobs，vqueues** and so on.
