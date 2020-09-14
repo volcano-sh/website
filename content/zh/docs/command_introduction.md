@@ -1,3 +1,21 @@
+title =  "CommandLine of Volcano"
+
+date = 2020-09-11
+lastmod = 2019-09-11
+
+draft = false  # Is this a draft? true/false
+toc = true  # Show table of contents? true/false
+type = "docs"  # Do not modify.
+
+# Add menu entry to sidebar.
+
+linktitle = "命令行简介"
+[menu.docs]
+  parent = "cli"
+  weight = 2
+
++++
+
 # CommandLine of Volcano
 
 现版本Volcano指令主要包含**vcctl，vsub，vcancel，vsuspend，vresume，vjobs，vqueues**。
