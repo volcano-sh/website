@@ -1,5 +1,5 @@
 +++
-title =  "建筑"
+title =  "架构"
 
 
 date = 2019-01-28
@@ -10,13 +10,13 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "建筑"
+linktitle = "架构"
 [menu.docs]
   parent = "home"
   weight = 2
 +++
 
-## Overall Architecture
+## 架构概览
 
 
 {{<figure library="1" src="arch_1.png" title="Volcano的应用场景">}}

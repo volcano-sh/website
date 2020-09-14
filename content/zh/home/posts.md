@@ -4,10 +4,10 @@
 
 widget = "pages"  # Do not modify this line!
 active = true  # Activate this widget? true/false
-weight = 40  # Order that this section will appear.
+weight = 71  # Order that this section will appear.
 
 title = "近期活动"
-subtitle = "[查看所有活动](blog/)"
+subtitle = "[查看所有活动  ->](blog/)"
 
 [content]
   # Page type to display. E.g. post, talk, or publication.
