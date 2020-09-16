@@ -1,5 +1,5 @@
 +++
-title =  "queue"
+title =  "Queue"
 
 
 date = 2019-01-28
@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "queue"
+linktitle = "Queue"
 [menu.docs]
   parent = "concepts"
   weight = 1
@@ -127,12 +127,9 @@ queue内此时无任务，job1和job2仍可正常工作
 4. 创建名为job2的job，属于p2，资源申请量2C，任务下发后处于pending状态，即test queue的reclaimable为false导致该queue不归还多占的资源
 
 ### 说明事项
-* default queue
-
+#### default queue
 volcano启动后，会默认创建名为default的queue，weight为1。后续下发的job，若未指定queue，默认属于default queue
-
-* weight的软约束
-
+#### weight的软约束
 weight的软约束是指weight决定的queue应得资源的份额并不是不能超出使用的。当其他queue的资源未充分利用时，需要超出使用资源的queue可临时多占。但其
 他queue后续若有任务下发需要用到这部分资源，将驱逐该queue多占资源的任务以达到weight规定的份额（前提是queue的reclaimable为true）。这种设计可以
 保证集群资源的最大化利用。

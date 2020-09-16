@@ -329,8 +329,8 @@ spec:
           restartPolicy: OnFailure
 
 ```
-#### 说明事项
-* volcano job支持的计算框架
+### 说明事项
+#### volcano job支持的计算框架
 
 volcano job对当前主流的计算框架均能很好的支持，具体如下：
 
@@ -347,7 +347,7 @@ volcano job对当前主流的计算框架均能很好的支持，具体如下：
 11. argo
 12. kubeGene
 
-* volcano job和kubernetes job的选择
+#### volcano job和kubernetes job的选择
 
 volcano job在批处理能力方面对kubernetes job进行了升级，更加适合机器学习、大数据、科学计算等场景，建议在高性能计算场景下选择volcano job；
 其他场景下两者皆可。
