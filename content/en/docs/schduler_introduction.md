@@ -75,8 +75,7 @@ to use according to their personal needs, and they can also implement customizat
 The scheduler configuration is located in the configmap named **volcano-scheduler-configmap**, which is mounted in the path
 /volcano.scheduler in the scheduler container as volume.
 ### How to get configuration of Volcano scheduler
-
-1. get the configmap named volcano-scheduler-configmap
+* get the configmap named volcano-scheduler-configmap
 
 ```shell
 # kubectl get configmap -nvolcano-system
@@ -84,7 +83,7 @@ NAME                          DATA   AGE
 volcano-scheduler-configmap   1      6d2h
 ```
 
-2. view the data part detail of configmap
+* view the data part detail of configmap
 
 ```shell
 # kubectl get configmap volcano-scheduler-configmap -nvolcano-system -oyaml
