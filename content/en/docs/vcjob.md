@@ -308,19 +308,19 @@ spec:
 ## Note
 ### Frameworks Supported
 Volcano support almost all mainstream computing frameworks including:
-* tensorflow
-* pytorch
-* mindspore
-* PaddlePaddle
-* spark
-* flink
-* openMPI
-* horovod
-* mxnet
-* kubeflow
-* argo
-* kubeGene
-...
+
+1. tensorflow
+2. pytorch
+3. mindspore
+4. PaddlePaddle
+5. spark
+6. flink
+7. openMPI
+8. horovod
+9. mxnet
+10. kubeflow
+11. argo
+12. kubeGene
 
 ### Volcano or default-scheduler
 Volcano is enhanced in batch computing comparing to default-scheduler. It's more suitable for high performance computing 

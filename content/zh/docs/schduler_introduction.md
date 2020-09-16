@@ -64,9 +64,7 @@ task.priorityClassName、task.createTime、task.id in order来决定谁的优先
 接口自定义实现。scheduler的配置位于名为**volcano-scheduler-configmap**的configmap内，该configmap被作为volume挂载在容器的/volcano.scheduler
 路径下。
 ### 如何查看Volcano scheduler的配置
-
 1. 查看名为volcano-scheduler-configmap的configmap
-
 ```shell
 # kubectl get configmap -nvolcano-system
 NAME                          DATA   AGE
@@ -74,7 +72,6 @@ volcano-scheduler-configmap   1      6d2h
 ```
 
 2. 查看configmap的data部分详情
-
 ```shell
 # kubectl get configmap volcano-scheduler-configmap -nvolcano-system -oyaml
 apiVersion: v1
