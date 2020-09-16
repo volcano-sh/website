@@ -21,7 +21,7 @@ Volcano Scheduler是负责Pod调度的组件，它由一系列action和plugin组
 中算法的具体实现细节。Volcano scheduler具有高度的可扩展性，您可以根据需要实现自己的action和plugin。
 
 ### 工作流
-{{<figure library="1" src="scheduler.PNG" title="Volcano scheduler workflow">}}
+{{<figure library="1" src="scheduler.PNG" title="Volcano scheduler工作流">}}
 
 Volcano scheduler的工作流程如下：
 
