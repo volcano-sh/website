@@ -20,7 +20,7 @@
   weight = 1
 
   [[zh.menu.main]]
-  name = "关于"
+  name = "简介"
   url = "#about"
   weight = 2
 
@@ -30,12 +30,12 @@
   weight = 3
 
   [[zh.menu.main]]
-  name = "演讲"
+  name = "讲座"
   url = "#talks"
   weight = 4
 
   [[zh.menu.main]]
-  name = "volcano"
+  name = "生态"
   url = "#required"
   weight = 5
 
