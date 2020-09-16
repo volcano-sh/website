@@ -32,7 +32,7 @@ Volcano scheduler通过一系列的action和plugin调度Job，并为它找到一
 地方是它支持针对Job的多种调度算法。 
 
 ##### controllermanager
-Volcano controllermanager管理CRD资源的生命周期。它主要由**Queue ControllerManager**、 **PodGroupControllerManager**和**VCJob 
+Volcano controllermanager管理CRD资源的生命周期。它主要由**Queue ControllerManager**、 **PodGroupControllerManager**、 **VCJob 
 ControllerManager**构成。
 
 ##### admission

@@ -10,7 +10,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "向volcano做贡献"
+linktitle = "向Volcano做贡献"
 [menu.docs]
   parent = "contribution"
   weight = 1

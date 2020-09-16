@@ -83,7 +83,7 @@
   identifier = "concepts"
 
 [[zh.menu.docs]]
-  name = "日程表"
+  name = "Scheduler"
   weight = 4
   identifier = "scheduler"
 
