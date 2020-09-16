@@ -18,7 +18,7 @@ linktitle = "快速开始"
 
 这里演示的是一个如何使用Volcano CRD资源的简单例子。
 
-### 步骤：1
+### 步骤1：
 创建一个名为“test”的自定义队列。
 ```shell
 # kubectl create -f queue.yaml
@@ -34,7 +34,7 @@ spec:
     cpu: 2
 ```
 
-### 步骤：2 
+### 步骤2：
 创建一个名为“job-1”的Volcano job。
 ```shell
 # kubectl create -f vcjob.yaml
@@ -71,7 +71,7 @@ spec:
                   cpu: 1
 ```
 
-### 步骤：3
+### 步骤3：
 检查自定义job的状态。 
 ```shell
 # kubectl get vcjob job-1 -oyaml
@@ -148,7 +148,7 @@ status:
     phase: Running
 ```
 
-### 步骤：4
+### 步骤4：
 检查名为”job-1“的PodGroup的状态 
 ```shell
 # kubectl get podgroup job-1 -oyaml
@@ -227,7 +227,7 @@ status:
   running: 1
 ```
 
-### 步骤：5
+### 步骤5：
 检查队列“test”的状态。 
 ```shell
 # kubectl get queue test -oyaml

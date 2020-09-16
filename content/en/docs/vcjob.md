@@ -140,18 +140,18 @@ kind: Job
 metadata:
   name: tensorflow-dist-mnist
 spec:
-  minAvailable: 3   // 该job的3个pod必须都可用
-  schedulerName: volcano    // 指定volcano为调度器
+  minAvailable: 3   // there must be at least 3 pods available
+  schedulerName: volcano    // scheduler specified
   plugins:
     env: []
     svc: []
   policies: 
-    - event: PodEvicted // 当pod被驱逐时，重启该job
+    - event: PodEvicted // restart job when pod is evicted
       action: RestartJob
   tasks:
-    - replicas: 1   // 指定1个ps pod
+    - replicas: 1   // replicas number specified
       name: ps
-      template: // ps pod的具体定义
+      template: // definition of ps pod
         spec:
           containers:
             - command:
@@ -169,12 +169,12 @@ spec:
                   name: tfjob-port
               resources: {}
           restartPolicy: Never
-    - replicas: 2   // 指定2个worker pod
+    - replicas: 2   // definition of worker pod
       name: worker
       policies:
-        - event: TaskCompleted  // 2个worker完成任务时认为该job完成任务
+        - event: TaskCompleted  // when tasks complete, job finishes
           action: CompleteJob
-      template: // worker pod的具体定义
+      template: // definition of worker pod
         spec:
           containers:
             - command:
@@ -227,7 +227,7 @@ spec:
       action: create
       successCondition: status.state.phase = Completed
       failureCondition: status.state.phase = Failed
-      manifest: |           // volcano job的具体定义
+      manifest: |           // definition of volcano job
         apiVersion: batch.volcano.sh/v1alpha1
         kind: Job
         metadata:

@@ -129,7 +129,7 @@ Tiller (Helm内部的服务侧组件)已经安装到您的Kubernetes集群。
 
 ```
 
-###### 步骤：1
+###### 步骤1：
 创建一个新的命名空间。
 ```shell
 # kubectl create namespace volcano-system
@@ -137,7 +137,7 @@ namespace/volcano-system created
 
 ``` 
 
-###### 步骤：2
+###### 步骤2：
 使用Helm进行安装。
 ```shell
 # helm install helm/chart/volcano --namespace volcano-system --name volcano
@@ -207,7 +207,7 @@ https://volcano.sh/
 
 ```
 
-###### 步骤：3
+###### 步骤3：
 验证Volcano各组件的运行状态。
 ```shell
 # kubectl get all -n volcano-system
