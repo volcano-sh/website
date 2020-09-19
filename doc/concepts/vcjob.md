@@ -83,7 +83,7 @@ restarting表示job正处于重启状态，正在中止当前的job实例并重�
 * completing
 completing表示job中至少有minAvailable个数的task已经完成，该job正在进行最后的清理工作
 * completed
-completing表示job中至少有minAvailable个数的task已经完成，该job已经完成了最后的清理工作
+completed表示job中至少有minAvailable个数的task已经完成，该job已经完成了最后的清理工作
 * terminating
 terminating表示job因为某种内部原因正处于终止状态，正在等到pod或task释放资源
 * terminated
