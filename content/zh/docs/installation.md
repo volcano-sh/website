@@ -46,8 +46,8 @@ linktitle = "安装"
 
 #### 安装方式
 
-- [通过 Deployment Yaml 文件方式安装](#通过deployment-yaml文件方式安装).
-- [通过 Helm 方式安装](#使用helm安装).
+- [通过 Deployment Yaml 文件方式安装](#通过-deployment-yaml-文件方式安装).
+- [通过 Helm 方式安装](#使用-helm-安装).
 
 ### 通过 Deployment Yaml 文件方式安装
 

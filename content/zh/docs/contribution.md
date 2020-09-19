@@ -28,11 +28,11 @@ linktitle = "向Volcano做贡献"
   - [寻找您感兴趣的领域开展工作](#寻找您感兴趣的领域开展工作)
     - [寻找一个话题](#寻找一个话题)
     - [围绕一个 Issue 开展工作](#围绕一个-issue-开展工作)
-    - [提交 Issue](#提交issue)
+    - [提交 Issue](#提交-issue)
 - [贡献者工作流程](#贡献者工作流程)
-  - [创建 Pull Requests](#创建pull-requests)
+  - [创建 Pull Requests](#创建-pull-requests)
   - [代码检视](#代码检视)
-  - [commit信息的格式](#commit信息的格式)
+  - [commit信息的格式](#commit-信息的格式)
   - [测试](#测试)
 
 ## 上手必读
@@ -111,7 +111,7 @@ Volcano 遵循标准的[github pull request](https://help.github.com/articles/ab
 在上述流程中，volcano 机器人会对您的 PR 加入结构化标签。
 
 Volcano 机器人也会给出一些有用的命令建议，这些命令将会在你的 PR 中运行以提示检视代码。
-可以在注释中输入这些“/command”选项来触发自动标记和通知。
+可以在注释中输入这些`/command`选项来触发自动标记和通知。
 
 ### 代码检视
 
