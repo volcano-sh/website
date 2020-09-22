@@ -72,7 +72,7 @@ spec:
 ```
 
 ### 步骤3：
-检查自定义job的状态。 
+检查自定义job的状态。
 ```shell
 # kubectl get vcjob job-1 -oyaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -149,7 +149,7 @@ status:
 ```
 
 ### 步骤4：
-检查名为”job-1“的PodGroup的状态 
+检查名为”job-1“的PodGroup的状态
 ```shell
 # kubectl get podgroup job-1 -oyaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -228,7 +228,7 @@ status:
 ```
 
 ### 步骤5：
-检查队列“test”的状态。 
+检查队列“test”的状态。
 ```shell
 # kubectl get queue test -oyaml
 apiVersion: scheduling.volcano.sh/v1beta1

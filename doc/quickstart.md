@@ -7,7 +7,7 @@ volcano
 |-- crdControllers
     |-- queueController
     |-- podgroupController
-    |-- jobController 
+    |-- jobController
 |-- scheduler
     |-- actions
         |-- allocate

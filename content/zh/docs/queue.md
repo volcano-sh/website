@@ -74,56 +74,56 @@ reclaimable表示该queue在资源使用量超过该queue所应得的资源份�
 ## 使用场景
 ###  weight的资源划分-1
 
-#### 背景：        
-* 集群CPU总量为4C          
-* 已默认创建名为default的queue，weight为1       
+#### 背景：
+* 集群CPU总量为4C
+* 已默认创建名为default的queue，weight为1
 *  集群中无任务运行
 
-#### 操作：           
-1. 当前情况下，default queue可是使用全部集群资源，即4C       
-2. 创建名为test的queue，weight为3。此时，default weight:test weight = 1:3,即default queue可使用1C，test queue可使用3C      
-3. 创建名为p1和p2的podgroup，分别属于default queue和test queue         
+#### 操作：
+1. 当前情况下，default queue可是使用全部集群资源，即4C
+2. 创建名为test的queue，weight为3。此时，default weight:test weight = 1:3,即default queue可使用1C，test queue可使用3C
+3. 创建名为p1和p2的podgroup，分别属于default queue和test queue
 4. 分别向p1和p2中投递job1和job2，资源申请量分别为1C和3C，2个job均能正常工作
 
 ###  weight的资源划分-2
 
-#### 背景：         
-*  集群CPU总量为4C         
-*  已默认创建名为default的queue，weight为1       
+#### 背景：
+*  集群CPU总量为4C
+*  已默认创建名为default的queue，weight为1
 *  集群中无任务运行
 
-#### 操作：           
-1. 当前情况下，default queue可是使用全部集群资源，即4C           
-2. 创建名为p1的podgroup，属于default queue。      
-3. 分别创建名为job1和job2的job，属于p1,资源申请量分别为1C和3C，job1和job2均能正常工作            
-4. 创建名为test的queue，weight为3。此时，default weight:test weight = 1:3,即default queue可使用1C，test queue可使用3C。但由于test 
-queue内此时无任务，job1和job2仍可正常工作          
-5. 创建名为p2的podgroup，属于test queue。       
+#### 操作：
+1. 当前情况下，default queue可是使用全部集群资源，即4C
+2. 创建名为p1的podgroup，属于default queue。
+3. 分别创建名为job1和job2的job，属于p1,资源申请量分别为1C和3C，job1和job2均能正常工作
+4. 创建名为test的queue，weight为3。此时，default weight:test weight = 1:3,即default queue可使用1C，test queue可使用3C。但由于test
+queue内此时无任务，job1和job2仍可正常工作
+5. 创建名为p2的podgroup，属于test queue。
 6. 创建名为job3的job，属于p2，资源申请量为3C。此时，job2将被驱逐，将资源归还给job3，即default queue将3C资源归还给test queue。
 
 ###  capability的使用
 
-#### 背景：       
-*  集群CPU总量为4C        
-*  已默认创建名为default的queue，weight为1       
+#### 背景：
+*  集群CPU总量为4C
+*  已默认创建名为default的queue，weight为1
 *  集群中无任务运行
 
-#### 操作：      
-1. 创建名为test的queue，capability设置cpu为2C，即test queue使用资源上限为2C       
-2. 创建名为p1的podgroup，属于test queue       
+#### 操作：
+1. 创建名为test的queue，capability设置cpu为2C，即test queue使用资源上限为2C
+2. 创建名为p1的podgroup，属于test queue
 3. 分别创建名为job1和job2的job，属于p1，资源申请量分别为1C和3C，依次下发。由于capability的限制，job1正常运行，job2处于pending状态
 
 ###  reclaimable的使用
 
-#### 背景：        
-*  集群CPU总量为4C           
-*  已默认创建名为default的queue，weight为1     
+#### 背景：
+*  集群CPU总量为4C
+*  已默认创建名为default的queue，weight为1
 *  集群中无任务运行
 
-#### 操作：    
-1. 创建名为test的queue，reclaimable设置为false，weight为1。此时，default weight:test weight = 1:1,即default queue和test queue均可使用2C。     
-2. 创建名为p1、p2的podgroup，分别属于test queue和default queue       
-3. 创建名为job1的job，属于p1，资源申请量3C，job1可正常运行。此时，由于default queue中尚无任务，test queue多占用1C           
+#### 操作：
+1. 创建名为test的queue，reclaimable设置为false，weight为1。此时，default weight:test weight = 1:1,即default queue和test queue均可使用2C。
+2. 创建名为p1、p2的podgroup，分别属于test queue和default queue
+3. 创建名为job1的job，属于p1，资源申请量3C，job1可正常运行。此时，由于default queue中尚无任务，test queue多占用1C
 4. 创建名为job2的job，属于p2，资源申请量2C，任务下发后处于pending状态，即test queue的reclaimable为false导致该queue不归还多占的资源
 
 ### 说明事项

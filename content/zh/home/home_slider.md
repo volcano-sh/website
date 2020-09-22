@@ -54,7 +54,7 @@ height = "350px"
   overlay_color = "#333"  # An HTML color value.
   overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.20  # Darken the image. Value in range 0-1.
-  
+
 [[item]]
   title = "Job管理"
   content = "多模板Job管理"

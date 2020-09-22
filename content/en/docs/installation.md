@@ -26,9 +26,9 @@ The easiest way to get started with Volcano is to download the [release](https:/
  - Untar the release file
     ```shell
     #tar -xvf volcano-{Version}-linux-gnu.tar.gz
-    
+
     #cd volcano-{Version}-linux-gnu
-    
+
     #ll
     total 60
     drwxr-xr-x  4 root1 root1  4096 Jul 23 11:38 ./
@@ -39,7 +39,7 @@ The easiest way to get started with Volcano is to download the [release](https:/
     -rw-r--r--  1 root1 root1  4169 Jul 16 16:15 README.md
     -rw-r--r--  1 root1 root1 23453 Jul 16 16:15 volcano-{Version}.yaml
 
-    
+
     ```
 
 #### Installation Mode
@@ -53,7 +53,7 @@ The easiest way to get started with Volcano is to download the [release](https:/
 Create the deployment using the `volcano-{Version}.yaml` file present inside the release.
 
 ```shell
-# kubectl apply -f volcano-{Version}.yaml 
+# kubectl apply -f volcano-{Version}.yaml
 namespace/volcano-system created
 configmap/volcano-scheduler-configmap created
 serviceaccount/volcano-scheduler created
@@ -130,13 +130,13 @@ For more information on securing your installation see: https://docs.helm.sh/usi
 
 ```
 
-###### Step: 1 
+###### Step: 1
 Create a new namespace
 ```shell
 # kubectl create namespace volcano-system
 namespace/volcano-system created
 
-``` 
+```
 
 ###### Step: 2
 Installing using helm charts
@@ -208,7 +208,7 @@ https://volcano.sh/
 
 ```
 
-###### Step: 3 
+###### Step: 3
 
 Verify the running components of Volcano
 ```shell
