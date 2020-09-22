@@ -126,7 +126,7 @@ yaml文件表示一个名为`qj-01`的Job将创建6个pod（由`parallelism`指�
 ```bash
 # kubectl get jobs
 NAME      DESIRED   SUCCESSFUL   AGE
-qj-1      6         6            2h 
+qj-1      6         6            2h
 ```
 
 检查pods状态

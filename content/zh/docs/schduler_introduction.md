@@ -34,11 +34,11 @@ Volcano scheduler的工作流程如下：
 
 ## Actions
 ### enqueue
-Enqueue action负责通过一系列的过滤算法筛选出符合要求的待调度任务并将它们送入待调度队列。经过这个action，任务的状态将由pending变为inqueue。 
+Enqueue action负责通过一系列的过滤算法筛选出符合要求的待调度任务并将它们送入待调度队列。经过这个action，任务的状态将由pending变为inqueue。
 ### allocate
-Allocate action负责通过一系列的预选和优选算法筛选出最适合的节点。 
+Allocate action负责通过一系列的预选和优选算法筛选出最适合的节点。
 ### preempt
-Preempt action负责根据优先级规则为同一队列中高优先级任务执行抢占调度。 
+Preempt action负责根据优先级规则为同一队列中高优先级任务执行抢占调度。
 ### reclaim
 Reclaim action负责当一个新的任务进入待调度队列，但集群资源已不能满足该任务所在队列的要求时，根据队列权重回收队列应得资源。
 ### backfill
