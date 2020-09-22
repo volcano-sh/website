@@ -21,8 +21,7 @@ linktitle = "快速开始"
 ### 步骤1：
 创建一个名为“test”的自定义队列。
 ```shell
-# kubectl create -f queue.yaml
-// queue.yaml
+# cat <<EOF | kubectl apply -f -
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: Queue
 metadata:
@@ -32,13 +31,13 @@ spec:
   reclaimable: false
   capability:
     cpu: 2
+EOF
 ```
 
 ### 步骤2：
 创建一个名为“job-1”的Volcano job。
 ```shell
-# kubectl create -f vcjob.yaml
-// vcjob.yaml
+# cat <<EOF | kubectl apply -f -
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
@@ -69,6 +68,7 @@ spec:
                   cpu: 1
                 limits:
                   cpu: 1
+EOF
 ```
 
 ### 步骤3：

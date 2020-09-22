@@ -21,8 +21,7 @@ Here is a simple example how to use Volcano with CRD resources.
 ### Step: 1 
 Create a custom Queue named "test"
 ```shell
-# kubectl create -f queue.yaml
-// queue.yaml
+# cat <<EOF | kubectl apply -f -
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: Queue
 metadata:
@@ -32,13 +31,13 @@ spec:
   reclaimable: false
   capability:
     cpu: 2
+EOF
 ```
 
 ### Step: 2 
 Create a Volcano job named "job-1"
 ```shell
-# kubectl create -f vcjob.yaml
-// vcjob.yaml
+# cat <<EOF | kubectl apply -f -
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
@@ -69,6 +68,7 @@ spec:
                   cpu: 1
                 limits:
                   cpu: 1
+EOF
 ```
 
 ### Step: 3 
