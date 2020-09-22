@@ -116,23 +116,8 @@ job.batch/volcano-admission-init   1/1           28s        6m10s
 
 ### 使用 Helm 安装
 
-如果您想使用 Helm 部署 Volcano，请先确认已经在您的集群中安装了 Helm。
+如果您想使用 Helm 部署 Volcano，请先确认已经在您的集群中安装了[Helm](https://helm.sh/docs/intro/install)。
 
-###### 准备
-
-如果您的 Helm 已经配置了 serviceaccount，您可以跳过这一步。否则，请执行以下命令为 tiller 创建一个 serviceaccount。
-
-```shell
-# helm init --service-account tiller --kubeconfig ${KUBECONFIG} --wait --upgrade
-$HELM_HOME has been configured at /root/.helm.
-
-Tiller (Helm内部的服务侧组件)已经安装到您的Kubernetes集群。
-
-请注意：默认情况下，Tiller是使用不安全的'allow unauthenticated users'策略进行部署的。
-为了避免这种情况，使用--tiller-tls-verify参数运行命令`helm init`。
-如果想了解更多关于安装过程中的安全信息，请查看：https://docs.helm.sh/using_helm/#securing-your-helm-installation。
-
-```
 
 ###### 步骤 1：
 

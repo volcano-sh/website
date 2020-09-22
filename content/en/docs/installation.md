@@ -113,22 +113,7 @@ You are all set now, you can start using the Volcano to deploy the AI/ML and Big
 
 ### Installation using Helm Charts
 
-If you want to use helm to deploy Volcano then make sure you have helm installed in your cluster.
-
-###### Prerequisite:
-If your helm already has serviceaccount configured then you can skip this step, otherwise execute the following command to create a serviceaccount for tiller.
-
-```shell
-# helm init --service-account tiller --kubeconfig ${KUBECONFIG} --wait --upgrade
-$HELM_HOME has been configured at /root/.helm.
-
-Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
-
-Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
-To prevent this, run `helm init` with the --tiller-tls-verify flag.
-For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
-
-```
+If you want to use helm to deploy Volcano then make sure you have [helm](https://helm.sh/docs/intro/install) installed in your cluster.
 
 ###### Step: 1 
 Create a new namespace
