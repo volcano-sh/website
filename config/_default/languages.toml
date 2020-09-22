@@ -44,7 +44,7 @@
   url = "docs/"
   weight = 6
 
-  
+
   # Right Menu
 
 [[zh.menu.main_right]]
@@ -65,7 +65,7 @@
   url = "https://volcano-sh.slack.com"
   weight = 30
 
-# Documentation 
+# Documentation
 
 [[zh.menu.docs]]
   name = "主页"
@@ -109,4 +109,3 @@
   weight = 10
   identifier = "customers"
 
- 

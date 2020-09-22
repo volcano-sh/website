@@ -16,10 +16,10 @@ toc = true
 [menu.tutorial]
   # Define a parent ID if this page is a parent.
   name = "YourParentID"
-  
+
   # Reference a parent ID if this page is a child.
   # parent = "YourParentID"
-  
+
   # Order that this page appears in the menu.
   weight = 1
 +++
