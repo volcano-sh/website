@@ -119,7 +119,7 @@ Check job status
 ```bash
 # kubectl get jobs
 NAME      DESIRED   SUCCESSFUL   AGE
-qj-1      6         6            2h 
+qj-1      6         6            2h
 ```
 
 Check the pods status

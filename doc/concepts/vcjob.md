@@ -1,6 +1,6 @@
 #### 定义
 volcano job，简称vcjob，是volcano自定义的job资源类型。区别于kubernetes job，vcjob提供了更多高级功能，如可指定调度器、支持最小运行pod数、
-支持task、支持生命周期管理、支持指定队列、支持优先级调度等。volcano job更加适用于机器学习、大数据、科学计算等高性能计算场景          
+支持task、支持生命周期管理、支持指定队列、支持优先级调度等。volcano job更加适用于机器学习、大数据、科学计算等高性能计算场景
 #### 样例
 ```
 apiVersion: batch.volcano.sh/v1alpha1
@@ -104,7 +104,7 @@ spec:
   plugins:
     env: []
     svc: []
-  policies: 
+  policies:
     - event: PodEvicted // 当pod被驱逐时，重启该job
       action: RestartJob
   tasks:

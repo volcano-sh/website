@@ -24,7 +24,7 @@ Volcano提供了命令行工具用于管理资源。
 路径下。当然，您也可以自己从github上克隆代码并在项目的根目录下执行以下命令制作最新的可执行文件：
 ```shell
 # make vcctl
-``` 
+```
 2. 将可执行文件拷贝到$PATH下以便您能在任何地方执行它。
 
 ## 命令行列表
@@ -34,11 +34,11 @@ vcctl job list
 ```shell
 # vcctl job list
 Name    Creation       Phase       JobType     Replicas    Min   Pending   Running   Succeeded   Failed    Unknown     RetryCount
-job-1   2020-09-01     Running     Batch       1           1     0         1         0           0         0           0        
+job-1   2020-09-01     Running     Batch       1           1     0         1         0           0         0           0
 ```
 
 ### 删除指定的Job
-vcctl job delete --name job-name [--namespace job-namespace] 
+vcctl job delete --name job-name [--namespace job-namespace]
 
 ```shell
 # vcctl delete job --name job-1 --namespaces default
