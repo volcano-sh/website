@@ -36,7 +36,7 @@ tags = []
 # Markdown Slides (optional).
 #   Associate this talk with Markdown slides.
 #   Simply enter your slide deck's filename without extension.
-#   E.g. `slides = "example-slides"` references 
+#   E.g. `slides = "example-slides"` references
 #   `content/slides/example-slides.md`.
 #   Otherwise, set `slides = ""`.
 #slides = "introducing-volcano"
@@ -47,7 +47,7 @@ url_slides = ""
 # Projects (optional).
 #   Associate this talk with one or more of your projects.
 #   Simply enter your project's folder or file name without extension.
-#   E.g. `projects = ["deep-learning"]` references 
+#   E.g. `projects = ["deep-learning"]` references
 #   `content/project/deep-learning/index.md`.
 #   Otherwise, set `projects = []`.
 # projects = ["internal-project"]
@@ -61,7 +61,7 @@ url_code = ""
 math = true
 
 # Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder. 
+# To use, add an image named `featured.jpg/png` to your page's folder.
 [image]
   # Caption (optional)
   caption = "Da Ma & Kevin Wang introducing Volcano at KubeCon Europe, 2019"
@@ -70,16 +70,16 @@ math = true
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
   focal_point = "Right"
 +++
-## Introduction to Kubernetes Native Batch System 
+## Introduction to Kubernetes Native Batch System
 
 Kubernetes started as a general purpose orchestration framework with a focus on serving jobs. But as it gains popularity, users want to run high performance workloads on Kubernetes, such as Spark, TensorFlow, etc. When running these workloads in Kubernetes, several advanced capability are required, e.g. fair-share sharing, queue, job management (suspend/resume), data management. This Intro will present the work in community to bring "batch" capability.
 
-## Speakers  
+## Speakers
 
-### Da Ma (Kubernetes Maintainer, SIG-Scheduling Co-Leader, Volcano leader, Huawei)  
+### Da Ma (Kubernetes Maintainer, SIG-Scheduling Co-Leader, Volcano leader, Huawei)
 
 Kubernetes Maintainer, SIG-Scheduling Co-Leader, Volcano leader. Jilin University master’s degree, majoring in grid computing and distributed system. After graduation, he focus on resource management, resource scheduling in distributed system.
 
-### Kevin Wang (Principal Engineer, Huawei)  
+### Kevin Wang (Principal Engineer, Huawei)
 
 Zefeng(Kevin) Wang is a Principal Engineer of the PaaS Team at Huawei. Currently working on Kubernetes, KubeEdge and Huawei Cloud container products. He is the lead of Huawei Kubernetes & Cloud Native open source team and co-founder of KubeEdge project.

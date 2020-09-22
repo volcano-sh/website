@@ -4,7 +4,7 @@ description = "在Kubernetes集群中快速上手Volcano"
 subtitle =""
 
 date = 2019-03-28
-lastmod = 2020-09-07 
+lastmod = 2020-09-07
 datemonth = "Sep"
 dateyear = "2020"
 dateday = 07

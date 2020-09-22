@@ -17,9 +17,9 @@ linktitle = "VolcanoJob"
 +++
 
 ## Introduction
-Volcano job, referred to as vcjob, is a CRD type for Volcano. Different from Kubernetes Job, it provides more advanced 
+Volcano job, referred to as vcjob, is a CRD type for Volcano. Different from Kubernetes Job, it provides more advanced
 features such as specified scheduler / minimum member number / task definition / lifecycle management / specified queue
-/ specified priority. Volcano job is designed for high performance computing such as machine learning / Big Data 
+/ specified priority. Volcano job is designed for high performance computing such as machine learning / Big Data
 application / scientific computing.
 
 ## Example
@@ -69,12 +69,12 @@ spec:
 ```
 ## Key Field
 ### schedulerName
-schedulerName means which scheduler will schedule the job. The default value is Volcano. Current optional values are 
+schedulerName means which scheduler will schedule the job. The default value is Volcano. Current optional values are
 "volcano" and "default".
 
 ### minAvailable
-minAvailable represents the minimum number of running Pods to run the job. Only when the number of running Pods is not 
-less than minAvailable can the job be considered as running. 
+minAvailable represents the minimum number of running Pods to run the job. Only when the number of running Pods is not
+less than minAvailable can the job be considered as running.
 
 ### tasks.replicas
 tasks.replicas indicates the replicas number of the task.
@@ -87,12 +87,12 @@ tasks.policies defines the lifecycle strategy of the task.
 
 ### policies
 policies is the default lifecycle strategy for all tasks when tasks.policies is not set.
-  
+
 ### plugins
 plugins indicates the plugins used by Volcano when scheduling the job.
 
 ### queue
-queue means the queue the job belongs to. 
+queue means the queue the job belongs to.
 
 ### priorityClassName
 priorityClassName indicates the priority of the job which is used in preemption scheduling.
@@ -117,7 +117,7 @@ running indicates there are at least "minAvailable" Pods running.
 restarting means the job is restarting.
 
 ### completing
-completing means there are at least "minAvailable" Pods in completing status. Job is doing some cleanup. 
+completing means there are at least "minAvailable" Pods in completing status. Job is doing some cleanup.
 
 ### completing
 completing means there are at least "minAvailable" Pods in completed status. Job has finished cleaning up.
@@ -129,7 +129,7 @@ terminating means job is in exiting process because of some internal factor. Job
 terminated means job has already exited because of some internal factor.
 
 ### failed
-failed means job still cannot start after maxRetry tries. 
+failed means job still cannot start after maxRetry tries.
 
 ## Usage
 ### tensorflow workload
@@ -145,7 +145,7 @@ spec:
   plugins:
     env: []
     svc: []
-  policies: 
+  policies:
     - event: PodEvicted // restart job when pod is evicted
       action: RestartJob
   tasks:
@@ -267,7 +267,7 @@ spec:
                     requests:
                       cpu: "100m"
                 restartPolicy: OnFailure
-```  
+```
 ### Mindspore workload
 Create a Mindspore workload with eight replicases and only one work well is enough.
 ```shell
@@ -323,5 +323,5 @@ Volcano support almost all mainstream computing frameworks including:
 12. kubeGene
 
 ### Volcano or default-scheduler
-Volcano is enhanced in batch computing comparing to default-scheduler. It's more suitable for high performance computing 
+Volcano is enhanced in batch computing comparing to default-scheduler. It's more suitable for high performance computing
 such as machine learning / Big Data application / scientific computing.
