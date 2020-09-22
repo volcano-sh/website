@@ -47,12 +47,12 @@ Volcano 是一个社区驱动的开源项目，致力于打造健康、友好和
 社区的目标是开发 Volcano 系统，该系统有助于在 Kubernetes 上运行高性能的工作负载，如 AI、ML、深度学习应用程序。要建立这样一个系统，需要有共同目标的社
 区贡献者的支持。
 
-- 请查看 [社区角色](https://github.com/volcano-sh/website/blob/master/content/en/docs/community-membership.md) 了解社区角色的
+- 请查看 [社区角色](https://github.com/volcano-sh/volcano/blob/master/community-membership.md) 了解社区角色的
   具体情况。随着贡献度的提高，您的角色会逐渐升级。
 
 ## 开始
 
-- 查看[安装文档](https://github.com/volcano-sh/website/blob/master/content/en/docs/deployment.md) 了解更多关于编译和部署的细节.
+- 查看[安装文档](./installation.md) 了解更多关于编译和部署的细节.
 
 ## 您的第一个贡献
 
