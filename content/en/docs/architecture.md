@@ -22,7 +22,7 @@ linktitle = "Architecture"
 {{<figure library="1" src="arch_1.png" title="application scenarios of Volcano">}}
 
 
-Volcano is designed for high performance workload and works with Kubernetes naturally. It follows the design philosophy 
+Volcano is designed for high performance workload and works with Kubernetes naturally. It follows the design philosophy
 and style of Kubernetes.
 
 
@@ -32,15 +32,15 @@ and style of Kubernetes.
 Volcano consists of **scheduler** / **controllermanager** / **admission** / **vcctl**.
 
 ##### scheduler
-Volcano scheduler aims to schedule jobs to the most suitable node throughout a series of actions and plugins. What makes 
+Volcano scheduler aims to schedule jobs to the most suitable node throughout a series of actions and plugins. What makes
 it different from default scheduler is its various scheduling algorithms for job.
 
 ##### controllermanager
-Volcano controllermanager manages the lifecycle of CRD resource. It mainly includes **Queue ControllerManager** / **PodGroup 
+Volcano controllermanager manages the lifecycle of CRD resource. It mainly includes **Queue ControllerManager** / **PodGroup
 ControllerManager** / **VCJob ControllerManager**.
 
 ##### admission
 Volcano admission is responsible for the CRD API validation.
 
 ##### vcctl
-vcctl is the commandline client for Volcano . 
+vcctl is the commandline client for Volcano .

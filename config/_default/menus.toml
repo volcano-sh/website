@@ -53,8 +53,8 @@
   post = ""
   url = "https://volcano-sh.slack.com"
   weight = 30
-  
-# Documentation 
+
+# Documentation
 
 [[docs]]
   name = "Home"
