@@ -130,7 +130,7 @@ Volcano 机器人也会给出一些有用的命令建议，这些命令将会在
 ```shell
 scripts: add test codes for metamanager
 
-this add some unit test codes to imporve code coverage for metamanager
+this add some unit test codes to improve code coverage for metamanager
 
 Fixes #12
 ```
