@@ -18,7 +18,7 @@ linktitle = "Installation"
 
 The easiest way to get started with Volcano is to download the [release](https://github.com/volcano-sh/volcano/releases) from github and follow the steps given below:
 
-#### PreRequisite
+## PreRequisite
 
  - We expect you to have a cluster of Kubernetes V1.13+.
  - [Optional] Helm should be installed in your cluster, you can follow the steps over [here](https://helm.sh/docs/using_helm/#install-helm) to install helm.(Only needed if you are installing using helm mode of deployment)
@@ -42,7 +42,7 @@ The easiest way to get started with Volcano is to download the [release](https:/
 
     ```
 
-#### Installation Mode
+## Installation Mode
  - [Using Deployment Yaml](#installation-using-deployment-yaml).
  - [Using Helm Charts](#installation-using-helm-charts).
 
