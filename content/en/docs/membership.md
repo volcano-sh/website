@@ -16,7 +16,7 @@ linktitle = "Community Membership"
   weight = 2
 +++
 
-# Volcano Community Membership
+## Volcano Community Membership
 
 **Note :** This document keeps changing based on the status and feedback of Volcano Community.
 
@@ -32,13 +32,13 @@ This document gives a brief overview of the Volcano community roles with the req
 
 **Note :** It is mandatory for all Volcano community members to follow Volcano [Code of Conduct](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md).
 
-## Member
+### Member
 
 Members are active participants in the community who contribute by authoring PRs,
 reviewing issues/PRs or participate in community discussions on slack/mailing list.
 
 
-### Requirements
+#### Requirements
 
 - Sponsor from 2 approvers
 - Enabled [two-factor authentication] on their GitHub account
@@ -49,7 +49,7 @@ reviewing issues/PRs or participate in community discussions on slack/mailing li
     - Participate in Volcano community meetings
 
 
-### Responsibilities and privileges
+#### Responsibilities and privileges
 
 - Member of the Volcano GitHub organization
 - Can be assigned to issues and PRs and community members can also request their review
@@ -59,13 +59,13 @@ reviewing issues/PRs or participate in community discussions on slack/mailing li
 - Help/Motivate new members in contributing to Volcano
 
 
-## Approver
+### Approver
 
 Approvers are active members who have good experience and knowledge of the domain.
 They have actively participated in the issue/PR reviews and have identified relevant issues during review.
 
 
-### Requirements
+#### Requirements
 
 - Sponsor from 2 maintainers
 - Member for at least 2 months
@@ -73,7 +73,7 @@ They have actively participated in the issue/PR reviews and have identified rele
 - Have good codebase knowledge
 
 
-### Responsibilities and Privileges
+#### Responsibilities and Privileges
 
 - Review code to maintain/improve code quality
 - Acknowledge and work on review requests from community members
@@ -81,19 +81,19 @@ They have actively participated in the issue/PR reviews and have identified rele
 - Have 'write access' to specific packages inside a repo, enforced via bot
 - Continue to contribute and guide other community members to contribute in Volcano project
 
-## Maintainer
+### Maintainer
 
 Maintainers are approvers who have shown good technical judgement in feature design/development in the past.
 Has overall knowledge of the project and features in the project.
 
-### Requirements
+#### Requirements
 
 - Sponsor from 2 owners
 - Approver for at least 2 months
 - Nominated by a project owner
 - Good technical judgement in feature design/development
 
-### Responsibilities and privileges
+#### Responsibilities and privileges
 
 - Participate in release planning
 - Maintain project code quality
@@ -105,12 +105,12 @@ Has overall knowledge of the project and features in the project.
 - Name entry in Maintainers file of the repository
 - Participate & Drive design/development of multiple features
 
-## Owner
+### Owner
 
 Owners are maintainers who have helped drive the overall project direction.
 Has deep understanding of Volcano and related domain and facilitates major agreement in release planning
 
-### Requirements
+#### Requirements
 
 - Sponsor from 3 owners
 - Maintainer for at least 2 months
@@ -118,7 +118,7 @@ Has deep understanding of Volcano and related domain and facilitates major agree
 - Not opposed by any project owner
 - Helped in driving the overall project
 
-### Responsibilities and Privileges
+#### Responsibilities and Privileges
 
 - Make technical decisions for the overall project
 - Drive the overall technical roadmap of the project
@@ -131,6 +131,3 @@ Has deep understanding of Volcano and related domain and facilitates major agree
 
 
 **Note :** These roles are applicable only for Volcano github organization and repositories. Currently Volcano doesn't have a formal process for review and acceptance into these roles. We will come-up with a process soon.
-
-
-[two-factor authentication]: https://help.github.com/articles/about-two-factor-authentication

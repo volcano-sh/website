@@ -18,7 +18,7 @@ linktitle = "安装"
 
 上手 Volcano 最容易的方式是从 github 下载[release](https://github.com/volcano-sh/volcano/releases) ，然后按照以下步骤操作：
 
-#### 准备
+## 准备
 
 - 一个 Kubernetes 集群，集群版本不低于 V1.13
 - [可选项] 在您的集群中下载 Helm，您可以根据以下指南安装 Helm：[安装 Helm](https://helm.sh/docs/using_helm/#install-helm)。(仅当您使用
@@ -44,7 +44,7 @@ linktitle = "安装"
 
   ```
 
-#### 安装方式
+## 安装方式
 
 - [通过 Deployment Yaml 文件方式安装](#通过-deployment-yaml-文件方式安装).
 - [通过 Helm 方式安装](#使用-helm-安装).
