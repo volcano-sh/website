@@ -16,31 +16,31 @@ linktitle = "Volcano Contribution"
   weight = 1
 +++
 
-# Welcome
+## Welcome
 
 Welcome to Volcano!
 
--   [Before you get started](#before-you-get-started)
-    -   [Code of Conduct](#code-of-conduct)
-    -   [Community Expectations](#community-expectations)
--   [Getting started](#getting-started)
--   [Your First Contribution](#your-first-contribution)
-    -   [Find something to work on](#find-something-to-work-on)
-        -   [Find a good first topic](#find-a-good-first-topic)
-        -   [Work on an Issue](#work-on-an-issue)
-        -   [File an Issue](#file-an-issue)
--   [Contributor Workflow](#contributor-workflow)
-    -   [Creating Pull Requests](#creating-pull-requests)
-    -   [Code Review](#code-review)
-    -   [Testing](#testing)
+- [Before you get started](#before-you-get-started)
+  - [Code of Conduct](#code-of-conduct)
+  - [Community Expectations](#community-expectations)
+- [Getting started](#getting-started)
+- [Your First Contribution](#your-first-contribution)
+  - [Find something to work on](#find-something-to-work-on)
+  - [Find a good first topic](#find-a-good-first-topic)
+  - [Work on an Issue](#work-on-an-issue)
+  - [File an Issue](#file-an-issue)
+- [Contributor Workflow](#contributor-workflow)
+  - [Creating Pull Requests](#creating-pull-requests)
+  - [Code Review](#code-review)
+  - [Testing](#testing)
 
-# Before you get started
+## Before you get started
 
-## Code of Conduct
+### Code of Conduct
 
 Please make sure to read and observe our [Code of Conduct](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md).
 
-## Community Expectations
+### Community Expectations
 
 Volcano is a community project driven by its community which strives to promote a healthy, friendly and productive environment.
 The goal of the community is to develop a volcano system which is useful for runnning high performance workloads such as AI,ML,Deep Learning Application on top of Kubernetes. To build a such volcano system at such scale requires the support of a community with similar aspirations.
@@ -48,25 +48,25 @@ The goal of the community is to develop a volcano system which is useful for run
 - See [Community Membership](https://github.com/volcano-sh/website/blob/master/content/en/docs/community-membership.md) for a list of various community roles. With gradual contributions, one can move up in the chain.
 
 
-# Getting started
+## Getting started
 
 - Read the [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/deployment.md) for build/deploy instructions.
 
 
-# Your First Contribution
+## Your First Contribution
 
 We will help you to contribute in different areas like filing issues, developing features, fixing critical bugs and getting your work reviewed and merged.
 
 If you have questions about the development process, feel free to jump into our [Slack Channel](https://volcano-sh.slack.com) or (Signup [here](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk))
 or join our [mailing list](https://groups.google.com/forum/#!forum/volcano-sh).
 
-## Find something to work on
+### Find something to work on
 
 We are always in need of help, be it fixing documentation, reporting bugs or writing some code.
 Look at places where you feel best coding practices aren't followed, code refactoring is needed or tests are missing.
 Here is how you get started.
 
-### Find a good first topic
+#### Find a good first topic
 
 There are [multiple repositories](https://github.com/volcano-sh/) within the Volcano organization.
 Each repository has beginner-friendly issues that provide a good first issue.
@@ -75,12 +75,12 @@ We can help new contributors who wish to work on such issues.
 
 Another good way to contribute is to find a documentation improvement, such as a missing/broken link. Please see [Contributing](#contributing) below for the workflow.
 
-#### Work on an issue
+##### Work on an issue
 
 When you are willing to take on an issue, you can assign it to yourself. Just reply with `/assign` or `/assign @yourself` on an issue,
 then the robot will assign the issue to you and your name will present at `Assignees` list.
 
-### File an Issue
+##### File an Issue
 
 While we encourage everyone to contribute code, it is also appreciated when someone reports an issue.
 Issues should be filed under the appropriate Volcano sub-repository.
@@ -89,7 +89,7 @@ Issues should be filed under the appropriate Volcano sub-repository.
 
 Please follow the prompted submission guidelines while opening an issue.
 
-# Contributor Workflow
+## Contributor Workflow
 
 Please do not ever hesitate to ask a question or send a pull request.
 
@@ -102,7 +102,7 @@ This is a rough outline of what a contributor's workflow looks like:
 - Submit a pull request to [Volcano](https://github.com/volcano-sh/volcano).
 - The PR must receive an approval from two maintainers.
 
-## Creating Pull Requests
+### Creating Pull Requests
 
 Pull requests are often called simply "PR".
 Volcano generally follows the standard [github pull request](https://help.github.com/articles/about-pull-requests/) process.
@@ -113,7 +113,7 @@ The bot may also make some helpful suggestions for commands to run in your PR to
 These `/command` options can be entered in comments to trigger auto-labeling and notifications.
 Refer to its [command reference documentation](https://go.k8s.io/bot-commands).
 
-## Code Review
+### Code Review
 
 To make it easier for your PR to receive reviews, consider the reviewers will need you to:
 
@@ -122,7 +122,7 @@ To make it easier for your PR to receive reviews, consider the reviewers will ne
 * break large changes into a logical series of smaller patches which individually make easily understandable changes, and in aggregate solve a broader issue.
 * label PRs with appropriate reviewers: to do this read the messages the bot sends you to guide you through the PR process.
 
-### Format of the commit message
+#### Format of the commit message
 
 We follow a rough convention for commit messages that is designed to answer two questions: what changed and why.
 The subject line should feature the what and the body of the commit should describe the why.
@@ -149,7 +149,7 @@ The first line is the subject and should be no longer than 70 characters, the se
 
 Note: if your pull request isn't getting enough attention, you can use the reach out on Slack to get help finding reviewers.
 
-## Testing
+### Testing
 
 There are multiple types of tests.
 The location of the test code varies with type, as do the specifics of the environment needed to successfully run the test:
