@@ -45,12 +45,12 @@ Please make sure to read and observe our [Code of Conduct](https://github.com/vo
 Volcano is a community project driven by its community which strives to promote a healthy, friendly and productive environment.
 The goal of the community is to develop a volcano system which is useful for runnning high performance workloads such as AI,ML,Deep Learning Application on top of Kubernetes. To build a such volcano system at such scale requires the support of a community with similar aspirations.
 
-- See [Community Membership](https://github.com/volcano-sh/website/blob/master/content/en/docs/community-membership.md) for a list of various community roles. With gradual contributions, one can move up in the chain.
+- See [Community Membership](https://github.com/volcano-sh/volcano/blob/master/community-membership.md) for a list of various community roles. With gradual contributions, one can move up in the chain.
 
 
 ## Getting started
 
-- Read the [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/deployment.md) for build/deploy instructions.
+- Read the [setup](../installation) for build/deploy instructions.
 
 
 ## Your First Contribution
