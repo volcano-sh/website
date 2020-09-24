@@ -29,7 +29,6 @@ Volcano提供了命令行工具用于管理资源。
 
 ## 命令行列表
 ### 列举所有的Job
-vcctl job list
 
 ```shell
 # vcctl job list
@@ -38,7 +37,6 @@ job-1   2020-09-01     Running     Batch       1           1     0         1    
 ```
 
 ### 删除指定的Job
-vcctl job delete --name job-name [--namespace job-namespace]
 
 ```shell
 # vcctl delete job --name job-1 --namespaces default
@@ -46,21 +44,18 @@ delete job job-1 successfully
 ```
 
 ### 中止一个Job
-vcctl job suspend --name job-name [--namespace job-namespace]
 
 ```html
 # vcctl job suspend --name job-1 --namespace default
 ```
 
 ### 消费一个Job (与"vcctl job suspend"相反)
-vcctl job suspend --name job-name [--namespace job-namespace]
 
 ```html
 # vcctl job suspend --name job-1 --namespace default
 ```
 
 ### 运行一个Job
-vcctl job run --name job-name [--namespace job-namespace]
 
 ```shell
 # vcctl job run --name job-1 --namespace default
