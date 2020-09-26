@@ -22,24 +22,26 @@ email = ""
 interests = []
 
 [[social]]
-  icon = "envelope"
+  icon = "/img/icon_emil.png"
   icon_pack = "fas"
   link = "#contact"  # For a direct email link, use "mailto:test@example.org".
 
-[[social]]
-  icon = "twitter"
+
+
+ [[social]]
+  icon = "/img/icon_git.png"
   icon_pack = "fab"
-  link = "https://twitter.com/volcano_sh"
+  link = "https://github.com/volcano-sh/volcano"
 
 #[[social]]
- # icon = "google-scholar"
+ # icon = "/img/google-scholar"
  # icon_pack = "ai"
  # link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
 
 [[social]]
-  icon = "github"
+  icon = "/img/icon_twtter.png"
   icon_pack = "fab"
-  link = "https://github.com/volcano-sh/volcano"
+  link = "https://twitter.com/volcano_sh"
 
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
@@ -55,7 +57,7 @@ Kubernetes that are commonly required by many classes of high
 performance workload including:
 
 \-  Machine Learning/Deep Learning   
-\-  Bioinformatics/Genomics
+\-  Bioinformatics/Genomics    
 \-  Other "big data" applications
 
 These types of applications typically run on generalized domain

@@ -15,6 +15,8 @@ authors = ["王泽锋"]
 
 # Location of event.
 location = "巴塞罗那, 欧洲"
+location_img = "/img/icon_location.png"
+time_img = "/img/icon_time.png"
 
 # Name of event and optional event URL.
 event = "KubeCon欧洲峰会"

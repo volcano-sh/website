@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "架构"
-[menu.docs]
+[menu.1-0]
   parent = "home"
   weight = 2
 +++

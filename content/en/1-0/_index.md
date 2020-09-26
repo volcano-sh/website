@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-[menu.docs]
+[menu.1-0]
   parent = "home"
   weight = 1
 +++

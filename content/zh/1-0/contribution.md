@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "向volcano做贡献"
-[menu.docs]
+[menu.1-0]
   parent = "contribution"
   weight = 1
 +++

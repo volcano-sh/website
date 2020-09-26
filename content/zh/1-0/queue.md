@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "queue"
-[menu.docs]
+[menu.1-0]
   parent = "concepts"
   weight = 1
 +++

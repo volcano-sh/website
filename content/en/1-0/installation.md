@@ -1,29 +1,29 @@
 +++
-title =  "安装"
+title =  "Installation"
 
 
 date = 2019-01-28
-lastmod = 2020-09-03
+lastmod = 2020-08-29
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "安装"
-[menu.docs]
+linktitle = "Installation"
+[menu.1-0]
   parent = "getting-started"
   weight = 1
 +++
 
-上手Volcano最容易的方式是从github下载[release](https://github.com/volcano-sh/volcano/releases) ，然后按照以下步骤操作：
+The easiest way to get started with Volcano is to download the [release](https://github.com/volcano-sh/volcano/releases) from github and follow the steps given below:
 
-#### 准备
- - 一个Kubernetes集群，集群版本不低于V1.13
- - [可选项] 在您的集群中下载Helm，您可以根据以下指南安装Helm：[安装Helm](https://helm.sh/docs/using_helm/#install-helm)。(仅当您使用
- helm模式进行安装时需要)
- - 下载最新版本volcano[下载链接](https://github.com/volcano-sh/volcano/releases)
- - 解压release文件
+#### PreRequisite
+
+ - We expect you to have a cluster of Kubernetes V1.13+.
+ - [Optional] Helm should be installed in your cluster, you can follow the steps over [here](https://helm.sh/docs/using_helm/#install-helm) to install helm.(Only needed if you are installing using helm mode of deployment)
+ - Download the latest release from [here](https://github.com/volcano-sh/volcano/releases)
+ - Untar the release file
     ```shell
     #tar -xvf volcano-{Version}-linux-gnu.tar.gz
     
@@ -41,44 +41,44 @@ linktitle = "安装"
 
     
     ```
-   
-   
- #### 安装方式
-  - [通过Deployment Yaml文件方式安装](#installation-using-deployment-yaml).
-  - [通过Helm方式安装](#installation-using-helm-charts).
-  
- 
- 
- ### 通过Deployment Yaml文件方式安装
- 使用release内的文件`volcano-{Version}.yaml`创建deployment。
- 
- ```shell
- # kubectl apply -f volcano-{Version}.yaml 
- namespace/volcano-system created
- configmap/volcano-scheduler-configmap created
- serviceaccount/volcano-scheduler created
- clusterrole.rbac.authorization.k8s.io/volcano-scheduler created
- clusterrolebinding.rbac.authorization.k8s.io/volcano-scheduler-role created
- deployment.apps/volcano-scheduler created
- serviceaccount/volcano-admission created
- clusterrole.rbac.authorization.k8s.io/volcano-admission created
- clusterrolebinding.rbac.authorization.k8s.io/volcano-admission-role created
- deployment.apps/volcano-admission created
- service/volcano-admission-service created
- job.batch/volcano-admission-init created
- serviceaccount/volcano-controllers created
- clusterrole.rbac.authorization.k8s.io/volcano-controllers created
- clusterrolebinding.rbac.authorization.k8s.io/volcano-controllers-role created
- deployment.apps/volcano-controllers created
- customresourcedefinition.apiextensions.k8s.io/jobs.batch.volcano.sh created
- customresourcedefinition.apiextensions.k8s.io/commands.bus.volcano.sh created
- customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.incubator.k8s.io created
- customresourcedefinition.apiextensions.k8s.io/queues.scheduling.incubator.k8s.io created
- customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.sigs.dev created
- customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
- 
- ```
-验证Volcano各组件的运行状态
+
+#### Installation Mode
+ - [Using Deployment Yaml](#installation-using-deployment-yaml).
+ - [Using Helm Charts](#installation-using-helm-charts).
+
+
+
+### Installation using Deployment Yaml
+
+Create the deployment using the `volcano-{Version}.yaml` file present inside the release.
+
+```shell
+# kubectl apply -f volcano-{Version}.yaml 
+namespace/volcano-system created
+configmap/volcano-scheduler-configmap created
+serviceaccount/volcano-scheduler created
+clusterrole.rbac.authorization.k8s.io/volcano-scheduler created
+clusterrolebinding.rbac.authorization.k8s.io/volcano-scheduler-role created
+deployment.apps/volcano-scheduler created
+serviceaccount/volcano-admission created
+clusterrole.rbac.authorization.k8s.io/volcano-admission created
+clusterrolebinding.rbac.authorization.k8s.io/volcano-admission-role created
+deployment.apps/volcano-admission created
+service/volcano-admission-service created
+job.batch/volcano-admission-init created
+serviceaccount/volcano-controllers created
+clusterrole.rbac.authorization.k8s.io/volcano-controllers created
+clusterrolebinding.rbac.authorization.k8s.io/volcano-controllers-role created
+deployment.apps/volcano-controllers created
+customresourcedefinition.apiextensions.k8s.io/jobs.batch.volcano.sh created
+customresourcedefinition.apiextensions.k8s.io/commands.bus.volcano.sh created
+customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.incubator.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/queues.scheduling.incubator.k8s.io created
+customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.sigs.dev created
+customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
+
+```
+Verify the running components of Volcano
 ```shell
 # kubectl get all -n volcano-system
 NAME                                       READY   STATUS      RESTARTS   AGE
@@ -108,37 +108,38 @@ NAME                               COMPLETIONS   DURATION   AGE
 job.batch/volcano-admission-init   1/1           28s        6m10s
 
 ```
-一切配置就绪，您可以开始使用Volcano部署AI/ML和大数据负载了。
 
-### 使用Helm安装
+You are all set now, you can start using the Volcano to deploy the AI/ML and Big Data Workloads.
 
-如果您想使用Helm部署Volcano，请先确认已经在您的集群中安装了Helm。
+### Installation using Helm Charts
 
-###### 准备
-如果您的Helm已经配置了serviceaccount，您可以跳过这一步。否则，请执行以下命令为tiller创建一个serviceaccount。
+If you want to use helm to deploy Volcano then make sure you have helm installed in your cluster.
+
+###### Prerequisite:
+If your helm already has serviceaccount configured then you can skip this step, otherwise execute the following command to create a serviceaccount for tiller.
 
 ```shell
 # helm init --service-account tiller --kubeconfig ${KUBECONFIG} --wait --upgrade
 $HELM_HOME has been configured at /root/.helm.
 
-Tiller (Helm内部的服务侧组件)已经安装到您的Kubernetes集群。
+Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
 
-请注意：默认情况下，Tiller是使用不安全的'allow unauthenticated users'策略进行部署的。
-为了避免这种情况，使用--tiller-tls-verify参数运行命令`helm init`。
-如果想了解更多关于安装过程中的安全信息，请查看：https://docs.helm.sh/using_helm/#securing-your-helm-installation。
+Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
+To prevent this, run `helm init` with the --tiller-tls-verify flag.
+For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
 
 ```
 
-###### 步骤：1
-创建一个新的命名空间。
+###### Step: 1 
+Create a new namespace
 ```shell
 # kubectl create namespace volcano-system
 namespace/volcano-system created
 
 ``` 
 
-###### 步骤：2
-使用Helm进行安装。
+###### Step: 2
+Installing using helm charts
 ```shell
 # helm install helm/chart/volcano --namespace volcano-system --name volcano
 NAME:   volcano
@@ -207,8 +208,9 @@ https://volcano.sh/
 
 ```
 
-###### 步骤：3
-验证Volcano各组件的运行状态。
+###### Step: 3 
+
+Verify the running components of Volcano
 ```shell
 # kubectl get all -n volcano-system
 NAME                                       READY   STATUS              RESTARTS   AGE
@@ -239,4 +241,4 @@ job.batch/volcano-admission-init   0/1           4m42s      4m42s
 
 ```
 
-现在您已经完成了Volcano的全部安装，您可以运行如下的例子测试安装的正确性：[样例](https://github.com/volcano-sh/volcano/tree/master/example)
+Now you are all set to use Volcano, you can run some example over [here](https://github.com/volcano-sh/volcano/tree/master/example) to test your installation.

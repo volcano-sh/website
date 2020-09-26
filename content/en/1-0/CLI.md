@@ -3,71 +3,73 @@ title = "CLI"
 
 
 date = 2019-01-28
-lastmod = 2020-09-04
+lastmod = 2020-09-01
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "命令行"
-[menu.docs]
+linktitle = "Commandline"
+[menu.1-0]
   parent = "cli"
   weight = 1
 +++
 
-### 简介
-Volcano提供了命令行工具用于管理资源。
-## 配置
+## Introduction
+Volcano also provides commandline client to manage resources.
+## Configuration
 
-1. 您可以获取release包**volcano-{version}-linux-gnu.tar.gz**中的命令行可执行文件**vcctl**。这个文件存放在解压后的volcano-{version}-linux-gnu\bin\amd64
-路径下。当然，您也可以自己从github上克隆代码并在项目的根目录下执行以下命令制作最新的可执行文件：
-```shell
+1. You can get commandline executable file **vcctl** from releases package **volcano-{version}-linux-gnu.tar.gz**. The 
+file is under the path volcano-{version}-linux-gnu\bin\amd64 after unzipping the package. Of course, you can also make
+your own executable file by cloning the code from github and execute the following command under the project root 
+directory:
+```
 # make vcctl
 ``` 
-2. 将可执行文件拷贝到$PATH下以便您能在任何地方执行它。
+2. Copy the executable file to $PATH so that you can use it anywhere.
 
-## 命令行列表
-### 列举所有的Job
+## Commandline List
+### list all jobs
 vcctl job list
 
-```shell
+```html
 # vcctl job list
 Name    Creation       Phase       JobType     Replicas    Min   Pending   Running   Succeeded   Failed    Unknown     RetryCount
 job-1   2020-09-01     Running     Batch       1           1     0         1         0           0         0           0        
 ```
 
-### 删除指定的Job
+### delete a job with job name
 vcctl job delete --name job-name [--namespace job-namespace] 
 
-```shell
+```html
 # vcctl delete job --name job-1 --namespaces default
 delete job job-1 successfully
 ```
 
-### 中止一个Job
+### abort a job
 vcctl job suspend --name job-name [--namespace job-namespace]
 
 ```html
 # vcctl job suspend --name job-1 --namespace default
 ```
 
-### 消费一个Job (与"vcctl job suspend"相反)
+### resume a job (opposite to "vcctl job suspend")
 vcctl job suspend --name job-name [--namespace job-namespace]
 
 ```html
 # vcctl job suspend --name job-1 --namespace default
 ```
 
-### 运行一个Job
+### run a job
 vcctl job run --name job-name [--namespace job-namespace]
 
-```shell
+```html
 # vcctl job run --name job-1 --namespace default
 ```
 
-## 说明事项
-如需获取更多命令行详情请按如下操作:
+## Note
+For more details please type as follows:
 
 ```html
 # vcctl -h

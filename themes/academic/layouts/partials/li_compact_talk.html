@@ -31,10 +31,10 @@
   <div class="media-body">
     {{ if eq $item.Type "talk" }}
 
-    <div class="col-12 col-sm-7" style="padding: 20px 0 10px 30px;float: left;"><!-- talks -->
+    <div class="col-12 col-sm-7" style="padding: 20px 0 10px 0px;float: left;"><!-- talks -->
       <div style="display: block;">
-        <h3 class="article-title mb-0 mt-0" itemprop="name" style="font-size: 20px;padding-bottom: 10px;color: #d6d5da;">
-          <a href="{{ $item.RelPermalink }}" itemprop="url" style="color: #5b5a5a;">{{ $item.Title }}</a>
+        <h3 class="article-title mb-0 mt-0" itemprop="name" style="font-size: 24px;padding-bottom: 10px;">
+          <a href="{{ $item.RelPermalink }}" itemprop="url" style="color: #c7000b !important;">{{ $item.Title }}</a>
         </h3>
          <div style="font-size: 12px;border-radius: 5px;color: #999;width: 85px;text-align: center; margin:10px 0 15px">
          {{ partial "page_metadata_authors" $ }}
@@ -42,10 +42,26 @@
       </div>
   
       {{ with $summary }}
-      <div class="article-style" itemprop="articleBody" style="font-size: 14px;color: #5b5a5a;">{{ . | truncate 220 }}</div>
+      <div class="article-style" itemprop="articleBody" style="font-size: 14px;color: #575d6d;">{{ . | truncate 220 }}</div>
 
       <div>
-        <div itemprop="startDate" class="talkswords" style="color: #999999;">
+        <!-- <div itemprop="startDate" class="talkswords" style="color: #999999;">
+          {{ $date := $item.Date }}
+          {{ (time $date).Format $.Site.Params.date_format }}
+          {{ if not $item.Params.all_day }}
+            {{ (time $date).Format ($.Site.Params.time_format | default "3:04 PM") }}
+            {{ with $item.Params.date_end }}
+            &mdash; {{ (time .).Format ($.Site.Params.time_format | default "3:04 PM") }}
+            {{ end }}
+          {{ end }}
+        </div> -->
+        <!-- <div >{{ with $item.Params.location }}</div> -->
+        
+        <!-- <span class="middot-divider"></span> -->
+       <!--  <div itemprop="location" class="talkswords" style="margin-top: 5px;color: #999999;">{{ . }}</div>
+        {{ end }} -->
+        <div itemprop="startDate" class="talkswords">
+          <img src="{{$item.Params.time_img }}" style="float:left;margin-right: 10px;"  />
           {{ $date := $item.Date }}
           {{ (time $date).Format $.Site.Params.date_format }}
           {{ if not $item.Params.all_day }}
@@ -55,11 +71,18 @@
             {{ end }}
           {{ end }}
         </div>
-        <div >{{ with $item.Params.location }}</div>
+        <div>{{ with $item.Params.location }}</div>
         
         <!-- <span class="middot-divider"></span> -->
-        <div itemprop="location" class="talkswords" style="margin-top: 5px;color: #999999;">{{ . }}</div>
+        <div itemprop="location" class="talkswords" style="margin-top: 5px;">
+          <img src="{{$item.Params.location_img }}" style="float:left;margin-right: 10px;"  />
+          <span>{{ . }}</span>
+        </div>
         {{ end }}
+
+
+
+
       </div>
     </div> 
 

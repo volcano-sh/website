@@ -15,6 +15,8 @@ authors = ["Kevin Wang"]
 
 # Location of event.
 location = "Barcelona, Europe"
+location_img = "/img/icon_location.png"
+time_img = "/img/icon_time.png"
 
 # Name of event and optional event URL.
 event = "KubeCon Europe"

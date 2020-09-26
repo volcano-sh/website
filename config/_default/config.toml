@@ -6,7 +6,7 @@
 
 # Title of your site
 title = "Volcano"
-
+ 
 # The URL of your site.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
 baseurl = "/"
@@ -60,3 +60,12 @@ preserveTaxonomyNames = true
   category = "categories"
   publication_type = "publication_types"
   author = "authors"
+[params]
+  version_menu = "Documentation"
+
+[[params.versions]]
+  name = "v1.0"
+  url = "1-0/"
+
+
+

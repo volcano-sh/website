@@ -7,7 +7,7 @@ active = true
 date = 2016-04-20T00:00:00
 
 title = "Why Volcano"
-subtitle = "Are you planning to Deploy any of the below workloads on Kubernetes? &#13;&#10; If Yes then Volcano is the right choice for your Deployment framework. "
+subtitle = "The best solution for deploying high-performance applications in a Kubernetes cluster "
 
 # Order that this section will appear in.
 weight = 72
