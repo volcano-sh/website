@@ -10,9 +10,9 @@ subtitle = "您是否计划在Kubernetes集群中部署高性能负载?"
 weight = 6
 
 # Showcase personal skills or business features.
-# 
+#
 # Add/remove as many `[[feature]]` blocks below as you like.
-# 
+#
 # For available icons, see: https://sourcethemes.com/academic/docs/widgets/#icons
 
 [[feature]]
@@ -20,13 +20,13 @@ weight = 6
   icon_pack = "fab"
   name = "R"
   description = "90%"
-  
+
 [[feature]]
   icon = "chart-line"
   icon_pack = "fas"
   name = "Statistics"
-  description = "100%"  
-  
+  description = "100%"
+
 [[feature]]
   icon = "camera-retro"
   icon_pack = "fas"
@@ -37,13 +37,13 @@ weight = 6
   img_width = "100px"
   name = "Kubernetes"
   description = "Gaps for High Performance Workloads"
-  
+
 [[featured]]
   img_src = "mosquitto-200.png"
   img_width = "100px"
   name = "Mosquitto"
-  description = "Eclipse Mosquitto is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 3.1 and 3.1.1. Mosquitto is lightweight and is suitable for use on all devices from low power single board computers to full servers."  
-  
+  description = "Eclipse Mosquitto is an open source (EPL/EDL licensed) message broker that implements the MQTT protocol versions 3.1 and 3.1.1. Mosquitto is lightweight and is suitable for use on all devices from low power single board computers to full servers."
+
 [[featured]]
   img_src = "docker-200.png"
   img_width = "100px"

@@ -6,7 +6,7 @@
 
 # Title of your site
 title = "Volcano"
- 
+
 # The URL of your site.
 # End your URL with a `/` trailing slash, e.g. `https://example.com/`.
 baseurl = "/"
@@ -37,7 +37,7 @@ hasCJKLanguage = true  # Set `true` for Chinese/Japanese/Korean languages.
 defaultContentLanguageInSubdir = true
 
 paginate = 10  # Number of items per page in paginated lists.
-enableEmoji = true
+enableEmoji = false
 footnotereturnlinkcontents = "<sup>^</sup>"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
 preserveTaxonomyNames = true
@@ -60,12 +60,3 @@ preserveTaxonomyNames = true
   category = "categories"
   publication_type = "publication_types"
   author = "authors"
-[params]
-  version_menu = "Documentation"
-
-[[params.versions]]
-  name = "v1.0"
-  url = "1-0/"
-
-
-

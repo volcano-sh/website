@@ -65,18 +65,18 @@
   {{ $i18n = "more_pages" }}
 {{ end }}
 
-<div class="row"> 
+<div class="row">
   <!-- change -->
   <div class="col-12 section-heading" style="text-align: center;padding-bottom: 10px;">
   <!-- <h1 style="font-size: 22px !important;font-weight: bold;">{{ with $st.Title }}{{ . | markdownify | emojify }}{{ end }}</h1> -->
   {{ if eq  $st.Title  "Recent & Upcoming Talks"}}
-  <h1 style="font-size: 24px !important;color:#252b3a;font-weight: bold;">{{ $st.Title | markdownify | emojify }}</h1>
-  {{ else if eq  $st.Title  "历史和近期讲座"}}
-  <h1 style="font-size: 24px !important;color:#252b3a;font-weight: bold;">{{ $st.Title | markdownify | emojify }}</h1>
+  <h1 style="font-size: 22px !important;color:#fff;">{{ $st.Title | markdownify | emojify }}</h1>
+  {{ else if eq  $st.Title  "讲座"}}
+  <h1 style="font-size: 22px !important;color:#fff;">{{ $st.Title | markdownify | emojify }}</h1>
   {{ else }}
-  <h1 style="font-size: 24px !important;color:#252b3a;font-weight: bold;margin-bottom: 30px !important;">{{ $st.Title | markdownify | emojify }}</h1>
+  <h1 style="font-size: 22px !important;font-weight: bold;">{{ $st.Title | markdownify | emojify }}</h1>
   {{ end }}
-  
+
   </div>
   <div class="col-12">
 
@@ -95,7 +95,7 @@
     {{end}}
 
 <!-- view all -->
-  {{ with $st.Params.subtitle }}<p style="text-align: center;font-size: 14px;margin-bottom: 16px;">{{ . | markdownify | emojify }}</p>{{ end }}
+  {{ with $st.Params.subtitle }}<p style="text-align: center;font-size: 16px;">{{ . | markdownify | emojify }}</p>{{ end }}
 
     {{ if gt $count $items_count }}
     <div class="see-all">

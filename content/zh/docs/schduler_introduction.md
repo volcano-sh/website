@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "概览"
-[menu.1-0]
+[menu.docs]
   parent = "scheduler"
   weight = 1
 +++
@@ -21,7 +21,7 @@ Volcano Scheduler是负责Pod调度的组件，它由一系列action和plugin组
 中算法的具体实现细节。Volcano scheduler具有高度的可扩展性，您可以根据需要实现自己的action和plugin。
 
 ### 工作流
-{{<figure library="1" src="scheduler.PNG" title="Volcano scheduler workflow">}}
+{{<figure library="1" src="scheduler.PNG" title="Volcano scheduler工作流">}}
 
 Volcano scheduler的工作流程如下：
 
@@ -34,11 +34,11 @@ Volcano scheduler的工作流程如下：
 
 ## Actions
 ### enqueue
-Enqueue action负责通过一系列的过滤算法筛选出符合要求的待调度任务并将它们送入待调度队列。经过这个action，任务的状态将由pending变为inqueue。 
+Enqueue action负责通过一系列的过滤算法筛选出符合要求的待调度任务并将它们送入待调度队列。经过这个action，任务的状态将由pending变为inqueue。
 ### allocate
-Allocate action负责通过一系列的预选和优选算法筛选出最适合的节点。 
+Allocate action负责通过一系列的预选和优选算法筛选出最适合的节点。
 ### preempt
-Preempt action负责根据优先级规则为同一队列中高优先级任务执行抢占调度。 
+Preempt action负责根据优先级规则为同一队列中高优先级任务执行抢占调度。
 ### reclaim
 Reclaim action负责当一个新的任务进入待调度队列，但集群资源已不能满足该任务所在队列的要求时，根据队列权重回收队列应得资源。
 ### backfill
@@ -64,8 +64,7 @@ task.priorityClassName、task.createTime、task.id in order来决定谁的优先
 接口自定义实现。scheduler的配置位于名为**volcano-scheduler-configmap**的configmap内，该configmap被作为volume挂载在容器的/volcano.scheduler
 路径下。
 ### 如何查看Volcano scheduler的配置
-
-1. 查看名为volcano-scheduler-configmap的configmap
+* 查看名为volcano-scheduler-configmap的configmap
 
 ```shell
 # kubectl get configmap -nvolcano-system
@@ -73,7 +72,7 @@ NAME                          DATA   AGE
 volcano-scheduler-configmap   1      6d2h
 ```
 
-2. 查看configmap的data部分详情
+* 查看configmap的data部分详情
 
 ```shell
 # kubectl get configmap volcano-scheduler-configmap -nvolcano-system -oyaml

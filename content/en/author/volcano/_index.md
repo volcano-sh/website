@@ -22,26 +22,24 @@ email = ""
 interests = []
 
 [[social]]
-  icon = "/img/icon_emil.png"
+  icon = "envelope"
   icon_pack = "fas"
   link = "#contact"  # For a direct email link, use "mailto:test@example.org".
 
-
-
- [[social]]
-  icon = "/img/icon_git.png"
+[[social]]
+  icon = "twitter"
   icon_pack = "fab"
-  link = "https://github.com/volcano-sh/volcano"
+  link = "https://twitter.com/volcano_sh"
 
 #[[social]]
- # icon = "/img/google-scholar"
+ # icon = "google-scholar"
  # icon_pack = "ai"
  # link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
 
 [[social]]
-  icon = "/img/icon_twtter.png"
+  icon = "github"
   icon_pack = "fab"
-  link = "https://twitter.com/volcano_sh"
+  link = "https://github.com/volcano-sh/volcano"
 
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
@@ -56,8 +54,8 @@ Kubernetes.  It provides a suite of mechanisms currently missing from
 Kubernetes that are commonly required by many classes of high
 performance workload including:
 
-\-  Machine Learning/Deep Learning   
-\-  Bioinformatics/Genomics    
+\-  Machine Learning/Deep Learning
+\-  Bioinformatics/Genomics
 \-  Other "big data" applications
 
 These types of applications typically run on generalized domain

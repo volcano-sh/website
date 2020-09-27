@@ -7,15 +7,15 @@ active = true
 date = 2016-04-20T00:00:00
 
 title = "Why Volcano"
-subtitle = "The best solution for deploying high-performance applications in a Kubernetes cluster "
+subtitle = "Are you planning to Deploy any of the below workloads on Kubernetes? &#13;&#10; If Yes then Volcano is the right choice for your Deployment framework. "
 
 # Order that this section will appear in.
 weight = 72
 
 # Showcase personal skills or business features.
-# 
+#
 # Add/remove as many `[[feature]]` blocks below as you like.
-# 
+#
 # Available icon packs and icons:
 # * fas - Font Awesome standard icons (see https://fontawesome.com/icons)
 # * fab - Font Awesome brand icons (see https://fontawesome.com/icons)
@@ -25,7 +25,7 @@ weight = 72
   img_src = "kubeflow.png"
   img_width = "100px"
   img_height = "60px"
-  name = "kubeflow" 
+  name = "kubeflow"
   url = "https://www.kubeflow.org/ "
   description = "The Kubeflow project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable and scalable."
 
@@ -92,7 +92,7 @@ weight = 72
   img_height = "60px"
   name = "spark"
   url = "https://spark.apache.org/ "
-  description = "Apache Spark™ is a unified analytics engine for large-scale data processing."  
+  description = "Apache Spark™ is a unified analytics engine for large-scale data processing."
 
 [[featured]]
   img_src = "volcano_mindspore.PNG"

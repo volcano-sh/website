@@ -104,7 +104,7 @@
 # Talks widget
 
 - id: more_talks
-  translation: 更多演讲
+  translation: 更多讲座
 
 # Contact widget
 
@@ -189,7 +189,7 @@
   translation: 出版物
 
 - id: talks
-  translation: 演讲
+  translation: 讲座
 
 - id: projects
   translation: 项目

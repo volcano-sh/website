@@ -13,7 +13,6 @@ draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
 authors = ["Volcano"]
-authors_img = "/img/icon_user.png"
 
 tags = ["Tutorials"]
 summary = "A wide range of customer base for Kube-Batch"
@@ -26,7 +25,7 @@ linktitle = "Customers of Kube-Batch"
 +++
 ## Who is using Kube-Batch?
 
-| Organization | Contact(Github User Name) | Environment | Description of Use |
+| Organization | Contact (Github User Name) | Environment | Description of Use |
 | ------------- | ------------- | ------------- | ------------- |
 | [Baidu Inc](http://www.baidu.com) |[@tizhou86](https://github.com/tizhou86)| Production | The scheduler for PaddlePaddle offline training |
 | [Tusimple](https://www.tusimple.com)| [@suleisl2000](https://github.com/suleisl2000) | | The scheduler for MxNet offline training |

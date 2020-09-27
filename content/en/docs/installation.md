@@ -11,14 +11,14 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "Installation"
-[menu.1-0]
+[menu.docs]
   parent = "getting-started"
   weight = 1
 +++
 
 The easiest way to get started with Volcano is to download the [release](https://github.com/volcano-sh/volcano/releases) from github and follow the steps given below:
 
-#### PreRequisite
+## PreRequisite
 
  - We expect you to have a cluster of Kubernetes V1.13+.
  - [Optional] Helm should be installed in your cluster, you can follow the steps over [here](https://helm.sh/docs/using_helm/#install-helm) to install helm.(Only needed if you are installing using helm mode of deployment)
@@ -26,9 +26,9 @@ The easiest way to get started with Volcano is to download the [release](https:/
  - Untar the release file
     ```shell
     #tar -xvf volcano-{Version}-linux-gnu.tar.gz
-    
+
     #cd volcano-{Version}-linux-gnu
-    
+
     #ll
     total 60
     drwxr-xr-x  4 root1 root1  4096 Jul 23 11:38 ./
@@ -39,10 +39,10 @@ The easiest way to get started with Volcano is to download the [release](https:/
     -rw-r--r--  1 root1 root1  4169 Jul 16 16:15 README.md
     -rw-r--r--  1 root1 root1 23453 Jul 16 16:15 volcano-{Version}.yaml
 
-    
+
     ```
 
-#### Installation Mode
+## Installation Mode
  - [Using Deployment Yaml](#installation-using-deployment-yaml).
  - [Using Helm Charts](#installation-using-helm-charts).
 
@@ -53,7 +53,7 @@ The easiest way to get started with Volcano is to download the [release](https:/
 Create the deployment using the `volcano-{Version}.yaml` file present inside the release.
 
 ```shell
-# kubectl apply -f volcano-{Version}.yaml 
+# kubectl apply -f volcano-{Version}.yaml
 namespace/volcano-system created
 configmap/volcano-scheduler-configmap created
 serviceaccount/volcano-scheduler created
@@ -113,30 +113,15 @@ You are all set now, you can start using the Volcano to deploy the AI/ML and Big
 
 ### Installation using Helm Charts
 
-If you want to use helm to deploy Volcano then make sure you have helm installed in your cluster.
+If you want to use helm to deploy Volcano then make sure you have [helm](https://helm.sh/docs/intro/install) installed in your cluster.
 
-###### Prerequisite:
-If your helm already has serviceaccount configured then you can skip this step, otherwise execute the following command to create a serviceaccount for tiller.
-
-```shell
-# helm init --service-account tiller --kubeconfig ${KUBECONFIG} --wait --upgrade
-$HELM_HOME has been configured at /root/.helm.
-
-Tiller (the Helm server-side component) has been installed into your Kubernetes Cluster.
-
-Please note: by default, Tiller is deployed with an insecure 'allow unauthenticated users' policy.
-To prevent this, run `helm init` with the --tiller-tls-verify flag.
-For more information on securing your installation see: https://docs.helm.sh/using_helm/#securing-your-helm-installation
-
-```
-
-###### Step: 1 
+###### Step: 1
 Create a new namespace
 ```shell
 # kubectl create namespace volcano-system
 namespace/volcano-system created
 
-``` 
+```
 
 ###### Step: 2
 Installing using helm charts
@@ -208,7 +193,7 @@ https://volcano.sh/
 
 ```
 
-###### Step: 3 
+###### Step: 3
 
 Verify the running components of Volcano
 ```shell
