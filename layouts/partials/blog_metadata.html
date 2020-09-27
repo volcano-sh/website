@@ -14,10 +14,13 @@
       {{ $date = $.Date.Format ($.Site.Params.publications.date_format | default "January, 2006") }}
     {{ else }}
       {{ if ne $.Params.Lastmod $.Params.Date }}
-          {{ i18n "last_updated" }}
+          <img src="/img/icon_data.png" style="float: left;">
       {{ end }}
     {{ end }}
-    <time>{{ $date }}</time>
+    <!-- <time style="float: left; margin-top: -7px; margin-left: 10px;">{{ $date }}</time> -->
+    <time style="float: left; margin-left: 10px;margin-top: -7px;">{{ $.Site.Params.date_format }}</time>
+    <img src="/img/icon_user.png" style="float: left; margin-left: 30px;">
+    <span style=" float: left;margin-top: -7px;margin-left: 10px;margin-bottom: 30px;">{{$.Params.Authors}}</span>
   </span>
   {{ end }}
 

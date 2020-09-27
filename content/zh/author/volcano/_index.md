@@ -4,7 +4,7 @@ name = "Volcano"
 
 # Is this the primary user of the site?
 superuser = true
-
+ 
 # Role/position
 role = "一个用于高性能工作负载场景下基于Kubernetes的容器批量调度引擎"
 
@@ -22,25 +22,26 @@ email = ""
 interests = []
 
 [[social]]
-  icon = "envelope"
+  icon = "/img/icon_emil.png"
   icon_pack = "fas"
   link = "#contact"  # For a direct email link, use "mailto:test@example.org".
 
-[[social]]
-  icon = "twitter"
+
+
+ [[social]]
+  icon = "/img/icon_git.png"
   icon_pack = "fab"
-  link = "https://twitter.com/volcano_sh"
+  link = "https://github.com/volcano-sh/volcano"
 
 #[[social]]
- # icon = "google-scholar"
+ # icon = "/img/google-scholar"
  # icon_pack = "ai"
  # link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
 
 [[social]]
-  icon = "github"
+  icon = "/img/icon_twtter.png"
   icon_pack = "fab"
-  link = "https://github.com/volcano-sh/volcano"
-
+  link = "https://twitter.com/volcano_sh"
 # Link to a PDF of your resume/CV from the About widget.
 # To enable, copy your resume/CV to `static/files/cv.pdf` and uncomment the lines below.
 # [[social]]
@@ -53,8 +54,8 @@ Volcano是在Kubernetes上运行高性能工作负载的容器批量计算引擎
 它提供了Kubernetes目前缺少的一套机制，这些机制通常是许多高性能
 工作负载所必需的，包括：
 
-\-  机器学习/深度学习
-\-  生物学计算/基因计算
+\-  机器学习/深度学习   
+\-  生物学计算/基因计算    
 \-  大数据应用
 
 
