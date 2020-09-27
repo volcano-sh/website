@@ -9,7 +9,8 @@
  **************************************************/
 
 html {
-  font-family: '{{ .Get "body_font" }}', sans-serif;
+  /*font-family: '{{ .Get "body_font" }}', sans-serif;*/
+  font-family: HuaweiSansMedium Regula;
   font-size: {{ .Get "font_size_small" }}px;
   color: rgba(0,0,0,0.8);
   line-height: 1.65;
@@ -20,8 +21,11 @@ html {
   }
 }
 
+
+
 body {
-  font-family: inherit;
+  /*font-family: inherit;*/
+  font-family: HuaweiSansMedium Regula;
   font-size: 1rem;
   line-height: inherit;
   color: inherit;
@@ -64,7 +68,8 @@ ul, ol, dl {
 
 /* Navigation bar text */
 .navbar-light {
-  font-family: '{{ .Get "nav_font" }}', sans-serif;
+  /*font-family: '{{ .Get "nav_font" }}', sans-serif;*/
+  font-family: HuaweiSansMedium Regula;
   font-weight: 400;
   line-height: 1.25;
   text-rendering: optimizeLegibility;
@@ -72,7 +77,8 @@ ul, ol, dl {
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
-  font-family: '{{ .Get "heading_font" }}', sans-serif;
+  /*font-family: '{{ .Get "heading_font" }}', sans-serif;*/
+  font-family: HuaweiSansMedium Regula;
   font-weight: 400;
   margin-top: 1rem;
   margin-bottom: .5rem;
@@ -110,7 +116,8 @@ h4, h5, h6 {
 
 a,
 h3.article-title a:hover {
-  color: {{ .Get "link" }};
+  /*color: {{ .Get "link" }};*/
+  color: #c8000b;
   text-decoration: none;
   transition: color 0.6s ease;
 }
@@ -144,7 +151,8 @@ figcaption {
   line-height: 1.25;
   font-size: 1rem;
   margin-bottom: 1.65rem;
-  font-family: '{{ .Get "heading_font" }}', sans-serif;
+  /*font-family: '{{ .Get "heading_font" }}', sans-serif;*/
+  font-family: HuaweiSansMedium Regula;
 }
 
 figcaption.numbered:before {
@@ -166,7 +174,8 @@ figcaption h4 {
 
 pre,
 code {
-  font-family: '{{ .Get "mono_font" }}', monospace;
+  /*font-family: '{{ .Get "mono_font" }}', monospace;*/
+  font-family: HuaweiSansMedium Regula;
   color: #c7254e;
   background-color: #f9f2f4;
 }
@@ -329,7 +338,8 @@ small,
 }
 
 #search-box::before {
-  font-family: 'Font Awesome 5 Free';
+  /*font-family: 'Font Awesome 5 Free';*/
+  font-family: HuaweiSansMedium Regula;
   font-weight: 900;
   content: "\f002";
   font-size: 1rem;
@@ -725,28 +735,32 @@ a.hero-cta-alt:hover {
 .row .fontsizee{
  font-size: 16px;
 }
-
+.row .fontsizee p{
+ font-size: 14px;
+ color: #575d67;
+}
 .row .fontsizee hr{
-  background: #f2f2f3 !important;
+  background: #f0f1f3 !important;
   background-image: none !important;
+  width: 596px;
 }
 /********************change  over*/
 #profile {
   text-align: center;
-  padding: 30px 10px;
+ /* padding: 30px 10px;*/
   position: relative;
-  padding-top: 40px !important;
+  padding-top: 8px !important;
 }
 
 #profile .portrait{
   width: auto !important;
-  height: 270px !important;
+  height: 300px !important;
   margin: 0 auto;
   border-radius: 50%;
   object-fit: cover;
 }
 .portrait-title{
-  height: 40px;
+  height: 46px;
 }
 .portrait-title h2 {
   font-size: 1.75em;
@@ -885,7 +899,9 @@ ul.share li i {
   font-size: 16px;
   text-align: center;
   transition: all 150ms ease-in-out;
-  color: #fff;
+  color: #fff !important;
+    background-color: #1ea1f3;
+    border-radius: 50%;
 }
 
 .dark ul.share li i {
@@ -942,18 +958,20 @@ article {
 }
 
 .split-header-content {
-  max-width: 612px;
+  max-width: 900px;
   width: 100%;
-  padding: 60px 60px 32px 0;
-  margin-left: auto;
+  padding: 60px 0px 0px 20px;
+  margin-right: auto;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 .split-header-image {
-  position: relative; /* Required for caption positioning */
+  /*position: relative;  Required for caption positioning */
   clear: both;
   max-width: 580px;
+  width: 260px;
+  height: 160px;
 }
 
 .article-header {
@@ -1022,8 +1040,9 @@ article {
 }
 
 .article-title a {
-  color: #151515;
+  color: #252b3b !important;
   transition: color 0.6s ease;
+
 }
 
 .text-muted {
@@ -1115,7 +1134,7 @@ article .article-metadata {
 }
 
 .hr-light {
-  border-top: 1px solid rgba(0,0,0,.05);
+  border-top: 5px solid #c7000b;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
@@ -1324,6 +1343,11 @@ article .article-metadata {
 /*************************************************
  * Talks
  **************************************************/
+#talks{
+  background-image: url(/img/bg_2.png);
+  background-repeat: no-repeat;
+  background-size: 100%  100%;
+}
 
 .talk-metadata {
   color: #4b4f56;
@@ -1331,7 +1355,7 @@ article .article-metadata {
 }
 .talkswords{
     font-size: 12px;
-    color: #d0cdcd;
+    color: #252b3b;
     margin: 30px 0 0px;
 }
 
@@ -1533,7 +1557,8 @@ article .article-metadata {
   transform: translate(0, -50%);
   opacity: 0;
   transition: all 0.2s ease-out;
-  font-family: 'Font Awesome 5 Free';
+  /*font-family: 'Font Awesome 5 Free';*/
+  font-family: HuaweiSansMedium Regula;
   font-weight: 900;
   content: '\f0c1';
   text-align: center;
@@ -1695,6 +1720,7 @@ a.badge:hover {
 .btn-outline-primary {
   border-color: {{ .Get "primary" }};
   color: {{ .Get "primary" }};
+      background-color: #fff;
 }
 
 .btn-primary:hover,
@@ -1831,6 +1857,14 @@ nav#navbar-main li.nav-item {
 
 
 /*******************change*/
+.home-section{
+  padding: 60px 0 40px 0;
+}
+.carousel-indicators .active {
+    background-color: #eb1616;
+}
+
+
 .container .changeicon{
   display: inline-flex !important;
   margin: 10px 0 5px;
@@ -1841,7 +1875,7 @@ nav#navbar-main li.nav-item {
   width: 200px;
   border-radius: 5px;
   height: 35px;
-  line-height: 35px;
+  line-height: 34px;
   background-color: #F2F2F3 !important;
   color: #B1B3BA;
   font-size: 14px;
@@ -1859,14 +1893,17 @@ nav#navbar-main li.nav-item {
   border: none;
   padding-left: 10px;
   z-index: 0;
+  color: #8a8e99;
+  font-size: 12px;
 }
 
 .container .changehover .nav-item a{
-  color: #444957 !important;
+  color: #575d6d !important;
   font-weight: normal !important;
   margin-right: 25px;
   position: relative;
   top: -5px;
+  font-size: 14px;
 }
 /*.container .changehover .nav-item a i{
   position: absolute;
@@ -1875,7 +1912,8 @@ nav#navbar-main li.nav-item {
 
 .container .changehover .nav-item a:hover{
   border-bottom: 3px solid #eb1616 !important;
-  color: #eb1616 !important;
+  color: #c8000B !important;
+  font-weight: bold !important;
 }
 
 /*******************change over*/
@@ -2105,7 +2143,8 @@ div.alert > div:first-child::before {
   left: -2rem;
   font-size: 1.5rem;
   color: #209cee;
-  font-family: 'Font Awesome 5 Free';
+  /*font-family: 'Font Awesome 5 Free';*/
+  font-family: HuaweiSansMedium Regula;
   font-weight: 900;
   content: '\f05a';
   width: 1.5rem;
@@ -2113,7 +2152,8 @@ div.alert > div:first-child::before {
 }
 
 div.alert-warning > div:first-child::before {
-  font-family: 'Font Awesome 5 Free';
+  /*font-family: 'Font Awesome 5 Free';*/
+  font-family: HuaweiSansMedium Regula;
   font-weight: 900;
   color: #ff3860;
   content: '\f071';
@@ -2559,4 +2599,17 @@ body.dark,
 .dark .btn-primary,
 .dark .btn.btn-primary.active {
   color: initial;
+}
+
+.container {
+    max-width: 1200px;
+}
+
+
+.container #slider span #shadoe-root .widget-lg .btn{
+  height: 40px !important;
+    padding: 3px 10px !important;
+    font-size: 12px !important;
+    line-height: 35px !important;
+  background-color: #575d6c !important;
 }

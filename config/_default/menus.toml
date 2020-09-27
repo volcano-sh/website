@@ -30,63 +30,33 @@
   url = "#required"
   weight = 5
 
-[[main]]
-  name = "Documentation"
-  url = "docs/"
-  weight = 6
+
+#[[main]]
+  #name = "Documentation"
+  #url = "docs/"
+  #weight = 6
 
 
+ 
 [[main_right]]
-  name = "<i class=\"fab fa-github\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-github\" style=\"color: #000000; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   url = "https://github.com/volcano-sh/"
   weight = 10
 
 [[main_right]]
-  name = "<i class=\"fab fa-twitter\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-twitter\" style=\"color: #1ea1f3; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   url = "https://twitter.com/volcano_sh"
   weight = 20
 
 [[main_right]]
-  name = "<i class=\"fab fa-slack\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  
+  name = "<img src=\"/img/icon_slack.png\" style=\" font-size: 1rem; line-height: 1.25; width:20px; height:20px; margin-top: 11px;\">"
   post = ""
   url = "https://volcano-sh.slack.com"
   weight = 30
-
-# Documentation
-
-[[docs]]
-  name = "Home"
-  weight = 1
-  identifier = "home"
-
-[[docs]]
-  name = "Getting Started"
-  weight = 2
-  identifier = "getting-started"
-
-[[docs]]
-  name = "Concepts"
-  weight = 3
-  identifier = "concepts"
-
-[[docs]]
-  name = "Scheduler"
-  weight = 4
-  identifier = "scheduler"
-
-[[docs]]
-  name = "CLI"
-  weight = 5
-  identifier = "cli"
-
-[[docs]]
-  name = "Contribution"
-  weight = 6
-  identifier = "contribution"
-
-
+  
 
 
 # Blogs
@@ -100,3 +70,36 @@
   name = "Customers"
   weight = 10
   identifier = "customers"
+
+
+#docs
+
+[[1-0]]
+  name = "Home"
+  weight = 1
+  identifier = "home"
+
+[[1-0]]
+  name = "Getting Started"
+  weight = 2
+  identifier = "getting-started"
+
+[[1-0]]
+  name = "Concepts"
+  weight = 3
+  identifier = "concepts"
+
+[[1-0]]
+  name = "Scheduler"
+  weight = 4
+  identifier = "scheduler"
+
+[[1-0]]
+  name = "CLI"
+  weight = 5
+  identifier = "cli"
+
+[[1-0]]
+  name = "Contribution"
+  weight = 6
+  identifier = "contribution"

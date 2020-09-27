@@ -11,17 +11,18 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "Tutorials"
-[menu.docs]
+[menu.1-0]
   parent = "getting-started"
   weight = 2
 +++
 
 Here is a simple example how to use Volcano with CRD resources.
 
-### Step: 1
+### Step: 1 
 Create a custom Queue named "test"
 ```shell
-# cat <<EOF | kubectl apply -f -
+# kubectl create -f queue.yaml
+// queue.yaml
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: Queue
 metadata:
@@ -31,13 +32,13 @@ spec:
   reclaimable: false
   capability:
     cpu: 2
-EOF
 ```
 
-### Step: 2
+### Step: 2 
 Create a Volcano job named "job-1"
 ```shell
-# cat <<EOF | kubectl apply -f -
+# kubectl create -f vcjob.yaml
+// vcjob.yaml
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
@@ -68,10 +69,9 @@ spec:
                   cpu: 1
                 limits:
                   cpu: 1
-EOF
 ```
 
-### Step: 3
+### Step: 3 
 Check the status of custom job
 ```shell
 # kubectl get vcjob job-1 -oyaml
@@ -148,7 +148,7 @@ status:
     phase: Running
 ```
 
-### Step: 4
+### Step: 4 
 Check the PodGroup status for "job-1"
 ```shell
 # kubectl get podgroup job-1 -oyaml
@@ -227,7 +227,7 @@ status:
   running: 1
 ```
 
-### Step: 5
+### Step: 5 
 Check status of Queue "test"
 ```shell
 # kubectl get queue test -oyaml

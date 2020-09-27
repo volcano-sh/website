@@ -33,19 +33,20 @@
 
     <div class="col-12 col-sm-7" style="padding: 20px 0 10px 30px;float: left;"><!-- talks -->
       <div style="display: block;">
-        <h3 class="article-title mb-0 mt-0" itemprop="name" style="font-size: 20px;padding-bottom: 10px;color: #d6d5da;">
-          <a href="{{ $item.RelPermalink }}" itemprop="url" style="color: #e5dddd;">{{ $item.Title }}</a>
+        <h3 class="article-title mb-0 mt-0" itemprop="name" style="font-size: 24px;padding-bottom: 10px;font-weight: normal;">
+          <a href="{{ $item.RelPermalink }}" itemprop="url" style="color: #252b3b;">{{ $item.Title }}</a>
         </h3>
-         <div style="font-size: 12px;border-radius: 5px;color: #999;width: 85px;text-align: center; margin:10px 0 15px">
+         <div style="font-size: 12px;border-radius: 5px;color: #575d6d;width: 185px;text-align: center; margin:6px 0 15px">
          {{ partial "page_metadata_authors" $ }}
         </div>
       </div>
   
       {{ with $summary }}
-      <div class="article-style" itemprop="articleBody" style="font-size: 14px;color: #e9e2e2;">{{ . | truncate 220 }}</div>
+      <div class="article-style" itemprop="articleBody" style="font-size: 14px;color: #575d6d;">{{ . | truncate 220 }}</div>
 
       <div>
         <div itemprop="startDate" class="talkswords">
+          <img src="{{$item.Params.time_img }}" style="float:left;margin-right: 10px;"  />
           {{ $date := $item.Date }}
           {{ (time $date).Format $.Site.Params.date_format }}
           {{ if not $item.Params.all_day }}
@@ -58,7 +59,10 @@
         <div>{{ with $item.Params.location }}</div>
         
         <!-- <span class="middot-divider"></span> -->
-        <div itemprop="location" class="talkswords" style="margin-top: 5px;">{{ . }}</div>
+        <div itemprop="location" class="talkswords" style="margin-top: 5px;">
+          <img src="{{$item.Params.location_img }}" style="float:left;margin-right: 10px;"  />
+          <span>{{ . }}</span>
+        </div>
         {{ end }}
       </div>
     </div> 
@@ -104,9 +108,13 @@
           <a href="{{ $item.RelPermalink }}" itemprop="url">{{ $item.Title }}</a>
         </h3>
          <div style="float: left;padding-right: 20px;font-size: 12px;">
-         {{ partial "page_metadata_authors" $ }}
+        
+          <img src="/img/icon_user.png" style="float: left;margin-right: 10px;margin-top: 2px;"/>
+        
+         <span>{{ partial "page_metadata_authors" $ }}</span>
         </div>
-        <div style="color: #999;font-size: 12px;">
+        <div style="font-size: 12px;">
+          <!-- <img src="/img/icon_read.png" style="float: left;margin-right: 10px;margin-top: 2px;"/> -->
          <!-- 浏览量 -->
         </div>
       </div>

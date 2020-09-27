@@ -4,7 +4,7 @@ description = "在Kubernetes集群中快速上手Volcano"
 subtitle =""
 
 date = 2019-03-28
-lastmod = 2020-09-07
+lastmod = 2020-09-07 
 datemonth = "Sep"
 dateyear = "2020"
 dateday = 07
@@ -27,14 +27,14 @@ linktitle = "Volcano快速上手指南"
 上手Volcano最容易的方式是使用Helm。
 ### 准备
 首先，将代码库克隆到本地。
-```
+```js
 # mkdir -p $GOPATH/src/volcano.sh/
 # cd $GOPATH/src/volcano.sh/
 # git clone https://github.com/volcano-sh/volcano.git
 ```
 ### 1. Volcano镜像
 可用的官方镜像请参考： [DockerHub](https://hub.docker.com/u/volcanosh), 您也可以在本地自己制作镜像：
-```
+```shell
 cd $GOPATH/src/volcano.sh/volcano
 make images
 ## Verify your images
@@ -49,14 +49,14 @@ volcanosh/vk-controllers   latest              7b11606ebfb8        10 seconds ag
 ### 2. Helm charts
 
 最后，安装helm chart
-```
+```shell
 helm install installer/chart --namespace <namespace> --name <specified-name>
 For eg :
 helm install installer/chart --namespace volcano-trial --name volcano-trial
 ```
 
 运行以下命令验证安装是否成功:
-```
+```shell
 #1. 验证Pods是否正常运行
 
 # kubectl get pods --namespace <namespace>

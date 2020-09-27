@@ -13,6 +13,7 @@ draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
 authors = ["Volcano"]
+authors_img = "/img/icon_user.png"
 
 tags = ["Tutorials"]
 summary = "Bring up the Batch Scheduler for scheduling batch workloads"
@@ -38,7 +39,7 @@ To run `kube-batch`, a Kubernetes cluster must start up. Here is a document on [
 
 An official kube-batch image is provided and you can download it from [DockerHub](https://hub.docker.com/r/kubesigs/kube-batch/). The version is `v0.4` now.
 
-```bash
+```shell
 # docker pull kubesigs/kube-batch:v0.4
 ```
 
@@ -46,7 +47,7 @@ An official kube-batch image is provided and you can download it from [DockerHub
 
 #### Download kube-batch
 
-```bash
+```js
 # mkdir -p $GOPATH/src/github.com/kubernetes-sigs/
 # cd $GOPATH/src/github.com/kubernetes-sigs/
 # git clone http://github.com/kubernetes-sigs/kube-batch
@@ -56,13 +57,13 @@ An official kube-batch image is provided and you can download it from [DockerHub
 
 Run the `kube-batch` as kubernetes scheduler
 
-```bash
+```js
 # helm install $GOPATH/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch --namespace kube-system
 ```
 
 Verify the release
 
-```bash
+```shell
 # helm list
 NAME        	REVISION	UPDATED                 	STATUS  	CHART                	NAMESPACE
 dozing-otter	1       	Thu Jun 14 18:52:15 2018	DEPLOYED	kube-batch-0.4.0    	kube-system
@@ -74,7 +75,7 @@ NOTE: `kube-batch` need to collect cluster information(such as Pod, Node, CRD, e
 
 Create a file named `job-01.yaml` with the following content:
 
-```yaml
+```shell
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -110,21 +111,21 @@ The yaml file means a Job named `qj-01` to create 6 pods(it is specified by `par
 
 Create the Job
 
-```bash
+```shell
 # kubectl create -f job-01.yaml
 ```
 
 Check job status
 
-```bash
+```html
 # kubectl get jobs
 NAME      DESIRED   SUCCESSFUL   AGE
-qj-1      6         6            2h
+qj-1      6         6            2h 
 ```
 
 Check the pods status
 
-```bash
+```shell
 # kubectl get pod --all-namespaces
 ```
 
@@ -135,7 +136,7 @@ Check the pods status
 
 Create a `priority_1000.yaml` with the following contents:
 
-```yaml
+```shell
 apiVersion: scheduling.k8s.io/v1beta1
 kind: PriorityClass
 metadata:
@@ -152,7 +153,7 @@ Create the PriorityClass with priority 1000.
 
 Create a Pod configuration file (say `pod-config-ns01-r01.yaml`):
 
-```yaml
+```shell
 apiVersion: v1
 kind: Pod
 metadata:

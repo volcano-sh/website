@@ -11,9 +11,9 @@
       {{ $person_page := $.Site.GetPage $person_page_path }}
       {{ if $person_page }}
         {{ $person := $person_page.Params }}
-        {{- printf "<a href=\"%s\"  style=\"font-size: 12px;color: #999;\">%s</a>" $link $person.name | safeHTML -}}
+        {{- printf "<a href=\"%s\"  style=\"font-size: 12px;color: #575d6d;\">%s</a>" $link $person.name | safeHTML -}}
       {{- else -}}
-                {{- printf "<a href=\"%s\"  style=\"font-size: 12px;color: #999;\">%s</a>" $link ($v | markdownify) | safeHTML -}}
+                {{- printf "<a href=\"%s\"  style=\"font-size: 12px;color: #575d6d;\">%s</a>" $link ($v | markdownify) | safeHTML -}}
       {{- end -}}
       </span>{{- /* This comment removes whitespace */ -}}
     </span>
