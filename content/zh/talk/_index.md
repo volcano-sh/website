@@ -1,5 +1,5 @@
 +++
-title = "历史和近期演讲"
+title = "讲座"
 date = 2017-01-01T00:00:00
 
 # List format.

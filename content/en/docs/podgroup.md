@@ -12,13 +12,13 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "PodGroup"
-[menu.1-0]
+[menu.docs]
   parent = "concepts"
   weight = 2
 +++
 
 ## Introduction
-PodGroup is a group of pods with strong association, which is mainly used in batch scheduling. For example, the ps task 
+PodGroup is a group of pods with strong association, which is mainly used in batch scheduling. For example, the ps task
 and worker tasks in Tensorflow. PodGroup is a CRD type.
 ## Example
 ```shell
@@ -66,20 +66,20 @@ status:
 ## Key Field
 ### minMember
 minMember means the minimum number of Pods or Tasks to run under the PodGroup. If the cluster resource cannot meet the
-demand of running minimum number of Pods or Tasks, any Pod or Task in PodGroup will not be scheduled. 
+demand of running minimum number of Pods or Tasks, any Pod or Task in PodGroup will not be scheduled.
 ### queue
 queue indicates which queue the PodGroup belongs to. The queue must be Open status.
 ### priorityClassName
-priorityClassName represents the priority of the podgroup and is used by the scheduler to sort all the PodGroups in the 
-queue when scheduling. Note that **system-node-critical** and **system-cluster-critical** are reserved values, which 
+priorityClassName represents the priority of the podgroup and is used by the scheduler to sort all the PodGroups in the
+queue when scheduling. Note that **system-node-critical** and **system-cluster-critical** are reserved values, which
 means the highest priority. If not specified, default priority are used automatically.
 ### minResources
-minResources indicates the minimum resources for running the PodGroup. If available resource in cluster cannot satisfy 
-the requirement, any Pod or Task in the PodGroup will not be scheduled. 
+minResources indicates the minimum resources for running the PodGroup. If available resource in cluster cannot satisfy
+the requirement, any Pod or Task in the PodGroup will not be scheduled.
 ### phase
 phase means the current status of the PodGroup.
 ### conditions
-conditions represent the specific status log of the PodGroup, including the key events in the lifecycle of the PodGroup.  
+conditions represent the specific status log of the PodGroup, including the key events in the lifecycle of the PodGroup.
 ### running
 running is the number of running Pods or Tasks in PodGroup.
 ### succeed
@@ -97,7 +97,7 @@ unknown means the status of minMember number of Pods or Task are in two conditio
 scheduled. The reason of not scheduled may be lack of resource and so on. Scheduler will keep waiting until controllermanager
 start these Pods or Tasks again.
 ### inqueue
-inqueue means PodGroup has passed the validation and it is waiting for to be bound to a node. It's a transient intermediate 
+inqueue means PodGroup has passed the validation and it is waiting for to be bound to a node. It's a transient intermediate
 state between pending and running.
 ## Usage
 ### minMember
@@ -105,10 +105,10 @@ In some scenes, you don't need all tasks of a job to be completed. If a specifie
 result of the job can be achieved. For example, machine learning training. You can do it with the field "minMember".
 ### priorityClassName
 priorityClassName is used in preemption scheduled.
-### minResources 
-In some scenes such as Big Data analysis, only if available resource achieving a lower limit, can a job be run. 
+### minResources
+In some scenes such as Big Data analysis, only if available resource achieving a lower limit, can a job be run.
 "minResources" is just for it.
 ## Note
 #### Creation Automatically
-If no PodGroup specified when creating a Volcano job is created, Volcano will create a PodGroup with the same name for 
-Volcano job.  
+If no PodGroup specified when creating a Volcano job is created, Volcano will create a PodGroup with the same name for
+Volcano job.

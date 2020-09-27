@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "架构"
-[menu.1-0]
+[menu.docs]
   parent = "home"
   weight = 2
 +++
@@ -25,18 +25,18 @@ Volcano与Kubernetes天然兼容，并为高性能计算而生。它遵循Kubern
 
 {{<figure library="1" src="arch_2.PNG" title="Volcano的系统架构">}}
 
-Volcano由scheduler、controllermanager、admission和vcctl组成。
+Volcano由scheduler、controllermanager、admission和vcctl组成:
 
-##### scheduler
+- Scheduler
 Volcano scheduler通过一系列的action和plugin调度Job，并为它找到一个最适合的节点。与Kubernetes default-scheduler相比，Volcano与众不同的
-地方是它支持针对Job的多种调度算法。 
+地方是它支持针对Job的多种调度算法。
 
-##### controllermanager
-Volcano controllermanager管理CRD资源的生命周期。它主要由**Queue ControllerManager**、 **PodGroupControllerManager**和**VCJob 
+- Controllermanager
+Volcano controllermanager管理CRD资源的生命周期。它主要由**Queue ControllerManager**、 **PodGroupControllerManager**、 **VCJob
 ControllerManager**构成。
 
-##### admission
+- Admission
 Volcano admission负责对CRD API资源进行校验。
 
-##### vcctl
-vcctl是Volcano的命令行客户端工具。
+- Vcctl
+Volcano vcctl是Volcano的命令行客户端工具。

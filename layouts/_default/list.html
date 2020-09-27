@@ -68,19 +68,14 @@
                       <a href="{{ .RelPermalink }}" itemprop="url">{{ .Title }}</a>
                     </h3>
                      <div style="float: left;padding-right: 20px;font-size: 12px;">
-                      <img src="/img/icon_user.png" style="float: left;margin-right: 10px;margin-top: 2px;"/>
-        
-                     <span>{{ $first_author }}</span>
+                     {{ $first_author }}
                     </div>
                     <div style="color: #999;font-size: 12px;">
-                      <!-- <img src="/img/icon_read.png" style="float: left;margin-right: 10px;margin-top: 2px;"/> -->
                      <!-- 浏览量 -->
                     </div>
-
-
                   </div>
               
-                  <div class="article-style" itemprop="articleBody" style="font-size: 12px;color: #575d6d;">
+                  <div class="article-style" itemprop="articleBody" style="font-size: 12px;">
                     {{ if .Params.summary }}
                         {{ .Params.summary | plainify | emojify }}
                     {{ else if .Params.abstract }}

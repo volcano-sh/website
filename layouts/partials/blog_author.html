@@ -18,48 +18,16 @@
 {{ $person_page := $.Site.GetPage $person_page_path }}
 {{ with $person_page }}
 {{ $link := printf "/authors/%s" $author_urlize | relURL }}
-{{ $person := $person_page.Params }}
 {{ $avatar := ($person_page.Resources.ByType "image").GetMatch "*avatar*" }}
 <div class="blog-author-card" itemscope itemtype="http://schema.org/Person">
   <div class="row">
     <div class="col-12">
     {{ if and $.Site.Params.gravatar .Params.email }}
     <img class="portrait" src="https://s.gravatar.com/avatar/{{ md5 .Params.email }}?s=200')" itemprop="image" alt="Avatar">
-
     {{ else if $avatar }}
     {{ $avatar_image := $avatar.Fill "400x400 Center" }}
-    <!-- <img class="portrait" src="{{ $avatar_image.RelPermalink }}" itemprop="image" alt="Avatar"> -->
-    <img  src="/img/logo_middle.png" style="margin: 0 auto ;">
-
-
-    <ul class="network-icon" aria-hidden="true" style="margin: 10px auto;    margin: 20px 58px 10px;">
-        {{ range $person.social }}
-        {{ $pack := or .icon_pack "fas" }}
-        {{ $pack_prefix := $pack }}
-        {{ if in (slice "fab" "fas" "far" "fal") $pack }}
-          {{ $pack_prefix = "fa" }}
-        {{ end }}
-        {{ $link := .link }}
-        {{ $scheme := (urls.Parse $link).Scheme }}
-        {{ $target := "" }}
-        {{ if not $scheme }}
-          {{ $link = .link | relLangURL }}
-        {{ else if in (slice "http" "https") $scheme }}
-          {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
-        {{ end }}
-        <li>
-          <a itemprop="sameAs" href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
-            <img src="{{.icon}}">
-          </a>
-        </li>
-        {{ end }}
-      </ul>
-
-
-
-
+    <img class="portrait" src="{{ $avatar_image.RelPermalink }}" itemprop="image" alt="Avatar">
     {{ end }}
-
     </div>
   </div>
   <div class="row">
