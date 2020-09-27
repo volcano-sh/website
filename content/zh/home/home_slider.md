@@ -21,7 +21,7 @@ height = "500px"
 [[item]]
   title = "Volcano"
   #content = "让算力爆发 <br /> <a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\" background-color=\"red\"  >Star</a>"
-  content = "Erupt with Computing Power"
+  content = "让算力爆发"
   content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\"  data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\"  >Star</a>"
   align = "left"  # Choose `center`, `left`, or `right`.
 
