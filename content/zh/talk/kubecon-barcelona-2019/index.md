@@ -15,6 +15,8 @@ authors = ["王泽锋"]
 
 # Location of event.
 location = "巴塞罗那, 欧洲"
+location_img = "/img/icon_location.png"
+time_img = "/img/icon_time.png"
 
 # Name of event and optional event URL.
 event = "KubeCon欧洲峰会"
@@ -36,7 +38,7 @@ tags = []
 # Markdown Slides (optional).
 #   Associate this talk with Markdown slides.
 #   Simply enter your slide deck's filename without extension.
-#   E.g. `slides = "example-slides"` references
+#   E.g. `slides = "example-slides"` references 
 #   `content/slides/example-slides.md`.
 #   Otherwise, set `slides = ""`.
 #slides = "introducing-volcano"
@@ -47,7 +49,7 @@ url_slides = ""
 # Projects (optional).
 #   Associate this talk with one or more of your projects.
 #   Simply enter your project's folder or file name without extension.
-#   E.g. `projects = ["deep-learning"]` references
+#   E.g. `projects = ["deep-learning"]` references 
 #   `content/project/deep-learning/index.md`.
 #   Otherwise, set `projects = []`.
 # projects = ["internal-project"]
@@ -61,7 +63,7 @@ url_code = ""
 math = true
 
 # Featured image
-# To use, add an image named `featured.jpg/png` to your page's folder.
+# To use, add an image named `featured.jpg/png` to your page's folder. 
 [image]
   # Caption (optional)
   caption = "马达/王泽锋 于 2019年欧洲KubeCon峰会介绍Volcano"
@@ -70,16 +72,16 @@ math = true
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
   focal_point = "Right"
 +++
-## 基于Kubernetes的批处理系统介绍
+## 基于Kubernetes的批处理系统介绍 
 
 Kubernetes在设计初始阶段即被定位为一个聚焦于Job服务的通用编排框架。随着它的发展，越来越多用户希望在它之上运行高性能工作负载，如Spark、Tensorflow等。运行这些负载需要一些高级特性，如公平调度, 队列和Job管理, 数据管理等。本次演讲将介绍社区在批处理能力方面的工作成果。
 
 ## 演讲者
 
-### 马达 (Kubernetes项目Maintainer, SIG-Scheduling Co-Leader, Volcano项目leader, 现就职于华为)
+### 马达 (Kubernetes项目Maintainer, SIG-Scheduling Co-Leader, Volcano项目leader, 现就职于华为)  
 
 Kubernetes项目Maintainer，SIG-Scheduling Co-Leader，Volcano项目leader，吉林大学硕士，研究方向为网格计算和分布式系统。毕业后，主要研究方向为资源管理和分布式系统下的资源调度。
 
-### 王泽锋 (华为云云原生首席架构师)
+### 王泽锋 (华为云云原生首席架构师)  
 
 王泽锋是华为云PaaS产品部首席架构师。当前主要工作聚焦于Kubernetes、KubeEdge和华为云容器产品。他是华为云Kubernetes和云原生开源团队的负责人，也是KubeEdge项目的联合创始人。

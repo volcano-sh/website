@@ -41,7 +41,7 @@ linktitle = "Kube-Batch新手教程"
 
 kube-batch提供了官方镜像，您可以通过[DockerHub](https://hub.docker.com/r/kubesigs/kube-batch/) 下载。当前版本为`v0.4`。
 
-```bash
+```shell
 # docker pull kubesigs/kube-batch:v0.4
 ```
 
@@ -49,7 +49,7 @@ kube-batch提供了官方镜像，您可以通过[DockerHub](https://hub.docker.
 
 #### 下载kube-batch
 
-```bash
+```js
 # mkdir -p $GOPATH/src/github.com/kubernetes-sigs/
 # cd $GOPATH/src/github.com/kubernetes-sigs/
 # git clone http://github.com/kubernetes-sigs/kube-batch
@@ -59,13 +59,13 @@ kube-batch提供了官方镜像，您可以通过[DockerHub](https://hub.docker.
 
 将`kube-batch`作为Kubernetes调度器运行起来
 
-```bash
+```js
 # helm install $GOPATH/src/github.com/kubernetes-sigs/kube-batch/deployment/kube-batch --namespace kube-system
 ```
 
 验证版本
 
-```bash
+```
 # helm list
 NAME        	REVISION	UPDATED                 	STATUS  	CHART                	NAMESPACE
 dozing-otter	1       	Thu Jun 14 18:52:15 2018	DEPLOYED	kube-batch-0.4.0    	kube-system
@@ -79,7 +79,7 @@ dozing-otter	1       	Thu Jun 14 18:52:15 2018	DEPLOYED	kube-batch-0.4.0    	kub
 
 创建一个名为`job-01.yaml`的文件，内容如下：
 
-```yaml
+```shell
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -117,21 +117,21 @@ yaml文件表示一个名为`qj-01`的Job将创建6个pod（由`parallelism`指�
 
 创建该Job
 
-```bash
+```shell
 # kubectl create -f job-01.yaml
 ```
 
 检查Job状态
 
-```bash
+```html
 # kubectl get jobs
 NAME      DESIRED   SUCCESSFUL   AGE
-qj-1      6         6            2h
+qj-1      6         6            2h 
 ```
 
 检查pods状态
 
-```bash
+```shell
 # kubectl get pod --all-namespaces
 ```
 
@@ -142,7 +142,7 @@ qj-1      6         6            2h
 
 创建一个名为`priority_1000.yaml`的文件，内容如下：
 
-```yaml
+```shell
 apiVersion: scheduling.k8s.io/v1beta1
 kind: PriorityClass
 metadata:
@@ -159,7 +159,7 @@ value: 1000
 
 创建一个Pod配置文件（假设名为`pod-config-ns01-r01.yaml`）：
 
-```yaml
+```shell
 apiVersion: v1
 kind: Pod
 metadata:

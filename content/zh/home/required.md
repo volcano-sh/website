@@ -13,9 +13,9 @@ subtitle = "在Kubernetes集群中部署高性能应用的最佳解决方案"
 weight = 720
 
 # Showcase personal skills or business features.
-#
+# 
 # Add/remove as many `[[feature]]` blocks below as you like.
-#
+# 
 # Available icon packs and icons:
 # * fas - Font Awesome standard icons (see https://fontawesome.com/icons)
 # * fab - Font Awesome brand icons (see https://fontawesome.com/icons)
@@ -24,7 +24,7 @@ weight = 720
   img_src = "kubeflow.png"
   img_width = "100px"
   img_height = "60px"
-  name = "kubeflow"
+  name = "kubeflow" 
   url = "https://www.kubeflow.org/ "
   description = "Kubeflow项目致力于使Kubernetes上的机器学习（ML）工作流部署简单，可移植且可扩展."
 
@@ -91,7 +91,7 @@ weight = 720
   img_height = "60px"
   name = "spark"
   url = "https://spark.apache.org/ "
-  description = "Apache Spark™是用于大规模数据处理的统一分析引擎."
+  description = "Apache Spark™是用于大规模数据处理的统一分析引擎."  
 
 [[featured]]
   img_src = "volcano_mindspore.PNG"

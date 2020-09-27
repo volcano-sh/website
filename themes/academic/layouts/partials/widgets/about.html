@@ -19,7 +19,7 @@
 <!-- About widget -->
 {{ with $page.Title }}
 <!-- <div class="newtitle" style="width: 100%;text-align: center;font-size: 22px;font-weight: bold;padding-bottom: 30px;">About Volcano</div> -->
-<div class="newtitle" style="width: 100%;text-align: center;font-size: 22px;font-weight: bold;padding-bottom: 30px;">{{ . | markdownify }}</div> {{ end }}
+<div class="newtitle" style="width: 100%;text-align: center;font-size: 24px;font-weight: bold;padding-bottom: 60px;color: #252b3a;">{{ . | markdownify }}</div> {{ end }}
 <div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person" itemref="{{ if $.Site.Params.email }}person-email{{ end }}{{ if $.Site.Params.phone }} person-telephone{{ end }}{{ if $.Site.Params.address}} person-address{{ end }}">
   <div class="col-12 col-lg-6">
     <div id="profile">
@@ -63,7 +63,8 @@
         {{ end }}
         <li>
           <a itemprop="sameAs" href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
-            <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} big-icon"></i>
+            <img src="{{.icon}}">
+            <!-- <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} big-icon"></i> -->
           </a>
         </li>
         {{ end }}
@@ -74,15 +75,15 @@
   <div class="col-12 col-lg-6 fontsizee" itemprop="description" style="padding-right: 0px !important;">
 
 
-    {{ with $person.role }}<p itemprop="jobTitle" style="font-weight: bold;font-size: 20px;">{{ . }}</p>{{ end }}
+    {{ with $person.role }}<p itemprop="jobTitle" style="font-weight: bold;font-size: 18px;color: #252b3a;">{{ . }}</p>{{ end }}
 
 
     {{/* Only display widget title in explicit instances of about widget, not in author pages. */}}
     <!-- {{ if and $page.Params.widget $page.Title }}<p>{{ $page.Title | markdownify | emojify }}</p>{{ end }} -->
 
-    {{ $person_page.Content }}
+   {{ $person_page.Content }} 
 
-    <div class="row">
+    <div class="row" style="font-size: 14px;">
 
       {{ with $person.interests }}
       <div class="col-md-5">

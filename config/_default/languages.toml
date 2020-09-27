@@ -12,15 +12,14 @@
    languageCode = "zh-Hans"
    contentDir = "content/zh"
 
-   [zh.params]
-    description = ""
+    
   [[zh.menu.main]]
   name = "主页"
   url = "#home_slider"
   weight = 1
 
   [[zh.menu.main]]
-  name = "简介"
+  name = "关于"
   url = "#about"
   weight = 2
 
@@ -30,69 +29,69 @@
   weight = 3
 
   [[zh.menu.main]]
-  name = "讲座"
+  name = "演讲"
   url = "#talks"
   weight = 4
 
   [[zh.menu.main]]
-  name = "生态"
+  name = "volcano"
   url = "#required"
   weight = 5
 
-  [[zh.menu.main]]
-  name = "文档"
-  url = "docs/"
-  weight = 6
+[zh.params]
+  version_menu = "文档"
 
-
+[[zh.params.versions]]
+  name = "v1.0"
+  url = "1-0/"
+  
   # Right Menu
 
 [[zh.menu.main_right]]
-  name = "<i class=\"fab fa-github\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-github\" style=\"color: #000000; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   url = "https://github.com/volcano-sh/"
   weight = 10
 
 [[zh.menu.main_right]]
-  name = "<i class=\"fab fa-twitter\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
-  post = ""
+  name = "<i class=\"fab fa-twitter\" style=\"color: #1ea1f3; font-size: 1rem; line-height: 1.25\"></i>"
   url = "https://twitter.com/volcano_sh"
   weight = 20
 
 [[zh.menu.main_right]]
-  name = "<i class=\"fab fa-slack\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<img src=\"/img/icon_slack.png\" style=\" font-size: 1rem; line-height: 1.25; width:20px; height:20px; margin-top: 11px;\">"
   post = ""
   url = "https://volcano-sh.slack.com"
   weight = 30
 
-# Documentation
+# Documentation 
 
-[[zh.menu.docs]]
+[[zh.menu.1-0]]
   name = "主页"
   weight = 1
   identifier = "home"
 
-[[zh.menu.docs]]
+[[zh.menu.1-0]]
   name = "开始"
   weight = 2
   identifier = "getting-started"
 
-[[zh.menu.docs]]
+[[zh.menu.1-0]]
   name = "概念"
   weight = 3
   identifier = "concepts"
 
-[[zh.menu.docs]]
-  name = "Scheduler"
+[[zh.menu.1-0]]
+  name = "日程表"
   weight = 4
   identifier = "scheduler"
 
-[[zh.menu.docs]]
+[[zh.menu.1-0]]
   name = "CLI"
   weight = 5
   identifier = "cli"
 
-[[zh.menu.docs]]
+[[zh.menu.1-0]]
  name = "贡献"
   weight = 6
   identifier = "contribution"
@@ -109,3 +108,4 @@
   weight = 10
   identifier = "customers"
 
+ 
