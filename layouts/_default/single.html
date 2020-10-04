@@ -3,18 +3,18 @@
 
 <article class="article" itemscope itemtype="http://schema.org/Article">
   <div class="container">
-    <div class="row">
+    <div class="row" style="    padding-top: 30px;">
       {{ if eq .Type "posts" }}
       <div class="col-md-3">
           {{ partial "blog_author.html" . }}
           {{ $related := .Site.RegularPages.Related . | first 5 }}
             {{ with $related }}
-            <div class="article-widget">
+            <div class="article-widget" style="height: 200px;border: 1px solid #eee;">
               <div class="hr-light"></div>
-              <h4>{{ i18n "related" }}</h4>
+              <h4 style="text-align: center;color: #252b3a;font-size: 18px;margin-bottom: 25px;">{{ i18n "related" }}</h4>
               <ul>
                 {{ range . }}
-                <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+                <li style="margin-bottom: 15px;"><a href="{{ .RelPermalink }}" style="color: #252b3a; font-size: 14px;">{{ .Title }}</a></li>
                 {{ end }}
               </ul>
             </div>

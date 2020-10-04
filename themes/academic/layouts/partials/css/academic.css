@@ -1125,7 +1125,7 @@ article .article-metadata {
 }*/
 
 .article-widget {
-  padding-top: 1rem;
+  margin-top: 1rem;
 }
 
 .article-widget h3 {
@@ -1134,7 +1134,6 @@ article .article-metadata {
 
 .hr-light {
   border-top: 5px solid #c7000b;
-  margin-top: 0.5rem;
   margin-bottom: 1rem;
 }
 
