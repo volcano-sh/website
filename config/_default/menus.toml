@@ -23,12 +23,12 @@
 [[main]]
   name = "Talk"
   url = "#talks"
-  weight = 3
+  weight = 5
 
 [[main]]
   name = "Why Volcano"
   url = "#required"
-  weight = 5
+  weight = 3
 
 [[main]]
   name = "Documentation"
@@ -37,19 +37,20 @@
 
 
 [[main_right]]
-  name = "<i class=\"fab fa-github\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-github\" style=\"color: #000000; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   url = "https://github.com/volcano-sh/"
   weight = 10
 
 [[main_right]]
-  name = "<i class=\"fab fa-twitter\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-twitter\" style=\"color: #1ea1f3; font-size: 1rem; line-height: 1.25\"></i>"
   post = ""
   url = "https://twitter.com/volcano_sh"
   weight = 20
 
 [[main_right]]
-  name = "<i class=\"fab fa-slack\" style=\"color: #eb1616; font-size: 1rem; line-height: 1.25\"></i>"
+  
+  name = "<img src=\"/img/icon_slack.png\" style=\" font-size: 1rem; line-height: 1.25; width:20px; height:20px; margin-top: 11px;\">"
   post = ""
   url = "https://volcano-sh.slack.com"
   weight = 30
