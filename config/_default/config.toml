@@ -60,3 +60,9 @@ preserveTaxonomyNames = true
   category = "categories"
   publication_type = "publication_types"
   author = "authors"
+[params]
+  version_menu = "Documentation"
+
+[[params.versions]]
+  name = "v1.0"
+  url = "/en/docs/"

@@ -30,10 +30,10 @@
   url = "#required"
   weight = 3
 
-[[main]]
-  name = "Documentation"
-  url = "docs/"
-  weight = 6
+#[[main]]
+  #name = "Documentation"
+  #url = "docs/"
+  #weight = 6
 
 
 [[main_right]]

@@ -12,8 +12,6 @@
    languageCode = "zh-Hans"
    contentDir = "content/zh"
 
-   [zh.params]
-    description = ""
   [[zh.menu.main]]
   name = "主页"
   url = "#home_slider"
@@ -38,11 +36,13 @@
   name = "生态"
   url = "#required"
   weight = 3
+  
+[zh.params]
+  version_menu = "文档"
 
-  [[zh.menu.main]]
-  name = "文档"
-  url = "docs/"
-  weight = 6
+[[zh.params.versions]]
+  name = "v1.0"
+  url = "/zh/docs/"
 
 
   # Right Menu
