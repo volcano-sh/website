@@ -1626,6 +1626,12 @@ footer a#back_to_top i {
   color: rgba(0,0,0,0.54);
 }
 
+.site-footer{
+  /*background-color: #000;*/
+  padding-bottom: 0px;
+}
+
+
 .dark .site-footer,
 .dark footer a#back_to_top i,
 .dark .docs .body-footer {
