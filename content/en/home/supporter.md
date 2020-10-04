@@ -19,25 +19,26 @@ weight =7
 # * fab - Font Awesome brand icons (see https://fontawesome.com/icons)
 # * ai - academic icons (see https://jpswalsh.github.io/academicons/)
 
+
 [[featured]]
   img_src = "logo_vivo.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://www.kubeflow.org/ "
+  url = "https://www.vivo.com.cn/ "
   
 
 [[featured]]
   img_src = "logo_redbook.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://flink.apache.org/ "
+  url = "https://www.xiaohongshu.com/ "
   
 
 [[featured]]
   img_src = "logo_didi.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://argoproj.github.io/ "
+  url = "https://es.didichuxing.com/ "
   
 
 
@@ -45,88 +46,88 @@ weight =7
   img_src = "logo_jd.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://www.open-mpi.org/software/ompi/v4.0/ "
+  url = "https://www.jd.com/ "
   
 
 [[featured]]
   img_src = "logo_yunzhisheng.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://github.com/horovod/horovod "
+  url = "http://dev.hivoice.cn/ "
   
 
 [[featured]]
   img_src = "logo_qvtoutiao.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://www.paddlepaddle.org.cn/ "
+  url = "https://www.baidu.com/ "
   
 
 [[featured]]
   img_src = "logo_caicloud.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://mxnet.apache.org/versions/1.6/ "
+  url = "https://caicloud.io/ "
   
 
 [[featured]]
   img_src = "logo_ktnexr.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://github.com/kubegene/kubegene "
+  url = "https://github.com/nexr/ "
  
 [[featured]]
   img_src = "logo_xiwangzu.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://spark.apache.org/ "
+  url = "https://www.grandomics.com/ "
 
 
 [[featured]]
   img_src = "logo_huawei.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://www.mindspore.cn/en "
+  url = "https://www.huawei.com "
 
 
 [[featured]]
   img_src = "logo_iqiyi.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://pytorch.org/ "
+  url = "https://www.iqiyi.com/ "
 
 
 [[featured]]
   img_src = "logo_bibdr.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://www.tensorflow.org/ "
+  url = "http://www.bibdr.org/nd.jsp?id=53 "
 
 [[featured]]
   img_src = "logo_baidu.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://spark.apache.org/ "
+  url = "https://www.baidu.com/ "
 
 
 [[featured]]
   img_src = "logo_jianhang.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://www.mindspore.cn/en "
+  url = "http://www.ccb.com/cn/home/indexv3.html "
 
 
 [[featured]]
   img_src = "logo_tencent.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://pytorch.org/ "
+  url = "https://www.tencent.com/ "
 
 
 [[featured]]
   img_src = "logo_qiezi.png"
   img_width = "100px"
   img_height = "60px"
-  url = "https://www.tensorflow.org/ "
+  url = "https://shareit.one/ "
 
 +++
