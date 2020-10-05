@@ -35,7 +35,7 @@ height = "500px"
   #   Activate the button by specifying a URL and button label below.
   #   Deactivate by commenting out parameters, prefixing lines with `#`.
   cta_label = "深入了解Volcano"
-  cta_url = "/en/1-0/"
+  cta_url = "docs/"
   cta_icon_pack = "fas"
   cta_icon = "graduation-cap"
 
