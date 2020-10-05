@@ -28,7 +28,7 @@ linktitle = "Quick Start Guide for Volcano"
 The easiest way to deploy Volcano is to use the Helm chart.
 ### Pre-requisites
 First of all, clone the repo to your local path:
-```js
+```html
 # mkdir -p $GOPATH/src/volcano.sh/
 # cd $GOPATH/src/volcano.sh/
 # git clone https://github.com/volcano-sh/volcano.git
@@ -36,7 +36,7 @@ First of all, clone the repo to your local path:
 ### 1. Volcano Image
 Official images are available on [DockerHub](https://hub.docker.com/u/volcanosh), however you can
 build them locally with the command:
-```shell
+```html
 cd $GOPATH/src/volcano.sh/volcano
 make images
 ## Verify your images
