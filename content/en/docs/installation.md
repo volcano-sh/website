@@ -16,19 +16,19 @@ linktitle = "Installation"
   weight = 1
 +++
 
-The easiest way to get started with Volcano is to download the [release](https://github.com/volcano-sh/volcano/releases) from github and follow the steps given below:
+The easiest way to get started with Volcano is to download the [release](https://github.com/volcano-sh/volcano/releases) package from GitHub and follow the following steps:
 
-## PreRequisite
+#### Prerequisites
 
- - We expect you to have a cluster of Kubernetes V1.13+.
- - [Optional] Helm should be installed in your cluster, you can follow the steps over [here](https://helm.sh/docs/using_helm/#install-helm) to install helm.(Only needed if you are installing using helm mode of deployment)
- - Download the latest release from [here](https://github.com/volcano-sh/volcano/releases)
- - Untar the release file
+ - A Kubernetes cluster of V1.13 or later is available.
+ - [Optional] Helm is downloaded and installed for your cluster. For details on how to install the Helm, click [here](https://helm.sh/docs/using_helm/#install-helm). (This operation is required only if Volcano is installed using Helm.)
+ - The latest version of Volcano is downloaded from [here](https://github.com/volcano-sh/volcano/releases).
+ - The release package is decompressed.
     ```shell
     #tar -xvf volcano-{Version}-linux-gnu.tar.gz
-
+    
     #cd volcano-{Version}-linux-gnu
-
+    
     #ll
     total 60
     drwxr-xr-x  4 root1 root1  4096 Jul 23 11:38 ./
@@ -39,21 +39,21 @@ The easiest way to get started with Volcano is to download the [release](https:/
     -rw-r--r--  1 root1 root1  4169 Jul 16 16:15 README.md
     -rw-r--r--  1 root1 root1 23453 Jul 16 16:15 volcano-{Version}.yaml
 
-
+    
     ```
 
-## Installation Mode
- - [Using Deployment Yaml](#installation-using-deployment-yaml).
- - [Using Helm Charts](#installation-using-helm-charts).
+#### Installation Modes
+ - [Using Deployment](#installation-using-deployment-yaml)
+ - [Using Helm](#installation-using-helm-charts)
 
 
 
-### Installation using Deployment Yaml
+### Installation Using Deployment
 
-Create the deployment using the `volcano-{Version}.yaml` file present inside the release.
+Create a deployment using the `volcano-{Version}.yaml` file embedded in the release package.
 
 ```shell
-# kubectl apply -f volcano-{Version}.yaml
+# kubectl apply -f volcano-{Version}.yaml 
 namespace/volcano-system created
 configmap/volcano-scheduler-configmap created
 serviceaccount/volcano-scheduler created
@@ -78,7 +78,7 @@ customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.sigs.dev crea
 customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
 
 ```
-Verify the running components of Volcano
+Verify running status of Volcano components.
 ```shell
 # kubectl get all -n volcano-system
 NAME                                       READY   STATUS      RESTARTS   AGE
@@ -109,22 +109,22 @@ job.batch/volcano-admission-init   1/1           28s        6m10s
 
 ```
 
-You are all set now, you can start using the Volcano to deploy the AI/ML and Big Data Workloads.
+After the configuration is complete, you can use Volcano to deploy the AI/ML and big data workloads.
 
-### Installation using Helm Charts
+### Installation Using Helm
 
-If you want to use helm to deploy Volcano then make sure you have [helm](https://helm.sh/docs/intro/install) installed in your cluster.
+If you want to use Helm to deploy Volcano, ensure that you have Helm charts installed in your cluster.
 
-###### Step: 1
-Create a new namespace
+###### Step: 1 
+Create a new namespace.
 ```shell
 # kubectl create namespace volcano-system
 namespace/volcano-system created
 
-```
+``` 
 
 ###### Step: 2
-Installing using helm charts
+Use Helm charts to install Volcano.
 ```shell
 # helm install helm/chart/volcano --namespace volcano-system --name volcano
 NAME:   volcano
@@ -193,9 +193,9 @@ https://volcano.sh/
 
 ```
 
-###### Step: 3
+###### Step: 3 
 
-Verify the running components of Volcano
+Verify running status of Volcano components.
 ```shell
 # kubectl get all -n volcano-system
 NAME                                       READY   STATUS              RESTARTS   AGE
@@ -226,4 +226,4 @@ job.batch/volcano-admission-init   0/1           4m42s      4m42s
 
 ```
 
-Now you are all set to use Volcano, you can run some example over [here](https://github.com/volcano-sh/volcano/tree/master/example) to test your installation.
+After Volcano is installed, you can use some examples provided in [here](https://github.com/volcano-sh/volcano/tree/master/example) to verify the installation.

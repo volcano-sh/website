@@ -17,10 +17,7 @@ linktitle = "VolcanoJob"
 +++
 
 ## Introduction
-Volcano job, referred to as vcjob, is a CRD type for Volcano. Different from Kubernetes Job, it provides more advanced
-features such as specified scheduler / minimum member number / task definition / lifecycle management / specified queue
-/ specified priority. Volcano job is designed for high performance computing such as machine learning / Big Data
-application / scientific computing.
+VolcanoJob, referred to as vcjob, is a CRD object for Volcano. Different from a Kubernetes job, it provides more advanced features such as specified scheduler, minimum number of members, task definition, lifecycle management, specific queue, and specific priority. VolcanoJob is ideal for high performance computing scenarios such as machine learning, big data applications, and scientific computing.
 
 ## Example
 ```shell
@@ -67,72 +64,73 @@ spec:
                   cpu: "1"
           restartPolicy: OnFailure
 ```
-## Key Field
+## Key Fields
 ### schedulerName
-schedulerName means which scheduler will schedule the job. The default value is Volcano. Current optional values are
-"volcano" and "default".
+`schedulerName` indicates the scheduler that will schedule the job. Currently, the value can be `volcano` or `default-scheduler, with `volcano` selected by default.
 
 ### minAvailable
-minAvailable represents the minimum number of running Pods to run the job. Only when the number of running Pods is not
-less than minAvailable can the job be considered as running.
+`minAvailable` represents the minimum number of running pods required to run the job. Only when the number of running pods is not less than `minAvailable` can the job be considered as `running`. 
+
+### volumes
+`volumes` indicates the configuration of the volume to which the job is mounted. It complies with the volume configuration requirements in Kubernetes.
 
 ### tasks.replicas
-tasks.replicas indicates the replicas number of the task.
+`tasks.replicas` indicates the number of pod replicas in a task.
 
 ### tasks.template
-tasks.template defines the configuration of a task replicas, it's same as Pod template in Kubernetes.
+`tasks.template` defines the pod configuration of a task. It is the same as a pod template in Kubernetes.
 
 ### tasks.policies
-tasks.policies defines the lifecycle strategy of the task.
+`tasks.policies` defines the lifecycle policy of a task.
 
 ### policies
-policies is the default lifecycle strategy for all tasks when tasks.policies is not set.
-
+`policies` defines the default lifecycle policy for all tasks when `tasks.policies` is not set.
+  
 ### plugins
-plugins indicates the plugins used by Volcano when scheduling the job.
+`plugins` indicates the plugins used by Volcano when the job is scheduled.
 
 ### queue
-queue means the queue the job belongs to.
+`queue` indicates the queue to which the job belongs. 
 
 ### priorityClassName
-priorityClassName indicates the priority of the job which is used in preemption scheduling.
+`priorityClassName` indicates the priority of the job. It is used in preemptive scheduling.
 
 ### maxRetry
-maxRetry indicates the max retries of the job if fails.
+`maxRetry` indicates the maximum number of retries allowed by the job.
 
 ## Status
 ### pending
-pending means the job is waiting for to be scheduled.
+`pending` indicates that the job is waiting to be scheduled.
 
 ### aborting
-aborting means the job is being aborted because of some outer factor.
+`aborting` indicates that the job is being aborted because of some external factors.
 
 ### aborted
-aborting means the job has already been aborted because of some outer factor.
+`aborted` indicates that the job has already been aborted because of some external factors.
 
 ### running
-running indicates there are at least "minAvailable" Pods running.
+`running` indicates that there are at least `minAvailable` pods running.
 
 ### restarting
-restarting means the job is restarting.
+`restarting` indicates that the job is restarting.
 
 ### completing
-completing means there are at least "minAvailable" Pods in completing status. Job is doing some cleanup.
+`completing` indicates that there are at least `minAvailable` pods in the `completing` state. The job is doing cleanup. 
 
-### completing
-completing means there are at least "minAvailable" Pods in completed status. Job has finished cleaning up.
+### completed
+`completed` indicates that there are at least `minAvailable` pods in the `completed` state. The job has completed cleanup.
 
 ### terminating
-terminating means job is in exiting process because of some internal factor. Job is waiting pods releasing resources.
+`terminating` indicates that the job is being terminated because of some internal factors. The job is waiting pods to release resources.
 
 ### terminated
-terminated means job has already exited because of some internal factor.
+`terminated` indicates that the job has already been terminated because of some internal factors.
 
 ### failed
-failed means job still cannot start after maxRetry tries.
+`failed` indicates that the job still cannot start after `maxRetry` tries. 
 
 ## Usage
-### tensorflow workload
+### TensorFlow Workload
 Create a tensorflow workload with a ps and three workers.
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
@@ -140,18 +138,18 @@ kind: Job
 metadata:
   name: tensorflow-dist-mnist
 spec:
-  minAvailable: 3   // there must be at least 3 pods available
-  schedulerName: volcano    // scheduler specified
+  minAvailable: 3   // There must be at least 3 available pods.
+  schedulerName: volcano    // Scheduler specified
   plugins:
     env: []
     svc: []
-  policies:
-    - event: PodEvicted // restart job when pod is evicted
+  policies: 
+    - event: PodEvicted // Restart the job when a pod is evicted.
       action: RestartJob
   tasks:
-    - replicas: 1   // replicas number specified
+    - replicas: 1   // One ps pod specified
       name: ps
-      template: // definition of ps pod
+      template: // Definition of the ps pod
         spec:
           containers:
             - command:
@@ -169,12 +167,12 @@ spec:
                   name: tfjob-port
               resources: {}
           restartPolicy: Never
-    - replicas: 2   // definition of worker pod
+    - replicas: 2   // Two worker pods specified
       name: worker
       policies:
-        - event: TaskCompleted  // when tasks complete, job finishes
+        - event: TaskCompleted  // The job will be marked as completed when two worker pods finish tasks.
           action: CompleteJob
-      template: // definition of worker pod
+      template: // Definition of worker pods
         spec:
           containers:
             - command:
@@ -193,8 +191,8 @@ spec:
               resources: {}
           restartPolicy: Never
 ```
-### argo workload
-Create an argo workload with two tasks and only one work well is enough.
+### Argo Workload
+Create an argo workload with two pod replicas. The workload is considered normal when at least one pod replica works normally.
 ```shell
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
@@ -227,7 +225,7 @@ spec:
       action: create
       successCondition: status.state.phase = Completed
       failureCondition: status.state.phase = Failed
-      manifest: |           // definition of volcano job
+      manifest: |           // Definition of the VolcanoJob
         apiVersion: batch.volcano.sh/v1alpha1
         kind: Job
         metadata:
@@ -267,9 +265,9 @@ spec:
                     requests:
                       cpu: "100m"
                 restartPolicy: OnFailure
-```
-### Mindspore workload
-Create a Mindspore workload with eight replicases and only one work well is enough.
+```  
+### MindSpore Workload
+Create a Mindspore workload with eight pod replicas. The workload is considered normal when at least one pod replica works normally.
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -306,22 +304,21 @@ spec:
 
 ```
 ## Note
-### Frameworks Supported
-Volcano support almost all mainstream computing frameworks including:
+### Supported Frameworks
+Volcano supports almost all mainstream computing frameworks including:
 
-1. tensorflow
-2. pytorch
-3. mindspore
+1. TensorFlow
+2. PyTorch
+3. MindSpore
 4. PaddlePaddle
-5. spark
-6. flink
-7. openMPI
-8. horovod
-9. mxnet
-10. kubeflow
-11. argo
-12. kubeGene
+5. Spark
+6. Flink
+7. Open MPI
+8. Horovod
+9. MXNet
+10. Kubeflow
+11. Argo
+12. KubeGene
 
-### Volcano or default-scheduler
-Volcano is enhanced in batch computing comparing to default-scheduler. It's more suitable for high performance computing
-such as machine learning / Big Data application / scientific computing.
+### volcano or default-scheduler
+Volcano has been enhanced in batch computing when compared with default-scheduler. It is ideal for high performance computing scenarios such as machine learning, big data applications, and scientific computing.

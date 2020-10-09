@@ -16,126 +16,123 @@ linktitle = "Volcano Contribution"
   weight = 1
 +++
 
-## Welcome
+# Welcome
 
 Welcome to Volcano!
 
-- [Before you get started](#before-you-get-started)
-  - [Code of Conduct](#code-of-conduct)
-  - [Community Expectations](#community-expectations)
-- [Getting started](#getting-started)
-- [Your First Contribution](#your-first-contribution)
-  - [Find something to work on](#find-something-to-work-on)
-  - [Find a good first topic](#find-a-good-first-topic)
-  - [Work on an Issue](#work-on-an-issue)
-  - [File an Issue](#file-an-issue)
-- [Contributor Workflow](#contributor-workflow)
-  - [Creating Pull Requests](#creating-pull-requests)
-  - [Code Review](#code-review)
-  - [Testing](#testing)
+-   [Before You Start](#before-you-get-started)
+    -   [Code of Conduct](#code-of-conduct)
+    -   [Community Expectations](#community-expectations)
+-   [Getting Started](#getting-started)
+-   [Your First Contribution](#your-first-contribution)
+    -   [Find Something to Work On](#find-something-to-work-on)
+        -   [Find a Good Topic](#find-a-good-first-topic)
+        -   [Work on an Issue](#work-on-an-issue)
+        -   [File an Issue](#file-an-issue)
+-   [Contribution Workflow](#contributor-workflow)
+    -   [Open a Pull Request](#creating-pull-requests)
+-   [Code Review](#code-review)
+-   [Commit Message Format](#commit-message-format)
+    -   [Testing](#testing)
 
-## Before you get started
+# Before You Start
 
-### Code of Conduct
+## Code of Conduct
 
-Please make sure to read and observe our [Code of Conduct](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md).
+All Volcano contributors must read and observe the [Code of Conduct](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md).
 
-### Community Expectations
+## Community Expectations
 
-Volcano is a community project driven by its community which strives to promote a healthy, friendly and productive environment.
-The goal of the community is to develop a volcano system which is useful for runnning high performance workloads such as AI,ML,Deep Learning Application on top of Kubernetes. To build a such volcano system at such scale requires the support of a community with similar aspirations.
+Volcano is an open-source project driven by the Volcano community, which strives to promote a healthy, friendly, and productive environment.
+The community is committed to developing a system that helps running high-performance workloads, such as AI, ML, and deep learning applications, on Kubernetes. Building such a system would be impossible without the support of community contributors with similar aspirations.
 
-- See [Community Membership](https://github.com/volcano-sh/volcano/blob/master/community-membership.md) for a list of various community roles. With gradual contributions, one can move up in the chain.
-
-
-## Getting started
-
-- Read the [setup](../installation) for build/deploy instructions.
+- For details about the community roles, see [Community Membership](https://github.com/volcano-sh/website/blob/master/content/en/docs/community-membership.md). If you make significant contributions, you will have a more advanced role in the community.
 
 
-## Your First Contribution
+# Getting Started
 
-We will help you to contribute in different areas like filing issues, developing features, fixing critical bugs and getting your work reviewed and merged.
+- For more information on building and deployment, see [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/deployment.md).
 
-If you have questions about the development process, feel free to jump into our [Slack Channel](https://volcano-sh.slack.com) or (Signup [here](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk))
+
+# Your First Contribution
+
+You can contribute in different areas, including filing issues, developing features, fixing critical bugs, and getting your work reviewed and merged.
+
+If you have any question about the development process, visit the [Slack Channel](https://volcano-sh.slack.com) ([sign up](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk)) 
 or join our [mailing list](https://groups.google.com/forum/#!forum/volcano-sh).
 
-### Find something to work on
+## Find Something to Work On
 
-We are always in need of help, be it fixing documentation, reporting bugs or writing some code.
-Look at places where you feel best coding practices aren't followed, code refactoring is needed or tests are missing.
-Here is how you get started.
+You are welcome to open an issue concerning documentation, report bugs, and push changes to the repositories.
+Feel free to optimize code that does not follow the best coding practices, perform code refactoring, or compile test cases.
+The following steps will help you get started.
 
-#### Find a good first topic
+### Find a Good Topic
 
-There are [multiple repositories](https://github.com/volcano-sh/) within the Volcano organization.
-Each repository has beginner-friendly issues that provide a good first issue.
-For example, [Volcano-Issues](https://github.com/volcano-sh/volcano) has [help wanted](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) and [good first issue](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22) labels for issues that should not need deep knowledge of the system.
-We can help new contributors who wish to work on such issues.
+There are [multiple repositories](https://github.com/volcano-sh/) within the Volcano organization with each repository containing a beginner-friendly issue that does not require deep understanding of the Volcano project.
+For example, in [Volcano-Issues](https://github.com/volcano-sh/volcano), you can choose issues labeled with [help wanted](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) or [good first issue](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
+New contributors are welcome to work on these issues.
 
-Another good way to contribute is to find a documentation improvement, such as a missing/broken link. Please see [Contributing](#contributing) below for the workflow.
+Another good way to start is to find a document that needs improvement, for example, a document that is missing a link or contains a broken link. For details on the workflow, see [Contribution Workflow](#contributor-workflow).
 
-##### Work on an issue
+#### Work on an Issue
 
-When you are willing to take on an issue, you can assign it to yourself. Just reply with `/assign` or `/assign @yourself` on an issue,
-then the robot will assign the issue to you and your name will present at `Assignees` list.
+When you are ready to work on an issue, reply with `/assign` or `/assign @yourself` on an issue.
+The bot then will assign the issue to you. Your name will then be displayed on the `Assignees` list.
 
-##### File an Issue
+### File an Issue
 
-While we encourage everyone to contribute code, it is also appreciated when someone reports an issue.
-Issues should be filed under the appropriate Volcano sub-repository.
+You are welcome to file issues to Volcano sub-repositories.
 
-*Example:* a Volcano issue should be opened to [Volcano](https://github.com/volcano-sh/volcano/issues).
+*Example:* You can file an issue for [Volcano](https://github.com/volcano-sh/volcano/issues).
 
-Please follow the prompted submission guidelines while opening an issue.
+Follow the submission guidelines when you open an issue.
 
-## Contributor Workflow
+# Contribution Workflow
 
-Please do not ever hesitate to ask a question or send a pull request.
+All contributors are welcome to open issues and create pull requests.
 
-This is a rough outline of what a contributor's workflow looks like:
+The contribution workflow is as follows:
 
-- Create a topic branch from where to base the contribution. This is usually master.
-- Make commits of logical units.
-- Make sure commit messages are in the proper format (see below).
-- Push changes in a topic branch to a personal fork of the repository.
-- Submit a pull request to [Volcano](https://github.com/volcano-sh/volcano).
-- The PR must receive an approval from two maintainers.
+- Create a topic branch from the existing branch (usually the master branch).
+- Edit and commit the code.
+- Make sure [commit message format](#commit-message-format) is followed.
+- Push changes in the topic branch to your remote personal fork of the repository.
+- Submit a pull request (PR) to [Volcano](https://github.com/volcano-sh/volcano). The PR must receive approval from at least two community maintainers before it can be merged.
 
-### Creating Pull Requests
+## Open a Pull Request
 
-Pull requests are often called simply "PR".
-Volcano generally follows the standard [github pull request](https://help.github.com/articles/about-pull-requests/) process.
+Volcano follows the standard [GitHub pull request](https://help.github.com/articles/about-pull-requests/) process.
 
-In addition to the above process, a bot will begin applying structured labels to your PR.
+Volcano bot will apply structured labels to your PRs.
 
-The bot may also make some helpful suggestions for commands to run in your PR to facilitate review.
-These `/command` options can be entered in comments to trigger auto-labeling and notifications.
-Refer to its [command reference documentation](https://go.k8s.io/bot-commands).
+It also provides suggestions on commands in your PRs to facilitate review.
+These `/command` options can be annotated to trigger auto-labeling and notifications. For more information, see [command reference documentation](https://go.k8s.io/bot-commands).
 
-### Code Review
+## Code Review
 
-To make it easier for your PR to receive reviews, consider the reviewers will need you to:
+To make it easier for your PRs to receive reviews,
 
-* follow [good coding guidelines](https://github.com/golang/go/wiki/CodeReviewComments).
-* write [good commit messages](https://chris.beams.io/posts/git-commit/).
-* break large changes into a logical series of smaller patches which individually make easily understandable changes, and in aggregate solve a broader issue.
-* label PRs with appropriate reviewers: to do this read the messages the bot sends you to guide you through the PR process.
+* Follow [good coding guidelines](https://github.com/golang/go/wiki/CodeReviewComments).
+* Write [good commit messages](https://chris.beams.io/posts/git-commit/).
+* Break down large chunks of modification into smaller unites that are logically independent and easy to understand.
+* Label your PRs properly so that they can be sent to appropriate reviewers. The bot will help you through the entire PR submission process.
 
-#### Format of the commit message
 
-We follow a rough convention for commit messages that is designed to answer two questions: what changed and why.
-The subject line should feature the what and the body of the commit should describe the why.
+
+### Commit Message Format
+
+In the subject line mention the changes you have made, and in the message body provide the reasons for making these changes.
 
 ```shell
-scripts: add test codes for metamanager
+scripts: add test code for metamanager
 
-this add some unit test codes to improve code coverage for metamanager
+Unit test code is added to improve code coverage for metamanager.
 
 Fixes #12
 ```
 
-The format can be described more formally as follows:
+A more formal format is as follows:
 
 ```shell
 <subsystem>: <what changed>
@@ -145,17 +142,16 @@ The format can be described more formally as follows:
 <footer>
 ```
 
-The first line is the subject and should be no longer than 70 characters, the second line is always blank, and other lines should be wrapped at 80 characters. This allows the message to be easier to read on GitHub as well as in various git tools.
+The first line is the subject, which can contain up to 70 characters. The second line is normally a blank line. The third line can contain up to 80 characters and mentions why the change was made. Ensure that the other lines do not contain more than 80 characters so that the message can be easily read on GitHub as well as using various Git tools.
 
-Note: if your pull request isn't getting enough attention, you can use the reach out on Slack to get help finding reviewers.
+Note: If your pull request does not receive enough attention, you can reach out to the reviewers on Slack.
 
-### Testing
+## Testing
 
-There are multiple types of tests.
-The location of the test code varies with type, as do the specifics of the environment needed to successfully run the test:
+After a PR is opened, the Volcano bot automatically performs multiple types of testing on it. The location of the test code and the environment requirements vary depending on the type of test.
 
-* Unit: These confirm that a particular function behaves as intended. Unit test source code can be found adjacent to the corresponding source code within a given package. These are easily run locally by any developer.
-* Integration: These tests cover interactions of package components or interactions between Volcano components and Kubernetes control plane components like API server.
-* End-to-end ("e2e"): These are broad tests of overall system behavior and coherence. The e2e tests are in [Volcano e2e](https://github.com/volcano-sh/volcano/tree/master/test/e2e).
+* Unit testing: used to check whether a specific function works properly. Unit test source code is in the same package as its corresponding source code. You can easily run it at local.
+* Integration testing: used to check the interactions between package components or between Volcano components and Kubernetes control plane components like API server. 
+* End-to-end ("E2E") testing: used to test system consistency. [Volcano E2E test](https://github.com/volcano-sh/volcano/tree/master/test/e2e).
 
-Continuous integration will run these tests on PRs.
+Each PR has to pass all the test cases before it can be reviewed.

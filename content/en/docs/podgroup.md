@@ -18,8 +18,7 @@ linktitle = "PodGroup"
 +++
 
 ## Introduction
-PodGroup is a group of pods with strong association, which is mainly used in batch scheduling. For example, the ps task
-and worker tasks in Tensorflow. PodGroup is a CRD type.
+PodGroup is a group of pods with strong association and is mainly used in batch scheduling, for example, ps and worker tasks in TensorFlow. PodGroup is of a Custom Resource Definition (CRD) type.
 ## Example
 ```shell
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -44,7 +43,7 @@ spec:
   minResources:
     cpu: "3"
     memory: "2048Mi"
-  priorityClassName: high-prority
+  priorityClassName: high-priority
   queue: default
 status:
   conditions:
@@ -63,52 +62,41 @@ status:
   running: 1
 
 ```
-## Key Field
+## Key Fields
 ### minMember
-minMember means the minimum number of Pods or Tasks to run under the PodGroup. If the cluster resource cannot meet the
-demand of running minimum number of Pods or Tasks, any Pod or Task in PodGroup will not be scheduled.
+`minMember` indicates the minimum number of pods or tasks running under the PodGroup. If the cluster resource cannot meet the demand of running the minimum number of pods or tasks, no pod or task in the PodGroup will be scheduled. 
 ### queue
-queue indicates which queue the PodGroup belongs to. The queue must be Open status.
+`queue` indicates the queue to which the PodGroup belongs. The queue must be in the Open state.
 ### priorityClassName
-priorityClassName represents the priority of the podgroup and is used by the scheduler to sort all the PodGroups in the
-queue when scheduling. Note that **system-node-critical** and **system-cluster-critical** are reserved values, which
-means the highest priority. If not specified, default priority are used automatically.
+`priorityClassName` represents the priority of the PodGroup and is used by the scheduler to sort all the PodGroups in the queue during scheduling. Note that **system-node-critical** and **system-cluster-critical** are reserved values, which mean the highest priority. If `priorityClassName` is not specified, the default priority is used.
 ### minResources
-minResources indicates the minimum resources for running the PodGroup. If available resource in cluster cannot satisfy
-the requirement, any Pod or Task in the PodGroup will not be scheduled.
+`minResources` indicates the minimum resources for running the PodGroup. If available resources in the cluster cannot satisfy the requirement, no pod or task in the PodGroup will be scheduled. 
 ### phase
-phase means the current status of the PodGroup.
+`phase` indicates the current status of the PodGroup.
 ### conditions
-conditions represent the specific status log of the PodGroup, including the key events in the lifecycle of the PodGroup.
+`conditions` represents the status log of the PodGroup, including the key events that occurred in the lifecycle of the PodGroup.  
 ### running
-running is the number of running Pods or Tasks in PodGroup.
+`running` indicates the number of running pods or tasks in the PodGroup.
 ### succeed
-succeed is the number of succeed Pods or Tasks in PodGroup.
+`succeed` indicates the number of successful pods or tasks in the PodGroup.
 ### failed
-failed is the number of failed Pods or Tasks in PodGroup.
+`failed` indicates the number of failed pods or tasks in the PodGroup.
 ## Status
 ### pending
-pending means the PodGroup has been accepted by Volcano but its resource requirement cannot be satisfied at soon. Once
-satisfied, the status will turn to be running.
+`pending` indicates that the PodGroup has been accepted by Volcano but its resource requirement has not been satisfied yet. Once satisfied, the status will turn to running.
 ### running
-running means there are at least **minMember** number of Pods or Tasks are running for the PodGroup.
+`running` indicates that there are at least **minMember** pods or tasks running under the PodGroup.
 ### unknown
-unknown means the status of minMember number of Pods or Task are in two conditions: parts are running while parts are not
-scheduled. The reason of not scheduled may be lack of resource and so on. Scheduler will keep waiting until controllermanager
-start these Pods or Tasks again.
+`unknown` indicates that among **minMember** pods or tasks, some are running while others are not scheduled. The reason could be due to the lack of resources. The scheduler will wait until ControllerManager starts these pods or tasks again.
 ### inqueue
-inqueue means PodGroup has passed the validation and it is waiting for to be bound to a node. It's a transient intermediate
-state between pending and running.
+`inqueue` indicates that the PodGroup has passed validation and is waiting to be bound to a node. It is a transient state between pending and running.
 ## Usage
 ### minMember
-In some scenes, you don't need all tasks of a job to be completed. If a specified number of tasks completes, the expected
-result of the job can be achieved. For example, machine learning training. You can do it with the field "minMember".
+In some scenarios such as machine learning training, you do not need all tasks of a job to be completed. Instead, when a specified number of tasks are completed, the job can be achieved. In this case, the `minMember` field is suitable.
 ### priorityClassName
-priorityClassName is used in preemption scheduled.
-### minResources
-In some scenes such as Big Data analysis, only if available resource achieving a lower limit, can a job be run.
-"minResources" is just for it.
+`priorityClassName` is used in preemptive priority scheduling.
+### minResources 
+In some scenarios such as big data analytics, a job can run only when available resources meet the minimum requirement. `minResources` is suitable for such scenarios.
 ## Note
-#### Creation Automatically
-If no PodGroup specified when creating a Volcano job is created, Volcano will create a PodGroup with the same name for
-Volcano job.
+#### Automatic Creation
+If no PodGroup is specified when a VolcanoJob is created, Volcano will create a PodGroup with the same name as the VolcanoJob.  

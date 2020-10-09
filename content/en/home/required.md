@@ -7,7 +7,7 @@ active = true
 date = 2016-04-20T00:00:00
 
 title = "Why Volcano"
-subtitle = "The best solution for deploying high-performance applications in a Kubernetes cluster "
+subtitle = "A powerful batch scheduler that allows you to run multi-architecture, computing-intensive jobs as Kubernetes workloads"
 
 # Order that this section will appear in.
 weight = 4
@@ -27,7 +27,7 @@ weight = 4
   img_height = "60px"
   name = "kubeflow" 
   url = "https://www.kubeflow.org/ "
-  description = "The Kubeflow project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable and scalable."
+  description = "The Kubeflow project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable, and scalable."
 
 [[featured]]
   img_src = "volcano_flink.PNG"
@@ -52,7 +52,7 @@ weight = 4
   img_height = "60px"
   name = "OpenMPI"
   url = "https://www.open-mpi.org/software/ompi/v4.0/ "
-  description = "The OpenMPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners."
+  description = "The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners."
 
 [[featured]]
   img_src = "volcano_horovod.PNG"
@@ -82,9 +82,9 @@ weight = 4
   img_src = "kubegene_logo.png"
   img_width = "100px"
   img_height = "60px"
-  name = "kubegene"
+  name = "kubeGene"
   url = "https://github.com/kubegene/kubegene "
-  description = "The KubeGene is dedicated to making genome sequencing process simple, portable and scalable."
+  description = "The KubeGene is dedicated to making genome sequencing process simple, portable, and scalable."
 
 [[featured]]
   img_src = "spark-logo-hd.png"

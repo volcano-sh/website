@@ -16,118 +16,121 @@ linktitle = "Community Membership"
   weight = 2
 +++
 
-## Volcano Community Membership
+# Volcano Community Membership
 
-**Note :** This document keeps changing based on the status and feedback of Volcano Community.
+**Note:** We regularly update this document with the latest information and incorporate feedback from the Volcano community.
 
-This document gives a brief overview of the Volcano community roles with the requirements and responsibilities associated with them.
+This document gives a brief overview of the Volcano community roles and the requirements and responsibilities associated with them.
 
 | Role | Requirements | Responsibilities | Privileges |
 | -----| ---------------- | ------------ | -------|
-| [Member](#member) | Sponsor from 2 approvers, active in community, contributed to Volcano | Welcome and guide new contributors | Volcano GitHub organization Member |
-| [Approver](#approver) | Sponsor from 2 maintainers, has good experience and knowledge of domain, actively contributed to code and review  | Review and approve contributions from community members | Write access to specific packages in relevant repository |
-| [Maintainer](#maintainer) | Sponsor from 2 owners, shown good technical judgement in feature design/development and PR review | Participate in release planning and feature development/maintenance | Top level write access to relevant repository. Name entry in Maintainers file of the repository |
-| [Owner](#owner) | Sponsor from 3 owners, helps drive the overall Volcano project | Drive the overall technical roadmap of the project and set priorities of activities in release planning | Volcano GitHub organization Admin access |
+| [Member](#member) | Sponsored by 2 approvers, active in the community, has contributed to Volcano | Gets new contributors on board| Member of the Volcano GitHub organization |
+| [Approver](#approver) | Sponsored by 2 maintainers, has extensive experience and knowledge of a particular domain, has actively contributed to code and review | Reviews and approves contributions from community members | Has write access to specific packages in relevant repositories |
+| [Maintainer](#maintainer) | Sponsored by 2 owners, has shown good technical judgment in feature design/development and PR review | Release planning and feature development/maintenance | Has top-level write access to relevant repositories; name entry in the Maintainers file of the repositories |
+| [Owner](#owner) | Sponsored by 3 owners, has proven ability to lead the entire Volcano project | Drives the overall technical roadmap of the project and sets priorities of activities in release planning | Has admin access to the Volcano GitHub organization |
 
 
-**Note :** It is mandatory for all Volcano community members to follow Volcano [Code of Conduct](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md).
+**Note:** All Volcano community members must follow the Volcano [Code of Conduct](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md).
 
-### Member
+## Member
 
-Members are active participants in the community who contribute by authoring PRs,
-reviewing issues/PRs or participate in community discussions on slack/mailing list.
+Members are active participants in the community. They contribute by authoring PRs,
+reviewing issues/PRs or participating in community discussions on slack/mailing list.
 
 
-#### Requirements
+### Requirements
 
-- Sponsor from 2 approvers
-- Enabled [two-factor authentication] on their GitHub account
-- Actively contributed to the community. Contributions may include, but are not limited to:
+- Sponsored by 2 approvers
+- Has enabled two-factor authentication for GitHub account
+- Actively contributed to the community. Contributions include but are not limited to:
     - Authoring PRs
     - Reviewing issues/PRs authored by other community members
     - Participating in community discussions on slack/mailing list
-    - Participate in Volcano community meetings
+    - Attending Volcano community meetings
 
 
-#### Responsibilities and privileges
+### Responsibilities and privileges
 
-- Member of the Volcano GitHub organization
-- Can be assigned to issues and PRs and community members can also request their review
-- Participate in assigned issues and PRs
-- Welcome new contributors
-- Guide new contributors to relevant docs/files
-- Help/Motivate new members in contributing to Volcano
-
-
-### Approver
-
-Approvers are active members who have good experience and knowledge of the domain.
-They have actively participated in the issue/PR reviews and have identified relevant issues during review.
+- Becomes a member of the Volcano GitHub organization
+- Can be assigned issues and PRs and can work on review requests from community members
+- Assigns issues and PRs
+- Gets new contributors on board
+- Guides new contributors on maintaining docs/files
+- Helps/Motivates new members in contributing to Volcano
 
 
-#### Requirements
+## Approver
 
-- Sponsor from 2 maintainers
-- Member for at least 2 months
-- Have reviewed good number of PRs
-- Have good codebase knowledge
+Approvers are active members who have extensive experience and knowledge of a particular domain.
+They have actively participated in the issue/PR reviews and have identified noteworthy issues during the reviews.
 
 
-#### Responsibilities and Privileges
+### Requirements
 
-- Review code to maintain/improve code quality
-- Acknowledge and work on review requests from community members
-- May approve code contributions for acceptance related to relevant expertise
-- Have 'write access' to specific packages inside a repo, enforced via bot
-- Continue to contribute and guide other community members to contribute in Volcano project
-
-### Maintainer
-
-Maintainers are approvers who have shown good technical judgement in feature design/development in the past.
-Has overall knowledge of the project and features in the project.
-
-#### Requirements
-
-- Sponsor from 2 owners
-- Approver for at least 2 months
-- Nominated by a project owner
-- Good technical judgement in feature design/development
-
-#### Responsibilities and privileges
-
-- Participate in release planning
-- Maintain project code quality
-- Ensure API compatibility with forward/backward versions based on feature graduation criteria
-- Analyze and propose new features/enhancements in Volcano project
-- Demonstrate sound technical judgement
-- Mentor contributors and approvers
-- Have top level write access to relevant repository (able click Merge PR button when manual check-in is necessary)
-- Name entry in Maintainers file of the repository
-- Participate & Drive design/development of multiple features
-
-### Owner
-
-Owners are maintainers who have helped drive the overall project direction.
-Has deep understanding of Volcano and related domain and facilitates major agreement in release planning
-
-#### Requirements
-
-- Sponsor from 3 owners
-- Maintainer for at least 2 months
-- Nominated by a project owner
-- Not opposed by any project owner
-- Helped in driving the overall project
-
-#### Responsibilities and Privileges
-
-- Make technical decisions for the overall project
-- Drive the overall technical roadmap of the project
-- Set priorities of activities in release planning
-- Guide and mentor all other community members
-- Ensure all community members are following Code of Conduct
-- Although given admin access to all repositories, make sure all PRs are properly reviewed and merged
-- May get admin access to relevant repository based on requirement
-- Participate & Drive design/development of multiple features
+- Sponsored by 2 maintainers
+- Has been a member for at least 2 months
+- Has reviewed a large number of PRs
+- Has good codebase knowledge
 
 
-**Note :** These roles are applicable only for Volcano github organization and repositories. Currently Volcano doesn't have a formal process for review and acceptance into these roles. We will come-up with a process soon.
+### Responsibilities and privileges
+
+- Reviews code to maintain/improve code quality
+- Acknowledges and works on review requests from community members
+- Approves code contributions for acceptance related to a particular domain
+- Has write access to specific packages inside a repository, enforced via bot
+- Continues to contribute and guide other community members to contribute to Volcano
+
+## Maintainer
+
+Maintainers are approvers who have shown good technical judgment in feature design/development.
+They can grasp the big picture of the project and features in the project.
+
+### Requirements
+
+- Sponsored by 2 owners
+- Has been an approver for at least 2 months
+- Is nominated by a project owner
+- Has good technical judgment in feature design/development
+
+### Responsibilities and privileges
+
+- Participates in release planning
+- Maintains project code quality
+- Ensures the forward/backword compatibility of APIs based on feature graduation criteria
+- Analyzes and proposes new features/enhancements in the Volcano project
+- Demonstrates sound technical judgment
+- Mentors contributors and approvers
+- Has top-level write access to relevant repositories (including the permission to click the Merge PR button when manual check-in is necessary)
+- Name entry in the Maintainers file of the repositories
+- Participates & drives design/development of multiple features
+
+## Owner
+
+Owners are maintainers who have helped lead the project.
+They have deep understanding of Volcano and the related domains, and have facilitated major decision making in issues such as release planning.
+
+### Requirements
+
+- Sponsored by 3 owners
+- Has been a maintainer for at least 2 months
+- Is nominated by a project owner
+- Is not opposed by any project owner
+- Has helped lead the entire project
+
+### Responsibilities and privileges
+
+- Makes overall technical decisions of the project
+- Makes the overall technical roadmap of the project
+- Sets priorities for release planning
+- Guides and mentors all other community members
+- Ensures all community members follow the Code of Conduct
+- Makes sure all PRs are properly reviewed and merged, despite the admin access to all repositories
+- May obtain admin access to relevant repositories as required
+- Participates & drives design/development of multiple features
+
+
+**Note:** These roles are applicable only to the Volcano Github organization and repositories. We are currently developing a formal process for review and acceptance into these roles.
+
+
+[two-factor authentication]: https://help.github.com/articles/about-two-factor-authentication

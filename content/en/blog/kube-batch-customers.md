@@ -23,11 +23,11 @@ linktitle = "Customers of Kube-Batch"
   parent = "customers"
   weight = 1
 +++
-## Who is using Kube-Batch?
+## Who is Using kube-batch?
 
-| Organization | Contact (Github User Name) | Environment | Description of Use |
+| Organization | Contact (Github UserName) | Environment | Description|
 | ------------- | ------------- | ------------- | ------------- |
-| [Baidu Inc](http://www.baidu.com) |[@tizhou86](https://github.com/tizhou86)| Production | The scheduler for PaddlePaddle offline training |
-| [Tusimple](https://www.tusimple.com)| [@suleisl2000](https://github.com/suleisl2000) | | The scheduler for MxNet offline training |
+| [Baidu Inc](http://www.baidu.com) |[@tizhou86](https://github.com/tizhou86)| Production | The scheduler for offline training of the PaddlePaddle deep learning framework |
+| [Tusimple](https://www.tusimple.com)| [@suleisl2000](https://github.com/suleisl2000) | | The scheduler for offline training of MXNet |
 | [FfDL](https://github.com/IBM/FfDL)| [@animeshsingh](https://github.com/animeshsingh)| |  |
-| [MOGU Inc](https://www.mogujie.com)| [@jiaxuanzhou](https://github.com/jiaxuanzhou)| Production |  The scheduler for Tiny+  offline training|
+| [MOGU Inc](https://www.mogujie.com)| [@jiaxuanzhou](https://github.com/jiaxuanzhou)| Production | The scheduler for offline training of tiny+ |

@@ -72,16 +72,16 @@ math = true
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
   focal_point = "Right"
 +++
-## Introduction to Kubernetes Native Batch System
+## Introduction to Kubernetes Native Batch System 
 
-Kubernetes started as a general purpose orchestration framework with a focus on serving jobs. But as it gains popularity, users want to run high performance workloads on Kubernetes, such as Spark, TensorFlow, etc. When running these workloads in Kubernetes, several advanced capability are required, e.g. fair-share sharing, queue, job management (suspend/resume), data management. This Intro will present the work in community to bring "batch" capability.
+Kubernetes started as a general-purpose orchestration framework with a focus on serving jobs. As Kubernetes gains popularity, users want to run high-performance workloads on Kubernetes, such as Spark, TensorFlow, and so on. Running these workloads in Kubernetes requires advanced capabilities, such as fair scheduling, queuing, job management (suspension/resuming), and data management. We will present the achievements that the community has made in "batch processing".
 
-## Speakers
+## Speakers  
 
-### Da Ma (Kubernetes Maintainer, SIG-Scheduling Co-Leader, Volcano leader, Huawei)
+### Klaus Ma (Founder of Volcano & kube-batch, Co-leader of Kubernetes SIG-Scheduling, Technical Lead of CNCF Research User Group & SIG-Runtime)
 
-Kubernetes Maintainer, SIG-Scheduling Co-Leader, Volcano leader. Jilin University master’s degree, majoring in grid computing and distributed system. After graduation, he focus on resource management, resource scheduling in distributed system.
+Klaus is a founder of Volcano & kube-batch, co-leader of Kubernetes SIG-Scheduling, technical lead of CNCF Research User Group & SIG-Runtime, and global team leader of IBM Spectrum Symphony CE & L3. He is a team leader, system architect, designer, and software developer with 10+ years of experience across a variety of industries and technology bases, including cloud computing, machine learning, big data, and financial services. Klaus is currently serving as an architect at Huawei.
 
-### Kevin Wang (Principal Engineer, Huawei)
+### Kevin Wang (Principal Engineer, Huawei)  
 
-Zefeng(Kevin) Wang is a Principal Engineer of the PaaS Team at Huawei. Currently working on Kubernetes, KubeEdge and Huawei Cloud container products. He is the lead of Huawei Kubernetes & Cloud Native open source team and co-founder of KubeEdge project.
+Kevin is a Principal Engineer in HUAWEI CLOUD and currently working on Kubernetes, KubeEdge, Volcano, and HUAWEI CLOUD container products. He is the lead of Huawei Kubernetes & Cloud Native open source team and a co-founder of CNCF KubeEdge and CNCF Volcano.
