@@ -21,21 +21,37 @@ weight = 4
 # * fab - Font Awesome brand icons (see https://fontawesome.com/icons)
 # * ai - academic icons (see https://jpswalsh.github.io/academicons/)
 [[featured]]
-  img_src = "kubeflow.png"
+  img_src = "spark-logo-hd.png"
   img_width = "100px"
   img_height = "60px"
-  name = "kubeflow"
-  url = "https://www.kubeflow.org/ "
-  description = "Kubeflow项目致力于使Kubernetes上的机器学习（ML）工作流部署简单，可移植且可扩展."
-
+  name = "Spark"
+  url = "https://spark.apache.org/ "
+  description = "Apache Spark™是用于大规模数据处理的统一分析引擎."
+  
 [[featured]]
   img_src = "volcano_flink.PNG"
   img_width = "100px"
   img_height = "60px"
-  name = "flink"
+  name = "Flink"
   url = "https://flink.apache.org/ "
-  description = "Apache Flink是一个框架和分布式处理引擎，用于无限制和有限制的数据流上的状态计算."
-
+  description = "Apache Flink是一个框架和分布式处理引擎，用于无限制和有限制的数据流上的状态计算." 
+ 
+[[featured]]
+  img_src = "volcano_tensorflow.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "TensorFlow"
+  url = "https://www.tensorflow.org/ "
+  description = "端到端开源机器学习平台."
+  
+[[featured]]
+  img_src = "volcano_pytorch.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "PyTorch"
+  url = "https://pytorch.org/ "
+  description = "一个开源的机器学习框架，可加快从研究原型到生产部署的过程."
+  
 [[featured]]
   img_src = "volcano_argo-horizontal-color.png"
   img_width = "100px"
@@ -43,13 +59,36 @@ weight = 4
   name = "argo"
   url = "https://argoproj.github.io/ "
   description = "Argo Workflows是一个开源容器原生工作流引擎，用于在Kubernetes上协调并行作业。 Argo Workflows作为Kubernetes CRD实施."
-
+  
+[[featured]]
+  img_src = "volcano_mindspore.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "MindSpore"
+  url = "https://www.mindspore.cn/en "
+  description = "华为开发的全场景深度学习框架."
+  
+[[featured]]
+  img_src = "volcano_paddle.PNG"
+  img_width = "100px"
+  img_height = "60px"
+  name = "PaddlePaddle"
+  url = "https://www.paddlepaddle.org.cn/ "
+  description = "PaddlePaddle是一个由百度发起的工业实践衍生的开源深度学习平台."         
+ 
+[[featured]]
+  img_src = "kubeflow.png"
+  img_width = "100px"
+  img_height = "60px"
+  name = "Kubeflow"
+  url = "https://www.kubeflow.org/ "
+  description = "Kubeflow项目致力于使Kubernetes上的机器学习（ML）工作流部署简单，可移植且可扩展."
 
 [[featured]]
   img_src = "volcano_openMPI.jpg"
   img_width = "100px"
   img_height = "60px"
-  name = "OpenMPI"
+  name = "Open MPI"
   url = "https://www.open-mpi.org/software/ompi/v4.0/ "
   description = "OpenMPI项目是一个开源消息传递接口实现，由学术，研究和行业合作伙伴联盟开发和维护."
 
@@ -62,18 +101,10 @@ weight = 4
   description = "Horovod是针对TensorFlow，Keras，PyTorch和Apache MXNet的分布式深度学习培训框架."
 
 [[featured]]
-  img_src = "volcano_paddle.PNG"
-  img_width = "100px"
-  img_height = "60px"
-  name = "PaddlePaddle"
-  url = "https://www.paddlepaddle.org.cn/ "
-  description = "PaddlePaddle是一个由百度发起的工业实践衍生的开源深度学习平台."
-
-[[featured]]
   img_src = "volcano_mxnet.PNG"
   img_width = "100px"
   img_height = "60px"
-  name = "Mxnet"
+  name = "mxnet"
   url = "https://mxnet.apache.org/versions/1.6/ "
   description = "一个真正的开源深度学习框架，适用于灵活的研究原型和生产."
 
@@ -81,40 +112,7 @@ weight = 4
   img_src = "kubegene_logo.png"
   img_width = "100px"
   img_height = "60px"
-  name = "kubegene"
+  name = "KubeGene"
   url = "https://github.com/kubegene/kubegene "
   description = "KubeGene致力于简化，便携式和可扩展的基因组测序过程."
-
-[[featured]]
-  img_src = "spark-logo-hd.png"
-  img_width = "100px"
-  img_height = "60px"
-  name = "spark"
-  url = "https://spark.apache.org/ "
-  description = "Apache Spark™是用于大规模数据处理的统一分析引擎."
-
-[[featured]]
-  img_src = "volcano_mindspore.PNG"
-  img_width = "100px"
-  img_height = "60px"
-  name = "Mindspore"
-  url = "https://www.mindspore.cn/en "
-  description = "华为开发的全场景深度学习框架."
-
-[[featured]]
-  img_src = "volcano_pytorch.PNG"
-  img_width = "100px"
-  img_height = "60px"
-  name = "PyTorch"
-  url = "https://pytorch.org/ "
-  description = "一个开源的机器学习框架，可加快从研究原型到生产部署的过程."
-
-[[featured]]
-  img_src = "volcano_tensorflow.PNG"
-  img_width = "100px"
-  img_height = "60px"
-  name = "TensorFlow"
-  url = "https://www.tensorflow.org/ "
-  description = "端到端开源机器学习平台."
-
 +++
