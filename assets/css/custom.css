@@ -3,7 +3,11 @@
 /*************************************************
  *  Featured Widget
  **************************************************/
-
+  #required{
+    background-image: url(/img/bg_1.png);
+    background-repeat: no-repeat;
+    background-size: 100%  100%;
+  }
  .featured {
     font-size: 0.8rem;
     line-height: 1.5;

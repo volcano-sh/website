@@ -4,7 +4,7 @@ description = "Bring up the Volcano in any K8s Cluster within few mins"
 subtitle =""
 
 date = 2019-03-28
-lastmod = 2019-03-29
+lastmod = 2019-03-29 
 datemonth = "Mar"
 dateyear = "2019"
 dateday = 28
@@ -13,6 +13,7 @@ draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
 authors = ["Volcano"]
+authors_img = "/img/icon_user.png"
 
 tags = ["Tutorials"]
 summary = "Quick Start Guide for Volcano"
@@ -27,7 +28,7 @@ linktitle = "Quick Start Guide for Volcano"
 The easiest way to deploy Volcano is to use the Helm chart.
 ### Pre-requisites
 First of all, clone the repo to your local path:
-```
+```html
 # mkdir -p $GOPATH/src/volcano.sh/
 # cd $GOPATH/src/volcano.sh/
 # git clone https://github.com/volcano-sh/volcano.git
@@ -35,7 +36,7 @@ First of all, clone the repo to your local path:
 ### 1. Volcano Image
 Official images are available on [DockerHub](https://hub.docker.com/u/volcanosh), however you can
 build them locally with the command:
-```
+```html
 cd $GOPATH/src/volcano.sh/volcano
 make images
 ## Verify your images
@@ -51,14 +52,14 @@ try command ```kind load docker-image <image-name>:<tag> ``` for each of the ima
 ### 2. Helm charts
 
 Finally, install helm chart.
-```
+```shell
 helm install installer/chart --namespace <namespace> --name <specified-name>
 For eg :
 helm install installer/chart --namespace volcano-trial --name volcano-trial
 ```
 
 To Verify your installation run the following commands:
-```
+```shell
 #1. Verify the Running Pods
 
 # kubectl get pods --namespace <namespace>

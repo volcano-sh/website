@@ -19,10 +19,12 @@
   {{ with (index .Site.Menus $menu_name) }}
   {{ range (index $.Site.Menus $menu_name).ByWeight }}
   <div class="docs-toc-item{{ if $current_page.IsMenuCurrent $menu_name . }} active{{ end }}">
-    <a class="docs-toc-link" {{ if .URL }}href="{{ .URL }}"{{else if .HasChildren }}href="{{ (index .Children 0).URL }}"{{end}}>{{ .Name }}</a>
-
+    <a class="docs-toc-link" {{ if .URL }}href="{{ .URL }}"{{else if .HasChildren }}href="{{(index .Children 0).URL }}"{{end}} style="width: 77%;float: left;padding-right: 0px;">{{ .Name }}</a>
+    <div style="width: 80px;height: 43px;position: relative;left: calc( 100% - 80px );">
+      <div style="width: 0px;height: 0px;border:5px solid #fff;border-top-color:rgba(0, 0, 0, .65);position: relative;top: 18px;left: calc(50% - 0px);" onclick="change({{.Weight}},{{.Name}})" class="change_dot" id="{{.Name}}"></div>
+    </div>
     {{- if .HasChildren }}
-    <ul class="nav docs-sidenav">
+    <ul class="nav docs-sidenav box" style="display: block;" id="{{.Weight}}">
       {{ range .Children }}
       <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }}>
         <a href="{{ .URL }}">{{ .Name }}</a>
@@ -35,3 +37,24 @@
   {{ end }}
   {{ end }}
 </nav>
+<script type="text/javascript">
+  function change(aaa,name){
+    console.log(2222);
+      var  ull = document.getElementsByClassName('box');
+      var  dots = document.getElementsByClassName('change_dot');
+    // console.log(ull);
+    // console.log(ull);
+    for (var i = 0; i <= ull.length +1; i++) {
+      if (ull[i].style.display == 'block'&& ull[i].id == aaa) {
+              ull[i].style.display = 'none';
+              dots[i].style.borderRightColor='rgba(0, 0, 0, .65)';
+              //console.log(dots[i].style.borderTopColor);
+              dots[i].style.borderTopColor='#fff';
+      } else if(ull[i].style.display = 'none'&& ull[i].id == aaa){
+              ull[i].style.display = 'block';
+              dots[i].style.borderTopColor='rgba(0, 0, 0, .65)';
+              dots[i].style.borderRightColor='#fff';
+      }
+    }
+  }
+</script>

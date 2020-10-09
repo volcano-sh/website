@@ -1,0 +1,40 @@
+{{ $ := .root }}
+{{ $page := .page }}
+
+<div class="row featured" style="width: 110%;margin-left: -5%;">
+  {{ with $page.Title }}
+  <div class="col-md-12 section-heading">
+    <h1 style="font-size: 24px;color: #252b3a;font-weight: bold;margin-bottom: 44px;">{{ . | markdownify | emojify }}</h1>
+  </div>
+  {{ end }}
+
+  {{ with $page.Content }}
+  <div class="col-md-12" style="height: 100px;">
+    <p>{{ . | markdownify }}</p>
+  </div>
+  {{ end }}
+
+  {{ range $page.Params.featured }}
+  {{ $image_src := .img_src}}
+  {{ $url := .url}}
+  {{ $width := .img_width}}
+  {{ $height := .img_height}}
+  {{ $image_src = printf "img/%s" $image_src | relURL }}
+    <div class="col-12 col-sm-3" style="height: 150px !important;margin-top: 16px;padding: 0 10px;">
+    {{ with .url }}
+      <div style="background-color: #fff;max-height: 140px;" onclick="window.open('{{ $url }}')">{{ end }}
+        {{ with .img_src }}
+        <div class="featured-icon" >
+          
+          <img src="{{ $image_src }}" alt="" >{{ end }}
+        <div class="titlename">{{ .name | markdownify | emojify }}</div>
+        </div>
+      </div>
+    </div>
+  
+  {{ end }}
+  <div style="height: 20px;color: #fff;">111</div>
+</div>
+<!-- <script type="text/javascript">
+  var heightforwords = 
+</script> -->

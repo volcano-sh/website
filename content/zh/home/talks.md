@@ -4,7 +4,7 @@
 
 widget = "pages"  # Do not modify this line!
 active = true  # Activate this widget? true/false
-weight = 70  # Order that this section will appear.
+weight = 6  # Order that this section will appear.
 
 title = "讲座"
 subtitle = "[查看所有活动  ->](talk/)"

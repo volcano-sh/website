@@ -4,7 +4,7 @@
 
 widget = "pages"  # Do not modify this line!
 active = true  # Activate this widget? true/false
-weight = 71  # Order that this section will appear.
+weight = 5  # Order that this section will appear.
 
 title = "近期活动"
 subtitle = "[查看所有活动  ->](blog/)"

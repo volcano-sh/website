@@ -1,4 +1,8 @@
+{{if .IsHome}} 
+<div class="container" style="background-color: #2f2f2f;max-width: 2000px;padding: 0 390px;">
+{{ else }}
 <div class="container">
+{{ end }}
   {{ partial "footer_section.html" . }}
 </div>
 
