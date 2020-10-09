@@ -21,7 +21,7 @@ height = "500px"
 [[item]]
   title = "Volcano"
   #content = "Erupt with Computing Power <br /> <a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\" background-color=\"red\"  >Star</a>"
-  content = "Erupt with Computing Power"
+  content = "Kubernetes native batch scheduling system for compute-intensive workloads"
   content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\"  data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\"  >Star</a>"
   align = "left"  # Choose `center`, `left`, or `right`.
 
@@ -41,31 +41,31 @@ height = "500px"
   cta_icon = "graduation-cap"
 
 [[item]]
-  title = "Deploy High Performance Workloads effortlessly in Kubernetes"
-  content = "Convert domain specific jobs to k8s workloads and Schedules the jobs in batches for optimal performance."
+  title = "High Performance Powered by Efficient Scheduling"
+  content = "Computing jobs can be converted to Kubernetes workloads and scheduled in batches to deliver optimal performance."
   align = "left"
   #overlay_color = "#555"  # An HTML color value.
   #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.05  # Darken the image. Value in range 0-1.
 
 [[item]]
-  title = "Efficient Scheduling"
-  content = "Co-scheduling, Fair-Share, Gang scheduling, Topologies, Reserve/BackFill, Data ware Scheduling"
+  title = "Diverse Scheduling Policies"
+  content = "Co-scheduling, fair-share scheduling, gang scheduling, topologies, reservation/backfill, data-aware scheduling, and more"
   align = "left"
   #overlay_color = "#333"  # An HTML color value.
   #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.05  # Darken the image. Value in range 0-1.
   
 [[item]]
-  title = "Job Management"
-  content = "Manages jobs with multiple template"
+  title = "Enhanced Job Management"
+  content = "Managing jobs with multiple templates"
   align = "left"
   #overlay_color = "#333"  # An HTML color value.
   #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.05  # Darken the image. Value in range 0-1.
 
 [[item]]
-  title = "Multiple Runtime"
+  title = "Multiple Runtimes"
   content = "Singularity and GPU Accelerators"
   align = "left"
   #overlay_color = "#333"  # An HTML color value.
@@ -73,8 +73,8 @@ height = "500px"
   overlay_filter = 0.15  # Darken the image. Value in range 0-1.
 
 [[item]]
-  title = "Extensive Observability"
-  content = "Logging, Metric & Dashboard"
+  title = "Powerful Monitoring"
+  content = "Logging, metrics, and dashboard"
   align = "left"
   #overlay_color = "#333"  # An HTML color value.
   #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.

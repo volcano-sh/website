@@ -67,7 +67,7 @@ spec:
 ### 关键字段
 * schedulerName
 
-schedulerName表示该job的pod所使用的调度器，默认值为volcano，也可指定为default。它也是tasks.template.spec.schedulerName的默认值。
+schedulerName表示该job的pod所使用的调度器，默认值为volcano，也可指定为default-scheduler。它也是tasks.template.spec.schedulerName的默认值。
 
 * minAvailable
 
@@ -347,7 +347,6 @@ volcano job对当前主流的计算框架均能很好的支持，具体如下：
 11. argo
 12. kubeGene
 
-#### volcano job和kubernetes job的选择
+#### volcano和default-scheduler的选择
 
-volcano job在批处理能力方面对kubernetes job进行了升级，更加适合机器学习、大数据、科学计算等场景，建议在高性能计算场景下选择volcano job；
-其他场景下两者皆可。
+与default-scheduler相比，volcano在批处理方面进行了增强。它更适用于高性能计算场景，如机器学习、大数据应用和科学计算。
