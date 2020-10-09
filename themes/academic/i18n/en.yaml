@@ -188,7 +188,7 @@
   translation: Search
 
 - id: search_placeholder
-  translation: Search...
+  translation: Search
 
 - id: search_results
   translation: results found
