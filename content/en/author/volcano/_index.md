@@ -6,7 +6,7 @@ name = "Volcano"
 superuser = true
 
 # Role/position
-role = "A Kubernetes native system for High Performance Workload"
+role = "A Kubernetes native system for high-performance workloads"
 
 # Organizations/Affiliations
 #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.
@@ -44,21 +44,10 @@ interests = []
   link = "https://twitter.com/volcano_sh"
 
 +++
-Volcano is system for running high performance workloads on
-Kubernetes.  It provides a suite of mechanisms currently missing from
-Kubernetes that are commonly required by many classes of high
-performance workload including:
+Volcano is system for running high-performance workloads on Kubernetes. It features powerful batch scheduling capability that Kubernetes cannot provide but is commonly required by many classes of high-performance workloads, including:
 
-\-  Machine Learning/Deep Learning   
-\-  Bioinformatics/Genomics   
-\-  Other "big data" applications   
+- Machine learning/Deep learning
+- Bioinformatics/Genomics
+- Other big data applications
 
-These types of applications typically run on generalized domain
-frameworks like Tensorflow, Spark, PyTorch, MPI, etc, which Volcano integrates with.
-
-***
-
-Volcano builds upon a decade and a half of experience running a wide
-variety of high performance workloads at scale using several systems
-and platforms, combined with best-of-breed ideas and practices from
-the open source community.
+These types of applications typically run on generalized domain frameworks like TensorFlow, Spark, PyTorch, and MPI. Volcano is integrated with these frameworks to allow you to run your applications without adaptation efforts while enjoying remarkable batch scheduling.

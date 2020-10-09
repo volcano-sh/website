@@ -19,7 +19,7 @@ linktitle = "Architecture"
 ## Overall Architecture
 
 
-{{<figure library="1" src="arch_1.png" title="application scenarios of Volcano">}}
+{{<figure library="1" src="arch_1.png" title="Application scenarios of Volcano">}}
 
 
 Volcano is designed for high-performance workloads running on Kubernetes. It follows the design and mechanisms of Kubernetes.
