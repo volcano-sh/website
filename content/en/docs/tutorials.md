@@ -69,6 +69,7 @@ spec:
                   cpu: 1
                 limits:
                   cpu: 1
+          restartPolicy: Never
 ```
 
 ### Step: 3 
