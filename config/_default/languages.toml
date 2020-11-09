@@ -41,7 +41,7 @@
   version_menu = "文档"
 
 [[zh.params.versions]]
-  name = "v1.0"
+  name = "v1.x"
   url = "/zh/docs/"
 
 
