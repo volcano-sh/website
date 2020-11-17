@@ -64,5 +64,5 @@ preserveTaxonomyNames = true
   version_menu = "Documentation"
 
 [[params.versions]]
-  name = "v1.0"
+  name = "v1.x"
   url = "/en/docs/"
