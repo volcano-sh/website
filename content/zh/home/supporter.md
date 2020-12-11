@@ -65,12 +65,12 @@ weight =7
   img_width = "100px"
   img_height = "60px"
   url = "https://es.didichuxing.com/ "  
-  
+
 [[featured]]
-  img_src = "logo_vivo.png"
-  img_width = "100px"
-  img_height = "60px"
-  url = "https://www.vivo.com.cn/ "
+img_src = "logo_bosszhipin.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.zhipin.com/?sid=sem_pz_bdpc_dasou_title "
 
 [[featured]]
   img_src = "logo_qvtoutiao.png"
@@ -85,10 +85,10 @@ weight =7
   url = "https://caicloud.io/ "
 
 [[featured]]
-  img_src = "logo_xiwangzu.png"
-  img_width = "100px"
-  img_height = "60px"
-  url = "https://www.grandomics.com/ "
+img_src = "logo_zhongkeleinao.png"
+img_width = "100px"
+img_height = "60px"
+url = "http://www.leinao.ai/ "
   
 [[featured]]
   img_src = "logo_bibdr.png"
@@ -97,10 +97,10 @@ weight =7
   url = "http://www.bibdr.org/nd.jsp?id=53 "
 
 [[featured]]
-  img_src = "logo_ktnexr.png"
-  img_width = "100px"
-  img_height = "60px"
-  url = "https://github.com/nexr/ "
+img_src = "logo_ruitian.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.ruitiancapital.com/#/ "
 
 [[featured]]
   img_src = "logo_yunzhisheng.png"
@@ -115,22 +115,22 @@ weight =7
   url = "https://shareit.one/ "
 
 [[featured]]
-img_src = "logo_bosszhipin.png"
+img_src = "logo_vivo.png"
 img_width = "100px"
 img_height = "60px"
-url = "https://www.zhipin.com/?sid=sem_pz_bdpc_dasou_title "
+url = "https://www.vivo.com.cn/ "
 
 [[featured]]
-img_src = "logo_zhongkeleinao.png"
+img_src = "logo_xiwangzu.png"
 img_width = "100px"
 img_height = "60px"
-url = "http://www.leinao.ai/ "
+url = "https://www.grandomics.com/ "
 
 [[featured]]
-img_src = "logo_ruitian.png"
+img_src = "logo_ktnexr.png"
 img_width = "100px"
 img_height = "60px"
-url = "https://www.ruitiancapital.com/#/ "
+url = "https://github.com/nexr/ "
 
 [[featured]]
 img_src = "logo_replacement.png"
