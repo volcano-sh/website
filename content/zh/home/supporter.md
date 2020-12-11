@@ -43,7 +43,7 @@ weight =7
   url = "https://www.iqiyi.com/ "
   
 [[featured]]
-  img_src = "logo_jianhang.png"
+  img_src = "logo_jianxinjinke.png"
   img_width = "100px"
   img_height = "60px"
   url = "http://www.ccb.com/cn/home/indexv3.html "
@@ -113,5 +113,29 @@ weight =7
   img_width = "100px"
   img_height = "60px"
   url = "https://shareit.one/ "
-  
+
+[[featured]]
+img_src = "logo_bosszhipin.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.zhipin.com/?sid=sem_pz_bdpc_dasou_title "
+
+[[featured]]
+img_src = "logo_zhongkeleinao.png"
+img_width = "100px"
+img_height = "60px"
+url = "http://www.leinao.ai/ "
+
+[[featured]]
+img_src = "logo_ruitian.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.ruitiancapital.com/#/ "
+
+[[featured]]
+img_src = "logo_replacement.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://volcano.sh/zh/ "
+
 +++
