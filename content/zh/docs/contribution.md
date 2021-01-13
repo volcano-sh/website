@@ -83,7 +83,7 @@ Volcano 是一个社区驱动的开源项目，致力于打造健康、友好和
 
 #### 提交 Issue
 
-我们不仅估计大家贡献代码，也非常欢迎大家提交 issue。
+我们不仅鼓励大家贡献代码，也非常欢迎大家提交 issue。
 issue 需要被提交到 Volcano 的对应子仓库中。
 
 举个例子：在 Volcano 中开启一个 issue[Volcano](https://github.com/volcano-sh/volcano/issues) 。
