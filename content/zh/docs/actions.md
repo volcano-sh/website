@@ -2,8 +2,8 @@
 title =  "Actions"
 
 
-date = 2021-04-02
-lastmod = 2021-04-02
+date = 2021-04-07
+lastmod = 2021-04-07
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -25,33 +25,30 @@ jobsMap
 
 //扫描一遍job，初始化上面三个数据结构
 For job in ssn.Jobs 
-//过滤1
-found := ssn.Queues[job.Queue]
-existed := queueMap[queue.UID]
-//过滤2
-if job.PodGroup.Status.Phase == scheduling.PodGroupPending
-found := jobsMap[job.Queue];
-
-
+  //过滤1
+  found := ssn.Queues[job.Queue]
+  existed := queueMap[queue.UID]
+  //过滤2
+  if job.PodGroup.Status.Phase == scheduling.PodGroupPending
+     found := jobsMap[job.Queue];
+     
 /*更新node资源使用情况*/
 For node in ssn
-Update Total_nodes
-Update Used_nodes
+   Update Total_nodes
+   Update Used_nodes
 
 /*反复enqueue操作*/
 While(!queues.Empty()){
-
-/*资源不足 结束enqueue操作*/
-if idle.IsEmpty() break
-//deal with target job , if exists , judege whether it can be
-
-minReq <--- job
-idle   <--- node资源
-if node资源足够 
-inqueue := true;
-if inqueue
-inqueue
-Queues.push(queue)
+  /*资源不足 结束enqueue操作*/
+   if idle.IsEmpty() break
+   //deal with target job , if exists , judege whether it can be
+   minReq <--- job
+   idle   <--- node资源
+   if node资源足够 
+          inqueue := true;
+   if inqueue
+       enqueue
+   Queues.push(queue)
 } 
 
 ```
@@ -62,7 +59,9 @@ Queues.push(queue)
 
 ####  场景
 
-任务调度的准备过程，符合要求可以被调度的任务inqueue。任务状态由pending变为inqueue
+任务调度的准备过程，符合要求可以被调度的任务enqueue。任务状态由pending变为enqueue
+
+
 
 
 
@@ -115,39 +114,37 @@ For job in range underRequest
 
 ```
 输出正在调度的Jobs和Quenes的数量(reclaim针对的对象)
-For job in ssn（查一下ssn的含义，这里其实迭代的是ssn.Jobs
-（job.PodGroup.Status.Phase == scheduling.PodGroupPending的具体含义要搞清楚 等待调度？Elect中有一样的代码 回收正在调度的代码，等待调度的continue掉。）
-
-1.等待调度的job拒绝reclaim
-2.拒绝被reclaim的情况（有效job），具体的原因和信息抽象掉了
-3.Job的对应Queue found异常，不需要recliam
-ADD一个Queue
-更新queueMap
-更新queues
-4. //既然没有交互信息姑且理解为这个循环的主要过程 筛选[符合要求的Job]
+For job in ssn
+    1.等待调度的job拒绝reclaim
+    2.拒绝被reclaim的情况（有效job），具体的原因和信息抽象掉了
+    3.Job的对应Queue found异常，不需要recliam
+       ADD一个Queue
+       更新queueMap
+       更新queues
+    4. //既然没有交互信息姑且理解为这个循环的主要过程 筛选[符合要求的Job]
 
 更新preemptorsMap(下面的迭代会用)
 更新preemptorTasks
 
 While(!Queues.Empty())
-Queue  = Queues.pop()//出队一个元素
-If  Overused --> continue 
-Found high priority job
-Found high priority task to reclaim others
+  Queue  = Queues.pop()//出队一个元素
+  If  Overused --> continue 
+  Found high priority job
+  Found high priority task to reclaim others
 
-If found:= preemptorTasks[job.UID] 判断task是否在抢占映射job-Task中。没有发现 ==> high priority task ==> 不进行操作continue;
+   If found:= preemptorTasks[job.UID] 判断task是否在抢占映射job-Task中。没有发现 ==> high priority task ==> 不进行操作continue;
 
 For n in ssn.Nodes://开始操作资源层的节点
-If predicates fialed  -> continue
-//predicates基于task - n的预判函数predicateFn
-//开始考察在n上所有的Task（是否reclaim）
+   If predicates fialed  -> continue
+  //predicates基于task - n的预判函数predicateFn
+  //开始考察在n上所有的Task（是否reclaim）
 
 For task on n
-Non running task -> continue;
-[Job , Task] not found -> continue;
-//clone task to avoid modify Task ‘s status on node n
-Update reclainmees
-确定牺牲品victims（reclaim的对象）
+   Not running task -> continue;
+   [Job , Task] not found -> continue;
+   //clone task to avoid modify Task ‘s status on node n
+   Update reclainmees
+   确定牺牲品victims（reclaim的对象）
 
 Start to Reclaim...
 ```
@@ -175,7 +172,7 @@ Print these jobs which have been elected
 
 #### 逻辑
 
-完成Job选取工作，给出ssn.jobs，当job满足某个状态条件的时候，直接就可以把这个job加入到pendingJobs这个数据结构中。
+完成Job选取工作，给出ssn.jobs，当job满足某个状态条件的时候，直接就可以把这个job加入到pendingJobs这个数据结构中。执行volcano的资源预留机制的目标作业选取动作。
 
 #### 场景
 
@@ -188,17 +185,39 @@ Print these jobs which have been elected
 ```
 //select a node which is not locked and has the most idle resoure
 targetJob(if there is not a targetJob return)
+
 if target job has not been scheduled, select a locked node for it
 else reset target job and locked nodes
 ```
 
 #### 逻辑
 
-`job`,`node`进行绑定。抽象了`ReserveNodes`。
-
-与`elect`和`plugins`中的reservation一起组成了资源预留机制。
+`job`,`node`进行绑定。抽象了`ReserveNodes`。与`elect`和`plugins`中的`reservation`一起组成了资源预留机制。在资源预留机制中执行资源预留动作。
 
 #### 场景
 
 和preempt抢占模块类似，最终是需要处理`job`和`node`绑定关系。用于资源预留，进行调度前的准备工作。
 
+
+
+### Backfill
+
+```
+For job in jobs
+  If job.podGroup.status.phase == scheduling.podGroupPending
+     Continue
+
+Some reasons ----> skip backfill
+For task in job
+    For node in ssn.nodes
+      predicateFn
+      Allocate
+```
+
+#### 逻辑
+
+本质上也是task和node绑定的过程，通常发生在最后一步。用于充分利用节点内部的资源碎片，能够很好的调度小需求任务。
+
+#### 场景
+
+有效的利用节点资源的内碎片，提高集群的吞吐量。
