@@ -34,7 +34,7 @@ Volcano scheduler works as follows:
 
 ## Actions
 ### enqueue
-The enqueue action is responsible for filtering out the tasks that meet the scheduling requirements based on a series of filtering algorithms and sending them to the to-be-scheduled queue. After the action is executed, the status of the task changes from `pending` to `inqueue`. mytest
+The enqueue action is responsible for filtering out the tasks that meet the scheduling requirements based on a series of filtering algorithms and sending them to the to-be-scheduled queue. After the action is executed, the status of the task changes from `pending` to `inqueue`. 
 ### allocate
 The allocate action is responsible for selecting the most suitable node based on a series of prediction and optimization algorithms. 
 ### preempt
