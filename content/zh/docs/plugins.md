@@ -1,8 +1,8 @@
 +++
 title =  "Plugins"
 
-date = 2021-04-07
-lastmod = 2021-04-07
+date = 2021-05-13
+lastmod = 2021-05-13
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -15,314 +15,158 @@ linktitle = "Plugins"
   weight = 3
 +++
 
+### Gang
 
-### Binpack
+{{<figure library="1" src="gang.png" title="Gang plugin">}}
 
-```
-Struct PriorityWeight: Bingpacking cpu/mem/weight
+#### 简介
 
-Func calculateWeight
-Func nodeOrderFn
-    BinPackingScore(task , node , bp.weight)
-Func BinPackingScore
-    ResourceBinPackingScore
-Func ResourceBinPackingScore
-    Return usedFinally / capacity
-```
-
-{{<figure library="1" src="binpack.png" title="binpack示意图">}}
-#### 逻辑
-
-模拟`task`与`node`的分配，基于`node`当前的资源分配情况等参数，进行打分。分数越高表示资源占比越高。尽可能填满`node`，需要整块资源的但又无法回收`node`资源的任务可能会被饿死。
+Gang调度策略是volcano-scheduler的核心调度算法之一，它满足了调度过程中的“All or nothing”的调度需求，避免Pod的任意调度导致集群资源的浪费。具体算法是，观察Job下的Pod已调度数量是否满足了最小运行数量，当Job的最小运行数量得到满足时，为Job下的所有Pod执行调度动作，否则，不执行。
 
 #### 场景
 
-小资源任务有利，类似大数据查询任务：电子图书查询、双十一秒杀场景等高并发查询、订单生成等互联网高并发服务场景，任务很小，但是吞吐量很大。资源非常有限，尽量减少碎片。对大资源任务不会优先调度.虽然可能会饿死但是也容易留有整块`node`资源。
+基于容器组概念的Gang调度算法十分适合需要多进程协作的场景。AI场景往往包含复杂的流程，Data Ingestion、Data Analysts、Data Splitting、Trainer、Serving、Logging等，需要一组容器进行协同工作，就很适合基于容器组的Gang调度策略。MPI计算框架下的多线程并行计算通信场景，由于需要主从进程协同工作，也非常适合使用Gang调度策略。容器组下的容器高度相关也可能存在资源争抢，整体调度分配，能够有效解决死锁。
+
+在集群资源不足的场景下，gang的调度策略对于集群资源的利用率的提升是非常明显的。
+
+
+
+### Binpack
+
+{{<figure library="1" src="binpack.png" title="binpack plugin">}}
+#### 简介
+
+binpack调度算法的目标是尽量把已有的节点填满（尽量不往空白节点分配）。具体实现上，binpack调度算法是给可以投递的节点打分，分数越高表示节点的资源利用率越高。binpack算法能够尽可能填满节点，将应用负载靠拢在部分节点，这非常有利于K8S集群节点的自动扩缩容功能。
+
+Binpack算法以插件的形式，注入到volcano-scheduler调度过程中，将会应用在Pod优选节点的阶段。Volcano-scheduler在计算binpack算法时，会考虑Pod请求的各种资源，并根据各种资源所配置的权重做平均。每种资源在节点分值计算过程中的权重并不一样，这取决于管理员为每种资源配置的权重值。同时不同的插件在计算节点分数时，也需要分配不同的权重，scheduler也为binpack插件设置了分数权重。
+
+#### 场景
+
+binpack算法对能够尽可能填满节点的小作业有利。例如大数据场景下的单次查询作业、电商秒杀场景订单生成、AI场景的单次识别作业以及互联网高并发的服务场景等。这种调度算法能够尽可能减小节点内的碎片，在空闲的机器上为申请了更大资源请求的Pod预留足够的资源空间，使集群下空闲资源得到最大化的利用。
 
 
 
 ### Priority
 
-优先级调度，对象job、task
+{{<figure library="1" src="fair-share.png" title="fair-share调度">}}
 
-```
-AddTaskOrderFn
-preemptableFn
-```
+#### 简介
 
-#### 逻辑
-
-模块按照优先级`priority`进行抢占。
-
-`job`根据`priorityClassName`确定调度的优先级。`Task`根据`priorityClassName` , `creatTime` , `id`依次确定优先级。
+Priority plugin提供了job、task排序的实现，以及计算牺牲作业的函数preemptableFn。job的排序根据priorityClassName，task的排序依次根据priorityClassName、createTime、id。
 
 #### 场景
 
-抢占频率很高的场景。实时性任务/普通任务，例如金融场景。物联网实时应用场景（视频流数据检测），语音交互，站内搜索应用。
+当集群运行了多个Job，但资源不足，并且每个Job下有不等数量的Pod等待被调度的时候，如果使用Kubernetes默认调度器，那么最终，具有更多Pod数量的Job将分得更多的集群资源。在这种情况下，volcano-scheduler提供算法支持不同的Job以fair-share的形式共享集群资源。
+
+Priority plugin能够让用户自定义job、task优先级，根据自己的需求在不同层次来定制调度策略。根据job的priorityClassName在应用层面进行优先级排序，例如集群中有金融场景、物联网监控场景等需要较高实时性的应用，Priority plugin能够保证其优先得到调度。
 
 
 
-### Gang
+### DRF
+{{<figure library="1" src="drf.png" title="drf plugin">}}
+#### 简介
 
-```
-对象：job = [task1 , task2,...,]，容器组
-Vtn = job.VaildTaskNum ?  job.MinAvailable（该job的baseline）
-task数量较大---> accept
-task较小   ---> refused
-preemptableFn //以job的priority进行preemptable判断
-```
-
-{{<figure library="1" src="gang.png" title="gang示意图">}}
-#### 逻辑
-
-即job能够运行的`task`必须有一个`minAvilable`保证，如果没有，则全部拒绝。
+DRF调度算法的全称是Dominant Resource Fairness，是基于容器组Domaint Resource的调度算法。volcano-scheduler观察每个Job请求的主导资源，并将其作为对集群资源使用的一种度量，根据Job的主导资源，计算Job的share值，在调度的过程中，具有较低share值的Job将具有更高的调度优先级。这样能够满足更多的作业，不会因为一个胖业务，饿死大批小业务。DRF调度算法能够确保在多种类型资源共存的环境下,尽可能满足分配的公平原则。
 
 #### 场景
 
-AI训练场景需要数据的采集、清洗，模型训练迭代调优，需要一系列的`task`互相协调，具有一定同步性。需要相互协作。则将需要协作的若干`task`组成容器组，然后以组为整体进行调度。容器组下的`task`高度相关也可能存在资源争抢，整体调度分配，也可以解决死锁。
-
-
-
-### Drf
-
-```
-对象：job
-Struct hierarchicalNode //Tree node 
-drfAttr
-......
-
-Struct drfAttr 
-   Share
-   dominantResource //优势资源
-   allocated
-
-Func resourceSaturated //判断资源是否饱和
-Func buildHierarchy
-Func updateHierarchicalShare //更新Tree，这个数据结构没有仔细看
-Func PreemptFn
-Func updateJobShare 
-    updateShare
-
-Func updateShare //输入数据是 drfAttr
-    calculateShare
-
-Func calculateShare 
-   For rn in 资源表，share = 分配/总
-      Res = max(Res , share)
-      Update dominantResource
-
-Func preemptable 
-...
-   Ls = calculateShare(lalloc ,  totalResource )
-   Rs = calculateShare(ralloc,  totalResource)
-   //上下文中 rs是被抢占单元
-   If ls < rs   addVictim(preemptee)
-...
-
-
-```
-{{<figure library="1" src="drf.png" title="drf示意图">}}
-#### 逻辑
-
-`calculateShare`小的，优先级别高。前者的含义是`job`的`dominantResource`的占比评分。也就是说作业的主要的申请资源，占比较小，优先考虑，尽可能多的完成多的`job`。
-
-#### 场景
-
-优先考虑集群的业务的吞吐量，适用单次IO/AI训练/大数据计算/查询等批处理任务。
+DRF调度算法优先考虑集群中业务的吞吐量，适用单次AI训练、单次大数据计算以及查询等批处理小业务场景。
 
 
 
 ### Proportion
 
-```
-名称：均衡，配比。
-Struct: queue  ---> queueAttr
-Build queueAttr for queue
-
-For attr := range pp.queueOpts
-Klog.V(4).infof(“considering queue<%s>:weight<%d>,total weight <%d>”)
-
-//attr是管理queue权重之间的数据结构，total_weight表示所有queue的总和，weight表示当前queue的占比。呼应这个plugin的名字，它是queue层次之间的权重。
-
-//同时还记录了queue deserved、allocated、request、share(resource)，并提供更新的方法。
-
-updateQueueDeserved\updateQueueAllocted
-updateQueueRequest\updateQueueWeight
-
-对queue中的podgrou状态管理
-updateQueuePodGroupInqueueCount
-updateQueuePodGroupPendingCount
-updateQueuePodGroupRunningCount
-updateQueuePodGroupUnknownCount
-
-AddJobEnqueueableFn //如果没有容量，一直进行入队操作，等待
-AddOverusedFn//判断输入的queue是否超出过度使用（超过占比）
-AddReclaimableFn// 基于attr的回收函数。
-```
-{{<figure library="1" src="proportion.png" title="proportion示意图">}}
-#### 逻辑
-
-以`queue`为管理单元，然后不同`queue`之间按照权重分配共享资源。
+{{<figure library="1" src="proportion.png" title="proportion plugin">}}
+#### 简介
+Proportion调度算法是使用queue的概念，用来控制集群总资源的分配比例。每一个queue分配到的集群资源比例是一定的。举例来说，有3个团队，共享一个集群上的资源池：A团队最多使用总集群的40%，B团队最多使用30%，C团队最多使用30%。如果投递的作业量超过团队最大可用资源，就需要排队。
 
 #### 场景
 
-调度弹性、灵活度方面的提升。不同的`queue`是不同类型的任务场景。大家共享集群的资源池，spark大数据场景存储密集，但是cpu也需要；ai任务GPU、cpu密集，存储也需要。MPI任务通信密集，cpu、存储资源相对较少。针对公共的资源池，根据不同的queue(任务类型)对资源的占比权重不同来进行划分。
+Proportion调度算法为集群的调度带来了弹性、灵活性上面的提升。最典型的场景就是在一个公司的多个开发团队，共用一个集群的时候，这种调度算法能够很好的处理不同部门之间的共享资源配比和隔离的需求。在多业务混合场景，如计算密集型的AI业务，网络IO密集型的MPI、HPC业务，存储密集型的大数据业务，Proportion调度算法通过配比，能很好的按需分配共享资源。
 
 
 
-### Affinity
+### Task-topology
 
-#### 逻辑
+#### 简介
 
-这里简单介绍`pod affinity`（还有`pod-node affinity`），处理对象是`pod`，按照亲和性对pod的划分。`pod affinity`  ---> 位置拓扑 --->标签。例如标签是hostname，具有`pod affinity`表示分配在同一`node`
+Task-topology算法是一种根据Job内task之间亲和性和反亲和性配置计算task优先级和Node优先级的算法。通过在Job内配置task之间的亲和性和反亲和性策略，并使用task-topology算法，可优先将具有亲和性配置的task调度到同一个节点上，将具有反亲和性配置的Pod调度到不同的节点上。
 
 #### 场景
 
-基于同一`node`的位置来分析场景：
+node affinity：
 
-`Affinity`：
+- Task-topology对于提升深度学习计算场景下的计算效率非常重要。以TensorFlow计算为例，配置“ps”和“worker”之间的亲和性。Task-topology算法，可使“ps”和“worker”尽量调度到同一台节点上，从而提升“ps”和“worker”之间进行网络和数据交互的效率，进而提升计算效率。
+- HPC、MPI场景下task之间具有高度同步性，需要高速的网络IO。
 
-- 通信/网络密集，同一`node`通信速度极其快。并行计算openMPI。
-- 任务之间具有高度依赖性，任务之间需要高度同步如AI的模型训练场景。
+Anti-affinity：
 
-`Anti-Affinity`：
-
-- 业务服务器的主从备份，保证一个服务器磐机，另一个可以继续稳定运行。
-- 任务之间需要互斥访问共享资源。
+- 以TensorFlow计算为例，“ps”与“ps”之间的反亲和性。
+- 电商服务场景的主从备份，数据容灾，保证一个作业挂掉之后有备用作业继续提供服务。
 
 
 
 ### Predicates   
 
-```
-能否进行预测，和GPU是否可以share有关系。
-Struct predicateEnable{gpuSharingEnable bool}          
+#### 简介
 
-Func enablePredicate
-Predicate := predicateEnable{//初始化一下
-gpuSharingEnable : false
-
-Func Deallocate//根据gpushare情况解分配
-Func OnSessionOpen
-Pl = util.newPodLister
-Pods = pl.List
-nodeMap , nodeSlice
-Predicate := enablePredicate
-/*register event handlers*/ 
-update task info in PodLister & nodeMap
-Id:= predicateGPU
-```
-
-#### 概括
-
-按照GPU是否可以共享，对任务进行预选。
+Predicate plugin通过pod、nodeInfo作为参数，调用predicateGPU，根据计算结果对作业进行评估预选。
 
 #### 场景
 
-GPU主要是ai的模型训练，针对ai场景中需求GPU的任务，可以快速的筛选出来，然后进行集中调度。
+在AI的应用场景下，GPU资源是必需，Predicate plugin可以快速筛选出来需要GPU的进行集中调度。
 
 
 
 ### Nodeorder                                                                                                                                                                                                                                                                           
-```
-Strict priorityWeight{
-    //优选参数,暂时只听哦那个了如下的参数，后续可能会扩展
-    leastReqWeight
-    mostReqWeight
-    nodeAffinityWeight
-    podAffinityWeight 
-    balancedResourceWeight
-}
-    
-Func calculateWeights
-  初始化一下
-  核验参数是否被提供，如果提供了，在weight结构体里修改
-  Check1
-  Check2
-  Check3
-    ...
-    Return weight
-        
-    
-Func OnSessionOpen
-    Weight := calculateWeight()
-    pl := until.newPodLister//调用了util
-    Pods:= pl.list()
-    nodeMap , nodeSlice
-    /*register event handlers*/
-    
-```
 
-#### 概括
+#### 简介
 
-调度优选，这个调度的关键是对`priorityWeight`的理解。对`node`打分，参数由用户来配置。参数包含了`Affinity`;参数中包含`reqResource`，其在DRF中的核心，还包括`LeastReqResource`、`MostReqResource`、`balanceReqResouce`，更高层次的综合的配比。通过各个维度的权，给节点打分，为任务找到最合适的`node`。
+Nodeorder plugin是一种调度优选策略：通过模拟分配从各个维度为node打分，找到最适合当前作业的node。打分参数由用户来配置。参数包含了Affinity、reqResource，、LeastReqResource、MostReqResource、balanceReqResouce。
 
 #### 场景
 
-综合复杂任务调度，为用户开放手动配置权重更宏观的自主调度调优。
-
-
-
-### Reservation
-
-```
-func getHighesttPriorityJobs
-func getUnlockedNodesWithMaxIdle
-func getHighestPriority
-func getJobWaiting
-func getTargetJob
-Func OnSessionOpen
-/*select the job which has the highest priority and waits for the longest duration*/
-```
-
-{{<figure library="1" src="reserve.png" title="资源预留架构">}}
-
-#### 逻辑
-
-考虑以下两种情况
-
-- A.req < B.req && A.priority > B.priority,在一些默认调度情形下，优先级优先，如果持续的A类的job进入调度，B被饿死。
-- A.req < B.req && A.priority < B.priority，在以集群吞吐和资源利用率的调度策略下，类似上面提到的Drf，B饿死。
-
-因此我们需要一种公平调度机制:保证因为某种原因长期饥饿达到临界状态之后被调度。作业预留机制的就是这样一种公平调度机制。
-
-**目标作业的识别**：作业选择上以优先级最高且等待时间最长的作业为目标作业。这样不仅可以保证紧急任务优先被调度，等待时间长度的考虑默认筛选出了资源需求较多的作业。考虑到调度器性能在吞吐量和延时等方面的影响，采用单个目标作业的方式。
-
-**资源预留算法**，包含以下几个核心的方面：
-
-- 节点选取
-
-  节点选取主要有两个选取算法：规格优先、空闲优先。规格优先是指是指集群中所有节点按照主要规格（目标作业申请资源规格）进行降序排序，选取前N个节点纳入节点组，这N个节点的资源总量满足申请量。空闲优先是指集群中所有节点按照主要资源类型（目标作业申请资源类型）的空闲资源量进行降序排序，选取前N个节点纳入节点组，这N个节点的资源总量满足申请量。在v1.1.0的实现中使用的事规格优先。
-
-- 节点数量
-
-  为了尽可能减少锁定操作对调度器综合性能的影响，在满足预留资源申请量的前提下，无论采用哪种节点选取算法，都应保证所选节点数最少。
-
-- 锁定方式
-
-  锁定方式有单节点、多节点、集群锁定三种实现方式。v1.1.0的实现方式是单节点锁定。锁定已有负载锁定节点已有负载的处理手段有两种：抢占式预留、非抢占式预留。顾名思义，抢占式预留将会强制驱逐锁定节点上的已有负载。这种方式可以保证最快腾出所需的资源申请量，但会对已有业务造成重大影响，因此仅适用于紧急任务的资源预留。非抢占式预留则在节点锁定后不做任何处理，等待运行在其上的负载自行结束。v1.1.0采用的是非抢占式预留。
-
-#### 场景
-
-规格优先的选取方式的优点是实现简单、锁定节点数量最小化、对目标作业的调度友好（这种方式锁定的资源总量往往比申请总量大一些，且作业中各Pod容易聚集调度在锁定节点，有利于Pod间通信等）；缺点是锁定资源总量大概率不是最优解、综合调度性能损失（吞吐量、调度时长）、易产生大资源碎片。
+Nodeorder plugin给调度提供了多个维度的打分标准，不同维度的组合，能够让用户根据自身需求灵活的配置合适的调度策略。
 
 
 
 ### Conformance
 
-```
-For evictee range evictees
-	If  classname == scheduling.SystemClusterCritical->skip
-  If  classname == scheduling.SystemNodeCritical--->skip
-	If  evictee.namespace == v1.namespaceSystem--->skip
-```
+#### 简介
 
-#### 逻辑
-
-筛选`evictee`中，一些`job`满足某些情况，不能被驱逐。
+Conformance plugin会筛选牺牲页，使命名空间是kube-system的作业不能被驱逐。其能确保系统的关键资源不会被强制回收使用。
 
 #### 场景
 
-用户通过配置，可以强制保护某一类任务不会被牺牲/抢占。    
+Conformance plugin能够保护在kube-system命名空间下的业务，这些业务是整个集群正常运行的保障。用户也可以根据其提供的模版，用于保护一些特定命名空间下的业务，使其不被抢占。   
+
+
+
+### Reservation
+
+{{<figure library="1" src="reserve.png" title="资源预留架构">}}
+
+#### 简介
+
+**资源预留算法**，包含以下几个核心的方面：
+
+- 节点选取：规格优先/空闲优先
+
+  1.规格优先是指是指集群中所有节点按照主要规格（目标作业申请资源规格）进行降序排序，选取前N个节点纳入节点组，这N个节点的资源总量满足申请量。在volcano的实现中使用的是规格优先。
+
+  2.空闲优先是指集群中所有节点按照主要资源类型（目标作业申请资源类型）的空闲资源量进行降序排序，选取前N个节点纳入节点组，这N个节点的资源总量满足申请量。
+
+- 节点数量:为了尽可能减少锁定操作对调度器综合性能的影响，在满足预留资源申请量的前提下，无论采用哪种节点选取算法，都应保证所选节点数最少。
+
+- 锁定方式
+
+  锁定方式有单节点、多节点、集群锁定三种实现方式。volcano的实现方式是单节点锁定。锁定已有负载锁定节点已有负载的处理手段有两种：抢占式预留、非抢占式预留。顾名思义，抢占式预留将会强制驱逐锁定节点上的已有负载。这种方式可以保证最快腾出所需的资源申请量，但会对已有业务造成重大影响，因此仅适用于紧急任务的资源预留。非抢占式预留则在节点锁定后不做任何处理，等待运行在其上的负载自行结束。v1.1.0采用的是非抢占式预留。
+
+#### 场景
+
+规格优先的选取方式的优点是实现简单、锁定节点数量最小化、对目标作业的调度友好。这种方式锁定的资源总量往往比申请总量大一些，且作业中各Pod容易聚集调度在锁定节点，有利于Pod间通信等。缺点是锁定资源总量大概率不是最优解、综合调度性能损失（吞吐量、调度时长）、易产生大资源碎片。
+
+
+
 
 

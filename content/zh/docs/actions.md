@@ -16,208 +16,104 @@ linktitle = "Actions"
   weight = 2
 +++
 
+
+
 ### Enqueue
 
-```
-Queues
-QueueMap
-jobsMap
+#### 简介
 
-//扫描一遍job，初始化上面三个数据结构
-For job in ssn.Jobs 
-  //过滤1
-  found := ssn.Queues[job.Queue]
-  existed := queueMap[queue.UID]
-  //过滤2
-  if job.PodGroup.Status.Phase == scheduling.PodGroupPending
-     found := jobsMap[job.Queue];
-     
-/*更新node资源使用情况*/
-For node in ssn
-   Update Total_nodes
-   Update Used_nodes
-
-/*反复enqueue操作*/
-While(!queues.Empty()){
-  /*资源不足 结束enqueue操作*/
-   if idle.IsEmpty() break
-   //deal with target job , if exists , judege whether it can be
-   minReq <--- job
-   idle   <--- node资源
-   if node资源足够 
-          inqueue := true;
-   if inqueue
-       enqueue
-   Queues.push(queue)
-} 
-
-```
-
-#### 逻辑
-
-筛选符合要求的任务进入待调度队列。过滤条件主要是对应任务再QueueMap是否存在，node是否满足任务的最小资源需求量minReq。
+Enqueue action筛选符合要求的作业进入待调度队列。当一个Job下的最小资源申请量不能得到满足时，即使为Job下的Pod执行调度动作，Pod也会因为gang约束没有达到而无法进行调度；只有当job的最小资源量得到满足，状态由"Pending"刷新为"Inqueue"才可以进行。一般来说Enqueue action是调度器配置必不可少的action。
 
 ####  场景
 
-任务调度的准备过程，符合要求可以被调度的任务enqueue。任务状态由pending变为enqueue
-
-
+Enqueue action是调度流程中的准备阶段，只有当集群资源满足作业调度的最小资源请求，作业状态才可由"pending"变为"enqueue"。这样在AI/MPI/HPC这样的集群资源可能不足的高负荷的场景下，Enqueue action能够防止集群下有大量不能调度的pod，提高了调度器的性能。
 
 
 
 ### Allocate 
 
-```
-step1. pick a namespace named N (using ssn.NamespaceOrderFn)
-step2. pick a queue named Q from N (using ssn.QueueOrderFn)
-step3. pick a job named J from Q (using ssn.JobOrderFn)
-step4. pick a task T from J (using ssn.TaskOrderFn)
-step5. use predicateFn to filter out node that T can not be allocated on.
-step6. use ssn.NodeOrderFn to judge the best node and assign it to T
-```
+#### 简介
 
-#### 逻辑
+Allocate action是调度流程中的正常分配步骤，用于处理在待调度Pod列表中具有资源申请量的Pod调度，是调度过程必不可少的action。这个过程包括作业的predicate和prioritize。使用predicateFn预选，过滤掉不能分配作业的node；使用NodeOrderFn打分来找到最适合的分配节点。
 
-<task,node>的绑定工作，包含预选和优选过程。使用predicateFn来过滤不能分配的node，使用NodeOrderFn打分来找到最好的node。
+Allocate action遵循commit机制，当一个Pod的调度请求得到满足后，最终并不一定会为该Pod执行绑定动作，这一步骤还取决于Pod所在Job的gang约束是否得到满足。只有Pod所在Job的gang约束得到满足，Pod才可以被调度，否则，Pod不能够被调度。
 
 #### 场景
 
-allocate从namespce层次开始遍历，不同的namespace可以代表不同业务的任务集合，这将有助于处理多类型的复杂业务场景的资源分配功能。不同的业务场景可以注册合适的调度算法(plugins中实现了多种具体的调度策略)
+在集群混合业务场景中，Allocate的预选部分能够将特定的业务（AI、大数据、HPC、科学计算）按照所在namespace快速筛选、分类，对特定的业务进行快速、集中的调度。在Tensorflow、MPI等复杂计算场景中，单个作业中会有多个任务，Allocate action会遍历job下的多个task分配优选，为每个task找到最合适的node。
 
 
 
 ### Preempt
 
-```
-//Queue内Jobs之间的抢占
-For queue in queues //枚举queue
-若干抢占条件的过滤  
-//job内task的抢占
-For job in range underRequest
-若干抢占条件过滤
+#### 简介
 
-```
-
-#### 逻辑
-
-这里抢占分为两个粒度，能够看到必须是同一个Queue下的job抢占，或者同一job下的task抢占。
+Preempt action是调度流程中的抢占步骤，用于处理高优先级调度问题。Preempt用于同一个Queue中job之间的抢占，或同一Job下Task之间的抢占。
 
 #### 场景
 
-- Queue的粒度：相似的场景下发的任务进入到一个Queue中，多个Queue之间不存在资源的抢占。多个Queue之间对集群资源进行比例分配。在很多复杂的调度场景，按照业务对基本资源(cpu、磁盘、GPU、内存、网络带宽)的需求进行分类分组： 计算密集的场景如AI、高性能科学计算所对应的Queue的资源划分cpu、GPU、内存等计算资源需求高；spark框架等大数据场景磁盘需求高，等等。不同的Queue对资源的分配虽然是共享的，但如果AI场景抢占了所有的cpu资源，会导致别的场景对应的Queue中的任务饿死。因此分配基于Queue的粒度，就是为了保证资源的业务吞吐量。
-
-- job的粒度：同一job的task进行抢占，能够保证某些特定业务下特定功能的高实时性要求。例如spark大数据场景，针对一些批处理的功能，实时性要求不高;针对实时数据流的CRUD业务，需要快速反馈结果。此时就需要job内部进行抢占。
+- Queue内job抢占：一个公司中多个部门共用一个集群，每个部门可以映射成一个Queue，不同部门之间的资源不能互相抢占，这种机制能够很好的保证部门资源的隔离性。多业务类型混合场景中，基于Queue的机制满足了一类业务对于某一类资源的集中诉求，也能够兼顾集群的弹性。例如，AI业务组成的queue对集群GPU占比90%，其余图像类处理的业务组成的queue占集群GPU10%。前者占用了集群绝大部分GPU资源但是依然有一小部分资源可以处理其余类型的业务。
+- Job内task抢占：同一Job下通常可以有多个task，例如复杂的AI应用场景中，tf-job内部需要设置一个ps和多个worker，Preempt action就支持这种场景下多个worker之间的抢占。
 
 
 
 ### Reclaim
 
-```
-输出正在调度的Jobs和Quenes的数量(reclaim针对的对象)
-For job in ssn
-    1.等待调度的job拒绝reclaim
-    2.拒绝被reclaim的情况（有效job），具体的原因和信息抽象掉了
-    3.Job的对应Queue found异常，不需要recliam
-       ADD一个Queue
-       更新queueMap
-       更新queues
-    4. //既然没有交互信息姑且理解为这个循环的主要过程 筛选[符合要求的Job]
+#### 简介
 
-更新preemptorsMap(下面的迭代会用)
-更新preemptorTasks
-
-While(!Queues.Empty())
-  Queue  = Queues.pop()//出队一个元素
-  If  Overused --> continue 
-  Found high priority job
-  Found high priority task to reclaim others
-
-   If found:= preemptorTasks[job.UID] 判断task是否在抢占映射job-Task中。没有发现 ==> high priority task ==> 不进行操作continue;
-
-For n in ssn.Nodes://开始操作资源层的节点
-   If predicates fialed  -> continue
-  //predicates基于task - n的预判函数predicateFn
-  //开始考察在n上所有的Task（是否reclaim）
-
-For task on n
-   Not running task -> continue;
-   [Job , Task] not found -> continue;
-   //clone task to avoid modify Task ‘s status on node n
-   Update reclainmees
-   确定牺牲品victims（reclaim的对象）
-
-Start to Reclaim...
-```
-
-#### 逻辑
-
-当新的任务进入等待调度队列，集群资源无法满足，进行资源回收。相对于preempt主动强占，这是一种被迫触发的抢占。
+Reclaim action是调度过程中回收步骤。volcano中使用queue将资源按照比例分配，当集群中新增或者移除queue，Reclaim会负责回收和重新分配资源到剩余队列中去。
 
 #### 场景
 
-当任务负载超过系统资源量时，例如双十一秒杀、红包雨等访问量骤升的场景，需要关注reclaim的配置，具体而言和preempt是很相似的过程。
+在混合批量计算业务场景中(kubeflow/flink/tensorflow等)，不同的业务所在的queue分配了集群资源，此时如果增加了新的业务，Reclaim为新增的queue分配集群资源配比。然而，新queue分到配额后，并不表明queue下的Pod可以正常调度了，因为queue在此时分到的配额只是使用集群资源的上限，并不是使用集群的担保。如果旧业务刚好将集群资源全部占用，那么新业务就会陷入“忙等”。这个时候就需要reclaim action在不同的queue之间重新资源均衡。
+
+Reclaim action尝试驱逐那些资源使用量已经大于配额的queue下的Pod，并把这部分资源分配给资源使用量还没有得到满足的queue。Reclaim action保证了集群资源分配的灵活性，防止queue之间出现相互驱逐的震荡现象。
 
 
 
 ### Elect
 
-```
-//select the target job which is of  the highest priority and waits for the longest time
+#### 简介
 
-For job in ssn.Jobs
-If job.PodGroup.status.phase == scheduling.podGroupPending
-pendingJobs <---- this job
-Print these jobs which have been elected
-```
-
-#### 逻辑
-
-完成Job选取工作，给出ssn.jobs，当job满足某个状态条件的时候，直接就可以把这个job加入到pendingJobs这个数据结构中。执行volcano的资源预留机制的目标作业选取动作。
+Elect action完成资源预留的目标作业识别，属于调度流程中的可选部分。Elect action首先找到集群中处于pending状态的Job，然后根据reservation plugin中的资源预留机制的选取target job。Election action必须配置在enqueue action和allocate action之间。
 
 #### 场景
 
-这个模块提供了选择高优先、长等待的job，属于进行调度之前的预选工作，适宜在各种调度场景(分配、抢占、预留等)之前的模块。
+- 作业条件：v1.1.0实现版本选择优先级最高且等待时间最长的作业作为目标作业。这样不仅可以保证紧急任务场景优先被调度，等待时间长度的考虑默认筛选出了资源需求较多的作业。
+
+- 作业数量：目标作业可以是单个也可以成组。考虑到资源预留必然引起调度器性能在吞吐量和延时等方面的影响，v1.1.0采用了单个目标作业的方式。
+
+- 识别方式：识别方式可以是自动识别或自定义配置。目前仅支持**自动识别**方式，即调度器在每个调度周期自动识别符合条件和数量的目标作业，并为其预留资源。后续版本将考虑在全局和Queue粒度支持自定义配置。
+
 
 
 
 ### Reserve
 
-```
-//select a node which is not locked and has the most idle resoure
-targetJob(if there is not a targetJob return)
+#### 简介
 
-if target job has not been scheduled, select a locked node for it
-else reset target job and locked nodes
-```
-
-#### 逻辑
-
-`job`,`node`进行绑定。抽象了`ReserveNodes`。与`elect`和`plugins`中的`reservation`一起组成了资源预留机制。在资源预留机制中执行资源预留动作。
+Reserve action完成资源预留。将选中的目标作业与节点进行绑定。Reserve action、elect  action 以及Reservation plugin组成了资源预留机制。Reserve action必须配置在allocate action之后。
 
 #### 场景
 
-和preempt抢占模块类似，最终是需要处理`job`和`node`绑定关系。用于资源预留，进行调度前的准备工作。
+在实际应用中，常见以下两种场景：
+
+- 在集群资源不足的情况下，假设处于待调度状态的作业A和B，A资源申请量小于B或A优先级高于B。基于默认调度策略，A将优先于B进行调度。在最坏的情况下，若后续持续有高优先级或申请资源量较少的作业加入待调度队列，B将长时间处于饥饿状态并永远等待下去。
+- 在集群资源不足的情况下，假设存在待调度作业A和B。A优先级低于B但资源申请量小于B。在基于集群吞吐量和资源利用率为核心的调度策略下，A将优先被调度。在最坏的情况下，B将持续饥饿下去。
+
+因此我们需要一种公平调度机制:保证因为某种原因长期饥饿达到临界状态之后被调度。作业预留机制的就是这样一种公平调度机制。
+
+资源预留机制需要考虑节点选取、节点数量以及如何锁定节点。volcano资源预留机制采用节点组锁定的方式为目标作业预留资源，即选定一组符合某些约束条件的节点纳入节点组，节点组内的节点从纳入时刻起不再接受新作业投递，节点规格总和满足目标作业要求。需要强调的是，目标作业将可以在整个集群中进行调度，非目标作业仅可使用节点组外的节点进行调度。
 
 
 
 ### Backfill
 
-```
-For job in jobs
-  If job.podGroup.status.phase == scheduling.podGroupPending
-     Continue
+#### 简介
 
-Some reasons ----> skip backfill
-For task in job
-    For node in ssn.nodes
-      predicateFn
-      Allocate
-```
-
-#### 逻辑
-
-本质上也是task和node绑定的过程，通常发生在最后一步。用于充分利用节点内部的资源碎片，能够很好的调度小需求任务。
+Backfill action是调度流程中的回填步骤，处理待调度Pod列表中没有指明资源申请量的Pod调度，在对单个Pod执行调度动作的时候，遍历所有的节点，只要节点满足了Pod的调度请求，就将Pod调度到这个节点上。
 
 #### 场景
 
-有效的利用节点资源的内碎片，提高集群的吞吐量。
+在一个集群中，主要资源被“胖业务”占用，例如AI模型的训练。Backfill action让集群可以快速调度诸如单次AI模型识别、小数据量通信的“小作业” 。Backfill能够提高集群吞吐量，提高资源利用率。
+
