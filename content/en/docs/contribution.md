@@ -22,6 +22,7 @@ Welcome to Volcano!
 
 -   [Before You Start](#before-you-get-started)
     -   [Code of Conduct](#code-of-conduct)
+    -   [Community discussions](#community-discussions)
     -   [Community Expectations](#community-expectations)
 -   [Getting Started](#getting-started)
 -   [Your First Contribution](#your-first-contribution)
@@ -35,13 +36,20 @@ Welcome to Volcano!
 -   [Commit Message Format](#commit-message-format)
     -   [Testing](#testing)
 
-# Before You Start
+## Before You Start
 
-## Code of Conduct
+### Code of Conduct
 
 All Volcano contributors must read and observe the [Code of Conduct](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md).
 
-## Community Expectations
+### Community discussions
+
+To better communicate with the developers in the Volcano community, please subscribe to the Volcano channel in the following way.
+
+- Sign up and visit `slack.cncf. IO/` to join the CNCF workspace.
+- Participate in community discussions by adding the channel search `volcano`.
+
+### Community Expectations
 
 Volcano is an open-source project driven by the Volcano community, which strives to promote a healthy, friendly, and productive environment.
 The community is committed to developing a system that helps running high-performance workloads, such as AI, ML, and deep learning applications, on Kubernetes. Building such a system would be impossible without the support of community contributors with similar aspirations.
@@ -49,25 +57,25 @@ The community is committed to developing a system that helps running high-perfor
 - For details about the community roles, see [Community Membership](https://github.com/volcano-sh/website/blob/master/content/en/docs/community-membership.md). If you make significant contributions, you will have a more advanced role in the community.
 
 
-# Getting Started
+## Getting Started
 
 - For more information on building and deployment, see [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/deployment.md).
 
 
-# Your First Contribution
+## Your First Contribution
 
 You can contribute in different areas, including filing issues, developing features, fixing critical bugs, and getting your work reviewed and merged.
 
 If you have any question about the development process, visit the [Slack Channel](https://volcano-sh.slack.com) ([sign up](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk)) 
 or join our [mailing list](https://groups.google.com/forum/#!forum/volcano-sh).
 
-## Find Something to Work On
+#### Find Something to Work On
 
 You are welcome to open an issue concerning documentation, report bugs, and push changes to the repositories.
 Feel free to optimize code that does not follow the best coding practices, perform code refactoring, or compile test cases.
 The following steps will help you get started.
 
-### Find a Good Topic
+#### Find a Good Topic
 
 There are [multiple repositories](https://github.com/volcano-sh/) within the Volcano organization with each repository containing a beginner-friendly issue that does not require deep understanding of the Volcano project.
 For example, in [Volcano-Issues](https://github.com/volcano-sh/volcano), you can choose issues labeled with [help wanted](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) or [good first issue](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
@@ -80,7 +88,7 @@ Another good way to start is to find a document that needs improvement, for exam
 When you are ready to work on an issue, reply with `/assign` or `/assign @yourself` on an issue.
 The bot then will assign the issue to you. Your name will then be displayed on the `Assignees` list.
 
-### File an Issue
+#### File an Issue
 
 You are welcome to file issues to Volcano sub-repositories.
 
@@ -88,7 +96,7 @@ You are welcome to file issues to Volcano sub-repositories.
 
 Follow the submission guidelines when you open an issue.
 
-# Contribution Workflow
+## Contribution Workflow
 
 All contributors are welcome to open issues and create pull requests.
 
@@ -100,7 +108,7 @@ The contribution workflow is as follows:
 - Push changes in the topic branch to your remote personal fork of the repository.
 - Submit a pull request (PR) to [Volcano](https://github.com/volcano-sh/volcano). The PR must receive approval from at least two community maintainers before it can be merged.
 
-## Open a Pull Request
+### Open a Pull Request
 
 Volcano follows the standard [GitHub pull request](https://help.github.com/articles/about-pull-requests/) process.
 
@@ -109,7 +117,7 @@ Volcano bot will apply structured labels to your PRs.
 It also provides suggestions on commands in your PRs to facilitate review.
 These `/command` options can be annotated to trigger auto-labeling and notifications. For more information, see [command reference documentation](https://go.k8s.io/bot-commands).
 
-## Code Review
+### Code Review
 
 To make it easier for your PRs to receive reviews,
 
@@ -146,7 +154,7 @@ The first line is the subject, which can contain up to 70 characters. The second
 
 Note: If your pull request does not receive enough attention, you can reach out to the reviewers on Slack.
 
-## Testing
+### Testing
 
 After a PR is opened, the Volcano bot automatically performs multiple types of testing on it. The location of the test code and the environment requirements vary depending on the type of test.
 

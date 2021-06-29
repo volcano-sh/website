@@ -4,7 +4,7 @@ title = "PodGroup"
 
 
 date = 2019-01-28
-lastmod = 2020-08-31
+lastmod = 2021-06-29
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -82,7 +82,10 @@ status:
 ### failed
 `failed` indicates the number of failed pods or tasks in the PodGroup.
 ## Status
+{{<figure library="1" src="status-DAG.png" title="status-DAG">}}
+
 ### pending
+
 `pending` indicates that the PodGroup has been accepted by Volcano but its resource requirement has not been satisfied yet. Once satisfied, the status will turn to running.
 ### running
 `running` indicates that there are at least **minMember** pods or tasks running under the PodGroup.
