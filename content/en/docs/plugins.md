@@ -170,3 +170,56 @@ Resource reservation algorithm, including the following core aspects:
 #### Scenario
 
 The advantages of specification first selection are simple implementation, minimum number of locked nodes, and friendly scheduling for target jobs. In this way, the total amount of locked resources is often larger than the total amount of application, and each Pod in the job is easy to gather and schedule in the locked node, which is conducive to communication among Pods. The disadvantage is that the large probability of locked resources is not the optimal solution, the comprehensive scheduling performance loss (throughput, scheduling time), easy to produce large resource fragmentation.
+
+
+
+### SLA
+
+#### Overview
+
+When users apply jobs to volcano, they may need adding some particular constraints to job, for example, longest Pending time aiming to prevent job from starving. And these constraints can be regarded as Service Level Agreement (SLA) which are agreed between volcano and user. So sla plugin is provided to receive and realize SLA settings for both individual job and whole cluster.
+
+#### Scenario
+
+Users can customize SLA related parameters in their own cluster according to business needs. For example, for clusters with high real-time service requirements, JobWaitingTime can be set as small as possible. For clusters with bulk computing jobs, JobWaitingTime can be set to larger. The parameters of a specific SLA and the optimization of the parameters need to be combined with the specific business and related performance measurement results.
+
+### TDM
+
+#### Overview
+
+The full name of TDM is Time Division Multiplexing. In a co-located environment, some nodes are in both Kubernetes cluster and Yarn cluster. For these nodes, Kubernetes and Yarn cluster can use these resource by time-sharing multiplexing.The TDM Plugin marks these nodes as `revocable nodes`. TDM plugin will try to dispatch `preemptable task` to `revocable node` in node revocable time and evict the `preemptable task` from `revocable node` out of revocable time.. TDM Plugin improves the time-division multiplexing ability of node resources in the scheduling process of Volcano.
+
+#### Scenario
+
+In ToB business, cloud vendors provide cloud-based resources for merchants, and different merchants adopt different container arrangement frameworks (Kubernetes/YARN, etc.). TDM Plugin improves the time-sharing efficiency of common node resources and further improves the utilization rate of resources.
+
+
+
+### Numa-aware
+
+#### Overview
+
+When the node runs many CPU-bound pods, the workload can move to different CPU cores depending on whether the pod is throttled and which CPU cores are available at scheduling time. Many workloads are not sensitive to this migration and thus work fine without any intervention. However, in workloads where CPU cache affinity and scheduling latency significantly affect workload performance, the kubelet allows alternative CPU management policies to determine some placement preferences on the node.
+
+The CPU Manager and the Topology Manager are all Kubelet components, However There is the following limitation:
+
+- The scheduler is not topology-aware. so it is possible to be scheduled on a node and then fail on the node due to the Topology Manager. this is unacceptable for Tensorflow job. If any worker or ps failed on node, the job will fail.
+- The managers are node-level that results in an inability to match the best node for NUMA topology in the whole cluster.
+
+The Numa-Aware Plugin aims to address these limitations.
+
+- Support cpu resource topology scheduling.
+- Support pod-level topology policies.
+
+#### Scenario
+
+Common scenarios for NUMA-Aware are computation-intensive jobs that are sensitive to CPU parameters, scheduling delays. Such as scientific calculation, video decoding, animation rendering, big data offline processing and other specific scenes.
+
+
+
+### Overcommit
+
+#### Overview
+
+#### Scenario
+

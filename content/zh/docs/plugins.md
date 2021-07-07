@@ -174,33 +174,49 @@ Conformance plugin能够保护在kube-system命名空间下的业务，这些业
 
 #### 简介
 
-SLA的全称是service-level agreement(服务等级协议)，它指的是系统服务提供者对客户的一个服务承诺，它是衡量一个集群是否健康的协议。SLA有可用性、准确性、系统容量、延迟等常见的指标。以可用性举例，99.99%的可用性是指一天（60×60×24秒），只有8.64秒（60×60×24×0.0001秒）为不可用，一年就是大概有52.56分钟（8.64*365/60分钟）不可用。
-
-SLA plugin为每个作业分配一个JobWaitingTime的参数，这个参数是这个作业的最大等待时间。当作业等待的时间超过了JobWaitingTime，该作业必须至少入队一次，并且集群为其预留资源。
+SLA的全称是Service Level agreement。用户向volcano提交job的时候，可能会给job增加特殊的约束，例如最长等待时间(JobWaitingTime)。这些约束条件可以视为用户与volcano之间的服务协议。SLA plugin可以为单个作业/整个集群接收或者发送SLA参数。
 
 #### 场景
 
-SLA本身可以为系统的服务可用性、准确性等指标提供一个保证。SLA plugin为集群上的任务调度提供一个保障，避免因为某个大作业而饿死很多小作业，非常适合多种类型的业务需要共享集群资源的场景，能够很好的保证集群的可用性。
+根据业务的需要用户可以在自己的集群定制SLA相关参数。例如实时性服务要求较高的集群，JobWaitingTime可以设置的尽量小。批量计算作业为主的集群，JobWaitingTime可以设置较大。具体SLA的参数以及参数的优化需要结合具体的业务以及相关的性能测评结果。
 
 
 
-### TDM
+### Tdm
 
 #### 简介
 
+Tdm的全称是Time Division Multiplexing。在一些场景中，一些节点既属于Kubernetes集群的也属于Yarn集群的。Tdm plugin会标记这些节点为`revocable node`。Tdm plugin会在该类节点可被撤销的时间段内尝试把`preemptable task`调度给`revocable node`，并在该时间段内清除`revocable node`上的`preemptable task`。Tdm plugin提高了volcano在调度过程中节点资源的分时复用能力。
+
 #### 场景
+
+适用于ToB业务中，云厂商为商家提供云化资源，不同的商家采取不同的容器编排框架(kubernetes/yarn等)，Tdm plugin提高公共节点资源的分时使用效率，进一步提升资源的利用率。
+
+
+
+#### Numa-aware
+
+#### 简介
+
+当节点运行多个cpu密集的pod。基于pod是否可以迁移cpu已经调度周期cpu资源状况，工作负载可以迁移到不同的cpu核心下。许多工作负载对cpu资源迁移并不敏感。然而，有一些cpu的缓存亲和度以及调度延迟显著影响性能的工作负载，kubelet允许可选的cpu编排策略(cpu management)来确定节点上cpu资源的绑定分配。
+
+cpu manager以及topology manager都是kubelet的组件，它存在如下局限：
+
+- 基于kubelet的调度组件不支持topology-aware。所以可能由于Topology manager，导致整个node上的调度失败。这对Tensorflow job是难以接受的，因为一旦有任何worker task挂掉，整个作业都将调度失败。
+- 这些manager是节点级这导致无法在整个集群中匹配numa topology的最佳节点。
+
+Numa-aware plugin致力于解决如上局限。
+
+- 支持cpu资源的拓扑调度。
+- 支持pod级别的拓扑协议。
+
+#### 场景
+
+Numa-aware的常见场景是那些对cpu参数敏感\调度延迟敏感的计算密集型作业。如科学计算、视频解码、动漫动画渲染、大数据离线处理等具体场景。
 
 
 
 #### Overcommit
-
-#### 简介
-
-#### 场景
-
-
-
-#### numaaware
 
 #### 简介
 
