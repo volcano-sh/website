@@ -18,102 +18,52 @@ linktitle = "Installation"
 
 The easiest way to get started with Volcano is to download the [release](https://github.com/volcano-sh/volcano/releases) package from GitHub and follow the following steps:
 
-#### Prerequisites
+## Prerequisites
 
- - A Kubernetes cluster of V1.13 or later is available.
- - [Optional] Helm is downloaded and installed for your cluster. For details on how to install the Helm, click [here](https://helm.sh/docs/using_helm/#install-helm). (This operation is required only if Volcano is installed using Helm.)
+ - Kubernetes 1.12+ with CRD support.
  - The latest version of Volcano is downloaded from [here](https://github.com/volcano-sh/volcano/releases).
- - The release package is decompressed.
-    ```shell
-    #tar -xvf volcano-{Version}-linux-gnu.tar.gz
-    
-    #cd volcano-{Version}-linux-gnu
-    
-    #ll
-    total 60
-    drwxr-xr-x  4 root1 root1  4096 Jul 23 11:38 ./
-    drwxr-xr-x 11 root1 root1 12288 Jul 23 11:37 ../
-    drwxr-xr-x  3 root1 root1  4096 Jul 16 16:15 bin/
-    -rw-r--r--  1 root1 root1   153 Jul 16 16:15 default-queue.yaml
-    drwxr-xr-x  3 root1 root1  4096 Jul 16 16:15 helm/
-    -rw-r--r--  1 root1 root1  4169 Jul 16 16:15 README.md
-    -rw-r--r--  1 root1 root1 23453 Jul 16 16:15 volcano-{Version}.yaml
 
-    
-    ```
-
-#### Installation Modes
- - [Using Deployment](#installation-using-deployment-yaml)
- - [Using Helm](#installation-using-helm-charts)
+## Installation Modes
+ - Install with YAML files
+ - Install from code
+ - Install with Helm
 
 
 
-### Installation Using Deployment
+### Install with YAML files
 
-Create a deployment using the `volcano-{Version}.yaml` file embedded in the release package.
-
-```shell
-# kubectl apply -f volcano-{Version}.yaml 
-namespace/volcano-system created
-configmap/volcano-scheduler-configmap created
-serviceaccount/volcano-scheduler created
-clusterrole.rbac.authorization.k8s.io/volcano-scheduler created
-clusterrolebinding.rbac.authorization.k8s.io/volcano-scheduler-role created
-deployment.apps/volcano-scheduler created
-serviceaccount/volcano-admission created
-clusterrole.rbac.authorization.k8s.io/volcano-admission created
-clusterrolebinding.rbac.authorization.k8s.io/volcano-admission-role created
-deployment.apps/volcano-admission created
-service/volcano-admission-service created
-job.batch/volcano-admission-init created
-serviceaccount/volcano-controllers created
-clusterrole.rbac.authorization.k8s.io/volcano-controllers created
-clusterrolebinding.rbac.authorization.k8s.io/volcano-controllers-role created
-deployment.apps/volcano-controllers created
-customresourcedefinition.apiextensions.k8s.io/jobs.batch.volcano.sh created
-customresourcedefinition.apiextensions.k8s.io/commands.bus.volcano.sh created
-customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.incubator.k8s.io created
-customresourcedefinition.apiextensions.k8s.io/queues.scheduling.incubator.k8s.io created
-customresourcedefinition.apiextensions.k8s.io/podgroups.scheduling.sigs.dev created
-customresourcedefinition.apiextensions.k8s.io/queues.scheduling.sigs.dev created
+Install Volcano on an existing Kubernetes cluster. This way is both available for x86_64 and arm64 architecture.
 
 ```
-Verify running status of Volcano components.
-```shell
-# kubectl get all -n volcano-system
-NAME                                       READY   STATUS      RESTARTS   AGE
-pod/volcano-admission-5bd5756f79-p89tx     1/1     Running     0          6m10s
-pod/volcano-admission-init-d4dns           0/1     Completed   0          6m10s
-pod/volcano-controllers-687948d9c8-bd28m   1/1     Running     0          6m10s
-pod/volcano-scheduler-94998fc64-9df5g      1/1     Running     0          6m10s
+For x86_64:
+kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development.yaml
 
-
-NAME                                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
-service/volcano-admission-service   ClusterIP   10.96.140.22   <none>        443/TCP   6m10s
-
-
-NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/volcano-admission     1/1     1            1           6m10s
-deployment.apps/volcano-controllers   1/1     1            1           6m10s
-deployment.apps/volcano-scheduler     1/1     1            1           6m10s
-
-NAME                                             DESIRED   CURRENT   READY   AGE
-replicaset.apps/volcano-admission-5bd5756f79     1         1         1       6m10s
-replicaset.apps/volcano-controllers-687948d9c8   1         1         1       6m10s
-replicaset.apps/volcano-scheduler-94998fc64      1         1         1       6m10s
-
-
-
-NAME                               COMPLETIONS   DURATION   AGE
-job.batch/volcano-admission-init   1/1           28s        6m10s
+For arm64:
+kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development-arm64.yaml
 
 ```
 
-After the configuration is complete, you can use Volcano to deploy the AI/ML and big data workloads.
 
-### Installation Using Helm
 
-If you want to use Helm to deploy Volcano, ensure that you have Helm charts installed in your cluster.
+### Install from code
+
+If you don't have a kubernetes cluster, try one-click install from code base.This way is only available for x86_64 temporarily.
+
+```
+# git clone https://github.com/volcano-sh/volcano.git
+# tar -xvf volcano-{Version}-linux-gnu.tar.gz
+# cd volcano-{Version}-linux-gnu
+
+# ./hack/local-up-volcano.sh
+```
+
+
+
+
+
+### Install with Helm
+
+Helm is downloaded and installed for your cluster. For details on how to install the Helm, click [here](https://helm.sh/docs/using_helm/#install-helm). 
 
 ###### Step: 1 
 Create a new namespace.
@@ -121,7 +71,7 @@ Create a new namespace.
 # kubectl create namespace volcano-system
 namespace/volcano-system created
 
-``` 
+```
 
 ###### Step: 2
 Use Helm charts to install Volcano.
@@ -193,37 +143,40 @@ https://volcano.sh/
 
 ```
 
-###### Step: 3 
 
-Verify running status of Volcano components.
+
+
+
+## Verify status of Volcano components.
+
 ```shell
 # kubectl get all -n volcano-system
-NAME                                       READY   STATUS              RESTARTS   AGE
-pod/volcano-admission-b45b7b76-84jmw       0/1     ContainerCreating   0          4m42s
-pod/volcano-admission-init-fw47j           0/1     ImagePullBackOff    0          4m42s
-pod/volcano-controllers-5f66f8d76c-27584   0/1     ImagePullBackOff    0          4m42s
-pod/volcano-scheduler-bb4467966-z642p      0/1     ImagePullBackOff    0          4m42s
+NAME                                       READY   STATUS      RESTARTS   AGE
+pod/volcano-admission-5bd5756f79-p89tx     1/1     Running     0          6m10s
+pod/volcano-admission-init-d4dns           0/1     Completed   0          6m10s
+pod/volcano-controllers-687948d9c8-bd28m   1/1     Running     0          6m10s
+pod/volcano-scheduler-94998fc64-9df5g      1/1     Running     0          6m10s
 
 
-NAME                                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)   AGE
-service/volcano-admission-service   ClusterIP   10.107.128.208   <none>        443/TCP   4m42s
+NAME                                TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)   AGE
+service/volcano-admission-service   ClusterIP   10.96.140.22   <none>        443/TCP   6m10s
 
 
 NAME                                  READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/volcano-admission     0/1     1            0           4m42s
-deployment.apps/volcano-controllers   0/1     1            0           4m42s
-deployment.apps/volcano-scheduler     0/1     1            0           4m42s
+deployment.apps/volcano-admission     1/1     1            1           6m10s
+deployment.apps/volcano-controllers   1/1     1            1           6m10s
+deployment.apps/volcano-scheduler     1/1     1            1           6m10s
 
 NAME                                             DESIRED   CURRENT   READY   AGE
-replicaset.apps/volcano-admission-b45b7b76       1         1         0       4m42s
-replicaset.apps/volcano-controllers-5f66f8d76c   1         1         0       4m42s
-replicaset.apps/volcano-scheduler-bb4467966      1         1         0       4m42s
+replicaset.apps/volcano-admission-5bd5756f79     1         1         1       6m10s
+replicaset.apps/volcano-controllers-687948d9c8   1         1         1       6m10s
+replicaset.apps/volcano-scheduler-94998fc64      1         1         1       6m10s
 
 
 
 NAME                               COMPLETIONS   DURATION   AGE
-job.batch/volcano-admission-init   0/1           4m42s      4m42s
+job.batch/volcano-admission-init   1/1           28s        6m10s
 
 ```
 
-After Volcano is installed, you can use some examples provided in [here](https://github.com/volcano-sh/volcano/tree/master/example) to verify the installation.
+After the configuration is complete, you can use Volcano to deploy the AI/ML and big data workloads.

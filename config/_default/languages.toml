@@ -82,18 +82,25 @@
   identifier = "concepts"
 
 [[zh.menu.docs]]
-  name = "Scheduler"
+  name = "生态"
   weight = 4
+  identifier = "zoology"
+
+
+
+[[zh.menu.docs]]
+  name = "Scheduler"
+  weight = 5
   identifier = "scheduler"
 
 [[zh.menu.docs]]
   name = "CLI"
-  weight = 5
+  weight = 6
   identifier = "cli"
 
 [[zh.menu.docs]]
  name = "贡献"
-  weight = 6
+  weight = 7
   identifier = "contribution"
 
   # Blogs
