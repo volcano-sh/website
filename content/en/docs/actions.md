@@ -3,7 +3,7 @@ title =  "Actions"
 
 
 date = 2021-04-07
-lastmod = 2021-04-07
+lastmod = 2021-07-15
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -34,7 +34,7 @@ Enqueue action is the preparatory stage in the scheduling process. Only when the
 
 #### Overview
 
-Allocate action is a essential step in a scheduling process，which is used to handle pod scheduling that has resource requests in the pod list to be scheduled.This process includes the predicates and priorities of jobs. Use the PredicateFn preselect to filter out nodes that cannot assign jobs. Use NodeOrderFn to score to find the most suitable allocation node.
+This Action binds of <task , node> , including pre-selection and further selection.PredicateFn is used to filter out nodes that cannot be allocated,and NodeOrderFn is used to score the nodes to find the one that best fits.Allocate action is a essential step in a scheduling process，which is used to handle pod scheduling that has resource requests in the pod list to be scheduled.
 
 The Allocate action follows the commit mechanism. When a pod's scheduling request is satisfied, a binding action is not necessarily performed for that pod. This step also depends on whether the gang constraint of the Job in which the pod resides is satisfied. Only if the gang constraint of the Job in which the pod resides is satisfied can the pod be scheduled; otherwise, the pod cannot be scheduled.
 
@@ -48,11 +48,11 @@ In a clustered mixed business scenario, the Allocate pre-selected part enables s
 
 #### Overview
 
-Preempt action is a preemption step in the scheduling process, which is used to deal with high-priority scheduling problems. It is used for preemption between jobs in the same queue, or between tasks under the same job.
+The preempt action is used for resource preemption between jobs in a queue , or between tasks in a job.The preempt action is a preemption step in the scheduling process, which is used to deal with high-priority scheduling problems. It is used for preemption between jobs in the same queue, or between tasks under the same job.
 
 #### Scenario
 
-- Preemption between jobs in the same queue: Multiple departments in a company share a cluster, and each department can be mapped into a Queue. Resources of different departments cannot be preempted from each other. This mechanism can well guarantee the isolation of resources of departments. In the mixed scenarios of multiple service types, the mechanism based on queue satisfies the centralized demand of one type of service for one type of resource, and also takes into account the elasticity of the cluster. For example, the queue composed of AI business accounts for 90% of the cluster GPU, while the queue composed of other image class processing business accounts for 10% of the cluster GPUs. The former occupies most of the GPU resources of the cluster but still has a small amount of resources to handle the other types of business.
+- Preemption between jobs in the same queue: Multiple departments in a company share a cluster, and each department can be mapped into a Queue. Resources of different departments cannot be preempted from each other. This mechanism can well guarantee the isolation of resources of departments..In complex scheduling scenarios, basic resources (CPUs, disks, GPUs, memory, network bandwidth) are allocated based on services: In computing-intensive scenarios, such as AI and high-performance scientific computing, queues require more computing resources, such as CPUs, GPUs, and memory. Big data scenarios, such as the Spark framework, have high requirements on disks. Different queues share resources. If AI jobs preempts all CPU resources, jobs in queues of other scenarios will starve. Therefore, the queue-based resource allocation is used to ensure service running.
 - Preemption between tasks in the same job: Usually, there can be multiple tasks in the same Job. For example, in complex AI application scenarios, a parameter server and multiple workers need to be set inside the TF-job, and preemption between multiple workers is supported by preemption within such scenarios.
 
 

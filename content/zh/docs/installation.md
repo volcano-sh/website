@@ -63,7 +63,7 @@ kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/ins
 
 
 
-### 使用 Helm 安装
+### 通过 Helm 安装
 
  在您的集群中下载 Helm，您可以根据以下指南安装 Helm：[安装 Helm](https://helm.sh/docs/using_helm/#install-helm)。(仅当您使用helm 模式进行安装时需要)
 
