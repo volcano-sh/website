@@ -186,7 +186,7 @@ SLA的全称是Service Level agreement。用户向volcano提交job的时候，�
 
 #### 简介
 
-Tdm的全称是Time Division Multiplexing。在一些场景中，一些节点既属于Kubernetes集群的也属于Yarn集群的。Tdm plugin会标记这些节点为`revocable node`。Tdm plugin会在该类节点可被撤销的时间段内尝试把`preemptable task`调度给`revocable node`，并在该时间段内清除`revocable node`上的`preemptable task`。Tdm plugin提高了volcano在调度过程中节点资源的分时复用能力。
+Tdm的全称是Time Division Multiplexing。在一些场景中，一些节点既属于Kubernetes集群也属于Yarn集群。Tdm plugin 需要管理员为这些节点标记为`revocable node`。Tdm plugin会在该类节点可被撤销的时间段内尝试把`preemptable task`调度给`revocable node`，并在该时间段之外清除`revocable node`上的`preemptable task`。Tdm plugin提高了volcano在调度过程中节点资源的分时复用能力。
 
 #### 场景
 
