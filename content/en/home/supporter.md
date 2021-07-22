@@ -44,22 +44,16 @@ img_height = "60px"
 url = "https://www.iqiyi.com/ "
 
 [[featured]]
-img_src = "logo_jianxinjinke.png"
-img_width = "100px"
-img_height = "60px"
-url = "http://www.ccb.com/cn/home/indexv3.html "
-
-[[featured]]
 img_src = "logo_redbook.png"
 img_width = "100px"
 img_height = "60px"
 url = "https://www.xiaohongshu.com/ "
 
 [[featured]]
-img_src = "logo_jd.png"
+img_src = "logo_vips.png"
 img_width = "100px"
 img_height = "60px"
-url = "https://www.jd.com/ "
+url = "https://www.vip.com/ "
 
 [[featured]]
 img_src = "logo_didi.png"
@@ -68,10 +62,22 @@ img_height = "60px"
 url = "https://es.didichuxing.com/ "
 
 [[featured]]
+img_src = "logo_jd.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.jd.com/ "
+
+[[featured]]
 img_src = "logo_bosszhipin.png"
 img_width = "100px"
 img_height = "60px"
 url = "https://www.zhipin.com/?sid=sem_pz_bdpc_dasou_title "
+
+[[featured]]
+img_src = "logo_jianxinjinke.png"
+img_width = "100px"
+img_height = "60px"
+url = "http://www.ccb.com/cn/home/indexv3.html "
 
 [[featured]]
 img_src = "logo_qvtoutiao.png"
@@ -80,10 +86,10 @@ img_height = "60px"
 url = "http://www.qutoutiao.net/ "
 
 [[featured]]
-img_src = "logo_caicloud.png"
+img_src = "logo_ruitian.png"
 img_width = "100px"
 img_height = "60px"
-url = "https://caicloud.io/ "
+url = "https://www.ruitiancapital.com/#/ "
 
 [[featured]]
 img_src = "logo_zhongkeleinao.png"
@@ -96,12 +102,6 @@ img_src = "logo_bibdr.png"
 img_width = "100px"
 img_height = "60px"
 url = "http://www.bibdr.org/nd.jsp?id=53 "
-
-[[featured]]
-img_src = "logo_ruitian.png"
-img_width = "100px"
-img_height = "60px"
-url = "https://www.ruitiancapital.com/#/ "
 
 [[featured]]
 img_src = "logo_yunzhisheng.png"
@@ -134,9 +134,9 @@ img_height = "60px"
 url = "https://github.com/nexr/ "
 
 [[featured]]
-img_src = "logo_replacement.png"
+img_src = "logo_caicloud.png"
 img_width = "100px"
 img_height = "60px"
-url = "https://volcano.sh/zh/ "
+url = "https://caicloud.io/ "
 
 +++
