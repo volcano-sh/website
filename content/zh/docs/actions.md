@@ -1,9 +1,8 @@
 +++
 title =  "Actions"
 
-
 date = 2021-04-07
-lastmod = 2021-04-07
+lastmod = 2021-07-26
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -57,40 +56,12 @@ Preempt action是调度流程中的抢占步骤，用于处理高优先级调度
 
 
 
-### Reclaim
-
-#### 简介
-
-Reclaim action是调度过程中回收步骤。volcano中使用queue将资源按照比例分配，当集群中新增或者移除queue，Reclaim会负责回收和重新分配资源到剩余队列中去。
-
-#### 场景
-
-在混合批量计算业务场景中(kubeflow/flink/tensorflow等)，不同的业务所在的queue分配了集群资源，此时如果增加了新的业务，Reclaim为新增的queue分配集群资源配比。然而，新queue分到配额后，并不表明queue下的Pod可以正常调度了，因为queue在此时分到的配额只是使用集群资源的上限，并不是使用集群的担保。如果旧业务刚好将集群资源全部占用，那么新业务就会陷入“忙等”。这个时候就需要reclaim action在不同的queue之间重新资源均衡。
-
-Reclaim action尝试驱逐那些资源使用量已经大于配额的queue下的Pod，并把这部分资源分配给资源使用量还没有得到满足的queue。Reclaim action保证了集群资源分配的灵活性，防止queue之间出现相互驱逐的震荡现象。
-
-
-
-### Elect
-
-#### 简介
-
-Elect action完成资源预留的目标作业识别，属于调度流程中的可选部分。Elect action首先找到集群中处于pending状态的Job，然后根据reservation plugin中的资源预留机制的选取target job。Election action必须配置在enqueue action和allocate action之间。
-
-#### 场景
-
-- 作业条件：v1.1.0实现版本选择优先级最高且等待时间最长的作业作为目标作业。这样不仅可以保证紧急任务场景优先被调度，等待时间长度的考虑默认筛选出了资源需求较多的作业。
-
-- 作业数量：目标作业可以是单个也可以成组。考虑到资源预留必然引起调度器性能在吞吐量和延时等方面的影响，v1.1.0采用了单个目标作业的方式。
-
-- 识别方式：识别方式可以是自动识别或自定义配置。目前仅支持**自动识别**方式，即调度器在每个调度周期自动识别符合条件和数量的目标作业，并为其预留资源。后续版本将考虑在全局和Queue粒度支持自定义配置。
-
-
-
 
 ### Reserve
 
 #### 简介
+
+Reserve action从v1.2开始已经被弃用，并且被SLA plugin替代。
 
 Reserve action完成资源预留。将选中的目标作业与节点进行绑定。Reserve action、elect  action 以及Reservation plugin组成了资源预留机制。Reserve action必须配置在allocate action之后。
 

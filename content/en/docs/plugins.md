@@ -33,8 +33,6 @@ In the case of insufficient cluster resources, the scheduling strategy of Gang c
 
 ### Binpack
 
-{{<figure library="1" src="binpack.png" title="binpack plugin">}}
-
 #### Overview
 
 The goal of the BinPack scheduling algorithm is to fill as many existing nodes as possible (try not to allocate blank nodes). In the concrete implementation, BinPack scheduling algorithm scores the nodes that can be delivered, and the higher the score, the higher the resource utilization rate of nodes. Binpack algorithm can fill up the nodes as much as possible to close the application load to some nodes, which is very conducive to the automatic expansion capacity function of K8s cluster nodes.
@@ -65,7 +63,7 @@ The Priority Plugin enables users to customize their job and task priorities, an
 
 ### DRF
 
-{{<figure library="1" src="drf.png" title="Drf plugin">}}
+{{<figure library="1" src="drfjob.png" title="Drf plugin">}}
 
 #### Overview
 
@@ -78,8 +76,6 @@ The DRF scheduling algorithm gives priority to the throughput of the business in
 
 
 ### Proportion
-
-{{<figure library="1" src="proportion.png" title="proportion plugin">}}
 
 #### Overview
 
@@ -135,44 +131,6 @@ NodeOrder Plugin provides scoring criteria of multiple dimensions for scheduling
 
 
 
-### Conformance
-
-#### Overview
-
-The Conformance Plugin filters the sacrifice pages, and jobs in the mission name space of Kube-System cannot be expelled. It ensures that critical resources of the system are not forced to be recycled.
-
-#### Scenario
-
-The Conformance Plugin protects operations under the kube-system namespace that guarantee the proper operation of the entire cluster. Users can also use the template they provide to protect businesses in certain namespaces from preemption.
-
-
-
-### Reservation
-
-{{<figure library="1" src="reserve.png" title="Resource Reservation Framework">}}
-
-#### Overview
-
-Resource reservation algorithm, including the following core aspects:
-
-- Node selection: specification first/idle first
-
-  1.Specification priority means that all nodes in the cluster are sorted in descending order according to the main specification (resource specification for target job application), and the first N nodes are selected to be included into the node group, and the total resource of the N nodes meets the application quantity. In the implementation of Volcano, specifications are used first.
-
-  2.Idle priority means that all nodes in the cluster are sorted in descending order according to the amount of idle resources of the main resource type (resource type of target job application). The first N nodes are selected to be included into the node group, and the total amount of resources of the N nodes meets the application amount.
-
-- Node number: In order to minimize the impact of locking operation on the overall performance of the scheduler, under the premise of satisfying the application amount of reserved resources, the number of nodes selected should be minimum no matter which node selection algorithm is adopted.
-
-- Locking
-
-  There are three ways of locking: single node, multi-node and cluster locking. Volcano is implemented by single node locking. There are two ways to lock the existing load on a node: preemptive reservation and non-preemptive reservation. Preemptive reservation, as the name suggests, will force out the existing load on the locked node. This approach ensures that the required resource requests can be vacated as quickly as possible, but it will have a significant impact on the existing business, so it is only suitable for urgent tasks. Non-preemptive reservation does nothing after a node is locked and waits for the load running on it to terminate itself. V1.1.0 uses non-preemptive reservation.
-
-#### Scenario
-
-The advantages of specification first selection are simple implementation, minimum number of locked nodes, and friendly scheduling for target jobs. In this way, the total amount of locked resources is often larger than the total amount of application, and each Pod in the job is easy to gather and schedule in the locked node, which is conducive to communication among Pods. The disadvantage is that the large probability of locked resources is not the optimal solution, the comprehensive scheduling performance loss (throughput, scheduling time), easy to produce large resource fragmentation.
-
-
-
 ### SLA
 
 #### Overview
@@ -215,11 +173,4 @@ The Numa-Aware Plugin aims to address these limitations.
 
 Common scenarios for NUMA-Aware are computation-intensive jobs that are sensitive to CPU parameters, scheduling delays. Such as scientific calculation, video decoding, animation rendering, big data offline processing and other specific scenes.
 
-
-
-### Overcommit
-
-#### Overview
-
-#### Scenario
 

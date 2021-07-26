@@ -1,9 +1,8 @@
 +++
 title =  "Actions"
 
-
 date = 2021-04-07
-lastmod = 2021-07-15
+lastmod = 2021-07-26
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -55,41 +54,11 @@ The preempt action is used for resource preemption between jobs in a queue , or 
 - Preemption between jobs in the same queue: Multiple departments in a company share a cluster, and each department can be mapped into a Queue. Resources of different departments cannot be preempted from each other. This mechanism can well guarantee the isolation of resources of departments..In complex scheduling scenarios, basic resources (CPUs, disks, GPUs, memory, network bandwidth) are allocated based on services: In computing-intensive scenarios, such as AI and high-performance scientific computing, queues require more computing resources, such as CPUs, GPUs, and memory. Big data scenarios, such as the Spark framework, have high requirements on disks. Different queues share resources. If AI jobs preempts all CPU resources, jobs in queues of other scenarios will starve. Therefore, the queue-based resource allocation is used to ensure service running.
 - Preemption between tasks in the same job: Usually, there can be multiple tasks in the same Job. For example, in complex AI application scenarios, a parameter server and multiple workers need to be set inside the TF-job, and preemption between multiple workers is supported by preemption within such scenarios.
 
-
-
-### Reclaim
-
-#### Overview
-
-Reclaim action is a scheduling process for a recovery step. A queue is used in the volcano to allocate resources proportionally. When a queue is added or removed from the cluster, Reclaim will take charge of recycling and redistributing resources to the remaining queues.
-
-#### Scenario
-
-In the mixed batch computing business scenario (kubeflow/flink/tensorflow, etc.), different business in queue allocation the cluster resources, at this time, if a new business, Reclaim for new queue allocation ratio of cluster resources. However, once a new queue is allocated quotas, it does not indicate that pods under the queue can be properly scheduled, because the quota allocated to the queue at this point is only the upper limit for the use of cluster resources, and does not guarantee the use of the cluster. If the old business happens to be using up all the cluster resources, the new business will be "busy waiting." At this point, you needed reclaim action to rebalance resources between different queues. Reclaim action tried to evict pods from queues whose resource usage had exceeded the quota, and to allocate resources to queues whose resource usage had not been met.
-
-Reclaim action tried to evict Pods from queues whose resource usage had exceeded the quota, and to allocate resources to queues whose resource usage had not been met. Reclaim action ensured the flexibility of cluster resource allocation and prevented the shock phenomenon of mutual expulsion among queues.
-
-
-
-### Elect
-
-#### Overview
-
-The Elect Action is an optional part of the scheduling process to identify the target job for the resource reservation. The Elect action first finds the pending Job in the cluster and then selects the Target Job according to the reservation mechanism in the Reservation Plugin. The Election action must be configured between the enqueue action and the allocate action.
-
-#### Scenario
-
-- Job condition: v1.1.0 selects the job with the highest priority and the longest waiting time as the target job. In this way, not only can urgent task scenarios be prioritized, but jobs with more resource requirements are selected by default due to the consideration of waiting time length.
-
-- Number of jobs: The target job can be a single job or a group job. Considering the inevitable impact of resource reservation on scheduler performance in terms of throughput and latency, V1.1.0 uses a single target job approach.
-
-- Identification mode: Identification mode can be automatic identification or custom configuration. Currently, only automatic identification mode is supported, in which the scheduler automatically identifies the target jobs that meet the conditions and number and reserves resources for them during each scheduling cycle. Subsequent releases will consider supporting custom configuration at both global and queue granularity.
-
-  
-
 ### Reserve
 
 #### Overview
+
+The action has been deprecated from v1.2 and replaced with SLA plugin.
 
 The Reserve action completes the resource reservation. Bind the selected target job to the node. The Reserve action, the elect action, and the Reservation plugin make up the resource Reservation mechanism. The Reserve action must be configured after the allocate action.
 
