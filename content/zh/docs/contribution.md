@@ -22,6 +22,7 @@ linktitle = "向Volcano做贡献"
 
 - [上手必读](#上手必读)
   - [代码管理](#代码管理)
+  - [参与讨论](#参与讨论)
   - [社区要求](#社区要求)
 - [开始](#开始)
 - [您的第一个贡献](#您的第一个贡献)
@@ -41,6 +42,13 @@ linktitle = "向Volcano做贡献"
 
 请务必关注和阅读我们的[代码管理](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md)
 
+### 参与讨论
+
+为了更好的和volcano社区的开发者们进行交流讨论，欢迎通过如下方式订阅volcano频道。
+
+- 注册账号并访问 `slack.cncf.io/` 加入cncf工作区
+- 通过添加频道搜索`volcano`，参与社区讨论。
+
 ### 社区要求
 
 Volcano 是一个社区驱动的开源项目，致力于打造健康、友好和富有成效的环境。
@@ -55,9 +63,7 @@ Volcano 是一个社区驱动的开源项目，致力于打造健康、友好和
 
 ## 您的第一个贡献
 
-我们将会帮助您在不同的领域做出贡献，如处理 issue、开发特性、修复关键 bug、检视您的代码并合入。
-
-如果您对开发流程还有疑问，请查看[Slack Channel](https://volcano-sh.slack.com)( 注册[点击这里](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk))，
+我们将会帮助您在不同的领域做出贡献，如处理 issue、开发特性、修复关键 bug、检视您的代码并合入。如果您对开发流程还有疑问，请查看[Slack Channel](https://volcano-sh.slack.com)( 注册[点击这里](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk))，
 也可以加入我们的[mailing list](https://groups.google.com/forum/#!forum/volcano-sh) 。
 
 ### 寻找您感兴趣的领域开展工作

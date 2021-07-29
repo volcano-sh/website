@@ -3,7 +3,7 @@ title = "PodGroup"
 
 
 date = 2019-01-28
-lastmod = 2020-09-03
+lastmod = 2021-06-29
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -103,6 +103,9 @@ succeed表示该podgroup中当前处于succeed状态的pod或任务的数量。
 failed表示该podgroup中当前处于failed状态的pod或任务的数量。
 
 ### 资源状态
+
+{{<figure library="1" src="status-DAG.png" title="status-DAG">}}
+
 * pending
 
 pending表示该podgroup已经被volcano接纳，但是集群资源暂时不能满足它的需求。一旦资源满足，该podgroup将转变为running状态。
@@ -119,6 +122,12 @@ unknown表示该podgroup中**minMember**数量的pod或任务分为2种状态，
 * inqueue
 
 inqueue表示该podgroup已经通过了调度器的校验并入队，即将为它分配资源。inqueue是一种处于pending和running之间的中间状态。
+
+
+
+
+
+  
 
 ### 使用场景
 * minMember的使用
