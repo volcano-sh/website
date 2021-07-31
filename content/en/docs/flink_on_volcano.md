@@ -1,5 +1,5 @@
 +++
-title =  "flink on volcano"
+title =  "Flink on Volcano"
 
 date = 2021-06-29
 lastmod = 2021-06-29
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "flink"
+linktitle = "Flink"
 [menu.docs]
   parent = "ecosystem"
   weight = 2
@@ -60,7 +60,7 @@ $ ./bin/flink run examples/streaming/WordCount.jar
 $ tail log/flink-*-taskexecutor-*.out
 ```
 
-### Flink on volcano[2]
+### Flink on Volcano[2]
 
 ##### 1.The deployment of the component
 
@@ -277,14 +277,3 @@ Once the Flink payload is created, you need to publish the service externally。
 - Click "Add Service", select node access, and enter container port bit 8081.
 - Click Network Management in CCE, you can see the service we just added, and visit the link for external publication.
 - Go to the Dashboard page of Flink and click Submit New Job to submit the task. Here you have the option to submit an officially-provided WordCount sample.The directory is `flink-1.12.2/examples/streaming/WordCount.jar`
-
-
-
-Reference：
-
-[1][Flink official deployment process](https://ci.apache.org/projects/flink/flink-docs-release-1.12/try-flink/local_installation.html)
-
-[2][Flink on Cluster deployment process](https://ci.apache.org/projects/flink/flink-docs-release-1.12/deployment/resource-providers/standalone/kubernetes.html)
-
-[3][Flink on Huawei Cloud CCE document](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0121.html)
-

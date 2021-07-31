@@ -135,7 +135,7 @@ NodeOrder Plugin provides scoring criteria of multiple dimensions for scheduling
 
 #### Overview
 
-When users apply jobs to volcano, they may need adding some particular constraints to job, for example, longest Pending time aiming to prevent job from starving. And these constraints can be regarded as Service Level Agreement (SLA) which are agreed between volcano and user. So sla plugin is provided to receive and realize SLA settings for both individual job and whole cluster.
+When users apply jobs to Volcano, they may need adding some particular constraints to job, for example, longest Pending time aiming to prevent job from starving. And these constraints can be regarded as Service Level Agreement (SLA) which are agreed between volcano and user. So sla plugin is provided to receive and realize SLA settings for both individual job and whole cluster.
 
 #### Scenario
 
@@ -161,7 +161,7 @@ When the node runs many CPU-bound pods, the workload can move to different CPU c
 
 The CPU Manager and the Topology Manager are all Kubelet components, However There is the following limitation:
 
-- The scheduler is not topology-aware. so it is possible to be scheduled on a node and then fail on the node due to the Topology Manager. this is unacceptable for Tensorflow job. If any worker or ps failed on node, the job will fail.
+- The scheduler is not topology-aware. so it is possible to be scheduled on a node and then fail on the node due to the Topology Manager. this is unacceptable for TensorFlow job. If any worker or ps failed on node, the job will fail.
 - The managers are node-level that results in an inability to match the best node for NUMA topology in the whole cluster.
 
 The Numa-Aware Plugin aims to address these limitations.

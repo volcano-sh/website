@@ -80,4 +80,4 @@ priorityClassName用于podgroup的优先级排序，可用于任务抢占调度�
 在某些场景下，任务的运行必须满足最小资源要求，不满足则不能运行该任务，如某些大数据分析场景。这种情况下适合使用minResources字段
 #### 说明事项
 * 自动创建podgroup
-当创建vcjob（volcano job的简称）时，若没有指定该vcjob所属的podgroup，默认会为该vcjob创建同名的podgroup
+当创建vcjob（Volcano Job的简称）时，若没有指定该vcjob所属的podgroup，默认会为该vcjob创建同名的podgroup

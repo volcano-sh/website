@@ -131,7 +131,7 @@ spec:
 
 ## Usage
 ### TensorFlow Workload
-Create a tensorflow workload with a ps and three workers.
+Create a TensorFlow workload with a ps and three workers.
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -267,7 +267,7 @@ spec:
                 restartPolicy: OnFailure
 ```  
 ### MindSpore Workload
-Create a Mindspore workload with eight pod replicas. The workload is considered normal when at least one pod replica works normally.
+Create a MindSpore workload with eight pod replicas. The workload is considered normal when at least one pod replica works normally.
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job

@@ -1,5 +1,5 @@
 +++
-title =  "mpi on volcano"
+title =  "MPI on Volcano"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "mpi"
+linktitle = "MPI"
 [menu.docs]
   parent = "zoology"
   weight = 5
@@ -40,7 +40,7 @@ openMPI项目是一个开源消息传递接口实现，由学术，研究和行�
 
 
 
-### MPI on volcano
+### MPI on Volcano
 
 创建mpi-example.yaml
 
@@ -110,12 +110,3 @@ kubectl apply -f mpi-example.yaml
 ```
 kubectl get pod
 ```
-
-
-
-参考资料：
-
-[1][HPC场景下Volcano批量调度能力实践](http://live.vhall.com/596863286)
-
-[2][HPC on Volcano：容器在气象行业HPC高性能计算场景的应用](https://mp.weixin.qq.com/s/wLIoJeUSey9tzOCV6GZRig)
-

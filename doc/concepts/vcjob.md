@@ -1,6 +1,6 @@
 #### 定义
-volcano job，简称vcjob，是volcano自定义的job资源类型。区别于kubernetes job，vcjob提供了更多高级功能，如可指定调度器、支持最小运行pod数、
-支持task、支持生命周期管理、支持指定队列、支持优先级调度等。volcano job更加适用于机器学习、大数据、科学计算等高性能计算场景
+Volcano Job，简称vcjob，是Volcano自定义的Job资源类型。区别于Kubernetes Job，vcjob提供了更多高级功能，如可指定调度器、支持最小运行pod数、
+支持task、支持生命周期管理、支持指定队列、支持优先级调度等。Volcano Job更加适用于机器学习、大数据、科学计算等高性能计算场景
 #### 样例
 ```
 apiVersion: batch.volcano.sh/v1alpha1
@@ -91,7 +91,7 @@ terminated表示job因为某种内部原因已经处于终止状态，job没有�
 * failed
 failed表示job经过了maxRetry次重启，依然没有正常启动
 #### 使用场景
-* tensorflow workload
+* TensorFlow workload
 以tensorflow为例，创建一个具有1个ps和2个worker的工作负载
 ```
 apiVersion: batch.volcano.sh/v1alpha1
@@ -100,7 +100,7 @@ metadata:
   name: tensorflow-dist-mnist
 spec:
   minAvailable: 3   // 该job的3个pod必须都可用
-  schedulerName: volcano    // 指定volcano为调度器
+  schedulerName: volcano    // 指定Volcano为调度器
   plugins:
     env: []
     svc: []
@@ -186,7 +186,7 @@ spec:
       action: create
       successCondition: status.state.phase = Completed
       failureCondition: status.state.phase = Failed
-      manifest: |           // volcano job的具体定义
+      manifest: |           // Volcano Job的具体定义
         apiVersion: batch.volcano.sh/v1alpha1
         kind: Job
         metadata:
@@ -228,8 +228,8 @@ spec:
                 restartPolicy: OnFailure
 
 ```
-* mindspore
-以mindspore为例，创建一个具有8个pod副本的工作负载，要求1个可用即可
+* MindSpore
+以MindSpore为例，创建一个具有8个pod副本的工作负载，要求1个可用即可
 ```
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -266,21 +266,21 @@ spec:
 
 ```
 #### 说明事项
-* volcano job支持的计算框架
-volcano job对当前主流的计算框架均能很好的支持，具体如下：
-1. tensorflow
-2. pytorch
-3. mindspore
+* Volcano支持的计算框架
+Volcano对当前主流的计算框架均能很好的支持，具体如下：
+1. TensorFlow
+2. Pytorch
+3. MindSpore
 4. PaddlePaddle
-5. spark
-6. flink
-7. openMPI
-8. horovod
-9. mxnet
-10. kubeflow
-11. argo
-12. kubeGene
+5. Spark
+6. Flink
+7. OpenMPI
+8. Horovod
+9. MXNet
+10. Kubeflow
+11. Argo
+12. KubeGene
 ...
-* volcano job和kubernetes job的选择
-volcano job在批处理能力方面对kubernetes job进行了升级，更加适合机器学习、大数据、科学计算等场景，建议在高性能计算场景下选择volcano job；
+* Volcano Job和Kubernetes Job的选择
+Volcano Job在批处理能力方面对Kubernetes Job进行了升级，更加适合机器学习、大数据、科学计算等场景，建议在高性能计算场景下选择Volcano Job；
 其他场景下两者皆可

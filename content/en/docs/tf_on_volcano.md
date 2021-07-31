@@ -1,5 +1,5 @@
 +++
-title =  "Tensorflow on volcano"
+title =  "TensorFlow on Volcano"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "tensorflow"
+linktitle = "TensorFlow"
 [menu.docs]
   parent = "ecosystem"
   weight = 7
@@ -18,11 +18,11 @@ linktitle = "tensorflow"
 
 
 
-### Tensorflow introduction
+### TensorFlow introduction
 
 TensorFlow is a symbolic mathematical system based on data flow programming, which is widely used in programming and realization of various machine learning algorithms. Its predecessor is DistBelief, a neural network algorithm library of Google.
 
-### Tensorflow on volcano
+### TensorFlow on Volcano
 
 PS-worker model: Parameter Server performs model-related services, Work Server trains related services, inference calculation, gradient calculation, etc[1].
 
@@ -115,12 +115,3 @@ View job health.
 ```
 kubectl get pod
 ```
-
-
-
-参考资料:
-
-[1][Practice of Volcano Operation Management Capability in AI Scenario](https://live.vhall.com/631084047?invite=)
-
-[2][TensorFlow Huawei Cloud CCE Deployment Operation Report](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0119.html)
-

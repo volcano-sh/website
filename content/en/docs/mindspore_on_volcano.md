@@ -1,5 +1,5 @@
 +++
-title =  "mindspore on volcano"
+title =  "MindSpore on Volcano"
 
 date = 2021-06-29
 lastmod = 2021-06-29
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "mindspore"
+linktitle = "MindSpore"
 [menu.docs]
   parent = "ecosystem"
   weight = 4
@@ -18,11 +18,11 @@ linktitle = "mindspore"
 
 
 
-### Mindspore introduction
+### MindSpore introduction
 
-Mindspore is a new generation of deep learning framework launched by Huawei. It is derived from the best practices of the whole industry, which best matches the computing power of the rise processor, supports the flexible deployment of the whole scene of terminal, edge and cloud, and creates a brand new AI programming paradigm and lowers the threshold of AI development.
+MindSpore is a new generation of deep learning framework launched by Huawei. It is derived from the best practices of the whole industry, which best matches the computing power of the rise processor, supports the flexible deployment of the whole scene of terminal, edge and cloud, and creates a brand new AI programming paradigm and lowers the threshold of AI development.
 
-### Mindspore on volcano
+### MindSpore on Volcano
 
 Create a new `mindSpore-cpu.yaml` in the cluster as follows.
 

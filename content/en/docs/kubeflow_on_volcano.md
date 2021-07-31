@@ -1,5 +1,5 @@
 +++
-title =  "kubeflow on volcano"
+title =  "Kubeflow on Volcano"
 
 date = 2021-06-29
 lastmod = 2021-06-29
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "kubeflow"
+linktitle = "Kubeflow"
 [menu.docs]
   parent = "ecosystem"
   weight = 3
@@ -37,7 +37,7 @@ What scenarios can we use Kubeflow for：
 
 
 
-### Kubeflow on volcano
+### Kubeflow on Volcano
 
 Volcano is an enhanced high performance computing task batch processing system built on Kubernetes. As a platform for high performance computing scenarios, it makes up for Kubernetes' lack of basic capabilities in machine learning, deep learning, HPC, and big data computing scenarios, including gang-schedule scheduling capability, computational task queue management, task-topology, and GPU affinity scheduling. In addition, Volcano has enhanced the batch creation and life cycle management of computing tasks, fair-share, binpack scheduling and other aspects on the basis of the native Kubernetes capability. Volcano has fully solved the problem of distributed training in Kubeflow mentioned above.
 
@@ -64,7 +64,7 @@ $ export CONFIG_URI="https://raw.githubusercontent.com/kubeflow/manifests/v1.0-b
 
 
 
-#### Install kubeflow
+#### Install Kubeflow
 
 ```
 $ mkdir -p ${KF_DIR}
@@ -244,16 +244,3 @@ spec:
 ```
 kubectl apply -f mnist.yaml
 ```
-
-
-
-Reference:
-
-[1][huaiwei cloud CCE kubeflow on volcano document](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0075.html)
-
-[2][kfctl v1.0.2](https://github.com/kubeflow/kfctl/releases/tag/v1.0.2)
-
-[3][kubeflow on k8s offical document](https://github.com/kubeflow/examples/tree/master/mnist#vanilla)
-
-[4][Volcano Integrated Scheduling Capability Practice under Machine Learning Scenario](https://www.kubeflow.org/docs/distributions/kfctl/overview/)
-

@@ -1,5 +1,5 @@
 +++
-title =  "spark on volcano"
+title =  "Spark on Volcano"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "spark"
+linktitle = "Spark"
 [menu.docs]
   parent = "zoology"
   weight = 8
@@ -91,14 +91,3 @@ spec:
 $ kubectl apply -f spark-pi.yaml
 $ kubectl get SparkApplication
 ```
-
-
-
-参考资料：
-
-[1][spark on k8s官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md)
-
-[2][spark on CCE部署文档](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0131.html)
-
-[3][大数据在volcano上的实践](http://live.vhall.com/357806873)
-

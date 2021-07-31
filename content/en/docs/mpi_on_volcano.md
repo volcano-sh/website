@@ -1,5 +1,5 @@
 +++
-title =  "mpi on volcano"
+title =  "MPI on Volcano"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "mpi"
+linktitle = "MPI"
 [menu.docs]
   parent = "ecosystem"
   weight = 5
@@ -36,11 +36,11 @@ The OpenMPI project is an open source messaging interface implementation develop
 
 Here is a simple 4-thread MPI program example.
 
-{{<figure library="1" src="mpi1.png" title="The working principle of mpi">}}
+{{<figure library="1" src="mpi1.png" title="The working principle of MPI">}}
 
 
 
-### MPI on volcano
+### MPI on Volcano
 
 Create `mpi-example.yaml`.
 
@@ -110,12 +110,3 @@ View job performance under the cluster.
 ```
 kubectl get pod
 ```
-
-
-
-Reference：
-
-[1][Practice of Volcano Batch Scheduling Capability under HPC Scenario](http://live.vhall.com/596863286)
-
-[2][HPC on Volcano: Containers for HPC high-performance computing scenarios in the meteorological industry](https://mp.weixin.qq.com/s/wLIoJeUSey9tzOCV6GZRig)
-

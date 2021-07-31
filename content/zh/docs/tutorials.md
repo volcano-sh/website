@@ -35,7 +35,7 @@ EOF
 ```
 
 ### 步骤2：
-创建一个名为“job-1”的Volcano job。
+创建一个名为“job-1”的Volcano Job。
 ```shell
 # cat <<EOF | kubectl apply -f -
 apiVersion: batch.volcano.sh/v1alpha1

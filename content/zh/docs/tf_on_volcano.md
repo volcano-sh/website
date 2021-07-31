@@ -1,5 +1,5 @@
 +++
-title =  "Tensorflow on volcano"
+title =  "TensorFlow on Volcano"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "tensorflow"
+linktitle = "TensorFlow"
 [menu.docs]
   parent = "zoology"
   weight = 7
@@ -18,17 +18,17 @@ linktitle = "tensorflow"
 
 
 
-### Tensorflow简介
+### TensorFlow简介
 
 TensorFlow是一个基于数据流编程的符号数学系统，被广泛应用于各类机器学习算法的编程实现，其前身是谷歌的神经网络算法库DistBelief。
 
-### Tensorflow on volcano
+### TensorFlow on Volcano
 
 PS-worker模型：Parameter Server执行模型相关业务，Work Server训练相关业务，推理计算、梯度计算等[1]。
 
 {{<figure library="1" src="ps-worker.png" title="ps-worker">}}
 
-Tensorflow on kubernates存在诸多的问题
+TensorFlow on Kubernates存在诸多的问题
 
 - 资源隔离
 - 缺乏GPU调度、Gang schduler。
@@ -115,11 +115,3 @@ kubectl apply -f tftest.yaml
 ```
 kubectl get pod
 ```
-
-
-
-参考资料:
-
-[1][AI场景下volcano作业管理能力实践](https://live.vhall.com/631084047?invite=)
-
-[2][tensorflow华为云CCE部署运行报告](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0119.html)
