@@ -105,7 +105,7 @@ weight = 4
   img_src = "volcano_mxnet.PNG"
   img_width = "100px"
   img_height = "60px"
-  name = "mxnet"
+  name = "MXNet"
   url = "https://mxnet.apache.org/versions/1.6/ "
   description = "A truly open source deep learning framework suited for flexible research prototyping and production."
 

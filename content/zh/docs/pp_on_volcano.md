@@ -1,5 +1,5 @@
 +++
-title =  "paddle paddle on volcano"
+title =  "PaddlePaddle on Volcano"
 
 date = 2021-06-29
 lastmod = 2021-06-29
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "paddle paddle"
+linktitle = "PaddlePaddle"
 [menu.docs]
   parent = "zoology"
   weight = 6
@@ -245,8 +245,3 @@ kubectl logs ctr-volcano-trainer-0
 
 1. 在 yaml 文件当中 trainer 部分的 spec 当中定义 volume，通过 docker 的 volume 映射容器路径和宿主机路径的机制，将/workspace/ctr/models 文件夹映射到宿主机的文件夹中。接下来通过 kubectl describe pod ctr-volcano-trainer-0，可以得知我们的模型所在的节点，接下来 ssh 登陆到对应的节点上，到宿主机被映射到路径下，就可以获取到训练出来到模型了。
 2. 如果需要更加灵活的，自动化的模型配送流程，可以在 K8S 集群上建立 File Server 和分布式文件系统，例如 GlusterFS。将 ctr-volcano-trainer-0 容器内部的/workspace/ctr/models 文件夹映射到 GlusterFS 的 PVC（Persistent Volume Claim）上。通过 ftp 的 wget/curl 操作命令就可以实现模型的获取和配送。
-
-参考资料:
-
-[1][百度飞桨 (PaddlePaddle) 分布式训练在 Volcano 系统上的实践](https://www.infoq.cn/article/ut9TO5TpieF2b7KpGjjP)
-

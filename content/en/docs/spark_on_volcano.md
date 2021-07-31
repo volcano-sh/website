@@ -1,5 +1,5 @@
 +++
-title =  "spark on volcano"
+title =  "Spark on Volcano"
 
 date = 2021-06-29
 lastmod = 2021-06-29
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "spark"
+linktitle = "Spark"
 [menu.docs]
   parent = "ecosystem"
   weight = 8
@@ -22,11 +22,11 @@ linktitle = "spark"
 
 Spark is a fast and versatile big data clustering computing system. It provides high-level APIs for Scala, Java, Python, and R, as well as an optimization engine that supports a generic computational graph for data analysis. It also supports a rich set of advanced tools, including Spark SQL for SQL and Dataframes, MLLib for machine learning, GraphX for graphics processing, and Spark Streaming for Streaming.
 
-### Spark on volcano
+### Spark on Volcano
 
-Spark operates on Volcano in two forms.Here we take the form of a simpler spark-operator [1]. There is also a more complex deployment method that can be referred to [2].
+Spark operates on Volcano in two forms.Here we take the form of a simpler Spark-Operator [1]. There is also a more complex deployment method that can be referred to [2].
 
-Install spark-operator through Helm.
+Install Spark-Operator through Helm.
 
 ```
 $ helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
@@ -34,7 +34,7 @@ $ helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8
 $ helm install my-release spark-operator/spark-operator --namespace spark-operator --create-namespace
 ```
 
-To ensure that the spark-operator is up and running, check with the following directive.
+To ensure that the Spark-Operator is up and running, check with the following directive.
 
 ```
 $ kubectl get po -nspark-operator
@@ -91,14 +91,3 @@ Deploy the Spark application and see the status.
 $ kubectl apply -f spark-pi.yaml
 $ kubectl get SparkApplication
 ```
-
-
-
-Reference：
-
-[1][spark on k8s官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md)
-
-[2][spark on CCE部署文档](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0131.html)
-
-[3][大数据在volcano上的实践](http://live.vhall.com/357806873)
-

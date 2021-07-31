@@ -1,5 +1,5 @@
 +++
-title =  "kubeflow on volcano"
+title =  "Kubeflow on Volcano"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "kubeflow"
+linktitle = "Kubeflow"
 [menu.docs]
   parent = "zoology"
   weight = 3
@@ -251,16 +251,3 @@ spec:
 ```
 kubectl apply -f mnist.yaml
 ```
-
-
-
-参考资料:
-
-[1][华为云CCE kubeflow on volcano文档](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0075.html)
-
-[2][kfctl v1.0.2](https://github.com/kubeflow/kfctl/releases/tag/v1.0.2)
-
-[3][kubeflow on k8s 官方文档](https://github.com/kubeflow/examples/tree/master/mnist#vanilla)
-
-[4][机器学习场景下，Volcano集成调度能力实践](https://www.kubeflow.org/docs/distributions/kfctl/overview/)
-

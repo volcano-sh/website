@@ -1,5 +1,5 @@
 +++
-title =  "flink on volcano"
+title =  "Flink on Volcano"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "flink"
+linktitle = "Flink"
 [menu.docs]
   parent = "zoology"
   weight = 2
@@ -60,7 +60,7 @@ $ ./bin/flink run examples/streaming/WordCount.jar
 $ tail log/flink-*-taskexecutor-*.out
 ```
 
-### Flink on volcano[2]
+### Flink on Volcano[2]
 
 ##### 1.部署组件
 
@@ -277,14 +277,3 @@ kubectl get pod -owide | grep Flink
 - 点击“添加service”，选择节点访问，输入容器端口位8081。
 - 点击CCE中的网络管理，能够看到刚才我们添加的service，访问对外发布的链接。
 - 进入flink的Dashboard页面，点击submit new job提交任务官方的WordCount作业。目录为flink-1.12.2/examples/streaming/WordCount.jar。
-
-
-
-参考文献：
-
-[1][flink官方部署流程](https://ci.apache.org/projects/flink/flink-docs-release-1.12/try-flink/local_installation.html)
-
-[2][flink on cluster部署流程](https://ci.apache.org/projects/flink/flink-docs-release-1.12/deployment/resource-providers/standalone/kubernetes.html)
-
-[3][flink on 华为云CCE文档](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0121.html)
-

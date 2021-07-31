@@ -104,7 +104,7 @@ weight = 4
   img_src = "volcano_mxnet.PNG"
   img_width = "100px"
   img_height = "60px"
-  name = "mxnet"
+  name = "MXNet"
   url = "https://mxnet.apache.org/versions/1.6/ "
   description = "一个真正的开源深度学习框架，适用于灵活的研究原型和生产."
 

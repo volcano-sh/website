@@ -1,5 +1,5 @@
 +++
-title =  "mindspore on volcano"
+title =  "MindSpore on volcano"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "mindspore"
+linktitle = "MindSpore"
 [menu.docs]
   parent = "zoology"
   weight = 4
@@ -22,7 +22,7 @@ linktitle = "mindspore"
 
 MindSpore是华为公司推出的新一代深度学习框架，是源于全产业的最佳实践，最佳匹配昇腾处理器算力，支持终端、边缘、云全场景灵活部署，开创全新的AI编程范式，降低AI开发门槛。
 
-### Mindspore on volcano
+### MindSpore on volcano
 
 在集群中新建mindspore-cpu.yaml如下
 

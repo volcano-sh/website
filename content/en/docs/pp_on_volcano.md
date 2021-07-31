@@ -1,5 +1,5 @@
 +++
-title =  "paddle paddle on volcano"
+title =  "PaddlePaddle on Volcano"
 
 date = 2021-06-29
 lastmod = 2021-06-29
@@ -9,7 +9,7 @@ toc = true  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-linktitle = "paddle paddle"
+linktitle = "PaddlePaddle"
 [menu.docs]
   parent = "ecosystem"
   weight = 6
@@ -240,8 +240,3 @@ Select a Tariner task to view the log.
 ```
 kubectl logs ctr-volcano-trainer-0
 ```
-
-Reference:
-
-[1][Practice of Baidu PaddlePaddle Distributed Training on Volcano System](https://www.infoq.cn/article/ut9TO5TpieF2b7KpGjjP)
-

@@ -145,4 +145,4 @@ priorityClassName用于podgroup的优先级排序，可用于任务抢占调度�
 ### 说明事项
 * 自动创建podgroup
 
-当创建vcjob（volcano job的简称）时，若没有指定该vcjob所属的podgroup，默认会为该vcjob创建同名的podgroup。
+当创建vcjob（Volcano Job的简称）时，若没有指定该vcjob所属的podgroup，默认会为该vcjob创建同名的podgroup。

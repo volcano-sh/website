@@ -148,7 +148,7 @@ Tdm的全称是Time Division Multiplexing。在一些场景中，一些节点既
 
 #### 场景
 
-适用于ToB业务中，云厂商为商家提供云化资源，不同的商家采取不同的容器编排框架(kubernetes/yarn等)，Tdm plugin提高公共节点资源的分时使用效率，进一步提升资源的利用率。
+适用于ToB业务中，云厂商为商家提供云化资源，不同的商家采取不同的容器编排框架(Kubernetes/Yarn等)，Tdm plugin提高公共节点资源的分时使用效率，进一步提升资源的利用率。
 
 
 
