@@ -519,6 +519,7 @@ After the training is completed, we may need to use the trained model for other 
 To sum up, we can use Volcano to execute PaddlePaddle computing jobs, including batch creation, automatic management, and job scheduling. Compared with the ReplicaSet+job mode, Volcano can improve the efficiency of parallel computing.
 
 Authors
+
 >Dong Daxiang, @guru4elephant, PaddlePaddle Architect, Principal Architect, Baidu  
 Wang Jiawei, @wangjiawei04, PaddlePaddle Engineer, Senior Engineer, Baidu  
 Yu Dianhai, @raindrops2sea, PaddlePaddle Architect, Distinguished Architect, Baidu  

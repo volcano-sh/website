@@ -267,9 +267,9 @@ Currently, Volcano mainly monitors scheduling performance metrics, but these met
 
 With the additional metrics, Grafana can display monitoring information for the cluster, queue, and node resources as well as the job progress. In this way, you can track cluster resource usage in real time, which facilitates troubleshooting. For example, when a job state is Pending, you can view the monitoring information to check whether the queue or cluster resources are used up or if the remaining resources on each node are sufficient for a single task.
 
-{{<figure library="1" src="ruitian-2.png">}}
+{{<figure library="1" src="ruitian2.png">}}
 
-{{<figure library="1" src="ruitian-3.png">}}
+{{<figure library="1" src="ruitian3.png">}}
 
 
 
