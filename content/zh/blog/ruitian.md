@@ -340,7 +340,7 @@ sc.nodeInformer.Informer().AddEventHandlerWithResyncPeriod(
 
 {{<figure library="1" src="ruitian2.png">}}  
 
-{{<figure library="1" src="tuitian3.png">}}   
+{{<figure library="1" src="ruitian3.png">}}   
 
 
 ### WatchDog

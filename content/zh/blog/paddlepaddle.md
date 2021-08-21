@@ -11,7 +11,8 @@ title="百度飞桨(PaddlePaddle)分布式训练在Volcano系统上的实践"
 
 
 
->本文2019年11月6日首发于容器魔方微信公众号，原文链接<https:mp.weixin.qq.comsHS6RzzqztBJsHQX7P5T5ww>
+>本文2019年11月6日首发于容器魔方微信公众号，原文链接<https://mp.weixin.qq.com/s/SnUUEEy9OfNghzoel7FtUg>
+
 
 
 
@@ -41,7 +42,7 @@ __Volcano平台可以满足飞桨对资源创建，资源调度的基本要求�
 
 
 
-Volcano借助Kubernetes创建CRD能力，在Kubernetes中引入“apiVersion”为“batch.volcano.sh/v1alpha1 ”， “kind”为“Job”的资源对象，用于描述计算任务。通过配置和创建Volcano job可以使用Volcano平台创建、管理和调度计算任务。使用volcano平台，需要先在Kubernetes集群下安装Volcano，安装Volcano的方法可参考Volcano 官网。
+Volcano借助Kubernetes创建CRD能力，在Kubernetes中引入“apiVersion”为“batch.volcano.sh/v1alpha1 ”,“kind”为“Job”的资源对象，用于描述计算任务。通过配置和创建Volcano job可以使用Volcano平台创建、管理和调度计算任务。使用volcano平台，需要先在Kubernetes集群下安装Volcano，安装Volcano的方法可参考Volcano 官网。
 
 选择一个飞桨框架任务分别使用Kubernetes原生资源和Volcano job执行计算任务并对比分析，以下对比将着重体现两者在使用方法、任务管理、调度策略方面进行比较。选择飞桨官网分布式训练CTR（Click-Through-Rate） demo进行对比测试。CTR demo将运行两个PServer任务和两个Trainer任务。
 

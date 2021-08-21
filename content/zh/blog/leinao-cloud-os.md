@@ -29,7 +29,7 @@ AI社区：面向AI开发者和相关企业的社区平台，提供AI交流、�
 
 ## 类脑云OS架构
 
-{{<figure library="1" src="leinao1.png" title="类脑云os基础架构">}}
+{{<figure library="1" src="leinao-1.png" title="类脑云os基础架构">}}
 
 
 
@@ -46,9 +46,9 @@ AI社区：面向AI开发者和相关企业的社区平台，提供AI交流、�
 
 另外，我们发现K8s默认的调度机制对批量调度的支持并不友好。Hadoop虽然支持批量任务，但是它的架构比较笨重。因此，基于上面几点我们最终选择了Volcano。  
 
-{{<figure library="1" src="leinao2.png">}}  
+{{<figure library="1" src="leinao-2.png">}}  
 
-{{<figure library="1" src="leinao3.png">}}   
+{{<figure library="1" src="leinao-3.png">}}   
 
 
 由于在决定引入Volcano调度服务时，我们系统已经完成开发，如何在现有系统里引入Volcano呢？如果直接引入会导致系统计算层和应用层修改较大。  
@@ -56,7 +56,7 @@ AI社区：面向AI开发者和相关企业的社区平台，提供AI交流、�
 
  另外，我们在引入前也对Volcano需求进行了分析，发现单机任务和分布式训练任务上Volcano已经支持，但是对调试任务、调试工具集需要做一系列定制开发，所以需要引入一个组件job-server做接口的适配和类似调试工具集的集成开发。
 
-{{<figure library="1" src="leinao4.png">}}  
+{{<figure library="1" src="leinao-4.png">}}  
 
 在确定使用Volcano和通过 job server去做任务适配后，我们梳理了Volcano的场景，发现上层的业务是需要知道task详细的运行信息、状态变化信息、历史信息，而Volcano Job可以提供job的运行状态信息，但暂未提供task运行相关信息。
 
@@ -68,7 +68,7 @@ AI社区：面向AI开发者和相关企业的社区平台，提供AI交流、�
 
 下图是一个简单的监控机制，通过Watch的方式去监控API Server里job相关信息的变化和Pod相关信息的变化。
 
-{{<figure library="1" src="leinao5.png">}}  
+{{<figure library="1" src="leinao-5.png">}}  
 
 
 
@@ -88,9 +88,9 @@ __场景__
 
 基于上面的场景，我们做如下的设计：
 
-{{<figure library="1" src="leinao6.png">}}  
+{{<figure library="1" src="leinao-6.png">}}  
 
-{{<figure library="1" src="leinao7.png" title="创建工作流">}}
+{{<figure library="1" src="leinao-7.png">}}
 
 
 
@@ -104,13 +104,13 @@ __场景__
 
 **1）当Job结束时，volcano可以自动清理**
 
-{{<figure library="1" src="leinao8.png">}}  
+{{<figure library="1" src="leinao-8.png">}}  
 
 **2）清理能力相关资源（pod、service、ingress）**
 
-{{<figure library="1" src="leinao9.png">}}    
+{{<figure library="1" src="leinao-9.png">}}    
 
-{{<figure library="1" src="leinao10.png">}}  
+{{<figure library="1" src="leinao-10.png">}}  
 
  
 
@@ -119,9 +119,9 @@ __场景__
 
 我们1.0版本设计的初衷是基于次数进行限制，但是后来发现Volcano基于事件触发的机制更加灵活，业务场景也更加合理。因此我们在任务重试方面进行了原有方案的一系列改动，直接采用Volcano的任务重试机制。
 
-{{<figure library="1" src="leinao11.png">}}  
+{{<figure library="1" src="leinao-11.png">}}  
 
-{{<figure library="1" src="leinao12.png">}}  
+{{<figure library="1" src="leinao-12.png">}}  
 
 - TaskRole中的策略优先级高于Job中的重试策略
 
@@ -134,7 +134,7 @@ __场景__
 
 在实现以上特性的过程中，我们得到了Volcano社区的大力支持。当时遇到的一个问题是RestartTask失效，在当天遇到这个问题时反馈给了社区，当天就得到了解决，这个响应速度是非常快的。
 
-{{<figure library="1" src="leinao13.png">}}
+{{<figure library="1" src="leinao-13.png">}}
   
 
 ## 后期计划
