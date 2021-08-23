@@ -22,7 +22,7 @@ summary = "Quick Start Guide for Volcano"
 linktitle = "Quick Start Guide for Volcano"
 [menu.posts]
   parent = "tutorials"
-  weight = 4
+  weight = 1
 +++
 # Quick Start Guide
 The easiest way to deploy Volcano is using Helm charts.

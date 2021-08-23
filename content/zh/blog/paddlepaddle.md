@@ -1,20 +1,30 @@
-+++  
-title="百度飞桨(PaddlePaddle)分布式训练在Volcano系统上的实践"
++++
+title = "百度飞桨(PaddlePaddle)分布式训练在Volcano系统上的实践"
+description = "深入基于Volcano和PaddlePaddle的分布式训练最佳实践"
+subtitle = ""
 
+date = 2019-11-06
+lastmod = 2021-08-23
+datemonth = "Dec"
+dateyear = "2020"
+dateday = 23
 
+draft = false  # Is this a draft? true/false
+toc = true  # Show table of contents? true/false
+type = "posts"  # Do not modify.
+authors = ["PaddlePaddle团队", "Volcano团队"]
 
+tags = ["Practice"]
+summary = "深入基于Volcano和PaddlePaddle的分布式训练最佳实践"
 
+# Add menu entry to sidebar.
+linktitle = "百度飞桨(PaddlePaddle)分布式训练在Volcano系统上的实践"
+[menu.posts]
+parent = "tutorials"
+weight = 4
++++
 
-+++  
-作者：飞桨 & Volcano团队
-
-
-
-
->本文2019年11月6日首发于容器魔方微信公众号，原文链接<https://mp.weixin.qq.com/s/SnUUEEy9OfNghzoel7FtUg>
-
-
-
+>本文2019年11月6日首发于容器魔方微信公众号，原文链接[百度飞桨(PaddlePaddle)分布式训练在Volcano系统上的实践](https://mp.weixin.qq.com/s/SnUUEEy9OfNghzoel7FtUg)
 
 飞桨(PaddlePaddle)是百度于2016年9月开源的深度学习框架，旨在提供一款安全高效、灵活易用、可扩展的深度学习平台。
 

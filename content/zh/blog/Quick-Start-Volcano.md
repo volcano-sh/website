@@ -21,7 +21,7 @@ summary = "Volcano快速上手指南"
 linktitle = "Volcano快速上手指南"
 [menu.posts]
   parent = "tutorials"
-  weight = 4
+  weight = 1
 +++
 # 快速上手
 上手Volcano最容易的方式是使用Helm。

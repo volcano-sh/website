@@ -1,27 +1,35 @@
-+++  
-title="基于Volcano 的锐天离线高性能计算最佳实践"
++++
+title = "基于Volcano的锐天离线高性能计算最佳实践"
+description = "深入介绍Volcano在金融领域的应用实践案例"
+subtitle = ""
 
+date = 2021-01-05
+lastmod = 2021-08-23
+datemonth = "Dec"
+dateyear = "2020"
+dateday = 23
 
+draft = false  # Is this a draft? true/false
+toc = true  # Show table of contents? true/false
+type = "posts"  # Do not modify.
+authors = ["程运之/锐天投资技术总监", "徐征宇/锐天投资研发工程师"]
 
+tags = ["Practice"]
+summary = "深入介绍Volcano在金融领域的应用实践案例"
 
+# Add menu entry to sidebar.
+linktitle = "基于Volcano的锐天离线高性能计算最佳实践"
+[menu.posts]
+parent = "tutorials"
+weight = 5
++++
 
-+++  
-作者：锐天投资
-
-
-
-
->本文2021年1月5日首发于容器魔方微信公众号，原文链接<https://mp.weixin.qq.com/s/FDYExtj93lCrXmiFRozBPA>  
-
-
- 
+>本文2021年1月5日首发于容器魔方微信公众号，原文链接[基于Volcano的锐天离线高性能计算最佳实践](https://mp.weixin.qq.com/s/FDYExtj93lCrXmiFRozBPA)  
 
 Volcano是一个基于Kubernetes的云原生批量计算平台，也是CNCF的首个批量计算项目。
 
 Volcano 主要用于AI、大数据、基因、渲染等诸多高性能计算场景，对主流通用计算框架均有很好的支持。它提供高性能计算任务调度，异构设备管理，任务运行时管理等能力，目前在很多领域都已落地应用。__本篇文章以锐天投资基于Volcano进行的离线高性能计算最佳实践为线索，深度解读Volcano在金融领域技术架构中的定制与应用。__
 
-
- 
 
 ## Ruitian离线计算集群简介
 
