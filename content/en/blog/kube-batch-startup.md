@@ -21,7 +21,7 @@ summary = "Bring up the Batch Scheduler for scheduling batch workloads"
 linktitle = "Bringing Up Kube-Batch"
 [menu.posts]
   parent = "tutorials"
-  weight = 4
+  weight = 2
 +++
 
 # Tutorial of kube-batch

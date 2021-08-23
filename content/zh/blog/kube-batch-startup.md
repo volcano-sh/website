@@ -21,7 +21,7 @@ summary = "批量工作负载调度新手教程"
 linktitle = "Kube-Batch新手教程"
 [menu.posts]
   parent = "tutorials"
-  weight = 4
+  weight = 2
 +++
 # Kube-Batch新手速成
 

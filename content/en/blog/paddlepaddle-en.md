@@ -1,13 +1,32 @@
++++
+title = "PaddlePaddle Distributed Training on Volcano"
+description = "Best practice about PaddlePaddle distributed training on Volcano"
+subtitle = ""
+
+date = 2019-11-06
+lastmod = 2021-08-23
+datemonth = "Dec"
+dateyear = "2020"
+dateday = 23
+
+draft = false  # Is this a draft? true/false
+toc = true  # Show table of contents? true/false
+type = "posts"  # Do not modify.
+authors = ["PaddlePaddle Team", "Volcano Team"]
+
+tags = ["Practice"]
+summary = "Best practice about PaddlePaddle distributed training on Volcano"
+
+# Add menu entry to sidebar.
+linktitle = "PaddlePaddle Distributed Training on Volcano"
+[menu.posts]
+parent = "tutorials"
+weight = 4
 +++  
-title="PaddlePaddle Distributed Training on Volcano"
 
-
-
-
-
-+++  
+>This article was firstly released at `Container Cube` on November 6th, 2019, refer to [百度飞桨(PaddlePaddle)分布式训练在Volcano系统上的实践](https://mp.weixin.qq.com/s/SnUUEEy9OfNghzoel7FtUg)
  
- PaddlePaddle is a deep learning framework open-sourced by Baidu in September 2016. It aims to provide a secure, easy-to-use, and scalable deep learning platform.
+PaddlePaddle is a deep learning framework open-sourced by Baidu in September 2016. It aims to provide a secure, easy-to-use, and scalable deep learning platform.
 
 
 

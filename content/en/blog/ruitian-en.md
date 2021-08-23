@@ -1,13 +1,30 @@
-+++  
-title="How Ruitian Used Volcano to Run Large-Scale Offline HPC Jobs"
++++
+title = "How Ruitian Used Volcano to Run Large-Scale Offline HPC Jobs"
+description = "Deep introduction about the application practice cases of Volcano in the financial field"
+subtitle = ""
 
+date = 2021-01-05
+lastmod = 2021-08-23
+datemonth = "Dec"
+dateyear = "2020"
+dateday = 23
 
+draft = false  # Is this a draft? true/false
+toc = true  # Show table of contents? true/false
+type = "posts"  # Do not modify.
+authors = ["Yunzhi Cheng/Tech-Leader in Ruitian", "Zhengyu Xu/R&D in Ruitian"]
 
+tags = ["Practice"]
+summary = "Deep introduction about the application practice cases of Volcano in the financial field"
 
+# Add menu entry to sidebar.
+linktitle = "How Ruitian Used Volcano to Run Large-Scale Offline HPC Jobs"
+[menu.posts]
+parent = "tutorials"
+weight = 5
++++
 
-+++  
-By Ruitian
- 
+>This article was firstly released at `Container Cube` on January 5th, 2021, refer to [基于Volcano的锐天离线高性能计算最佳实践](https://mp.weixin.qq.com/s/FDYExtj93lCrXmiFRozBPA)
 
 ## Why Volcano  
 

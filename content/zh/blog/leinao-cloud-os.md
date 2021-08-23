@@ -1,19 +1,30 @@
 +++
-title="Volcano在中科类脑云OS中的落地实践"
+title =  "Volcano在中科类脑云OS中的落地实践"
+description = "深入介绍Volcano在中科类脑云OS落地实践过程中遇到的挑战和解决方案"
+subtitle = ""
 
+date = 2020-12-24
+lastmod = 2021-08-23
+datemonth = "Dec"
+dateyear = "2020"
+dateday = 23
 
+draft = false  # Is this a draft? true/false
+toc = true  # Show table of contents? true/false
+type = "posts"  # Do not modify.
+authors = ["朱建/中科类脑平台事业部高级系统架构师"]
 
+tags = ["Practice"]
+summary = "深入介绍Volcano在中科类脑云OS落地实践过程中遇到的挑战和解决方案"
 
-
+# Add menu entry to sidebar.
+linktitle = "Volcano在中科类脑云OS中的落地实践"
+[menu.posts]
+parent = "tutorials"
+weight = 3
 +++
-朱建 / 中科类脑平台事业部高级系统架构师
 
-
-
-
->本文2020年12月24日首发于容器魔方微信公众号，原文链接<[https:mp.weixin.qq.comsHS6RzzqztBJsHQX7P5T5ww](https://mp.weixin.qq.com/s/HS6RzzqztBJsHQX7P5T5ww)>  
-
- 
+>本文2020年12月24日首发于容器魔方微信公众号，原文链接[Volcano在中科类脑云OS中的落地实践](https://mp.weixin.qq.com/s/HS6RzzqztBJsHQX7P5T5ww)  
 
 ## 类脑AI云平台介绍
 
