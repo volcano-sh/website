@@ -1,21 +1,21 @@
 +++
-title = "Xiaohongshu Using Volcano to Train Online and Offline Recommendation Models"
-description = "the practical process of using the high-performance batch computing platform Volcano at Xiaohongshu"
+title = "How Does Volcano Empower a Content Recommend ation Engine"
+description = "Best practice of Volcano"
 subtitle = ""
 
-date = 2020-12-24
+date = 2021-05-27
 lastmod = 2021-08-24
-datemonth = "Dec"
-dateyear = "2020"
-dateday = 23
+datemonth = "Aug"
+dateyear = "2021"
+dateday = 24
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
-authors = ["Yi Guo/Feed and Realtime Data Infra Lead at Xiaohongshu"]
+authors = ["Yi Guo/Tech-Leader"]
 
 tags = ["Practice"]
-summary = "the practical process of using the high-performance batch computing platform Volcano at Xiaohongshu"
+summary = "Best practice of Volcano"
 
 # Add menu entry to sidebar.
 linktitle = "Xiaohongshu Using Volcano to Train Online and Offline Recommendation Models"

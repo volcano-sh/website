@@ -3,11 +3,11 @@ title =  "小红书基于Volcano的大规模离线与在线推荐模型训练实
 description = "小红书使用高性能批量计算平台Volcano的落地实践过程"
 subtitle = ""
 
-date = 2020-12-24
+date = 2021-05-27
 lastmod = 2021-08-24
 datemonth = "Dec"
 dateyear = "2020"
-dateday = 23
+dateday = 24
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
