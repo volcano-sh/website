@@ -12,7 +12,7 @@ dateday = 24
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
-authors = ["Zhe Jin/Senior Engineer in Container Batch Computing,HUAWEI CLOUD"]
+authors = ["Zhe Jin/Senior Engineer in HUAWEI CLOUD"]
 
 tags = ["Practice"]
 summary = "This article uses a traditional HPC application, the Weather Research and Forecasting (WRF) model, as an example to describe how Volcano works for HPC applications."
