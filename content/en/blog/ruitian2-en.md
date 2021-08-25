@@ -1,6 +1,6 @@
 +++
 title =  "Using Volcano in Large-Scale, Distributed Offline Computing"
-description = "Use case description: Ruitian Capital, an investment company, uses Volcano to build their offline computing platform."
+description = "Volcano use case in the financial sector"
 subtitle = ""
 
 date = 2021-06-15

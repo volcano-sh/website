@@ -1,6 +1,6 @@
 +++
 title =  "锐天投资基于Volcano的大规模分布式离线计算平台的应用实践"
-description = "深入介绍Volcano在锐天投资落地实践过程中遇到的挑战和解决方案"
+description = "Volcano在金融领域的落地案例分享"
 subtitle = ""
 
 date = 2021-06-15
