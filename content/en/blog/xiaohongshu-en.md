@@ -1,6 +1,6 @@
 +++
-title = "How Does Volcano Empower a Content Recommend ation Engine"
-description = "Best practice of Volcano"
+title = "How Does Volcano Empower a Content Recommendation Engine in Xiaohongshu"
+description = "Best practice of Volcano at Xiaohongshu"
 subtitle = ""
 
 date = 2021-05-27
@@ -15,10 +15,10 @@ type = "posts"  # Do not modify.
 authors = ["Yi Guo/Tech-Leader"]
 
 tags = ["Practice"]
-summary = "Best practice of Volcano"
+summary = "Best practice of Volcano at Xiaohongshu"
 
 # Add menu entry to sidebar.
-linktitle = "Xiaohongshu Using Volcano to Train Online and Offline Recommendation Models"
+linktitle = "How Does Volcano Empower a Content Recommendation Engine in Xiaohongshu"
 [menu.posts]
 parent = "tutorials"
 weight = 6
