@@ -28,7 +28,7 @@ weight = 9
 
 ## Introduction to iQIYI Jarvis Deep Learning Platform
 
-__1.1Overall Architecture of the Platform__
+__Overall Architecture of the Platform__
 
 The platform supports GPU- and CPU-based training and inference. S3, HDFS, and NFS can be used for storing training data and models. The platform supports TensorFlow, PyTorch, Caffe, Caffe2 and MXNet. It uses TensorFlow and PyTorch. TensorFlow 1.X to 2.X are supported.
 
@@ -40,7 +40,7 @@ The platform can be used in advertising, search, recommendation, NLP, and other 
 
 {{<figure library="1" src="aiqiyi-en1.png">}}
 
-__2One-stop Platform Service__
+__One-stop Platform Service__
 
 Four small platforms are used to provide the service. The first is the data preprocessing platform. It analyzes the training data in a visualized manner, helps users adjust parameters, and detects abnormal data in a timely manner.
 
