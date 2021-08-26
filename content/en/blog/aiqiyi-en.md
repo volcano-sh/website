@@ -120,7 +120,7 @@ So far:
 
 __How Does Volcano Solve Problems of Migrating to Kubernetes?__
 
-__Gang Scheduling 的问题__
+__Gang Scheduling__
 
 1.1 Gang Scheduling
 
