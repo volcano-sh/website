@@ -12,7 +12,7 @@ dateday = 26
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
-authors = ["Junmao Li/System Architect in OpenI-Octopus"]
+authors = ["Junmao Li/System Architect in Pengcheng Laboratory"]
 
 tags = ["Practice"]
 summary = "Volcano use case in scientific research"
