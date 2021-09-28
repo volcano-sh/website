@@ -22,7 +22,7 @@ linktitle = "MPI"
 
 高性能计算（High Performance Computing，缩写HPC）指利用聚集起来的计算能力来处理标准工作站无法完成的数据密集型的计算任务。
 
-HPC = PBS + Maui + OpenMPI[1]
+HPC = PBS + Maui + OpenMPI
 
 - PBS：资源管理器，负责管理集群中所有节点的资源
 - Maui：第三方任务调度器，支持资源预留，支持各种复杂的优先级策略，支持抢占等。

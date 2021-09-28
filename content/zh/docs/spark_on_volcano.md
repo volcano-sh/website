@@ -24,7 +24,7 @@ Spark是一款快速通用的大数据集群计算系统。它提供了Scala、J
 
 ### Spark on volcano
 
-Spark在volcano上的运行有两种形式，这里采用比较简单的spark-operator的形式[1]。还有一种较为复杂的部署方式可以参考[2]。
+Spark在volcano上的运行有两种形式，这里采用比较简单的spark-operator的形式。还有一种较为复杂的部署方式可以参考。
 
 通过helm安装spark-operator。
 

@@ -24,7 +24,7 @@ TensorFlow是一个基于数据流编程的符号数学系统，被广泛应用�
 
 ### TensorFlow on Volcano
 
-PS-worker模型：Parameter Server执行模型相关业务，Work Server训练相关业务，推理计算、梯度计算等[1]。
+PS-worker模型：Parameter Server执行模型相关业务，Work Server训练相关业务，推理计算、梯度计算等。
 
 {{<figure library="1" src="ps-worker.png" title="ps-worker">}}
 

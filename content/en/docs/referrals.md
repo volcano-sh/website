@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 linktitle = "Scenario & Configuration"
 [menu.docs]
   parent = "scheduler"
-  weight = 4
+  weight = 5
 
 +++
 

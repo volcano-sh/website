@@ -24,7 +24,7 @@ TensorFlow is a symbolic mathematical system based on data flow programming, whi
 
 ### TensorFlow on Volcano
 
-PS-worker model: Parameter Server performs model-related services, Work Server trains related services, inference calculation, gradient calculation, etc[1].
+PS-worker model: Parameter Server performs model-related services, Work Server trains related services, inference calculation, gradient calculation, etc.
 
 {{<figure library="1" src="ps-worker.png" title="ps-worker">}}
 

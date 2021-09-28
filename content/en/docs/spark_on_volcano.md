@@ -24,7 +24,7 @@ Spark is a fast and versatile big data clustering computing system. It provides 
 
 ### Spark on Volcano
 
-Spark operates on Volcano in two forms.Here we take the form of a simpler Spark-Operator [1]. There is also a more complex deployment method that can be referred to [2].
+Spark operates on Volcano in two forms.Here we take the form of a simpler Spark-Operator . There is also a more complex deployment method that can be referred to .
 
 Install Spark-Operator through Helm.
 

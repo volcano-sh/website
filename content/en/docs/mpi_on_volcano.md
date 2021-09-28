@@ -22,7 +22,7 @@ linktitle = "MPI"
 
 High Performance Computing (HPC) refers to the use of aggregated Computing power to handle data-intensive Computing tasks that cannot be performed by standard workstations.
 
-HPC = PBS + Maui + OpenMPI[1]
+HPC = PBS + Maui + OpenMPI
 
 - PBS：Resource manager, which is responsible for managing resources for all nodes in the cluster
 - Maui：Third-party task scheduler, support resource reservation, support various complex priority policies, support preemption, etc.
