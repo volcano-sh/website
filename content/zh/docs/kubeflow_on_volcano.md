@@ -43,7 +43,7 @@ Volcano是一款构建于Kubernetes之上的增强型高性能计算任务批量
 
 #### 下载kfctl
 
-首先需要下载kfctl，可以根据系统来选择合适的压缩包文件[1]。
+首先需要下载kfctl，可以根据系统来选择合适的压缩包文件。
 
 ```
 $ tar -xvf kfctl_v1.0.2-0-ga476281_linux.tar.gz
@@ -115,7 +115,7 @@ $ jupyter notebook --allow-root
 
 
 
-#### 在notebook上运行官方实例[2]
+#### 在notebook上运行官方实例[1]
 
 1.打开notebook进行TFJob的部署。Open the notebook `mnist/mnist_vanilla_k8s.ipynb` ，根据指引来进行分布式Tf Job的部署。
 
@@ -256,11 +256,9 @@ kubectl apply -f mnist.yaml
 
 参考资料:
 
-[1][华为云CCE kubeflow on volcano文档](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0075.html)
+[1][kfctl v1.0.2](https://github.com/kubeflow/kfctl/releases/tag/v1.0.2)
 
-[2][kfctl v1.0.2](https://github.com/kubeflow/kfctl/releases/tag/v1.0.2)
+[2][kubeflow on k8s 官方文档](https://github.com/kubeflow/examples/tree/master/mnist#vanilla)
 
-[3][kubeflow on k8s 官方文档](https://github.com/kubeflow/examples/tree/master/mnist#vanilla)
-
-[4][机器学习场景下，Volcano集成调度能力实践](https://www.kubeflow.org/docs/distributions/kfctl/overview/)
+[3][机器学习场景下，Volcano集成调度能力实践](https://www.kubeflow.org/docs/distributions/kfctl/overview/)
 

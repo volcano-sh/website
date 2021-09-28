@@ -1,5 +1,5 @@
 +++
-title =  "常见场景推介配置"
+title =  "Scenario & Configuration"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 linktitle = "Scenario & Configuration"
 [menu.docs]
   parent = "scheduler"
-  weight = 4
+  weight = 5
 
 +++
 

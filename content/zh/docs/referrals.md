@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 linktitle = "常见场景推介配置"
 [menu.docs]
   parent = "scheduler"
-  weight = 4
+  weight = 5
 
 +++
 

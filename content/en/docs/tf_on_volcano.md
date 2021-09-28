@@ -122,5 +122,3 @@ kubectl get pod
 
 [1][Practice of Volcano Operation Management Capability in AI Scenario](https://live.vhall.com/631084047?invite=)
 
-[2][TensorFlow Huawei Cloud CCE Deployment Operation Report](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0119.html)
-

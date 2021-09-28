@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 linktitle = "tensorflow"
 [menu.docs]
   parent = "zoology"
-  weight = 7
+  weight = 8
 
 +++
 
@@ -121,5 +121,3 @@ kubectl get pod
 参考资料:
 
 [1][AI场景下volcano作业管理能力实践](https://live.vhall.com/631084047?invite=)
-
-[2][tensorflow华为云CCE部署运行报告](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0119.html)
