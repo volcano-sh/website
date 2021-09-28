@@ -24,7 +24,7 @@ Spark is a fast and versatile big data clustering computing system. It provides 
 
 ### Spark on volcano
 
-Spark operates on Volcano in two forms.Here we take the form of a simpler spark-operator [1]. There is also a more complex deployment method that can be referred to [2].
+Spark operates on Volcano in two forms.Here we take the form of a simpler spark-operator [1]. 
 
 Install spark-operator through Helm.
 
@@ -98,7 +98,5 @@ Reference：
 
 [1][spark on k8s官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md)
 
-[2][spark on CCE部署文档](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0131.html)
-
-[3][大数据在volcano上的实践](http://live.vhall.com/357806873)
+[2][大数据在volcano上的实践](http://live.vhall.com/357806873)
 

@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 linktitle = "spark"
 [menu.docs]
   parent = "zoology"
-  weight = 8
+  weight = 7
 
 +++
 
@@ -24,7 +24,7 @@ Spark是一款快速通用的大数据集群计算系统。它提供了Scala、J
 
 ### Spark on volcano
 
-Spark在volcano上的运行有两种形式，这里采用比较简单的spark-operator的形式[1]。还有一种较为复杂的部署方式可以参考[2]。
+Spark在volcano上的运行有两种形式，这里采用比较简单的spark-operator的形式[1]。
 
 通过helm安装spark-operator。
 
@@ -98,7 +98,5 @@ $ kubectl get SparkApplication
 
 [1][spark on k8s官方文档](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator/blob/master/docs/quick-start-guide.md)
 
-[2][spark on CCE部署文档](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0131.html)
-
-[3][大数据在volcano上的实践](http://live.vhall.com/357806873)
+[2][大数据在volcano上的实践](http://live.vhall.com/357806873)
 

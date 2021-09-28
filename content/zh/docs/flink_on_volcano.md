@@ -24,9 +24,7 @@ Apache Flink是由Apache软件基金会开发的开源流处理框架，其核�
 
 ### 前提条件
 
-需要已经部署创建好CCE集群，集群下至少有一个可用节点，集群内节点已经绑定了弹性公网IP、kubectl命令行工具。
-
-### 部署流程[1]
+需要已经部署kubernetes，集群下至少有一个可用节点。
 
 ##### 1.Download
 
@@ -60,7 +58,7 @@ $ ./bin/flink run examples/streaming/WordCount.jar
 $ tail log/flink-*-taskexecutor-*.out
 ```
 
-### Flink on volcano[2]
+### Flink on volcano
 
 ##### 1.部署组件
 
@@ -269,15 +267,6 @@ kubectl get svc | grep flink
 kubectl get pod -owide | grep Flink
 ```
 
-##### 2.对外发布服务[3]
-
-创建好flink负载之后，需要像外部发布服务。
-
-- 若使用华为云CCE进行测试，进入CCE的"工作负载-无状态负载"页面。选择flink-jobmanager，单击"访问方式"。
-- 点击“添加service”，选择节点访问，输入容器端口位8081。
-- 点击CCE中的网络管理，能够看到刚才我们添加的service，访问对外发布的链接。
-- 进入flink的Dashboard页面，点击submit new job提交任务官方的WordCount作业。目录为flink-1.12.2/examples/streaming/WordCount.jar。
-
 
 
 参考文献：
@@ -285,6 +274,4 @@ kubectl get pod -owide | grep Flink
 [1][flink官方部署流程](https://ci.apache.org/projects/flink/flink-docs-release-1.12/try-flink/local_installation.html)
 
 [2][flink on cluster部署流程](https://ci.apache.org/projects/flink/flink-docs-release-1.12/deployment/resource-providers/standalone/kubernetes.html)
-
-[3][flink on 华为云CCE文档](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0121.html)
 

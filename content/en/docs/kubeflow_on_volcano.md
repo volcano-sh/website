@@ -108,7 +108,7 @@ Access your-IP：30200/,Enter the configuration password to enter the Notebook.
 
 
 
-#### Run the official instance on the Notebook[2]
+#### Run the official instance on the Notebook[1]
 
 1.Open Notebook and deploy TFJob。Open the notebook `mnist/mnist_vanilla_k8s.ipynb` ,Follow the guidelines to deploy a distributed TF Job.
 
@@ -249,11 +249,9 @@ kubectl apply -f mnist.yaml
 
 Reference:
 
-[1][huaiwei cloud CCE kubeflow on volcano document](https://support.huaweicloud.com/bestpractice-cce/cce_bestpractice_0075.html)
+[1][kfctl v1.0.2](https://github.com/kubeflow/kfctl/releases/tag/v1.0.2)
 
-[2][kfctl v1.0.2](https://github.com/kubeflow/kfctl/releases/tag/v1.0.2)
+[2][kubeflow on k8s offical document](https://github.com/kubeflow/examples/tree/master/mnist#vanilla)
 
-[3][kubeflow on k8s offical document](https://github.com/kubeflow/examples/tree/master/mnist#vanilla)
-
-[4][Volcano Integrated Scheduling Capability Practice under Machine Learning Scenario](https://www.kubeflow.org/docs/distributions/kfctl/overview/)
+[3][Volcano Integrated Scheduling Capability Practice under Machine Learning Scenario](https://www.kubeflow.org/docs/distributions/kfctl/overview/)
 
