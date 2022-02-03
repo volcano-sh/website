@@ -338,8 +338,7 @@ small,
 }
 
 #search-box::before {
-  /*font-family: 'Font Awesome 5 Free';*/
-  font-family: HuaweiSansMedium Regula;
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   content: "\f002";
   font-size: 1rem;
@@ -1435,7 +1434,7 @@ article .article-metadata {
 /*************************************************
  *  Accomplishments
  **************************************************/
- 
+
 .course {
   margin-bottom: -0.5rem;
 }
@@ -1884,7 +1883,7 @@ nav#navbar-main li.nav-item {
   color: #B1B3BA;
   font-size: 14px;
   /*padding-left: 10px;*/
-  margin: 15px 10px 0 0 ; 
+  margin: 15px 10px 0 0 ;
 }
 .container .changesearch a{
   color:#5A606F;
