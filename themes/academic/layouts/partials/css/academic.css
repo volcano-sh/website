@@ -1435,7 +1435,7 @@ article .article-metadata {
 /*************************************************
  *  Accomplishments
  **************************************************/
- 
+
 .course {
   margin-bottom: -0.5rem;
 }
@@ -1884,7 +1884,7 @@ nav#navbar-main li.nav-item {
   color: #B1B3BA;
   font-size: 14px;
   /*padding-left: 10px;*/
-  margin: 15px 10px 0 0 ; 
+  margin: 15px 10px 0 0 ;
 }
 .container .changesearch a{
   color:#5A606F;
@@ -1917,7 +1917,6 @@ nav#navbar-main li.nav-item {
 .container .changehover .nav-item a:hover{
   border-bottom: 3px solid #eb1616 !important;
   color: #c8000B !important;
-  font-weight: bold !important;
 }
 
 /*******************change over*/
