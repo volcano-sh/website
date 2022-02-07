@@ -338,8 +338,7 @@ small,
 }
 
 #search-box::before {
-  /*font-family: 'Font Awesome 5 Free';*/
-  font-family: HuaweiSansMedium Regula;
+  font-family: 'Font Awesome 5 Free';
   font-weight: 900;
   content: "\f002";
   font-size: 1rem;
