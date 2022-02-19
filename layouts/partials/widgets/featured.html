@@ -1,7 +1,7 @@
 {{ $ := .root }}
 {{ $page := .page }}
 
-<div class="row featured" style="width: 110%;margin-left: -5%;">
+<div class="row featured">
   {{ with $page.Title }}
   <div class="col-md-12 section-heading">
     <h1 style="font-size: 24px;">{{ . | markdownify | emojify }}</h1>

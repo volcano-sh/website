@@ -200,3 +200,8 @@ ul.share li i {
 .blog-list .read-more a {
   font-size: 16px;
 }
+
+.wg-featured .container,
+.wg-supporter .container{
+    max-width: 1310px;
+}
