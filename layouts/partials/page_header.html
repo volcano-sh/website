@@ -54,7 +54,7 @@
         <p style="color: #575d6d;font-size: 14px;">{{ . }}</p>
         {{end}}
         <div itemprop="startDate" class="talkswords" style="margin-top: 52px;">
-          <img src="{{$page.Params.time_img }}" style="float:left;margin-right: 10px;"  />
+          <img src="{{$page.Params.time_img }}" alt="icon" style="float:left;margin-right: 10px;"  />
           {{ $date := $page.Date }}
           {{ (time $date).Format $.Site.Params.date_format }}
           {{ if not $page.Params.all_day }}
@@ -68,7 +68,7 @@
         
         <!-- <span class="middot-divider"></span> -->
         <div itemprop="location" class="talkswords" style="margin-top: 5px;">
-          <img src="{{$page.Params.location_img }}" style="float:left;margin-right: 10px;"  />
+          <img src="{{$page.Params.location_img }}" alt="location icon" style="float:left;margin-right: 10px;"  />
           <span>{{ . }}</span>
         </div>
         {{ end }}
