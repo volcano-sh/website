@@ -50,7 +50,7 @@
 
 [[main_right]]
   
-  name = "<img src=\"/img/icon_slack.png\" style=\" font-size: 1rem; line-height: 1.25; width:20px; height:20px; margin-top: 11px;\">"
+  name = "<img src=\"/img/icon_slack.png\" style=\" font-size: 1rem; line-height: 1.25; width:20px; height:20px; margin-top: 9px;\">"
   post = ""
   url = "https://volcano-sh.slack.com"
   weight = 30

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+<nav class="navbar navbar-light fixed-top navbar-expand-xl py-0" id="navbar-main">
   <div class="container" style="display: block;">
 
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -16,84 +16,8 @@
       </button>
       {{ end }}
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse changeicon" id="navbar">
-      <ul class="navbar-nav ml-auto">
 
-        {{ if .Site.Params.search.engine }}
-        <li class="nav-item">
-          <!-- div class="changesearch"  style="margin: 8px 10px 0 0;">Search
-            <a class="nav-link js-search" href="#" ><i class="fas fa-search" aria-hidden="true" style="position: relative;top: -15px;"></i></a>
-          </div>   -->
-          <div class="changesearch">
-           <!--  <input type="text" name="search_name"  placeholder="Search" class="inputt"> -->
-            <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
-        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search" class="inputt" onkeydown="enterIn(event);">
-            <a class="nav-link js-search" href="#" >
-              <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
-            </a>
-        <!--     <button class="nav-link js-search" href="#" type="submit">
-              <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
-            </button> -->
-          </div>
-        {{ end }}
-
-
-
-        {{ range .Site.Menus.main_right }}
-
-        {{/* Set target for link. */}}
-        {{ $.Scratch.Set "target" "" }}
-        {{ if gt (len .URL) 4 }}
-        {{ if eq "http" (slicestr .URL 0 4) }}
-        {{ $.Scratch.Set "target" " target=\"_blank\" rel=\"noopener\"" }}
-        {{ end }}
-        {{ end }}
-
-
-
-
-        <li class="nav-item">
-          <a class="nav-link" href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}{{ ($.Scratch.Get "target") | safeHTMLAttr }}>
-          {{ .Pre }}
-          <span>{{ .Name | safeHTML }}</span>
-          </a>
-        </li>
-
-        {{ end }}
-
-
-<!-- 翻译 -->
-
-        <li class="nav-item dropdown">
-          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" style="    position: relative;top: -3px;">
-            <i class="fas fa-globe" aria-hidden="true"></i>
-            <span>{{ index .Site.Data.i18n.languages .Lang }}</span>
-          </a>
-          <ul class="dropdown-menu">
-            {{ range .Translations }}
-            <li class="dropdown-item my-0 py-0 mx-0 px-0">
-              <a href="{{ .Permalink }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
-                <span>{{ index .Site.Data.i18n.languages .Lang }}</span>
-              </a>
-            </li>
-            {{ end }}
-          </ul>
-        </li>
-
-
-        <!-- {{ if .Site.Params.day_night }}
-        <li class="nav-item">
-          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
-        </li>
-        {{ end }} -->
-
-      </ul>
-    </div>
-
-
-
-    <div class="collapse navbar-collapse changehover" id="navbar" style="height: 40px; padding-top: 28px;">
+    <div class="collapse navbar-collapse changehover" id="navbar" >
 
 
 
@@ -170,6 +94,81 @@
       {{ if not $align_right | and (.IsTranslated | or .Site.Menus.main_right | or .Site.Params.search.engine | or .Site.Params.day_night) }}
       </ul>
        {{ end }}
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="changeicon">
+        <ul class="navbar-nav ml-auto">
+
+          {{ if .Site.Params.search.engine }}
+          <li class="nav-item">
+            <!-- div class="changesearch"  style="margin: 8px 10px 0 0;">Search
+              <a class="nav-link js-search" href="#" ><i class="fas fa-search" aria-hidden="true" style="position: relative;top: -15px;"></i></a>
+            </div>   -->
+            <div class="changesearch">
+              <!--  <input type="text" name="search_name"  placeholder="Search" class="inputt"> -->
+              <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
+              autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search" class="inputt" onkeydown="enterIn(event);">
+              <a class="nav-link js-search" href="#" >
+                <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
+              </a>
+              <!--     <button class="nav-link js-search" href="#" type="submit">
+                    <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
+                  </button> -->
+            </div>
+            {{ end }}
+
+
+
+            {{ range .Site.Menus.main_right }}
+
+            {{/* Set target for link. */}}
+            {{ $.Scratch.Set "target" "" }}
+            {{ if gt (len .URL) 4 }}
+            {{ if eq "http" (slicestr .URL 0 4) }}
+            {{ $.Scratch.Set "target" " target=\"_blank\" rel=\"noopener\"" }}
+            {{ end }}
+            {{ end }}
+
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="{{ .URL | relLangURL }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}{{ ($.Scratch.Get "target") | safeHTMLAttr }}>
+            {{ .Pre }}
+            <span>{{ .Name | safeHTML }}</span>
+            </a>
+          </li>
+
+          {{ end }}
+
+
+          <!-- 翻译 -->
+
+          <li class="nav-item dropdown">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true">
+              <i class="fas fa-globe" aria-hidden="true"></i>
+              <span>{{ index .Site.Data.i18n.languages .Lang }}</span>
+            </a>
+            <ul class="dropdown-menu">
+              {{ range .Translations }}
+              <li class="dropdown-item my-0 py-0 mx-0 px-0">
+                <a href="{{ .Permalink }}"{{ if $.IsHome }} data-target="{{ .URL }}"{{ end }}>
+                  <span>{{ index .Site.Data.i18n.languages .Lang }}</span>
+                </a>
+              </li>
+              {{ end }}
+            </ul>
+          </li>
+
+
+          <!-- {{ if .Site.Params.day_night }}
+          <li class="nav-item">
+            <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+          </li>
+          {{ end }} -->
+
+        </ul>
+      </div>
 
 
 
