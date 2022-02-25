@@ -1000,6 +1000,10 @@ article {
     min-height: 400px;
     height: auto;
   }
+
+  .navbar-nav {
+    margin-top: 15px;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -2166,10 +2170,6 @@ nav#navbar-main li.nav-item {
     line-height: 40px;
     padding-top: 5px;
     padding-bottom: 5px;
-  }
-
-  .navbar-brand img {
-    max-height: 40px;
   }
 
   .navbar-toggler {
