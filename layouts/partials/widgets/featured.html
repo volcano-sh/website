@@ -22,7 +22,7 @@
   {{ $height := .img_height}}
   {{ $image_src = printf "img/%s" $image_src | relURL }}
   
-  <div class="col-12 col-sm-3" style="height: 335px !important;margin-top: 30px;padding: 0 10px;">
+  <div class="col-12 col-sm-4 col-xl-3" style="height: 335px !important;margin-top: 30px;padding: 0 10px;">
     {{ with .url }}
     <div style="padding: 20px 17px 10px;background-color: #fff;max-height: 335px;border-bottom-right-radius: 15px;border-top-left-radius: 15px;" onclick="window.open('{{ $url }}')">{{ end }}
       {{ with .img_src }}
