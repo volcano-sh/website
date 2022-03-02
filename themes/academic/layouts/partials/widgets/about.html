@@ -63,7 +63,7 @@
         {{ end }}
         <li>
           <a itemprop="sameAs" href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
-            <img src="{{.icon}}">
+            <img src="{{.icon}}" alt="icon">
             <!-- <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} big-icon"></i> -->
           </a>
         </li>
