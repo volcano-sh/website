@@ -17,8 +17,8 @@
     <div class="wg-hero carousel-item{{ if eq $index 0 }} active{{ end }}" style="min-height: inherit;
       {{ if $item.overlay_color }}
       background-color: {{ $item.overlay_color | default "transparent" }};
-      {{ end }} 
-      
+      {{ end }}
+
  {{ if $item.overlay_img }}
       background-image:
       {{ if $item.overlay_filter }}linear-gradient(rgba(0, 0, 0, {{ $item.overlay_filter }}), rgba(0, 0, 0, {{ $item.overlay_filter }})), {{ end }}
@@ -42,7 +42,7 @@
             {{ . | markdownify | emojify }}
             {{with $item.content1}}
               <div style="float: left;margin-top: 11px;margin-left: -40px;">{{ . | markdownify | emojify }}</div>
-            {{ end }} 
+            {{ end }}
           </p>
           {{ end }}
 
