@@ -127,6 +127,14 @@ ul.share li i {
   border-color: #d3d9df;
 }
 
+@media (max-width: 1350px) {
+    .wg-hero .hero-title,
+    .wg-hero .hero-lead,
+    .wg-hero div {
+        margin-left: 0 !important;
+    }
+}
+
 .blog-author-card {
   margin-top: 3rem;
   padding-top: 1rem;
