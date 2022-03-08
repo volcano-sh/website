@@ -28,7 +28,7 @@
       <div class="container" style="text-align: {{$item.align | default "left"}};">
         {{ with $item.title }}
            {{if eq  $item.title  "Volcano"}}
-          <h1 class="hero-title" itemprop="headline" style="margin-top: 50px; color: black; font-weight: bold; font-size: 52px;   margin-left: -40px; width: 77%;">
+          <h1 class="hero-title" itemprop="headline" style="margin-top: 50px; color: black; margin-bottom: 20px; font-weight: bold; font-size: 52px;   margin-left: -40px; width: 77%;">
             {{ . | markdownify | emojify }}
           </h1>
           {{else}}
@@ -38,18 +38,18 @@
           {{ end }}
         {{ end }}
           {{ with $item.content }}
-          <p class="hero-lead" style="{{if eq $item.align "center"}}margin: 0 auto 0 auto;{{else if eq $item.align "right"}}margin-left: auto; margin-right: 0{{end}} color:black;font-size:20px;width: 60%;margin-bottom: 10px !important; margin: 25px 0  10px;margin-left: -40px; ">
+          <p class="hero-lead" style="{{if eq $item.align "center"}}margin: 0 auto 0 auto;{{else if eq $item.align "right"}}margin-left: auto; margin-right: 0{{end}} color:black;font-size:20px;width: 60%;margin-bottom: 20px !important; margin: 25px 0  10px;margin-left: -40px; ">
             {{ . | markdownify | emojify }}
             {{with $item.content1}}
-              <div style="float: left;margin-top: 11px;margin-left: -40px;">{{ . | markdownify | emojify }}</div>
+              <div style="float: left;margin-left: -40px;margin-right: 20px; height: 28px; margin-bottom: 20px">{{ . | markdownify | emojify }}</div>
             {{ end }}
           </p>
           {{ end }}
 
           {{ if $item.cta_url }}
           {{ $pack := or .icon_pack "fa"  }}
-          <p id="slider" style="float: left;">
-            <a href="{{ $item.cta_url }}" class="btn btn-light btn-lg" style="color: #c8000b;border-color:#c8000b;margin-left: 20px;margin-top: -7px;font-size: 12px;height: 28px;line-height: 25px;    padding-top: 0;">
+          <p id="slider" style="float: left; display: flex;">
+            <a href="{{ $item.cta_url }}" class="btn btn-light btn-lg" style="color: #c8000b;border-color:#c8000b;font-size: 12px;height: 28px;line-height: 25px;    padding-top: 0;">
              <!--  {{ with $item.cta_icon }}<i class="{{ $pack }} {{ $pack }}-{{ . }}" style="padding-right: 10px;color: #c8000b;height: 40px;line-height: 20px;"></i>{{- end -}} -->
               {{- $item.cta_label | emojify | safeHTML -}}
             </a>
