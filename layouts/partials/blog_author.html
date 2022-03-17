@@ -48,7 +48,7 @@
           {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
         {{ end }}
         <li>
-          <a itemprop="sameAs" href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
+          <a itemprop="sameAs" tabindex="-1" href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
             <img src="{{.icon}}">
           </a>
         </li>
