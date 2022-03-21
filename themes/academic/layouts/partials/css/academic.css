@@ -757,6 +757,14 @@ a.hero-cta-alt:hover {
   border-radius: 50%;
   object-fit: cover;
 }
+
+@media (max-width: 767px) {
+  #profile .portrait{
+    height: auto !important;
+    max-width: 100%;
+  }
+}
+
 .portrait-title{
   height: 46px;
 }
