@@ -21,7 +21,6 @@ The easiest way to get started with Volcano is to download the [release](https:/
 ## Prerequisites
 
  - Kubernetes 1.12+ with CRD support.
- - The latest version of Volcano is downloaded from [here](https://github.com/volcano-sh/volcano/releases).
 
 ## Installation Modes
  - Install with YAML files
@@ -43,6 +42,7 @@ kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/ins
 
 ```
 
+You can also replace `master` of above url with specific tag/branch (such as `release-1.5` branch for latest v1.5.x version, `v1.5.1` tag for v1.5.1 version) to install Volcano with specific version.
 
 
 ### Install from code
