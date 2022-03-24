@@ -21,7 +21,6 @@ linktitle = "安装"
 ## 准备
 
 - 一个 Kubernetes 集群，集群版本不低于 V1.13，支持CRD。
--  volcano源代码[下载链接](https://github.com/volcano-sh/volcano/releases)。
 
 
 
@@ -46,6 +45,7 @@ For arm64:
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development-arm64.yaml
   ```
 
+你也可以将`master`替换为指定的标签或者分支（比如，`release-1.5`分支表示最新的v1.5.x版本，`v1.5.1`标签表示`v1.5.1`版本）以安装指定的Volcano版本。
 
 
 ### 通过源代码安装
