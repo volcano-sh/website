@@ -31,7 +31,6 @@
   .featured-icon {
     display: block;
     width: 100%;
-    height: 30%; 
     font-size: 3rem;
     text-align: center;
   }
@@ -50,7 +49,6 @@
 
   .featured .col-sm-4 p{
     text-align: justify;
-    height: 220px;
   }
 
 /*************************************************
