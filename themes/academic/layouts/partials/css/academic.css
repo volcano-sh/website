@@ -2492,11 +2492,20 @@ div.alert a {
 }
 
 .docs-links {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
   margin-right: -15px;
   margin-left: -15px;
 }
+
+@media (max-width:767px) {
+  .docs-toc-item:first-child {
+    padding-top: 1rem;
+  }
+
+  .docs-toc-item:last-child {
+    padding-bottom: 1rem;
+  }
+}
+
 
 @media (min-width:768px) {
   @supports ((position:-webkit-sticky) or (position:sticky)) {
