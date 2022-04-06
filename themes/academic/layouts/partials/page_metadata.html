@@ -6,7 +6,7 @@
 <meta content="{{ $.Params.Date }}" itemprop="datePublished">
 <meta content="{{ $.Params.LastMod }}" itemprop="dateModified">
 
-<div class="article-metadata" style="border-right: 1px solid #ccc;">
+<div class="article-metadata-block">
 
   {{/* If `authors` is set and is not empty. */}}
   {{ if $.Params.authors }}
@@ -15,7 +15,7 @@
   <!-- <div>
     {{ partial "page_metadata_authors" $ }}
   </div> -->
-  {{ end }} 
+  {{ end }}
   {{ end }}
 
   {{ if not (in (slice "talk" "page") $.Type) }}
@@ -28,7 +28,7 @@
           {{ i18n "last_updated" }}
       {{ end }} -->
     <!-- {{ end }} -->
-    <div style="width: 35%;float: left;font-size: 40px;font-weight: bold;color: #212529;text-align: center;">{{ $.Params.Dateday }}</div>
+    <div  class="article-date-number">{{ $.Params.Dateday }}</div>
     <div style="float: left;margin-top: 12px;">
       <div style="font-size: 27px;color: #ddd;float: left;">/</div>
       <div style="float: left;margin: 2px 0 0 10px;text-align: right;">
