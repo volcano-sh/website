@@ -6,7 +6,7 @@ name = "Volcano"
 superuser = true
 
 # Role/position
-role = "A Kubernetes native system for high-performance workloads"
+role = "A cloud native system for high-performance workloads"
 
 # Organizations/Affiliations
 #   Separate multiple entries with a comma, using the form: `[ {name="Org1", url=""}, {name="Org2", url=""} ]`.

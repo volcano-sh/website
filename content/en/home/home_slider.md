@@ -21,7 +21,7 @@ height = "500px"
 [[item]]
   title = "Volcano"
   #content = "Erupt with Computing Power <br /> <a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\" data-icon=\"octicon-star\" data-size=\"large\" data-show-count=\"true\" aria-label=\"Star this on GitHub\" background-color=\"red\"  >Star</a>"
-  content = "Kubernetes native batch scheduling system for compute-intensive workloads"
+  content = "Cloud native batch scheduling system for compute-intensive workloads"
   content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano\"  data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\"  >Star</a>"
   align = "left"  # Choose `center`, `left`, or `right`.
 
