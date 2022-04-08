@@ -23,7 +23,7 @@ event = "KubeCon Europe"
 event_url = "https://kccnceu19.sched.com/event/ed36bb83476fce99a92e93f29965efea?iframe=no"
 
 # Abstract. What's your talk about?
-abstract = "Introducing Volcano : A Kubernetes Native Batch System for High Performance Workload"
+abstract = "Introducing Volcano : A Cloud Native Batch System for High Performance Workload"
 
 # Summary. An optional shortened abstract.
 summary = "Kubernetes started as a general purpose orchestration framework with a focus on serving jobs. But as it gains popularity, users want to run high performance workloads on Kubernetes, such as Spark, TensorFlow, etc. When running these workloads in Kubernetes, several advanced capability are required, e.g. fair-share sharing, queue, job management (suspend/resume), data management. This Intro will present the work in community to bring \"batch\" capability."
@@ -72,7 +72,7 @@ math = true
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
   focal_point = "Right"
 +++
-## Introduction to Kubernetes Native Batch System 
+## Introduction to Cloud Native Batch System 
 
 Kubernetes started as a general-purpose orchestration framework with a focus on serving jobs. As Kubernetes gains popularity, users want to run high-performance workloads on Kubernetes, such as Spark, TensorFlow, and so on. Running these workloads in Kubernetes requires advanced capabilities, such as fair scheduling, queuing, job management (suspension/resuming), and data management. We will present the achievements that the community has made in "batch processing".
 

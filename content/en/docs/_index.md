@@ -15,7 +15,7 @@ type = "docs"  # Do not modify.
 +++
 
 ## What is Volcano
-Volcano is a Kubernetes native system for high-performance workloads, which has been accepted by [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) as its first and only official container batch scheduling project. Volcano supports popular computing frameworks such as [Spark](http://spark.apache.org/), [TensorFlow](https://tensorflow.google.en/), [PyTorch](https://pytorch.org/), [Flink](https://flink.apache.org/), [Argo](https://argoproj.github.io/), [MindSpore](https://www.mindspore.cn/en), and [PaddlePaddle](https://www.paddlepaddle.org.cn/). Volcano also supports scheduling of computing resources on different architecture, such as x86, Arm, and Kunpeng.
+Volcano is a cloud native system for high-performance workloads, which has been accepted by [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) as its first and only official container batch scheduling project. Volcano supports popular computing frameworks such as [Spark](http://spark.apache.org/), [TensorFlow](https://tensorflow.google.en/), [PyTorch](https://pytorch.org/), [Flink](https://flink.apache.org/), [Argo](https://argoproj.github.io/), [MindSpore](https://www.mindspore.cn/en), and [PaddlePaddle](https://www.paddlepaddle.org.cn/). Volcano also supports scheduling of computing resources on different architecture, such as x86, Arm, and Kunpeng.
  
 ## Why Volcano
 Job scheduling and management become increasingly complex and critical for high-performance batch computing. Common requirements are as follows:
