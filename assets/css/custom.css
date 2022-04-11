@@ -262,14 +262,14 @@ ul.share li i {
     .article-metadata-block {
         border: none;
     }
-}
 
-@media (max-width: 575px) {
     .article-date-number {
         width: 52px;
         margin-bottom: -10px;
     }
+}
 
+@media (max-width: 575px) {
     .article-item {
         padding: 0 0 10px 0;
     }
