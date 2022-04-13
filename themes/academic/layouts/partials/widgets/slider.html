@@ -11,8 +11,7 @@
   </ol>
 
   <!-- Carousel slides wrapper -->
-  <div class="carousel-inner" style="background-repeat: no-repeat;
-    background-size: 100% 100%;min-height: {{$page.Params.height | default "300px"}}; background-image:url('{{ printf "img/%s" $page.Params.lala | absURL }}');">
+  <div class="carousel-inner" style="min-height: {{$page.Params.height | default "300px"}}; background-image:url('{{ printf "img/%s" $page.Params.lala | absURL }}');">
     {{ range $index, $item := $page.Params.item }}
     <div class="wg-hero carousel-item{{ if eq $index 0 }} active{{ end }}" style="min-height: inherit;
       {{ if $item.overlay_color }}

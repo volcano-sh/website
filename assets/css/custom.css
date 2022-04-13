@@ -274,3 +274,9 @@ ul.share li i {
         padding: 0 0 10px 0;
     }
 }
+
+.carousel-inner {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
