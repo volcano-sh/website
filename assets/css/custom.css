@@ -133,6 +133,13 @@ ul.share li i {
     }
 }
 
+@media (max-width: 425px) {
+    .wg-hero .hero-title,
+    .wg-hero .hero-lead {
+        width: 100% !important;
+    }
+}
+
 .blog-author-card {
   margin-top: 3rem;
   padding-top: 1rem;
