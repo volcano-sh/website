@@ -287,3 +287,8 @@ ul.share li i {
     background-size: cover;
     background-position: center;
 }
+
+.article-widget ul {
+    padding-left: 30px;
+    padding-right: 15px;
+}
