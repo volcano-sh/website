@@ -9,7 +9,7 @@
           {{ partial "blog_author.html" . }}
           {{ $related := .Site.RegularPages.Related . | first 5 }}
             {{ with $related }}
-            <div class="article-widget" style="height: 200px;border: 1px solid #eee;">
+            <div class="article-widget" style="border: 1px solid #eee;">
               <div class="hr-light"></div>
               <h4 style="text-align: center;color: #252b3a;font-size: 18px;margin-bottom: 25px;">{{ i18n "related" }}</h4>
               <ul>
