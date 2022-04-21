@@ -32,7 +32,7 @@
     <img  src="/img/logo_middle.png" alt="Volcano logotype" style="margin: 0 auto ;">
 
 
-    <ul class="network-icon" aria-hidden="true" style="margin: 10px auto;    margin: 20px 58px 10px;">
+    <ul class="network-icon" aria-hidden="true">
         {{ range $person.social }}
         {{ $pack := or .icon_pack "fas" }}
         {{ $pack_prefix := $pack }}
