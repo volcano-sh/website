@@ -143,6 +143,11 @@ ul.share li i {
 .blog-author-card {
   margin-top: 3rem;
   padding-top: 1rem;
+  text-align: center;
+}
+
+.blog-author-card .network-icon {
+    margin: 20px auto 10px;
 }
 
 .blog-author-card .portrait {
