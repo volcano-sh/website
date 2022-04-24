@@ -279,6 +279,11 @@ ul.share li i {
         width: 52px;
         margin-bottom: -10px;
     }
+
+    .article-style table {
+        display: block;
+        overflow-x: auto;
+    }
 }
 
 @media (max-width: 575px) {
