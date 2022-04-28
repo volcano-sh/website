@@ -284,6 +284,10 @@ ul.share li i {
         display: block;
         overflow-x: auto;
     }
+
+    a {
+        word-break: break-word;
+    }
 }
 
 @media (max-width: 575px) {
