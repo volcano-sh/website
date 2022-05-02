@@ -28,10 +28,10 @@
 {{ end }}
 
 <div class="media stream-item" itemscope itemtype="http://schema.org/{{$microdata_type}}">
-  <div class="media-body">
+  <div class="media-body row">
     {{ if eq $item.Type "talk" }}
 
-    <div class="col-12 col-sm-7" style="padding: 20px 0 10px 0px;float: left;"><!-- talks -->
+    <div class="col-12 col-sm-7" style="padding: 20px 15px 10px 15px;"><!-- talks -->
       <div style="display: block;">
         <h3 class="article-title mb-0 mt-0" itemprop="name" style="font-size: 24px;padding-bottom: 10px;">
           <a href="{{ $item.RelPermalink }}" itemprop="url" style="color: #c7000b !important;">{{ $item.Title }}</a>
@@ -88,7 +88,7 @@
 
 
 <!-- pic -->
-      <div class="col-12 col-sm-5" style="float: left;padding-top: 35px;">
+      <div class="col-12 col-sm-5" style="padding-top: 35px;">
         {{ $resource := ($item.Resources.ByType "image").GetMatch "*featured*" }}
         {{ with $resource }}
         {{ $image := .Resize "300x" }}
