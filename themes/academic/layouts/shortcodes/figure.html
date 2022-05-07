@@ -5,7 +5,7 @@
 {{ end }}
 <figure{{ with .Get "class" }} class="{{.}}"{{ end }}>
 {{ if .Get "link"}}<a href="{{ .Get "link" }}"{{ with .Get "target" }} target="{{ . }}"{{ end }}{{ with .Get "rel" }} rel="{{ . }}"{{ end }}>{{ end }}
-<img src="{{ $image_src }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}{{ with .Get "width" }}width="{{.}}" {{ end }}{{ with .Get "height" }}height="{{.}}" {{ end }}/>
+<img alt="image" src="{{ $image_src }}" {{ if or (.Get "alt") (.Get "caption") }}alt="{{ with .Get "alt"}}{{.}}{{else}}{{ .Get "caption" }}{{ end }}" {{ end }}{{ with .Get "width" }}width="{{.}}" {{ end }}{{ with .Get "height" }}height="{{.}}" {{ end }}/>
 {{ if .Get "link"}}</a>{{ end }}
 {{ if or (or (.Get "title") (.Get "caption")) (.Get "attr")}}
 {{ $figure := split (i18n "figure" | default "Figure %d:") "%d" }}
