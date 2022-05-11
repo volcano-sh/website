@@ -266,7 +266,7 @@ small,
   left: 0;
   right: 0;
   top: 0;
-  overflow: scroll;
+  overflow-y: scroll;
   position: fixed;
   visibility: hidden;
   z-index: -99;
