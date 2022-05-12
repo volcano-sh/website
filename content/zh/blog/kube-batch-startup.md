@@ -52,7 +52,7 @@ kube-batch提供了官方镜像，您可以通过[DockerHub](https://hub.docker.
 ```html
 # mkdir -p $GOPATH/src/github.com/kubernetes-sigs/
 # cd $GOPATH/src/github.com/kubernetes-sigs/
-# git clone http://github.com/kubernetes-sigs/kube-batch
+# git clone https://github.com/kubernetes-sigs/kube-batch
 ```
 
 #### 使用Helm部署`kube-batch`
