@@ -95,7 +95,7 @@ url = "https://www.ruitiancapital.com/#/ "
 img_src = "logo_boyun.png"
 img_width = "100px"
 img_height = "60px"
-url = "http://www.bocloud.com.cn/ "
+url = "https://www.bocloud.com.cn/ "
 
 [[featured]]
 img_src = "logo_zhongkeleinao.png"
@@ -113,7 +113,7 @@ url = "http://www.bibdr.org/nd.jsp?id=53 "
 img_src = "logo_yunzhisheng.png"
 img_width = "100px"
 img_height = "60px"
-url = "http://dev.hivoice.cn/ "
+url = "https://dev.hivoice.cn/ "
 
 [[featured]]
 img_src = "logo_qiezi.png"

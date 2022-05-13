@@ -50,7 +50,7 @@ You can download the official kube-batch image from [DockerHub](https://hub.dock
 ```bash
 # mkdir -p $GOPATH/src/github.com/kubernetes-sigs/
 # cd $GOPATH/src/github.com/kubernetes-sigs/
-# git clone http://github.com/kubernetes-sigs/kube-batch
+# git clone https://github.com/kubernetes-sigs/kube-batch
 ```
 
 #### Deploying `kube-batch` with Helm
