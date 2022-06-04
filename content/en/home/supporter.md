@@ -77,13 +77,13 @@ url = "https://www.zhipin.com/?sid=sem_pz_bdpc_dasou_title "
 img_src = "logo_jianxinjinke.png"
 img_width = "100px"
 img_height = "60px"
-url = "http://www.ccb.com/cn/home/indexv3.html "
+url = "https://www.ccb.com/cn/home/indexv3.html "
 
 [[featured]]
 img_src = "logo_qvtoutiao.png"
 img_width = "100px"
 img_height = "60px"
-url = "http://www.qutoutiao.net/ "
+url = "https://www.qutoutiao.net/ "
 
 [[featured]]
 img_src = "logo_ruitian.png"
