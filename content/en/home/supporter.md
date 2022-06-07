@@ -83,7 +83,7 @@ url = "http://www.ccb.com/cn/home/indexv3.html "
 img_src = "logo_qvtoutiao.png"
 img_width = "100px"
 img_height = "60px"
-url = "http://www.qutoutiao.net/ "
+url = "https://www.qutoutiao.net/ "
 
 [[featured]]
 img_src = "logo_ruitian.png"
