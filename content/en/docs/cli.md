@@ -56,7 +56,7 @@ vcctl job suspend --name job-name [--namespace job-namespace]
 vcctl job resume --name job-name [--namespace job-namespace]
 
 ```html
-# vcctl job suspend --name job-1 --namespace default
+# vcctl job resume --name job-1 --namespace default
 ```
 
 ### Running a job
