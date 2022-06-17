@@ -306,3 +306,8 @@ ul.share li i {
     padding-left: 30px;
     padding-right: 15px;
 }
+
+.network-icon img {
+    width: 24px;
+    height: 24px;
+}

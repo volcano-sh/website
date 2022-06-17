@@ -22,14 +22,14 @@ email = ""
 interests = []
 
 [[social]]
-  icon = "/img/icon_emil.png"
+  icon = "/img/icon_email.svg"
   icon_pack = "fas"
   link = "#contact"  # For a direct email link, use "mailto:test@example.org".
 
 
 
  [[social]]
-  icon = "/img/icon_git.png"
+  icon = "/img/icon_github.svg"
   icon_pack = "fab"
   link = "https://github.com/volcano-sh/volcano"
 
@@ -39,7 +39,7 @@ interests = []
  # link = "https://scholar.google.co.uk/citations?user=sIwtMXoAAAAJ"
 
 [[social]]
-  icon = "/img/icon_twtter.png"
+  icon = "/img/icon_twitter.svg"
   icon_pack = "fab"
   link = "https://twitter.com/volcano_sh"
 
