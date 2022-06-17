@@ -52,7 +52,7 @@ delete job job-1 successfully
 ### 消费一个Job (与"vcctl job suspend"相反)
 
 ```html
-# vcctl job suspend --name job-1 --namespace default
+# vcctl job resume --name job-1 --namespace default
 ```
 
 ### 运行一个Job
