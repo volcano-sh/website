@@ -311,3 +311,9 @@ ul.share li i {
     width: 24px;
     height: 24px;
 }
+
+@media (min-width: 1001px) {
+    .universal-wrapper {
+        margin-top: 124px;
+    }
+}
