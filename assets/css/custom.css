@@ -321,3 +321,7 @@ ul.share li i {
 .article-container .article-metadata-block {
     border-right: 0;
 }
+
+.navbar-brand img {
+    height: 35px;
+}
