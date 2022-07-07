@@ -13,7 +13,7 @@ draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
 authors = ["Volcano"]
-authors_img = "/img/icon_user.png"
+authors_img = "/img/icon_user.svg"
 
 tags = ["Tutorials"]
 summary = "Quick Start Guide for Volcano"
