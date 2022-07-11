@@ -11,7 +11,7 @@ is an open-source static site generator that provides us with templates, content
 organisation in a standard directory structure, and a website generation engine.
 You write the pages in Markdown, and Hugo wraps them up into a website.
 
-* Please see [How to contributing](CONTRIBUTING.md) for instructions on how to contribute, if you are not familiar with the
+* Please see [How to contributing](https://github.com/volcano-sh/volcano/blob/master/contribute.md) for instructions on how to contribute, if you are not familiar with the
   GitHub workflow
 
 ## Quickstart
@@ -87,7 +87,7 @@ local machine, then use your local repo as input to your Hugo web server:
 1. Your website is at [http://localhost:1313/](http://localhost:1313/).
 
 1. Continue with the usual GitHub workflow to edit files, commit them, push the
-  changes up to your fork, and create a pull request. (See the GitHub workflow
+  changes up to your fork, and create a pull request. (See the GitHub workflow)
 
 1. While making the changes, you can preview them on your local version of the
   website at [http://localhost:1313/](http://localhost:1313/). Note that if you
