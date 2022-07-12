@@ -20,8 +20,7 @@ linktitle = "Commandline"
 A Command Line Interface (CLI) is provided for you to manage resources.
 ## Configuration
 
-1. You can obtain the executable file **vcctl** from the release package **volcano-{version}-linux-gnu.tar.gz**. Decompress the release package. The 
-file is under the path volcano-{version}-linux-gnu\bin\amd64. Alternatively, you can obtain the latest executable file by cloning the code from GitHub and running the following command in the root directory of the project:
+1. You can obtain the latest executable file by cloning the code from GitHub and running the following command in the root directory of the project:
 ```
 # make vcctl
 ``` 

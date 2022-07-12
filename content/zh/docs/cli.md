@@ -20,8 +20,7 @@ linktitle = "命令行"
 Volcano提供了命令行工具用于管理资源。
 ## 配置
 
-1. 您可以获取release包**volcano-{version}-linux-gnu.tar.gz**中的命令行可执行文件**vcctl**。这个文件存放在解压后的volcano-{version}-linux-gnu\bin\amd64
-路径下。当然，您也可以自己从github上克隆代码并在项目的根目录下执行以下命令制作最新的可执行文件：
+1. 您可以自己从 github 上克隆代码并在项目的根目录下执行以下命令制作最新的可执行文件：
 ```shell
 # make vcctl
 ```
