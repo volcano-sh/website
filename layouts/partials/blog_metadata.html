@@ -14,7 +14,7 @@
       {{ $date = $.Date.Format ($.Site.Params.publications.date_format | default "January, 2006") }}
     {{ else }}
       {{ if ne $.Params.Lastmod $.Params.Date }}
-          <img src="/img/icon_data.png" alt="date icon" style="float: left;">
+          <img src="/img/icon_data.svg" alt="date icon" style="float: left; width: 15px; height: 14px;">
       {{ end }}
     {{ end }}
     <!-- <time style="float: left; margin-top: -7px; margin-left: 10px;">{{ $date }}</time> -->
