@@ -15,7 +15,7 @@ authors = ["Kevin Wang"]
 
 # Location of event.
 location = "Barcelona, Europe"
-location_img = "/img/icon_location.png"
+location_img = "/img/icon_location.svg"
 time_img = "/img/icon_time.svg"
 
 # Name of event and optional event URL.
