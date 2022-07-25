@@ -73,4 +73,4 @@ NAME                                     TYPE        CLUSTER-IP     EXTERNAL-IP 
 ```
 #### 您也可以观察视频学习如何部署Volcano
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/hsXXmWSUtyo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe title="video" width="560" height="315" src="https://www.youtube.com/embed/hsXXmWSUtyo" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
