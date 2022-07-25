@@ -329,3 +329,14 @@ ul.share li i {
 .user-icon {
     width: 16px;
 }
+
+
+@media (min-width: 576px) {
+    .blog-list .card-main .article-metadata {
+        border-right: 1px solid #ccc;
+    }
+
+    .blog-list .card-main .stream-meta {
+        border-right: 0;
+    }
+}
