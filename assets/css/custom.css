@@ -1,128 +1,130 @@
-
-
 /*************************************************
  *  Featured Widget
  **************************************************/
-  #required{
+#required {
     background-image: url(/img/bg_1.png);
     background-repeat: no-repeat;
-    background-size: 100%  100%;
-  }
- .featured {
+    background-size: 100% 100%;
+}
+
+.featured {
     font-size: 0.8rem;
     line-height: 1.5;
     color: #0f0f0f;
     text-align: center;
-  }
-  
-  .featured h3 {
+}
+
+.featured h3 {
     margin-top: 10px;
     margin-bottom: 10px;
     font-weight: 400;
     color: #333;
     text-align: center;
-  }
-  
-  .dark .featured,
-  .dark .featured h3 {
+}
+
+.dark .featured,
+.dark .featured h3 {
     color: #fff;
-  }
-  
-  .featured-icon {
+}
+
+.featured-icon {
     display: block;
     width: 100%;
     font-size: 3rem;
     text-align: center;
-  }
-  .featured-icon img{
+}
+
+.featured-icon img {
     margin: 0 auto;
     /*width: 20%;*/
-  }
-  /*.featured-icon .a{
-    margin: 0 40%;
-    width: 20%;
-  }
-  .featured-icon .b{
-    margin: 0 37%;
-    width: 26%;
-  }*/
+}
 
-  .featured .col-sm-4 p{
+/*.featured-icon .a{
+  margin: 0 40%;
+  width: 20%;
+}
+.featured-icon .b{
+  margin: 0 37%;
+  width: 26%;
+}*/
+
+.featured .col-sm-4 p {
     text-align: justify;
-  }
+}
 
 /*************************************************
  *  Home Sections
  **************************************************/
 
- .section-heading p {
-  color: #eb1616;
- } 
+.section-heading p {
+    color: #eb1616;
+}
 
- .nav-item a[href="/"], .network-icon a[href="/"]{
-   pointer-events: none;
-   cursor: default;
+.nav-item a[href="/"], .network-icon a[href="/"] {
+    pointer-events: none;
+    cursor: default;
 }
 
 /*************************************************
  *  About widget
  **************************************************/
- 
- #profile {
-  padding-top: 20px;
- }
- 
- #profile .portrait {
-  width: 301px;
-  height: 235px;
-  border-radius: 0%;
- }
 
- #profile .portrait-title h2 {
-  display: none;
- }
-
- #profile .portrait-title h3 {
-  margin-top: 0px;
-  color: #3f3f3f;
- }
-
- #profile .network-icon {
-  margin-top: 10px;
- }
-
- /*************************************************
- *  Author profile card
- **************************************************/
-
- .author-card .portrait {
-  border-radius: 0%;
+#profile {
+    padding-top: 20px;
 }
 
- /*************************************************
- *  Custom css
- **************************************************/
+#profile .portrait {
+    width: 301px;
+    height: 235px;
+    border-radius: 0%;
+}
+
+#profile .portrait-title h2 {
+    display: none;
+}
+
+#profile .portrait-title h3 {
+    margin-top: 0px;
+    color: #3f3f3f;
+}
+
+#profile .network-icon {
+    margin-top: 10px;
+}
+
+/*************************************************
+*  Author profile card
+**************************************************/
+
+.author-card .portrait {
+    border-radius: 0%;
+}
+
+/*************************************************
+*  Custom css
+**************************************************/
 
 footer {
-  margin: 0px;
+    margin: 0px;
 }
+
 .border-bottom {
-  border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
 }
 
 ul.share li i {
-  color: #eb1616;
+    color: #eb1616;
 }
 
 .wg-hero .btn {
-  color: #fff;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
-  background-color: transparent;
+    color: #fff;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    background-color: transparent;
 }
 
 .wg-hero .btn:hover {
-  color: #212529;
-  border-color: #d3d9df;
+    color: #212529;
+    border-color: #d3d9df;
 }
 
 @media (max-width: 1350px) {
@@ -141,9 +143,9 @@ ul.share li i {
 }
 
 .blog-author-card {
-  margin-top: 3rem;
-  padding-top: 1rem;
-  text-align: center;
+    margin-top: 3rem;
+    padding-top: 1rem;
+    text-align: center;
 }
 
 .blog-author-card .network-icon {
@@ -151,76 +153,78 @@ ul.share li i {
 }
 
 .blog-author-card .portrait {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto;
-  border-radius: 0%;
-  object-fit: cover;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 0%;
+    object-fit: cover;
 }
 
 .blog-author-card .card-title {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.84);
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.84);
 }
 
 .blog-author-card .card-subtitle {
-  font-weight: 300;
-  font-size: 0.8rem;
-  color: rgba(0, 0, 0, 0.54);
-  margin-bottom: 7px;
+    font-weight: 300;
+    font-size: 0.8rem;
+    color: rgba(0, 0, 0, 0.54);
+    margin-bottom: 7px;
 }
 
 .dark .blog-author-card .card-subtitle {
-  color: rgba(255, 255, 255, 0.54);
+    color: rgba(255, 255, 255, 0.54);
 }
 
 .article-metadata, .article .article-metadata {
-  margin-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .article-title a {
-  color: #0f0f0f;
+    color: #0f0f0f;
 }
+
 .docs-article-container {
-  max-width: 100%;
+    max-width: 100%;
 }
+
 /*********************************
 * Blog list 
 **********************************/
 
 .blog-list {
-  margin-top: 0.97rem;
+    margin-top: 0.97rem;
 }
 
 .blog-list .card-main {
-  padding: 0px;
+    padding: 0px;
 }
 
 .blog-list .card {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 .blog-list .card .card-title {
-  margin: 0 0 .5rem 0;
+    margin: 0 0 .5rem 0;
 }
 
 .blog-list .h7 {
-  font-size: 0.8rem;
+    font-size: 0.8rem;
 }
 
 .blog-list .card .card-text {
-  padding: 0px;
-  margin-bottom: 0.25rem;
+    padding: 0px;
+    margin-bottom: 0.25rem;
 }
 
 .blog-list .read-more a {
-  font-size: 16px;
+    font-size: 16px;
 }
 
 .wg-featured .container,
-.wg-supporter .container{
+.wg-supporter .container {
     max-width: 1310px;
 }
 
@@ -238,7 +242,7 @@ ul.share li i {
     overflow: hidden;
     font-size: 14px;
     letter-spacing: 0.03em;
-    color: rgba(0,0,0,0.54);
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .article-date-number {
