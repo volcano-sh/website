@@ -34,12 +34,7 @@ The easiest way to get started with Volcano is to download the [release](https:/
 Install Volcano on an existing Kubernetes cluster. This way is both available for x86_64 and arm64 architecture.
 
 ```
-For x86_64:
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development.yaml
-
-For arm64:
-kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development-arm64.yaml
-
 ```
 
 You can also replace `master` of above url with specific tag/branch (such as `release-1.5` branch for latest v1.5.x version, `v1.5.1` tag for v1.5.1 version) to install Volcano with specific version.

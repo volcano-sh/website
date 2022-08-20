@@ -36,14 +36,9 @@ linktitle = "安装"
 
 这种安装方式支持x86_64/arm64两种架构。在你的kubernetes集群上，执行如下的kubectl指令。
 
-
-  ```
-For x86_64:
+```
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development.yaml
-
-For arm64:
-kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development-arm64.yaml
-  ```
+```
 
 你也可以将`master`替换为指定的标签或者分支（比如，`release-1.5`分支表示最新的v1.5.x版本，`v1.5.1`标签表示`v1.5.1`版本）以安装指定的Volcano版本。
 
