@@ -44,11 +44,7 @@ volcano当前支持x86_64和arm_64架构，安装方式包括从YAML文件安装
 3. Kubectl(适配本地Kubernetes版本)
 * 安装步骤
 ```
-For x86_64:
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development.yaml
-
-For arm64:
-kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development-arm64.yaml
 ```
 ##### 以code方式安装
 该安装方式仅支持x86_64架构
