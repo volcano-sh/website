@@ -52,8 +52,9 @@ brew install hugo
 
 #### Debian:
 
-1. Download the latest Debian package from the [Hugo website][hugo-install].
-  For example, `hugo_0.57.2_Linux-64bit.deb`.
+1. Download the Debian package from the [Hugo website][hugo-install].
+   Make sure to install the Hugo version specified by the `HUGO_VERSION` environment variable in the [`netlify.toml`](netlify.toml#L6) file.
+   For example, [hugo_0.57.2_Linux-64bit.deb][hugo_0.57.2_Linux-64bit.deb].
 1. Install the package using `dpkg`:
 
     ```
@@ -95,9 +96,11 @@ local machine, then use your local repo as input to your Hugo web server:
   local website reflects the files in the current branch.
 
 Useful Hugo docs:
-- [Hugo installation guide][hugo-install]
+- [Hugo installation guide](https://gohugo.io/getting-started/installing/)
 - [Hugo basic usage](https://gohugo.io/getting-started/usage/)
 - [Hugo site directory structure](https://gohugo.io/getting-started/directory-structure/)
 - [hugo server reference](https://gohugo.io/commands/hugo_server/)
 - [hugo new reference](https://gohugo.io/commands/hugo_new/)
 
+[hugo-install]: https://gohugo.io/getting-started/installing/
+[hugo_0.57.2_Linux-64bit.deb]: https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_0.57.2_Linux-64bit.deb
