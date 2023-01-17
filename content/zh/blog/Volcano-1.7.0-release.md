@@ -15,7 +15,7 @@ type = "posts"  # Do not modify.
 authors = ["volcano"]
 
 tags = ["Practice"]
-summary = "Volcano v1.7.0正式发布"
+summary = "新增特性：Pytorch Job强化插件功能、Ray on Volcano、增强Volcano对Kubernetes通用服务的调度能力、支持Volcano的多架构镜像、优化队列状态信息等"
 
 # Add menu entry to sidebar.
 linktitle = "Volcano v1.7.0正式发布"
@@ -27,11 +27,11 @@ weight = 6
 <p></p>
 北京时间2023年1月9日，Volcano社区v1.7.0版本正式发布。此次版本增加了以下新特性：
 
-- Pytorch Job强化功能插件
-- Ray on Volcano
-- 增强Volcano对Kubernetes通用服务的调度能力
-- 支持Volcano的多架构镜像
-- 优化队列状态信息等
+- **Pytorch Job强化功能插件**
+- **Ray on Volcano**
+- **增强Volcano对Kubernetes通用服务的调度能力**
+- **支持Volcano的多架构镜像**
+- **优化队列状态信息等**
 
 {{<figure library="1" src="volcano_logo.png" width="50%">}}
 Volcano是业界首个云原生批量计算项目，于2019年6月在上海KubeCon正式开源，并在2020年4月成为CNCF官方项目。2022年4月，Volcano正式晋级为CNCF孵化项目。Volcano社区开源以来，受到众多开发者、合作伙伴和用户的认可和支持。截止目前，累计有490+全球开发者向项目贡献了代码。
@@ -68,7 +68,7 @@ Issue：[#2429](https://github.com/volcano-sh/volcano/issues/2429)，  [#213](ht
 
 从1.7版本开始，Volcano提供对Kubernetes 默认调度器完全兼容的能力，可用于调度管理长期运行的服务。通过本次功能强化，用户可以使用 Volcano 统一调度长时间运行的服务和批处理工作负载。
 
-重点增强项如下：
+**重点增强项如下：**
 <ul>
     <li>Volcano的 scheduler 和 webhook 支持多调度器</li>
     <li>支持 NodeVolumeLimits 插件</li>
@@ -99,7 +99,7 @@ Issue：[#2571](https://github.com/volcano-sh/volcano/issues/2571)
 ### 致谢贡献者
 Volcano v1.7.0 版本包含了来自29位贡献者的数百次代码提交，在此对各位贡献者表示由衷的感谢：
 
-贡献者 GitHub ID：<br>
+**贡献者 GitHub ID：**<br>
 <table>
   <tr>
     <td>@xiaoxubeii</td>
