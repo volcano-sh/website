@@ -38,6 +38,12 @@ img_height = "60px"
 url = "https://www.baidu.com/ "
 
 [[featured]]
+img_src = "logo_4paradigm.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.4paradigm.com/ "
+
+[[featured]]
 img_src = "logo_iqiyi.png"
 img_width = "100px"
 img_height = "60px"
