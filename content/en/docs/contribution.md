@@ -20,18 +20,18 @@ linktitle = "Volcano Contribution"
 
 Welcome to Volcano!
 
--   [Before You Start](#before-you-get-started)
+-   [Before You Start](#before-you-start)
     -   [Code of Conduct](#code-of-conduct)
     -   [Community discussions](#community-discussions)
     -   [Community Expectations](#community-expectations)
 -   [Getting Started](#getting-started)
 -   [Your First Contribution](#your-first-contribution)
     -   [Find Something to Work On](#find-something-to-work-on)
-        -   [Find a Good Topic](#find-a-good-first-topic)
+        -   [Find a Good Topic](#find-a-good-topic)
         -   [Work on an Issue](#work-on-an-issue)
         -   [File an Issue](#file-an-issue)
--   [Contribution Workflow](#contributor-workflow)
-    -   [Open a Pull Request](#creating-pull-requests)
+-   [Contribution Workflow](#contribution-workflow)
+    -   [Open a Pull Request](#open-a-pull-request)
 -   [Code Review](#code-review)
 -   [Commit Message Format](#commit-message-format)
     -   [Testing](#testing)
@@ -54,12 +54,12 @@ To better communicate with the developers in the Volcano community, please subsc
 Volcano is an open-source project driven by the Volcano community, which strives to promote a healthy, friendly, and productive environment.
 The community is committed to developing a system that helps running high-performance workloads, such as AI, ML, and deep learning applications, on Kubernetes. Building such a system would be impossible without the support of community contributors with similar aspirations.
 
-- For details about the community roles, see [Community Membership](https://github.com/volcano-sh/website/blob/master/content/en/docs/community-membership.md). If you make significant contributions, you will have a more advanced role in the community.
+- For details about the community roles, see [Community Membership](https://github.com/volcano-sh/website/blob/master/content/en/docs/membership.md). If you make significant contributions, you will have a more advanced role in the community.
 
 
 ## Getting Started
 
-- For more information on building and deployment, see [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/deployment.md).
+- For more information on building and deployment, see [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/installation.md).
 
 
 ## Your First Contribution
