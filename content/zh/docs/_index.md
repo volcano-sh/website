@@ -80,7 +80,7 @@ Volcano已经支持几乎所有的主流计算框架：
 * [Horovod](https://horovod.readthedocs.io/)
 * [mxnet](https://mxnet.apache.org/)
 * [Kubeflow](https://www.kubeflow.org/)
-* [KubeGene](https://kubegene.io/)
+* [KubeGene](https://github.com/volcano-sh/kubegene)
 * [Cromwell](https://cromwell.readthedocs.io/)
 
 另外，Volcano已经被作为基础设施调度引擎被多个公司和组织采纳商用。

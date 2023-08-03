@@ -26,9 +26,9 @@ Apache Flink is an open-source streaming framework developed by the Apache Softw
 
 Make sure the deployed Kubernate, Kubectl, Volcano are installed correctly.
 
-### Deployment process[1]
+### Deployment process
 
-##### 1.Download
+##### 1. Download
 
 To run Flink, which requires a Java 8 or 11 environment, use the following instructions to determine the Java version.
 
@@ -43,7 +43,7 @@ $ wget https://www.apache.org/dyn/closer.lua/flink/flink-1.12.2/flink-1.12.2-src
 $ cd flink-1.12.2
 ```
 
-##### 2.Start a Cluster
+##### 2. Start a Cluster
 
 Running the script completes the deployment of Flink on the cluster.
 
@@ -51,7 +51,7 @@ Running the script completes the deployment of Flink on the cluster.
 $ ./bin/start-cluster.sh
 ```
 
-##### 3.Submit a job
+##### 3. Submit a job
 
 Submit the job using the following instructions.
 
@@ -60,9 +60,9 @@ $ ./bin/flink run examples/streaming/WordCount.jar
 $ tail log/flink-*-taskexecutor-*.out
 ```
 
-### Flink on Volcano[2]
+### Flink on Volcano
 
-##### 1.The deployment of the component
+##### 1. The deployment of the component
 
 Deploying a Flink Cluster requires creating two deploys, a Service, and a ConfigMap. The scheduling strategy is Volcano.The contents of `flink-configuration-configmap.yaml` are shown below.
 
@@ -269,7 +269,7 @@ kubectl get svc | grep flink
 kubectl get pod -owide | grep Flink
 ```
 
-##### 2.Outward publishing service[3]
+##### 2. Outward publishing service
 
 Once the Flink payload is created, you need to publish the service externally。
 

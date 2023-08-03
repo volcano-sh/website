@@ -15,7 +15,7 @@ type = "docs"  # Do not modify.
 +++
 
 ## What is Volcano
-Volcano is a cloud native system for high-performance workloads, which has been accepted by [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) as its first and only official container batch scheduling project. Volcano supports popular computing frameworks such as [Spark](https://spark.apache.org/), [TensorFlow](https://tensorflow.google.en/), [PyTorch](https://pytorch.org/), [Flink](https://flink.apache.org/), [Argo](https://argoproj.github.io/), [MindSpore](https://www.mindspore.cn/en), and [PaddlePaddle](https://www.paddlepaddle.org.cn/). Volcano also supports scheduling of computing resources on different architecture, such as x86, Arm, and Kunpeng.
+Volcano is a cloud native system for high-performance workloads, which has been accepted by [Cloud Native Computing Foundation (CNCF)](https://www.cncf.io/) as its first and only official container batch scheduling project. Volcano supports popular computing frameworks such as [Spark](https://spark.apache.org/), [TensorFlow](https://www.tensorflow.org/), [PyTorch](https://pytorch.org/), [Flink](https://flink.apache.org/), [Argo](https://argoproj.github.io/), [MindSpore](https://www.mindspore.cn/en), and [PaddlePaddle](https://www.paddlepaddle.org.cn/). Volcano also supports scheduling of computing resources on different architecture, such as x86, Arm, and Kunpeng.
  
 ## Why Volcano
 Job scheduling and management become increasingly complex and critical for high-performance batch computing. Common requirements are as follows:
@@ -63,7 +63,7 @@ Compared with existing queue schedulers, Volcano shortens the average scheduling
 Volcano allows you to use mainstream computing frameworks:
 
 * [Spark](https://spark.apache.org/)
-* [TensorFlow](https://tensorflow.google.en/)
+* [TensorFlow](https://www.tensorflow.org/)
 * [PyTorch](https://pytorch.org/)
 * [Flink](https://flink.apache.org/)
 * [Argo](https://argoproj.github.io/)
@@ -73,7 +73,7 @@ Volcano allows you to use mainstream computing frameworks:
 * [Horovod](https://horovod.readthedocs.io/)
 * [MXNet](https://mxnet.apache.org/)
 * [Kubeflow](https://www.kubeflow.org/)
-* [KubeGene](https://kubegene.io/)
+* [KubeGene](https://github.com/volcano-sh/kubegene)
 * [Cromwell](https://cromwell.readthedocs.io/)
 
 Volcano has been commercially used as the infrastructure scheduling engine by companies and organizations.

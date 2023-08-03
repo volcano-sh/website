@@ -268,18 +268,19 @@ spec:
 #### 说明事项
 * Volcano支持的计算框架
 Volcano对当前主流的计算框架均能很好的支持，具体如下：
-1. TensorFlow
-2. Pytorch
-3. MindSpore
-4. PaddlePaddle
-5. Spark
-6. Flink
-7. OpenMPI
-8. Horovod
-9. MXNet
-10. Kubeflow
-11. Argo
-12. KubeGene
+1. [Spark](https://spark.apache.org/)
+2. [TensorFlow](https://www.tensorflow.org/)
+3. [PyTorch](https://pytorch.org/)
+4. [Flink](https://flink.apache.org/)
+5. [Argo](https://argoproj.github.io/)
+6. [MindSpore](https://www.mindspore.cn/en)
+7. [PaddlePaddle](https://www.paddlepaddle.org.cn/)
+8. [Open MPI](https://www.open-mpi.org/)
+9. [Horovod](https://horovod.readthedocs.io/)
+10. [MXNet](https://mxnet.apache.org/)
+11. [Kubeflow](https://www.kubeflow.org/)
+12. [KubeGene](https://github.com/volcano-sh/kubegene)
+13. [Cromwell](https://cromwell.readthedocs.io/)
 ...
 * Volcano Job和Kubernetes Job的选择
 Volcano Job在批处理能力方面对Kubernetes Job进行了升级，更加适合机器学习、大数据、科学计算等场景，建议在高性能计算场景下选择Volcano Job；

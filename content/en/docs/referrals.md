@@ -1,5 +1,5 @@
 +++
-title =  "常见场景推介配置"
+title =  "Recommended Configurations for Common Scenarios"
 
 date = 2021-04-07
 lastmod = 2021-04-07
@@ -15,8 +15,6 @@ linktitle = "Scenario & Configuration"
   weight = 4
 
 +++
-
-
 
 
 
