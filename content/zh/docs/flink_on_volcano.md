@@ -26,9 +26,9 @@ Apache Flink是由Apache软件基金会开发的开源流处理框架，其核�
 
 需要已经部署创建好CCE集群，集群下至少有一个可用节点，集群内节点已经绑定了弹性公网IP、kubectl命令行工具。
 
-### 部署流程[1]
+### 部署流程
 
-##### 1.Download
+##### 1. Download
 
 为了运行Flink，需要java8或11的环境，使用如下的指令确定java的版本。
 
@@ -43,7 +43,7 @@ $ wget https://www.apache.org/dyn/closer.lua/flink/flink-1.12.2/flink-1.12.2-src
 $ cd flink-1.12.2
 ```
 
-##### 2.Start a Cluster
+##### 2. Start a Cluster
 
 运行脚本完成flink在集群上的部署。
 
@@ -51,7 +51,7 @@ $ cd flink-1.12.2
 $ ./bin/start-cluster.sh
 ```
 
-##### 3.Submit a job
+##### 3. Submit a job
 
 随后可以使用如下的指令提交作业。
 
@@ -60,9 +60,9 @@ $ ./bin/flink run examples/streaming/WordCount.jar
 $ tail log/flink-*-taskexecutor-*.out
 ```
 
-### Flink on Volcano[2]
+### Flink on Volcano
 
-##### 1.部署组件
+##### 1. 部署组件
 
 Flink cluster的部署需要创建两个deploy、一个service和一个configmap。调度策略采用volcano。`flink-configuration-configmap.yaml`内容如下
 
@@ -269,7 +269,7 @@ kubectl get svc | grep flink
 kubectl get pod -owide | grep Flink
 ```
 
-##### 2.对外发布服务[3]
+##### 2. 对外发布服务
 
 创建好flink负载之后，需要像外部发布服务。
 
