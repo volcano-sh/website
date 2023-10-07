@@ -15,7 +15,7 @@ type = "posts"  # Do not modify.
 authors = ["volcano"]
 
 tags = ["Tutorials"]
-summary = "ING基于volcano的大数据分析平台的应用实践过程"
+summary = "华为云携手11家合作伙伴启动Volcano社区共建计划"
 
 # Add menu entry to sidebar.
 linktitle = "华为云携手11家合作伙伴启动Volcano社区共建计划"
