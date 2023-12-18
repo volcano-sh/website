@@ -65,7 +65,7 @@ Priority plugin能够让用户自定义job、task优先级，根据自己的需�
 {{<figure library="1" src="drfjob.png" title="drf plugin">}}
 #### 简介
 
-DRF调度算法的全称是Dominant Resource Fairness，是基于容器组Domaint Resource的调度算法。volcano-scheduler观察每个Job请求的主导资源，并将其作为对集群资源使用的一种度量，根据Job的主导资源，计算Job的share值，在调度的过程中，具有较低share值的Job将具有更高的调度优先级。这样能够满足更多的作业，不会因为一个胖业务，饿死大批小业务。DRF调度算法能够确保在多种类型资源共存的环境下,尽可能满足分配的公平原则。
+DRF调度算法的全称是Dominant Resource Fairness，是基于容器组Dominant Resource的调度算法。volcano-scheduler观察每个Job请求的主导资源，并将其作为对集群资源使用的一种度量，根据Job的主导资源，计算Job的share值，在调度的过程中，具有较低share值的Job将具有更高的调度优先级。这样能够满足更多的作业，不会因为一个胖业务，饿死大批小业务。DRF调度算法能够确保在多种类型资源共存的环境下,尽可能满足分配的公平原则。
 
 #### 场景
 
