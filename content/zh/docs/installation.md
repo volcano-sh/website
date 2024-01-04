@@ -20,122 +20,64 @@ linktitle = "安装"
 
 ## 准备
 
-- 一个 Kubernetes 集群，集群版本不低于 V1.13，支持CRD。
+- 一个 Kubernetes 集群，集群版本不低于 V1.13，支持 CRD。
 
-
-
-##  安装
+## 安装
 
 - [通过 Deployment Yaml 安装](#通过-deployment-yaml-文件方式安装).
 - [通过源代码安装](#通过源代码安装)
 - [通过 Helm 方式安装](#使用-helm-安装).
 
-
-
 ### 通过 Deployment Yaml 安装
 
-这种安装方式支持x86_64/arm64两种架构。在你的kubernetes集群上，执行如下的kubectl指令。
+这种安装方式支持 x86_64/arm64 两种架构。在你的 kubernetes 集群上，执行如下的 kubectl 指令。
 
-```
+```shell
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development.yaml
 ```
 
-你也可以将`master`替换为指定的标签或者分支（比如，`release-1.5`分支表示最新的v1.5.x版本，`v1.5.1`标签表示`v1.5.1`版本）以安装指定的Volcano版本。
-
+你也可以将`master`替换为指定的标签或者分支（比如，`release-1.5`分支表示最新的 v1.5.x 版本，`v1.5.1`标签表示`v1.5.1`版本）以安装指定的 Volcano 版本。
 
 ### 通过源代码安装
 
-如果你没有kubernetes集群，您可以选择在github下载volcano源代码压缩包，解压后运行volcano的安装脚本。这种安装方式暂时只支持x86_64平台。
+如果你没有 kubernetes 集群，您可以选择在 github 下载 volcano 源代码压缩包，解压后运行 volcano 的安装脚本。这种安装方式暂时只支持 x86_64 平台。
 
-```
+```shell
 # git clone https://github.com/volcano-sh/volcano.git
 # tar -xvf volcano-{Version}-linux-gnu.tar.gz
 # cd volcano-{Version}-linux-gnu
 
 # ./hack/local-up-volcano.sh
-
 ```
-
-
 
 ### 通过 Helm 安装
 
- 在您的集群中下载 Helm，您可以根据以下指南安装 Helm：[安装 Helm](https://helm.sh/docs/using_helm/#install-helm)。(仅当您使用helm 模式进行安装时需要)
+在您的集群中下载 Helm，您可以根据以下指南安装 Helm：[安装 Helm](https://helm.sh/docs/using_helm/#install-helm)。(仅当您使用 helm 模式进行安装时需要)
 
 如果您想使用 Helm 部署 Volcano，请先确认已经在您的集群中安装了[Helm](https://helm.sh/docs/intro/install)。
 
-
-###### 步骤 1：
+#### 步骤 1
 
 创建一个新的命名空间。
 
 ```shell
 # kubectl create namespace volcano-system
 namespace/volcano-system created
-
 ```
 
-###### 步骤 2：
+#### 步骤 2
 
-使用 Helm 进行安装。
+使用 Helm 进行安装
 
 ```shell
-# helm install helm/chart/volcano --namespace volcano-system --name volcano
-NAME:   volcano
-LAST DEPLOYED: Tue Jul 23 20:07:29 2019
+# helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
+# helm install volcano volcano-sh/volcano -n volcano-system
+NAME: volcano
+LAST DEPLOYED: Thu Oct 19 16:37:22 2023
 NAMESPACE: volcano-system
-STATUS: DEPLOYED
-
-RESOURCES:
-==> v1/ClusterRole
-NAME                 AGE
-volcano-admission    1s
-volcano-controllers  1s
-volcano-scheduler    1s
-
-==> v1/ClusterRoleBinding
-NAME                      AGE
-volcano-admission-role    1s
-volcano-controllers-role  1s
-volcano-scheduler-role    1s
-
-==> v1/ConfigMap
-NAME                         DATA  AGE
-volcano-scheduler-configmap  2     1s
-
-==> v1/Deployment
-NAME                 READY  UP-TO-DATE  AVAILABLE  AGE
-volcano-admission    0/1    1           0          1s
-volcano-controllers  0/1    1           0          1s
-volcano-scheduler    0/1    1           0          1s
-
-==> v1/Job
-NAME                    COMPLETIONS  DURATION  AGE
-volcano-admission-init  0/1          1s        1s
-
-==> v1/Pod(related)
-NAME                                  READY  STATUS             RESTARTS  AGE
-volcano-admission-b45b7b76-84jmw      0/1    ContainerCreating  0         1s
-volcano-admission-init-fw47j          0/1    ContainerCreating  0         1s
-volcano-controllers-5f66f8d76c-27584  0/1    ContainerCreating  0         1s
-volcano-scheduler-bb4467966-z642p     0/1    Pending            0         1s
-
-==> v1/Service
-NAME                       TYPE       CLUSTER-IP      EXTERNAL-IP  PORT(S)  AGE
-volcano-admission-service  ClusterIP  10.107.128.208  <none>       443/TCP  1s
-
-==> v1/ServiceAccount
-NAME                 SECRETS  AGE
-volcano-admission    1        1s
-volcano-controllers  1        1s
-volcano-scheduler    1        1s
-
-==> v1beta1/CustomResourceDefinition
-NAME                           AGE
-podgroups.scheduling.sigs.dev  1s
-queues.scheduling.sigs.dev     1s
-
-
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
 NOTES:
 Thank you for installing volcano.
 
@@ -143,11 +85,7 @@ Your release is named volcano.
 
 For more information on volcano, visit:
 https://volcano.sh/
-
-
 ```
-
- 
 
 ## 验证 Volcano 组件的状态
 
