@@ -174,8 +174,7 @@ figcaption h4 {
 
 pre,
 code {
-  /*font-family: '{{ .Get "mono_font" }}', monospace;*/
-  font-family: HuaweiSansMedium Regula;
+  font-family: '{{ .Get "mono_font" }}', monospace;
   color: #c7254e;
   background-color: #f9f2f4;
 }

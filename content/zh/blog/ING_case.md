@@ -98,7 +98,7 @@ __冗余与局部亲和__
 Volcano保留kubernetes中pod级别的亲和性反亲和性策略配置，并增加了task级别的亲和性和反亲和性策略
 
 {{<figure library="1" src="ing-8.png">}}
-DRF调度算法的全称是Dominant Resource Fairness，是基于容器组Domaint Resource的调度算法。volcano-scheduler观察每个Job请求的主导资源，并将其作为对集群资源使用的一种度量，根据Job的主导资源，计算Job的share值，在调度的过程中，具有较低share值的Job将具有更高的调度优先级。
+DRF调度算法的全称是Dominant Resource Fairness，是基于容器组Dominant Resource的调度算法。volcano-scheduler观察每个Job请求的主导资源，并将其作为对集群资源使用的一种度量，根据Job的主导资源，计算Job的share值，在调度的过程中，具有较低share值的Job将具有更高的调度优先级。
 
 比如集群资源总量为CPU：18C，Memory：72GB，两个用户分别是User1和User2，每个User分配1个队列，在提交作业时会根据主导资源计算job的调度优先级。
 
