@@ -26,9 +26,7 @@ weight = 13
 
 {{<figure library="1" src="source-code-1-banner.jpeg">}}
 
-> - 本文首发于微信公众号“**胡说云原生**”；
-> - 作者：[Daniel Hu](https://www.danielhu.cn/about/)
-> - 原文链接：[Volcano 源码分析（一）](https://www.danielhu.cn/volcano-source-code-1/)；
+> _本文首发于 [胡涛的个人网站]((https://www.danielhu.cn/volcano-source-code-1/))；作者：胡涛_
 
 ## 0. 总结前置
 
