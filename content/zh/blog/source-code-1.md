@@ -12,7 +12,7 @@ dateday = 29
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
 type = "posts"  # Do not modify.
-authors = ["Daniel Hu - 胡说云原生"]
+authors = ["Daniel Hu"]
 
 tags = ["Tutorials"]
 summary = "Volcano 源码分析（一）"
