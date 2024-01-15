@@ -1,7 +1,7 @@
 +++
 title =  "安装"
 
-date = 2019-01-28
+date = 2024-01-16
 lastmod = 2024-01-16
 
 draft = false  # Is this a draft? true/false
@@ -10,13 +10,13 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "安装"
-[menu.docs]
+[menu.v1-7-0]
   parent = "getting-started"
   weight = 1
 
 +++
 
-本文档指导如何安装最新版本volcano。
+本文档指导如何安装volcano v1.7.0版本。
 
 ## 准备
 
@@ -36,17 +36,16 @@ linktitle = "安装"
 这种安装方式支持x86_64/arm64两种架构。在你的kubernetes集群上，执行如下的kubectl指令。
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development.yaml
+kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/release-1.7/installer/volcano-development.yaml
 ```
 
-你也可以将`master`替换为指定的标签或者分支（比如，`release-1.8`分支表示最新的v1.8.x版本，`v1.8.2`标签表示`v1.8.2`版本）以安装指定的Volcano版本。
 
 ### 通过源代码安装
 
 如果你没有kubernetes集群，您可以选择在github下载volcano源代码，然后运行volcano的安装脚本。这种安装方式暂时只支持x86_64平台。
 
 ```shell
-git clone https://github.com/volcano-sh/volcano.git
+git clone -b release-1.7 https://github.com/volcano-sh/volcano.git
 
 cd volcano
 
@@ -56,7 +55,7 @@ cd volcano
 
 ### 通过 Helm 安装
 
-在您的集群中下载 Helm，您可以根据以下指南安装 Helm：[安装 Helm](https://helm.sh/docs/using_helm/#install-helm)。(仅当您使用helm 模式进行安装时需要)
+ 在您的集群中下载 Helm，您可以根据以下指南安装 Helm：[安装 Helm](https://helm.sh/docs/using_helm/#install-helm)。(仅当您使用helm 模式进行安装时需要)
 
 如果您想使用 Helm 部署 Volcano，请先确认已经在您的集群中安装了[Helm](https://helm.sh/docs/intro/install)。
 
@@ -68,7 +67,7 @@ helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
 
 helm repo update
 
-helm install volcano volcano-sh/volcano -n volcano-system --create-namespace
+helm install volcano volcano-sh/volcano --version 1.7.0 -n volcano-system --create-namespace
 ```
 
 执行以上命令后有如下输出。
@@ -87,7 +86,7 @@ Your release is named volcano.
 For more information on volcano, visit:
 https://volcano.sh/
 ```
- 
+
 
 ## 验证 Volcano 组件的状态
 

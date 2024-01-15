@@ -55,7 +55,7 @@
   url = "https://volcano-sh.slack.com"
   weight = 30
 
-# Documentation
+# Documentation version latest
 
 [[docs]]
   name = "Home"
@@ -66,6 +66,7 @@
   name = "Getting Started"
   weight = 2
   identifier = "getting-started"
+
 [[docs]]
   name = "Concepts"
   weight = 3
@@ -75,8 +76,6 @@
   name = "Ecosystem"
   weight = 4
   identifier = "ecosystem"
-
-
 
 [[docs]]
   name = "Scheduler"
@@ -93,8 +92,79 @@
   weight = 7
   identifier = "contribution"
 
+# Documentation version v1.8.2
 
+[[v1-8-2]]
+  name = "Home"
+  weight = 1
+  identifier = "home"
 
+[[v1-8-2]]
+  name = "Getting Started"
+  weight = 2
+  identifier = "getting-started"
+
+[[v1-8-2]]
+  name = "Concepts"
+  weight = 3
+  identifier = "concepts"
+
+[[v1-8-2]]
+  name = "Ecosystem"
+  weight = 4
+  identifier = "ecosystem"
+
+[[v1-8-2]]
+  name = "Scheduler"
+  weight = 5
+  identifier = "scheduler"
+
+[[v1-8-2]]
+  name = "CLI"
+  weight = 6
+  identifier = "cli"
+
+[[v1-8-2]]
+  name = "Contribution"
+  weight = 7
+  identifier = "contribution"
+
+# Documentation version v1.7.0
+
+[[v1-7-0]]
+  name = "Home"
+  weight = 1
+  identifier = "home"
+
+[[v1-7-0]]
+  name = "Getting Started"
+  weight = 2
+  identifier = "getting-started"
+
+[[v1-7-0]]
+  name = "Concepts"
+  weight = 3
+  identifier = "concepts"
+
+[[v1-7-0]]
+  name = "Ecosystem"
+  weight = 4
+  identifier = "ecosystem"
+
+[[v1-7-0]]
+  name = "Scheduler"
+  weight = 5
+  identifier = "scheduler"
+
+[[v1-7-0]]
+  name = "CLI"
+  weight = 6
+  identifier = "cli"
+
+[[v1-7-0]]
+  name = "Contribution"
+  weight = 7
+  identifier = "contribution"
 
 # Blogs
 

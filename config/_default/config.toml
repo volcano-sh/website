@@ -64,5 +64,13 @@ preserveTaxonomyNames = true
   version_menu = "Documentation"
 
 [[params.versions]]
-  name = "v1.x"
-  url = "/en/docs/"
+  name = "latest"
+  url = "/en/docs"
+
+[[params.versions]]
+  name = "v1.8.2"
+  url = "/en/docs/v1-8-2"
+
+[[params.versions]]
+  name = "v1.7.0"
+  url = "/en/docs/v1-7-0"

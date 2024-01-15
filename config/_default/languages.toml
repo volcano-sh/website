@@ -36,16 +36,23 @@
   name = "生态"
   url = "#required"
   weight = 3
-  
+
 [zh.params]
   version_menu = "文档"
 
 [[zh.params.versions]]
-  name = "v1.x"
-  url = "/zh/docs/"
+  name = "latest"
+  url = "/zh/docs"
 
+[[zh.params.versions]]
+  name = "v1.8.2"
+  url = "/zh/docs/v1-8-2"
 
-  # Right Menu
+[[zh.params.versions]]
+  name = "v1.7.0"
+  url = "/zh/docs/v1-7-0"
+
+# Right Menu
 
 [[zh.menu.main_right]]
   name = "<i class=\"fab fa-github\" style=\"color: #000000; font-size: 1rem; line-height: 1.25\"></i>"
@@ -64,7 +71,7 @@
   url = "https://volcano-sh.slack.com"
   weight = 30
 
-# Documentation
+# Documentation version latest
 
 [[zh.menu.docs]]
   name = "主页"
@@ -86,8 +93,6 @@
   weight = 4
   identifier = "zoology"
 
-
-
 [[zh.menu.docs]]
   name = "Scheduler"
   weight = 5
@@ -99,11 +104,85 @@
   identifier = "cli"
 
 [[zh.menu.docs]]
- name = "贡献"
+  name = "贡献"
   weight = 7
   identifier = "contribution"
 
-  # Blogs
+# Documentation version v1.8.2
+
+[[zh.menu.v1-8-2]]
+  name = "主页"
+  weight = 1
+  identifier = "home"
+
+[[zh.menu.v1-8-2]]
+  name = "开始"
+  weight = 2
+  identifier = "getting-started"
+
+[[zh.menu.v1-8-2]]
+  name = "概念"
+  weight = 3
+  identifier = "concepts"
+
+[[zh.menu.v1-8-2]]
+  name = "生态"
+  weight = 4
+  identifier = "zoology"
+
+[[zh.menu.v1-8-2]]
+  name = "Scheduler"
+  weight = 5
+  identifier = "scheduler"
+
+[[zh.menu.v1-8-2]]
+  name = "CLI"
+  weight = 6
+  identifier = "cli"
+
+[[zh.menu.v1-8-2]]
+  name = "贡献"
+  weight = 7
+  identifier = "contribution"
+
+# Documentation version v1.7.0
+
+[[zh.menu.v1-7-0]]
+  name = "主页"
+  weight = 1
+  identifier = "home"
+
+[[zh.menu.v1-7-0]]
+  name = "开始"
+  weight = 2
+  identifier = "getting-started"
+
+[[zh.menu.v1-7-0]]
+  name = "概念"
+  weight = 3
+  identifier = "concepts"
+
+[[zh.menu.v1-7-0]]
+  name = "生态"
+  weight = 4
+  identifier = "zoology"
+
+[[zh.menu.v1-7-0]]
+  name = "Scheduler"
+  weight = 5
+  identifier = "scheduler"
+
+[[zh.menu.v1-7-0]]
+  name = "CLI"
+  weight = 6
+  identifier = "cli"
+
+[[zh.menu.v1-7-0]]
+  name = "贡献"
+  weight = 7
+  identifier = "contribution"
+
+# Blogs
 
 [[zh.menu.posts]]
   name = "讲解"
