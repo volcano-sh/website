@@ -154,7 +154,7 @@ https://github.com/volcano-sh/volcano/issues/2999
 
 - 添加 Volcano charts 仓地址
 ```shell
-helm repo add volcano-sh https://volcano-sh.github.io/helm-chart
+helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
 ```
 
 - 查询所有可安装的 Volcano 版本
