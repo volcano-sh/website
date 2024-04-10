@@ -154,7 +154,7 @@ As Volcano is used in more and more production and cloud environments, it is imp
 
 - Add Volcano charts bin address
 ```shell
-helm repo add volcano-sh https://volcano-sh.github.io/helm-chart
+helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
 ```
 
 - Search for all installable versions of Volcano
