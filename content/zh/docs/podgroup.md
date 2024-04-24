@@ -17,7 +17,7 @@ linktitle = "PodGroup"
 +++
 
 ### 定义
-podgroup是一组强关联pod的集合，主要用于批处理工作负载场景，比如Tensorflow中的一组ps和worker。它是volcano自定义资源类型。
+podgroup 是一组强关联 pod 的集合，主要用于批处理工作负载场景，比如 Tensorflow 中的一组 ps 和 worker。它是 Volcano 自定义资源类型。
 
 ### 样例
 ```shell
@@ -66,16 +66,16 @@ status:
 ### 关键字段
 * minMember
 
-minMember表示该podgroup下**最少**需要运行的pod或任务数量。如果集群资源不满足miniMember数量任务的运行需求，调度器将不会调度任何一个该podgroup
+`minMember`表示该 podgroup 下**最少**需要运行的 pod 或任务数量。如果集群资源不满足 miniMember 数量任务的运行需求，调度器将不会调度任何一个该 podgroup
 内的任务。
 
 * queue
 
-queue表示该podgroup所属的queue。queue必须提前已创建且状态为open。
+`queue`表示该 podgroup 所属的 queue。queue 必须提前已创建且状态为 open。
 
 * priorityClassName
 
-priorityClassName表示该podgroup的优先级，用于调度器为该queue中所有podgroup进行调度时进行排序。**system-node-critical**和**system-cluster-critical**
+`priorityClassName`表示该 podgroup 的优先级，用于调度器为该queue中所有podgroup进行调度时进行排序。**system-node-critical**和**system-cluster-critical**
 是2个预留的值，表示最高优先级。不特别指定时，默认使用default优先级或zero优先级。
 
 * minResources
@@ -84,23 +84,23 @@ minResources表示运行该podgroup所需要的最少资源。当集群可分配
 
 * phase
 
-phase表示该podgroup当前的状态。
+`phase`表示该 podgroup 当前的状态。
 
 * conditions
 
-conditions表示该podgroup的具体状态日志，包含了podgroup生命周期中的关键事件。
+`conditions`表示该 podgroup 的具体状态日志，包含了 podgroup 生命周期中的关键事件。
 
 * running
 
-running表示该podgroup中当前处于running状态的pod或任务的数量。
+`running`表示该 podgroup 中当前处于running状态的pod或任务的数量。
 
 * succeed
 
-succeed表示该podgroup中当前处于succeed状态的pod或任务的数量。
+`succeed`表示该 podgroup 中当前处于 succeed 状态的 pod 或任务的数量。
 
 * failed
 
-failed表示该podgroup中当前处于failed状态的pod或任务的数量。
+`failed`表示该 podgroup 中当前处于 failed 状态的 pod 或任务的数量。
 
 ### 资源状态
 
@@ -108,20 +108,20 @@ failed表示该podgroup中当前处于failed状态的pod或任务的数量。
 
 * pending
 
-pending表示该podgroup已经被volcano接纳，但是集群资源暂时不能满足它的需求。一旦资源满足，该podgroup将转变为running状态。
+`pending`表示该 podgroup 已经被 Volcano 接纳，但是集群资源暂时不能满足它的需求。一旦资源满足，该 podgroup 将转变为 running 状态。
 
 * running
 
-running表示该podgroup至少有**minMember**个pod或任务处于running状态。
+`running`表示该 podgroup 至少有 **minMember** 个 pod 或任务处于 running 状态。
 
 * unknown
 
-unknown表示该podgroup中**minMember**数量的pod或任务分为2种状态，部分处于running状态，部分没有被调度。没有被调度的原因可能是资源不够等。调度
-器将等待controller重新拉起这些pod或任务。
+`unknown`表示该 podgroup 中 **minMember** 数量的 pod 或任务分为 2 种状态，部分处于 running 状态，部分没有被调度。没有被调度的原因可能是资源不够等。调度
+器将等待 controller 重新拉起这些 pod 或任务。
 
 * inqueue
 
-inqueue表示该podgroup已经通过了调度器的校验并入队，即将为它分配资源。inqueue是一种处于pending和running之间的中间状态。
+`inqueue`表示该 podgroup 已经通过了调度器的校验并入队，即将为它分配资源。inqueue 是一种处于 pending 和 running 之间的中间状态。
 
 
 
@@ -132,17 +132,17 @@ inqueue表示该podgroup已经通过了调度器的校验并入队，即将为�
 ### 使用场景
 * minMember的使用
 
-在某些场景下，可能会只需要某个任务的子任务运行达到一定的数量，即可认为本次任务可以运行，如机器学习训练。这种情况下适合使用minMember字段。
+在某些场景下，可能会只需要某个任务的子任务运行达到一定的数量，即可认为本次任务可以运行，如机器学习训练。这种情况下适合使用 minMember 字段。
 
 * priorityClassName的使用
 
-priorityClassName用于podgroup的优先级排序，可用于任务抢占调度场景。它本身也是一种资源。
+`priorityClassName`用于 podgroup 的优先级排序，可用于任务抢占调度场景。它本身也是一种资源。
 
 * minResources的使用
 
-在某些场景下，任务的运行必须满足最小资源要求，不满足则不能运行该任务，如某些大数据分析场景。这种情况下适合使用minResources字段。
+在某些场景下，任务的运行必须满足最小资源要求，不满足则不能运行该任务，如某些大数据分析场景。这种情况下适合使用 minResources 字段。
 
 ### 说明事项
-* 自动创建podgroup
+* 自动创建 podgroup
 
-当创建vcjob（Volcano Job的简称）时，若没有指定该vcjob所属的podgroup，默认会为该vcjob创建同名的podgroup。
+当创建 vcjob（Volcano Job的简称）时，若没有指定该 vcjob 所属的 podgroup，默认会为该 vcjob 创建同名的 podgroup。

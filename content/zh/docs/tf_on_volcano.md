@@ -20,22 +20,22 @@ linktitle = "TensorFlow"
 
 ### TensorFlow简介
 
-TensorFlow是一个基于数据流编程的符号数学系统，被广泛应用于各类机器学习算法的编程实现，其前身是谷歌的神经网络算法库DistBelief。
+TensorFlow 是一个基于数据流编程的符号数学系统，被广泛应用于各类机器学习算法的编程实现，其前身是谷歌的神经网络算法库 DistBelief。
 
 ### TensorFlow on Volcano
 
-PS-worker模型：Parameter Server执行模型相关业务，Work Server训练相关业务，推理计算、梯度计算等[1]。
+PS-worker 模型：Parameter Server 执行模型相关业务，Work Server 训练相关业务，推理计算、梯度计算等[1]。
 
 {{<figure library="1" src="ps-worker.png" title="ps-worker">}}
 
-TensorFlow on Kubernates存在诸多的问题
+TensorFlow on Kubernetes 存在诸多的问题
 
 - 资源隔离
-- 缺乏GPU调度、Gang schduler。
+- 缺乏 GPU 调度、Gang scheduler。
 - 进程遗留问题
 - 训练日志保存不方便
 
-创建tftest.yaml
+创建 tftest.yaml
 
 ```
 apiVersion: batch.volcano.sh/v1alpha1
@@ -98,7 +98,7 @@ spec:
           restartPolicy: Never
 ```
 
-部署tftest.yaml
+部署 tftest.yaml
 
 ```
 kubectl apply -f tftest.yaml

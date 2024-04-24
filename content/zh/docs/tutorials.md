@@ -16,10 +16,10 @@ linktitle = "快速开始"
   weight = 2
 +++
 
-这里演示的是一个如何使用Volcano CRD资源的简单例子。
+这里演示的是一个如何使用 Volcano CRD 资源的简单例子。
 
 ### 步骤1：
-创建一个名为“test”的自定义队列。
+创建一个名为 **test** 的自定义队列。
 ```shell
 # cat <<EOF | kubectl apply -f -
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -35,7 +35,7 @@ EOF
 ```
 
 ### 步骤2：
-创建一个名为“job-1”的Volcano Job。
+创建一个名为 **job-1** 的 Volcano Job。
 ```shell
 # cat <<EOF | kubectl apply -f -
 apiVersion: batch.volcano.sh/v1alpha1
@@ -73,7 +73,7 @@ EOF
 ```
 
 ### 步骤3：
-检查自定义job的状态。
+检查自定义 job 的状态。
 ```shell
 # kubectl get vcjob job-1 -oyaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -150,7 +150,7 @@ status:
 ```
 
 ### 步骤4：
-检查名为”job-1“的PodGroup的状态
+检查名为 **job-1** 的 PodGroup 的状态
 ```shell
 # kubectl get podgroup job-1 -oyaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -229,7 +229,7 @@ status:
 ```
 
 ### 步骤5：
-检查队列“test”的状态。
+检查队列 **test** 的状态。
 ```shell
 # kubectl get queue test -oyaml
 apiVersion: scheduling.volcano.sh/v1beta1
