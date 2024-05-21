@@ -2,7 +2,7 @@
 title =  "安装"
 
 date = 2019-01-28
-lastmod = 2024-01-16
+lastmod = 2024-05-21
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -39,7 +39,7 @@ linktitle = "安装"
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development.yaml
 ```
 
-你也可以将`master`替换为指定的标签或者分支（比如，`release-1.8`分支表示最新的v1.8.x版本，`v1.8.2`标签表示`v1.8.2`版本）以安装指定的Volcano版本。
+你也可以将`master`替换为指定的标签或者分支（比如，`release-1.9`分支表示最新的v1..x版本，`v1.9.0`标签表示`v1.9.0`版本）以安装指定的Volcano版本。
 
 ### 通过源代码安装
 
