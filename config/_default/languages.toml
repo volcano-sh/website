@@ -45,6 +45,10 @@
   url = "/zh/docs"
 
 [[zh.params.versions]]
+  name = "v1.9.0"
+  url = "/zh/docs/v1-9-0"
+
+[[zh.params.versions]]
   name = "v1.8.2"
   url = "/zh/docs/v1-8-2"
 
@@ -104,6 +108,43 @@
   identifier = "cli"
 
 [[zh.menu.docs]]
+  name = "贡献"
+  weight = 7
+  identifier = "contribution"
+
+# Documentation version v1.9.0
+
+[[zh.menu.v1-9-0]]
+  name = "主页"
+  weight = 1
+  identifier = "home"
+
+[[zh.menu.v1-9-0]]
+  name = "开始"
+  weight = 2
+  identifier = "getting-started"
+
+[[zh.menu.v1-9-0]]
+  name = "概念"
+  weight = 3
+  identifier = "concepts"
+
+[[zh.menu.v1-9-0]]
+  name = "生态"
+  weight = 4
+  identifier = "zoology"
+
+[[zh.menu.v1-9-0]]
+  name = "Scheduler"
+  weight = 5
+  identifier = "scheduler"
+
+[[zh.menu.v1-9-0]]
+  name = "CLI"
+  weight = 6
+  identifier = "cli"
+
+[[zh.menu.v1-9-0]]
   name = "贡献"
   weight = 7
   identifier = "contribution"
