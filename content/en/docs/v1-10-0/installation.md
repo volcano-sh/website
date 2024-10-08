@@ -1,9 +1,8 @@
 +++
 title =  "Installation"
 
-
-date = 2019-01-28
-lastmod =2024-09-29
+date = 2024-09-29
+lastmod = 2024-09-29
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -11,12 +10,12 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "Installation"
-[menu.docs]
+[menu.v1-10-0]
   parent = "getting-started"
   weight = 1
 +++
 
-The easiest way to get started with Volcano is to download the [release](https://github.com/volcano-sh/volcano/releases) package from GitHub and follow the following steps:
+This document guides how to install the v1.10.0 version of version.
 
 ## Prerequisites
 
@@ -33,18 +32,15 @@ The easiest way to get started with Volcano is to download the [release](https:/
 Install Volcano on an existing Kubernetes cluster. This way is both available for x86_64 and arm64 architecture.
 
 ```shell
-kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/master/installer/volcano-development.yaml
+kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/release-1.10/installer/volcano-development.yaml
 ```
-
-You can also replace `master` of above url with specific tag/branch (such as `release-1.10` branch for latest v1.10.x version, `v1.10.0` tag for v1.10.0 version) to install Volcano with specific version.
-
 
 ### Install from code
 
 If you don't have a Kubernetes cluster, try one-click install from code base.This way is only available for x86_64 temporarily.
 
 ```
-git clone https://github.com/volcano-sh/volcano.git
+git clone -b release-1.10 https://github.com/volcano-sh/volcano.git
 
 cd volcano
 
@@ -54,7 +50,7 @@ cd volcano
 
 ### Install with Helm
 
-This document guides how to install the latest version of volcano.
+Helm is downloaded and installed for your cluster. For details on how to install the Helm, click [here](https://helm.sh/docs/using_helm/#install-helm). 
 
 Use Helm charts to install Volcano with the following command.
 
@@ -63,13 +59,13 @@ helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
 
 helm repo update
 
-helm install volcano volcano-sh/volcano -n volcano-system --create-namespace
+helm install volcano volcano-sh/volcano --version 1.10.0 -n volcano-system --create-namespace
 ```
 
 The output is as follows after executing the above command.
 ```
 NAME: volcano
-LAST DEPLOYED: Tue Sep 29 10:18:44 2024
+LAST DEPLOYED: Tue May 21 15:28:22 2024
 NAMESPACE: volcano-system
 STATUS: deployed
 REVISION: 1
@@ -87,7 +83,7 @@ https://volcano.sh/
 ## Verify status of Volcano components.
 
 ```shell
-# kubectl get all -n volcano-system
+kubectl get all -n volcano-system
 NAME                                       READY   STATUS      RESTARTS   AGE
 pod/volcano-admission-5bd5756f79-p89tx     1/1     Running     0          6m10s
 pod/volcano-admission-init-d4dns           0/1     Completed   0          6m10s

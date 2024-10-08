@@ -24,7 +24,7 @@ parent = "tutorials"
 weight = 6
 +++
 
-On May 21, 2024, UTC+8, Volcano version v1.9.0  was officially released. This version added the following new features:
+On May 21, 2024, UTC+8, Volcano version v1.9.0 was officially released. This version added the following new features:
 
 - **Support elastic queue capacity scheduling**
 

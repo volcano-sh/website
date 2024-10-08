@@ -92,6 +92,45 @@
   weight = 7
   identifier = "contribution"
 
+
+# Documentation version v1.10.0
+
+[[v1-10-0]]
+  name = "Home"
+  weight = 1
+  identifier = "home"
+
+[[v1-10-0]]
+  name = "Getting Started"
+  weight = 2
+  identifier = "getting-started"
+
+[[v1-10-0]]
+  name = "Concepts"
+  weight = 3
+  identifier = "concepts"
+
+[[v1-10-0]]
+  name = "Ecosystem"
+  weight = 4
+  identifier = "ecosystem"
+
+[[v1-10-0]]
+  name = "Scheduler"
+  weight = 5
+  identifier = "scheduler"
+
+[[v1-10-0]]
+  name = "CLI"
+  weight = 6
+  identifier = "cli"
+
+[[v1-10-0]]
+  name = "Contribution"
+  weight = 7
+  identifier = "contribution"
+
+
 # Documentation version v1.9.0
 
 [[v1-9-0]]
