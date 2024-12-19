@@ -66,7 +66,7 @@ spec:
 ```
 ## Key Fields
 ### schedulerName
-`schedulerName` indicates the scheduler that will schedule the job. Currently, the value can be `volcano` or `default-scheduler, with `volcano` selected by default.
+`schedulerName` indicates the scheduler that will schedule the job. Currently, the value can be `volcano` or `default-scheduler`, with `volcano` selected by default.
 
 ### minAvailable
 `minAvailable` represents the minimum number of running pods required to run the job. Only when the number of running pods is not less than `minAvailable` can the job be considered as `running`. 
