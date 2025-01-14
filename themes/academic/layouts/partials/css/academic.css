@@ -100,18 +100,19 @@ h1 {
   font-size: 2.25rem;
 }
 h2 {
+  font-weight: 600;
   margin-top: 1rem;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 h3 {
-  font-weight: 700;
+  font-weight: 500;
   margin-top: 1.5rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 h4, h5, h6 {
-  font-weight: 700;
+  font-weight: 500;
   margin-top: 1rem;
-  font-size: 1rem;
+  font-size: 1.25rem;
 }
 
 a,
@@ -174,22 +175,67 @@ figcaption h4 {
 
 pre,
 code {
-  font-family: '{{ .Get "mono_font" }}', monospace;
-  color: #c7254e;
-  background-color: #f9f2f4;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.85rem;
 }
 
 pre {
-  margin: 0 0 1rem 0;
-  background-color: rgb(248, 248, 248); /* Match default highlight theme. */
-  border-color: rgb(248, 248, 248);
-  font-size: 0.7rem;
-  border-radius: 4px;
+  position: relative;
+  margin: 0 0 1.5rem 0;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 pre code {
-  white-space: pre; /* Override Bootstrap to preserve line breaks in code. */
+  white-space: pre;
   overflow-x: auto;
+  display: block;
+  padding: 0;
+  color: #24292e;
+  background-color: transparent;
+}
+
+pre::before {
+  content: attr(data-lang);
+  display: block;
+  background: #e9ecef;
+  color: #666;
+  font-size: 0.75rem;
+  padding: 0.2em 0.5em;
+  border-radius: 3px 3px 0 0;
+  margin: -1rem -1rem 1rem -1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.code-copy-btn {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  color: #666;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+pre:hover .code-copy-btn {
+  opacity: 1;
+}
+
+.code-copy-btn:hover {
+  background: #f8f9fa;
+  border-color: #ddd;
+}
+
+.code-copy-btn:active {
+  background: #eee;
 }
 
 hr {
@@ -2594,8 +2640,20 @@ ul.toc-top {
   padding-left: 0;
 }
 
-#TableOfContents ul ul {
-  display: none;
+#TableOfContents ul ul{
+  display: block;
+}
+
+#TableOfContents ul li ul {
+  padding-left: 1rem;
+}
+
+#TableOfContents ul li ul li ul {
+  padding-left: 1rem;
+}
+
+#TableOfContents ul li ul li ul li ul{
+  padding-left: 1rem;
 }
 
 #TableOfContents li {
