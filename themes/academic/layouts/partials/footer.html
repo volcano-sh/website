@@ -146,5 +146,53 @@
     {{ $js_bundle := $js_bundle | resources.Concat "js/academic-bundle-pre.js" | minify }}
     {{ $js_bundle := slice $js_bundle_head $js_bundle | resources.Concat "js/academic.min.js" | fingerprint "md5" }}
     <script src="{{ $js_bundle.RelPermalink }}"></script>
+
+    <script>
+    (function() {
+        // Add copy button to all code blocks
+        var pres = document.getElementsByTagName("pre");
+        for (var i = 0; i < pres.length; i++) {
+            var pre = pres[i];
+            if (!pre.querySelector('.code-copy-btn')) {  // Avoid duplicate buttons
+                var btn = document.createElement("button");
+                btn.className = "code-copy-btn";
+                btn.textContent = "Copy";
+                
+                btn.addEventListener('click', function() {
+                    var code = this.parentElement.querySelector("code");
+                    var text = code.textContent || code.innerText;
+                    
+                    // Create temporary textarea for copying
+                    var textarea = document.createElement("textarea");
+                    textarea.style.position = 'fixed';
+                    textarea.style.opacity = '0';
+                    textarea.value = text;
+                    document.body.appendChild(textarea);
+                    textarea.select();
+                    
+                    try {
+                        var successful = document.execCommand('copy');
+                        if (successful) {
+                            this.textContent = "Copied!";
+                            var self = this;
+                            setTimeout(function() {
+                                self.textContent = "Copy";
+                            }, 1500);
+                        } else {
+                            this.textContent = "Failed";
+                        }
+                    } catch (err) {
+                        console.error('Copy failed:', err);
+                        this.textContent = "Failed";
+                    }
+                    
+                    document.body.removeChild(textarea);
+                });
+                
+                pre.appendChild(btn);
+            }
+        }
+    })();
+    </script>
   </body>
 </html>

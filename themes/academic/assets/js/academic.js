@@ -310,16 +310,28 @@
     if ($('body').hasClass('dark')) {
       $('body').css({opacity: 0, visibility: 'visible'}).animate({opacity: 1}, 500);
       $('body').removeClass('dark');
-      $('link[title=hl-light]')[0].disabled = false;
-      $('link[title=hl-dark]')[0].disabled = true;
+      let link = document.querySelector('link[title=hl-light]');
+      if (link) {
+        link.disabled = false;
+      }
+      let linkDark = document.querySelector('link[title=hl-dark]');
+      if (linkDark) {
+        linkDark.disabled = true;
+      }
       $('.js-dark-toggle i').removeClass('fa-sun');
       $('.js-dark-toggle i').addClass('fa-moon');
       localStorage.setItem('dark_mode', '0');
     } else {
       $('body').css({opacity: 0, visibility: 'visible'}).animate({opacity: 1}, 500);
       $('body').addClass('dark');
-      $('link[title=hl-light]')[0].disabled = true;
-      $('link[title=hl-dark]')[0].disabled = false;
+      let link = document.querySelector('link[title=hl-light]');
+      if (link) {
+        link.disabled = true;
+      }
+      let linkDark = document.querySelector('link[title=hl-dark]');
+      if (linkDark) {
+        linkDark.disabled = false;
+      }
       $('.js-dark-toggle i').removeClass('fa-moon');
       $('.js-dark-toggle i').addClass('fa-sun');
       localStorage.setItem('dark_mode', '1');
@@ -339,14 +351,26 @@
     let dark_mode = parseInt(localStorage.getItem('dark_mode') || default_mode);
     if (dark_mode) {
       $('body').addClass('dark');
-      $('link[title=hl-light]')[0].disabled = true;
-      $('link[title=hl-dark]')[0].disabled = false;
+      let link = document.querySelector('link[title=hl-light]');
+      if (link) {
+        link.disabled = false;
+      }
+      let linkDark = document.querySelector('link[title=hl-dark]');
+      if (linkDark) {
+        linkDark.disabled = true;
+      }
       $('.js-dark-toggle i').removeClass('fa-moon');
       $('.js-dark-toggle i').addClass('fa-sun');
     } else {
       $('body').removeClass('dark');
-      $('link[title=hl-light]')[0].disabled = false;
-      $('link[title=hl-dark]')[0].disabled = true;
+      let link = document.querySelector('link[title=hl-light]');
+      if (link) {
+        link.disabled = false;
+      }
+      let linkDark = document.querySelector('link[title=hl-dark]');
+      if (linkDark) {
+        linkDark.disabled = true;
+      }
       $('.js-dark-toggle i').removeClass('fa-sun');
       $('.js-dark-toggle i').addClass('fa-moon');
     }
