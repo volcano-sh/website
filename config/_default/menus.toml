@@ -73,23 +73,28 @@
   identifier = "concepts"
 
 [[docs]]
-  name = "Ecosystem"
+  name = "Key Features"
   weight = 4
+  identifier = "features"
+
+[[docs]]
+  name = "Ecosystem"
+  weight = 5
   identifier = "ecosystem"
 
 [[docs]]
   name = "Scheduler"
-  weight = 5
+  weight = 6
   identifier = "scheduler"
 
 [[docs]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[docs]]
   name = "Contribution"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 

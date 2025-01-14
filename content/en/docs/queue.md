@@ -3,7 +3,7 @@ title =  "Queue"
 
 
 date = 2019-01-28
-lastmod = 2020-08-29
+lastmod = 2024-12-30
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -23,28 +23,73 @@ Queue is a collection of PodGroups, which adopts FIFO. It is also used as the ba
 apiVersion: scheduling.volcano.sh/v1beta1
 kind: Queue
 metadata:
-  creationTimestamp: "2020-08-10T11:54:36Z"
+  creationTimestamp: "2024-12-30T09:31:12Z"
   generation: 1
-  name: default
-  resourceVersion: "559"
-  selfLink: /apis/scheduling.volcano.sh/v1beta1/queues/default
-  uid: 14082e4c-bef6-4248-a414-1e06d8352bf0
+  name: test
+  resourceVersion: "987630"
+  uid: 88babd01-c83f-4010-9701-c2471c1dd040
 spec:
-  reclaimable: true
-  weight: 1
   capability:
+    cpu: "8"
+    memory: 16Gi
+  # deserved field is only used by capacity plugin
+  deserved:
     cpu: "4"
-    memory: "4096Mi"
+    memory: 8Gi
+  guarantee:
+    resource:
+      cpu: "2"
+      memory: 4Gi
+  priority: 100
+  reclaimable: true
+  # weight field is only used by proportion plugin
+  weight: 1
 status:
+  allocated:
+    cpu: "0"
+    memory: "0"
   state: Open
 ```
+
 ## Key Fields
 ### weight
-`weight` indicates the **relative** weight of a queue in cluster resource division. The resource allocated to the queue equals **(weight/total-weight) x total-resource**. `total-weight` is the total weight of all queues. `total-resource` is the total number of cluster resources. `weight` is a soft constraint.
-### capability
-`capability` indicates the upper limit of resources the queue can use. It is a hard constraint.
-### reclaimable
+* guarantee, *optional*
+
+guarantee indicates the resources reserved for all PodGroups in this queue. Other queues cannot use these reserved resources.
+
+> **Note**: If guarantee value needs to be configured, it must be less than or equal to the deserved value
+
+* deserved, *optional*
+
+deserved indicates the expected resource amount for all PodGroups in this queue. If the allocated resources of this queue exceed the configured deserved value, the allocated resources can be reclaimed by other queues.
+
+> **Note**:
+> 
+> 1. This field can only be configured when the capacity plugin is enabled, and must be less than or equal to the capability value. The proportion plugin uses weight to automatically calculate the queue's deserved value. For more information on using the capacity plugin, see: [capacity plugin user guide](https://github.com/volcano-sh/volcano/blob/5b817b1cdf3a5638ba38e934b44af051c9fb419e/docs/user-guide/how_to_use_capacity_plugin.md)
+> 2. If the allocated resources of a queue exceed its configured deserved value, the queue cannot reclaim resources from other queues
+
+`weight` indicates the **relative** weight of a queue in cluster resource division. The deserved resource amount is calculated as **(weight/total-weight) * total-resource**. `total-weight` is the total weight of all queues. `total-resource` is the total number of cluster resources. `weight` is a soft constraint.
+
+> **Note**: 
+> 
+> 1. This field can only be configured when the proportion plugin is enabled. If weight is not set, it defaults to 1. The capacity plugin does not need this field.
+> 
+> 2. This field is a soft constraint. The Deserved value is calculated based on weight. When other queues' resource usage is below their Deserved values, this queue can exceed its Deserved value by borrowing resources from other queues. However, when cluster resources become scarce and other queues need their borrowed resources for tasks, this queue must return the borrowed resources until its usage matches its Deserved value. This design ensures maximum utilization of cluster resources.
+
+* capability, *optional*
+`capability` indicates the upper limit of resources the queue can use. It is a hard constraint.If this field is not set, the queue's capability will be set to realCapability (total cluster resources minus the total guarantee values of other queues).
+
+* reclaimable, *optional*
 `reclaimable` specifies whether to allow other queues to reclaim extra resources occupied by a queue when the queue uses more resources than allocated. The default value is `true`.
+
+* priority, *optional*
+
+priority indicates the priority of this queue. During resource allocation and resource preemption/reclamation, higher priority queues will have precedence in allocation/preemption/reclamation.
+
+* parent, *optional*
+
+This field is used to configure [hierarchical queues](hierarchical_queue.md). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
+
 ## Status
 ### Open
 `Open` indicates that the queue is available and can accept new PodGroups.
@@ -54,70 +99,11 @@ status:
 `Closing` indicates that the queue is becoming unavailable. It is a transient state. A `Closing` queue cannot accept any new PodGroups.
 ### Unknown
 `Unknown` indicates that the queue status is unknown because of unexpected situations such as network jitter.
-## Usage
-### Weight for Cluster Resource Division - 1
-#### Preparations
-
-* A total of 4 CPUs in a cluster are available.
-* A queue with `name` set to `default` and `weight` set to `1` has been created by Volcano.
-* No running tasks are in the cluster.
-
-#### Operation
-
-1. If no other queues are created, queue `default` can use all CPUs.
-2. Create queue `test` whose weight is `3`. The CPU resource allocated to queue `default` changes to 1C and that allocated to queue `test` is 3C because weight(default):weight(test) equals 1:3.
-3. Create PodGroups `p1` and `p2`, which belong to queues `default` and `test`, respectively.
-4. Create job `j1` that has a CPU request of 1C in `p1`.
-5. Create job `j2` that has a CPU request of 3C in `p2`.
-6. Check the status of `j1` and `j2`. Both the jobs are running normally. 
-   
-### Weight for Cluster Resource Division - 2
-#### Preparations
-
-* A total of 4 CPUs in a cluster are available.
-* A queue with name set to default and weight set to 1 has been created by Volcano.
-* No running tasks are in the cluster.
-
-#### Operation
-
-1. If no other queues are created, queue `default` can use all CPUs.
-2. Create PodGroup `p1` that belongs to queue `default`.
-3. Create job `j1` with a CPU request of 1C and job `j2` with a CPU request of 3C in `p1`. Both the jobs are running normally.
-4. Create queue `test` whose weight is `3`. The CPU resource allocated to queue `default` changes to 1C and that allocated to queue `test` is 3C because weight(default):weight(test) equals 1:3. As no tasks in queue `test`, jobs in queue `default` can still run normally.
-5. Create PodGroup `p2` that belongs to queue `test`.
-6. Create job `j2` with a CPU request of 3C in `p2`. `j2` will be evicted to return the resource to queue `test`.
-
-### Capability for Overuse of Resources
-#### Preparations
-
-* A total of 4 CPUs in a cluster are available.
-* A queue with name set to default and weight set to 1 has been created by Volcano.
-* No running tasks are in the cluster.
-
-#### Operation
-
-1. Create queue `test` whose `capability` is 2C.
-2. Create PodGroup `p1` that belongs to queue `test`.
-3. Create job `j1` that has a CPU request of 1C in `p1`. `j1` runs normally.
-4. Create job `j2` that has a CPU request of 3C in `p1`. `j2` becomes `pending` because of the limit of `capability`.
-
-### Reclaimable for Resource Return
-#### Preparations
-
-* A total of 4 CPUs in a cluster are available.
-* A queue with name set to default and weight set to 1 has been created by Volcano.
-* No running tasks are in the cluster.
-
-#### Operation
-
-1. Create queue `test` whose `reclaimable` is `false` and `weight` is `1`. The CPU resources allocated to queues `default` and 
-`test` are both 2C.
-2. Create PodGroups `p1` and `p2`, which belong to queues `test` and `default`, respectively.
-3. Create job `j1` that has a CPU request of 3C in `p1`. `j1` runs normally because there are no tasks in queue `default`.
-4. Create job `j2` that has a CPU request of 2C in `p2`. The status of `j2` is `pending` because `reclaimable` is set to `false` for queue `test`. Queue `test` will NOT return resources to other queues until some tasks in it are completed.
   
 ## Note
 #### default Queue
 When Volcano starts, it automatically creates queue `default` whose `weight` is `1`. Subsequent jobs that are not assigned to a queue will be assigned to queue `default`.
-#### Soft Constraint About weight
-`weight` determines the resources allocated to a queue, but not the upper limit. As per the preceding examples, a queue can use more resources than allocated when there are idle resources in other queues. This a good characteristic of Volcano and delivers a better cluster resource usage.
+#### root queue
+When Volcano starts, it also creates a queue named root by default. This queue is used when the [hierarchical queue](/en/docs/hierarchical_queue) feature is enabled, serving as the root queue for all queues, with the default queue being a child queue of the root queue.
+
+> For more information on queue usage scenarios, please refer to [Queue Resource Management](/en/docs/queue_resource_management)

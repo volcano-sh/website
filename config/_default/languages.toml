@@ -97,23 +97,28 @@
   identifier = "concepts"
 
 [[zh.menu.docs]]
-  name = "生态"
+  name = "关键特性"
   weight = 4
+  identifier = "features"
+
+[[zh.menu.docs]]
+  name = "生态"
+  weight = 5
   identifier = "zoology"
 
 [[zh.menu.docs]]
   name = "Scheduler"
-  weight = 5
+  weight = 6
   identifier = "scheduler"
 
 [[zh.menu.docs]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[zh.menu.docs]]
   name = "贡献"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 
