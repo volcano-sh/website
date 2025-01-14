@@ -52,7 +52,6 @@ status:
 ```
 
 ## Key Fields
-### weight
 * guarantee, *optional*
 
 guarantee indicates the resources reserved for all PodGroups in this queue. Other queues cannot use these reserved resources.
@@ -68,6 +67,8 @@ deserved indicates the expected resource amount for all PodGroups in this queue.
 > 1. This field can only be configured when the capacity plugin is enabled, and must be less than or equal to the capability value. The proportion plugin uses weight to automatically calculate the queue's deserved value. For more information on using the capacity plugin, see: [capacity plugin user guide](https://github.com/volcano-sh/volcano/blob/5b817b1cdf3a5638ba38e934b44af051c9fb419e/docs/user-guide/how_to_use_capacity_plugin.md)
 > 2. If the allocated resources of a queue exceed its configured deserved value, the queue cannot reclaim resources from other queues
 
+* weight, *optional*
+
 `weight` indicates the **relative** weight of a queue in cluster resource division. The deserved resource amount is calculated as **(weight/total-weight) * total-resource**. `total-weight` is the total weight of all queues. `total-resource` is the total number of cluster resources. `weight` is a soft constraint.
 
 > **Note**: 
@@ -77,9 +78,11 @@ deserved indicates the expected resource amount for all PodGroups in this queue.
 > 2. This field is a soft constraint. The Deserved value is calculated based on weight. When other queues' resource usage is below their Deserved values, this queue can exceed its Deserved value by borrowing resources from other queues. However, when cluster resources become scarce and other queues need their borrowed resources for tasks, this queue must return the borrowed resources until its usage matches its Deserved value. This design ensures maximum utilization of cluster resources.
 
 * capability, *optional*
+
 `capability` indicates the upper limit of resources the queue can use. It is a hard constraint.If this field is not set, the queue's capability will be set to realCapability (total cluster resources minus the total guarantee values of other queues).
 
 * reclaimable, *optional*
+
 `reclaimable` specifies whether to allow other queues to reclaim extra resources occupied by a queue when the queue uses more resources than allocated. The default value is `true`.
 
 * priority, *optional*
