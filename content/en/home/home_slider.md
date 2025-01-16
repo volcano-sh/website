@@ -41,44 +41,82 @@ height = "500px"
   cta_icon = "graduation-cap"
 
 [[item]]
-  title = "High Performance Powered by Efficient Scheduling"
-  content = "Computing jobs can be converted to Kubernetes workloads and scheduled in batches to deliver optimal performance."
+  title = "High-Performance Unified Scheduling"
+  content = "Supports native Kubernetes workload scheduling while providing complete support for frameworks like Ray, PyTorch, TensorFlow, Spark, and Flink through VolcanoJob, achieving unified job scheduling with excellent performance"
   align = "left"
-  #overlay_color = "#555"  # An HTML color value.
-  #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.05  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.15
 
 [[item]]
-  title = "Diverse Scheduling Policies"
-  content = "Co-scheduling, fair-share scheduling, gang scheduling, topologies, reservation/backfill, data-aware scheduling, and more"
+  title = "Multiple Scheduling Policies"
+  content = "Supports various scheduling strategies including Gang, Fair-Share, Binpack, DeviceShare, Capacity, Proportion, NUMA aware, and Task Topology, optimizing resource utilization"
   align = "left"
-  #overlay_color = "#333"  # An HTML color value.
-  #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.05  # Darken the image. Value in range 0-1.
-  
-[[item]]
-  title = "Enhanced Job Management"
-  content = "Managing jobs with multiple templates"
-  align = "left"
-  #overlay_color = "#333"  # An HTML color value.
-  #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.05  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.20
 
 [[item]]
-  title = "Multiple Runtimes"
-  content = "Singularity and GPU Accelerators"
+  title = "Hierarchical Queue Management"
+  content = "Supports multi-level queue management for fine-grained resource quota control"
   align = "left"
-  #overlay_color = "#333"  # An HTML color value.
-  #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.15  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.25
+
+[[item]]
+  title = "Heterogeneous Device Support"
+  content = "Supports scheduling for various heterogeneous devices like GPU and NPU, unleashing hardware computing power"
+  align = "left"
+  overlay_filter = 0.3
+
+[[item]]
+  title = "Network Topology-aware Scheduling"
+  content = "Supports network topology-aware scheduling, significantly reducing application communication overhead between nodes, and greatly enhancing model training efficiency in AI distributed training scenarios"
+  align = "left"
+  overlay_filter = 0.35
+
+[[item]]
+  title = "Online and Offline Workloads Colocation"
+  content = "Supports online and offline workloads colocation, enhancing resource utilization while ensuring online business QoS through unified scheduling, dynamic resource overcommitment, CPU burst capabilities, and resource isolation"
+  align = "left"
+  overlay_filter = 0.4
+
+[[item]]
+  title = "Multi-cluster Job Scheduling"
+  content = "Supports cross-cluster job scheduling for larger-scale resource pool management and load balancing"
+  content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano-global\" data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
+  align = "left"
+  overlay_filter = 0.45
+
+  # Call to action button for multi-cluster scheduling
+  cta_label = "Learn more about volcano multi-cluster scheduling"
+  cta_url = "https://github.com/volcano-sh/volcano-global"
+  cta_icon_pack = "fas"
+  cta_icon = "graduation-cap"
+
+[[item]]
+  title = "Rescheduling"
+  content = "Supports dynamic rescheduling to optimize cluster load distribution and improve system stability"
+  content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/descheduler\" data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
+  align = "left"
+  overlay_filter = 0.5
+
+  # Call to action button for rescheduling
+  cta_label = "Learn more about volcano rescheduling"
+  cta_url = "https://github.com/volcano-sh/descheduler"
+  cta_icon_pack = "fas"
+  cta_icon = "graduation-cap"
 
 [[item]]
   title = "Powerful Monitoring"
-  content = "Logging, metrics, and dashboard"
+  content = "Provides rich logging, monitoring metrics, and dashboards"
+  content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/dashboard\" data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
   align = "left"
-  #overlay_color = "#333"  # An HTML color value.
-  #overlay_img = "headers/banner_02.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.15 # Darken the image. Value in range 0-1.
+
+  # overlay_color = "#333"  # An HTML color value.
+  # overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
+  overlay_filter = 0.55  # Darken the image. Value in range 0-1.
+
+  # Call to action button for observability
+  cta_label = "Learn more about volcano dashboard"
+  cta_url = "https://github.com/volcano-sh/dashboard"
+  cta_icon_pack = "fas"
+  cta_icon = "graduation-cap"
 
 +++
 
