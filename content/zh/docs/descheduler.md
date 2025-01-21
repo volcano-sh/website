@@ -54,7 +54,7 @@ LoadAware原理如上图所示：
 
 ### 准备
 
-安装[prometheue](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus)或者[prometheus-adaptor](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-adapter)和[prometheus-node-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter), 节点的真实负载通过node-exporter和prometheus暴露给`Volcano descheduler`使用。
+安装[prometheus](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus)或者[prometheus-adaptor](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-adapter)和[prometheus-node-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter), 节点的真实负载通过node-exporter和prometheus暴露给`Volcano descheduler`使用。
 
 在prometheus的`scrape_configs`配置中添加如下的node-exporter服务的自动发现和节点标签替换规则，这一步很重要，否则`Volcano descheduler`拿不到节点的真实负载指标。关于scrape_configs的更多细节请参考[Configuration | Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config)。
 

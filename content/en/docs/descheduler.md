@@ -54,7 +54,7 @@ The principle of LoadAware is shown in the figure above:
 
 ### Prepare
 
-Install [prometheue](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus) or [prometheus-adaptor](https://github.com/prometheus-community/helm- c harts/tree/main/charts/prometheus-adapter), and [prometheus-node-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter), The real load of the node is exposed to the `Volcano descheduler` through node-exporter and prometheus.
+Install [prometheus](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus) or [prometheus-adaptor](https://github.com/prometheus-community/helm- c harts/tree/main/charts/prometheus-adapter), and [prometheus-node-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter), The real load of the node is exposed to the `Volcano descheduler` through node-exporter and prometheus.
 
 Add the following automatic discovery and node label replacement rules for the node-exporter service in the `scrape_configs` configuration of prometheus. This step is very important, otherwise `Volcano descheduler` cannot get the real load metrics of the node. For more details about `scrape_configs`, please refer to [Configuration | Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
