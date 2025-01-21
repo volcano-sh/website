@@ -23,7 +23,7 @@ type = "docs"  # Do not modify.
 
 ## 功能
 
-Volcano的重调度能力在https://github.com/kubernetes-sigs/descheduler.git的基础上，新增了以下功能：
+Volcano的重调度能力在<https://github.com/kubernetes-sigs/descheduler.git>的基础上，新增了以下功能：
 
 ### 支持按照crontab定时任务和固定时间间隔进行重调度
 
