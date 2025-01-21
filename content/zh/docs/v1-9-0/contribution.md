@@ -62,7 +62,7 @@ Volcano 是一个社区驱动的开源项目，致力于打造健康、友好和
 
 ## 您的第一个贡献
 
-我们将会帮助您在不同的领域做出贡献，如处理 issue、开发特性、修复关键 bug、检视您的代码并合入。如果您对开发流程还有疑问，请查看[Slack Channel](https://volcano-sh.slack.com)( 注册[点击这里](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk))，
+我们将会帮助您在不同的领域做出贡献，如处理 issue、开发特性、修复关键 bug、检视您的代码并合入。如果您对开发流程还有疑问，请查看[Slack Channel](https://cloud-native.slack.com/archives/C011GJDQS0N)( 注册[点击这里](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk))，
 也可以加入我们的[mailing list](https://groups.google.com/forum/#!forum/volcano-sh) 。
 
 ### 寻找您感兴趣的领域开展工作

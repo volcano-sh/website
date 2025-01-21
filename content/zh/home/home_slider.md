@@ -10,7 +10,7 @@ weight = 1
 
 # Slide interval.
 # Use `false` to disable animation or enter a time in ms, e.g. `5000` (5s).
-interval = 6000
+interval = 5000
 
 # Minimum slide height.
 # Specify a height to ensure a consistent height for each slide.
@@ -40,18 +40,15 @@ height = "500px"
   cta_icon = "graduation-cap"
 
 [[item]]
-  title = "高性能调度"
-  content = "将特定领域作业转化为Kubernetes负载，并以绝佳的性能进行调度"
+  title = "网络拓扑感知调度"
+  content = "支持网络拓扑感知调度，显著降低跨节点间的应用通信开销，在AI分布式训练场景中大幅提升模型训练效率"
   align = "left"
 
-  #overlay_color = "#555"  # An HTML color value.
-  # overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
-  # #overlay_img = "headers/header-edge-2.jpg"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.15  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.15
 
 [[item]]
-  title = "多种调度策略"
-  content = "Co-scheduling, Fair-Share, Gang scheduling, Topologies, Reserve/BackFill, Data-aware Scheduling等"
+  title = "在离线混部"
+  content = "支持在线和离线业务混合部署，通过统一调度，动态资源超卖，CPU Burst，资源隔离等能力，提升资源利用率的同时保障在线业务QoS"
   align = "left"
 
  #  overlay_color = "#333"  # An HTML color value.
@@ -59,31 +56,77 @@ height = "500px"
   overlay_filter = 0.20  # Darken the image. Value in range 0-1.
   
 [[item]]
-  title = "增强的Job管理"
-  content = "多模板Job管理"
+  title = "多集群作业调度"
+  content = "支持作业跨集群调度，实现更大规模的资源池管理和负载均衡"
+  content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/volcano-global\" data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
   align = "left"
+  overlay_filter = 0.25
 
- #  overlay_color = "#333"  # An HTML color value.
-  # overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.25  # Darken the image. Value in range 0-1.
+  # Call to action button for multi-cluster scheduling
+  cta_label = "深入了解Volcano多集群调度"
+  cta_url = "https://github.com/volcano-sh/volcano-global"
+  cta_icon_pack = "fas"
+  cta_icon = "graduation-cap"
 
 [[item]]
-  title = "多运行时支持"
-  content = "Singularity和GPU加速器"
+  title = "层级队列管理"
+  content = "支持多层级队列管理，实现更精细的资源配额控制"
+  align = "left"
+
+  overlay_filter = 0.3
+
+[[item]]
+  title = "负载感知重调度"
+  content = "支持负载感知重调度，优化集群负载分布，提升系统稳定性"
+  content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/descheduler\" data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
   align = "left"
 
   # overlay_color = "#333"  # An HTML color value.
   # overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
   overlay_filter = 0.35  # Darken the image. Value in range 0-1.
 
+  # Call to action button for descheduling
+  cta_label = "深入了解Volcano重调度"
+  cta_url = "https://github.com/volcano-sh/descheduler"
+  cta_icon_pack = "fas"
+  cta_icon = "graduation-cap"
+
 [[item]]
-  title = "丰富的监控手段"
-  content = "日志、监控指标和仪表盘等"
+  title = "多种调度策略"
+  content = "支持 Gang、Fair-Share、Binpack、DeviceShare、Capacity、Proportion、NUMA aware、Task Topology等多种调度策略，优化资源利用效率"
   align = "left"
 
   # overlay_color = "#333"  # An HTML color value.
   # overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
-  overlay_filter = 0.45  # Darken the image. Value in range 0-1.
+  overlay_filter = 0.4  # Darken the image. Value in range 0-1.
+
+[[item]]
+  title = "异构设备支持"
+  content = "支持 GPU、NPU 等多种异构设备的调度，释放硬件算力"
+  align = "left"
+  overlay_filter = 0.45
+
+[[item]]
+  title = "高性能统一调度"
+  content = "支持Kubernetes原生负载调度，同时通过VolcanoJob为Ray、PyTorch、TensorFlow、Spark、Flink等框架提供完整支持，以绝佳性能实现作业统一调度。"
+  align = "left"  
+  overlay_filter = 0.5
+
+[[item]]
+  title = "可观测性"
+  content = "提供丰富的日志、监控指标和Dashboard等"
+  content1 = "<a class=\"github-button\" href=\"https://github.com/volcano-sh/dashboard\" data-size=\"large\" data-icon=\"octicon-star\" data-show-count=\"true\" aria-label=\"Star this on GitHub\">Star</a>"
+  align = "left"
+
+  # overlay_color = "#333"  # An HTML color value.
+  # overlay_img = "headers/volcano-slide-2.png"  # Image path relative to your `static/img/` folder.
+  overlay_filter = 0.55  # Darken the image. Value in range 0-1.
+
+  # Call to action button for observability
+  cta_label = "深入了解Volcano Dashboard"
+  cta_url = "https://github.com/volcano-sh/dashboard"
+  cta_icon_pack = "fas"
+  cta_icon = "graduation-cap"
 
 +++
 

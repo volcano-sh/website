@@ -70,12 +70,12 @@ weight = 4
   description = "The all-scenario deep learning framework developed by Huawei."
 
 [[featured]]
-  img_src = "volcano_paddle.PNG"
-  img_width = "100px"
-  img_height = "60px"
-  name = "PaddlePaddle"
-  url = "https://www.paddlepaddle.org.cn/ "
-  description = "PaddlePaddle is an open source deep learning platform derived from industrial practice initiated by Baidu."
+  img_src = "ray_logo.png"
+  img_width = "300px"
+  img_height = "80px"
+  name = "Ray"
+  url = "https://github.com/ray-project/ray"
+  description = "Ray is a high-performance distributed computing framework that supports machine learning, deep learning, and distributed applications."
 
 [[featured]]
   img_src = "kubeflow.png"
@@ -110,10 +110,10 @@ weight = 4
   description = "A truly open source deep learning framework suited for flexible research prototyping and production."
 
 [[featured]]
-  img_src = "kubegene_logo.png"
+  img_src = "volcano_paddle.PNG"
   img_width = "100px"
   img_height = "60px"
-  name = "KubeGene"
-  url = "https://github.com/kubegene/kubegene "
-  description = "The KubeGene is dedicated to making genome sequencing process simple, portable, and scalable." 
+  name = "PaddlePaddle"
+  url = "https://www.paddlepaddle.org.cn/ "
+  description = "PaddlePaddle is an open source deep learning platform derived from industrial practice initiated by Baidu."
 +++

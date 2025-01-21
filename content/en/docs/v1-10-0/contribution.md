@@ -65,7 +65,7 @@ The community is committed to developing a system that helps running high-perfor
 
 You can contribute in different areas, including filing issues, developing features, fixing critical bugs, and getting your work reviewed and merged.
 
-If you have any question about the development process, visit the [Slack Channel](https://volcano-sh.slack.com) ([sign up](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk)) 
+If you have any question about the development process, visit the [Slack Channel](https://cloud-native.slack.com/archives/C011GJDQS0N) ([sign up](https://join.slack.com/t/volcano-sh/shared_invite/enQtNTU5NTU3NDU0MTc4LTgzZTQ2MzViNTFmNDg1ZGUyMzcwNjgxZGQ1ZDdhOGE3Mzg1Y2NkZjk1MDJlZTZhZWU5MDg2MWJhMzI3Mjg3ZTk)) 
 or join our [mailing list](https://groups.google.com/forum/#!forum/volcano-sh).
 
 #### Find Something to Work On

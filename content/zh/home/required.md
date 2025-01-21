@@ -69,12 +69,12 @@ weight = 4
   description = "华为开发的全场景深度学习框架."
   
 [[featured]]
-  img_src = "volcano_paddle.PNG"
-  img_width = "100px"
-  img_height = "60px"
-  name = "PaddlePaddle"
-  url = "https://www.paddlepaddle.org.cn/ "
-  description = "PaddlePaddle是一个由百度发起的工业实践衍生的开源深度学习平台."         
+  img_src = "ray_logo.png"
+  img_width = "300px"
+  img_height = "80px"
+  name = "Ray"
+  url = "https://github.com/ray-project/ray"
+  description = "Ray是一个高性能分布式计算框架，支持机器学习、深度学习和分布式应用程序。"       
  
 [[featured]]
   img_src = "kubeflow.png"
@@ -109,10 +109,10 @@ weight = 4
   description = "一个真正的开源深度学习框架，适用于灵活的研究原型和生产."
 
 [[featured]]
-  img_src = "kubegene_logo.png"
+  img_src = "volcano_paddle.PNG"
   img_width = "100px"
   img_height = "60px"
-  name = "KubeGene"
-  url = "https://github.com/kubegene/kubegene "
-  description = "KubeGene致力于简化，便携式和可扩展的基因组测序过程."
+  name = "PaddlePaddle"
+  url = "https://www.paddlepaddle.org.cn/ "
+  description = "PaddlePaddle是一个由百度发起的工业实践衍生的开源深度学习平台."  
 +++

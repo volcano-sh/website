@@ -52,7 +52,7 @@
   
   name = "<img src=\"/img/icon_slack.svg\" alt=\"slack\" style=\" font-size: 1rem; line-height: 1.25; width:20px; height:20px; margin-top: 9px;\">"
   post = ""
-  url = "https://volcano-sh.slack.com"
+  url = "https://cloud-native.slack.com/archives/C011GJDQS0N"
   weight = 30
 
 # Documentation version latest

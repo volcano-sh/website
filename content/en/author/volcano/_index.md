@@ -44,10 +44,20 @@ interests = []
   link = "https://twitter.com/volcano_sh"
 
 +++
-Volcano is system for running high-performance workloads on Kubernetes. It features powerful batch scheduling capability that Kubernetes cannot provide but is commonly required by many classes of high-performance workloads, including:
+Volcano is CNCF's first cloud native batch computing project, focusing on high performance computing scenarios such as AI, big data, and genomics analysis. Its core capabilities include:
 
-- Machine learning/Deep learning
-- Bioinformatics/Genomics
-- Other big data applications
+• Unified Scheduling: Supports integrated job scheduling for both Kubernetes native workloads and mainstream computing frameworks (such as TensorFlow, Spark, PyTorch, Ray, Flink, etc.).
 
-These types of applications typically run on generalized domain frameworks like TensorFlow, Spark, PyTorch, and MPI. Volcano is integrated with these frameworks to allow you to run your applications without adaptation efforts while enjoying remarkable batch scheduling.
+• Queue Management: Provides multi-level queue management capabilities, enabling fine-grained resource quota control and task priority scheduling.
+
+• Heterogeneous Device Support: Efficiently schedules heterogeneous devices like GPU and NPU, fully unleashing hardware computing potential.
+
+• Network Topology Aware Scheduling: Greatly enhancing model training efficiency in AI distributed training scenarios.
+
+• Multi-cluster Scheduling: Supports cross cluster job scheduling, improving resource pool management capabilities and achieving large scale load balancing.
+
+• Online and Offline Workloads Colocation: Enables online and offline workloads colocation, improving cluster resource utilization through intelligent scheduling strategies.
+
+•  Load Aware Descheduling: Optimizing cluster load distribution and enhancing system stability.
+
+As the industry's first cloud native batch computing engine, Volcano has been widely applied in high-performance computing scenarios such as artificial intelligence, big data, and genome sequencing, providing powerful support for enterprises to build elastic, efficient, and intelligent computing platforms.
