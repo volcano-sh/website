@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 [menu.docs]
   parent = "features"
-  weight = 2
+  weight = 6
 +++
 
 ## 背景

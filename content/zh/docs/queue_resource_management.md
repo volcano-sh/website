@@ -12,7 +12,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 [menu.docs]
   parent = "features"
-  weight = 1
+  weight = 5
 +++
 
 ## 功能概述
