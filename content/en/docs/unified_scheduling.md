@@ -8,7 +8,7 @@ type = "docs"
 
 [menu.docs]
   parent = "features"
-  weight = 3
+  weight = 7
 +++
 
 ## Overview
