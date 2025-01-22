@@ -18,101 +18,24 @@
 
 <!-- About widget -->
 {{ with $page.Title }}
-<!-- <div class="newtitle" style="width: 100%;text-align: center;font-size: 22px;font-weight: bold;padding-bottom: 30px;">About Volcano</div> -->
-<div class="newtitle" style="width: 100%;text-align: center;font-size: 24px;font-weight: bold;padding-bottom: 60px;color: #252b3a;">{{ . | markdownify }}</div> {{ end }}
-<div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person" itemref="{{ if $.Site.Params.email }}person-email{{ end }}{{ if $.Site.Params.phone }} person-telephone{{ end }}{{ if $.Site.Params.address}} person-address{{ end }}">
-  <div class="col-12 col-lg-6">
-    <div id="profile">
+<div class="newtitle" style="width: 100%;text-align: center;font-size: 24px;font-weight: bold;padding-bottom: 60px;color: #252b3a;">
+  {{ if eq $.Site.Language.Lang "zh" }}
+    为什么选择Volcano
+  {{ else }}
+    Why Volcano
+  {{ end }}
+</div>
+{{ end }}
 
-      {{ if $.Site.Params.gravatar }}
-      <img class="portrait" src="https://s.gravatar.com/avatar/{{ md5 $person.email }}?s=200')" itemprop="image" alt="Avatar">
-      {{ else if $avatar }}
-      {{ $avatar_image := $avatar.Fill "301x235 Center" }}
-      <img class="portrait" src="{{ $avatar_image.RelPermalink }}" itemprop="image" alt="Avatar">
+<div class="row justify-content-center">
+  <div class="col-12 col-lg-12">
+    <div class="content-section mt-5">
+      {{ with $person.role }}
+      <p class="role-title text-center mb-4">{{ . }}</p>
       {{ end }}
-
-      <div class="portrait-title">
-        <h2 itemprop="name">{{ $person.name }}</h2>
-        <!-- {{ with $person.role }}<h3 itemprop="jobTitle">{{ . }}</h3>{{ end }}
-
-        {{ range $person.organizations }}
-        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          {{ with .url }}<a href="{{ . }}" target="_blank" itemprop="url" rel="noopener">{{ end }}
-          <span itemprop="name">{{ .name }}</span>
-          {{ if .url }}</a>{{ end }}
-        </h3>
-        {{ end }} -->
+      <div class="content-text">
+        {{ $person_page.Content }}
       </div>
-
-      <link itemprop="url" href="{{ .Permalink }}">
-
-      <ul class="network-icon">
-        {{ range $person.social }}
-        {{ $pack := or .icon_pack "fas" }}
-        {{ $pack_prefix := $pack }}
-        {{ if in (slice "fab" "fas" "far" "fal") $pack }}
-          {{ $pack_prefix = "fa" }}
-        {{ end }}
-        {{ $link := .link }}
-        {{ $scheme := (urls.Parse $link).Scheme }}
-        {{ $target := "" }}
-        {{ if not $scheme }}
-          {{ $link = .link | relLangURL }}
-        {{ else if in (slice "http" "https") $scheme }}
-          {{ $target = "target=\"_blank\" rel=\"noopener\"" }}
-        {{ end }}
-        <li>
-          <a itemprop="sameAs" href="{{ $link | safeURL }}" {{ $target | safeHTMLAttr }}>
-            <img src="{{.icon}}" alt="icon">
-            <!-- <i class="{{ $pack }} {{ $pack_prefix }}-{{ .icon }} big-icon"></i> -->
-          </a>
-        </li>
-        {{ end }}
-      </ul>
-
-    </div>
-  </div>
-  <div class="col-12 col-lg-6 fontsizee" itemprop="description" style="padding-right: 0px !important;">
-
-
-    {{ with $person.role }}<p itemprop="jobTitle" style="font-weight: bold;font-size: 18px;color: #252b3a;">{{ . }}</p>{{ end }}
-
-
-    {{/* Only display widget title in explicit instances of about widget, not in author pages. */}}
-    <!-- {{ if and $page.Params.widget $page.Title }}<p>{{ $page.Title | markdownify | emojify }}</p>{{ end }} -->
-
-   {{ $person_page.Content }}
-
-    <div class="row" style="font-size: 14px;">
-
-      {{ with $person.interests }}
-      <div class="col-md-5">
-        <h3>{{ i18n "interests" | markdownify }}</h3>
-        <ul class="ul-interests">
-          {{ range . }}
-          <li>{{ . | markdownify | emojify }}</li>
-          {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-
-      {{ with $person.education }}
-      <div class="col-md-7">
-        <h3>{{ i18n "education" | markdownify }}</h3>
-        <ul class="ul-edu fa-ul">
-          {{ range .courses }}
-          <li>
-            <i class="fa-li fas fa-graduation-cap"></i>
-            <div class="description">
-              <p class="course">{{ .course }}{{ with .year }}, {{ . }}{{ end }}</p>
-              <p class="institution">{{ .institution }}</p>
-            </div>
-          </li>
-          {{ end }}
-        </ul>
-      </div>
-      {{ end }}
-
     </div>
   </div>
 </div>

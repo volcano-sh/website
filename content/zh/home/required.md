@@ -6,8 +6,8 @@ widget = "featured"
 active = true
 date = 2016-04-20T00:00:00
 
-title = "为什么选择Volcano"
-subtitle = "在Kubernetes集群中部署高性能应用的最佳解决方案"
+title = "丰富的框架支持"
+subtitle = "无缝集成主流AI、大数据和科学计算框架"
 
 # Order that this section will appear in.
 weight = 4

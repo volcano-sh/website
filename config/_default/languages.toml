@@ -28,11 +28,6 @@
   weight = 4
 
   [[zh.menu.main]]
-  name = "讲座"
-  url = "#talks"
-  weight = 5
-
-  [[zh.menu.main]]
   name = "生态"
   url = "#required"
   weight = 3
