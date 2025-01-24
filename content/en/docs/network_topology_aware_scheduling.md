@@ -82,6 +82,16 @@ Through this scheduling strategy, users can precisely control the network topolo
 
 ### Installing Volcano
 
+Volcano can be installed using either of the following methods:
+
+#### Using Helm (Recommended)
+```bash
+helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
+helm repo update
+helm install volcano volcano-sh/volcano -n volcano-system --create-namespace --version 1.11.0-network-topology-preview.0
+```
+
+#### Using YAML file
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/refs/heads/network-topology/installer/volcano-development.yaml
 ```
@@ -255,6 +265,33 @@ Since the `spec.networkTopology.highestTierAllowed` of the Job is set to 2, the 
 
 ## Best Practices
 
+### Scheduler Configuration
+
+HyperNode scoring is based on the sum of scores from all nodes it manages. To concentrate workloads in the same HyperNode as much as possible and reduce resource fragmentation, you need to enable the binpack plugin in the scheduler configuration and set an appropriate weight:
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: volcano-scheduler-configmap
+  namespace: volcano-system
+data:
+  volcano-scheduler.conf: |
+    actions: "enqueue, allocate, backfill"
+    tiers:
+    - plugins:
+      - name: priority
+      - name: gang
+    - plugins:
+      - name: predicates
+      - name: proportion
+      - name: nodeorder
+      - name: binpack # Enable binpack plugin
+        arguments:
+          binpack.weight: 10 # Set a higher weight value to make binpack scoring dominant, minimizing resource fragmentation
+```
+
+### Soft Mode Configuration
 The `spec.networkTopology.highestTierAllowed` field of a Job constrains the highest tier allowed for job deployment. This value is only meaningful when `spec.networkTopology.mode` is set to `hard`. Therefore, when `spec.networkTopology.highestTierAllowed` is set to the maximum tier in the cluster, the resource view of the Job during scheduling includes all nodes in the cluster, making the topology constraint consistent with the `soft` mode. Therefore, **to use the `soft` mode**, set `spec.networkTopology.highestTierAllowed` to the maximum tier in the cluster. Still using Figure 1 as an example, this value should be set to 3.
 
 ```yaml
