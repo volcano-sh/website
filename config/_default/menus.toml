@@ -20,10 +20,6 @@
   url = "#posts"
   weight = 4
 
-[[main]]
-  name = "Talk"
-  url = "#talks"
-  weight = 5
 
 [[main]]
   name = "Why Volcano"

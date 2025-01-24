@@ -6,8 +6,8 @@ widget = "featured"
 active = true
 date = 2016-04-20T00:00:00
 
-title = "Why Volcano"
-subtitle = "A powerful batch scheduler that allows you to run multi-architecture, computing-intensive jobs as Kubernetes workloads"
+title = "Rich Framework Support"
+subtitle = "Seamlessly integrate with mainstream computing frameworks for AI, big data, and scientific computing"
 
 # Order that this section will appear in.
 weight = 4

@@ -5,7 +5,7 @@
 widget = "supporter"
 active = true
 
-title = "Supporter"
+title = "Supporters"
 
 # Order that this section will appear in.
 weight =7
@@ -24,6 +24,18 @@ img_src = "logo_huawei.png"
 img_width = "100px"
 img_height = "60px"
 url = "https://www.huawei.com "
+
+[[featured]]
+img_src = "logo_bilibili.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.bilibili.com/"
+
+[[featured]]
+img_src = "logo_360.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.360.cn/"
 
 [[featured]]
 img_src = "logo_tencent.png"
