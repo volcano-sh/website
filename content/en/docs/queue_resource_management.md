@@ -231,11 +231,21 @@ spec:
 ```
 
 After submitting job3, system starts resource reclamation:
-* System reclaims resources exceeding deserved amount from default queue
-* job2 (3C) is evicted
-* job1 (1C) continues running
-* job3 (3C) starts running
+
+1. System reclaims resources exceeding deserved amount from default queue
+2. job2 (3C) is evicted
+3. job1 (1C) continues running
+4. job3 (3C) starts running
 
 This scenario works with both capacity plugin and proportion plugin:
-* capacity plugin: Directly configure deserved values (default=1C, test=3C)
-* proportion plugin: Configure weight values (default=1, test=3) resulting in the same deserved values
+
+   * capacity plugin: Directly configure deserved values (default=1C, test=3C)
+   * proportion plugin: Configure weight values (default=1, test=3) resulting in the same deserved values
+
+> **Note**: 
+>
+> 1. capacity plugin and proportion plugin must be used exclusively, they cannot be used simultaneously
+>
+> 2. The choice between plugins depends on whether you want to set deserved directly (capacity) or calculate deserved automatically through weights (proportion)
+>
+> 3. After Volcano v1.9.0, capacity plugin is recommended as it provides more intuitive resource configuration

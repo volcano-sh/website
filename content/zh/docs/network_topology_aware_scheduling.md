@@ -82,6 +82,14 @@ spec:
 
 ### 安装Volcano
 
+Volcano支持以下两种安装方式：
+#### 通过Helm安装（推荐）
+```bash
+helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
+helm repo update
+helm install volcano volcano-sh/volcano -n volcano-system --create-namespace --version 1.11.0-network-topology-preview.0
+```
+#### 使用YAML文件安装
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/refs/heads/network-topology/installer/volcano-development.yaml
 ```
@@ -254,6 +262,34 @@ spec:
 - 一个HyperNode可以有多个子节点，但一个HyperNode最多只能有一个parent HyperNode，否则Job无法正常调度。
 
 ## 最佳实践
+
+### 调度器配置
+
+HyperNode的打分是基于其管理的所有节点的打分总和。为了将作业尽可能地集中到相同HyperNode下，减少资源碎片，需要在调度器配置中开启binpack插件并设置合适的权重，binpack策略会优先将Pod调度到已有负载的节点上：
+
+```yaml
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: volcano-scheduler-configmap
+  namespace: volcano-system
+data:
+  volcano-scheduler.conf: |
+    actions: "enqueue, allocate, backfill"
+    tiers:
+    - plugins:
+      - name: priority
+      - name: gang
+    - plugins:
+      - name: predicates
+      - name: proportion
+      - name: nodeorder
+      - name: binpack #开启binpack插件
+        arguments:
+          binpack.weight: 10 #设置较高的权重值，使binpack策略的打分占主导地位，尽可能减少资源碎片
+```
+
+### 软约束模式配置
 
 Job的`spec.networkTopology.highestTierAllowed`字段约束了Job允许部署的最高Tier，该值只有在`spec.networkTopology.mode`设置为`hard`时才有意义，因此将`spec.networkTopology.highestTierAllowed`设置为集群中最大的tier时，Job在调度时的资源视图为集群中的所有节点，此时拓扑约束与soft模式一致。因此**若要使用soft模式**，请将`spec.networkTopology.highestTierAllowed`设置为集群中最大的Tier，仍以图1为例，应该设置该值为3。
 
