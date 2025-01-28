@@ -527,3 +527,7 @@ ul.share li i {
     padding-bottom: 40px;
     color: #252b3a;
 }
+
+.navbar-nav .dropdown-menu {
+    height: auto !important;
+}
