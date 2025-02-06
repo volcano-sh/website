@@ -107,19 +107,14 @@
             <div class="changesearch">
               <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
                      autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="inputt" onkeydown="enterIn(event);">
-            
-              <a class="nav-link js-search" href="#" aria-label="icon" onclick="updateURLWithSearchQuery();">
+              
+              <a class="nav-link js-search" href="#" aria-label="icon ;">
                 <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
               </a>
             </div>
             
-            <script>
-              function updateURLWithSearchQuery() {
-                const searchQuery = document.getElementById('searchquery').value;
-                // Update the URL with the new query and reload the page
-                window.location.replace(window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(searchQuery) + window.location.hash);
-              }
-            </script>
+          
+             
             
             {{ end }}
 
@@ -186,7 +181,51 @@
   </div><!-- /.container -->
 </nav>
 <script type="text/javascript">
-  function enterIn(e){
+document.addEventListener('DOMContentLoaded', function() {
+    const topSearchInput = document.getElementById('searchquery');
+    const resultSearchInput = document.getElementById('search-query');
+    const searchResults = document.getElementById('search');
+    const searchIcon = document.querySelector('.fa-search');
+    
+
+    // Show search on icon click
+    searchIcon.addEventListener('click', function(e) {
+        e.preventDefault();
+        searchResults.style.display = 'block';
+    });
+
+    // Show search on input focus
+    topSearchInput.addEventListener('click', function() {
+        searchResults.style.display = 'block';
+    });
+
+    // Show search when typing in the top input
+    topSearchInput.addEventListener('input', function(e) {
+        if (resultSearchInput) {
+            resultSearchInput.value = e.target.value;
+            searchResults.style.display = 'block'; // Open search when typing
+        }
+    });
+
+    // Sync inputs between the two search boxes
+    if (resultSearchInput) {
+        resultSearchInput.addEventListener('input', function(e) {
+            topSearchInput.value = e.target.value;
+            searchResults.style.display = 'block'; // Open search when typing
+        });
+    }
+
+    // Close search
+    document.querySelector('.col-search-close').addEventListener('click', function(e) {
+        e.preventDefault();
+        searchResults.style.display = 'none';
+        topSearchInput.value = '';
+        if (resultSearchInput) {
+            resultSearchInput.value = '';
+        }
+    });
+});
+function enterIn(e){
   var e=e?e:(window.event?window.event:null);//兼容IE和FF
   if (e.keyCode==13){
   // var obj ;
@@ -197,4 +236,8 @@
   window.location.replace(window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(sear) + window.location.hash);
 }
 }
+
+
+
+
 </script>
