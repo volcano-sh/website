@@ -111,6 +111,7 @@
               <a class="nav-link js-search" href="#" aria-label="icon ;">
                 <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
               </a>
+              
             </div>
             
           
@@ -190,8 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Show search on icon click
     searchIcon.addEventListener('click', function(e) {
         e.preventDefault();
-        // Optional: you can remove this if you want results to appear only when typing
-        searchResults.style.display = 'none';
+        window.location.reload(); 
     });
 
     // Show search when typing in the top input (only when typing)
@@ -229,11 +229,20 @@ function enterIn(e){
   var sear = document.getElementById("searchquery").value;
   //console.log(sear);
 
-  window.location.replace(window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(sear) + window.location.hash);
+  window.location.assign(window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(sear) + window.location.hash);
+  }
 }
+function retainSearchQuery() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var query = urlParams.get("q"); // Get the query parameter "q"
+  
+  if (query) {
+    document.getElementById("searchquery").value = query; // Set the input value
+  }
 }
 
-
+// Run this function when the page loads
+window.onload = retainSearchQuery
 
 
 </script>
