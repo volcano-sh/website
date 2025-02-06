@@ -186,20 +186,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const resultSearchInput = document.getElementById('search-query');
     const searchResults = document.getElementById('search');
     const searchIcon = document.querySelector('.fa-search');
-    
 
     // Show search on icon click
     searchIcon.addEventListener('click', function(e) {
         e.preventDefault();
-        searchResults.style.display = 'block';
+        // Optional: you can remove this if you want results to appear only when typing
+        searchResults.style.display = 'none';
     });
 
-    // Show search on input focus
-    topSearchInput.addEventListener('click', function() {
-        searchResults.style.display = 'block';
-    });
-
-    // Show search when typing in the top input
+    // Show search when typing in the top input (only when typing)
     topSearchInput.addEventListener('input', function(e) {
         if (resultSearchInput) {
             resultSearchInput.value = e.target.value;
@@ -225,6 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
 function enterIn(e){
   var e=e?e:(window.event?window.event:null);//兼容IE和FF
   if (e.keyCode==13){
