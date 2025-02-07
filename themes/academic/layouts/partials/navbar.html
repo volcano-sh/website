@@ -105,14 +105,17 @@
               <a class="nav-link js-search" href="#" ><i class="fas fa-search" aria-hidden="true" style="position: relative;top: -15px;"></i></a>
             </div>   -->
             <div class="changesearch">
-              <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
-                     autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="inputt" onkeydown="enterIn(event);">
+              <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" 
+                     autocapitalize="off" autocomplete="off" autocorrect="off" 
+                     spellcheck="false" type="search" class="inputt" 
+                     onkeydown="enterIn(event);">
               
-              <a class="nav-link js-search" href="#" aria-label="icon ;">
-                <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
+              <a class="nav-link js-search" href="#" aria-label="icon;" 
+                 onclick="handleSearch(event);">
+                  <i class="fas fa-search" aria-hidden="true" 
+                     style="position: absolute;margin-left: -10px;"></i>
               </a>
-              
-            </div>
+          </div>
             
           
              
@@ -189,11 +192,41 @@ document.addEventListener('DOMContentLoaded', function() {
     const searchIcon = document.querySelector('.fa-search');
 
     // Show search on icon click
+    // Change this part only
     searchIcon.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.reload(); 
-    });
-
+    e.preventDefault();
+    const searchQuery = topSearchInput.value;
+    
+    if (searchQuery.trim()) {
+        // First show the search interface
+        searchResults.style.display = 'block';
+        
+        // Ensure the query is in both search boxes
+        if (resultSearchInput) {
+            resultSearchInput.value = searchQuery;
+        }
+        
+        // Trigger the search event that Hugo Academic's search engine listens for
+        const searchEvent = new Event('input', {
+            bubbles: true,
+            cancelable: true
+        });
+        resultSearchInput.dispatchEvent(searchEvent);
+        
+        // Update URL to reflect search
+        const newUrl = window.location.protocol + "//" + 
+                      window.location.host + 
+                      window.location.pathname + 
+                      '?q=' + encodeURIComponent(searchQuery) + 
+                      window.location.hash;
+        
+        // Use history.pushState to update URL without reload
+        history.pushState({}, '', newUrl);
+    } else {
+        // If no query, just show the search interface
+        searchResults.style.display = 'block';
+    }
+});
     // Show search when typing in the top input (only when typing)
     topSearchInput.addEventListener('input', function(e) {
         if (resultSearchInput) {
@@ -220,7 +253,19 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
-
+function handleSearch(e) {
+    e.preventDefault();
+    var sear = document.getElementById("searchquery").value;
+    if (sear.trim()) {
+        window.location.assign(
+            window.location.protocol + "//" + 
+            window.location.host + 
+            window.location.pathname + 
+            '?q=' + encodeURIComponent(sear) + 
+            window.location.hash
+        );
+    }
+}
 function enterIn(e){
   var e=e?e:(window.event?window.event:null);//兼容IE和FF
   if (e.keyCode==13){
