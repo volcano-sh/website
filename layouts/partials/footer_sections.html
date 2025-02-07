@@ -1,0 +1,52 @@
+<footer class="site-footer">
+    {{ with .Site.GetPage "privacy.md" }}
+    <p class="powered-by">
+      {{ printf "<a href=\"%s\">%s</a>" .RelPermalink .Title | safeHTML }}
+    </p>
+    {{ end }}
+  
+    <!-- <p class="powered-by"> -->
+      <!-- {{ with .Site.Copyright }}{{ . | markdownify}}  {{ end }} -->
+    {{ if .IsHome }}
+      {{ if eq .Language.ContentDir "content/en"}}
+         <div style="font-size: 18px;color: #fff;text-align: center;margin-top: 20px;">Volcano is a <a href="https://www.cncf.io/" style="color: #c8000b;">Cloud Native Computing Foundation</a> incubating project.</div>
+         <div style="margin: 52px 0 36px;">
+           <img src="/img/logo_cloudnative.png" alt="cloudnative logo" width="auto;" height="100px;" style="margin: 0 auto;">
+         </div>
+         <div style="font-size: 14px;color: #fff;text-align: center;">The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage/" style="color: #c8000b;">Trademark Usage </a>page.</br>2025 @ Volcano Project Authors. All rights reserved.</div>
+         <div style="margin-top: 60px;padding-bottom: 40px;">
+           <a href="#">
+             <img src="/img/icon_up.svg" alt="up icon" width="33px;" height="33px;" style="margin:0px auto;">
+           </a>
+         </div>
+      {{ else }}
+         <div style="font-size: 18px;color: #fff;text-align: center;margin-top: 20px;">Volcano是 <a href="https://www.cncf.io/" style="color: #c8000b;">云原生计算基金会</a> 孵化项目</div>
+         <div style="margin: 52px 0 36px;">
+           <img src="/img/logo_cloudnative.png" alt="cloudnative logo" width="auto;" height="100px;" style="margin: 0 auto;">
+         </div>
+         <div style="font-size: 14px;color: #fff;text-align: center;">Linux基金会已注册并使用相关商标。 有关Linux基金会的商标列表，请参见 <a style="color: #c8000b;">商标使用</a> 页面。</br>最终解释权归2025 @ Volcano 项目作者所有。保留一切权利。</div>
+         <div style="margin-top: 60px;padding-bottom: 40px;">
+           <a href="#">
+             <img src="/img/icon_up.svg" alt="up icon" width="33px;" height="33px;" style="margin:0px auto;">
+           </a>
+         </div>
+      {{ end }}
+    {{ else }}
+    <div style="padding-bottom: 40px;">
+       <a href="#">
+         <img src="/img/icon_up1.png" alt="up icon" width="auto;" height="auto;" style="margin:0px auto;">
+       </a>
+     </div>
+     <p class="powered-by" style="padding-bottom: 20px;">{{ with .Site.Copyright }}{{ . | markdownify}}  {{ end }}</p>
+  
+    {{ end }}
+      <!-- {{ if ne .Type "docs" }} -->
+      <!-- <span class="float-right" aria-hidden="true">
+        <a href="#" id="back_to_top">
+          <span class="button_icon">
+            <i class="fas fa-chevron-up fa-2x"></i>
+          </span>
+        </a>
+      </span> -->
+      <!-- {{ end }} -->
+  </footer>

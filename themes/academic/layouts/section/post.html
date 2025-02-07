@@ -9,7 +9,7 @@
   <div class="article-style" itemprop="articleBody">{{ . }}</div>
   {{ end }}
 
-  {{ $paginator := .Paginate .Data.Pages }}
+  {{ $paginator := .pagination.pagerSize .Data.Pages }}
   {{ range $paginator.Pages }}
     {{ if eq $.Params.view 1 }}
       {{ partial "li_list" . }}

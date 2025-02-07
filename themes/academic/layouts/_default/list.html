@@ -14,7 +14,7 @@
   <div class="article-style" itemprop="articleBody">{{ . }}</div>
   {{ end }}
 
-  {{ $paginator := .Paginate .Data.Pages }}
+  {{ $paginator := .pagination.pagerSize .Data.Pages }}
   {{ range $paginator.Pages }}
   <div>
     <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>

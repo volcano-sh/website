@@ -6,7 +6,7 @@
 
 {{ $slug := "" }}
 {{ if eq $.File.TranslationBaseName "index" }}{{/* Check if using dir-based page bundles. */}}
-  {{ $slug = delimit (last 1 (split (substr $.Dir 0 -1) "/")) "" }}
+{{ $slug = path.Base (strings.TrimSuffix "/" $.File.Dir) }}
 {{ end }}
 {{ $resource := $.Resources.GetMatch (printf "%s.pdf" $slug) }}
 {{ with $resource }}
