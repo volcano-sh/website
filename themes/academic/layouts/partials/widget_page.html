@@ -46,8 +46,13 @@
   {{ if in (slice "slider") $widget }}
     {{ partial $widget_path $params }}
   {{ else }}
-  <section id="{{ if $st.File }}{{ $st.File.TranslationBaseName }}{{ else }}section-{{ $index }}{{ end }}" class="home-section {{ printf "wg-%s" (replace $widget "_" "-") }} {{if $bg.text_color_light}}dark{{end}} {{if $bg.image}}parallax{{end}} {{ with $st.Params.advanced.css_class }}{{ . }}{{ end }}" {{with $style}}style="{{. | safeCSS}}"{{end}}>
-    <div class="container">
+  <section id="{{ with $st.File }}{{ .TranslationBaseName }}{{ end }}" 
+  class="home-section {{ printf "wg-%s" (replace $widget "_" "-") }} 
+         {{ if $bg.text_color_light }}dark{{ end }} 
+         {{ if $bg.image }}parallax{{ end }} 
+         {{ with $st.Params.advanced }}{{ .css_class }}{{ end }}" 
+  {{ with $style }}style="{{ . | safeCSS }}"{{ end }}>
+<div class="container">
       {{ partial $widget_path $params }}
     </div>
   </section>

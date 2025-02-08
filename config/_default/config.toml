@@ -35,9 +35,8 @@ enableGitInfo = false
 defaultContentLanguage = "en"
 hasCJKLanguage = true  # Set `true` for Chinese/Japanese/Korean languages.
 defaultContentLanguageInSubdir = true
-ignoreLogs = ['warning-goldmark-raw-html']
+
 pagination.pagerSize = 10  # Number of items per page in paginated lists.
-  # Number of items per page in paginated lists.
 enableEmoji = false
 footnotereturnlinkcontents = "<sup>^</sup>"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]
