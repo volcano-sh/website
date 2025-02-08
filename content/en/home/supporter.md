@@ -157,4 +157,9 @@ img_width = "100px"
 img_height = "60px"
 url = "https://github.com/nexr/ "
 
+[[featured]]
+img_src = "logo_openinnovation.png"
+img_width = "100px"
+img_height = "60px"
+url = "https://www.openinnovation.ai/"
 +++
