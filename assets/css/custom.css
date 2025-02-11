@@ -313,7 +313,7 @@ ul.share li i {
 }
 
 .carousel.slide {
-    pointer-events: none;
+    pointer-events: auto;
 }
 
 .carousel-item {
