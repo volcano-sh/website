@@ -25,7 +25,7 @@
 
       <!-- Left Nav Bar -->
       {{ $align_right := .Site.Params.menu_align_right | default true }}
-      <ul class="navbar-nav {{ if $align_right }}ml-auto{{ else }}mr-auto{{ end }}" style="">
+      <ul class="navbar-nav {{ if $align_right }}ml-auto{{ else }}mr-auto{{ end }}" >
         {{ range .Site.Menus.main }}
 
         {{ if .HasChildren }}
@@ -105,16 +105,21 @@
               <a class="nav-link js-search" href="#" ><i class="fas fa-search" aria-hidden="true" style="position: relative;top: -15px;"></i></a>
             </div>   -->
             <div class="changesearch">
-              <!--  <input type="text" name="search_name"  placeholder="Search" class="inputt"> -->
-              <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" autocapitalize="off"
-              autocomplete="off" autocorrect="off" spellcheck="false" type="search" class="inputt" onkeydown="enterIn(event);">
-              <a class="nav-link js-search" href="#" aria-label="icon">
-                <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
+              <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" 
+                     autocapitalize="off" autocomplete="off" autocorrect="off" 
+                     spellcheck="false" type="search" class="inputt" 
+                     onkeydown="enterIn(event);">
+              
+              <a class="nav-link js-search" href="#" aria-label="icon;" 
+                 onclick="handleSearch(event);">
+                  <i class="fas fa-search" aria-hidden="true" 
+                     style="position: absolute;margin-left: -10px;"></i>
               </a>
-              <!--     <button class="nav-link js-search" href="#" type="submit">
-                    <i class="fas fa-search" aria-hidden="true" style="position: absolute;margin-left: -10px;"></i>
-                  </button> -->
-            </div>
+          </div>
+            
+          
+             
+            
             {{ end }}
 
 
@@ -180,7 +185,88 @@
   </div><!-- /.container -->
 </nav>
 <script type="text/javascript">
-  function enterIn(e){
+document.addEventListener('DOMContentLoaded', function() {
+    const topSearchInput = document.getElementById('searchquery');
+    const resultSearchInput = document.getElementById('search-query');
+    const searchResults = document.getElementById('search');
+    const searchIcon = document.querySelector('.fa-search');
+
+    // Show search on icon click
+    // Change this part only
+    searchIcon.addEventListener('click', function(e) {
+    e.preventDefault();
+    const searchQuery = topSearchInput.value;
+    
+    if (searchQuery.trim()) {
+        // First show the search interface
+        searchResults.style.display = 'block';
+        
+        // Ensure the query is in both search boxes
+        if (resultSearchInput) {
+            resultSearchInput.value = searchQuery;
+        }
+        
+        // Trigger the search event that Hugo Academic's search engine listens for
+        const searchEvent = new Event('input', {
+            bubbles: true,
+            cancelable: true
+        });
+        resultSearchInput.dispatchEvent(searchEvent);
+        
+        // Update URL to reflect search
+        const newUrl = window.location.protocol + "//" + 
+                      window.location.host + 
+                      window.location.pathname + 
+                      '?q=' + encodeURIComponent(searchQuery) + 
+                      window.location.hash;
+        
+        // Use history.pushState to update URL without reload
+        history.pushState({}, '', newUrl);
+    } else {
+        // If no query, just show the search interface
+        searchResults.style.display = 'block';
+    }
+});
+    // Show search when typing in the top input (only when typing)
+    topSearchInput.addEventListener('input', function(e) {
+        if (resultSearchInput) {
+            resultSearchInput.value = e.target.value;
+            searchResults.style.display = 'block'; // Open search when typing
+        }
+    });
+
+    // Sync inputs between the two search boxes
+    if (resultSearchInput) {
+        resultSearchInput.addEventListener('input', function(e) {
+            topSearchInput.value = e.target.value;
+            searchResults.style.display = 'block'; // Open search when typing
+        });
+    }
+
+    // Close search
+    document.querySelector('.col-search-close').addEventListener('click', function(e) {
+        e.preventDefault();
+        searchResults.style.display = 'none';
+        topSearchInput.value = '';
+        if (resultSearchInput) {
+            resultSearchInput.value = '';
+        }
+    });
+});
+function handleSearch(e) {
+    e.preventDefault();
+    var sear = document.getElementById("searchquery").value;
+    if (sear.trim()) {
+        window.location.assign(
+            window.location.protocol + "//" + 
+            window.location.host + 
+            window.location.pathname + 
+            '?q=' + encodeURIComponent(sear) + 
+            window.location.hash
+        );
+    }
+}
+function enterIn(e){
   var e=e?e:(window.event?window.event:null);//兼容IE和FF
   if (e.keyCode==13){
   // var obj ;
@@ -188,7 +274,20 @@
   var sear = document.getElementById("searchquery").value;
   //console.log(sear);
 
-  window.open(window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(sear) + window.location.hash);
+  window.location.assign(window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + encodeURIComponent(sear) + window.location.hash);
   }
 }
+function retainSearchQuery() {
+  var urlParams = new URLSearchParams(window.location.search);
+  var query = urlParams.get("q"); // Get the query parameter "q"
+  
+  if (query) {
+    document.getElementById("searchquery").value = query; // Set the input value
+  }
+}
+
+// Run this function when the page loads
+window.onload = retainSearchQuery
+
+
 </script>
