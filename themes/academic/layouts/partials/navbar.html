@@ -79,7 +79,7 @@
             </a>
             <ul class="dropdown-menu" style="height: 35px;background-color: #fff !important;min-width: 110px;">
               {{ range .Site.Params.versions }}
-                <li class="dropdown-item my-0 py-0 mx-0 px-0" style="padding: 10px 0;text-align: center;position: relative;top: -5px">
+                <li class="dropdown-item my-0 py-0 mx-0 px-0" style="padding: 10px 0;text-align: center;position: relative;">
                   <a class="dropdown-item" href="{{ .url }}" style="background-color: #fff !important;top: 0;">{{ .name }}</a>
                 </li>
               {{ end }}
@@ -105,21 +105,21 @@
               <a class="nav-link js-search" href="#" ><i class="fas fa-search" aria-hidden="true" style="position: relative;top: -15px;"></i></a>
             </div>   -->
             <div class="changesearch">
-              <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}" 
-                     autocapitalize="off" autocomplete="off" autocorrect="off" 
-                     spellcheck="false" type="search" class="inputt" 
+              <input name="q" id="searchquery" placeholder="{{i18n "search_placeholder"}}"
+                     autocapitalize="off" autocomplete="off" autocorrect="off"
+                     spellcheck="false" type="search" class="inputt"
                      onkeydown="enterIn(event);">
-              
-              <a class="nav-link js-search" href="#" aria-label="icon;" 
+
+              <a class="nav-link js-search" href="#" aria-label="icon;"
                  onclick="handleSearch(event);">
-                  <i class="fas fa-search" aria-hidden="true" 
+                  <i class="fas fa-search" aria-hidden="true"
                      style="position: absolute;margin-left: -10px;"></i>
               </a>
           </div>
-            
-          
-             
-            
+
+
+
+
             {{ end }}
 
 
@@ -196,30 +196,30 @@ document.addEventListener('DOMContentLoaded', function() {
     searchIcon.addEventListener('click', function(e) {
     e.preventDefault();
     const searchQuery = topSearchInput.value;
-    
+
     if (searchQuery.trim()) {
         // First show the search interface
         searchResults.style.display = 'block';
-        
+
         // Ensure the query is in both search boxes
         if (resultSearchInput) {
             resultSearchInput.value = searchQuery;
         }
-        
+
         // Trigger the search event that Hugo Academic's search engine listens for
         const searchEvent = new Event('input', {
             bubbles: true,
             cancelable: true
         });
         resultSearchInput.dispatchEvent(searchEvent);
-        
+
         // Update URL to reflect search
-        const newUrl = window.location.protocol + "//" + 
-                      window.location.host + 
-                      window.location.pathname + 
-                      '?q=' + encodeURIComponent(searchQuery) + 
+        const newUrl = window.location.protocol + "//" +
+                      window.location.host +
+                      window.location.pathname +
+                      '?q=' + encodeURIComponent(searchQuery) +
                       window.location.hash;
-        
+
         // Use history.pushState to update URL without reload
         history.pushState({}, '', newUrl);
     } else {
@@ -258,10 +258,10 @@ function handleSearch(e) {
     var sear = document.getElementById("searchquery").value;
     if (sear.trim()) {
         window.location.assign(
-            window.location.protocol + "//" + 
-            window.location.host + 
-            window.location.pathname + 
-            '?q=' + encodeURIComponent(sear) + 
+            window.location.protocol + "//" +
+            window.location.host +
+            window.location.pathname +
+            '?q=' + encodeURIComponent(sear) +
             window.location.hash
         );
     }
@@ -280,7 +280,7 @@ function enterIn(e){
 function retainSearchQuery() {
   var urlParams = new URLSearchParams(window.location.search);
   var query = urlParams.get("q"); // Get the query parameter "q"
-  
+
   if (query) {
     document.getElementById("searchquery").value = query; // Set the input value
   }

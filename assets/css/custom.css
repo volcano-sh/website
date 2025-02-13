@@ -530,4 +530,12 @@ ul.share li i {
 
 .navbar-nav .dropdown-menu {
     height: auto !important;
+    padding: 0 !important;
+}
+
+@media screen and (min-width: 1200px) {
+    .container .changeicon .nav-item .dropdown-item,
+    .container .changeicon .nav-item .dropdown-item a {
+        top: 0 !important;
+    }
 }
