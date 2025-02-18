@@ -189,6 +189,12 @@ ul.share li i {
 .docs-article-container {
     max-width: 100%;
 }
+@media (max-width: 1200px) {
+
+    .container-fluid.docs {
+      padding-top: 0 !important; 
+    }
+  }
 
 /*********************************
 * Blog list 
