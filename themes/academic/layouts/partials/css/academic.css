@@ -588,7 +588,7 @@ a[data-fancybox] img {
 
 .home-section:nth-of-type(even) {
   /*background-color: {{ .Get "home_section_even" }};*/
-  background-color:#fff;
+  background-color:#F5F5F5;
 }
 
 .dark .home-section {
