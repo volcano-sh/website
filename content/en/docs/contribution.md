@@ -44,10 +44,9 @@ All Volcano contributors must read and observe the [Code of Conduct](https://git
 
 ### Community discussions
 
-To better communicate with the developers in the Volcano community, please subscribe to the Volcano channel in the following way.
+To better communicate with developers in the Volcano community, please subscribe to the Volcano channel by following these steps:
 
-- Sign up and visit `slack.cncf. IO/` to join the CNCF workspace.
-- Participate in community discussions by adding the channel search `volcano`.
+- Join the CNCF `volcano` channel on [Slack](https://cloud-native.slack.com/archives/C011GJDQS0N) to participate in community discussions.
 
 ### Community Expectations
 
