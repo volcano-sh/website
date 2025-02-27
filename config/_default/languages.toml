@@ -68,7 +68,7 @@
   weight = 10
 
 [[zh.menu.main_right]]
-  name = "<i class=\"fab fa-twitter\" style=\"color: #1ea1f3; font-size: 1rem; line-height: 1.25\"></i>"
+  name = "<i class=\"fab fa-x-twitter\" style=\"color: #000000; font-size: 1rem; line-height: 1.25\"></i>"
   url = "https://twitter.com/volcano_sh"
   weight = 20
 
