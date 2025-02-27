@@ -313,6 +313,7 @@ In AI, Big Data, and HPC scenarios, job stability and fault recovery are critica
 ##### Supporting Pod-Granular Restart Policies
 
 Users can configure policies to restart only failed Pods or their associated Tasks, avoiding unnecessary Job restarts and reducing resource waste.
+
 - **Restarting a Single Pod:**  
   When a specific Pod fails, only that Pod is restarted, leaving other running tasks unaffected.
   ```yaml
@@ -332,8 +333,9 @@ Users can configure policies to restart only failed Pods or their associated Tas
 ##### Support for Setting Timeouts for Actions
 
 Pod failures may be caused by transient issues (e.g., network fluctuations or hardware problems). Volcano allows users to set timeout periods for failure recovery actions. If the Pod recovers within the timeout period, no restart is performed, avoiding unnecessary intervention.
+
 - **Example Configuration:**
-  If a Pod fails and is restarted but does not recover within 10 minutes, the entire Job is restarted.
+If a Pod fails and is restarted but does not recover within 10 minutes, the entire Job is restarted.
 
 ```yaml
 policies:
@@ -348,7 +350,7 @@ policies:
 
 When a Pod remains in the Pending state for an extended period due to insufficient resources or topological constraints, users can set a timeout for the Pending event. If the Pod does not start running after the timeout, the entire Job can be terminated to avoid resource waste.
 
-**Example Configuration:**  
+- **Example Configuration:**  
 If a Pod remains in the Pending state for more than 10 minutes, the Job will be terminated.
 
 ```yaml
