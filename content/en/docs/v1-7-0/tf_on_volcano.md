@@ -28,7 +28,7 @@ PS-worker model: Parameter Server performs model-related services, Work Server t
 
 {{<figure library="1" src="ps-worker.png" title="ps-worker">}}
 
-TensorFlow on Kubernates has many problems:
+TensorFlow on Kubernetes has many problems:
 
 - Resource isolation.
 - Lack of GPU scheduling, Gang Schuler.
