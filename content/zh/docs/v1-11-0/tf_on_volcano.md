@@ -28,7 +28,7 @@ PS-worker模型：Parameter Server执行模型相关业务，Work Server训练�
 
 {{<figure library="1" src="ps-worker.png" title="ps-worker">}}
 
-TensorFlow on Kubernates存在诸多的问题
+TensorFlow on Kubernetes存在诸多的问题
 
 - 资源隔离
 - 缺乏GPU调度、Gang schduler。

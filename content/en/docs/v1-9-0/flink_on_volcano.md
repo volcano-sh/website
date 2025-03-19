@@ -24,7 +24,7 @@ Apache Flink is an open-source streaming framework developed by the Apache Softw
 
 ### The premise condition
 
-Make sure the deployed Kubernate, Kubectl, Volcano are installed correctly.
+Make sure the deployed Kubernetes, Kubectl, Volcano are installed correctly.
 
 ### Deployment process
 
