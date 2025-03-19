@@ -132,6 +132,17 @@ With the CPU Burst capability provided by the Volcano agent, high-priority workl
 
 ### Installing the Volcano Agent
 
+#### Install via Helm
+
+```shell
+helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
+
+helm repo update
+
+helm install volcano volcano-sh/volcano -n volcano-system --create-namespace --set custom.colocation_enable=true
+```
+#### Install via Yaml
+
 Please follow this [document](https://github.com/volcano-sh/volcano?tab=readme-ov-file#quick-start-guide) to install Volcano, and then use the following command to install the Volcano agent.
 
 ```shell

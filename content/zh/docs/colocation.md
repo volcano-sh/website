@@ -134,6 +134,18 @@ Volcano agent的CPU Burst能力提供了一种可以短暂突破CPU Limit值的�
 
 ### 安装Volcano agent
 
+#### 通过 Helm 安装
+
+```shell
+helm repo add volcano-sh https://volcano-sh.github.io/helm-charts
+
+helm repo update
+
+helm install volcano volcano-sh/volcano -n volcano-system --create-namespace --set custom.colocation_enable=true
+```
+
+#### 通过 Yaml 安装
+
 请按照该[文档](https://github.com/volcano-sh/volcano?tab=readme-ov-file#quick-start-guide)安装Volcano，然后通过以下命令安装Volcano agent。
 
 ```shell
