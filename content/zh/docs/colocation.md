@@ -49,7 +49,7 @@ type = "docs"  # Do not modify.
 
 - Volcano Scheduler：负责在离线作业的统一调度，提供队列、组、作业优先级、公平调度、资源预留等多种抽象，统一满足微服务、大数据、AI等业务调度需求。
 - Volcano SLO Agent：集群内的每个节点都会部署一个Volcano SLO Agent，动态实时计算每个节点已经分配但未使用的资源，将这部分资源进行超卖，供离线作业进行使用。同时对节点QoS进行保障，在检测到节点出现CPU/Memory压力时，对离线作业进行驱逐，保障在线业务的优先级。
-- Enhanced OS：Volcano SLO Agent在应用层进行节点级别的QoS保证，为了进行更加精细化和强制性的隔离，内核层面也需要区分QoS类型，在CPU/Memoey/Network/L3 cache等层面进行隔离，内核暴露了一系列的cgroup接口，Volcano SLO Agent可以为在线和离线业务设置不同的cgroup，做到内核层面的精细隔离，实现在线作业对离线作业的压制。
+- Enhanced OS：Volcano SLO Agent在应用层进行节点级别的QoS保证，为了进行更加精细化和强制性的隔离，内核层面也需要区分QoS类型，在CPU/Memory/Network/L3 cache等层面进行隔离，内核暴露了一系列的cgroup接口，Volcano SLO Agent可以为在线和离线业务设置不同的cgroup，做到内核层面的精细隔离，实现在线作业对离线作业的压制。
 
 <div style="text-align: center;"> {{<figure library="1" src="./colocation/architecture.png">}}
 架构
