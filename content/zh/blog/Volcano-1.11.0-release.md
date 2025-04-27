@@ -279,7 +279,7 @@ Volcano云原生混部解决方案具备以下关键能力，帮助用户实现�
 
 ### **负载感知重调度：智能均衡集群资源，告别资源热点**
 
-在Kubernetes集群中，随着工作负载的动态变化，节点资源利用率不均衡的问题时常发生，导致部分节点过热，影响整体集群的稳定性与效率。为了解决这一问题，Volcano v1.11 引入了**负载感知重调度**功能，基于节点的真实负载动态调整Pod分布，确保集群资源的均衡利用，避免资源热点，提升集群的整体性能与可靠性。负载感知重调度通过子项目https://github.com/volcano-sh/descheduler孵化。
+在Kubernetes集群中，随着工作负载的动态变化，节点资源利用率不均衡的问题时常发生，导致部分节点过热，影响整体集群的稳定性与效率。为了解决这一问题，Volcano v1.11 引入了**负载感知重调度**功能，基于节点的真实负载动态调整Pod分布，确保集群资源的均衡利用，避免资源热点，提升集群的整体性能与可靠性。负载感知重调度通过子项目 [descheduler](https://github.com/volcano-sh/descheduler) 孵化。
 
 #### 核心能力：
 
@@ -377,7 +377,7 @@ Pod失败可能是由临时性故障（如网络抖动或硬件问题）引起�
 
 ### **Volcano Dashboard：资源管理的可视化利器**
 
-Volcano dashboard是Volcano官方提供的资源展示仪表盘，用户在部署Volcano后，再部署Volcano dashboard，就可以通过图形界面展示集群中Volcano相关的资源，方便用户查询和操作，项目地址: https://github.com/volcano-sh/dashboard。
+Volcano dashboard是Volcano官方提供的资源展示仪表盘，用户在部署Volcano后，再部署Volcano dashboard，就可以通过图形界面展示集群中Volcano相关的资源，方便用户查询和操作，项目地址: https://github.com/volcano-sh/dashboard
 
 目前支持的功能有：
 
