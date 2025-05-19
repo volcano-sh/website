@@ -131,50 +131,29 @@ body.dark-mode .feature-list .feature-item,
 body.dark-mode a.feature-item {
     background-color: #2d2d2d !important;
     border: 1px solid #3a3a3a !important;
-    border-radius: 8px !important;
-    padding: 1.5rem !important;
-    transition: all 0.3s ease !important;
-    text-decoration: none !important;
     color: #e0e0e0 !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-    display: block !important;
-    margin-bottom: 1rem !important;
 }
 
 body.dark-mode .feature-list .feature-item:hover,
 body.dark-mode a.feature-item:hover {
     background-color: #363636 !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
-    text-decoration: none !important;
     color: #e0e0e0 !important;
 }
 
 body.dark-mode .feature-list .feature-item h3,
 body.dark-mode a.feature-item h3 {
     color: #FF1744 !important;
-    margin-bottom: 0.75rem !important;
-    font-size: 1.25rem !important;
 }
 
 body.dark-mode .feature-list .feature-item p,
 body.dark-mode a.feature-item p {
     color: #e0e0e0 !important;
-    margin: 0 !important;
-    font-size: 0.95rem !important;
-    line-height: 1.5 !important;
 }
 
 body.dark-mode .featured-icon {
-    background-color: #2d2d2d !important;
-    border: 1px solid #3a3a3a !important;
-    border-radius: 8px !important;
-    padding: 1.5rem !important;
+    background-color: #232323 !important;
+    border-radius: 15px !important;
     box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 1rem !important;
 }
 
 body.dark-mode .featured-icon img {
@@ -182,12 +161,10 @@ body.dark-mode .featured-icon img {
 }
 
 body.dark-mode .featured-icon .titlename {
-    background-color: transparent !important;
+    color: #e0e0e0 !important;
+    background: none !important;
     border: none !important;
     box-shadow: none !important;
-    color: #e0e0e0 !important;
-    font-size: 1.2rem !important;
-    font-weight: 500 !important;
 }
 
 body.dark-mode div[style*="background-color: #fff"] {
