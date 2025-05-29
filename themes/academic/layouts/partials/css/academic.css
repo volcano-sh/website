@@ -105,14 +105,27 @@ h2 {
   font-size: 1.75rem;
 }
 h3 {
-  font-weight: 500;
+  font-weight: 600;
   margin-top: 1.5rem;
   font-size: 1.5rem;
 }
-h4, h5, h6 {
-  font-weight: 500;
+h4 {
+  font-weight: 600;
   margin-top: 1rem;
-  font-size: 1.25rem;
+  font-size: 1.25rem; 
+  margin-bottom: 0.8rem;
+}
+h5 {
+  font-weight: 600;
+  margin-top: 1rem;
+  font-size: 1.1rem; 
+  margin-bottom: 0.8rem;
+}
+h6 {
+  font-weight: 600;
+  margin-top: 1rem;
+  font-size: 1rem; 
+  margin-bottom: 0.8rem;
 }
 
 a,
