@@ -57,8 +57,8 @@ We encourage you to join our community and contribute to Volcano's development. 
 - Contributing Code: Our [Contribution Guide](https://github.com/volcano-sh/volcano/blob/master/contribute.md) offers detailed instructions on finding good first issues and submitting pull requests. We welcome contributions of all sizes.
 - Slack Channel: Join our Slack workspace for real-time discussions and support. First, join the CNCF Slack at [https://slack.cncf.io/](https://slack.cncf.io/), then navigate to the #volcano channel: [https://cloud-native.slack.com/archives/C011GJDQS0N](https://www.google.com/search?q=https://cloud-native.slack.com/archives/C011GJDQS0N).
 - Community Meetings: Participate in our regular community meetings to discuss project updates, roadmaps, and proposals.
--   [Meeting Link](https://zoom.us/j/91804791393)
--   [Meeting Notes](https://docs.google.com/document/d/1YLbF8zjZBiR9PbXQPB22iuc_L0Oui5A1lddVfRnZrqs/edit)
+    - [Meeting Link](https://zoom.us/j/91804791393)
+    - [Meeting Notes](https://docs.google.com/document/d/1YLbF8zjZBiR9PbXQPB22iuc_L0Oui5A1lddVfRnZrqs/edit)
 - Mailing List: Subscribe to our [mailing list](https://groups.google.com/forum/#!forum/volcano-sh) for important announcements and broader discussions.
 
 You can find the audit report [here](https://volcano.sh/reports/Ada-Logics-Volcano-Security-Audit-2025.pdf).
