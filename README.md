@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8cf65901-dae4-4826-b32b-17feeebddc86/deploy-status)](https://app.netlify.com/sites/kind-montalcini-bed86a/deploys)
+
 # Volcano Website Documentation Guide
 
 Welcome to the GitHub repository for Volcano's public website. The documentation and website are hosted at [https://volcano.sh](https://volcano.sh).
