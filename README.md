@@ -1,4 +1,4 @@
-# Volcano Public Website
+# Volcano Website Documentation Guide
 
 Welcome to the GitHub repository for Volcano's public website. The documentation and website are hosted at [https://volcano.sh](https://volcano.sh).
 
