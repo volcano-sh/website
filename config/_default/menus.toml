@@ -69,29 +69,188 @@
   identifier = "concepts"
 
 [[docs]]
-  name = "Key Features"
+  name = "Core Job Management"
   weight = 4
+  identifier = "core-job-management"
+
+[[docs]]
+  name = "Queue Management"
+  weight = 5
+  identifier = "queue-management"
+
+[[docs]]
+  name = "Scheduling Algorithms & Policies"
+  weight = 6
+  identifier = "scheduling-algorithms"
+
+[[docs]]
+  name = "Resource Management"
+  weight = 7
+  identifier = "resource-management"
+
+[[docs]]
+  name = "Node Management"
+  weight = 8
+  identifier = "node-management"
+
+[[docs]]
+  name = "User Guide"
+  weight = 9
+  identifier = "user-guide"
+
+[[docs]]
+  name = "Key Features"
+  weight = 10
   identifier = "features"
 
 [[docs]]
   name = "Ecosystem"
-  weight = 5
+  weight = 11
   identifier = "ecosystem"
 
 [[docs]]
   name = "Scheduler"
-  weight = 6
+  weight = 12
   identifier = "scheduler"
 
 [[docs]]
   name = "CLI"
-  weight = 7
+  weight = 13
   identifier = "cli"
 
 [[docs]]
+  name = "Plugins & Extensions"
+  weight = 14
+  identifier = "plugins"
+
+[[docs]]
+  name = "Actions & Operations"
+  weight = 15
+  identifier = "actions"
+
+[[docs]]
+  name = "Multi-Scheduler & Advanced Features"
+  weight = 16
+  identifier = "advanced"
+
+[[docs]]
+  name = "System Features"
+  weight = 17
+  identifier = "system"
+
+[[docs]]
   name = "Contribution"
-  weight = 8
+  weight = 18
   identifier = "contribution"
+
+# User Guide menu items
+[[user-guide]]
+  name = "Configure PriorityClass"
+  weight = 1
+  identifier = "configure-priorityclass"
+  url = "/docs/user-guide/how_to_configure_priorityclass_for_job/"
+
+[[user-guide]]
+  name = "Configure Scheduler"
+  weight = 2
+  identifier = "configure-scheduler"
+  url = "/docs/user-guide/how_to_configure_scheduler/"
+
+[[user-guide]]
+  name = "Use Capacity Plugin"
+  weight = 3
+  identifier = "use-capacity-plugin"
+  url = "/docs/user-guide/how_to_use_capacity_plugin/"
+
+[[user-guide]]
+  name = "Use CDP Plugin"
+  weight = 4
+  identifier = "use-cdp-plugin"
+  url = "/docs/user-guide/how_to_use_cdp_plugin/"
+
+[[user-guide]]
+  name = "Use ENV Plugin"
+  weight = 5
+  identifier = "use-env-plugin"
+  url = "/docs/user-guide/how_to_use_env_plugin/"
+
+[[user-guide]]
+  name = "Use Extender"
+  weight = 6
+  identifier = "use-extender"
+  url = "/docs/user-guide/how_to_use_extender/"
+
+[[user-guide]]
+  name = "Use GPU Number"
+  weight = 7
+  identifier = "use-gpu-number"
+  url = "/docs/user-guide/how_to_use_gpu_number/"
+
+[[user-guide]]
+  name = "Use GPU Sharing"
+  weight = 8
+  identifier = "use-gpu-sharing"
+  url = "/docs/user-guide/how_to_use_gpu_sharing/"
+
+[[user-guide]]
+  name = "Use Job Policy"
+  weight = 9
+  identifier = "use-job-policy"
+  url = "/docs/user-guide/how_to_use_job_policy/"
+
+[[user-guide]]
+  name = "Use Job TTL"
+  weight = 10
+  identifier = "use-job-ttl"
+  url = "/docs/user-guide/how_to_use_job_ttl/"
+
+[[user-guide]]
+  name = "Use MPI Plugin"
+  weight = 11
+  identifier = "use-mpi-plugin"
+  url = "/docs/user-guide/how_to_use_mpi_plugin/"
+
+[[user-guide]]
+  name = "Use NodeGroup Plugin"
+  weight = 12
+  identifier = "use-nodegroup-plugin"
+  url = "/docs/user-guide/how_to_use_nodegroup_plugin/"
+
+[[user-guide]]
+  name = "Use NUMA Aware"
+  weight = 13
+  identifier = "use-numa-aware"
+  url = "/docs/user-guide/how_to_use_numa_aware/"
+
+[[user-guide]]
+  name = "Use PyTorch Plugin"
+  weight = 14
+  identifier = "use-pytorch-plugin"
+  url = "/docs/user-guide/how_to_use_pytorch_plugin/"
+
+[[user-guide]]
+  name = "Use SSH Plugin"
+  weight = 15
+  identifier = "use-ssh-plugin"
+  url = "/docs/user-guide/how_to_use_ssh_plugin/"
+
+[[user-guide]]
+  name = "Use Service Plugin"
+  weight = 16
+  identifier = "use-service-plugin"
+  url = "/docs/user-guide/how_to_use_svc_plugin/"
+
+[[user-guide]]
+  name = "Use Task Topology Plugin"
+  weight = 17
+  identifier = "use-task-topology-plugin"
+  url = "/docs/user-guide/how_to_use_task_topology_plugin/"
+
+[[user-guide]]
+  name = "Use Volcano VGPU"
+  weight = 18
+  identifier = "use-volcano-vgpu"
+  url = "/docs/user-guide/how_to_use_volcano_vgpu/"
 
 # Documentation version v1.11.0
 
