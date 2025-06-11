@@ -180,8 +180,6 @@ metadata:
     # 对成组调度至关重要：此注解告知Volcano将此Deployment视为一个组，
     # 要求至少2个Pod能够一起调度，然后才会启动任何Pod。
     scheduling.volcano.sh/group-min-member: "2"
-    # 可选：您也可以为此Deployment创建的PodGroup指定一个特定的Volcano队列。
-    # scheduling.volcano.sh/queue-name: "my-deployment-queue"
   labels:
     app: my-app
 spec:
@@ -191,6 +189,9 @@ spec:
       app: my-app
   template:
     metadata:
+      # annotations:
+      #   可选：您也可以为此Deployment创建的PodGroup指定一个特定的Volcano队列。
+      #   scheduling.volcano.sh/queue-name: "my-deployment-queue"
       labels:
         app: my-app
     spec:
