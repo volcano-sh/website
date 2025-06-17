@@ -68,6 +68,10 @@ preserveTaxonomyNames = true
   url = "/en/docs"
 
 [[params.versions]]
+  name = "v1.12.0"
+  url = "/en/docs/v1-12-0"
+
+[[params.versions]]
   name = "v1.11.0"
   url = "/en/docs/v1-11-0"
 
