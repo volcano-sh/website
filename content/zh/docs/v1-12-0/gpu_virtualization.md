@@ -71,7 +71,7 @@ Volcano主要支持以下两种GPU共享模式，用以实现vGPU调度并满足
 
   * 部署[`volcano-vgpu-device-plugin`](https://github.com/Project-HAMi/volcano-vgpu-device-plugin)。
 
-  **说明：**[vgpu设备插件的YAML文件](https://github.com/Project-HAMi/volcano-vgpu-device-plugin/blob/main/volcano-vgpu-device-plugin.yml)中亦包含***节点GPU模式***及***MIG几何形状***的相关配置。详情请参阅[vgpu设备插件配置文档](https://github.com/Project-HAMi/volcano-vgpu-device-plugin/blob/main/doc/config.md)。
+  **说明：**[vgpu设备插件的YAML文件](https://github.com/Project-HAMi/volcano-vgpu-device-plugin/blob/main/volcano-vgpu-device-plugin.yml)中亦包含***节点GPU模式***及***MIG实例规格***等相关配置。详情请参阅[vgpu设备插件配置文档](https://github.com/Project-HAMi/volcano-vgpu-device-plugin/blob/main/doc/config.md)。
 
 - **验证部署**：
   请确保节点的可分配资源（Allocatable Resources）中包含以下信息：
