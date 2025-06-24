@@ -27,8 +27,6 @@ Volcano simplifies GPU virtualization, enabling users to leverage advanced shari
 
 Volcano supports **two primary GPU sharing modes** to accommodate varying hardware capabilities and performance requirements.
 
----
-
 ### 1. HAMI-core (Software-based vGPU)
 
 **Description**:
@@ -48,8 +46,6 @@ Best for **performance-sensitive** workloads. Requires **MIG-capable GPUs** (e.g
 > The design document of Dynamic MIG can refer to: [dynamic-mig](https://github.com/volcano-sh/volcano/blob/master/docs/design/dynamic-mig.md)
 
 > GPU Sharing mode is a node configuration. Volcano supports heterogeneous cluster(i.e a part of node uses HAMi-core while another part uses dynamic MIG), See [volcano-vgpu-device-plugin](https://github.com/Project-HAMi/volcano-vgpu-device-plugin) for configuration and details.
-
----
 
 ## Installation
 
@@ -109,8 +105,6 @@ Check with:
 kubectl get node {node-name} -o yaml
 ```
 
----
-
 ### HAMI-core Usage
 
 **Pod Spec**:
@@ -131,8 +125,6 @@ spec:
         volcano.sh/vgpu-cores: 50    # (optional)each vGPU uses 50%
         volcano.sh/vgpu-memory: 3000 # (optional)each vGPU uses 3G GPU memory
 </code></pre>
-
----
 
 ### Dynamic MIG Usage
 
@@ -170,8 +162,6 @@ spec:
 
 Note: Actual memory allocated depends on best-fit MIG slice (e.g., request 3GB â†’ 5GB slice used).
 
----
-
 ## Scheduler Mode Selection
 
 * **Explicit Mode**:
@@ -183,8 +173,6 @@ Note: Actual memory allocated depends on best-fit MIG slice (e.g., request 3GB â
 
   * Modes like `binpack` or `spread` influence node selection.
 
----
-
 ## Summary Table
 
 | Mode        | Isolation        | MIG GPU Required | Annotation | Core/Memory Control | Recommended For            |
@@ -192,7 +180,6 @@ Note: Actual memory allocated depends on best-fit MIG slice (e.g., request 3GB â
 | HAMI-core   | Software (VCUDA) | No               | No         | Yes                 | General workloads          |
 | Dynamic MIG | Hardware         | Yes              | Yes        | MIG-controlled      | Performance-sensitive jobs |
 
----
 
 ## Monitoring
 
@@ -209,8 +196,6 @@ curl http://<plugin-pod-ip>:9394/metrics
 ```
 
 Metrics include GPU utilization, pod memory usage, and limits.
-
----
 
 ## Issues and Contributions
 

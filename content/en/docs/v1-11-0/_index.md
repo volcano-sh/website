@@ -63,7 +63,12 @@ Volcano can schedule computing resources from multiple architectures:
 * Arm
 * Kunpeng
 * Ascend
-* GPU
+* GPU: Supports [GPU virtualization](/en/docs/v1-11-0/gpu_virtualization/) functionality, providing fine-grained GPU resource management
+  * **vGPU Scheduling**: Supports virtualizing single physical GPU into multiple vGPUs for fine-grained GPU resource allocation
+  * **Memory Isolation**: Supports setting independent memory limits for each vGPU to prevent memory conflicts between tasks
+  * **Compute Allocation**: Supports allocating GPU by percentage for resource sharing
+  * **Multi-container Sharing**: Allows multiple containers to share the same GPU, improving GPU utilization
+  * **Resource Monitoring**: Provides comprehensive vGPU usage monitoring and metrics collection
 
 ### Network Topology-aware Scheduling
 * Supports network topology-aware scheduling, fully considering the network bandwidth characteristics between nodes. In AI scenarios, this network topology-aware scheduling effectively optimizes data transmission for communication-intensive distributed training tasks, significantly reducing communication overhead and improving model training speed and overall efficiency.

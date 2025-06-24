@@ -25,7 +25,6 @@ Volcano致力于简化GPU虚拟化的复杂度，使用户能便捷地运用这�
 
 Volcano主要支持以下两种GPU共享模式，用以实现vGPU调度并满足不同的硬件能力与性能需求：
 
----
 
 ### 1. HAMI-core（基于软件的vGPU）
 
@@ -46,8 +45,6 @@ Volcano主要支持以下两种GPU共享模式，用以实现vGPU调度并满足
 > Dynamic MIG的设计文档请参考：[dynamic-mig](https://github.com/volcano-sh/volcano/blob/master/docs/design/dynamic-mig.md)
 
 > GPU共享模式属于节点级别的配置。Volcano支持异构集群，即集群中可同时包含采用HAMI-core模式的节点和采用Dynamic MIG模式的节点。更多配置及详情，请参阅[volcano-vgpu-device-plugin](https://github.com/Project-HAMi/volcano-vgpu-device-plugin)。
-
----
 
 ## 安装
 
@@ -107,8 +104,6 @@ data:
 kubectl get node {node-name} -o yaml
 ```
 
----
-
 ### HAMI-core使用方法
 
 **Pod配置示例**：
@@ -129,8 +124,6 @@ spec:
         volcano.sh/vgpu-cores: 50    # (可选)每个vGPU使用50%核心
         volcano.sh/vgpu-memory: 3000 # (可选)每个vGPU使用3G显存
 </code></pre>
-
----
 
 ### Dynamic MIG使用方法
 
@@ -166,7 +159,6 @@ spec:
 
 注意：实际分配的显存大小取决于最匹配的MIG实例规格（例如：请求3GB显存，可能会分配到规格为5GB的MIG实例）。
 
----
 
 ## 调度器模式选择
 
@@ -179,8 +171,6 @@ spec:
 
   * 调度策略（如`binpack`或`spread`）会影响vGPU Pod在节点间的分布。
 
----
-
 ## 总结表
 
 | 模式        | 隔离级别       | 是否依赖MIG GPU | 需注解指定模式 | 核心/显存控制方式     | 推荐应用场景               |
@@ -188,7 +178,6 @@ spec:
 | HAMI-core   | 软件 (VCUDA)   | 否              | 否           | 用户自定义 (核心/显存) | 通用型工作负载             |
 | Dynamic MIG | 硬件 (MIG)     | 是              | 是           | MIG实例规格决定       | 对性能敏感的工作负载       |
 
----
 
 ## 监控
 
@@ -206,7 +195,6 @@ curl http://<plugin-pod-ip>:9394/metrics
 
 监控指标包括GPU利用率、各Pod的显存使用量及限制等。
 
----
 
 ## 问题和贡献
 
