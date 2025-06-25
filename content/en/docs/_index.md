@@ -63,7 +63,12 @@ Volcano can schedule computing resources from multiple architectures:
 * Arm
 * Kunpeng
 * Ascend
-* GPU
+* GPU: Supports multiple [GPU virtualization](/en/docs/gpu_virtualization/) technologies for flexible resource management
+  * **Dynamic MIG Support**: Enables dynamic partitioning of NVIDIA Multi-Instance GPUs (MIG), providing hardware-level isolation to segment a physical GPU into multiple independent instances
+  * **vCUDA Virtualization**: Virtualizes physical GPUs into multiple vGPU devices at the software level for resource sharing and isolation
+  * **Fine-Grained Resource Control**: Provides dedicated memory and compute allocation for each GPU instance
+  * **Multi-Container Sharing**: Enables multiple containers to securely share a single GPU, maximizing utilization
+  * **Unified Monitoring**: Delivers unified monitoring and metrics collection for all GPU instances
 
 ### Network Topology-aware Scheduling
 * Supports network topology-aware scheduling, fully considering the network bandwidth characteristics between nodes. In AI scenarios, this network topology-aware scheduling effectively optimizes data transmission for communication-intensive distributed training tasks, significantly reducing communication overhead and improving model training speed and overall efficiency.
