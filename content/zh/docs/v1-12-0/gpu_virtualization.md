@@ -10,7 +10,7 @@ toc_depth = 5
 type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
-[menu.docs]
+[menu.v1-12-0]
   parent = "features"
   weight = 8
 +++
