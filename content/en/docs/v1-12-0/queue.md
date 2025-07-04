@@ -91,7 +91,7 @@ priority indicates the priority of this queue. During resource allocation and re
 
 * parent, *optional*
 
-This field is used to configure [hierarchical queues](hierarchical_queue.md). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
+This field is used to configure [hierarchical queues](/en/docs/hierarchical_queue). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
 
 ## Status
 ### Open
