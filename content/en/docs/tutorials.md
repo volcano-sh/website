@@ -184,8 +184,6 @@ metadata:
     # Crucial for gang scheduling: This annotation tells Volcano to treat this deployment as a gang,
     # requiring at least 2 pods to be schedulable together before any are launched.
     scheduling.volcano.sh/group-min-member: "2"
-    # Optional: You can also specify a specific Volcano queue for the PodGroup created by this deployment.
-    # scheduling.volcano.sh/queue-name: "my-deployment-queue"
   labels:
     app: my-app
 spec:
@@ -195,6 +193,9 @@ spec:
       app: my-app
   template:
     metadata:
+      # annotations:
+      #   Optional: You can also specify a specific Volcano queue for the PodGroup created by this deployment.
+      #   scheduling.volcano.sh/queue-name: "my-deployment-queue"
       labels:
         app: my-app
     spec:
