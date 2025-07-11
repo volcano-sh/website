@@ -17,9 +17,13 @@ type = "docs"  # Do not modify.
 
 ## Background
 
-With the rapid growth of enterprise business, a single Kubernetes cluster often cannot meet the demands of large-scale AI training and inference tasks. Users typically need to manage multiple Kubernetes clusters to achieve unified workload distribution, deployment, and management. Currently, multi-cluster orchestration systems in the industry (such as [Karmada](https://karmada.io/)) primarily target microservices scenarios, providing high availability and disaster recovery deployment capabilities. However, in terms of AI job scheduling, Karmada's capabilities are still limited. It lacks support for **Volcano Job** and cannot meet requirements such as queue management, multi-tenant fair scheduling, and job priority scheduling.
-
-To address the scheduling and management challenges of AI jobs in a multi-cluster environment, the **Volcano community** has incubated the **[Volcano Global](https://github.com/volcano-sh/volcano-global)** sub-project. Based on Karmada, this project extends Volcano's powerful scheduling capabilities in single clusters, providing a unified scheduling platform for multi-cluster AI jobs. It supports cross-cluster task distribution, resource management, and priority control.
+With the rapid growth of enterprise business, a single Kubernetes cluster often cannot meet the demands of large-scale AI training and inference tasks. 
+Users typically need to manage multiple Kubernetes clusters to achieve unified AI workload distribution, deployment, and management. 
+Currently, many users are running Volcano across multiple clusters and using [Karmada](https://github.com/karmada-io/karmada) for management. 
+To better support AI tasks in multi-cluster environments with features such as global queue management, task priority, and fair scheduling, 
+the Volcano community has incubated the [Volcano Global](https://github.com/volcano-sh/volcano-global) sub-project. 
+This project extends Volcano's scheduling capabilities from single clusters to multi-cluster scenarios, providing a unified scheduling platform for multi-cluster AI tasks. 
+It supports cross-cluster task distribution, resource management, and priority control.
 
 ## Features
 

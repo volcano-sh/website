@@ -17,9 +17,9 @@ type = "docs"  # Do not modify.
 
 ## 背景
 
-随着企业业务的快速增长，单一Kubernetes集群往往无法满足大规模AI训练和推理任务的需求。用户通常需要管理多个Kubernetes集群，以实现工作负载的统一分发、部署和管理。目前，业界的多集群编排系统（如[Karmada](https://karmada.io/)）主要针对微服务场景，提供了高可用性和容灾部署能力。然而，在AI作业调度方面，Karmada的能力仍然有限，缺乏对**Volcano Job**的支持，也无法满足队列管理、多租户公平调度和作业优先级调度等需求。
-
-为了解决多集群环境下AI作业的调度与管理问题，**Volcano社区**孵化了**[Volcano Global](https://github.com/volcano-sh/volcano-global)**子项目。该项目基于Karmada，扩展了Volcano在单集群中的强大调度能力，为多集群AI作业提供了统一的调度平台，支持跨集群的任务分发、资源管理和优先级控制。
+随着企业业务的快速增长，单个 Kubernetes 集群通常无法满足大规模 AI 训练和推理任务的需求。用户通常需要管理多个 Kubernetes 集群，以实现统一的AI工作负载分发、部署和管理。
+目前，已经有许多用户在多个集群中使用 Volcano，并使用 [Karmada](https://github.com/karmada-io/karmada) 进行管理。为了更好地支持多集群环境中的 AI 任务，支持全局队列管理、任务优先级和公平调度等功能，Volcano 社区孵化了[Volcano Global](https://github.com/volcano-sh/volcano-global)子项目。
+该项目将 Volcano 在单个集群中的强大调度能力扩展到多集群场景，为多集群 AI 任务提供统一的调度平台，支持跨集群任务分发、资源管理和优先级控制。
 
 ## 功能
 
