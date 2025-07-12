@@ -174,3 +174,146 @@ The Numa-Aware Plugin aims to address these limitations.
 Common scenarios for NUMA-Aware are computation-intensive jobs that are sensitive to CPU parameters, scheduling delays. Such as scientific calculation, video decoding, animation rendering, big data offline processing and other specific scenes.
 
 
+
+### Capacity
+
+#### Introduction
+
+The Capacity plugin is responsible for managing queue resource quotas in the Volcano scheduler. It ensures that resources are allocated to various queues according to preset resource quotas and supports hierarchical queue structures. The main functions of the Capacity plugin include: tracking queue resource usage, ensuring queues do not exceed their resource limits, supporting resource preemption, and managing job enqueuing logic.
+
+The Capacity plugin achieves precise control over resource allocation by monitoring each queue's allocated resources, requested resources, guaranteed resources, and elastic resources. It also supports hierarchical queue structures, allowing administrators to create parent-child queue relationships for implementing more complex resource management strategies.
+
+#### Scenarios
+
+- Multi-tenant environments: In environments where multiple teams or departments share cluster resources, queue resource quotas limit resource usage by various tenants, ensuring fair resource distribution.
+- Resource guarantee requirements: When critical business operations require resource guarantees, setting queue guarantee resources ensures these operations always receive the necessary resources.
+- Hierarchical resource management: In large organizations, hierarchical queue structures implement multi-level resource management for departments, teams, and projects, where higher-level queues can control resource usage of lower-level queues.
+
+### CDP
+
+#### Introduction
+
+The CDP plugin is designed specifically for elastic scheduling scenarios in the Volcano scheduler. In elastic scheduling environments, preemptible pods may frequently switch between being preempted and resuming operation. Without a cooling protection mechanism, these pods might be preempted again shortly after starting, leading to decreased service stability.
+
+The CDP plugin provides a cooling time protection for pods, ensuring they won't be preempted for a certain period after entering the Running state, thereby improving service stability. This protection mechanism is particularly important for applications that require a certain startup time before providing stable services.
+
+##### Scenarios
+
+- Elastic training systems: In machine learning training tasks, model training pods need stable running time to learn effectively. CDP ensures these pods won't be immediately preempted after startup, improving training efficiency.
+- Elastic service systems: For applications providing online services, pods typically need to initialize and warm up before providing normal service. CDP guarantees these service pods have sufficient time to complete initialization.
+- Clusters with intense resource competition: In resource-constrained clusters, high-priority tasks may frequently preempt resources from low-priority tasks. CDP provides protection for low-priority tasks that still require stable running time.
+- Stateful applications: For stateful applications, frequent preemption and recovery may lead to inconsistent states or data loss. CDP reduces the occurrence of such situations.
+- Applications with long startup times: Some applications may have lengthy startup times; if frequently preempted during startup, they might never provide normal service. CDP ensures these applications have at least one complete startup cycle.
+
+### Conformance
+
+#### Introduction
+
+The Conformance plugin is a safety plugin in the Volcano scheduler designed to protect critical Kubernetes system pods from preemption or reclamation. This plugin ensures the stable operation of system-critical components, preventing scheduling decisions from affecting the core functionality of the cluster.
+
+The Conformance plugin identifies critical pods by recognizing specific priority class names and namespaces. It filters out pods with system-level priorities or running in system namespaces, preventing these pods from becoming targets for preemption or resource reclamation.
+
+#### Scenarios
+
+- System component protection: Ensures that core Kubernetes components running in the kube-system namespace (such as kube-apiserver, kube-scheduler, kube-controller-manager, etc.) are not preempted due to user workload scheduling requirements.
+- Cluster stability assurance: By preventing critical pods from being preempted, maintains the basic functionality and stability of the cluster, ensuring cluster management functions operate normally even under resource constraints.
+
+### DeviceShare
+
+#### Introduction
+
+The DeviceShare plugin is a component in the Volcano scheduler specifically designed for managing and scheduling shared device resources, particularly high-value computing resources like GPUs. This plugin supports various device sharing modes, including GPU sharing (GPUShare) and virtual GPU (VGPU), enabling clusters to utilize limited device resources more efficiently.
+
+Through fine-grained device resource allocation mechanisms, the DeviceShare plugin allows multiple tasks to share the same physical device, thereby improving device utilization and cluster throughput. It provides device resource predicate and score functions to ensure tasks are scheduled to appropriate nodes, while also supporting node locking functionality to prevent issues caused by resource contention.
+
+#### Scenarios
+
+- GPU sharing environments: In machine learning and deep learning workloads, many tasks may only require partial GPU resources. Through GPU sharing, multiple tasks can share the same physical GPU, improving resource utilization.
+- Mixed workloads: In clusters running both compute-intensive and non-compute-intensive tasks, DeviceShare helps allocate GPU resources more rationally, ensuring resources aren't wasted.
+- Virtual GPU applications: For environments supporting virtual GPU technology, DeviceShare provides VGPU scheduling support, enabling effective management and allocation of virtualized GPU resources.
+
+### Extender
+
+#### Introduction
+
+The Extender plugin is an extension mechanism for the Volcano scheduler that allows users to integrate custom scheduling logic into the Volcano scheduling system through HTTP interfaces. This plugin delegates part or all of the scheduling decision process to external systems through HTTP calls, enabling the Volcano scheduler to support more complex, domain-specific scheduling requirements.
+
+The Extender plugin supports extensions for various scheduling phases, including session opening/closing, node predicate, node prioritization, task preemption, resource reclamation, queue overuse checking, and job enqueuing checking. Users can implement one or more of these interfaces as needed to customize scheduling behavior.
+
+#### Scenarios
+
+- Domain-specific scheduling requirements: When the standard Volcano scheduler cannot meet complex scheduling requirements in specific domains (such as HPC, AI training, etc.), the Extender plugin can integrate specialized scheduling logic.
+- External system integration: For existing scheduling systems or resource management systems, the Extender plugin enables smooth integration with Volcano.
+
+### NodeGroup
+
+#### Introduction
+
+The NodeGroup plugin is a component in the Volcano scheduler used to manage node group affinity and anti-affinity. This plugin allows users to control workload distribution based on relationships between queues and node groups, providing a higher-level resource allocation and isolation mechanism. Through the NodeGroup plugin, users can define affinity and anti-affinity rules between queues and specific node groups, which can be either required (hard) or preferred (soft) requirements.
+
+The NodeGroup plugin identifies the node group to which nodes belong through a labeling mechanism and performs node predicate and scoring during scheduling based on queue affinity configurations. This allows administrators to more finely control how workloads from different queues are distributed across the cluster.
+
+#### Scenarios
+
+- Resource isolation: In multi-tenant environments, workloads from different tenants can be restricted to specific node groups, avoiding resource interference and improving security and performance stability.
+- Hardware affinity: When clusters contain nodes with different hardware configurations (such as GPU nodes, high-memory nodes, etc.), NodeGroup can guide specific types of workloads to appropriate hardware nodes.
+- Failure domain isolation: By distributing workloads across different node groups, the impact range of single-point failures can be reduced, improving system availability.
+- Progressive upgrades: During cluster upgrades, NodeGroup can control workload distribution between new and old node groups, enabling smooth transitions.
+
+### Overcommit
+
+#### Introduction
+
+The Overcommit plugin is a component in the Volcano scheduler used to implement resource overcommitting. This plugin allows clusters to accept more job enqueuing requests even when physical resources are insufficient by setting an overcommit factor, thereby improving cluster resource utilization and job throughput.
+
+The Overcommit plugin determines whether new job requests can be enqueued by calculating the cluster's total resources, used resources, and resource requirements of already enqueued jobs, combined with the overcommit factor. The overcommit factor defines the proportion by which a cluster can exceed its physical resource capacity, with a default value of 1.2, indicating that the cluster can accept resource requests exceeding its actual capacity by 20%.
+
+#### Scenarios
+
+- Resource utilization optimization: In practice, many applications' resource requests often exceed their actual usage. Through resource overcommitting, more jobs can be accepted, improving overall cluster resource utilization.
+- Elastic workload environments: For workloads with fluctuating resource demands, the overcommitting mechanism can temporarily accept more jobs during peak resource demand periods, enhancing system elasticity and responsiveness.
+- Batch processing job clusters: In environments dominated by batch processing jobs, resource usage typically doesn't reach peak levels simultaneously. Overcommitting can increase cluster job throughput and reduce job waiting times.
+
+### PDB
+
+#### Introduction
+
+PDB is a plugin in the Volcano scheduler used to protect application availability. This plugin ensures that during resource reclamation and preemption processes, the application availability constraints defined by Kubernetes PodDisruptionBudget resource objects are respected, preventing service interruptions due to scheduling decisions.
+
+By integrating with Kubernetes PodDisruptionBudget resources, the PDB plugin checks whether each potential victim would violate PDB constraints when selecting victim tasks. If removing a pod would cause the number of application instances to fall below the minimum available instances defined by the PDB, that pod will not be selected as a victim, thereby protecting application availability.
+
+#### Scenarios
+
+- **High-availability service protection**: For online services requiring high availability (such as web services, database services, etc.), the PDB plugin ensures that during resource reclamation and preemption, the number of available service instances doesn't fall below the preset threshold, avoiding service interruptions.
+- **Stateful application management**: For stateful applications (such as distributed databases, message queues, etc.), the PDB plugin prevents too many instances from being evicted simultaneously, reducing pressure on data replication and synchronization, and maintaining system stability.
+
+### Rescheduling
+
+#### Introduction
+
+The Rescheduling plugin is a component in the Volcano scheduler used to optimize cluster resource utilization. This plugin periodically evaluates cluster status, identifies resource allocation imbalances, and proactively triggers task rescheduling to achieve better resource distribution and utilization.
+
+The Rescheduling plugin supports multiple rescheduling strategies, with the default "lowNodeUtilization" strategy focusing on identifying low-utilization nodes and migrating tasks from low-utilization nodes to higher-utilization nodes, thereby improving overall cluster efficiency. The plugin performs rescheduling evaluations at configurable time intervals (default is 5 minutes) to ensure continuous optimization of cluster resource allocation.
+
+#### Scenarios
+
+- Resource utilization optimization: For long-running clusters, resource allocation may become imbalanced over time. The Rescheduling plugin can periodically rebalance resource allocation, improving overall utilization.
+- Node resource fragment consolidation: When multiple low-utilization nodes exist in a cluster, Rescheduling can consolidate resource fragments through task migration, freeing up complete nodes for large tasks or node maintenance.
+- Periodic maintenance: As part of cluster periodic maintenance procedures, Rescheduling can optimize resource allocation during off-peak periods in preparation for peak periods.
+- Post-elastic scaling optimization: After cluster auto-scaling, resource allocation may not be optimal. Rescheduling can re-optimize task distribution after scaling operations.
+
+### ResourceQuota
+
+#### Introduction
+
+The ResourceQuota plugin is a component in the Volcano scheduler used to implement namespace resource quota control. This plugin ensures that jobs comply with namespace resource limitations defined by Kubernetes ResourceQuota resource objects when enqueuing, preventing individual namespaces from consuming excessive cluster resources.
+
+The ResourceQuota plugin determines whether a job can be enqueued by checking the job's minimum resource requirements (MinResources) against the namespace's resource quota status. When a job's resource requirements plus the namespace's already used resources exceed quota limits, the job will be rejected from enqueuing, and corresponding event information will be recorded. The plugin also maintains a tracking mechanism for pending resource usage, ensuring that multiple jobs' resource requirements within the same scheduling cycle don't exceed namespace quotas.
+
+#### Scenarios
+
+The ResourceQuota plugin is applicable to the following scenarios:
+
+- Multi-tenant environments: In environments where multiple teams or projects share the same cluster, the ResourceQuota plugin ensures each tenant can only use resources allocated to their namespace, preventing resource contention and "noisy neighbor" problems.
+- Resource allocation management: Administrators can implement reasonable allocation and fine-grained management of cluster resources by setting different namespace resource quotas, ensuring important business operations receive sufficient resources.
+- Prevention of resource abuse: The ResourceQuota plugin can prevent excessive resource requests due to program errors or malicious behavior, protecting cluster stability.
