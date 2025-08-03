@@ -324,7 +324,7 @@ Admission 支持多种资源的准入控制，包括 Jobs、PodGroups、Pods 和
 
 #### 参数
 
-vcctl不需要
+vcctl不需要其他额外参数，直接启动即可。
 
 ### Agent
 
