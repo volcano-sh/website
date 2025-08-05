@@ -13,3 +13,15 @@ functions = "functions/"
   to = "/.netlify/functions/latestversion"
   status = 200
   force = true # Always redirect
+
+[[redirects]]
+  from = "/en/*"
+  to = "/:splat"
+  status = 301
+  force = true # Ensure redirection
+
+[[redirects]]
+  from = "https://volcano.sh/en/"
+  to = ""
+  status = 200
+  force = true
