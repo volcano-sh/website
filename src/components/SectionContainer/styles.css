@@ -1,0 +1,22 @@
+.section-container {
+  width: 100%;
+  padding: 2rem 0;
+}
+
+.section-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 ;
+}
+
+@media (max-width: 996px) {
+  .section-container {
+    padding: 0.5rem 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 0.5rem 0;
+  }
+}
