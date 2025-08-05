@@ -92,14 +92,14 @@ const config = {
             label: 'Documentation',
             position: 'left',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
-          {
-            type: 'docsVersionDropdown',
-            position: 'right',
-            dropdownItemsBefore: [],
-            dropdownItemsAfter: [],
-            dropdownActiveClassDisabled: false,
-          },
+          // {to: '/blog', label: 'Blog', position: 'left'},
+          // {
+          //   type: 'docsVersionDropdown',
+          //   position: 'right',
+          //   dropdownItemsBefore: [],
+          //   dropdownItemsAfter: [],
+          //   dropdownActiveClassDisabled: false,
+          // },
           {
             href: "https://github.com/volcano-sh/",
             position: "right",
