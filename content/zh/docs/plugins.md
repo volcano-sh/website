@@ -110,7 +110,7 @@ Anti-affinity：
 
 Predicate plugin通过pod、nodeInfo作为参数，调用predicateGPU，根据计算结果对作业进行评估预选。
 
-**重要提示**: deviceshare插件依赖于Predicate插件，不能在Predicate插件未启用的情况下独立运行。
+**重要提示**: `deviceshare` plugin 依赖于 `Predicate` plugin，必须启用 `Predicate` plugin 才能运行。
 
 #### 场景
 

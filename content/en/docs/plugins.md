@@ -114,7 +114,7 @@ Anti-affinity：
 
 The Predicate Plugin calls the PredicateGPU with pod and nodeInfo as parameters to evaluate and pre-select jobs based on the results.
 
-**Important Note**: The deviceshare plugin has a dependency on the Predicate plugin and cannot function without it being enabled. 
+**Important Note**: The `deviceshare` plugin has a dependency on the `Predicate` Plugin and cannot function without it being enabled.
 
 #### Scenario
 
