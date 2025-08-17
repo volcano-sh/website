@@ -18,7 +18,7 @@ linktitle = "Architecture"
 
 ## Overview
 
-{{<figure library="1" src="arch_3.PNG" title="Application scenarios of Volcano">}}
+{{<figure library="1" src="arch_3.jpg" title="Application scenarios of Volcano">}}
 
 Volcano is naturally compatible with Kubernetes, following its design philosophy and style while extending Kubernetes' native capabilities to provide comprehensive support for high-performance workloads such as machine learning, big data applications, scientific computing, and special effects rendering. Its architectural design fully considers scalability, high performance, and ease of use, built upon years of experience running various high-performance workloads at scale and incorporating best practices from the open-source community.
 

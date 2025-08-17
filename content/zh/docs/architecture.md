@@ -19,7 +19,7 @@ linktitle = "架构"
 
 ## 概览
 
-{{<figure library="1" src="arch_3.PNG" title="Volcano的应用场景">}}
+{{<figure library="1" src="arch_3.jpg" title="Volcano的应用场景">}}
 
 Volcano 与 Kubernetes 天然兼容，遵循其设计理念和风格，同时扩展了 Kubernetes 原生能力，为机器学习、大数据应用、科学计算和特效渲染等高性能工作负载提供完整支持机制。其架构设计充分考虑了可扩展性、高性能和易用性，建立在多年来大规模运行各种高性能工作负载的经验之上，并结合了开源社区的最佳实践。
 
