@@ -18,9 +18,11 @@ linktitle = "Architecture"
 
 ## Overview
 
-{{<figure library="1" src="arch_2.PNG" title="Volcano System Architecture">}}
+{{<figure library="1" src="arch_3.PNG" title="Application scenarios of Volcano">}}
 
 Volcano is naturally compatible with Kubernetes, following its design philosophy and style while extending Kubernetes' native capabilities to provide comprehensive support for high-performance workloads such as machine learning, big data applications, scientific computing, and special effects rendering. Its architectural design fully considers scalability, high performance, and ease of use, built upon years of experience running various high-performance workloads at scale and incorporating best practices from the open-source community.
+
+{{<figure library="1" src="arch_2.PNG" title="Volcano System Architecture">}}
 
 The core architecture consists of four main components: The Scheduler, as the system core, implements advanced features such as Gang scheduling and heterogeneous device scheduling through pluggable Actions and Plugins, providing fine-grained resource allocation for batch jobs; the ControllerManager is responsible for managing CRD resource lifecycles, containing three controllers—Queue, PodGroup, and VCJob—that respectively manage queue resources, Pod groups, and Volcano Jobs; the Admission component validates CRD API resources to ensure job configurations meet system requirements; while Vcctl serves as a command-line client tool, providing a friendly interface for managing and monitoring resources and jobs.
 
@@ -367,17 +369,17 @@ Through deep integration with the Kubernetes CGroup system, Agent implements fin
 | ---------------------- | -------- | ------- | ------------------------------------------------------------ |
 | `--supported-features` | []string | `["*"]` | List of supported features. `*` means support all features enabled by default, `foo` means support feature named `foo`, `-foo` means don't support feature named `foo` |
 
-### Network-qos
+#### Network-qos
 
-#### Introduction
+##### Introduction
 
-The Network plugin is a network bandwidth management solution designed specifically for Kubernetes clusters, aimed at intelligently adjusting network resource allocation between different types of workloads. This plugin integrates with existing network plugins through the CNI mechanism, enabling fine-grained control over container network traffic.
+The Network plugin is a network bandwidth management solution designed specifically for Kubernetes clusters, Used in conjunction with the Agent component,aimed at intelligently adjusting network resource allocation between different types of workloads. This plugin integrates with existing network plugins through the CNI mechanism, enabling fine-grained control over container network traffic.
 
 Its core functionality is to distinguish between online and offline workloads, and dynamically adjust the bandwidth limits for offline jobs based on the real-time bandwidth needs of online services. When the bandwidth usage of online services exceeds a preset watermark, the system automatically reduces the available bandwidth for offline jobs, ensuring the quality of service for critical business applications. When online service bandwidth demands are low, the system allows offline jobs to use more bandwidth resources, improving overall cluster resource utilization.
 
 The plugin is implemented based on Linux TC (Traffic Control) and eBPF technologies, providing efficient, low-overhead network traffic management capabilities. It is an important tool for ensuring service quality in hybrid deployment environments.
 
-#### Parameters
+##### Parameters
 
 | Parameter Name             | Description                                                  | Default | Type   |
 | -------------------------- | ------------------------------------------------------------ | ------- | ------ |
