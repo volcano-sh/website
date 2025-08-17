@@ -15,7 +15,140 @@ linktitle = "Plugins"
   weight = 3
 +++
 
+### Env
 
+#### Introduction
+
+The Env plugin is a crucial component of Volcano Job, specifically designed for scenarios where Pods need to be aware of their index position within a task. When creating a Volcano Job, these indices are automatically registered as environment variables, enabling each Pod to understand its position within the task group. This is particularly important for distributed computing frameworks such as MPI, TensorFlow, and PyTorch, which require coordination among multiple nodes to complete computational tasks.
+
+#### Use Cases
+
+The Env plugin is particularly suitable for the following scenarios:
+
+1. **Distributed Machine Learning**: In distributed training with frameworks like TensorFlow and PyTorch, each worker node needs to know its role (such as parameter server or worker) and its index position within the work group.
+2. **Data Parallel Processing**: When multiple Pods need to process different data shards, each Pod can obtain its index through environment variables to determine which data range it should process.
+3. **MPI Parallel Computing**: In high-performance computing scenarios, MPI tasks require each process to know its rank for proper inter-process communication.
+
+#### Key Features
+
+- Automatically registers `VK_TASK_INDEX` and `VC_TASK_INDEX` environment variables for each Pod
+- Index values range from 0 to the number of replicas minus 1, indicating the Pod's position in the task
+- No additional configuration required; simply register the plugin in the Job definition
+- Seamlessly integrates with other Volcano plugins (such as Gang, SVC, etc.) to enhance distributed task coordination capabilities
+
+#### Usage
+
+Adding the Env plugin to a Volcano Job definition is straightforward:
+
+```yaml
+yamlspec:
+  plugins:
+    env: []   # Register the Env plugin, no values needed in the array
+```
+
+For more information about the Env plugin, please refer to the [Volcano Env Plugin Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_env_plugin.md).
+
+### SSH
+
+#### Introduction
+
+The SSH plugin is designed to provide password-free login capabilities between Pods in a Volcano Job, which is essential for workloads like MPI. It is typically used in conjunction with the SVC plugin to enable efficient communication between nodes in a distributed computing environment.
+
+#### Use Cases
+
+The SSH plugin is particularly suitable for the following scenarios:
+
+1. **MPI Parallel Computing**: MPI frameworks require unobstructed communication between nodes, and password-free SSH login is a key part of their infrastructure.
+2. **Distributed Machine Learning**: During distributed training, the master node may need to connect to worker nodes via SSH to execute commands or monitor status.
+3. **Cluster Management**: When administrative operations need to be performed across multiple Pods in a job, password-free SSH simplifies the operational workflow.
+4. **High-Performance Computing**: HPC workloads typically require efficient communication and coordination between nodes, which the SSH plugin provides.
+
+#### Key Features
+
+- Automatically configures password-free SSH login for all Pods in the Job
+- Creates a Secret containing `authorized_keys`, `id_rsa`, `config`, and `id_rsa.pub`
+- Mounts SSH configuration files to specified paths in all containers within the Job
+- Provides a `/root/.ssh/config` file containing hostname and subdomain mappings for all Pods in the Job
+- Supports customization of SSH keys and configuration paths
+
+#### Configuration Parameters
+
+| Parameter           | Type   | Default Value | Required | Description                                  |
+| ------------------- | ------ | ------------- | -------- | -------------------------------------------- |
+| `ssh-key-file-path` | String | `/root/.ssh`  | No       | Path for storing SSH private and public keys |
+| `ssh-private-key`   | String | Default key   | No       | Input string for private key                 |
+| `ssh-public-key`    | String | Default key   | No       | Input string for public key                  |
+
+#### Usage
+
+Adding the SSH plugin to a Volcano Job definition is straightforward:
+
+```yaml
+yamlspec:
+  plugins:
+    ssh: []   # Register the SSH plugin, no additional parameters needed in most cases
+    svc: []   # Typically used with the SVC plugin
+```
+
+#### Important Notes
+
+- If `ssh-key-file-path` is configured, ensure the target directory contains private and public keys. In most cases, it's recommended to keep the default value.
+- If `ssh-private-key` or `ssh-public-key` is configured, ensure the values are correct. In most cases, it's recommended to use the default keys.
+- Once the SSH plugin is configured, a Secret named "job-name-ssh" will be created containing the required SSH configuration files.
+- Ensure the `sshd` service is available in all containers, otherwise the SSH login functionality will not work properly.
+
+For more information about the SSH plugin, please refer to the [Volcano SSH Plugin Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_ssh_plugin.md).
+
+### SVC
+
+#### Introduction
+
+The SVC plugin is designed to provide communication capabilities between Pods in a Volcano Job, which is essential for workloads like TensorFlow and MPI. For example, TensorFlow jobs require communication between parameter servers (PS) and worker nodes. Volcano's SVC plugin enables Pods within a Job to access each other via domain names, greatly simplifying the deployment of distributed applications.
+
+#### Use Cases
+
+The SVC plugin is particularly suitable for the following scenarios:
+
+1. **Distributed Machine Learning**: Frameworks like TensorFlow and PyTorch require efficient communication between worker nodes and parameter servers.
+2. **Big Data Processing**: Frameworks like Spark require communication between Drivers and Executors.
+3. **High-Performance Computing**: Parallel computing frameworks like MPI require low-latency communication between nodes.
+4. **Microservice Architecture**: When a job contains multiple interdependent service components.
+
+#### Key Features
+
+- Automatically sets `hostname` (Pod name) and `subdomain` (Job name) for all Pods
+- Registers environment variables `VC_%s_NUM` (number of task replicas) and `VC_%s_HOSTS` (domain names of all Pods under the task) for all containers
+- Creates a ConfigMap containing the number of all task replicas and Pod domain names, mounted to the `/etc/volcano/` directory
+- Creates a headless service with the same name as the Job
+- Optionally creates NetworkPolicy objects to control communication between Pods
+
+#### Configuration Parameters
+
+| Parameter                     | Type    | Default | Description                                              |
+| ----------------------------- | ------- | ------- | -------------------------------------------------------- |
+| `publish-not-ready-addresses` | Boolean | `false` | Whether to publish addresses when Pods are not ready     |
+| `disable-network-policy`      | Boolean | `false` | Whether to disable creating network policies for the Job |
+
+#### Usage
+
+Adding the SVC plugin to a Volcano Job definition:
+
+```yaml
+yamlspec:
+  plugins:
+    svc: []   # Use default configuration
+    # Or customize configuration
+    # svc: ["--publish-not-ready-addresses=true", "--disable-network-policy=true"]
+```
+
+#### Important Notes
+
+- Your Kubernetes cluster requires a DNS plugin (such as CoreDNS)
+- Kubernetes version should be >= v1.14
+- Resources created by the SVC plugin (ConfigMap, Service, NetworkPolicy) are automatically managed with the Job
+- Pod domain information can be accessed via environment variables or mounted configuration files
+
+For more information about the SVC plugin, please refer to the [Volcano SVC Plugin Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_ssh_plugin.md).
 
 ### Gang
 

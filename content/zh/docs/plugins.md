@@ -15,6 +15,141 @@ linktitle = "Plugins"
   weight = 3
 +++
 
+### Env
+
+#### 简介
+
+Env 插件是 Volcano Job 的一个重要组件，专为需要 Pod 感知其在任务中索引位置的业务场景设计。当创建 Volcano Job 时，这些索引会自动注册为环境变量，使得每个 Pod 能够了解自己在任务组中的位置。这对于分布式计算框架（如 MPI、TensorFlow、PyTorch 等）尤为重要，因为它们需要协调多个节点共同完成计算任务。
+
+#### 场景
+
+Env 插件特别适用于以下场景：
+
+1. **分布式机器学习**：在 TensorFlow、PyTorch 等框架的分布式训练中，每个工作节点需要知道自己的角色（如参数服务器或工作节点）以及在工作组中的索引位置。
+2. **数据并行处理**：当多个 Pod 需要处理不同数据分片时，每个 Pod 可以通过环境变量获取自己的索引，从而确定应处理的数据范围。
+3. **MPI 并行计算**：在高性能计算场景中，MPI 任务需要每个进程了解自己的 rank，以便正确地进行进程间通信。
+
+#### 关键特性
+
+- 自动为每个 Pod 注册 `VK_TASK_INDEX` 和 `VC_TASK_INDEX` 环境变量
+- 索引值范围从 0 到副本数量减 1，表示 Pod 在任务中的位置
+- 无需额外配置，只需在 Job 定义中注册插件即可使用
+- 与其他 Volcano 插件（如 Gang、SVC 等）完美配合，增强分布式任务的协调能力
+
+#### 使用方法
+
+在 Volcano Job 定义中添加 Env 插件非常简单：
+
+```yaml
+yamlspec:
+  plugins:
+    env: []   # 注册 Env 插件，数组中不需要任何值
+```
+
+如需了解更多关于 Env 插件的信息，请参考[Volcano Env 插件指南](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_env_plugin.md) 获取更多信息。
+
+### SSH
+
+#### 简介
+
+SSH 插件是为 Volcano Job 中的 Pod 之间提供免密登录功能而设计的，这对于像 MPI 这样的工作负载来说是必不可少的。它通常与 SVC 插件一起使用，以实现分布式计算环境中节点间的高效通信。
+
+#### 应用场景
+
+SSH 插件特别适用于以下场景：
+
+1. **MPI 并行计算**：MPI 框架需要各节点间能够无障碍通信，免密 SSH 登录是其基础设施的关键部分。
+2. **分布式机器学习**：在分布式训练过程中，主节点可能需要通过 SSH 连接到工作节点执行命令或监控状态。
+3. **集群管理**：当需要在作业的多个 Pod 之间执行管理操作时，免密 SSH 可以简化操作流程。
+4. **高性能计算**：HPC 工作负载通常需要节点间的高效通信和协调，SSH 插件提供了这种能力。
+
+#### 关键特性
+
+- 自动为 Job 中的所有 Pod 配置 SSH 免密登录
+- 创建包含 `authorized_keys`、`id_rsa`、`config` 和 `id_rsa.pub` 的 Secret
+- 将 SSH 配置文件挂载到 Job 中所有容器的指定路径
+- 提供 `/root/.ssh/config` 文件，包含 Job 中所有 Pod 的主机名和子域名对应关系
+- 支持自定义 SSH 密钥和配置路径
+
+#### 配置参数
+
+| 参数                | 类型   | 默认值       | 必填 | 描述                          |
+| ------------------- | ------ | ------------ | ---- | ----------------------------- |
+| `ssh-key-file-path` | 字符串 | `/root/.ssh` | 否   | 用于存储 SSH 私钥和公钥的路径 |
+| `ssh-private-key`   | 字符串 | 默认私钥     | 否   | 私钥的输入字符串              |
+| `ssh-public-key`    | 字符串 | 默认公钥     | 否   | 公钥的输入字符串              |
+
+#### 使用方法
+
+在 Volcano Job 定义中添加 SSH 插件非常简单：
+
+```yaml
+yamlspec:
+  plugins:
+    ssh: []   # 注册 SSH 插件，大多数情况下不需要额外参数
+    svc: []   # 通常与 SVC 插件一起使用
+```
+
+#### 注意事项
+
+- 如果配置了 `ssh-key-file-path`，请确保目标目录下存在私钥和公钥。大多数情况下建议保持默认值。
+- 如果配置了 `ssh-private-key` 或 `ssh-public-key`，请确保值正确。大多数情况下建议使用默认密钥。
+- 一旦配置了 SSH 插件，将创建一个名称为 "作业名-ssh" 的 Secret，其中包含所需的 SSH 配置文件。
+- 请确保所有容器中都可用 `sshd` 服务，否则 SSH 登录功能将无法正常工作。
+
+如需了解更多关于 SSH 插件的信息，请参考[Volcano SVC 插件指南](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_ssh_plugin.md) 获取更多信息。
+
+### SVC
+
+#### 简介
+
+SVC 插件是为 Volcano Job 中的 Pod 之间提供通信能力而设计的，这对于像 TensorFlow 和 MPI 这样的工作负载来说是必不可少的。例如，TensorFlow 作业需要在参数服务器(PS)和工作节点(Worker)之间进行通信。Volcano 的 SVC 插件使 Job 中的 Pod 能够通过域名相互访问，大大简化了分布式应用的部署。
+
+#### 应用场景
+
+SVC 插件特别适用于以下场景：
+
+1. **分布式机器学习**：TensorFlow、PyTorch 等框架需要工作节点和参数服务器之间的高效通信。
+2. **大数据处理**：Spark 等框架中的 Driver 和 Executor 需要相互通信。
+3. **高性能计算**：MPI 等并行计算框架需要节点间的低延迟通信。
+4. **微服务架构**：当一个作业包含多个相互依赖的服务组件时。
+
+#### 关键特性
+
+- 自动为所有 Pod 设置 `hostname`（Pod 名称）和 `subdomain`（Job 名称）
+- 为所有容器注册环境变量 `VC_%s_NUM`（任务副本数）和 `VC_%s_HOSTS`（任务下所有 Pod 的域名）
+- 创建包含所有任务副本数和 Pod 域名的 ConfigMap，并挂载到 `/etc/volcano/` 目录
+- 创建与 Job 同名的无头服务(Headless Service)
+- 可选择性地创建 NetworkPolicy 对象以控制 Pod 间通信
+
+#### 配置参数
+
+| 参数                          | 类型   | 默认值  | 描述                          |
+| ----------------------------- | ------ | ------- | ----------------------------- |
+| `publish-not-ready-addresses` | 布尔值 | `false` | 是否在 Pod 未就绪时发布其地址 |
+| `disable-network-policy`      | 布尔值 | `false` | 是否禁用为 Job 创建网络策略   |
+
+#### 使用方法
+
+在 Volcano Job 定义中添加 SVC 插件：
+
+```yaml
+yamlspec:
+  plugins:
+    svc: []   # 使用默认配置
+    # 或者自定义配置
+    # svc: ["--publish-not-ready-addresses=true", "--disable-network-policy=true"]
+```
+
+#### 注意事项
+
+- 您的 Kubernetes 集群需要 DNS 插件（如 CoreDNS）
+- Kubernetes 版本需要 >= v1.14
+- SVC 插件创建的资源（ConfigMap、Service、NetworkPolicy）会随 Job 一起被自动管理
+- 可以通过环境变量或挂载的配置文件访问 Pod 域名信息
+
+如需了解更多关于 SVC 插件的信息，请参考[Volcano SVC 插件指南](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_ssh_plugin.md) 获取更多信息。
+
 ### Gang
 
 {{<figure library="1" src="gang.png" title="Gang plugin">}}
