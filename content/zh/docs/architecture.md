@@ -391,3 +391,7 @@ Network插件是一个专为 Kubernetes 集群设计的网络带宽管理解决�
 | `OfflineLowBandwidth`      | 当在线作业带宽使用超过水位线时，离线作业可使用的最大网络带宽 | 无     | string |
 | `OfflineHighBandwidth`     | 当在线作业带宽使用未达到水位线时，离线作业可使用的最大网络带宽 | 无     | string |
 | `EnableNetworkQoS`         | 是否启用网络 QoS 功能                                        | false  | bool   |
+
+## Helm
+
+如果需要查看完整的Helm参数，可以通过这里[Volcano Helm](https://github.com/volcano-sh/volcano/blob/master/installer/helm/chart/volcano/values.yaml)获取

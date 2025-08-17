@@ -388,3 +388,7 @@ The plugin is implemented based on Linux TC (Traffic Control) and eBPF technolog
 | `OfflineLowBandwidth`      | Maximum network bandwidth that offline jobs can use when online job bandwidth usage exceeds the watermark | None    | string |
 | `OfflineHighBandwidth`     | Maximum network bandwidth that offline jobs can use when online job bandwidth usage is below the watermark | None    | string |
 | `EnableNetworkQoS`         | Whether to enable network QoS functionality                  | false   | bool   |
+
+## Helm
+
+If you need to view the complete Helm parameters, you can obtain them through [Volcano Helm](https://github.com/volcano-sh/volcano/blob/master/installer/helm/chart/volcano/values.yaml).
