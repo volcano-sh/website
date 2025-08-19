@@ -63,7 +63,7 @@ Volcano scheduler is highly scalable because of its composite pattern design. Us
 * Get the ConfigMap named `volcano-scheduler-configmap`.
 
 ```shell
-# kubectl get configmap -nvolcano-system
+# kubectl get configmap -n volcano-system
 NAME                          DATA   AGE
 volcano-scheduler-configmap   1      6d2h
 ```
