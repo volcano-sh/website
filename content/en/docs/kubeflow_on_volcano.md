@@ -82,7 +82,7 @@ $ kubectl -n kubeflow get all
 
 #### deploy Mnist 
 
-Download the official test set provided by Kubuflow.
+Download the official test set provided by Kubeflow.
 
 ```
 git clone https://github.com/kubeflow/examples.git
