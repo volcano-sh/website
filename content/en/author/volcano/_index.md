@@ -38,7 +38,7 @@ interests = []
 [[social]]
   icon = "/img/icon_twitter.svg"
   icon_pack = "fab"
-  link = "https://twitter.com/volcano_sh"
+  link = "https://x.com/volcano_sh"
 
 +++
 <div class="about-volcano">
