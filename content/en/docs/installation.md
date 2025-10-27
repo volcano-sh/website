@@ -117,3 +117,58 @@ job.batch/volcano-admission-init   1/1           28s        6m10s
 ```
 
 After the configuration is complete, you can use Volcano to deploy the AI/ML and big data workloads.
+
+
+## Note
+
+The resources requested for Volcano pods can be customized as follows:
+
+```yaml
+# container resources
+resources:
+  requests:
+    cpu: 500m
+    memory: 500Mi
+  limits:
+    cpu: 2
+    memory: 2Gi
+```
+
+The resource quotas of the volcano-admission component are related to the cluster scale. For details, see Table 1.
+
+Table 1 Recommended requested resources and resource limits for volcano-admission
+
+| Cluster Scale      | CPU Request (m) | CPU Limit (m) | Memory Request (Mi) | Memory Limit (Mi) |
+| ------------------ | --------------- |---------------| ------------------- | ----------------- |
+| 50 nodes           | 200             | 500           | 500                 | 500               |
+| 200 nodes          | 500             | 1000          | 1000                | 2000              |
+| 1000 or more nodes | 1500            | 2500          | 3000                | 4000              |
+
+The resource quotas of volcano-controller and volcano-scheduler are related to the number of cluster nodes and pods. The recommended values are as follows:
+
+- If the number of nodes is less than 100, retain the default configuration. The requested CPUs are 500m, and the limit is 2000m. The requested memory is 500 MiB, and the limit is 2000 MiB.
+- If the number of nodes is greater than 100, increase the requested CPUs by 500m and the requested memory by 1000 MiB each time 100 nodes (10,000 pods) are added. Increase the CPU limit by 1500m relative to the CPU request, and increase the memory limit by 1000Mi relative to the memory request.
+
+Recommended formula for calculating the requested value:
+
+- Requested CPUs: Calculate the number of target nodes multiplied by the number of target pods, perform interpolation search based on the number of nodes in the cluster multiplied by the number of target pods in Table 2, and round up the request value and limit value that are closest to the specifications.
+
+  For example, for 2000 nodes and 20,000 pods, Number of target nodes x Number of target pods = 40 million, which is close to the specification of 700/70,000 (Number of cluster nodes x Number of pods = 49 million). According to the following table, set the requested CPUs to 4000m and the limit value to 5500m.
+
+- Requested memory: It is recommended that 2.4 GiB memory be allocated to every 1000 nodes and 1 GiB memory be allocated to every 10,000 pods. The requested memory is the sum of these two values. (The obtained value may be different from the recommended value in Table 2. You can use either of them.)
+
+  Requested memory = Number of target nodes/1000 * 2.4 GiB + Number of target pods/10,000 * 1 GiB. For example, for 2000 nodes and 20,000 pods, the requested memory is 6.8 GiB (2000/1000 * 2.4 GiB + 20,000/10,000 * 1 GiB).
+
+Table 2 Recommended requested resources and resource limits for volcano-controller and volcano-scheduler
+
+| Nodes/Pods in a Cluster | CPU Request (m) | CPU Limit (m) | Memory Request (Mi) | Memory Limit (Mi) |
+| ----------------------- | --------------- | ------------- | ------------------- | ----------------- |
+| 50/5000                 | 500             | 2000          | 500                 | 2000              |
+| 100/10000               | 1000            | 2500          | 1500                | 2500              |
+| 200/20000               | 1500            | 3000          | 2500                | 3500              |
+| 300/30000               | 2000            | 3500          | 3500                | 4500              |
+| 400/40000               | 2500            | 4000          | 4500                | 5500              |
+| 500/50000               | 3000            | 4500          | 5500                | 6500              |
+| 600/60000               | 3500            | 5000          | 6500                | 7500              |
+| 700/70000               | 4000            | 5500          | 7500                | 8500              |
+
