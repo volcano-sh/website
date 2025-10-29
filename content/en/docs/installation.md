@@ -119,7 +119,7 @@ job.batch/volcano-admission-init   1/1           28s        6m10s
 After the configuration is complete, you can use Volcano to deploy the AI/ML and big data workloads.
 
 
-## Note
+## Resource Requirements
 
 The resources requested for Volcano pods can be customized as follows:
 
@@ -139,14 +139,14 @@ The resource quotas of the volcano-admission component are related to the cluste
 Table 1 Recommended requested resources and resource limits for volcano-admission
 
 | Cluster Scale      | CPU Request (m) | CPU Limit (m) | Memory Request (Mi) | Memory Limit (Mi) |
-| ------------------ | --------------- |---------------| ------------------- | ----------------- |
+| ------------------ | --------------- | ------------- | ------------------- | ----------------- |
 | 50 nodes           | 200             | 500           | 500                 | 500               |
 | 200 nodes          | 500             | 1000          | 1000                | 2000              |
 | 1000 or more nodes | 1500            | 2500          | 3000                | 4000              |
 
 The resource quotas of volcano-controller and volcano-scheduler are related to the number of cluster nodes and pods. The recommended values are as follows:
 
-- If the number of nodes is less than 100, retain the default configuration. The requested CPUs are 500m, and the limit is 2000m. The requested memory is 500 MiB, and the limit is 2000 MiB.
+- If the number of nodes is less than 100, retain the default configuration. The requested CPUs are 500m, and the limit is 2000m. The requested memory is 500Mi, and the limit is 2000 Mi.
 - If the number of nodes is greater than 100, increase the requested CPUs by 500m and the requested memory by 1000 MiB each time 100 nodes (10,000 pods) are added. Increase the CPU limit by 1500m relative to the CPU request, and increase the memory limit by 1000Mi relative to the memory request.
 
 Recommended formula for calculating the requested value:
