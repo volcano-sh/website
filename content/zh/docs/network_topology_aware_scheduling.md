@@ -200,8 +200,16 @@ data:
         config:
           endpoint: https://roce-server:9090
       - source: label
-        enabled: false
-        config: {}
+        enabled: true
+        config:
+          networkTopologyTypes:
+            topologyA2:
+              - nodeLabel: "volcano.sh/tor" # 用于指示节点所属交换机（tor）的标签。如果不同节点上该标签对应的取值相同，则表示这些节点属于同一台交换机（tor）。
+              - nodeLabel: "kubernetes.io/hostname" # Kubernetes 集群中自动添加到每个节点的标准标签，用于标识节点的主机名。
+            topologyA3:
+              - nodeLabel: "volcano.sh/hypercluster" # 用于指示节点所属超集群（hypercluster）的标签。如果不同节点上该标签对应的取值相同，则表示这些节点属于同一个超集群（hypercluster）。
+              - nodeLabel: "volcano.sh/hypernode" # 用于指示节点所属超节点（hypernode）的标签。如果不同节点上该标签对应的取值相同，则表示这些节点属于同一个超节点（hypernode）。
+              - nodeLabel: "kubernetes.io/hostname" # Kubernetes 集群中自动添加到每个节点的标准标签，用于标识节点的主机名。
 ```
 
 ##### 配置选项
@@ -225,9 +233,13 @@ data:
 *   `endpoint`: RoCE API端点。
 *   `token`: RoCE API令牌。
 
-###### Label配置选项（开发中）
+###### Label配置选项
 
-*   标签发现源当前不支持任何配置选项。
+*   `networkTopologyTypes`: 支持不同类型网络拓扑的结构，包括适用于GPU、NPU等的拓扑。以下是NPU集群网络拓扑的示例。
+    * `topologyA2`: A2（昇腾 910B）集群的网络拓扑类型
+        * `nodeLabel`: 对于节点上的标签，当存在多个标签时，超节点会自下而上构建。最底层的标签是`kubernetes.io/hostname`，这是Kubernetes中的标准内置标签键，其上方的标签是`volcano.sh/tor`，用于指示节点所属的交换机。
+    * `topologyA3`: A3（昇腾 910C）集群的网络拓扑类型
+        * `nodeLabel`: 对于节点上的标签，当存在多个标签时，超节点会自下而上构建。最底层的标签是`kubernetes.io/hostname`，这是Kubernetes中的标准内置标签键，其上方的标签为`volcano.sh/hypernode`和`volcano.sh/hypercluster`，`volcano.sh/hypernode`用于指示节点所属的超节点，`volcano.sh/hypercluster`用于指示节点所属的超集群。
 
 ##### 验证
 

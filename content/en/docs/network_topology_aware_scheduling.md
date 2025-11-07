@@ -202,8 +202,16 @@ data:
         config:
           endpoint: https://roce-server:9090
       - source: label
-        enabled: false
-        config: {}
+        enabled: true
+        config:
+          networkTopologyTypes:
+            topologyA2:
+              - nodeLabel: "volcano.sh/tor" # The label that indicates which tor a node belongs to. If the values corresponding to this label on different nodes are the same, it means these nodes belong to the same tor.
+              - nodeLabel: "kubernetes.io/hostname" # A standard label automatically added to each node in a Kubernetes cluster, used to identify the hostname of the node.
+            topologyA3:
+              - nodeLabel: "volcano.sh/hypercluster" # The label that indicates which hypercluster a node belongs to. If the values corresponding to this label on different nodes are the same, it means these nodes belong to the same hypercluster.
+              - nodeLabel: "volcano.sh/hypernode" # The label that indicates which hypernode a node belongs to. If the values corresponding to this label on different nodes are the same, it means these nodes belong to the same hypernode.
+              - nodeLabel: "kubernetes.io/hostname" # A standard label automatically added to each node in a Kubernetes cluster, used to identify the hostname of the node.
 ```
 
 ##### Configuration Options
@@ -227,9 +235,13 @@ data:
 *   `endpoint`: RoCE API endpoint.
 *   `token`: RoCE API token.
 
-###### Label Configuration Options (In development)
+###### Label Configuration Options
 
-*   The label discovery source currently does not support any configuration options.
+*   `networkTopologyTypes`: The structure that supports different types of network topologies, including those for GPU, NPU, etc. Below is an example of the NPU cluster network topology.
+    * `topologyA2`: The network topology type of A2 (Ascend 910B) cluster.
+        * `nodeLabel`: For the labels on a node, when there are multiple labels, hypernodes are constructed from bottom to top. The bottommost label is `kubernetes.io/hostname`, which is a standard built-in label key in Kubernetes, and the label above it is `volcano.sh/tor`, indicates which tor a node belongs to.
+    * `topologyA3`: The network topology type of A3 (Ascend 910C) cluster.
+        * `nodeLabel`: For the labels on a node, when there are multiple labels, hypernodes are constructed from bottom to top. The bottommost label is `kubernetes.io/hostname`, which is a standard built-in label key in Kubernetes, and the label above it is `volcano.sh/hypernode` and `volcano.sh/hypercluster`, `volcano.sh/hypernode` indicates which hypernode a node belongs to, and `volcano.sh/hypercluster` indicates which hypercluster a node belongs to.
 
 ##### Verification
 
