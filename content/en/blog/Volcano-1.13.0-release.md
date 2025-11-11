@@ -1,5 +1,5 @@
 +++
-title =  "Volcano v1.13.0 Available Now"
+title =  "Volcano v1.13 Released: Comprehensive Enhancement of Scheduling Capabilities for LLM Training and Inference"
 description = "New Features: LeaderWorkerSet support for large model inference, Cron VolcanoJob, Label-based HyperNode auto-discovery, Native Ray framework support, HCCL plugin support, Enhanced NodeGroup functionality, ResourceStrategyFit plugin, Colocation decoupled from OS, Custom oversubscription resource names, Kubernetes v1.33 support, and more"
 subtitle = ""
 
@@ -18,23 +18,24 @@ tags = ["Practice"]
 summary = "New Features: LeaderWorkerSet support for large model inference, Cron VolcanoJob, Label-based HyperNode auto-discovery, Native Ray framework support, HCCL plugin support, Enhanced NodeGroup functionality, ResourceStrategyFit plugin, Colocation decoupled from OS, Custom oversubscription resource names, Kubernetes v1.33 support, and more"
 
 # Add menu entry to sidebar.
-linktitle = "Volcano v1.13.0 Available Now"
+linktitle = "Volcano v1.13 Released: Comprehensive Enhancement of Scheduling Capabilities for LLM Training and Inference"
 [menu.posts]
 parent = "tutorials"
 weight = 5
 +++
 
-# Volcano v1.13.0 Released: Continued Innovation in AI and Batch Computing
+# Volcano v1.13 Released: Comprehensive Enhancement of Scheduling Capabilities for LLM Training and Inference
 
-Welcome to the v1.13.0 release of Volcano! 🚀 🎉 📣
+On September 29, 2025 (Beijing Time), <a href="https://github.com/volcano-sh/volcano/releases/tag/v1.13.0">Volcano v1.13</a>[1] was officially released. This update brings functional enhancements across multiple areas, providing users with a more comprehensive cloud-native batch computing solution.
 
-As the de facto standard in cloud-native batch computing, Volcano continues to advance capabilities for AI, Big Data, and High-Performance Computing (HPC) scenarios, providing users with robust scheduling and resource management features. This v1.13.0 release brings a series of significant enhancements that have been long-awaited by community users, covering AI training and inference, resource management and scheduling, colocation capabilities, and more.
+Key highlights of the new version include: new support for LWS in large model inference; new scheduled job management capabilities; more flexible network topology discovery mechanisms; and enhanced compatibility with mainstream AI computing frameworks. Significant improvements have also been made to the colocation architecture, enhancing deployment flexibility in different environments. These enhancements collectively improve Volcano[2]'s practicality and usability in complex workload management, aiming to build a more efficient and stable large-scale computing platform that provides critical scheduling support for AI-era infrastructure.
 
-## **Release Highlights**
+## Release Highlights
 
 The v1.13.0 release includes the following major updates:
 
 **AI Training and Inference Enhancements**
+
 - [Support LeaderWorkerSet for Large Model Inference Scenarios](#support-leaderworkerset-for-large-model-inference-scenarios)
 - [Introduce Cron VolcanoJob](#introduce-cron-volcanojob)
 - [Support Label-based HyperNode Auto-Discovery](#support-label-based-hypernode-auto-discovery)
@@ -42,12 +43,14 @@ The v1.13.0 release includes the following major updates:
 - [Introduce HCCL Plugin Support](#introduce-hccl-plugin-support)
 
 **Resource Management and Scheduling Enhancements**
+
 - [Introduce ResourceStrategyFit Plugin](#introduce-resourcestrategyfit-plugin)
   - [Independent Scoring Strategy by Resource Type](#independent-scoring-strategy-by-resource-type)
   - [Scarce Resource Avoidance (SRA)](#scarce-resource-avoidance-sra)
 - [Enhance NodeGroup Functionality](#enhance-nodegroup-functionality)
 
 **Colocation Enhancements**
+
 - [Decouple Colocation from OS](#decouple-colocation-from-os)
 - [Support Custom OverSubscription Resource Names](#support-custom-oversubscription-resource-names)
 
@@ -344,9 +347,9 @@ Volcano v1.13.0 is not just a technological advancement but a continuation of in
 
 ## **Acknowledgments**
 
-Volcano v1.13.0 includes contributions from 39 community members. Sincerely thanks to all contributors:
+Volcano v1.13.0 includes contributions from 36 community members. Sincerely thanks to all contributors:
 
-| @ElectricFish7 | @zhifei92       | @junzebao        |
+| @ElectricFish7 | @philandstuff   | @junzebao        |
 | :------------- | :-------------- | :--------------- |
 | @ShuhanYan     | @GautamBytes    | @coldzerofear    |
 | @houyuting     | @lhlxc          | @cyf-2002        |

@@ -1,6 +1,6 @@
 +++
-title =  "Volcano v1.13.0正式发布"
-description = "新增特性：支持LeaderWorkerSet用于大模型推理场景、引入Cron VolcanoJob、支持基于标签的HyperNode自动发现、新增原生Ray框架支持、引入HCCL插件支持、增强NodeGroup功能、引入ResourceStrategyFit插件、混部能力与操作系统解耦、支持自定义超卖资源名称、支持Kubernetes v1.33等"
+title =  "Volcano v1.13 重磅发布！大模型训练与推理等调度能力全面增强"
+description = "新增特性：支持LeaderWorkerSet用于大模型推理场景、新增Cron VolcanoJob、支持基于标签的HyperNode自动发现、新增原生Ray框架支持、新增HCCL插件支持、增强NodeGroup功能、引入ResourceStrategyFit插件、混部能力与操作系统解耦、支持自定义超卖资源名称、支持Kubernetes v1.33等"
 subtitle = ""
 
 date = 2025-09-29
@@ -15,39 +15,42 @@ type = "posts"  # Do not modify.
 authors = ["volcano"]
 
 tags = ["Practice"]
-summary = "新增特性：支持LeaderWorkerSet用于大模型推理场景、引入Cron VolcanoJob、支持基于标签的HyperNode自动发现、新增原生Ray框架支持、引入HCCL插件支持、增强NodeGroup功能、引入ResourceStrategyFit插件、混部能力与操作系统解耦、支持自定义超卖资源名称、支持Kubernetes v1.33等"
+summary = "新增特性：支持LeaderWorkerSet用于大模型推理场景、新增Cron VolcanoJob、支持基于标签的HyperNode自动发现、新增原生Ray框架支持、新增HCCL插件支持、增强NodeGroup功能、引入ResourceStrategyFit插件、混部能力与操作系统解耦、支持自定义超卖资源名称、支持Kubernetes v1.33等"
 
 # Add menu entry to sidebar.
-linktitle = "Volcano v1.13.0正式发布"
+linktitle = "Volcano v1.13 重磅发布！大模型训练与推理等调度能力全面增强"
 [menu.posts]
 parent = "tutorials"
 weight = 5
 +++
 
-# Volcano v1.13.0 正式发布：持续深化AI与批量计算能力
+# Volcano v1.13 重磅发布！大模型训练与推理等调度能力全面增强
 
-欢迎使用Volcano v1.13.0版本！🚀 🎉 📣
+北京时间2025年9月29日，<a href="https://github.com/volcano-sh/volcano/releases/tag/v1.13.0">Volcano v1.13 版本</a>[1]正式发布。本次更新在多方面进行了功能增强，为用户提供更完善的云原生批量计算解决方案。
 
-作为云原生批量计算领域的事实标准，Volcano持续深耕AI、大数据及高性能计算等场景，为用户提供强大的调度和资源管理能力。本次v1.13.0版本带来了社区用户期待已久的一系列重要增强功能，涵盖AI训练与推理、资源管理与调度、混部能力等多个方面。
+新版本主要亮点包括：新增对大模型推理LWS的支持；新增定时任务管理能力；提供更灵活的网络拓扑发现机制，并增强对主流AI计算框架的兼容性。同时在混部架构上实现了重要改进，提升了在不同环境中的部署灵活性。这些增强功能共同提升了Volcano[2]在复杂工作负载管理中的实用性和易用性，旨在打造更高效、更稳定的大规模计算平台，为AI时代的基础设施提供关键调度支撑。
 
-## **版本亮点**
+## 版本亮点
 
 v1.13.0版本的主要更新包括：
 
 **AI训练与推理增强**
+
 - [支持LeaderWorkerSet用于大模型推理场景](#支持leaderworkerset用于大模型推理场景)
-- [引入Cron VolcanoJob](#引入cron-volcanojob)
+- [新增Cron VolcanoJob](#新增cron-volcanojob)
 - [支持基于标签的HyperNode自动发现](#支持基于标签的hypernode自动发现)
 - [新增原生Ray框架支持](#新增原生ray框架支持)
-- [引入HCCL插件支持](#引入hccl插件支持)
+- [新增HCCL插件支持](#新增hccl插件支持)
 
 **资源管理与调度增强**
+
 - [引入ResourceStrategyFit插件](#引入resourcestrategyfit插件)
   - [按资源类型独立评分策略](#按资源类型独立评分策略)
   - [稀缺资源避让(SRA)](#稀缺资源避让sra)
 - [增强NodeGroup功能](#增强nodegroup功能)
 
 **混部能力增强**
+
 - [混部能力与操作系统解耦](#混部能力与操作系统解耦)
 - [支持自定义超卖资源名称](#支持自定义超卖资源名称)
 
@@ -65,7 +68,7 @@ v1.13.0版本的主要更新包括：
 
 感谢社区开发者：@[JesseStutler](https://github.com/JesseStutler)
 
-## 引入Cron VolcanoJob
+## 新增Cron VolcanoJob
 
 本次版本引入了对Cron Volcano Job的支持。用户现在可以根据预定义的调度计划定期创建和运行Volcano Job，类似于Kubernetes原生的CronJob，以实现批量计算任务(如AI和大数据)的定期执行。详细功能如下：
 
@@ -160,7 +163,7 @@ labels:
 
 使用文档：[Ray Plugin User Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_ray_plugin.md)。
 
-## 引入HCCL插件支持
+## 新增HCCL插件支持
 
 新版本为Volcano Job添加了HCCL Rank插件(`hcclrank`)，用于在分布式任务中自动为Pod分配HCCL Rank。这包括：
 
@@ -344,9 +347,9 @@ Volcano v1.13.0不仅是技术的提升，更是云原生批量计算领域的�
 
 ## **致谢**
 
-Volcano v1.13.0包含了39位社区成员的贡献。衷心感谢所有贡献者：
+Volcano v1.13.0包含了36位社区成员的贡献。衷心感谢所有贡献者：
 
-| @ElectricFish7 | @zhifei92       | @junzebao        |
+| @ElectricFish7 | @philandstuff   | @junzebao        |
 | :------------- | :-------------- | :--------------- |
 | @ShuhanYan     | @GautamBytes    | @coldzerofear    |
 | @houyuting     | @lhlxc          | @cyf-2002        |
