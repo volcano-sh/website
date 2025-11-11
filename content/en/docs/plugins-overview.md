@@ -8,11 +8,10 @@ draft = false  # Is this a draft? true/false
 toc = false  # Show table of contents? true/false
 type = "docs"  # Do not modify.
 
-linktitle = "Plugins"
+linktitle = "Plugins Overview"
 [menu.docs]
-  parent = "scheduler"
-  weight = 3
-  identifier = "plugins"
+  parent = "plugins"
+  weight = 0
 +++
 
 Volcano scheduler provides a rich set of plugins to support various scheduling scenarios. Each plugin implements specific scheduling algorithms and policies.
