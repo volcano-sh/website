@@ -28,8 +28,6 @@ weight = 5
 
 On September 29, 2025 (Beijing Time), <a href="https://github.com/volcano-sh/volcano/releases/tag/v1.13.0">Volcano v1.13</a>[1] was officially released. This update brings functional enhancements across multiple areas, providing users with a more comprehensive cloud-native batch computing solution.
 
-Key highlights of the new version include: new support for LWS in large model inference; new scheduled job management capabilities; more flexible network topology discovery mechanisms; and enhanced compatibility with mainstream AI computing frameworks. Significant improvements have also been made to the colocation architecture, enhancing deployment flexibility in different environments. These enhancements collectively improve Volcano[2]'s practicality and usability in complex workload management, aiming to build a more efficient and stable large-scale computing platform that provides critical scheduling support for AI-era infrastructure.
-
 ## Release Highlights
 
 The v1.13.0 release includes the following major updates:
