@@ -84,12 +84,6 @@
   identifier = "scheduler"
 
 [[docs]]
-  name = "Plugins"
-  parent = "scheduler"
-  weight = 3
-  identifier = "plugins"
-
-[[docs]]
   name = "CLI"
   weight = 7
   identifier = "cli"
