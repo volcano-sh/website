@@ -152,7 +152,7 @@ Tdm的全称是Time Division Multiplexing。在一些场景中，一些节点既
 
 
 
-#### Numa-aware
+### Numa-aware
 
 #### 简介
 
