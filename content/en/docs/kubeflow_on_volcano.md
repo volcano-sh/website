@@ -2,7 +2,7 @@
 title =  "Kubeflow on Volcano"
 
 date = 2021-06-29
-lastmod = 2021-06-29
+lastmod = 2025-07-20
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -15,8 +15,6 @@ linktitle = "Kubeflow"
   weight = 3
 
 +++
-
-
 
 
 
@@ -39,9 +37,11 @@ What scenarios can we use Kubeflow for：
 
 ### Kubeflow on Volcano
 
+#### TFJob
+
 Volcano is an enhanced high performance computing task batch processing system built on Kubernetes. As a platform for high performance computing scenarios, it makes up for Kubernetes' lack of basic capabilities in machine learning, deep learning, HPC, and big data computing scenarios, including gang-schedule scheduling capability, computational task queue management, task-topology, and GPU affinity scheduling. In addition, Volcano has enhanced the batch creation and life cycle management of computing tasks, fair-share, binpack scheduling and other aspects on the basis of the native Kubernetes capability. Volcano has fully solved the problem of distributed training in Kubeflow mentioned above.
 
-#### download kfctl
+##### download kfctl
 
 First of all, you need to download kfctl, you can choose the appropriate compressed package file according to the system [1].
 
@@ -50,9 +50,7 @@ $ tar -xvf kfctl_v1.0.2-0-ga476281_linux.tar.gz
 $ sudo mv ./kfctl /usr/local/bin/kfctl
 ```
 
-
-
-#### Configure environment variables
+##### Configure environment variables
 
 ```
 $ export PATH= $PATH:"<path-to-kfctl>"
@@ -62,9 +60,7 @@ $ export KF_DIR=${BASE_DIR}/${KF_NAME}
 $ export CONFIG_URI="https://raw.githubusercontent.com/kubeflow/manifests/v1.0-branch/kfdef/kfctl_k8s_istio.v1.0.2.yaml"
 ```
 
-
-
-#### Install Kubeflow
+##### Install Kubeflow
 
 ```
 $ mkdir -p ${KF_DIR}
@@ -78,9 +74,7 @@ Confirm the installation results with the following instructions.
 $ kubectl -n kubeflow get all 
 ```
 
-
-
-#### deploy Mnist 
+##### deploy Mnist 
 
 Download the official test set provided by Kubeflow.
 
@@ -88,9 +82,7 @@ Download the official test set provided by Kubeflow.
 git clone https://github.com/kubeflow/examples.git
 ```
 
-
-
-#### Start using Notebook
+##### Start using Notebook
 
 External interface service is provided, where the nodes under the cluster need to be bound to public network IP. If Notebook is not installed, please use pip3 to install it first.
 
@@ -106,9 +98,7 @@ $ jupyter notebook --allow-root
 
 Access your-IP：30200/,Enter the configuration password to enter the Notebook.
 
-
-
-#### Run the official instance on the Notebook[2]
+##### Run the official instance on the Notebook
 
 1.Open Notebook and deploy TFJob。Open the notebook `mnist/mnist_vanilla_k8s.ipynb` ,Follow the guidelines to deploy a distributed TF Job.
 
@@ -244,3 +234,103 @@ spec:
 ```
 kubectl apply -f mnist.yaml
 ```
+
+#### Gang Scheduling
+
+Gang Scheduling is a scheduling strategy primarily used for distributed/parallel tasks. It ensures that a group of Pods (typically belonging to the same distributed training task) either start together or not at all, avoiding partial node execution that could lead to training failures or resource waste.
+
+Kubeflow supports gang scheduling through Volcano. You must first install the Volcano scheduler in your cluster as an auxiliary scheduler for Kubernetes and configure the Operator to select the scheduler name for gang scheduling, as shown below:
+
+- training-operator
+
+```diff
+diff...
+    spec:
+      containers:
+        - command:
+            - /manager
++           - --gang-scheduler-name=volcano
+          image: kubeflow/training-operator
+          name: training-operator
+...
+```
+
+- mpi-operator
+
+```diff
+diff...
+    spec:
+      containers:
+      - args:
++       - --gang-scheduling=volcano
+        - -alsologtostderr
+        - --lock-namespace=mpi-operator
+        image: mpioperator/mpi-operator:0.4.0
+        name: mpi-operator
+...
+```
+
+Note: The Volcano scheduler implements gang-scheduling with Kubeflow Operators through [PodGroup](https://volcano.sh/en/docs/podgroup/), and the Operator automatically creates the corresponding PodGroup for the job.
+
+For more detailed information, please check the [link](https://www.kubeflow.org/docs/components/trainer/legacy-v1/user-guides/job-scheduling/).
+
+#### Using Arena
+
+Arena is a command-line tool that simplifies the submission and management of AI training and batch jobs on Kubernetes (including Volcano).
+
+##### Submit a Volcano Job
+
+```
+$ arena submit volcanojob --name=demo
+
+configmap/demo-volcanojob created
+configmap/demo-volcanojob labeled
+job.batch.volcano.sh/demo created
+INFO[0003] The Job demo has been submitted successfully
+INFO[0003] You can run `arena get demo --type volcanojob` to check the job status
+```
+
+You can specify more parameters:
+
+```
+$ arena submit volcanojob --name demo12 --taskImages busybox,busybox  --taskReplicas 2
+```
+
+##### Get Volcano Job Details
+
+```
+arena get --type volcanojob demo12
+
+STATUS: SUCCEEDED
+NAMESPACE: default
+TRAINING DURATION: 2m
+
+NAME    STATUS     TRAINER     AGE  INSTANCE         NODE
+demo12  SUCCEEDED  VOLCANOJOB  2m   demo12-task-0-0  11.245.101.184
+demo12  SUCCEEDED  VOLCANOJOB  2m   demo12-task-0-1  11.245.101.184
+demo12  SUCCEEDED  VOLCANOJOB  2m   demo12-task-1-0  11.245.101.184
+demo12  SUCCEEDED  VOLCANOJOB  2m   demo12-task-1-1  11.245.101.184
+```
+
+It created two tasks, each with 2 replicas.
+
+##### Delete a Volcano Job
+
+```
+$ arena delete --type=volcanojob demo
+
+job.batch.volcano.sh "demo" deleted
+configmap "demo-volcanojob" deleted
+INFO[0000] The Job demo has been deleted successfully
+```
+
+##### View All Volcano Jobs
+
+```
+$ arena list
+
+NAME     STATUS   TRAINER     AGE  NODE
+demo     RUNNING  VOLCANOJOB  2m   11.245.101.184
+```
+
+For more detailed information, please check the [link](https://github.com/kubeflow/arena/blob/master/docs/training/volcanojob/volcanojob.md).
