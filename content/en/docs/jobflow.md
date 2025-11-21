@@ -86,7 +86,7 @@ metadata:
   name: test
   namespace: default
 spec:
-  jobRetainPolicy: delete   # After jobflow runs, keep the generated job. Otherwise, delete it.
+  jobRetainPolicy: delete   # After jobflow runs, delete the generated jobs.
   flows:
     - name: a
     - name: b
