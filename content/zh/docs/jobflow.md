@@ -73,7 +73,7 @@ spec:
 
 这个JobTemplate定义了一个任务模版，使用默认（default）队列，定义了一个名字叫default-nginx的任务，使用nginx:1.14.2这个镜像，执行sh -c  sleep 10s这个命令。
 
-##  JobFlow
+## JobFlow
 
  JobFlow (jf) 则定义了一组作业的运行流程和依赖关系，它可以引用多个 JobTemplate，根据指定的依赖关系按顺序创建和执行 Volcano 作业。JobFlow 支持多种依赖类型(如 HTTP、TCP、任务状态等)，并且可以在引用 JobTemplate 时通过 patch 机制对其进行修改。
 
