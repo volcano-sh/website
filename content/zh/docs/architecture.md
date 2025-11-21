@@ -33,7 +33,7 @@ Volcano 的分层架构设计使其能够无缝对接 Spark、TensorFlow、PyTor
 
 Volcano由以下几个组件构成：
 
-- **Scheduler**：通过一系列action和plugin调度Job并匹配最适节点，区别于Kubernetes原生调度器，支持多种Job专用调度算法
+- **Scheduler**：通过一系列 action 和 plugin 调度 Job 并匹配最适节点，区别于Kubernetes原生调度器，支持多种Job专用调度算法
 - **Controller**：管理CRD资源生命周期，由多个控制器组成
 - **Admission**：负责CRD API资源的校验工作
 - **Vcctl**：Volcano的命令行客户端工具
