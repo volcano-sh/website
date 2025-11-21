@@ -27,7 +27,7 @@ HyperNode是Volcano中用于表示网络拓扑结构的自定义资源（CRD）�
 ### 样例
 
 ```yaml
-yamlapiVersion: topology.volcano.sh/v1alpha1
+apiVersion: topology.volcano.sh/v1alpha1
 kind: HyperNode
 metadata:
   name: rack-1
