@@ -27,7 +27,7 @@ HyperNode is a Custom Resource Definition (CRD) in Volcano used to represent net
 ### Example
 
 ```yaml
-yamlapiVersion: topology.volcano.sh/v1alpha1
+apiVersion: topology.volcano.sh/v1alpha1
 kind: HyperNode
 metadata:
   name: rack-1
