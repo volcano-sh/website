@@ -96,17 +96,11 @@ Indicates the total number of nodes contained in the current HyperNode. This is 
 
 The HyperNode resource undergoes the following validations during creation and updates:
 
-1. Selector Validation
-
-   :
-
+1. **Selector Validation**:
    - Must specify one of `exactMatch`, `regexMatch`, or `labelMatch`
    - Cannot specify multiple selector types simultaneously
 
-2. Member Type Restrictions
-
-   :
-
+2. **Member Type Restrictions**:
    - When the member type is `HyperNode`, only the `exactMatch` selector can be used
    - `regexMatch` and `labelMatch` selectors are only applicable when the member type is `Node`
 
