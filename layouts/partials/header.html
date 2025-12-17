@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic {{ .Site.Data.academic.version }}">
-  {{ .Hugo.Generator }}
+  {{ hugo.Generator }}
 
   {{ $scr := .Scratch }}
 
@@ -115,15 +115,15 @@
     <link rel="stylesheet" href="{{ $css_bundle.RelPermalink }}">
   {{ end }}
 
-  {{ if not .Site.IsServer }}
-  {{ if .Site.GoogleAnalytics }}
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{ .Site.GoogleAnalytics }}"></script>
+  {{ if not hugo.IsServer }}
+  {{ if site.Config.Services.GoogleAnalytics.ID }}
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.Config.Services.GoogleAnalytics.ID }}"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', '{{ .Site.GoogleAnalytics }}');
+      gtag('config', '{{ site.Config.Services.GoogleAnalytics.ID }}');
     </script>
     {{ if ($scr.Get "use_cdn") }}
     {{ printf "<script async src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\"></script>" (printf $js.autotrack.url $js.autotrack.version) $js.autotrack.sri | safeHTML }}
@@ -131,9 +131,10 @@
   {{ end }}
   {{ end }}
 
-  {{ if or .Site.RSSLink .RSSLink }}
-  <link rel="alternate" href="{{ .RSSLink | default .Site.RSSLink  }}" type="application/rss+xml" title="{{ .Site.Title }}">
-  <link rel="feed" href="{{ .RSSLink | default .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
+  {{ $rssLink := absURL "index.xml" }}
+  {{ if $rssLink }}
+  <link rel="alternate" href="{{ $rssLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
+  <link rel="feed" href="{{ $rssLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
   {{ end }}
 
   {{ partial "favicons" . }}

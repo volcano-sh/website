@@ -1,0 +1,110 @@
+{{ $current_page := . }} {{ $menu_name := (path.Base (path.Split .Path).Dir) }}
+{{ with (index .Site.Menus $menu_name) }} {{ else }} {{/* Silently skip missing
+menus */}} {{ end }}
+
+<form class="docs-search d-flex align-items-center">
+  <button
+    class="btn docs-toggle d-md-none p-0 mr-3"
+    type="button"
+    data-toggle="collapse"
+    data-target="#docs-nav"
+    aria-controls="docs-nav"
+    aria-expanded="false"
+    aria-label="Toggle section navigation"
+  >
+    <span><i class="fas fa-bars"></i></span>
+  </button>
+
+  {{ if eq $.Site.Params.search.engine 1 }} <input name="q" type="search"
+  class="form-control" id="search-query" placeholder="{{ i18n
+  "search_placeholder" }}" autocomplete="off"> {{ end }}
+</form>
+
+<nav class="collapse docs-links" id="docs-nav">
+  {{ with (index .Site.Menus $menu_name) }} {{ range (index $.Site.Menus
+  $menu_name).ByWeight }}
+  <div
+    class="docs-toc-item{{ if $current_page.IsMenuCurrent $menu_name . }} active{{ end }}"
+  >
+    <a
+      class="docs-toc-link"
+      {{
+      if
+      .URL
+      }}href="{{ .URL }}"
+      {{else
+      if
+      .HasChildren
+      }}href="{{(index .Children 0).URL }}"
+      {{end}}
+      style="width: 77%; float: left; padding-right: 0px"
+      >{{ .Name }}</a
+    >
+    <div
+      style="
+        width: 80px;
+        height: 43px;
+        position: relative;
+        left: calc(100% - 80px);
+      "
+    >
+      <div
+        style="
+          width: 0px;
+          height: 0px;
+          border: 5px solid #fff;
+          border-top-color: rgba(0, 0, 0, 0.65);
+          position: relative;
+          top: 18px;
+          left: calc(50% - 0px);
+        "
+        onclick="change({{.Weight}},{{.Name}})"
+        class="change_dot"
+        id="{{.Name}}"
+      ></div>
+    </div>
+    {{- if .HasChildren }}
+    <ul class="nav docs-sidenav box" style="display: block" id="{{.Weight}}">
+      {{ range .Children }}
+      <li
+        {{
+        if
+        $current_page.IsMenuCurrent
+        $menu_name
+        .
+        }}class="active"
+        {{
+        end
+        }}
+      >
+        <a href="{{ .URL }}">{{ .Name }}</a>
+      </li>
+      {{ end }}
+    </ul>
+    {{ end }}
+  </div>
+  {{ end }} {{ end }}
+</nav>
+<script type="text/javascript">
+  function change(aaa, name) {
+    console.log(2222);
+    var ull = document.getElementsByClassName("box");
+    var dots = document.getElementsByClassName("change_dot");
+    // console.log(ull);
+    // console.log(ull);
+    for (var i = 0; i <= ull.length + 1; i++) {
+      if (ull[i].style.display == "block" && ull[i].id == aaa) {
+        ull[i].style.display = "none";
+        dots[i].style.borderRightColor = "rgba(0, 0, 0, .65)";
+        //console.log(dots[i].style.borderTopColor);
+        dots[i].style.borderTopColor = "#fff";
+        dots[i].style.left = "calc(50% - 2px)";
+      } else if ((ull[i].style.display = "none" && ull[i].id == aaa)) {
+        ull[i].style.display = "block";
+        dots[i].style.borderTopColor = "rgba(0, 0, 0, .65)";
+        dots[i].style.borderRightColor = "#fff";
+        dots[i].style.left = "calc(50% - 0px)";
+      }
+    }
+  }
+</script>
