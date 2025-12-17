@@ -7,7 +7,7 @@ date = 2025-02-07
 lastmod = 2025-02-07
 datemonth = "Feb"
 dateyear = "2025"
-dateday = 07
+dateday = 7
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -96,16 +96,16 @@ kind: HyperNode
 metadata:
   name: s0
 spec:
-  tier: 1  # Lower tiers indicate higher communication efficiency
+  tier: 1 # Lower tiers indicate higher communication efficiency
   members: # List of child nodes
-  - type: Node  # Child node type
-    selector:
-      exactMatch: # Exact match
-        name: node-0
-  - type: Node
-    selector:
-      regexMatch: # Regex match
-        pattern: node-[01]
+    - type: Node # Child node type
+      selector:
+        exactMatch: # Exact match
+          name: node-0
+    - type: Node
+      selector:
+        regexMatch: # Regex match
+          pattern: node-[01]
 ```
 
 **Non-Leaf HyperNode Example:**
@@ -116,16 +116,16 @@ kind: HyperNode
 metadata:
   name: s6
 spec:
-  tier: 3  # HyperNode tier
+  tier: 3 # HyperNode tier
   members: # List of child nodes
-  - type: HyperNode  # Child node type
-    selector:
-      exactMatch: # Exact match
-        name: s4
-  - type: HyperNode
-    selector:
-      exactMatch: # Exact match
-        name: s5
+    - type: HyperNode # Child node type
+      selector:
+        exactMatch: # Exact match
+          name: s4
+    - type: HyperNode
+      selector:
+        exactMatch: # Exact match
+          name: s5
 ```
 
 #### **Network Topology-Aware Scheduling Strategy**
@@ -133,8 +133,8 @@ spec:
 Volcano Job and PodGroup can set topology constraints via the `networkTopology` field, supporting the following configurations:
 
 - **mode:** Supports `hard` and `soft` modes.
-    - `hard`: Enforces strict constraints, requiring tasks within a job to be deployed within the same HyperNode.
-    - `soft`: Prefers deploying tasks within the same HyperNode but allows flexibility.
+  - `hard`: Enforces strict constraints, requiring tasks within a job to be deployed within the same HyperNode.
+  - `soft`: Prefers deploying tasks within the same HyperNode but allows flexibility.
 - **highestTierAllowed:** Used with `hard` mode to specify the maximum HyperNode tier a job can span.
 
 For example, the following configuration restricts a job to HyperNodes of tier 2 or lower (e.g., s4 or s5), otherwise, the job remains in a Pending state:
@@ -175,9 +175,9 @@ Volcano’s elastic hierarchical queues offer the following key features to meet
 1. **Configurable Queue Hierarchies:** Users can create multi-level queues in a tree structure, each with independent resource quotas and priorities.
 2. **Cross-Level Resource Sharing and Reclamation:** Idle resources in child queues can be shared with sibling queues and reclaimed when needed.
 3. **Fine-Grained Resource Quota Management:** Each queue can set parameters like:
-    - `capability`: Maximum resource capacity.
-    - `deserved`: Fair share of resources; excess can be reclaimed.
-    - `guarantee`: Reserved resources, ensuring minimum guarantees.
+   - `capability`: Maximum resource capacity.
+   - `deserved`: Fair share of resources; excess can be reclaimed.
+   - `guarantee`: Reserved resources, ensuring minimum guarantees.
 4. **Flexible Preemption Policies:** Supports priority-based preemption to ensure high-priority tasks receive resources promptly.
 
 #### **Hierarchical Queue Example**
@@ -316,6 +316,7 @@ Users can configure policies to restart only failed Pods or their associated Tas
 
 - **Restarting a Single Pod:**  
   When a specific Pod fails, only that Pod is restarted, leaving other running tasks unaffected.
+
   ```yaml
   policies:
     - event: PodFailed
@@ -335,7 +336,7 @@ Users can configure policies to restart only failed Pods or their associated Tas
 Pod failures may be caused by transient issues (e.g., network fluctuations or hardware problems). Volcano allows users to set timeout periods for failure recovery actions. If the Pod recovers within the timeout period, no restart is performed, avoiding unnecessary intervention.
 
 - **Example Configuration:**
-If a Pod fails and is restarted but does not recover within 10 minutes, the entire Job is restarted.
+  If a Pod fails and is restarted but does not recover within 10 minutes, the entire Job is restarted.
 
 ```yaml
 policies:
@@ -351,7 +352,7 @@ policies:
 When a Pod remains in the Pending state for an extended period due to insufficient resources or topological constraints, users can set a timeout for the Pending event. If the Pod does not start running after the timeout, the entire Job can be terminated to avoid resource waste.
 
 - **Example Configuration:**  
-If a Pod remains in the Pending state for more than 10 minutes, the Job will be terminated.
+  If a Pod remains in the Pending state for more than 10 minutes, the Job will be terminated.
 
 ```yaml
 policies:
