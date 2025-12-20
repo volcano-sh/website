@@ -87,24 +87,22 @@ menus */}} {{ end }}
 </nav>
 <script type="text/javascript">
   function change(aaa, name) {
-    console.log(2222);
     var ull = document.getElementsByClassName("box");
     var dots = document.getElementsByClassName("change_dot");
-    // console.log(ull);
-    // console.log(ull);
-    for (var i = 0; i <= ull.length + 1; i++) {
-      if (ull[i].style.display == "block" && ull[i].id == aaa) {
-        ull[i].style.display = "none";
-        dots[i].style.borderRightColor = "rgba(0, 0, 0, .65)";
-        //console.log(dots[i].style.borderTopColor);
-        dots[i].style.borderTopColor = "#fff";
-        dots[i].style.left = "calc(50% - 2px)";
-      } else if ((ull[i].style.display = "none" && ull[i].id == aaa)) {
-        ull[i].style.display = "block";
-        dots[i].style.borderTopColor = "rgba(0, 0, 0, .65)";
-        dots[i].style.borderRightColor = "#fff";
-        dots[i].style.left = "calc(50% - 0px)";
+    for (var i = 0; i < ull.length; i++) {
+      if (ull[i].id == aaa) {
+        if (ull[i].style.display == "block") {
+          ull[i].style.display = "none";
+          dots[i].style.borderRightColor = "rgba(0, 0, 0, .65)";
+          dots[i].style.borderTopColor = "#fff";
+          dots[i].style.left = "calc(50% - 2px)";
+        } else {
+          ull[i].style.display = "block";
+          dots[i].style.borderTopColor = "rgba(0, 0, 0, .65)";
+          dots[i].style.borderRightColor = "#fff";
+          dots[i].style.left = "calc(50% - 0px)";
+        }
+        break;
       }
     }
   }
-</script>
