@@ -56,43 +56,43 @@ kubectl get vcjob
 ### Key Fields
 * schedule
 
-Required. The cron schedule string for Volcano Job execution. Uses standard cron format.
+    Required. The cron schedule string for Volcano Job execution. Uses standard cron format.
 
 * timeZone
 
-Optional. The time zone name for the schedule. Defaults to the local time zone of the kube-controller-manager.
+    Optional. The time zone name for the schedule. Defaults to the local time zone of the kube-controller-manager.
 
 * concurrencyPolicy
 
-Optional. Specifies how to manage concurrent executions of jobs created by the Cron VolcanoJob. Must be one of the following:
+    Optional. Specifies how to manage concurrent executions of jobs created by the Cron VolcanoJob. Must be one of the following:
+    *   Allow (default): Allow concurrent runs  
+    *   Forbid: Skip new run if previous job hasn‘t completed  
+    *   Replace: Cancel currently running job and start new
 
-<div style="margin-left: 20px;">
-
-- llow (default): Allow concurrent runs  
-- Forbid: Skip new run if previous job hasn't completed  
-- Replace: Cancel currently running job and start new
-
-</div>
+<!-- -->
 
 * startingDeadlineSeconds
 
-Optional. Deadline in seconds for starting the job if it misses its scheduled time.
+    Optional. Deadline in seconds for starting the job if it misses its scheduled time.
 
 * suspend
 
-Optional. If set to true, all subsequent executions will be suspended.
+    Optional. If set to true, all subsequent executions will be suspended.
 
 * jobTemplate
 
-Required. The template for creating Volcano Jobs. Contains the complete Volcano Job specification.
+    Required. The template for creating Volcano Jobs. Contains the complete Volcano Job specification.
 
 * successfulJobsHistoryLimit
 
-Optional. Number of successful finished jobs to retain. Defaults to 3.
+    Optional. Number of successful finished jobs to retain. Defaults to 3.
 
 * failedJobsHistoryLimit
 
-Optional. Number of failed finished jobs to retain. Defaults to 1.
+    Optional. Number of failed finished jobs to retain. Defaults to 1.
+
+<!-- -->
+
 ### Usage
 * Periodic Model Training
 

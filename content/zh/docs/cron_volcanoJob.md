@@ -56,43 +56,43 @@ kubectl get vcjob
 ### 关键字段
 * schedule
 
-必需。用于volcano job 执行的 cron 计划字符串。使用标准 cron 格式。
+    必需。用于volcano job 执行的 cron 计划字符串。使用标准 cron 格式。
 
 * timeZone
 
-可选。调度计划的时区名称。默认为 kube-controller-manager 的本地时区。
+    可选。调度计划的时区名称。默认为 kube-controller-manager 的本地时区。
 
-* concurrencyPolicy
+*   concurrencyPolicy
 
-可选。指定如何管理 Cron VolcanoJob 创建的 job 的并发执行。为下列规则中的一种：
+    可选。指定如何管理 Cron VolcanoJob 创建的 job 的并发执行。为下列规则中的一种：
+    *   Allow（默认）：允许并发运行
+    *   Forbid：禁止并发运行，跳过新周期的执行
+    *   Replace：取消当前运行的 job，并用新的 job 替换它
 
-<div style="margin-left: 20px;">
-
-- Allow（默认）：允许并发运行  
-- Forbid：禁止并发运行，跳过新周期的执行  
-- Replace：取消当前运行的 job，并用新的 job 替换它
-
-</div>
+<!-- -->
 
 * startingDeadlineSeconds
 
-可选。如果 job 错过其计划时间，启动 job 的截止时间（秒）。
+    可选。如果 job 错过其计划时间，启动 job 的截止时间（秒）。
 
 * suspend
 
-可选。如果设置为 true，所有后续执行将被暂停。
+    可选。如果设置为 true，所有后续执行将被暂停。
 
 * jobTemplate
 
-必需。用于创建 Volcano Job 的模板。包含完整的 Volcano Job 规范。
+    必需。用于创建 Volcano Job 的模板。包含完整的 Volcano Job 规范。
 
 * successfulJobsHistoryLimit
 
-可选。要保留的成功完成 job 的数量。默认为 3。
+    可选。要保留的成功完成 job 的数量。默认为 3。
 
 * failedJobsHistoryLimit
 
-可选。要保留的失败完成 job 的数量。默认为 1。
+    可选。要保留的失败完成 job 的数量。默认为 1。
+
+<!-- -->
+
 ### 使用场景
 * 定期模型训练
 
