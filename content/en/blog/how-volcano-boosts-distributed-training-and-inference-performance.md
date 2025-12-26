@@ -7,7 +7,7 @@ date = 2025-04-01
 lastmod = 2025-04-01
 datemonth = "Apr"
 dateyear = "2025"
-dateday = 01
+dateday = 1
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -54,6 +54,7 @@ Fine-Grained Job Fault Recovery allows policies to restart only failed Pods or a
 ## Future Developments in Distributed Workload Management
 
 Ongoing advancements in distributed workload management include:
+
 - Task-Level Network Topology Affinity Scheduling: Support for distributed inference scenarios, such as integration with lws.
 
 - HyperNode Auto-Discovery and Status Updates: Automation for HyperNode lifecycle management.
@@ -63,6 +64,7 @@ Ongoing advancements in distributed workload management include:
 - Dynamic GPU Partitioning: Support for MIG and MPS to enhance GPU utilization.
 
 More information for Volcano:
+
 - Website: https://volcano.sh/
 
 - GitHub: https://github.com/volcano-sh/volcano
@@ -71,9 +73,8 @@ More information for Volcano:
 
 - Weekly Meetings: Attend our weekly meetings and review meeting notes:
 
-    - Meeting Link: [Zoom](https://zoom.us/j/91804791393)
+  - Meeting Link: [Zoom](https://zoom.us/j/91804791393)
 
-    - Meeting Notes: [Google Docs](https://docs.google.com/document/d/1YLbF8zjZBiR9PbXQPB22iuc_L0Oui5A1lddVfRnZrqs/edit?tab=t.0#heading=h.u99fvvct3m1z)
+  - Meeting Notes: [Google Docs](https://docs.google.com/document/d/1YLbF8zjZBiR9PbXQPB22iuc_L0Oui5A1lddVfRnZrqs/edit?tab=t.0#heading=h.u99fvvct3m1z)
 
 - Twitter: Follow us on [X (formerly Twitter)](https://x.com/volcano_sh) for the latest updates.
-
