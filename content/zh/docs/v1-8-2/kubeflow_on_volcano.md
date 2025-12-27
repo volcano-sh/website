@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 linktitle = "Kubeflow"
 [menu.v1-8-2]
-  parent = "zoology"
+  parent = "ecosystem"
   weight = 3
 
 +++

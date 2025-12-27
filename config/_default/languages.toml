@@ -107,7 +107,7 @@
 [[zh.menu.docs]]
   name = "生态"
   weight = 5
-  identifier = "zoology"
+  identifier = "ecosystem"
 
 [[zh.menu.docs]]
   name = "Scheduler"
@@ -149,7 +149,7 @@
 [[zh.menu.v1-12-0]]
   name = "生态"
   weight = 5
-  identifier = "zoology"
+  identifier = "ecosystem"
 
 [[zh.menu.v1-12-0]]
   name = "Scheduler"
@@ -191,7 +191,7 @@
 [[zh.menu.v1-11-0]]
   name = "生态"
   weight = 5
-  identifier = "zoology"
+  identifier = "ecosystem"
 
 [[zh.menu.v1-11-0]]
   name = "Scheduler"
@@ -228,7 +228,7 @@
 [[zh.menu.v1-10-0]]
   name = "生态"
   weight = 4
-  identifier = "zoology"
+  identifier = "ecosystem"
 
 [[zh.menu.v1-10-0]]
   name = "Scheduler"
@@ -266,7 +266,7 @@
 [[zh.menu.v1-9-0]]
   name = "生态"
   weight = 4
-  identifier = "zoology"
+  identifier = "ecosystem"
 
 [[zh.menu.v1-9-0]]
   name = "Scheduler"
@@ -303,7 +303,7 @@
 [[zh.menu.v1-8-2]]
   name = "生态"
   weight = 4
-  identifier = "zoology"
+  identifier = "ecosystem"
 
 [[zh.menu.v1-8-2]]
   name = "Scheduler"
@@ -340,7 +340,7 @@
 [[zh.menu.v1-7-0]]
   name = "生态"
   weight = 4
-  identifier = "zoology"
+  identifier = "ecosystem"
 
 [[zh.menu.v1-7-0]]
   name = "Scheduler"

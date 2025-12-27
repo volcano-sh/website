@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 linktitle = "PaddlePaddle"
 [menu.v1-10-0]
-  parent = "zoology"
+  parent = "ecosystem"
   weight = 6
 
 +++
