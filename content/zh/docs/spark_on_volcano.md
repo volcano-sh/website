@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 linktitle = "Spark"
 [menu.docs]
-  parent = "zoology"
+  parent = "ecosystem"
   weight = 8
 
 +++

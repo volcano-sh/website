@@ -11,7 +11,7 @@ type = "docs"  # Do not modify.
 # Add menu entry to sidebar.
 linktitle = "MindSpore"
 [menu.docs]
-  parent = "zoology"
+  parent = "ecosystem"
   weight = 4
 
 +++
