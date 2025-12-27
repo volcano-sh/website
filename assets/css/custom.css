@@ -24,7 +24,7 @@
 
 .dark .featured,
 .dark .featured h3 {
-    color: #fff;
+    color: #0f0f0f;
 }
 
 .featured-icon {
@@ -182,8 +182,12 @@ ul.share li i {
     margin-bottom: 10px;
 }
 
-.article-title a {
+.Dateyear .Datemonth .Dateday {
     color: #0f0f0f;
+}
+
+.dark .Dateyear .Datemonth .Dateday {
+    color: #fff;
 }
 
 .docs-article-container {
@@ -259,6 +263,19 @@ ul.share li i {
     color: #212529;
     text-align: center;
 }
+
+.article-date-number,
+.article-date-month,
+.article-date-year {
+    color: #0f0f0f; /* Light mode text */
+}
+
+.dark .article-date-number,
+.dark .article-date-month,
+.dark .article-date-year {
+    color: #d3d9df; /* Dark mode text */
+}
+
 
 .article-item {
     float: left;
@@ -531,7 +548,7 @@ ul.share li i {
     font-size: 2.5rem !important;
     font-weight: bold;
     padding-bottom: 40px;
-    color: #252b3a;
+    /* color: #252b3a; */
 }
 
 .navbar-nav .dropdown-menu {
