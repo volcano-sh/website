@@ -79,3 +79,15 @@ Reclaim action is a **cross-queue** resource reclamation step in the scheduling 
 > 
 > 1. Reclaim checks multiple conditions during execution: whether the target Queue is reclaimable, whether the task can be reclaimed (Preemptable), whether the job's running requirements can be met after resource reclamation, etc., to ensure the rationality of resource reclamation.
 > 2. To make jobs in a Queue reclaimable by other Queues, the reclaimable field in the Queue's spec must be set to true.
+
+### Shuffle
+
+#### Introduction
+
+Shuffle action is a task redistribution mechanism in the Volcano scheduler, designed to optimize the distribution of running tasks in the cluster. By selectively evicting certain running tasks, it allows these tasks to re-enter the scheduling queue for reallocation, breaking existing resource allocation patterns and optimizing overall cluster performance.
+
+#### Scenarios
+
+- **Resource Fragment Consolidation**: When cluster resources become fragmented, Shuffle can reorganize tasks through rescheduling, consolidating scattered resource fragments to create conditions for jobs requiring large contiguous resources.
+- **Load Balancing Optimization**: In situations with unbalanced node workloads, Shuffle can redistribute tasks to balance resource utilization across nodes, preventing scenarios where some nodes are overloaded while others remain idle.
+- **Scheduling Optimization Breakthrough**: For long-running clusters, initial scheduling decisions may become suboptimal over time. Shuffle periodically reassesses and adjusts task distribution, breaking scheduling deadlocks and finding more efficient resource allocation solutions.
