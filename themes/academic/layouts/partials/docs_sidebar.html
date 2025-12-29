@@ -26,8 +26,22 @@
     {{- if .HasChildren }}
     <ul class="nav docs-sidenav box" style="display: block;" id="{{.Weight}}">
       {{ range .Children }}
-      <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }}>
+      <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }} style="padding-left: 15px;">
+        {{- if .HasChildren }}
+        <div style="position: relative;">
+          <a href="{{if .URL }}{{ .URL }}{{else}}{{(index .Children 0).URL }}{{end}}" style="display: inline-block; width: calc(100% - 30px);">{{ .Name }}</a>
+          <div style="width: 0px;height: 0px;border:5px solid #fff;border-top-color:rgba(0, 0, 0, .65);position: absolute;top: 10px;right: 10px; cursor: pointer;" onclick="toggleSubmenu(event, '{{.Identifier}}')" class="change_dot_nested" id="dot-{{.Identifier}}"></div>
+        </div>
+        <ul class="nav docs-sidenav-nested" style="display: none; padding-left: 15px;" id="submenu-{{.Identifier}}">
+          {{ range .Children }}
+          <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }}>
+            <a href="{{ .URL }}">{{ .Name }}</a>
+          </li>
+          {{ end }}
+        </ul>
+        {{- else }}
         <a href="{{ .URL }}">{{ .Name }}</a>
+        {{- end }}
       </li>
       {{ end }}
     </ul>
@@ -57,6 +71,22 @@
               dots[i].style.borderRightColor='#fff';
               dots[i].style.left='calc(50% - 0px)';
       }
+    }
+  }
+  
+  function toggleSubmenu(event, identifier) {
+    event.preventDefault();
+    event.stopPropagation();
+    var submenu = document.getElementById('submenu-' + identifier);
+    var dot = document.getElementById('dot-' + identifier);
+    if (submenu.style.display === 'none' || submenu.style.display === '') {
+      submenu.style.display = 'block';
+      dot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
+      dot.style.borderRightColor = '#fff';
+    } else {
+      submenu.style.display = 'none';
+      dot.style.borderRightColor = 'rgba(0, 0, 0, .65)';
+      dot.style.borderTopColor = '#fff';
     }
   }
 </script>
