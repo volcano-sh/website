@@ -110,6 +110,8 @@ Anti-affinity：
 
 Predicate plugin通过pod、nodeInfo作为参数，调用predicateGPU，根据计算结果对作业进行评估预选。
 
+**重要提示**: `deviceshare` plugin 依赖于 `Predicate` plugin，必须启用 `Predicate` plugin 才能运行。
+
 #### 场景
 
 在AI的应用场景下，GPU资源是必需，Predicate plugin可以快速筛选出来需要GPU的进行集中调度。
