@@ -10,8 +10,7 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "Node Group"
-[menu.docs]
-  parent = "plugins"
+[menu.plugins]
   weight = 5
 +++
 

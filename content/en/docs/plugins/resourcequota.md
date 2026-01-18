@@ -10,8 +10,7 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "Resource Quota"
-[menu.docs]
-  parent = "plugins"
+[menu.plugins]
   weight = 7
 +++
 

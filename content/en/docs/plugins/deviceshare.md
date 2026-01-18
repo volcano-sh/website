@@ -10,8 +10,7 @@ type = "docs"  # Do not modify.
 
 # Add menu entry to sidebar.
 linktitle = "Device Share"
-[menu.docs]
-  parent = "plugins"
+[menu.plugins]
   weight = 3
 +++
 
