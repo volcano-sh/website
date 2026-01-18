@@ -2,7 +2,7 @@
 title = "Plugins"
 
 date = 2021-05-13
-lastmod = 2025-11-11
+lastmod = 2026-01-19
 
 draft = false
 toc = true
