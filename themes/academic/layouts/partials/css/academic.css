@@ -729,7 +729,12 @@ a.hero-cta-alt:hover {
 /********************change*/
 .featured .section-heading h1{
    font-size: 22px;
-   color: #fff;
+   color: #000;
+}
+
+.dark .featured .section-heading h1{
+  font-size: 22px;
+  color: #f2eded;
 }
 
 .featured .section-heading p{
@@ -1111,7 +1116,11 @@ article {
   transition: color 0.6s ease;
 
 }
+.dark .article-title a {
+  color: #e2e4ea !important;
+  transition: color 0.6s ease;
 
+}
 .text-muted {
   color: rgba(0,0,0,0.54); /* Override Bootstrap */
 }
@@ -1204,6 +1213,26 @@ article .article-metadata {
   border-top: 5px solid #c7000b;
   margin-bottom: 1rem;
 }
+
+.related-heading {
+  text-align: center;
+  color: #252b3a;
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.related-link a {
+  color: #252b3a;
+  font-size: 14px;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.dark .related-heading,
+.dark .related-link a {
+  color: #d3d9df; /* Light text in dark mode */
+}
+
 
 #comments {
   padding-top: 1rem;
@@ -2731,7 +2760,7 @@ body.dark,
 .dark h4,
 .dark h5,
 .dark h6 {
-  color: rgb(152, 166, 173);
+  color: rgb(225, 230, 233);
 }
 
 .dark pre,
