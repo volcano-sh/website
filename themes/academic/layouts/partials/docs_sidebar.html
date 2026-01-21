@@ -21,13 +21,31 @@
   <div class="docs-toc-item{{ if $current_page.IsMenuCurrent $menu_name . }} active{{ end }}">
     <a class="docs-toc-link" {{ if .URL }}href="{{ .URL }}"{{else if .HasChildren }}href="{{(index .Children 0).URL }}"{{end}} style="width: 77%;float: left;padding-right: 0px;">{{ .Name }}</a>
     <div style="width: 80px;height: 43px;position: relative;left: calc( 100% - 80px );">
-      <div style="width: 0px;height: 0px;border:5px solid #fff;border-top-color:rgba(0, 0, 0, .65);position: relative;top: 18px;left: calc(50% - 0px);" onclick="change({{.Weight}},{{.Name}})" class="change_dot" id="{{.Name}}"></div>
+      <div style="width: 0px;height: 0px;border:5px solid #fff;border-top-color:rgba(0, 0, 0, .65);position: relative;top: 18px;left: calc(50% - 0px);" onclick="toggleMenu('{{.Weight}}', '{{.Name}}')" class="change_dot" id="dot-{{.Name}}"></div>
     </div>
     {{- if .HasChildren }}
-    <ul class="nav docs-sidenav box" style="display: block;" id="{{.Weight}}">
+    <ul class="nav docs-sidenav box" style="display: block;" id="menu-{{.Weight}}">
+      {{ $parentIdentifier := .Identifier }}
       {{ range .Children }}
-      <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }}>
-        <a href="{{ .URL }}">{{ .Name }}</a>
+      <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }} style="padding-left: 15px;">
+        {{- if .HasChildren }}
+          {{/* Second-level item with children (e.g., Plugins) */}}
+          <a href="javascript:void(0);" onclick="toggleSubmenu('{{.Identifier}}')" style="display: flex; align-items: center; justify-content: space-between;">
+            <span>{{ .Name }}</span>
+            <div style="width: 0px;height: 0px;border:5px solid #fff;border-top-color:rgba(0, 0, 0, .65);margin-left: 5px;" class="change_dot submenu-arrow" id="dot-{{.Identifier}}"></div>
+          </a>
+          {{/* Third-level submenu (individual plugins) */}}
+          <ul class="nav docs-sidenav-nested box" style="display: none;" id="submenu-{{.Identifier}}">
+            {{ range .Children }}
+            <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }} style="padding-left: 30px;">
+              <a href="{{ .URL }}">{{ .Name }}</a>
+            </li>
+            {{ end }}
+          </ul>
+        {{- else }}
+          {{/* Regular second-level item without children */}}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{- end }}
       </li>
       {{ end }}
     </ul>
@@ -37,26 +55,106 @@
   {{ end }}
   {{ end }}
 </nav>
+
 <script type="text/javascript">
-  function change(aaa,name){
-    console.log(2222);
-      var  ull = document.getElementsByClassName('box');
-      var  dots = document.getElementsByClassName('change_dot');
-    // console.log(ull);
-    // console.log(ull);
-    for (var i = 0; i <= ull.length +1; i++) {
-      if (ull[i].style.display == 'block'&& ull[i].id == aaa) {
-              ull[i].style.display = 'none';
-              dots[i].style.borderRightColor='rgba(0, 0, 0, .65)';
-              //console.log(dots[i].style.borderTopColor);
-              dots[i].style.borderTopColor='#fff';
-              dots[i].style.left='calc(50% - 2px)';
-      } else if(ull[i].style.display = 'none'&& ull[i].id == aaa){
-              ull[i].style.display = 'block';
-              dots[i].style.borderTopColor='rgba(0, 0, 0, .65)';
-              dots[i].style.borderRightColor='#fff';
-              dots[i].style.left='calc(50% - 0px)';
+  // Toggle top-level menus (e.g., Scheduler, CLI, etc.)
+  function toggleMenu(weight, name) {
+    var menu = document.getElementById('menu-' + weight);
+    var dot = document.getElementById('dot-' + name);
+    
+    if (menu && dot) {
+      if (menu.style.display === 'none') {
+        menu.style.display = 'block';
+        dot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
+        dot.style.borderRightColor = '#fff';
+        dot.style.left = 'calc(50% - 0px)';
+      } else {
+        menu.style.display = 'none';
+        dot.style.borderRightColor = 'rgba(0, 0, 0, .65)';
+        dot.style.borderTopColor = '#fff';
+        dot.style.left = 'calc(50% - 2px)';
       }
     }
   }
+  
+  // Toggle second-level submenus (e.g., Plugins)
+  function toggleSubmenu(identifier) {
+    var submenu = document.getElementById('submenu-' + identifier);
+    var dot = document.getElementById('dot-' + identifier);
+    
+    if (submenu && dot) {
+      if (submenu.style.display === 'none') {
+        submenu.style.display = 'block';
+        dot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
+        dot.style.borderRightColor = '#fff';
+        dot.style.transform = 'rotate(0deg)';
+      } else {
+        submenu.style.display = 'none';
+        dot.style.borderRightColor = 'rgba(0, 0, 0, .65)';
+        dot.style.borderTopColor = '#fff';
+        dot.style.transform = 'rotate(-90deg)';
+      }
+    }
+  }
+  
+  // Auto-expand menus if current page is within them
+  document.addEventListener('DOMContentLoaded', function() {
+    var activeItems = document.querySelectorAll('.docs-sidenav li.active');
+    
+    activeItems.forEach(function(item) {
+      // Find parent submenu (third-level)
+      var parentSubmenu = item.closest('.docs-sidenav-nested');
+      if (parentSubmenu) {
+        parentSubmenu.style.display = 'block';
+        var submenuId = parentSubmenu.id.replace('submenu-', '');
+        var submenuDot = document.getElementById('dot-' + submenuId);
+        if (submenuDot) {
+          submenuDot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
+          submenuDot.style.borderRightColor = '#fff';
+        }
+      }
+      
+      // Find parent menu (second-level)
+      var parentMenu = item.closest('.box');
+      if (parentMenu && parentMenu.id.startsWith('menu-')) {
+        parentMenu.style.display = 'block';
+        var menuWeight = parentMenu.id.replace('menu-', '');
+        // Find the corresponding dot (need to find by weight)
+        var dots = document.querySelectorAll('.change_dot');
+        dots.forEach(function(dot) {
+          if (dot.onclick && dot.onclick.toString().includes("'" + menuWeight + "'")) {
+            dot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
+            dot.style.borderRightColor = '#fff';
+            dot.style.left = 'calc(50% - 0px)';
+          }
+        });
+      }
+    });
+  });
 </script>
+
+<style>
+.docs-sidenav-nested {
+  list-style: none;
+  padding-left: 0;
+}
+
+.docs-sidenav-nested li a {
+  display: block;
+  padding: 0.25rem 0;
+  text-decoration: none;
+}
+
+.docs-sidenav-nested li a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.docs-sidenav-nested li.active > a {
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.submenu-arrow {
+  transition: transform 0.2s ease;
+}
+</style>
