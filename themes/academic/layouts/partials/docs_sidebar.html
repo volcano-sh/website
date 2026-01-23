@@ -41,18 +41,19 @@
   // Save sidebar scroll position before navigation
   document.addEventListener('DOMContentLoaded', function() {
     var sidebar = document.getElementById('docs-nav');
+    if (!sidebar) {
+      return;  // Early return if sidebar doesn't exist
+    }
     
     // Restore saved scroll position
     var savedScrollPos = sessionStorage.getItem('docs-sidebar-scroll');
-    if (savedScrollPos && sidebar) {
-      sidebar.scrollTop = parseInt(savedScrollPos);
+    if (savedScrollPos) {
+      sidebar.scrollTop = parseInt(savedScrollPos, 10);
     }
     
     // Save scroll position before leaving page
     window.addEventListener('beforeunload', function() {
-      if (sidebar) {
-        sessionStorage.setItem('docs-sidebar-scroll', sidebar.scrollTop);
-      }
+      sessionStorage.setItem('docs-sidebar-scroll', sidebar.scrollTop);
     });
     
     // Also save on link clicks within sidebar
@@ -64,22 +65,21 @@
     });
   });
 
-  function change(aaa,name){
-    console.log(2222);
+  function change(aaa){  // Removed unused 'name' parameter
     var ull = document.getElementsByClassName('box');
     var dots = document.getElementsByClassName('change_dot');
     
     for (var i = 0; i < ull.length; i++) {
-      if (ull[i].style.display == 'block'&& ull[i].id == aaa) {
+      if (ull[i].style.display == 'block' && ull[i].id == aaa) {
         ull[i].style.display = 'none';
         dots[i].style.borderRightColor='rgba(0, 0, 0, .65)';
         dots[i].style.borderTopColor='#fff';
         dots[i].style.left='calc(50% - 2px)';
-      } else if(ull[i].style.display == 'none'&& ull[i].id == aaa){
-              ull[i].style.display = 'block';
-              dots[i].style.borderTopColor='rgba(0, 0, 0, .65)';
-              dots[i].style.borderRightColor='#fff';
-              dots[i].style.left='calc(50% - 0px)';
+      } else if(ull[i].style.display == 'none' && ull[i].id == aaa){
+        ull[i].style.display = 'block';
+        dots[i].style.borderTopColor='rgba(0, 0, 0, .65)';
+        dots[i].style.borderRightColor='#fff';
+        dots[i].style.left='calc(50% - 0px)';
       }
     }
   }
