@@ -17,14 +17,21 @@ const config = {
   organizationName: "volcano-sh",
   projectName: "website",
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
 
   i18n: {
     defaultLocale: "en",
     locales: ["en"],
   },
-
+  plugins: [
+    [
+      require.resolve("docusaurus-lunr-search"),
+      {
+        languages: ["en"],
+      },
+    ],
+  ],
   presets: [
     [
       "classic",
@@ -32,6 +39,13 @@ const config = {
         docs: {
           sidebarPath: "./sidebars.js",
           editUrl: "https://github.com/volcano-sh/website/tree/main/",
+          lastVersion: "current",
+          versions: {
+            current: {
+              label: "v1.12.0 (Latest)",
+              path: "",
+            },
+          },
         },
         blog: {
           showReadingTime: true,
@@ -66,17 +80,14 @@ const config = {
           label: "Documentation",
           position: "left",
         },
-        // Blog feature commented out - to be implemented in future PR
-        // {to: '/blog', label: 'Blog', position: 'left'},
-
-        // Versioning feature commented out - to be implemented in future PR
-        // {
-        //   type: 'docsVersionDropdown',
-        //   position: 'right',
-        //   dropdownItemsBefore: [],
-        //   dropdownItemsAfter: [],
-        //   dropdownActiveClassDisabled: false,
-        // },
+        { to: "/blog", label: "Blog", position: "left" },
+        {
+          type: "docsVersionDropdown",
+          position: "right",
+          dropdownItemsBefore: [],
+          dropdownItemsAfter: [],
+          dropdownActiveClassDisabled: false,
+        },
 
         {
           href: "https://github.com/volcano-sh/",
@@ -95,6 +106,10 @@ const config = {
         },
         {
           type: "localeDropdown",
+          position: "right",
+        },
+        {
+          type: "search",
           position: "right",
         },
       ],

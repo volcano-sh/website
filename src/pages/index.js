@@ -5,6 +5,7 @@ import Why from "../components/Why";
 import Frameworks from "../components/Frameworks";
 import Supporters from "../components/Supporters";
 // import About from "../components/About";
+import Blogs from "../components/Blogs";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
     >
       <Hero />
       <Why />
+      <Blogs />
       <Frameworks />
       <Supporters />
     </Layout>
