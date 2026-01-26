@@ -1,0 +1,202 @@
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  height: 500px;
+  background-image: url('/img/banner_02.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 6rem;
+  width: 50%;
+  z-index: 2;
+  position: relative;
+  padding-top: 0.5rem;
+  padding-bottom: 7rem;
+}
+
+.hero-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* background: linear-gradient(90deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.1) 70%, rgba(0,0,0,0) 100%); */
+  z-index: -1;
+}
+
+.hero-title {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: black;
+  line-height: 1.2;
+  position: relative;
+  padding-left: 15px;
+  
+}
+
+
+
+.hero-subtitle {
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  color: black;
+  max-width: 600px;
+  line-height: 1.5;
+  padding-left: 15px;
+}
+
+.hero-actions {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+  padding-left: 15px;
+  height: 30px; /* Fixed height for GitHub button */
+}
+
+/* GitHub button styling */
+.hero-actions .github-button {
+  margin-right: 15px;
+}
+
+/* Add some spacing for the iframe that gets injected */
+.hero-actions iframe {
+  margin-right: 15px;
+  vertical-align: middle;
+}
+
+.hero-cta-button {
+  display: inline-block;
+  padding: 0.19rem 1rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid #f05545;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #f05545;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 0.5rem;
+}
+
+.hero-cta-button:hover {
+  background-color: #f05545;
+  text-decoration: none;
+  color: white;
+}
+
+.hero-image {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+@media (max-width: 996px) {
+  .hero-container {
+    height: auto;
+    min-height: 350px;
+  }
+  
+  .hero-content {
+    width: 60%;
+    padding-left: 4rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+    max-width: 400px;
+  }
+  
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-container {
+    position: relative;
+  }
+  
+  .hero-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+  }
+  
+  .hero-content {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    text-align: left;
+    align-items: flex-start;
+    z-index: 2;
+  }
+  
+  .hero-content::before {
+    background: transparent;
+  }
+  
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .hero-title::after {
+    height: 40px;
+  }
+  
+  .hero-subtitle {
+    font-size: 0.9rem;
+    max-width: 100%;
+    padding-left: 10px;
+  }
+  
+  .hero-actions {
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+    gap: 1rem;
+  }
+  
+  .github-button {
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .hero-cta-button {
+    font-size: 0.75rem;
+    padding: 0.3rem 0.8rem;
+  }
+}

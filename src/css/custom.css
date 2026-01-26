@@ -1,0 +1,500 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #007bff;
+  --ifm-color-primary-dark: #0056b3;
+  --ifm-color-primary-darker: #004494;
+  --ifm-color-primary-darkest: #003575;
+  --ifm-color-primary-light: #3395ff;
+  --ifm-color-primary-lighter: #66aeff;
+  --ifm-color-primary-lightest: #99c7ff;
+  --ifm-navbar-link-hover-color: #ff0000;
+  --ifm-navbar-link-active-color: #0073ff;
+
+  /* Typography */
+  --ifm-font-family-base: Tahoma, Verdana, Arial, sans-serif;
+  --ifm-font-family-monospace: "SFMono-Regular", Consolas, Monaco, monospace;
+  --ifm-font-size-base: 16px;
+  --ifm-line-height-base: 1.7;
+
+  /* Headings */
+  --ifm-h1-font-size: 2.2rem;
+  --ifm-h2-font-size: 1.7rem;
+  --ifm-h3-font-size: 1.4rem;
+  --ifm-h4-font-size: 1.1rem;
+  
+  /* Spacing */
+  --ifm-spacing-horizontal: 1.5rem;
+  --ifm-spacing-vertical: 1rem;
+
+  /* Code blocks */
+  --ifm-code-font-size: 0.875rem;
+  --ifm-code-padding-vertical: 0.2rem;
+  --ifm-code-padding-horizontal: 0.4rem;
+  --docusaurus-highlighted-code-line-bg: rgb(72, 77, 91);
+
+  /* Container */
+  --ifm-container-width: 1140px;
+  --ifm-global-radius: 0.4rem;
+}
+
+/* Hide Edit this page button */
+.theme-edit-this-page {
+  display: none !important;
+}
+
+/* Custom dropdown styling */
+.dropdown-separator {
+  margin: 0.5rem 0;
+  border-top: 1px solid var(--ifm-dropdown-border-color);
+}
+
+.dropdown-heading {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  font-size: 0.9rem;
+}
+
+/* Version banners styling */
+div[class^='docVersionBanner'] {
+  background-color: var(--ifm-color-primary-lightest);
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* Version badges styling */
+span[class^='versionBadge'] {
+  background-color: var(--ifm-color-primary);
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* Breadcrumbs styling */
+nav[class^='breadcrumbs'] {
+  margin-bottom: 1rem;
+}
+
+.menu__list-item-collapsible .menu__link:hover::after {
+  content: none !important;
+}
+
+/* Hide any version text in footer */
+.footer .footer__links .footer__title:has(+ ul li a[href*="version"]) {
+  display: none !important;
+}
+
+/* Hide version text in sidebar */
+.navbar-sidebar__item .menu__list .menu__link[href*="version"] {
+  display: none !important;
+}
+
+/* Version dropdown styling in navbar */
+.navbar__inner .navbar__items span[class*="version"],
+.navbar__inner .navbar__items div[class*="version"] {
+  color: var(--ifm-color-primary);
+}
+
+/* Style version text in navbar */
+.navbar__item .navbar__link[href*="versions"] {
+  font-weight: 500;
+}
+
+/* Version dropdown styling */
+.version-dropdown-menu .dropdown__menu {
+  min-width: 120px;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.version-dropdown-menu .dropdown__link {
+  font-size: 0.9rem;
+  padding: 0.5rem 1.2rem;
+  transition: background-color 0.2s ease;
+}
+
+.version-dropdown-menu .dropdown__link:hover {
+  background-color: var(--ifm-color-primary-lightest);
+}
+
+.dropdown-separator {
+  margin: 0.3rem 0;
+  border-top: 1px solid var(--ifm-dropdown-border-color);
+}
+
+/* Active version styling */
+.version-dropdown-menu .dropdown__link.dropdown__link--active {
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  background-color: var(--ifm-color-primary-lightest);
+}
+
+/* Style specific version dropdown under Documentation */
+.navbar__items .navbar__item:nth-child(1) .dropdown__menu {
+  min-width: 200px;
+}
+
+/* Force Documentation to be a simple link without dropdown */
+.navbar__items .navbar__item:nth-child(1) {
+  position: relative !important;
+}
+
+.navbar__items .navbar__item:nth-child(1)::after {
+  display: none !important;
+}
+
+/* Make Documentation dropdown clickable */
+.header-documentation-link {
+  cursor: pointer;
+}
+
+/* Ensure Documentation dropdown works on hover */
+.navbar__item.dropdown.dropdown--hoverable:hover .dropdown__menu {
+  display: block;
+}
+
+
+[data-theme="dark"] {
+  --ifm-color-primary: #3395ff;
+  --ifm-color-primary-dark: #0056b3;
+  --ifm-color-primary-darker: #004494;
+  --ifm-color-primary-darkest: #003575;
+  --ifm-color-primary-light: #66aeff;
+  --ifm-color-primary-lighter: #99c7ff;
+  --ifm-color-primary-lightest: #cce3ff;
+  --ifm-navbar-link-hover-color: #ff3333;
+  --ifm-navbar-link-active-color: #33a7ff;
+
+  /* Additional dark mode specific variables */
+  --ifm-background-color: #1a1a1a;
+  --ifm-background-surface-color: #242526;
+  --ifm-code-background: #2d2d2d;
+  --ifm-toc-border-color: #393939;
+}
+
+.header-github-link::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("/github.svg") no-repeat;
+}
+
+[data-theme="dark"] .header-github-link::before {
+  background: url("/github.svg") no-repeat;
+}
+
+.header-x-link::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: flex;
+  background: url("/x.svg") no-repeat;
+}
+
+.header-slack-link::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: flex;
+  background: url("/slack.svg") no-repeat;
+}
+
+[data-theme="dark"] .header-x-link::before {
+  background: url("data:image/svg+xml,%3Csvg width='20' height='24' viewBox='0 0 1200 1227' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z' fill='white'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+[data-theme="dark"] .header-github-link::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+.token.comment {
+  color: #6c757d !important; /* Lighter gray for better distinction */
+  font-style: italic;
+}
+
+.video-responsive {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive navbar styles */
+@media screen and (max-width: 996px) {
+  .navbar__items {
+    justify-content: space-between;
+  }
+  
+  .navbar__items--right {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+  }
+  
+  .navbar-sidebar__brand {
+    padding: 0.5rem 1rem;
+  }
+  
+  .navbar__logo {
+    height: 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  :root {
+    --ifm-font-size-base: 16px;
+  }
+  
+  .navbar__items--right .header-icon {
+    margin-left: 0.5rem;
+  }
+  
+  .navbar__toggle {
+    margin-right: 0.5rem;
+  }
+}
+
+/* Mobile navbar and search bar positioning */
+@media screen and (max-width: 996px) {
+  /* Hide search from top navbar in mobile view */
+  .navbar__items .DocSearch,
+  .navbar__items .navbar__search {
+    display: none;
+  }
+  
+  /* Modify the back button area to hold search */
+  .navbar-sidebar .navbar-sidebar__back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.75rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    height: 50px; /* Fixed height for search bar area */
+  }
+  
+  /* Hide the 'Back to main menu' text */
+  .navbar-sidebar .navbar-sidebar__back-button {
+    display: none !important;
+  }
+  
+  /* Position search bar in place of back button */
+  .navbar-sidebar .DocSearch,
+  .navbar-sidebar .navbar__search {
+    display: block !important;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0.75rem;
+    z-index: 5;
+  }
+  
+  /* Style the search button in mobile view */
+  .navbar-sidebar .DocSearch-Button,
+  .navbar-sidebar .navbar__search-input {
+    width: 100%;
+    margin: 0;
+    border-radius: var(--ifm-global-radius);
+    height: 40px;
+  }
+  
+  /* Add proper spacing for menu items below search */
+  .navbar-sidebar__items .menu {
+    margin-top: 0.5rem;
+  }
+  
+  /* Ensure search modal appears above everything */
+  .DocSearch-Container {
+    z-index: 10000;
+  }
+  
+  /* Make sure search is visible in the sidebar */
+  .navbar-sidebar__items .navbar-sidebar__item:first-child {
+    padding-top: 50px;
+  }
+}
+
+/* Footer styles */
+.footer {
+  padding: 2rem 0 0 0;
+  text-align: center;
+  background-color: #2b2a2b;
+}
+
+.footer__logo-container {
+  margin: 1.5rem auto;
+}
+
+.footer__logo {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.footer-content p {
+  margin: 0.75rem 0;
+}
+
+.footer-content a {
+  color: #f05545;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+/* Back to top button */
+.footer__bottom {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.footer__back-to-top {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem auto 1.5rem;
+  cursor: pointer;
+}
+
+.footer__back-to-top-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #333;
+  border: 2px solid white;
+  color: white;
+  font-size: 20px;
+}
+
+.footer__github-link {
+  display: inline-block;
+  margin-top: 1rem;
+  width: 24px;
+  height: 24px;
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E") no-repeat;
+}
+
+/* Responsive footer styles */
+@media screen and (max-width: 996px) {
+  .footer__logo {
+    max-width: 280px;
+  }
+  
+  .footer-content {
+    padding: 0 1.5rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    padding: 1.5rem 0 0 0;
+  }
+  
+  .footer__logo {
+    max-width: 220px;
+  }
+  
+  .footer-content {
+    font-size: 0.8rem;
+  }
+  
+  .footer__back-to-top-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+}
+
+[data-theme="dark"] {
+  --ifm-color-primary: #3395ff;
+  --ifm-color-primary-dark: #0056b3;
+  --ifm-color-primary-darker: #004494;
+  --ifm-color-primary-darkest: #003575;
+  --ifm-color-primary-light: #66aeff;
+  --ifm-color-primary-lighter: #99c7ff;
+  --ifm-color-primary-lightest: #cce3ff;
+  --ifm-navbar-link-hover-color: #ff3333;
+  --ifm-navbar-link-active-color: #33a7ff;
+
+  /* Additional dark mode specific variables */
+  --ifm-background-color: #1a1a1a;
+  --ifm-background-surface-color: #242526;
+  --ifm-code-background: #2d2d2d;
+  --ifm-toc-border-color: #393939;
+}
+
+.header-github-link::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  display: flex;
+  background: url("/github.svg") no-repeat;
+}
+
+[data-theme="dark"] .header-github-link::before {
+  background: url("/github.svg") no-repeat;
+}
+
+.header-x-link::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: flex;
+  background: url("/x.svg") no-repeat;
+}
+
+.header-slack-link::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  display: flex;
+  background: url("/slack.svg") no-repeat;
+}
+
+[data-theme="dark"] .header-x-link::before {
+  background: url("data:image/svg+xml,%3Csvg width='20' height='24' viewBox='0 0 1200 1227' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M714.163 519.284L1160.89 0H1055.03L667.137 450.887L357.328 0H0L468.492 681.821L0 1226.37H105.866L515.491 750.218L842.672 1226.37H1200L714.137 519.284H714.163ZM569.165 687.828L521.697 619.934L144.011 79.6944H306.615L611.412 515.685L658.88 583.579L1055.08 1150.3H892.476L569.165 687.854V687.828Z' fill='white'/%3E%3C/svg%3E")
+    no-repeat;
+}
+
+[data-theme="dark"] .header-github-link::before {
+  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='white' d='M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12'/%3E%3C/svg%3E")
+    no-repeat;
+}
