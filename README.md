@@ -11,8 +11,8 @@ is an open-source static site generator that provides us with templates, content
 organisation in a standard directory structure, and a website generation engine.
 You write the pages in Markdown, and Hugo wraps them up into a website.
 
-* Please see [How to contributing](https://github.com/volcano-sh/volcano/blob/master/contribute.md) for instructions on how to contribute, if you are not familiar with the
-  GitHub workflow
+* Please see [How to contribute](https://github.com/volcano-sh/volcano/blob/master/contribute.md) for instructions on how to contribute, if you are not familiar with the
+  GitHub workflow.
 
 ## Quickstart
 
@@ -23,7 +23,7 @@ updates:
 1. Fork the repo on GitHub.
 1. Make your changes and send a pull request (PR).
 1. If you're not yet ready for a review, add a comment to the PR saying it's a
-  work in progress or add `[WIP]` in your PRs title. You can also add `/hold` in a comment to mark the PR as not
+  work in progress or add `[WIP]` in your PR's title. You can also add `/hold` in a comment to mark the PR as not
   ready for merge. (**Don't** add the Hugo declarative "draft = true" to the
   page front matter, because that will prevent the auto-deployment of the
   content preview described in the next point.)
@@ -35,37 +35,61 @@ updates:
 1. When you're ready for a review, add a comment to the PR and assign a
   reviewer/approver. 
 
+## Project Structure
+
+*   **/content**: Contains the markdown files for the website content.
+*   **/static**: Contains static assets like images, CSS, and JavaScript.
+*   **/themes**: Contains the Hugo themes used for the website.
+*   **/layouts**: Contains custom HTML templates.
+*   **/config**: Contains Hugo configuration files.
+
 ## Previewing your changes on a local website server
+
 
 If you'd like to preview your doc updates as you work, you can install Hugo
 and run a local server. This section shows you how.
 
 ### Install Hugo
-
-See the [Hugo installation guide][hugo-install]. Here are some examples:
-
-#### Mac OS X:
-
-```
+ 
+See the [Hugo installation guide][hugo-install]. We recommend installing the extended version of Hugo.
+ 
+> **Note:** The `netlify.toml` file specifies the Hugo version used for production builds. For local development, it is generally safe to use a newer version, but if you encounter issues, try matching the version in `netlify.toml`.
+ 
+#### Mac OS X
+ 
+```bash
 brew install hugo
 ```
-
-#### Debian:
-
-1. Download the Debian package from the [Hugo website][hugo-install].
-   Make sure to install the Hugo version specified by the `HUGO_VERSION` environment variable in the [`netlify.toml`](netlify.toml#L6) file.
-   For example, [hugo_0.57.2_Linux-64bit.deb][hugo_0.57.2_Linux-64bit.deb].
+ 
+#### Windows
+ 
+**Using Chocolatey:**
+```bash
+choco install hugo-extended
+```
+ 
+**Using Scoop:**
+```bash
+scoop install hugo-extended
+```
+ 
+Alternatively, download the executable from the [Hugo Releases page](https://github.com/gohugoio/hugo/releases).
+ 
+#### Linux (Debian/Ubuntu)
+ 
+1. Download the Debian package from the [Hugo releases page](https://github.com/gohugoio/hugo/releases). Look for the `hugo_extended_<VERSION>_Linux-64bit.deb` file.
 1. Install the package using `dpkg`:
-
+ 
+    ```bash
+    sudo dpkg -i hugo_extended_<VERSION>_Linux-64bit.deb
     ```
-    sudo dpkg -i hugo_0.57.2_Linux-64bit.deb
-    ```
-
+ 
 1. Verify your installation:
-
-    ```
+ 
+    ```bash
     hugo version
     ```
+
 
 ### Run a local website server
 
@@ -88,12 +112,21 @@ local machine, then use your local repo as input to your Hugo web server:
 1. Your website is at [http://localhost:1313/](http://localhost:1313/).
 
 1. Continue with the usual GitHub workflow to edit files, commit them, push the
-  changes up to your fork, and create a pull request. (See the GitHub workflow)
+  changes up to your fork, and create a pull request.
 
 1. While making the changes, you can preview them on your local version of the
   website at [http://localhost:1313/](http://localhost:1313/). Note that if you
   have more than one local git branch, when you switch between git branches the
   local website reflects the files in the current branch.
+
+## Troubleshooting
+
+*   **Port already in use**: If you see an error about port 1313 being in use, you can specify a different port:
+    ```bash
+    hugo server -D -p 1314
+    ```
+*   **Changes not showing**: Ensure you are editing the file in the correct language folder (e.g., `content/en/`).
+*   **Draft content**: If you created a new page, make sure `draft: true` is not set in the front matter, or run hugo with `-D`.
 
 Useful Hugo docs:
 - [Hugo installation guide](https://gohugo.io/getting-started/installing/)
@@ -103,4 +136,10 @@ Useful Hugo docs:
 - [hugo new reference](https://gohugo.io/commands/hugo_new/)
 
 [hugo-install]: https://gohugo.io/getting-started/installing/
-[hugo_0.57.2_Linux-64bit.deb]: https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_0.57.2_Linux-64bit.deb
+
+## Getting Help
+
+If you need help, feel free to reach out to the Volcano community:
+
+*   [Slack](https://cloud-native.slack.com/archives/C011GJDQS0N)
+*   [Mailing List](https://groups.google.com/forum/#!forum/volcano-sh)
