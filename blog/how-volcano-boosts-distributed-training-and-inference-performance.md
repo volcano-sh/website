@@ -15,7 +15,7 @@ authors:
 tags:
 - News
 summary: Join Volcano at KubeCon + CloudNativeCon Europe, 1-4 April 2025 in London!
-linktitle: How volcano boosts distributed training and inference performanc
+linktitle: How volcano boosts distributed training and inference performance
 parent: news
 weight: '6'
 ---
@@ -63,7 +63,7 @@ More information for Volcano:
 
 - GitHub: https://github.com/volcano-sh/volcano
 
-- Slack: Join the conversation onVolcano Slack.
+- Slack: Join the conversation on Volcano Slack.
 
 - Weekly Meetings: Attend our weekly meetings and review meeting notes:
 

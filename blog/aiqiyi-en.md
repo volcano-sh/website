@@ -179,7 +179,7 @@ Jarvis Core determines which backend to use based on the passed cluster informat
 
 Issue 1
 
-Symptom:During Volcano upgrade, the image in https://github.com/volcano_x0002_sh/volcano/blob/master/installer/volcano-development.yaml was directly modified, and kubectl apply -f `yaml file` was executed. The existing queues and vcjobs all disappeared.
+Symptom:During Volcano upgrade, the image in https://github.com/volcano-sh/volcano/blob/master/installer/volcano-development.yaml was directly modified, and kubectl apply -f `yaml file` was executed. The existing queues and vcjobs all disappeared.
 
 Cause:volcano-admission-init in the YAML file was executed repeatedly. As a result, Volcano was reset.
 
@@ -220,7 +220,7 @@ my-other-server # launch another process in the foreground
 
 - Volcano has fixed the bug in the queue capability that resources can be used over the capability. For details, see https://github.com/volcano-sh/volcano/issues/921.
 
-- After a vcjob is annotated, if a pod fails, the vcjob deletion is not triggered. For details, see https://github.com/volcano_x0002_sh/volcano/issues/805.
+- After a vcjob is annotated, if a pod fails, the vcjob deletion is not triggered. For details, see https://github.com/volcano-sh/volcano/issues/805.
 
 
 ## Summary

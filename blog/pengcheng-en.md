@@ -176,7 +176,7 @@ The following chart shows the service logic.
 
 - Pods are evicted based on the ID of the jobs to which the pods belong to reduce the number of affected jobs.
 
-- The scheduler notifies Openl-Octopus to stop the jobs at the service layer.
+- The scheduler notifies OpenI-Octopus to stop the jobs at the service layer.
 
 3) Delayed preemption
 

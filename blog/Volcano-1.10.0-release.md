@@ -100,7 +100,7 @@ spec:
   reclaimable: true
   deserved: # set the deserved field.
     cpu: 64
-    memeory: 128Gi
+    memory: 128Gi
     nvidia.com/a100: 40
     nvidia.com/v100: 80
 ```
@@ -121,7 +121,7 @@ For more details on the proportion plugin, please visit: [Proportion Plugin](htt
 
 ### Introduce Pod Scheduling Readiness Support
 
-Once a Pod is created, it is considered ready for scheduling. In Kube-scheduler, it will try its best to find a suitable node to place all pending Pods. However, in reality, some Pods may be in a "lack of necessary resources" state for a long time. These Pods actually interfere with the decision-making and operation of the scheduler (and downstream components such as Cluster AutoScaler) in an unnecessary way, causing problems such as resource waste. Pod Scheduling Readiness is a new feature of Kube-sheduler. In Kubernetes v.1.30 GA, it has become a stable feature. It controls the scheduling timing of Pods by setting the schedulingGates field of the Pod.
+Once a Pod is created, it is considered ready for scheduling. In Kube-scheduler, it will try its best to find a suitable node to place all pending Pods. However, in reality, some Pods may be in a "lack of necessary resources" state for a long time. These Pods actually interfere with the decision-making and operation of the scheduler (and downstream components such as Cluster AutoScaler) in an unnecessary way, causing problems such as resource waste. Pod Scheduling Readiness is a new feature of Kube-scheduler. In Kubernetes v.1.30 GA, it has become a stable feature. It controls the scheduling timing of Pods by setting the schedulingGates field of the Pod.
 
  ![](/img/v1.10.0/podSchedulingGates.svg)
 Pod SchedulingGates

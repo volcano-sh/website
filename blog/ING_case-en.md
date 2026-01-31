@@ -11,7 +11,7 @@ tags:
 summary: "ING Bank: How Volcano Empowers Their Big Data Analytics Platform"
 ---
 
->2On October 26, 2022, Krzysztof Adamski and Tinco Boekestijn from ING Group delivered a keynote speech "Efficient Scheduling Of High Performance Batch Computing For Analytics Workloads With Volcano" at KubeCon North America. The speech focused on how Volcano, a cloud native batch computing project, supports high-performance scheduling for big data analytics jobs on ING's data management platform.
+>On October 26, 2022, Krzysztof Adamski and Tinco Boekestijn from ING Group delivered a keynote speech "Efficient Scheduling Of High Performance Batch Computing For Analytics Workloads With Volcano" at KubeCon North America. The speech focused on how Volcano, a cloud native batch computing project, supports high-performance scheduling for big data analytics jobs on ING's data management platform.
 More details: [KubeCon + CloudNativeCon North America](https://events.linuxfoundation.org/archive/2022/kubecon-cloudnativecon-north-america/program/schedule/)
 
 ## Introduction to ING

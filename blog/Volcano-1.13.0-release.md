@@ -365,4 +365,4 @@ Volcano v1.13.0 includes contributions from 36 community members. Sincerely than
 | @bibibox       | @archlitchi     | @guoqinwill      |
 | @ouyangshengjia| @Poor12         | @dongjiang1989   |
 | @zhifei92      | @halcyon-r      | @Xu-Wentao       |
-| @hajnalmt      | @kevin-wangzefeng| @linuxfhy       |
+| @hajnalmt      | @kevin-wangzefeng | @linuxfhy        |

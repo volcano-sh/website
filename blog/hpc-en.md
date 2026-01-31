@@ -193,7 +193,7 @@ spec:
                 - /bin/sh
                 - -c
                 - |
-                  MPI_HOST=`cat /etc/Volcano/mpiworker.host | tr "\n" ","`;
+                  MPI_HOST=`cat /etc/volcano/mpiworker.host | tr "\n" ","`;
                   mkdir -p /var/run/sshd; /usr/sbin/sshd;
                   mpiexec --allow-run-as-root --host ${MPI_HOST} -np 2 mpi_hello_world;
               image: Volcanosh/example-mpi:0.0.1

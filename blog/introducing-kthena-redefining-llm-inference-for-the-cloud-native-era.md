@@ -165,4 +165,4 @@ This is just the beginning. We plan to support more efficient scheduling algorit
 * **Official Website:** [https://kthena.volcano.sh/](https://kthena.volcano.sh/)
 * **Community:** [Join our Slack](https://cloud-native.slack.com/archives/C011GJDQS0N)
 
-**Join us to unlock the full potential of Cloud Native LLMs!**# **Introducing Kthena: Redefining LLM Inference for the Cloud-Native Era**
+**Join us to unlock the full potential of Cloud Native LLMs!**

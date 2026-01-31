@@ -72,7 +72,7 @@ spec:
   reclaimable: true
   deserved: # set the deserved field.
     cpu: 64
-    memeory: 128Gi
+    memory: 128Gi
     nvidia.com/a100: 40
     nvidia.com/v100: 80
 ```
@@ -116,7 +116,7 @@ metadata:
         - <groupname3>
 ```
 
-The scheduling plugin for this feature is called nodegroup, for a complete example of its use see: [How to use nodegroup plugin](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to _use_nodegroup_plugin.md).
+The scheduling plugin for this feature is called nodegroup, for a complete example of its use see: [How to use nodegroup plugin](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_nodegroup_plugin.md).
 
 For detailed design documentation, see [The nodegroup design](https://github.com/volcano-sh/volcano/blob/master/docs/design/node-group.md).
 
