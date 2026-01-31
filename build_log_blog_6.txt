@@ -1,0 +1,383 @@
+
+> temp-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[WARNING] Error: Failed to retrieve the git history for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/introducing-kthena-redefining-llm-inference-for-the-cloud-native-era.md" because the file is not tracked by git.
+[WARNING] Error: Failed to retrieve the git history for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/paddlepaddle-en.md" because the file is not tracked by git.
+[WARNING] Docusaurus found blog posts without truncation markers:
+- "blog/introducing-kthena-redefining-llm-inference-for-the-cloud-native-era.md"
+- "blog/paddlepaddle-en.md"
+- "blog/Volcano-1.13.0-release.md"
+- "blog/iflytek_case_study.md"
+- "blog/Volcano-1.12.0-release.md"
+- "blog/volcano-2025-security-audit.md"
+- "blog/how-volcano-boosts-distributed-training-and-inference-performance.md"
+- "blog/Volcano-1.11.0-release.md"
+- "blog/Volcano-1.10.0-release.md"
+- "blog/Volcano-1.9.0-release.md"
+- "blog/Meet  Cloud Native Batch Computing with Volcano in AI & Big Data Scenarios.md"
+- "blog/Volcano-1.8.2-release.md"
+- "blog/Volcano-community-co-construction-program.md"
+- "blog/Volcano-1.7.0-release-en.md"
+- "blog/ING_case-en.md"
+- "blog/1.4 release-en.md"
+- "blog/ruitian2-en.md"
+- "blog/pengcheng-en.md"
+- "blog/xiaohongshu-en.md"
+- "blog/ruitian-en.md"
+- "blog/leinao-en.md"
+- "blog/hpc-en.md"
+- "blog/aiqiyi-en.md"
+- "blog/Quick-Start-Volcano.md"
+- "blog/kube-batch-customers.md"
+- "blog/kube-batch-startup.md"
+
+We recommend using truncation markers (`<!-- truncate -->` or `{/* truncate */}`) in blog posts to create shorter previews on blog paginated lists.
+Tip: turn this security off with the `onUntruncatedBlogPosts: 'ignore'` blog plugin option.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+[webpackbar] ✔ Server: Compiled with some errors in 3.32s
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[9].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/markdownLoader.js??ruleSet[1].rules[9].use[1]!/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/ruitian-en.md?truncated=true': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[9].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/markdownLoader.js??ruleSet[1].rules[9].use[1]!/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/ruitian-en.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[9].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/markdownLoader.js??ruleSet[1].rules[9].use[1]!/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/introducing-kthena-redefining-llm-inference-for-the-cloud-native-era.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[9].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/markdownLoader.js??ruleSet[1].rules[9].use[1]!/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/introducing-kthena-redefining-llm-inference-for-the-cloud-native-era.md?truncated=true': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[9].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/markdownLoader.js??ruleSet[1].rules[9].use[1]!/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/Volcano-community-co-construction-program.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[9].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/markdownLoader.js??ruleSet[1].rules[9].use[1]!/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/Volcano-community-co-construction-program.md?truncated=true': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[9].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/markdownLoader.js??ruleSet[1].rules[9].use[1]!/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/aiqiyi-en.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[9].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/markdownLoader.js??ruleSet[1].rules[9].use[1]!/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/aiqiyi-en.md?truncated=true': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+[webpackbar] ✔ Client: Compiled with some errors in 6.77s
+[ERROR] Client bundle compiled with errors therefore further build is impossible.
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/Volcano-community-co-construction-program.md"
+Cause: Unexpected character `4` (U+0034) before attribute value, expected a character that can start an attribute value, such as `"`, `'`, or `{`
+Details:
+{
+  "column": 25,
+  "file": "",
+  "message": "Unexpected character `4` (U+0034) before attribute value, expected a character that can start an attribute value, such as `\"`, `'`, or `{`",
+  "line": 26,
+  "name": "26:25",
+  "place": {
+    "_bufferIndex": 24,
+    "_index": 49,
+    "line": 26,
+    "column": 25,
+    "offset": 605
+  },
+  "reason": "Unexpected character `4` (U+0034) before attribute value, expected a character that can start an attribute value, such as `\"`, `'`, or `{`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/Volcano-community-co-construction-program.md"
+Cause: Unexpected character `4` (U+0034) before attribute value, expected a character that can start an attribute value, such as `"`, `'`, or `{`
+Details:
+{
+  "column": 25,
+  "file": "",
+  "message": "Unexpected character `4` (U+0034) before attribute value, expected a character that can start an attribute value, such as `\"`, `'`, or `{`",
+  "line": 26,
+  "name": "26:25",
+  "place": {
+    "_bufferIndex": 24,
+    "_index": 49,
+    "line": 26,
+    "column": 25,
+    "offset": 605
+  },
+  "reason": "Unexpected character `4` (U+0034) before attribute value, expected a character that can start an attribute value, such as `\"`, `'`, or `{`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/aiqiyi-en.md"
+Cause: Expected a closing tag for `<yaml>` (182:181-182:192) before the end of `paragraph`
+Details:
+{
+  "column": 1,
+  "file": "",
+  "message": "Expected a closing tag for `<yaml>` (182:181-182:192) before the end of `paragraph`",
+  "line": 182,
+  "name": "182:1-182:254",
+  "place": {
+    "start": {
+      "_bufferIndex": 0,
+      "_index": 0,
+      "line": 182,
+      "column": 1,
+      "offset": 9738
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 1,
+      "line": 182,
+      "column": 254,
+      "offset": 9991
+    }
+  },
+  "reason": "Expected a closing tag for `<yaml>` (182:181-182:192) before the end of `paragraph`",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/aiqiyi-en.md"
+Cause: Expected a closing tag for `<yaml>` (182:181-182:192) before the end of `paragraph`
+Details:
+{
+  "column": 1,
+  "file": "",
+  "message": "Expected a closing tag for `<yaml>` (182:181-182:192) before the end of `paragraph`",
+  "line": 182,
+  "name": "182:1-182:254",
+  "place": {
+    "start": {
+      "_bufferIndex": 0,
+      "_index": 0,
+      "line": 182,
+      "column": 1,
+      "offset": 9738
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 1,
+      "line": 182,
+      "column": 254,
+      "offset": 9991
+    }
+  },
+  "reason": "Expected a closing tag for `<yaml>` (182:181-182:192) before the end of `paragraph`",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/introducing-kthena-redefining-llm-inference-for-the-cloud-native-era.md"
+Cause: Expected a closing tag for `<div>` (124:1-124:54) before the end of `paragraph`
+Details:
+{
+  "column": 1,
+  "file": "",
+  "message": "Expected a closing tag for `<div>` (124:1-124:54) before the end of `paragraph`",
+  "line": 124,
+  "name": "124:1-124:137",
+  "place": {
+    "start": {
+      "_bufferIndex": 0,
+      "_index": 0,
+      "line": 124,
+      "column": 1,
+      "offset": 8410
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 1,
+      "line": 124,
+      "column": 137,
+      "offset": 8546
+    }
+  },
+  "reason": "Expected a closing tag for `<div>` (124:1-124:54) before the end of `paragraph`",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/introducing-kthena-redefining-llm-inference-for-the-cloud-native-era.md"
+Cause: Expected a closing tag for `<div>` (124:1-124:54) before the end of `paragraph`
+Details:
+{
+  "column": 1,
+  "file": "",
+  "message": "Expected a closing tag for `<div>` (124:1-124:54) before the end of `paragraph`",
+  "line": 124,
+  "name": "124:1-124:137",
+  "place": {
+    "start": {
+      "_bufferIndex": 0,
+      "_index": 0,
+      "line": 124,
+      "column": 1,
+      "offset": 8410
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 1,
+      "line": 124,
+      "column": 137,
+      "offset": 8546
+    }
+  },
+  "reason": "Expected a closing tag for `<div>` (124:1-124:54) before the end of `paragraph`",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/ruitian-en.md"
+Cause: Expected a closing tag for `<work-id>` (164:14-164:23) before the end of `paragraph`
+Details:
+{
+  "column": 3,
+  "file": "",
+  "message": "Expected a closing tag for `<work-id>` (164:14-164:23) before the end of `paragraph`",
+  "line": 164,
+  "name": "164:3-164:178",
+  "place": {
+    "start": {
+      "_bufferIndex": 0,
+      "_index": 0,
+      "line": 164,
+      "column": 3,
+      "offset": 6288
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 1,
+      "line": 164,
+      "column": 178,
+      "offset": 6463
+    }
+  },
+  "reason": "Expected a closing tag for `<work-id>` (164:14-164:23) before the end of `paragraph`",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/ruitian-en.md"
+Cause: Expected a closing tag for `<work-id>` (164:14-164:23) before the end of `paragraph`
+Details:
+{
+  "column": 3,
+  "file": "",
+  "message": "Expected a closing tag for `<work-id>` (164:14-164:23) before the end of `paragraph`",
+  "line": 164,
+  "name": "164:3-164:178",
+  "place": {
+    "start": {
+      "_bufferIndex": 0,
+      "_index": 0,
+      "line": 164,
+      "column": 3,
+      "offset": 6288
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 1,
+      "line": 164,
+      "column": 178,
+      "offset": 6463
+    }
+  },
+  "reason": "Expected a closing tag for `<work-id>` (164:14-164:23) before the end of `paragraph`",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}

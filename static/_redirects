@@ -5,5 +5,5 @@
 ###############################################
 
 # Redirect golang vanity imports for volcano.sh
-/volcano/* go-get=1 /golang/volcano.html 200
-/apis/* go-get=1 /golang/api.html 200
+/volcano/*  /golang/volcano.html  200  go-get=1
+/apis/*     /golang/api.html      200  go-get=1

@@ -1,0 +1,138 @@
+
+> temp-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+[WARNING] Markdown link with URL `../../installer/README.md` in source file "docs/v1-11-0/gpu_virtualization.md" (26:10) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+[webpackbar] ✔ Server: Compiled successfully in 1.73s
+[webpackbar] ✔ Client: Compiled successfully in 4.07s
+
+[ERROR] Error: Unable to build website for locale en.
+    at tryToBuildLocale (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:83:15)
+    at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:35:9
+    ... 4 lines matching cause stack trace ...
+    at async file:///Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/bin/docusaurus.mjs:44:3 {
+  [cause]: Error: Docusaurus static site generation failed for 3 paths:
+  - "/docs/colocation"
+  - "/docs/v1-11-0/colocation"
+  - "/docs/v1-12-0/colocation"
+      at throwSSGError (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgGlobalResult.js:56:11)
+      at createGlobalSSGResult (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgGlobalResult.js:66:9)
+      ... 11 lines matching cause stack trace ...
+      at async file:///Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/bin/docusaurus.mjs:44:3 {
+    [cause]: AggregateError
+        at throwSSGError (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgGlobalResult.js:57:16)
+        at createGlobalSSGResult (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgGlobalResult.js:66:9)
+        at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgExecutor.js:30:68
+        at async executeSSG (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgExecutor.js:144:20)
+        at async buildLocale (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/buildLocale.js:84:31)
+        at async runBuildLocaleTask (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:98:5)
+        at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:79:13
+        at async tryToBuildLocale (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:75:9)
+        at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:35:9
+        at async mapAsyncSequential (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/utils/lib/jsUtils.js:21:24)
+        at async Command.build (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:34:5)
+        at async Promise.all (index 0)
+        at async runCLI (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/cli.js:56:5)
+        at async file:///Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/bin/docusaurus.mjs:44:3 {
+      [errors]: [
+        Error: Can't render static file for pathname "/docs/colocation"
+            at generateStaticFile (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgRenderer.js:131:20)
+            at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/p-map/index.js:57:22 {
+          [cause]: Error: The `style` prop expects a mapping from style properties to values, not a string. For example, style={{marginRight: spacing + 'em'}} when using JSX.
+              at pushStyleAttribute (server.bundle.js:41249:11)
+              at pushAttribute (server.bundle.js:41408:7)
+              at pushStartGenericElement (server.bundle.js:41799:13)
+              at pushStartInstance (server.bundle.js:42855:10)
+              at renderElement (server.bundle.js:45370:22)
+              at retryNode (server.bundle.js:46065:16)
+              at renderNodeDestructive (server.bundle.js:45859:7)
+              at renderNode (server.bundle.js:46426:14)
+              at renderChildrenArray (server.bundle.js:46208:7)
+              at retryNode (server.bundle.js:46079:9)
+        },
+        Error: Can't render static file for pathname "/docs/v1-11-0/colocation"
+            at generateStaticFile (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgRenderer.js:131:20)
+            at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/p-map/index.js:57:22 {
+          [cause]: Error: The `style` prop expects a mapping from style properties to values, not a string. For example, style={{marginRight: spacing + 'em'}} when using JSX.
+              at pushStyleAttribute (server.bundle.js:41249:11)
+              at pushAttribute (server.bundle.js:41408:7)
+              at pushStartGenericElement (server.bundle.js:41799:13)
+              at pushStartInstance (server.bundle.js:42855:10)
+              at renderElement (server.bundle.js:45370:22)
+              at retryNode (server.bundle.js:46065:16)
+              at renderNodeDestructive (server.bundle.js:45859:7)
+              at renderNode (server.bundle.js:46426:14)
+              at renderChildrenArray (server.bundle.js:46208:7)
+              at retryNode (server.bundle.js:46079:9)
+        },
+        Error: Can't render static file for pathname "/docs/v1-12-0/colocation"
+            at generateStaticFile (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/ssg/ssgRenderer.js:131:20)
+            at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/p-map/index.js:57:22 {
+          [cause]: Error: The `style` prop expects a mapping from style properties to values, not a string. For example, style={{marginRight: spacing + 'em'}} when using JSX.
+              at pushStyleAttribute (server.bundle.js:41249:11)
+              at pushAttribute (server.bundle.js:41408:7)
+              at pushStartGenericElement (server.bundle.js:41799:13)
+              at pushStartInstance (server.bundle.js:42855:10)
+              at renderElement (server.bundle.js:45370:22)
+              at retryNode (server.bundle.js:46065:16)
+              at renderNodeDestructive (server.bundle.js:45859:7)
+              at renderNode (server.bundle.js:46426:14)
+              at renderChildrenArray (server.bundle.js:46208:7)
+              at retryNode (server.bundle.js:46079:9)
+        }
+      ]
+    }
+  }
+}
+[INFO] Docusaurus version: 3.9.2
+Node version: v22.21.0

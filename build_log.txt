@@ -1,0 +1,2639 @@
+
+> temp-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled with some errors in 1.53s
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/referrals.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/plugins.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/plugins/drf.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/referrals.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/mpi_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/mpi_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/network_topology_aware_scheduling.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/referrals.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/podgroup.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/kubeflow_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/kubeflow_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/mpi_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/plugins/priority.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/hierarchical_queue.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/actions.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/multi_cluster_scheduling.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/network_topology_aware_scheduling.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/referrals.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/schduler_introduction.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/tf_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/referrals.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/plugins.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/referrals.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/hierarchical_queue.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/mpi_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/queue_resource_management.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/actions.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/queue_resource_management.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/tf_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/plugins.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/tf_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/tf_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/descheduler.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/colocation.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/actions.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/kubeflow_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/network_topology_aware_scheduling.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/descheduler.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/schduler_introduction.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/podgroup.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/mpi_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/tf_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/podgroup.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/mpi_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/schduler_introduction.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/multi_cluster_scheduling.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/kubeflow_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/plugins/gang.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/plugins.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/kubeflow_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/scheduler_introduction.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/gpu_virtualization.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/kubeflow_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/podgroup.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/descheduler.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/plugins.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/actions.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/hierarchical_queue.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/actions.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/plugins.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/schduler_introduction.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/multi_cluster_scheduling.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/referrals.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/kubeflow_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/queue_resource_management.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/actions.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/colocation.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/podgroup.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/mpi_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/architecture.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/actions.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/schduler_introduction.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/tf_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/schduler_introduction.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/colocation.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/podgroup.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/podgroup.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/tf_on_volcano.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+[webpackbar] ✔ Client: Compiled with some errors in 3.66s
+[ERROR] Client bundle compiled with errors therefore further build is impossible.
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/actions.md"
+Cause: Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag
+Details:
+{
+  "column": 28,
+  "file": "",
+  "message": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "line": 30,
+  "name": "30:28",
+  "place": {
+    "_bufferIndex": 27,
+    "_index": 0,
+    "line": 30,
+    "column": 28,
+    "offset": 1739
+  },
+  "reason": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/architecture.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 204,
+    "loc": {
+      "line": 14,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 14,
+  "name": "14:3",
+  "place": {
+    "line": 14,
+    "column": 3,
+    "offset": 204
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/colocation.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 5053,
+    "loc": {
+      "line": 48,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 48,
+  "name": "48:37",
+  "place": {
+    "line": 48,
+    "column": 37,
+    "offset": 5053
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/descheduler.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3519,
+    "loc": {
+      "line": 38,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 38,
+  "name": "38:37",
+  "place": {
+    "line": 38,
+    "column": 37,
+    "offset": 3519
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/hierarchical_queue.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3255,
+    "loc": {
+      "line": 63,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 63,
+  "name": "63:3",
+  "place": {
+    "line": 63,
+    "column": 3,
+    "offset": 3255
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/kubeflow_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1314,
+    "loc": {
+      "line": 19,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 19,
+  "name": "19:3",
+  "place": {
+    "line": 19,
+    "column": 3,
+    "offset": 1314
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/mpi_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1122,
+    "loc": {
+      "line": 31,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 31,
+  "name": "31:3",
+  "place": {
+    "line": 31,
+    "column": 3,
+    "offset": 1122
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/multi_cluster_scheduling.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2147,
+    "loc": {
+      "line": 37,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 37,
+  "name": "37:37",
+  "place": {
+    "line": 37,
+    "column": 37,
+    "offset": 2147
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/network_topology_aware_scheduling.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2588,
+    "loc": {
+      "line": 30,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 30,
+  "name": "30:37",
+  "place": {
+    "line": 30,
+    "column": 37,
+    "offset": 2588
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/plugins/drf.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 45,
+    "loc": {
+      "line": 7,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 7,
+  "name": "7:3",
+  "place": {
+    "line": 7,
+    "column": 3,
+    "offset": 45
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/plugins/gang.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 46,
+    "loc": {
+      "line": 7,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 7,
+  "name": "7:3",
+  "place": {
+    "line": 7,
+    "column": 3,
+    "offset": 46
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/plugins/priority.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 50,
+    "loc": {
+      "line": 7,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 7,
+  "name": "7:3",
+  "place": {
+    "line": 7,
+    "column": 3,
+    "offset": 50
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/podgroup.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3083,
+    "loc": {
+      "line": 85,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 85,
+  "name": "85:3",
+  "place": {
+    "line": 85,
+    "column": 3,
+    "offset": 3083
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/queue_resource_management.md"
+Cause: Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 71,
+  "file": "",
+  "message": "Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 28,
+  "name": "28:71",
+  "place": {
+    "_bufferIndex": 59,
+    "_index": 0,
+    "line": 28,
+    "column": 71,
+    "offset": 1360
+  },
+  "reason": "Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/referrals.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 236,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 236
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/scheduler_introduction.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 576,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 576
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/tf_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 655,
+    "loc": {
+      "line": 21,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 21,
+  "name": "21:3",
+  "place": {
+    "line": 21,
+    "column": 3,
+    "offset": 655
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/actions.md"
+Cause: Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag
+Details:
+{
+  "column": 28,
+  "file": "",
+  "message": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "line": 29,
+  "name": "29:28",
+  "place": {
+    "_bufferIndex": 27,
+    "_index": 0,
+    "line": 29,
+    "column": 28,
+    "offset": 1215
+  },
+  "reason": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/architecture.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 204,
+    "loc": {
+      "line": 14,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 14,
+  "name": "14:3",
+  "place": {
+    "line": 14,
+    "column": 3,
+    "offset": 204
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/kubeflow_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1314,
+    "loc": {
+      "line": 19,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 19,
+  "name": "19:3",
+  "place": {
+    "line": 19,
+    "column": 3,
+    "offset": 1314
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/mpi_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1122,
+    "loc": {
+      "line": 31,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 31,
+  "name": "31:3",
+  "place": {
+    "line": 31,
+    "column": 3,
+    "offset": 1122
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/plugins.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 190,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 190
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/podgroup.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2962,
+    "loc": {
+      "line": 76,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 76,
+  "name": "76:3",
+  "place": {
+    "line": 76,
+    "column": 3,
+    "offset": 2962
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/referrals.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 236,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 236
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/schduler_introduction.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 576,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 576
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-7-0/tf_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 655,
+    "loc": {
+      "line": 21,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 21,
+  "name": "21:3",
+  "place": {
+    "line": 21,
+    "column": 3,
+    "offset": 655
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/actions.md"
+Cause: Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag
+Details:
+{
+  "column": 28,
+  "file": "",
+  "message": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "line": 29,
+  "name": "29:28",
+  "place": {
+    "_bufferIndex": 27,
+    "_index": 0,
+    "line": 29,
+    "column": 28,
+    "offset": 1215
+  },
+  "reason": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/architecture.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 204,
+    "loc": {
+      "line": 14,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 14,
+  "name": "14:3",
+  "place": {
+    "line": 14,
+    "column": 3,
+    "offset": 204
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/kubeflow_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1314,
+    "loc": {
+      "line": 19,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 19,
+  "name": "19:3",
+  "place": {
+    "line": 19,
+    "column": 3,
+    "offset": 1314
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/mpi_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1122,
+    "loc": {
+      "line": 31,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 31,
+  "name": "31:3",
+  "place": {
+    "line": 31,
+    "column": 3,
+    "offset": 1122
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/plugins.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 190,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 190
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/podgroup.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2962,
+    "loc": {
+      "line": 76,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 76,
+  "name": "76:3",
+  "place": {
+    "line": 76,
+    "column": 3,
+    "offset": 2962
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/referrals.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 236,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 236
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/schduler_introduction.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 576,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 576
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-8-2/tf_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 655,
+    "loc": {
+      "line": 21,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 21,
+  "name": "21:3",
+  "place": {
+    "line": 21,
+    "column": 3,
+    "offset": 655
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/actions.md"
+Cause: Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag
+Details:
+{
+  "column": 28,
+  "file": "",
+  "message": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "line": 29,
+  "name": "29:28",
+  "place": {
+    "_bufferIndex": 27,
+    "_index": 0,
+    "line": 29,
+    "column": 28,
+    "offset": 1215
+  },
+  "reason": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/architecture.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 204,
+    "loc": {
+      "line": 14,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 14,
+  "name": "14:3",
+  "place": {
+    "line": 14,
+    "column": 3,
+    "offset": 204
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/kubeflow_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1314,
+    "loc": {
+      "line": 19,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 19,
+  "name": "19:3",
+  "place": {
+    "line": 19,
+    "column": 3,
+    "offset": 1314
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/mpi_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1122,
+    "loc": {
+      "line": 31,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 31,
+  "name": "31:3",
+  "place": {
+    "line": 31,
+    "column": 3,
+    "offset": 1122
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/plugins.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 190,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 190
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/podgroup.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2962,
+    "loc": {
+      "line": 76,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 76,
+  "name": "76:3",
+  "place": {
+    "line": 76,
+    "column": 3,
+    "offset": 2962
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/referrals.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 236,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 236
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/schduler_introduction.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 576,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 576
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-9-0/tf_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 655,
+    "loc": {
+      "line": 21,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 21,
+  "name": "21:3",
+  "place": {
+    "line": 21,
+    "column": 3,
+    "offset": 655
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/actions.md"
+Cause: Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag
+Details:
+{
+  "column": 28,
+  "file": "",
+  "message": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "line": 29,
+  "name": "29:28",
+  "place": {
+    "_bufferIndex": 27,
+    "_index": 0,
+    "line": 29,
+    "column": 28,
+    "offset": 1215
+  },
+  "reason": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/architecture.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 204,
+    "loc": {
+      "line": 14,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 14,
+  "name": "14:3",
+  "place": {
+    "line": 14,
+    "column": 3,
+    "offset": 204
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/kubeflow_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1312,
+    "loc": {
+      "line": 17,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 17,
+  "name": "17:3",
+  "place": {
+    "line": 17,
+    "column": 3,
+    "offset": 1312
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/mpi_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1122,
+    "loc": {
+      "line": 31,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 31,
+  "name": "31:3",
+  "place": {
+    "line": 31,
+    "column": 3,
+    "offset": 1122
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/plugins.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 190,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 190
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/podgroup.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2962,
+    "loc": {
+      "line": 76,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 76,
+  "name": "76:3",
+  "place": {
+    "line": 76,
+    "column": 3,
+    "offset": 2962
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/referrals.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 236,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 236
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/schduler_introduction.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 576,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 576
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-10-0/tf_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 655,
+    "loc": {
+      "line": 21,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 21,
+  "name": "21:3",
+  "place": {
+    "line": 21,
+    "column": 3,
+    "offset": 655
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/actions.md"
+Cause: Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag
+Details:
+{
+  "column": 28,
+  "file": "",
+  "message": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "line": 30,
+  "name": "30:28",
+  "place": {
+    "_bufferIndex": 27,
+    "_index": 0,
+    "line": 30,
+    "column": 28,
+    "offset": 1739
+  },
+  "reason": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/architecture.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 204,
+    "loc": {
+      "line": 14,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 14,
+  "name": "14:3",
+  "place": {
+    "line": 14,
+    "column": 3,
+    "offset": 204
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/colocation.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 5053,
+    "loc": {
+      "line": 48,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 48,
+  "name": "48:37",
+  "place": {
+    "line": 48,
+    "column": 37,
+    "offset": 5053
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/descheduler.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3519,
+    "loc": {
+      "line": 38,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 38,
+  "name": "38:37",
+  "place": {
+    "line": 38,
+    "column": 37,
+    "offset": 3519
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/gpu_virtualization.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3279,
+    "loc": {
+      "line": 123,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 123,
+  "name": "123:37",
+  "place": {
+    "line": 123,
+    "column": 37,
+    "offset": 3279
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/hierarchical_queue.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3255,
+    "loc": {
+      "line": 63,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 63,
+  "name": "63:3",
+  "place": {
+    "line": 63,
+    "column": 3,
+    "offset": 3255
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/kubeflow_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1314,
+    "loc": {
+      "line": 19,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 19,
+  "name": "19:3",
+  "place": {
+    "line": 19,
+    "column": 3,
+    "offset": 1314
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/mpi_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1122,
+    "loc": {
+      "line": 31,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 31,
+  "name": "31:3",
+  "place": {
+    "line": 31,
+    "column": 3,
+    "offset": 1122
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/multi_cluster_scheduling.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2152,
+    "loc": {
+      "line": 37,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 37,
+  "name": "37:37",
+  "place": {
+    "line": 37,
+    "column": 37,
+    "offset": 2152
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/network_topology_aware_scheduling.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2615,
+    "loc": {
+      "line": 32,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 32,
+  "name": "32:37",
+  "place": {
+    "line": 32,
+    "column": 37,
+    "offset": 2615
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/plugins.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 190,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 190
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/podgroup.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3086,
+    "loc": {
+      "line": 85,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 85,
+  "name": "85:3",
+  "place": {
+    "line": 85,
+    "column": 3,
+    "offset": 3086
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/queue_resource_management.md"
+Cause: Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 71,
+  "file": "",
+  "message": "Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 28,
+  "name": "28:71",
+  "place": {
+    "_bufferIndex": 59,
+    "_index": 0,
+    "line": 28,
+    "column": 71,
+    "offset": 1360
+  },
+  "reason": "Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/referrals.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 236,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 236
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/schduler_introduction.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 576,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 576
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/tf_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 655,
+    "loc": {
+      "line": 21,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 21,
+  "name": "21:3",
+  "place": {
+    "line": 21,
+    "column": 3,
+    "offset": 655
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/actions.md"
+Cause: Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag
+Details:
+{
+  "column": 28,
+  "file": "",
+  "message": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "line": 30,
+  "name": "30:28",
+  "place": {
+    "_bufferIndex": 27,
+    "_index": 0,
+    "line": 30,
+    "column": 28,
+    "offset": 1739
+  },
+  "reason": "Unexpected character `,` (U+002C) after name, expected a character that can start an attribute name, such as a letter, `$`, or `_`; whitespace before attributes; or the end of the tag",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/architecture.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 204,
+    "loc": {
+      "line": 14,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 14,
+  "name": "14:3",
+  "place": {
+    "line": 14,
+    "column": 3,
+    "offset": 204
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/colocation.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 5053,
+    "loc": {
+      "line": 48,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 48,
+  "name": "48:37",
+  "place": {
+    "line": 48,
+    "column": 37,
+    "offset": 5053
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/descheduler.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3519,
+    "loc": {
+      "line": 38,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 38,
+  "name": "38:37",
+  "place": {
+    "line": 38,
+    "column": 37,
+    "offset": 3519
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/hierarchical_queue.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3255,
+    "loc": {
+      "line": 63,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 63,
+  "name": "63:3",
+  "place": {
+    "line": 63,
+    "column": 3,
+    "offset": 3255
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/kubeflow_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1314,
+    "loc": {
+      "line": 19,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 19,
+  "name": "19:3",
+  "place": {
+    "line": 19,
+    "column": 3,
+    "offset": 1314
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/mpi_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 1122,
+    "loc": {
+      "line": 31,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 31,
+  "name": "31:3",
+  "place": {
+    "line": 31,
+    "column": 3,
+    "offset": 1122
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/multi_cluster_scheduling.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2147,
+    "loc": {
+      "line": 37,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 37,
+  "name": "37:37",
+  "place": {
+    "line": 37,
+    "column": 37,
+    "offset": 2147
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/network_topology_aware_scheduling.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 2588,
+    "loc": {
+      "line": 30,
+      "column": 36
+    },
+    "raisedAt": 2
+  },
+  "column": 37,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 30,
+  "name": "30:37",
+  "place": {
+    "line": 30,
+    "column": 37,
+    "offset": 2588
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/plugins.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 190,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 190
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/podgroup.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 3086,
+    "loc": {
+      "line": 85,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 85,
+  "name": "85:3",
+  "place": {
+    "line": 85,
+    "column": 3,
+    "offset": 3086
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/queue_resource_management.md"
+Cause: Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`
+Details:
+{
+  "column": 71,
+  "file": "",
+  "message": "Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "line": 28,
+  "name": "28:71",
+  "place": {
+    "_bufferIndex": 59,
+    "_index": 0,
+    "line": 28,
+    "column": 71,
+    "offset": 1360
+  },
+  "reason": "Unexpected character `=` (U+003D) before name, expected a character that can start a name, such as a letter, `$`, or `_`",
+  "ruleId": "unexpected-character",
+  "source": "micromark-extension-mdx-jsx",
+  "url": "https://github.com/micromark/micromark-extension-mdx-jsx#unexpected-character-at-expected-expect"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/referrals.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 236,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 236
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/schduler_introduction.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 576,
+    "loc": {
+      "line": 15,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 15,
+  "name": "15:3",
+  "place": {
+    "line": 15,
+    "column": 3,
+    "offset": 576
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/tf_on_volcano.md"
+Cause: Could not parse expression with acorn
+Details:
+{
+  "cause": {
+    "pos": 655,
+    "loc": {
+      "line": 21,
+      "column": 2
+    },
+    "raisedAt": 2
+  },
+  "column": 3,
+  "file": "",
+  "message": "Could not parse expression with acorn",
+  "line": 21,
+  "name": "21:3",
+  "place": {
+    "line": 21,
+    "column": 3,
+    "offset": 655
+  },
+  "reason": "Could not parse expression with acorn",
+  "ruleId": "acorn",
+  "source": "micromark-extension-mdx-expression",
+  "url": "https://github.com/micromark/micromark-extension-mdx-expression/tree/main/packages/micromark-extension-mdx-expression#could-not-parse-expression-with-acorn"
+}

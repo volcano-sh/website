@@ -1,0 +1,53 @@
+volcano:
+  name: Volcano
+  url: https://volcano.sh
+  image_url: /img/volcano_logo.png
+Volcano:
+  name: Volcano
+  url: https://volcano.sh
+  image_url: /img/volcano_logo.png
+"Adam Korczynski":
+  name: Adam Korczynski
+"Hao Li/Senior R&D Engineer in iQIYI":
+  name: Hao Li
+  title: Senior R&D Engineer in iQIYI
+"Zhe Jin/Senior Engineer in HUAWEI CLOUD":
+  name: Zhe Jin
+  title: Senior Engineer in HUAWEI CLOUD
+"Junmao Li/System Architect in Pengcheng Laboratory":
+  name: Junmao Li
+  title: System Architect in Pengcheng Laboratory
+Thor-wl:
+  name: Thor-wl
+  url: https://github.com/Thor-wl
+"Yunzhi Cheng/Ruitian Tech-Leader":
+  name: Yunzhi Cheng
+  title: Ruitian Tech-Leader
+"Yunzhi Cheng/Tech-Leader in Ruitian":
+  name: Yunzhi Cheng
+  title: Tech-Leader in Ruitian
+"Jian Zhu/Senior Architect in Leinao OS":
+  name: Jian Zhu
+  title: Senior Architect in Leinao OS
+"Yi Guo/Tech-Leader":
+  name: Yi Guo
+  title: Tech-Leader
+"Zhengyu Xu/R&D in Ruitian":
+  name: Zhengyu Xu
+  title: R&D in Ruitian
+"Ada Logics":
+  name: Ada Logics
+  url: https://adalogics.com
+"Xavier Chang":
+  name: Xavier Chang
+"Huawei and Volcano maintainer":
+  name: Huawei and Volcano maintainer
+"Volcano Engine Team":
+  name: Volcano Engine Team
+  url: https://volcano.sh
+"PaddlePaddle Team":
+  name: PaddlePaddle Team
+  url: https://www.paddlepaddle.org.cn/
+"Volcano Team":
+  name: Volcano Team
+  url: https://volcano.sh

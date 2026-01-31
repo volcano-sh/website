@@ -1,0 +1,60 @@
+
+> temp-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+
+[ERROR] Error: Unable to build website for locale en.
+    at tryToBuildLocale (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:83:15)
+    at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:35:9
+    at async mapAsyncSequential (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/utils/lib/jsUtils.js:21:24)
+    at async Command.build (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:34:5)
+    at async Promise.all (index 0)
+    at async runCLI (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/cli.js:56:5)
+    at async file:///Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/bin/docusaurus.mjs:44:3 {
+  [cause]: Error: Processing of blog source file path=introducing-kthena-redefining-llm-inference-for-the-cloud-native-era.md failed.
+      at doProcessBlogSourceFile (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js:271:19)
+      at async Promise.all (index 16)
+      at async generateBlogPosts (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js:274:24)
+      at async Object.loadContent (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/index.js:155:29)
+      at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/server/plugins/plugins.js:40:23
+      at async Promise.all (index 2)
+      at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/server/plugins/plugins.js:146:25
+      at async loadSite (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/server/site.js:155:45)
+      at async buildLocale (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/buildLocale.js:33:18)
+      at async runBuildLocaleTask (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:98:5) {
+    [cause]: Error: Blog author with key "Volcano Engine Team" not found in the authors map file.
+    Valid author keys are:
+    - volcano
+    - Volcano
+    - Adam Korczynski
+    - Hao Li/Senior R&D Engineer in iQIYI
+    - Zhe Jin/Senior Engineer in HUAWEI CLOUD
+    - Junmao Li/System Architect in Pengcheng Laboratory
+    - Thor-wl
+    - Yunzhi Cheng/Ruitian Tech-Leader
+    - Yunzhi Cheng/Tech-Leader in Ruitian
+    - Jian Zhu/Senior Architect in Leinao OS
+    - Yi Guo/Tech-Leader
+    - Zhengyu Xu/R&D in Ruitian
+    - Ada Logics
+    - Xavier Chang
+    - Huawei and Volcano maintainer
+        at getAuthorsMapAuthor (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/authors.js:87:23)
+        at toAuthor (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/authors.js:100:16)
+        at Array.map (<anonymous>)
+        at getFrontMatterAuthors (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/authors.js:58:42)
+        at getBlogPostAuthors (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/authors.js:114:21)
+        at processBlogSourceFile (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js:215:54)
+        at async doProcessBlogSourceFile (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js:268:20)
+        at async Promise.all (index 16)
+        at async generateBlogPosts (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js:274:24)
+        at async Object.loadContent (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/index.js:155:29)
+  }
+}
+[INFO] Docusaurus version: 3.9.2
+Node version: v22.21.0
