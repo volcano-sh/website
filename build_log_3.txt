@@ -1,0 +1,201 @@
+
+> temp-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+[WARNING] Markdown link with URL `../../installer/README.md` in source file "docs/v1-11-0/gpu_virtualization.md" (26:10) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+[WARNING] Markdown link with URL `../../installer/README.md` in source file "docs/v1-11-0/gpu_virtualization.md" (26:10) couldn't be resolved.
+Make sure it references a local Markdown file that exists within the current plugin.
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/descheduler/descheduler_EN.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+TypeError: unsupported file type: undefined
+    at imageSize (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1013:9)
+    at /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1040:16
+    at async Promise.allSettled (index 0)
+    at async processQueue (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/image-size/dist/fromFile.cjs:1047:3)
+[WARNING] The image at "/Users/kushkumargupta/Documents/Volcano/volcano-website/static/img/multi-cluster/volcano_global_design.svg" can't be read correctly. Please ensure it's a valid image.
+unsupported file type: undefined
+[webpackbar] ✔ Server: Compiled with some errors in 2.16s
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/colocation.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/colocation.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+<w> [webpack.cache.PackFileCacheStrategy] Skipped not serializable cache item 'Compilation/modules|/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/mdx-loader/lib/index.js??ruleSet[1].rules[8].use[0]!/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/colocation.md': No serializer registered for VFileMessage
+<w> while serializing webpack/lib/cache/PackFileCacheStrategy.PackContentItems -> webpack/lib/NormalModule -> webpack/lib/ModuleBuildError -> Error -> VFileMessage
+[webpackbar] ✔ Client: Compiled with some errors in 4.16s
+[ERROR] Client bundle compiled with errors therefore further build is impossible.
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/colocation.md"
+Cause: Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)
+Details:
+{
+  "column": 239,
+  "file": "",
+  "message": "Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)",
+  "line": 404,
+  "name": "404:239-404:244",
+  "place": {
+    "start": {
+      "_bufferIndex": 238,
+      "_index": 2,
+      "line": 404,
+      "column": 239,
+      "offset": 25553
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 3,
+      "line": 404,
+      "column": 244,
+      "offset": 25558
+    }
+  },
+  "reason": "Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-11-0/colocation.md"
+Cause: Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)
+Details:
+{
+  "column": 239,
+  "file": "",
+  "message": "Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)",
+  "line": 404,
+  "name": "404:239-404:244",
+  "place": {
+    "start": {
+      "_bufferIndex": 238,
+      "_index": 2,
+      "line": 404,
+      "column": 239,
+      "offset": 25553
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 3,
+      "line": 404,
+      "column": 244,
+      "offset": 25558
+    }
+  },
+  "reason": "Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}
+
+--------------------------
+
+Error: MDX compilation failed for file "/Users/kushkumargupta/Documents/Volcano/volcano-website/docs/v1-12-0/colocation.md"
+Cause: Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)
+Details:
+{
+  "column": 239,
+  "file": "",
+  "message": "Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)",
+  "line": 404,
+  "name": "404:239-404:244",
+  "place": {
+    "start": {
+      "_bufferIndex": 238,
+      "_index": 2,
+      "line": 404,
+      "column": 239,
+      "offset": 25553
+    },
+    "end": {
+      "_bufferIndex": -1,
+      "_index": 3,
+      "line": 404,
+      "column": 244,
+      "offset": 25558
+    }
+  },
+  "reason": "Unexpected closing tag `</td>`, expected corresponding closing tag for `<br>` (404:117-404:121)",
+  "ruleId": "end-tag-mismatch",
+  "source": "mdast-util-mdx-jsx"
+}

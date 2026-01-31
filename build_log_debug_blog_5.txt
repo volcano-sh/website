@@ -1,0 +1,65 @@
+
+> temp-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[WARNING] Docusaurus found blog posts without truncation markers:
+- "blog/Volcano-1.13.0-release.md"
+- "blog/iflytek_case_study.md"
+- "blog/Volcano-1.12.0-release.md"
+- "blog/volcano-2025-security-audit.md"
+- "blog/how-volcano-boosts-distributed-training-and-inference-performance.md"
+- "blog/Volcano-1.11.0-release.md"
+- "blog/Volcano-1.10.0-release.md"
+- "blog/introducing-kthena-redefining-llm-inference-for-the-cloud-native-era.md"
+- "blog/Volcano-1.9.0-release.md"
+- "blog/Volcano-1.8.2-release.md"
+- "blog/Volcano-community-co-construction-program.md"
+- "blog/Volcano-1.7.0-release-en.md"
+- "blog/ING_case-en.md"
+- "blog/1.4-release-en.md"
+- "blog/meet-cloud-native-batch-computing-with-volcano-in-ai-big-data-scenarios.md"
+- "blog/ruitian2-en.md"
+- "blog/pengcheng-en.md"
+- "blog/xiaohongshu-en.md"
+- "blog/ruitian-en.md"
+- "blog/leinao-en.md"
+- "blog/hpc-en.md"
+- "blog/aiqiyi-en.md"
+- "blog/paddlepaddle-en.md"
+- "blog/Quick-Start-Volcano.md"
+- "blog/kube-batch-customers.md"
+- "blog/kube-batch-startup.md"
+
+We recommend using truncation markers (`<!-- truncate -->` or `{/* truncate */}`) in blog posts to create shorter previews on blog paginated lists.
+Tip: turn this security off with the `onUntruncatedBlogPosts: 'ignore'` blog plugin option.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 1.59s
+[webpackbar] ✔ Client: Compiled successfully in 3.41s
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /docs/v1-11-0/gpu_virtualization:
+   -> linking to ../../installer/README.md (resolved as: /installer/README.md)
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /docs/unified_scheduling:
+   -> linking to #2-1-2-enable-dra-dynamic-resource-allocation-in-volcano (resolved as: /docs/unified_scheduling#2-1-2-enable-dra-dynamic-resource-allocation-in-volcano)
+- Broken anchor on source page path = /docs/v1-12-0/unified_scheduling:
+   -> linking to #2-1-2-enable-dra-dynamic-resource-allocation-in-volcano (resolved as: /docs/v1-12-0/unified_scheduling#2-1-2-enable-dra-dynamic-resource-allocation-in-volcano)
+
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.

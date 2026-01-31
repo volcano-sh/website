@@ -1,0 +1,414 @@
+
+> temp-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[webpackbar] ℹ Compiling Client
+[webpackbar] ℹ Compiling Server
+[webpackbar] ✔ Server: Compiled successfully in 733.03ms
+[webpackbar] ✔ Client: Compiled successfully in 1.07s
+[WARNING] Docusaurus found broken links!
+
+Please check the pages of your site in the list below, and make sure you don't reference any path that does not exist.
+Note: it's possible to ignore broken links with the 'onBrokenLinks' Docusaurus configuration, and let the build pass.
+
+It looks like some of the broken links we found appear in many pages of your site.
+Maybe those broken links appear on all pages through your site layout?
+We recommend that you check your theme configuration for such links (particularly, theme navbar and footer).
+Frequent broken links are linking to:
+- /blog
+
+Exhaustive list of all broken links found:
+- Broken link on source page path = /404.html:
+   -> linking to /blog
+- Broken link on source page path = /markdown-page:
+   -> linking to /blog
+- Broken link on source page path = /docs/actions:
+   -> linking to /blog
+- Broken link on source page path = /docs/architecture:
+   -> linking to /blog
+- Broken link on source page path = /docs/cli:
+   -> linking to /blog
+- Broken link on source page path = /docs/colocation:
+   -> linking to /blog
+- Broken link on source page path = /docs/contribution:
+   -> linking to /blog
+- Broken link on source page path = /docs/cron_volcanoJob:
+   -> linking to /blog
+- Broken link on source page path = /docs/descheduler:
+   -> linking to /blog
+- Broken link on source page path = /docs/flink_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/gpu_virtualization:
+   -> linking to /blog
+- Broken link on source page path = /docs/hierarchical_queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/installation:
+   -> linking to /blog
+- Broken link on source page path = /docs/introduction:
+   -> linking to /blog
+- Broken link on source page path = /docs/kubeflow_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/membership:
+   -> linking to /blog
+- Broken link on source page path = /docs/mindspore_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/mpi_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/multi_cluster_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/network_topology_aware_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/binpack:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/drf:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/gang:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/nodeorder:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/numa-aware:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/predicates:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/priority:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/proportion:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/sla:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/task-topology:
+   -> linking to /blog
+- Broken link on source page path = /docs/plugins/tdm:
+   -> linking to /blog
+- Broken link on source page path = /docs/podgroup:
+   -> linking to /blog
+- Broken link on source page path = /docs/pp_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/queue_resource_management:
+   -> linking to /blog
+- Broken link on source page path = /docs/ray_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/referrals:
+   -> linking to /blog
+- Broken link on source page path = /docs/scheduler_introduction:
+   -> linking to /blog
+- Broken link on source page path = /docs/spark_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/tf_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/tutorials:
+   -> linking to /blog
+- Broken link on source page path = /docs/unified_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/actions:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/architecture:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/cli:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/contribution:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/flink_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/installation:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/kubeflow_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/membership:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/mindspore_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/mpi_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/plugins:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/podgroup:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/pp_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/referrals:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/schduler_introduction:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/spark_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/tf_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/tutorials:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-10-0/vcjob:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/actions:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/architecture:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/cli:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/colocation:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/contribution:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/descheduler:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/flink_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/gpu_virtualization:
+   -> linking to /blog
+   -> linking to ../../installer/README.md (resolved as: /installer/README.md)
+- Broken link on source page path = /docs/v1-11-0/hierarchical_queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/installation:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/kubeflow_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/membership:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/mindspore_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/mpi_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/multi_cluster_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/network_topology_aware_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/plugins:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/podgroup:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/pp_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/queue_resource_management:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/referrals:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/schduler_introduction:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/spark_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/tf_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/tutorials:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/unified_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-11-0/vcjob:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/actions:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/architecture:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/cli:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/colocation:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/contribution:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/descheduler:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/flink_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/gpu_virtualization:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/hierarchical_queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/installation:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/kubeflow_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/membership:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/mindspore_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/mpi_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/multi_cluster_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/network_topology_aware_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/plugins:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/podgroup:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/pp_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/queue_resource_management:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/referrals:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/schduler_introduction:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/spark_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/tf_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/tutorials:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/unified_scheduling:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-12-0/vcjob:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/actions:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/architecture:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/cli:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/contribution:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/flink_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/installation:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/kubeflow_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/membership:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/mindspore_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/mpi_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/plugins:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/podgroup:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/pp_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/referrals:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/schduler_introduction:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/spark_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/tf_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/tutorials:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-7-0/vcjob:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/actions:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/architecture:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/cli:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/contribution:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/flink_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/installation:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/kubeflow_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/membership:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/mindspore_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/mpi_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/plugins:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/podgroup:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/pp_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/referrals:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/schduler_introduction:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/spark_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/tf_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/tutorials:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-8-2/vcjob:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/actions:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/architecture:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/cli:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/contribution:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/flink_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/installation:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/kubeflow_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/membership:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/mindspore_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/mpi_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/plugins:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/podgroup:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/pp_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/queue:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/referrals:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/schduler_introduction:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/spark_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/tf_on_volcano:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/tutorials:
+   -> linking to /blog
+- Broken link on source page path = /docs/v1-9-0/vcjob:
+   -> linking to /blog
+- Broken link on source page path = /docs/vcjob:
+   -> linking to /blog
+- Broken link on source page path = /:
+   -> linking to /blog
+
+[WARNING] Docusaurus found broken anchors!
+
+Please check the pages of your site in the list below, and make sure you don't reference any anchor that does not exist.
+Note: it's possible to ignore broken anchors with the 'onBrokenAnchors' Docusaurus configuration, and let the build pass.
+
+Exhaustive list of all broken anchors found:
+- Broken anchor on source page path = /docs/unified_scheduling:
+   -> linking to #2-1-2-enable-dra-dynamic-resource-allocation-in-volcano (resolved as: /docs/unified_scheduling#2-1-2-enable-dra-dynamic-resource-allocation-in-volcano)
+- Broken anchor on source page path = /docs/v1-12-0/unified_scheduling:
+   -> linking to #2-1-2-enable-dra-dynamic-resource-allocation-in-volcano (resolved as: /docs/v1-12-0/unified_scheduling#2-1-2-enable-dra-dynamic-resource-allocation-in-volcano)
+
+[SUCCESS] Generated static files in "build".
+[INFO] Use `npm run serve` command to test your build locally.

@@ -1,0 +1,93 @@
+
+> temp-docusaurus@0.0.0 build
+> docusaurus build
+
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[INFO] [en] Creating an optimized production build...
+[WARNING] The `siteConfig.onBrokenMarkdownLinks` config option is deprecated and will be removed in Docusaurus v4.
+Please migrate and move this option to `siteConfig.markdown.hooks.onBrokenMarkdownLinks` instead.
+[ERROR] The following front matter:
+---
+title: Meet Cloud Native Batch Computing with Volcano in AI & Big Data Scenarios
+description: Join Volcano at KubeCon + CloudNativeCon Europe, 19-22 March in Paris!
+subtitle: ''
+date: '2024-03-08'
+lastmod: '2024-03-08'
+datemonth: Mar
+dateyear: '2024'
+dateday: '08'
+draft: 'false  # Is this a draft? true/false'
+toc: 'true  # Show table of contents? true/false'
+type: '"posts"  # Do not modify.'
+authors:
+  - volcano
+tags:
+  - News
+summary: Join Volcano at KubeCon + CloudNativeCon Europe, 19-22 March in Paris!
+linktitle: Meet Cloud Native Batch Computing with Volcano in AI & Big Data Scenarios
+parent: news
+weight: '6'
+---
+contains invalid values for field(s): `draft`.
+
+- "draft" must be a boolean
+
+[ERROR] Error while parsing blog post file "/Users/kushkumargupta/Documents/Volcano/volcano-website/blog/Meet  Cloud Native Batch Computing with Volcano in AI & Big Data Scenarios.md".
+
+[ERROR] Error: Unable to build website for locale en.
+    at tryToBuildLocale (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:83:15)
+    at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:35:9
+    at async mapAsyncSequential (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/utils/lib/jsUtils.js:21:24)
+    at async Command.build (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:34:5)
+    at async Promise.all (index 0)
+    at async runCLI (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/cli.js:56:5)
+    at async file:///Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/bin/docusaurus.mjs:44:3 {
+  [cause]: Error: Processing of blog source file path=Meet  Cloud Native Batch Computing with Volcano in AI & Big Data Scenarios.md failed.
+      at doProcessBlogSourceFile (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js:271:19)
+      at async Promise.all (index 2)
+      at async generateBlogPosts (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/blogUtils.js:274:24)
+      at async Object.loadContent (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/plugin-content-blog/lib/index.js:155:29)
+      at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/server/plugins/plugins.js:40:23
+      at async Promise.all (index 2)
+      at async /Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/server/plugins/plugins.js:146:25
+      at async loadSite (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/server/site.js:155:45)
+      at async buildLocale (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/buildLocale.js:33:18)
+      at async runBuildLocaleTask (/Users/kushkumargupta/Documents/Volcano/volcano-website/node_modules/@docusaurus/core/lib/commands/build/build.js:98:5) {
+    [cause]: [Error [ValidationError]: "draft" must be a boolean] {
+      _original: {
+        title: 'Meet Cloud Native Batch Computing with Volcano in AI & Big Data Scenarios',
+        description: 'Join Volcano at KubeCon + CloudNativeCon Europe, 19-22 March in Paris!',
+        subtitle: '',
+        date: '2024-03-08',
+        lastmod: '2024-03-08',
+        datemonth: 'Mar',
+        dateyear: '2024',
+        dateday: '08',
+        draft: 'false  # Is this a draft? true/false',
+        toc: 'true  # Show table of contents? true/false',
+        type: '"posts"  # Do not modify.',
+        authors: [ 'volcano' ],
+        tags: [ 'News' ],
+        summary: 'Join Volcano at KubeCon + CloudNativeCon Europe, 19-22 March in Paris!',
+        linktitle: 'Meet Cloud Native Batch Computing with Volcano in AI & Big Data Scenarios',
+        parent: 'news',
+        weight: '6'
+      },
+      details: [
+        {
+          message: '"draft" must be a boolean',
+          path: [ 'draft' ],
+          type: 'boolean.base',
+          context: {
+            label: 'draft',
+            value: 'false  # Is this a draft? true/false',
+            key: 'draft'
+          }
+        }
+      ]
+    }
+  }
+}
+[INFO] Docusaurus version: 3.9.2
+Node version: v22.21.0
