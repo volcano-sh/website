@@ -80,7 +80,7 @@ There are [multiple repositories](https://github.com/volcano-sh/) within the Vol
 For example, in [Volcano-Issues](https://github.com/volcano-sh/volcano), you can choose issues labeled with [help wanted](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22help+wanted%22) or [good first issue](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22).
 New contributors are welcome to work on these issues.
 
-Another good way to start is to find a document that needs improvement, for example, a document that is missing a link or contains a broken link. For details on the workflow, see [Contribution Workflow](#contributor-workflow).
+Another good way to start is to find a document that needs improvement, for example, a document that is missing a link or contains a broken link. For details on the workflow, see [Contribution Workflow](#contribution-workflow).
 
 #### Work on an Issue
 
