@@ -93,6 +93,12 @@
   weight = 8
   identifier = "contribution"
 
+[[docs]]
+  name = "User Guide"
+  weight = 9
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
+
 # Documentation version v1.12.0
 
 [[v1-12-0]]

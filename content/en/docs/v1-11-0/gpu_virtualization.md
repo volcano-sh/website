@@ -29,7 +29,7 @@ The list of prerequisites for running the Volcano device plugin is described bel
 
 ### Install volcano
 
-Refer to [Install Guide](../../installer/README.md) to install volcano.
+Refer to [Install Guide](https://github.com/volcano-sh/volcano/blob/master/installer/README.md) to install volcano.
 
 After installed, update the scheduler configuration:
 
