@@ -79,18 +79,24 @@
   identifier = "ecosystem"
 
 [[docs]]
-  name = "Scheduler"
+  name = "User Guide"
   weight = 6
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
+
+[[docs]]
+  name = "Scheduler"
+  weight = 7
   identifier = "scheduler"
 
 [[docs]]
   name = "CLI"
-  weight = 7
+  weight = 8
   identifier = "cli"
 
 [[docs]]
   name = "Contribution"
-  weight = 8
+  weight = 9
   identifier = "contribution"
 
 # Documentation version v1.12.0
@@ -121,18 +127,24 @@
   identifier = "ecosystem"
 
 [[v1-12-0]]
-  name = "Scheduler"
+  name = "User Guide"
   weight = 6
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
+
+[[v1-12-0]]
+  name = "Scheduler"
+  weight = 7
   identifier = "scheduler"
 
 [[v1-12-0]]
   name = "CLI"
-  weight = 7
+  weight = 8
   identifier = "cli"
 
 [[v1-12-0]]
   name = "Contribution"
-  weight = 8
+  weight = 9
   identifier = "contribution"
 
 # Documentation version v1.11.0
@@ -163,18 +175,24 @@
   identifier = "ecosystem"
 
 [[v1-11-0]]
-  name = "Scheduler"
+  name = "User Guide"
   weight = 6
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
+
+[[v1-11-0]]
+  name = "Scheduler"
+  weight = 7
   identifier = "scheduler"
 
 [[v1-11-0]]
   name = "CLI"
-  weight = 7
+  weight = 8
   identifier = "cli"
 
 [[v1-11-0]]
   name = "Contribution"
-  weight = 8
+  weight = 9
   identifier = "contribution"
 
 
@@ -201,18 +219,24 @@
   identifier = "ecosystem"
 
 [[v1-10-0]]
-  name = "Scheduler"
+  name = "User Guide"
   weight = 5
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
+
+[[v1-10-0]]
+  name = "Scheduler"
+  weight = 6
   identifier = "scheduler"
 
 [[v1-10-0]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[v1-10-0]]
   name = "Contribution"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 
@@ -239,18 +263,24 @@
   identifier = "ecosystem"
 
 [[v1-9-0]]
-  name = "Scheduler"
+  name = "User Guide"
   weight = 5
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
+
+[[v1-9-0]]
+  name = "Scheduler"
+  weight = 6
   identifier = "scheduler"
 
 [[v1-9-0]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[v1-9-0]]
   name = "Contribution"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 # Documentation version v1.8.2
@@ -276,18 +306,24 @@
   identifier = "ecosystem"
 
 [[v1-8-2]]
-  name = "Scheduler"
+  name = "User Guide"
   weight = 5
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
+
+[[v1-8-2]]
+  name = "Scheduler"
+  weight = 6
   identifier = "scheduler"
 
 [[v1-8-2]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[v1-8-2]]
   name = "Contribution"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 # Documentation version v1.7.0
@@ -313,18 +349,24 @@
   identifier = "ecosystem"
 
 [[v1-7-0]]
-  name = "Scheduler"
+  name = "User Guide"
   weight = 5
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
+
+[[v1-7-0]]
+  name = "Scheduler"
+  weight = 6
   identifier = "scheduler"
 
 [[v1-7-0]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[v1-7-0]]
   name = "Contribution"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 # Blogs
@@ -338,3 +380,6 @@
   name = "Customers"
   weight = 10
   identifier = "customers"
+
+# User Guide submenu (required by theme for docs/user-guide/* pages)
+# All user guide pages define their menu entries in frontmatter with parent = "user-guide"

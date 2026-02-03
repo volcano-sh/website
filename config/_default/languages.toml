@@ -110,18 +110,24 @@
   identifier = "ecosystem"
 
 [[zh.menu.docs]]
-  name = "Scheduler"
+  name = "用户指南"
   weight = 6
+  identifier = "user-guide"
+  url = "/zh/docs/user-guide/"
+
+[[zh.menu.docs]]
+  name = "Scheduler"
+  weight = 7
   identifier = "scheduler"
 
 [[zh.menu.docs]]
   name = "CLI"
-  weight = 7
+  weight = 8
   identifier = "cli"
 
 [[zh.menu.docs]]
   name = "贡献"
-  weight = 8
+  weight = 9
   identifier = "contribution"
 
 # Documentation version v1.12.0
@@ -152,18 +158,24 @@
   identifier = "ecosystem"
 
 [[zh.menu.v1-12-0]]
-  name = "Scheduler"
+  name = "用户指南"
   weight = 6
+  identifier = "user-guide"
+  url = "/zh/docs/user-guide/"
+
+[[zh.menu.v1-12-0]]
+  name = "Scheduler"
+  weight = 7
   identifier = "scheduler"
 
 [[zh.menu.v1-12-0]]
   name = "CLI"
-  weight = 7
+  weight = 8
   identifier = "cli"
 
 [[zh.menu.v1-12-0]]
   name = "贡献"
-  weight = 8
+  weight = 9
   identifier = "contribution"
 
 # Documentation version v1.11.0
@@ -194,18 +206,24 @@
   identifier = "ecosystem"
 
 [[zh.menu.v1-11-0]]
-  name = "Scheduler"
+  name = "用户指南"
   weight = 6
+  identifier = "user-guide"
+  url = "/zh/docs/user-guide/"
+
+[[zh.menu.v1-11-0]]
+  name = "Scheduler"
+  weight = 7
   identifier = "scheduler"
 
 [[zh.menu.v1-11-0]]
   name = "CLI"
-  weight = 7
+  weight = 8
   identifier = "cli"
 
 [[zh.menu.v1-11-0]]
   name = "贡献"
-  weight = 8
+  weight = 9
   identifier = "contribution"
 
 # Documentation version v1.10.0
@@ -231,18 +249,24 @@
   identifier = "ecosystem"
 
 [[zh.menu.v1-10-0]]
-  name = "Scheduler"
+  name = "用户指南"
   weight = 5
+  identifier = "user-guide"
+  url = "/zh/docs/user-guide/"
+
+[[zh.menu.v1-10-0]]
+  name = "Scheduler"
+  weight = 6
   identifier = "scheduler"
 
 [[zh.menu.v1-10-0]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[zh.menu.v1-10-0]]
   name = "贡献"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 
@@ -269,18 +293,24 @@
   identifier = "ecosystem"
 
 [[zh.menu.v1-9-0]]
-  name = "Scheduler"
+  name = "用户指南"
   weight = 5
+  identifier = "user-guide"
+  url = "/zh/docs/user-guide/"
+
+[[zh.menu.v1-9-0]]
+  name = "Scheduler"
+  weight = 6
   identifier = "scheduler"
 
 [[zh.menu.v1-9-0]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[zh.menu.v1-9-0]]
   name = "贡献"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 # Documentation version v1.8.2
@@ -306,18 +336,24 @@
   identifier = "ecosystem"
 
 [[zh.menu.v1-8-2]]
-  name = "Scheduler"
+  name = "用户指南"
   weight = 5
+  identifier = "user-guide"
+  url = "/zh/docs/user-guide/"
+
+[[zh.menu.v1-8-2]]
+  name = "Scheduler"
+  weight = 6
   identifier = "scheduler"
 
 [[zh.menu.v1-8-2]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[zh.menu.v1-8-2]]
   name = "贡献"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 # Documentation version v1.7.0
@@ -343,18 +379,24 @@
   identifier = "ecosystem"
 
 [[zh.menu.v1-7-0]]
-  name = "Scheduler"
+  name = "用户指南"
   weight = 5
+  identifier = "user-guide"
+  url = "/zh/docs/user-guide/"
+
+[[zh.menu.v1-7-0]]
+  name = "Scheduler"
+  weight = 6
   identifier = "scheduler"
 
 [[zh.menu.v1-7-0]]
   name = "CLI"
-  weight = 6
+  weight = 7
   identifier = "cli"
 
 [[zh.menu.v1-7-0]]
   name = "贡献"
-  weight = 7
+  weight = 8
   identifier = "contribution"
 
 # Blogs
