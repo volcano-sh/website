@@ -38,24 +38,48 @@
   {{ end }}
 </nav>
 <script type="text/javascript">
-  function change(aaa,name){
-    console.log(2222);
-      var  ull = document.getElementsByClassName('box');
-      var  dots = document.getElementsByClassName('change_dot');
-    // console.log(ull);
-    // console.log(ull);
-    for (var i = 0; i <= ull.length +1; i++) {
-      if (ull[i].style.display == 'block'&& ull[i].id == aaa) {
-              ull[i].style.display = 'none';
-              dots[i].style.borderRightColor='rgba(0, 0, 0, .65)';
-              //console.log(dots[i].style.borderTopColor);
-              dots[i].style.borderTopColor='#fff';
-              dots[i].style.left='calc(50% - 2px)';
-      } else if(ull[i].style.display = 'none'&& ull[i].id == aaa){
-              ull[i].style.display = 'block';
-              dots[i].style.borderTopColor='rgba(0, 0, 0, .65)';
-              dots[i].style.borderRightColor='#fff';
-              dots[i].style.left='calc(50% - 0px)';
+  // Save sidebar scroll position before navigation
+  document.addEventListener('DOMContentLoaded', function() {
+    var sidebar = document.getElementById('docs-nav');
+    if (!sidebar) {
+      return;  // Early return if sidebar doesn't exist
+    }
+    
+    // Restore saved scroll position
+    var savedScrollPos = sessionStorage.getItem('docs-sidebar-scroll');
+    if (savedScrollPos) {
+      sidebar.scrollTop = parseInt(savedScrollPos, 10);
+    }
+    
+    // Save scroll position before leaving page
+    window.addEventListener('beforeunload', function() {
+      sessionStorage.setItem('docs-sidebar-scroll', sidebar.scrollTop);
+    });
+    
+    // Also save on link clicks within sidebar
+    var sidebarLinks = sidebar.querySelectorAll('a');
+    sidebarLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        sessionStorage.setItem('docs-sidebar-scroll', sidebar.scrollTop);
+      });
+    });
+  });
+
+  function change(aaa){  // Removed unused 'name' parameter
+    var ull = document.getElementsByClassName('box');
+    var dots = document.getElementsByClassName('change_dot');
+    
+    for (var i = 0; i < ull.length; i++) {
+      if (ull[i].style.display == 'block' && ull[i].id == aaa) {
+        ull[i].style.display = 'none';
+        dots[i].style.borderRightColor='rgba(0, 0, 0, .65)';
+        dots[i].style.borderTopColor='#fff';
+        dots[i].style.left='calc(50% - 2px)';
+      } else if(ull[i].style.display == 'none' && ull[i].id == aaa){
+        ull[i].style.display = 'block';
+        dots[i].style.borderTopColor='rgba(0, 0, 0, .65)';
+        dots[i].style.borderRightColor='#fff';
+        dots[i].style.left='calc(50% - 0px)';
       }
     }
   }
