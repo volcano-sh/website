@@ -545,3 +545,295 @@ ul.share li i {
         top: 0 !important;
     }
 }
+
+/*************************************************
+ *  Dark Mode - Documentation Section
+ *  Color Scheme:
+ *  Background: #1C1F24
+ *  Sidebar & Header: #22262B
+ *  Primary Text: #EAEAEA
+ *  Secondary Text: #B9BEC5
+ *  Muted Text: #8B9098
+ *  Accent Color: #F97316
+ *  Borders: #323842
+ *  Hover/Active: #2A2F36
+ **************************************************/
+
+/* Dark mode for documentation container */
+body.dark .container-fluid.docs {
+    background-color: #1C1F24;
+}
+
+/* Dark mode for documentation sidebar */
+body.dark .docs-sidebar {
+    background-color: #22262B;
+    border-right-color: #323842;
+    border-bottom-color: #323842;
+}
+
+/* Dark mode for sidebar navigation */
+body.dark .docs-sidebar .nav > li > a {
+    color: #B9BEC5;
+}
+
+body.dark .docs-sidebar .nav > li > a:hover {
+    color: #EAEAEA;
+    background-color: transparent;
+}
+
+/* Dark mode for active sidebar items */
+body.dark .docs-sidebar .docs-toc-item.active a,
+body.dark .docs-sidebar .nav > .active:hover > a,
+body.dark .docs-sidebar .nav > .active > a {
+    color: #F97316;
+    font-weight: bold;
+    background-color: #2A2F36;
+}
+
+/* Dark mode for sidebar search */
+body.dark .docs-search .form-control {
+    background-color: #323842;
+    border-color: #323842;
+    color: #EAEAEA;
+}
+
+body.dark .docs-search .form-control::placeholder {
+    color: #8B9098;
+}
+
+body.dark .docs-search .form-control:focus {
+    background-color: #323842;
+    border-color: #F97316;
+    color: #EAEAEA;
+    box-shadow: 0 0 0 0.2rem rgba(249, 115, 22, 0.25);
+}
+
+body.dark .docs-toggle {
+    color: #F97316;
+    background-color: transparent;
+}
+
+/* Dark mode for documentation content */
+body.dark .docs-content {
+    background-color: #1C1F24;
+    color: #EAEAEA;
+}
+
+body.dark .docs-article-container {
+    background-color: #1C1F24;
+}
+
+body.dark .docs-article-container h1 {
+    color: #EAEAEA;
+}
+
+body.dark .docs-article-container h2 {
+    color: #EAEAEA;
+    border-bottom-color: #323842;
+}
+
+body.dark .docs-article-container h3,
+body.dark .docs-article-container h4,
+body.dark .docs-article-container h5,
+body.dark .docs-article-container h6 {
+    color: #EAEAEA;
+}
+
+/* Dark mode for documentation body text */
+body.dark .docs-article-container p {
+    color: #B9BEC5;
+}
+
+body.dark .body-footer {
+    color: #8B9098;
+    border-top-color: #323842;
+}
+
+/* Dark mode for documentation links */
+body.dark .docs-article-container a {
+    color: #F97316;
+    text-decoration: none;
+}
+
+body.dark .docs-article-container a:hover {
+    color: #FB923C;
+    text-decoration: underline;
+}
+
+/* Dark mode for code blocks in documentation */
+body.dark .docs-article-container pre {
+    background-color: #323842;
+    border-color: #323842;
+    color: #EAEAEA;
+}
+
+body.dark .docs-article-container code {
+    background-color: #323842;
+    color: #F97316;
+    border-color: #323842;
+}
+
+/* Dark mode for inline code in docs */
+body.dark .docs-article-container p code {
+    color: #F97316;
+    background-color: #323842;
+}
+
+/* Dark mode for tables in documentation */
+body.dark .docs-article-container table {
+    background-color: transparent;
+    border-color: #323842;
+}
+
+body.dark .docs-article-container table th {
+    background-color: #22262B;
+    color: #EAEAEA;
+    border-color: #323842;
+}
+
+body.dark .docs-article-container table td {
+    border-color: #323842;
+    color: #B9BEC5;
+}
+
+body.dark .docs-article-container table tr:hover {
+    background-color: #2A2F36;
+}
+
+/* Dark mode for blockquotes in documentation */
+body.dark .docs-article-container blockquote {
+    border-left-color: #F97316;
+    color: #B9BEC5;
+    background-color: #22262B;
+}
+
+/* Dark mode for lists in documentation */
+body.dark .docs-article-container ul,
+body.dark .docs-article-container ol {
+    color: #B9BEC5;
+}
+
+body.dark .docs-article-container li {
+    color: #B9BEC5;
+}
+
+/* Dark mode for documentation TOC (Table of Contents) */
+body.dark .docs-toc {
+    background-color: #1C1F24;
+}
+
+body.dark .docs-toc-title {
+    color: #EAEAEA;
+}
+
+body.dark .docs-toc nav ul > li > a {
+    color: #B9BEC5;
+}
+
+body.dark .docs-toc nav ul > li > a:hover {
+    color: #EAEAEA;
+}
+
+body.dark .docs-toc nav ul > li.nav-item.active > a {
+    color: #F97316;
+    font-weight: bold;
+}
+
+/* Dark mode for TOC links */
+body.dark .toc-top a {
+    color: #F97316;
+}
+
+body.dark .toc-top a:hover {
+    color: #FB923C;
+}
+
+/* Dark mode for article tags in documentation */
+body.dark .article-tags {
+    border-top-color: #323842;
+}
+
+body.dark .article-tags a {
+    color: #F97316;
+    background-color: #22262B;
+}
+
+body.dark .article-tags a:hover {
+    background-color: #2A2F36;
+    color: #FB923C;
+}
+
+/* Dark mode for related articles widget */
+body.dark .article-widget {
+    background-color: #22262B;
+    border-color: #323842;
+}
+
+body.dark .article-widget h3,
+body.dark .article-widget h4 {
+    color: #EAEAEA;
+}
+
+body.dark .article-widget ul li a {
+    color: #F97316;
+}
+
+body.dark .article-widget ul li a:hover {
+    color: #FB923C;
+}
+
+body.dark .hr-light {
+    border-color: #323842;
+}
+
+/* Dark mode for documentation alerts/notes */
+body.dark .docs-article-container .alert {
+    background-color: #22262B;
+    border-color: #323842;
+    color: #B9BEC5;
+}
+
+body.dark .docs-article-container .alert-info {
+    background-color: #22262B;
+    border-color: #F97316;
+    color: #EAEAEA;
+}
+
+body.dark .docs-article-container .alert-warning {
+    background-color: #22262B;
+    border-color: #F97316;
+    color: #EAEAEA;
+}
+
+body.dark .docs-article-container .alert-danger {
+    background-color: #22262B;
+    border-color: #F97316;
+    color: #EAEAEA;
+}
+
+body.dark .docs-article-container .alert-success {
+    background-color: #22262B;
+    border-color: #F97316;
+    color: #EAEAEA;
+}
+
+/* Dark mode for images in documentation */
+body.dark .docs-article-container img {
+    border-color: #323842;
+}
+
+/* Dark mode for documentation footer */
+body.dark .docs-article-container footer {
+    border-top-color: #323842;
+    color: #8B9098;
+}
+
+/* Dark mode for documentation container fluid */
+body.dark .container-fluid {
+    background-color: #1C1F24;
+}
+
+/* Dark mode for row in docs */
+body.dark .container-fluid.docs .row {
+    background-color: #1C1F24;
+}
