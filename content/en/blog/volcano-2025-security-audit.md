@@ -7,7 +7,7 @@ date = 2025-05-30
 lastmod = 2025-05-30
 datemonth = "May"
 dateyear = "2025"
-dateday = 30
+dateday = "30"
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false

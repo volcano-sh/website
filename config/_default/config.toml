@@ -36,7 +36,9 @@ defaultContentLanguage = "en"
 hasCJKLanguage = true  # Set `true` for Chinese/Japanese/Korean languages.
 defaultContentLanguageInSubdir = true
 
-paginate = 10  # Number of items per page in paginated lists.
+[pagination]
+  pagerSize = 10
+
 enableEmoji = false
 footnotereturnlinkcontents = "<sup>^</sup>"
 ignoreFiles = ["\\.Rmd$", "\\.Rmarkdown$", "_files$", "_cache$"]

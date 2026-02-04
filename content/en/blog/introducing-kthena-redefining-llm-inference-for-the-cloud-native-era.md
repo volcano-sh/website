@@ -7,7 +7,7 @@ date = 2026-01-06
 lastmod = 2026-01-06
 datemonth = "Jan"
 dateyear = "2026"
-dateday = 6
+dateday = "6"
 
 draft = false
 toc = true
