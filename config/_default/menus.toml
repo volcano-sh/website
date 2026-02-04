@@ -74,24 +74,31 @@
   identifier = "features"
 
 [[docs]]
+name = "User Guide"
+weight = 5
+identifier = "user-guide"
+url = "/en/docs/user-guide/"
+
+[[docs]]
   name = "Ecosystem"
-  weight = 5
+  weight = 6
   identifier = "ecosystem"
 
 [[docs]]
   name = "Scheduler"
-  weight = 6
+  weight = 7
   identifier = "scheduler"
 
 [[docs]]
   name = "CLI"
-  weight = 7
+  weight = 8
   identifier = "cli"
 
 [[docs]]
   name = "Contribution"
-  weight = 8
+  weight = 9
   identifier = "contribution"
+
 
 # Documentation version v1.12.0
 
