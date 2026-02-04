@@ -545,3 +545,26 @@ ul.share li i {
         top: 0 !important;
     }
 }
+
+/*************************************************
+ *  Docs ToC scroll-spy active state
+ **************************************************/
+
+/* Smooth visual feedback for ToC links. */
+#TableOfContents li a {
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Active section link in the right-hand docs ToC. */
+#TableOfContents a.toc-link-active {
+    color: #c8000b;
+    font-weight: 600;
+    border-left: 2px solid #c8000b;
+    background-color: rgba(200, 0, 11, 0.04);
+}
+
+.dark #TableOfContents a.toc-link-active {
+    color: #ffffff;
+    border-left-color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.08);
+}
