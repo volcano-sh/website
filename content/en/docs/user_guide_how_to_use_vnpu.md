@@ -8,7 +8,6 @@ url = "/en/docs/user-guide/how_to_use_vnpu/"
   parent = "user-guide"
 +++
 
-
 ## Introduction
 
 Volcano supports **two vNPU modes** for sharing Ascend devices:
@@ -48,7 +47,6 @@ Heterogeneous Ascend cluster
 
 To enable vNPU scheduling, the following components must be set up based on the selected mode:
 
-
 **Prerequisites**:
 
 Kubernetes >= 1.16  
@@ -59,7 +57,7 @@ Volcano >= 1.14
 
 Follow instructions in Volcano Installer Guide
 
-  * Follow instructions in [Volcano Installer Guide](https://github.com/volcano-sh/volcano?tab=readme-ov-file#quick-start-guide)
+- Follow instructions in [Volcano Installer Guide](https://github.com/volcano-sh/volcano?tab=readme-ov-file#quick-start-guide)
 
 ### Install ascend-device-plugin and third-party components
 
@@ -72,6 +70,7 @@ In this step, you need to select different ascend-device-plugin based on the vNP
 ##### Install Third-Party Components
 
 Follow the official [Ascend documentation](https://www.hiascend.com/document/detail/zh/mindcluster/72rc1/clustersched/dlug/mxdlug_start_006.html#ZH-CN_TOPIC_0000002470358262__section1837511531098) to install the following components:
+
 - NodeD
 - Ascend Device Plugin
 - Ascend Docker Runtime
@@ -85,20 +84,24 @@ Follow the official [Ascend documentation](https://www.hiascend.com/document/det
 When installing `ascend-device-plugin`, you must set the `presetVirtualDevice` parameter to `"false"` in the `device-plugin-310P-volcano-v{version}.yaml` file to enable dynamic virtualization of 310P:
 
 ```yaml
+
 ...
-args: [
-  "device-plugin",
-  "-useAscendDocker=true",
-  "-volcanoType=true",
-  "-presetVirtualDevice=false",
-  "-logFile=/var/log/mindx-dl/devicePlugin/devicePlugin.log",
-  "-logLevel=0"
-]
+args:
+  [
+    "device-plugin",
+    "-useAscendDocker=true",
+    "-volcanoType=true",
+    "-presetVirtualDevice=false",
+    "-logFile=/var/log/mindx-dl/devicePlugin/devicePlugin.log",
+    "-logLevel=0",
+  ]
 ...
 ```
+
 For detailed information, please consult the official [Ascend MindCluster documentation.](https://www.hiascend.com/document/detail/zh/mindcluster/72rc1/clustersched/dlug/cpaug_0020.html)
 
 ##### Scheduler Config Update
+
 ```yaml
 kind: ConfigMap
 apiVersion: v1
@@ -117,7 +120,7 @@ data:
     configurations:
     ...
     - name: init-params
-      arguments: {"grace-over-time":"900","presetVirtualDevice":"false"}  # to enable dynamic virtulization, presetVirtualDevice need to be set false
+      arguments: {"grace-over-time":"900","presetVirtualDevice":"false"}  # to enable dynamic virtualization, presetVirtualDevice need to be set false
 ```
 
 ---
@@ -145,6 +148,7 @@ kubectl apply -f https://raw.githubusercontent.com/Project-HAMi/ascend-device-pl
 For more information, refer to the [ascend-device-plugin documentation](https://github.com/Project-HAMi/ascend-device-plugin).
 
 ##### Scheduler Config Update
+
 ```yaml
 kind: ConfigMap
 apiVersion: v1
@@ -165,7 +169,7 @@ data:
           deviceshare.KnownGeometriesCMName: hami-scheduler-device
 ```
 
-  **Note:** You may notice that, 'volcano-vgpu' has its own GeometriesCMName and GeometriesCMNamespace, which means if you want to use both vNPU and vGPU in a same volcano cluster, you need to merge the configMap from both sides and set it here.
+**Note:** You may notice that, 'volcano-vgpu' has its own GeometriesCMName and GeometriesCMNamespace, which means if you want to use both vNPU and vGPU in a same volcano cluster, you need to merge the configMap from both sides and set it here.
 
 ## Usage
 
@@ -221,19 +225,18 @@ spec:
                   huawei.com/npu-core: 8
           nodeSelector:
             host-arch: huawei-arm
-
 ```
 
 The supported Ascend chips and their `ResourceNames` are shown in the following table:
 
-| ChipName | JobLabel and TaskLabel             | ResourceName |
-|-------|------------------------------------|-------|
-| 310P3 | ring-controller.atlas: ascend-310P | huawei.com/npu-core |
+| ChipName | JobLabel and TaskLabel             | ResourceName        |
+| -------- | ---------------------------------- | ------------------- |
+| 310P3    | ring-controller.atlas: ascend-310P | huawei.com/npu-core |
 
 **Description of Labels in the Virtualization Task YAML**
 
 | **Key**                   | **Value**       | **Description**                                                                                                                                                                                                                                                                                                                                                                                                             |
-| ------------------------- | --------------- |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ------------------------- | --------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **vnpu-level**            | **low**         | Low configuration (default). Selects the lowest-configuration "virtualized instance template."                                                                                                                                                                                                                                                                                                                              |
 |                           | **high**        | Performance-first. When cluster resources are sufficient, the scheduler will choose the highest-configured virtualized instance template possible. When most physical NPUs in the cluster are already in use and only a few AI Cores remain on each device, the scheduler will allocate templates that match the remaining AI Core count rather than forcing high-profile templates. For details, refer to the table below. |
 | **vnpu-dvpp**             | **yes**         | The Pod uses DVPP.                                                                                                                                                                                                                                                                                                                                                                                                          |
@@ -244,7 +247,7 @@ The supported Ascend chips and their `ResourceNames` are shown in the following 
 **Effect of DVPP and Level Configurations**
 
 | **Product Model**                       | **Requested AI Core Count** | **vnpu-dvpp** | **vnpu-level**       | **Downgrade** | **Selected Template** |
-| --------------------------------------- | --------------------------- |---------------| -------------------- | ------------- | --------------------- |
+| --------------------------------------- | --------------------------- | ------------- | -------------------- | ------------- | --------------------- |
 | **Atlas Inference Series (8 AI Cores)** | **1**                       | `null`        | Any value            | –             | `vir01`               |
 |                                         | **2**                       | `null`        | `low` / other values | –             | `vir02_1c`            |
 |                                         | **2**                       | `null`        | `high`               | No            | `vir02`               |
@@ -258,12 +261,10 @@ The supported Ascend chips and their `ResourceNames` are shown in the following 
 |                                         | **4**                       | `null`        | `high`               | Yes           | `vir04_3c`            |
 |                                         | **8 or multiples of 8**     | Any value     | Any value            | –             | –                     |
 
-
 **Notice**
 
 For **chip virtualization (non-full card usage)**, the value of `vnpu-dvpp` must strictly match the corresponding value listed in the above table.
 Any other values will cause the task to fail to be dispatched.
-
 
 For detailed information, please consult the official [Ascend MindCluster documentation.](https://www.hiascend.com/document/detail/zh/mindcluster/72rc1/clustersched/dlug/cpaug_0020.html)
 
@@ -287,19 +288,18 @@ spec:
         limits:
           huawei.com/Ascend310P: "1"
           huawei.com/Ascend310P-memory: "4096"
-
 ```
 
 The supported Ascend chips and their `ResourceNames` are shown in the following table:
 
-| ChipName | ResourceName | ResourceMemoryName |
-|-------|-------|-------|
-| 910A | huawei.com/Ascend910A | huawei.com/Ascend910A-memory |
-| 910B2 | huawei.com/Ascend910B2 | huawei.com/Ascend910B2-memory |
-| 910B3 | huawei.com/Ascend910B3 | huawei.com/Ascend910B3-memory |
-| 910B4 | huawei.com/Ascend910B4 | huawei.com/Ascend910B4-memory |
-| 910B4-1 | huawei.com/Ascend910B4-1 | huawei.com/Ascend910B4-1-memory |
-| 310P3 | huawei.com/Ascend310P | huawei.com/Ascend310P-memory |
+| ChipName | ResourceName             | ResourceMemoryName              |
+| -------- | ------------------------ | ------------------------------- |
+| 910A     | huawei.com/Ascend910A    | huawei.com/Ascend910A-memory    |
+| 910B2    | huawei.com/Ascend910B2   | huawei.com/Ascend910B2-memory   |
+| 910B3    | huawei.com/Ascend910B3   | huawei.com/Ascend910B3-memory   |
+| 910B4    | huawei.com/Ascend910B4   | huawei.com/Ascend910B4-memory   |
+| 910B4-1  | huawei.com/Ascend910B4-1 | huawei.com/Ascend910B4-1-memory |
+| 310P3    | huawei.com/Ascend310P    | huawei.com/Ascend310P-memory    |
 
 #### Hami vNPU scene memory allocation restrictions
 

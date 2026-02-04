@@ -15,7 +15,8 @@ url = "/en/docs/user-guide/how_to_use_numa_aware/"
 
 - Enable cpu manager and set policy to "static"
 - Enable topology manager and set the policy option you want
-    <br><br>
+    
+    
     1. Set the above conditions by editing the kubelet configuration file
 
    ```

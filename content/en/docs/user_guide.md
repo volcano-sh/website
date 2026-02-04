@@ -13,7 +13,7 @@ This section contains the User Guide for Volcano.
 * [Cooldown Protection Plugin User Guide](/en/docs/user-guide/how_to_use_cdp_plugin/)
 * [Extender User Guide](/en/docs/user-guide/how_to_use_extender/)
 * [GPU Number User Guide](/en/docs/user-guide/how_to_use_gpu_number/)
-* [GPU Sharing User Guide ](/en/docs/user-guide/how_to_use_gpu_sharing/)
+* [GPU Sharing User Guide](/en/docs/user-guide/how_to_use_gpu_sharing/)
 * [How to Configure Scheduler](/en/docs/user-guide/how_to_configure_scheduler/)
 * [Volcano Job Policy User Guide](/en/docs/user-guide/how_to_use_job_policy/)
 * [Volcano Job Time to Live User Guide](/en/docs/user-guide/how_to_use_job_ttl/)

@@ -83,4 +83,3 @@ spec:
               workingDir: /home
           restartPolicy: OnFailure
 ```
-

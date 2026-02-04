@@ -37,7 +37,7 @@ either completes or fails.
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
-kind: job
+kind: Job
 metadata:
   generateName: test-job-
 spec:

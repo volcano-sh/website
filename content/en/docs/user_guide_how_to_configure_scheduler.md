@@ -13,8 +13,7 @@ url = "/en/docs/user-guide/how_to_configure_scheduler/"
 * Before reading the guidance, please make sure you are aware of basic concepts such as `action` `plugin` `session` `tier`
 `volcano job` `podgroup` `queue` and so on. If they are still strange to you, please refer to [Volcano Docs](https://volcano.sh/en/docs/)
 for more details.
-* Before reading the guidance, please make sure you have general understanding of Volcano scheduling workflow(this part will
-be added later).
+* Before reading the guidance, please make sure you have general understanding of Volcano scheduling workflow.
 
 ## Background
 In order to adjust the scheduling process and algorithms to different scenarios, Volcano allows users to configure actions
@@ -122,4 +121,3 @@ In order to reduce the influence to users' business, it is reasonable to pick ou
 configure the plugins evicting the least pods in the first tier. And configure other plugins with eviction at the second tier.
 If the first tier can pick out victims, it will not call the functions registered in the plugins, which is configured at
 the second tier.
-

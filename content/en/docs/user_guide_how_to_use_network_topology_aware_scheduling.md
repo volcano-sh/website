@@ -306,3 +306,4 @@ Based on the following network topology, this chapter will demonstrate how workl
    network-topology-job-t0-1   1/1     Running   0          5s    192.168.0.11   node1
    ```
    Since the resources are all idle, the first pod, i.e., network-topology-job-t0-0, will be scheduled to any node. It is node0 in this example. Then, the second pod, i.e., network-topology-job-t0-1, must be scheduled to node1, node2 or node3. It is node1 in this example. This is because the resource utilization of HyperNode0 is currently higher than HyperNode1.
+   

@@ -161,14 +161,14 @@ The main architecture is similar as the previous, but the gpu-index results of e
 
 ```yaml
 annotations:
-  volcano.sh/gpu-index: “0”
-  volcano.sh/predicate-time: “1593764466550835304”
+  volcano.sh/gpu-index: "0"
+  volcano.sh/predicate-time: "159376446655083530"
 ```
 
 3. kubelet watches the pod bound to itself, and calls allocate API to set env before running the container.
 
 ```yaml
 env:
-  NVIDIA_VISIBLE_DEVICES: “0” # GPU card index
-  VOLCANO_GPU_ALLOCATED: “1” # GPU number allocated
+  NVIDIA_VISIBLE_DEVICES: "0" # GPU card index
+  VOLCANO_GPU_ALLOCATED: "1" # GPU number allocated
 ```

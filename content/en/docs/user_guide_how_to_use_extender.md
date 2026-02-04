@@ -59,4 +59,3 @@ data:
 
 ### Verify Extender is working
   The user can see in the log something like : 'Initialize extender plugin with configuration : {your configuration}'
-
