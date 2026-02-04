@@ -57,7 +57,7 @@
 </nav>
 
 <script type="text/javascript">
-  // Toggle top-level menus (e.g., Scheduler, CLI, etc.)
+  // Toggle top-level menus
   function toggleMenu(weight, name) {
     var menu = document.getElementById('menu-' + weight);
     var dot = document.getElementById('dot-' + name);
@@ -77,7 +77,7 @@
     }
   }
   
-  // Toggle second-level submenus (e.g., Plugins)
+  // Toggle second-level submenus (Plugins)
   function toggleSubmenu(identifier) {
     var submenu = document.getElementById('submenu-' + identifier);
     var dot = document.getElementById('dot-' + identifier);
@@ -97,12 +97,14 @@
     }
   }
   
-  // Auto-expand menus if current page is within them
+  // Auto-expand + scroll position
   document.addEventListener('DOMContentLoaded', function() {
-    var activeItems = document.querySelectorAll('.docs-sidenav li.active');
+    var sidebar = document.getElementById('docs-nav');
+    if (!sidebar) return;
     
+    // Auto-expand active menus
+    var activeItems = document.querySelectorAll('.docs-sidenav li.active');
     activeItems.forEach(function(item) {
-      // Find parent submenu (third-level)
       var parentSubmenu = item.closest('.docs-sidenav-nested');
       if (parentSubmenu) {
         parentSubmenu.style.display = 'block';
@@ -114,23 +116,49 @@
         }
       }
       
-      // Find parent menu (second-level)
       var parentMenu = item.closest('.box');
       if (parentMenu && parentMenu.id.startsWith('menu-')) {
         parentMenu.style.display = 'block';
-        var menuWeight = parentMenu.id.replace('menu-', '');
-        // Find the corresponding dot (need to find by weight)
-        var dots = document.querySelectorAll('.change_dot');
-        dots.forEach(function(dot) {
-          if (dot.onclick && dot.onclick.toString().includes("'" + menuWeight + "'")) {
-            dot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
-            dot.style.borderRightColor = '#fff';
-            dot.style.left = 'calc(50% - 0px)';
-          }
-        });
       }
     });
+    
+    // Restore scroll position
+    var savedScrollPos = sessionStorage.getItem('docs-sidebar-scroll');
+    if (savedScrollPos) {
+      sidebar.scrollTop = parseInt(savedScrollPos, 10);
+    }
+    
+    // Save scroll on navigation
+    window.addEventListener('beforeunload', function() {
+      sessionStorage.setItem('docs-sidebar-scroll', sidebar.scrollTop);
+    });
+    
+    var sidebarLinks = sidebar.querySelectorAll('a');
+    sidebarLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        sessionStorage.setItem('docs-sidebar-scroll', sidebar.scrollTop);
+      });
+    });
   });
+
+  function change(aaa) {  // Bug fix: removed unused parameter
+    var ull = document.getElementsByClassName('box');
+    var dots = document.getElementsByClassName('change_dot');
+    
+    for (var i = 0; i < ull.length; i++) {
+      if (ull[i].style.display == 'block' && ull[i].id == aaa) {
+        ull[i].style.display = 'none';
+        dots[i].style.borderRightColor='rgba(0, 0, 0, .65)';
+        dots[i].style.borderTopColor='#fff';
+        dots[i].style.left='calc(50% - 2px)';
+      } else if(ull[i].style.display == 'none' && ull[i].id == aaa){
+        ull[i].style.display = 'block';
+        dots[i].style.borderTopColor='rgba(0, 0, 0, .65)';
+        dots[i].style.borderRightColor='#fff';
+        dots[i].style.left='calc(50% - 0px)';
+      }
+    }
+  }
 </script>
 
 <style>

@@ -29,7 +29,7 @@ type = "docs"  # Do not modify.
 
 ### 安装 Volcano
 
-参考[安装指南](../../installer/README.md)安装Volcano。
+参考[安装指南](https://github.com/volcano-sh/volcano/blob/master/installer/README.md)安装Volcano。
 
 安装后，更新调度器配置：
 
