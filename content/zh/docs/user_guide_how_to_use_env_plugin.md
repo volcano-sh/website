@@ -1,4 +1,4 @@
-+++
+++
 title = "Volcano Job 插件 Env 用户指南"
 date = 2026-02-03
 type = "docs"
@@ -6,7 +6,7 @@ weight = 50
 url = "/zh/docs/user-guide/how_to_use_env_plugin/"
 [menu.docs]
   parent = "user-guide"
-+++
+++
 
 ## 背景
 **Env 插件** 适用于需要让 Pod 感知自己在 Task 中索引的业务场景，例如 [MPI](https://www.open-mpi.org/) 和 [TensorFlow](https://tensorflow.google.cn/)。  

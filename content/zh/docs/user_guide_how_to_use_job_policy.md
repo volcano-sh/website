@@ -1,4 +1,4 @@
-+++
+++
 title = "Volcano Job Policy 用户指南"
 date = 2026-02-03
 type = "docs"
@@ -6,7 +6,7 @@ weight = 50
 url = "/zh/docs/user-guide/how_to_use_job_policy/"
 [menu.docs]
   parent = "user-guide"
-+++
+++
 
 ## 背景
 `Policy` 为用户提供了对 Volcano 作业（job）和任务（task）生命周期进行管理的 API。  

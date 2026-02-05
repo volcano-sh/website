@@ -1,4 +1,4 @@
-+++
+++
 title = "如何配置调度器"
 date = 2026-02-03
 type = "docs"
@@ -6,7 +6,7 @@ weight = 50
 url = "/zh/docs/user-guide/how_to_configure_scheduler/"
 [menu.docs]
   parent = "user-guide"
-+++
+++
 
 ## 要求
 * 在阅读本指南之前，请先了解 `action`、`plugin`、`session`、`tier`、`volcano job`、`podgroup`、`queue` 等基本概念。如果这些概念还比较陌生，请参考 [Volcano 文档](https://volcano.sh/en/docs/) 获取更多背景说明。

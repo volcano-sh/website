@@ -1,4 +1,4 @@
-+++
+++
 title = "如何为作业配置 PriorityClass"
 date = 2026-02-03
 type = "docs"
@@ -52,7 +52,7 @@ spec:
                 requests:
                   cpu: 1
     - replicas: 1
-      name: non-preempt-task # 该任务未指定 PriorityClassName，将继承 Job 中的 "job-priority"
+      name: non-preempt-task # 该任务未指定 PriorityClassName，将继承 Job 的 "job-priority" PriorityClass
       template:
         spec:
           containers:
