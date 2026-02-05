@@ -1,4 +1,4 @@
-+++
+++
 title = "如何为作业配置 PriorityClass"
 date = 2026-02-03
 type = "docs"
