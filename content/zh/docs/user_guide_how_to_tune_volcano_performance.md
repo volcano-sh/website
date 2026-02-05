@@ -1,4 +1,4 @@
-++
++++
 title = "在大规模场景下如何优化 Volcano 性能"
 date = 2026-02-03
 type = "docs"
@@ -6,7 +6,7 @@ weight = 50
 url = "/zh/docs/user-guide/how_to_tune_volcano_performance/"
 [menu.docs]
   parent = "user-guide"
-++
++++
 
 > 本文源自中国科学院主办的“开源推广计划（OSPP）”中《Volcano 大规模性能测试与调优》项目。  
 > 所有实验数据与分析已发布于作者（@Freshwlnd）的系列博客。

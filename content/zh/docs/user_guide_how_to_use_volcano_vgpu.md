@@ -1,4 +1,4 @@
-++
++++
 title = "Volcano vGPU 用户指南"
 date = 2026-02-03
 type = "docs"
@@ -6,7 +6,7 @@ weight = 50
 url = "/zh/docs/user-guide/how_to_use_volcano_vgpu/"
 [menu.docs]
   parent = "user-guide"
-++
++++
 
 ## Volcano 中 GPU 共享模式背景
 

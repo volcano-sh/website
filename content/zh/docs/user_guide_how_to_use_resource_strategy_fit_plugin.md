@@ -1,4 +1,4 @@
-++
++++
 title = "Resource Strategy Fit 插件用户指南"
 date = 2026-02-03
 type = "docs"
@@ -6,7 +6,7 @@ weight = 50
 url = "/zh/docs/user-guide/how_to_use_resource_strategy_fit_plugin/"
 [menu.docs]
   parent = "user-guide"
-++
++++
 
 ## 介绍
 

@@ -1,4 +1,4 @@
-++
++++
 title = "如何在 Volcano 调度器中启用动态资源分配 (DRA)"
 date = 2026-02-03
 type = "docs"
@@ -6,7 +6,7 @@ weight = 50
 url = "/zh/docs/user-guide/how_to_enable_dra/"
 [menu.docs]
   parent = "user-guide"
-++
++++
 
 本文介绍在 Volcano 调度器中启用 **Dynamic Resource Allocation (DRA)** 支持所需的步骤。
 

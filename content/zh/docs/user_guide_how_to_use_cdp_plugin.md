@@ -1,4 +1,4 @@
-++
++++
 title = "Cooldown Protection 插件用户指南"
 date = 2026-02-03
 type = "docs"
@@ -6,7 +6,7 @@ weight = 50
 url = "/zh/docs/user-guide/how_to_use_cdp_plugin/"
 [menu.docs]
   parent = "user-guide"
-++
++++
 
 ## 背景
 在开启弹性训练或弹性推理场景下，可抢占作业（preemptible job）的 Pod 可能会被频繁抢占、重新运行；如果没有任何“冷却保护（cooldown protection）”，这些 Pod 可能在刚启动不久又被立即抢占，从而导致服务稳定性下降。  
