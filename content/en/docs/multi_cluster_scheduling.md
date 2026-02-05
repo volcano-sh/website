@@ -51,3 +51,6 @@ Volcano Global consists of two components:
 ## Usage Guide
 
 Please refer to: [Volcano Global Deploy](https://github.com/volcano-sh/volcano-global/blob/main/docs/deploy/README.md).
+
+For a high-level multi-cluster abstraction that can automatically split a logical job into multiple Volcano Jobs
+across clusters, see [HyperJob](/en/docs/hyperjob/).
