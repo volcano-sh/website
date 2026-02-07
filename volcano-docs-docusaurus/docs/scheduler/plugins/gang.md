@@ -2,7 +2,12 @@
 title: Gang
 ---
 
+import Figure from '@site/src/components/shortcodes/Figure';
+
 # Gang
+
+<Figure src="/img/gang.png" title="Gang plugin architecture" />
+
 
 ## Overview
 
