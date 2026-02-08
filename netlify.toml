@@ -14,7 +14,6 @@
   base = "volcano-docs-docusaurus"
   
   # Install dependencies and build Docusaurus
-  # Explicitly cd to ensure npm reads correct lockfile
   # Clear cache to prevent stale lockfile issues
   command = "rm -rf node_modules && npm ci && npm run build"
   
@@ -24,8 +23,6 @@
 [build.environment]
   # Use Node.js 20 for Docusaurus compatibility (matches CI)
   NODE_VERSION = "20"
-  # Disable workspace detection (we're not using workspaces)
-  NPM_CONFIG_WORKSPACE = "false"
   # Use verbose logging for debugging
   NPM_CONFIG_LOGLEVEL = "verbose"
 
@@ -39,7 +36,6 @@
 
 [context.deploy-preview.environment]
   NODE_VERSION = "20"
-  NPM_CONFIG_WORKSPACE = "false"
 
 # Branch deploy settings
 [context.branch-deploy]
@@ -47,7 +43,6 @@
 
 [context.branch-deploy.environment]
   NODE_VERSION = "20"
-  NPM_CONFIG_WORKSPACE = "false"
 
 # ============================================================
 # LEGACY HUGO CONFIGURATION (preserved for reference)
