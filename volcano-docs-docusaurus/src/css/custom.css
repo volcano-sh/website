@@ -1,6 +1,7 @@
 /**
- * Volcano Design System
+ * Volcano Design System v2.0
  * CNCF-grade production styling with lava/ember theme
+ * Fonts: Space Grotesk (Headers), Inter (Body), JetBrains Mono (Code)
  */
 
 :root {
@@ -24,126 +25,251 @@
   --ifm-color-primary-lighter: #ec6140;
   --ifm-color-primary-lightest: #f07f5f;
 
+  /* Typography System */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-heading-font-family: 'Space Grotesk', var(--ifm-font-family-base);
+  --ifm-font-family-monospace: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
   /* Background and text - LIGHT MODE DEFAULTS */
   --ifm-background-color: #ffffff;
   --ifm-navbar-background-color: #ffffff;
   --ifm-footer-background-color: #1a1a1a;
   /* Footer stays dark */
   --ifm-font-color-base: #1c1e21;
+
+  /* Hero Variables */
   --ifm-hero-bg: #fff5f2;
-  /* Very light orange for hero */
   --ifm-hero-text: #1a1a1a;
+
+  /* Component Variables */
   --volcano-card-bg: #ffffff;
   --volcano-card-border: rgba(232, 65, 24, 0.1);
   --volcano-terminal-bg: #1a1a1a;
-  /* Terminal always dark */
+
+  /* Animation Config */
+  --volcano-transition-base: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 [data-theme='dark'] {
-  /* Dark mode: brighter lava accents */
   --ifm-color-primary: #ff6b35;
   --ifm-color-primary-dark: #ff5619;
   --ifm-color-primary-darker: #ff4a0f;
-  --ifm-color-primary-darkest: #e63d00;
-  --ifm-color-primary-light: #ff8051;
-  --ifm-color-primary-lighter: #ff8c5b;
-  --ifm-color-primary-lightest: #ffa67a;
 
   --ifm-background-color: #1a1a1a;
   --ifm-background-surface-color: #2d2d2d;
   --ifm-navbar-background-color: #1a1a1a;
   --ifm-font-color-base: #f4f4f4;
 
-  --ifm-hero-bg: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 50%, #1a1a1a 100%);
+  --ifm-hero-bg: radial-gradient(circle at 50% -20%, #2d1b15 0%, #1a1a1a 100%);
   --ifm-hero-text: #f4f4f4;
   --volcano-gray: #9e9e9e;
   --volcano-card-bg: #2d2d2d;
   --volcano-card-border: rgba(255, 107, 53, 0.2);
 }
 
-/* Hero gradient background */
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(232, 65, 24, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(232, 65, 24, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 65, 24, 0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Base resets for animations if reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hero Section */
 .hero--primary {
   background: var(--ifm-hero-bg);
   color: var(--ifm-hero-text);
   position: relative;
   overflow: hidden;
+  padding: 4rem 0;
 }
 
+/* Glow effect behind text */
 .hero--primary::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  /* Subtle grid pattern visible in both modes */
-  background-image:
-    radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(232, 65, 24, 0.08) 0%, transparent 50%),
-    linear-gradient(rgba(255, 107, 53, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 107, 53, 0.05) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 50px 50px, 50px 50px;
+  top: 50%;
+  left: 30%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
   pointer-events: none;
+  filter: blur(40px);
 }
 
 .hero__title {
   color: var(--ifm-hero-text) !important;
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .hero__subtitle {
   color: var(--ifm-hero-text) !important;
   opacity: 0.9;
+  font-weight: 400;
+  margin-top: 1.5rem;
 }
 
-/* Terminal-style panel - ALWAYS DARK */
+/* Buttons with Ripple */
+.button--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.button--primary:hover {
+  animation: ripple 1s infinite;
+}
+
+/* Terminal Component */
 .volcano-terminal {
   background: var(--volcano-terminal-bg);
   border: 1px solid rgba(255, 107, 53, 0.3);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 1.5rem;
-  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+  font-family: var(--ifm-font-family-monospace);
   font-size: 0.9rem;
   color: #f4f4f4;
-  /* Always light text in terminal */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
   text-align: left;
+  min-height: 240px;
+  position: relative;
 }
 
-.volcano-terminal-line {
-  margin: 0.5rem 0;
-}
-
-.volcano-terminal-prompt {
-  color: var(--volcano-lava);
-  font-weight: bold;
-  margin-right: 0.5rem;
-}
-
-.volcano-terminal-success {
-  color: #4ade80;
-  margin-right: 0.5rem;
-}
-
-/* Feature cards */
-.volcano-feature-card {
-  background: var(--volcano-card-bg);
-  border: 1px solid var(--volcano-card-border);
-  border-radius: 12px;
-  padding: 2rem;
-  transition: all 0.3s ease;
-  height: 100%;
-}
-
-.volcano-feature-card:hover {
-  border-color: var(--volcano-lava);
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(255, 107, 53, 0.15);
-}
-
-.volcano-feature-icon {
-  font-size: 3rem;
+.volcano-terminal-header {
+  display: flex;
+  gap: 8px;
   margin-bottom: 1rem;
-  display: inline-block;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.volcano-terminal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Visualization Styles */
+.volcano-viz-container {
+  animation: float 6s ease-in-out infinite;
+}
+
+.volcano-viz-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.volcano-viz-node:hover circle {
+  filter: drop-shadow(0 0 8px var(--volcano-lava));
+}
+
+.volcano-viz-node:focus {
+  outline: 2px solid var(--volcano-lava);
+  border-radius: 50%;
+}
+
+/* Utility for mobile stacking */
+.volcano-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Section spacing */
+.volcano-section {
+  padding: 5rem 0;
+}
+
+.volcano-section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  font-family: var(--ifm-heading-font-family);
+}
+
+.volcano-section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--volcano-lava), var(--volcano-ember));
+  margin: 1rem auto 0;
+  border-radius: 2px;
 }
 
 /* Use case blocks */
@@ -160,30 +286,6 @@
 .volcano-use-case:hover {
   transform: translateX(8px);
   box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
-}
-
-/* Stats counter */
-.volcano-stat {
-  text-align: center;
-  padding: 2rem;
-}
-
-.volcano-stat-number {
-  font-size: 3rem;
-  font-weight: bold;
-  background: linear-gradient(135deg, var(--volcano-lava) 0%, var(--volcano-ember) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1.2;
-}
-
-.volcano-stat-label {
-  color: var(--volcano-gray);
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  margin-top: 0.5rem;
 }
 
 /* Plugin carousel */
@@ -210,75 +312,60 @@
   margin-bottom: 0.5rem;
 }
 
-/* Section spacing */
-.volcano-section {
-  padding: 4rem 0;
-}
-
-.volcano-section-title {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  position: relative;
-}
-
-.volcano-section-title::after {
-  content: '';
-  display: block;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--volcano-lava), var(--volcano-ember));
-  margin: 1rem auto 0;
-  border-radius: 2px;
-}
-
-/* Hero two-column layout */
-.volcano-hero-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 4rem 2rem;
-}
-
 @media (max-width: 996px) {
   .volcano-hero-grid {
     grid-template-columns: 1fr;
-    gap: 2rem;
-    padding: 2rem 1rem;
+    gap: 3rem;
+    text-align: center;
+    padding: 0 1.5rem;
   }
-}
 
-/* Responsive */
-@media (max-width: 996px) {
-  .volcano-stat-number {
+  .hero--primary {
+    padding: 3rem 0;
+  }
+
+  .hero--primary::before {
+    display: none;
+    /* Remove heavy glow on mobile */
+  }
+
+  .volcano-terminal {
+    min-height: auto;
+  }
+
+  .volcano-viz-container {
+    animation: none;
+    /* Disable float on mobile to save battery */
+  }
+
+  .volcano-section {
+    padding: 3rem 0;
+  }
+
+  .volcano-section-title {
     font-size: 2rem;
   }
-
-  .volcano-feature-icon {
-    font-size: 2rem;
-  }
 }
 
-/* SVG visualization styles */
-.volcano-viz-node circle {
-  transition: all 0.3s ease;
+/* Feature Cards Grid */
+.volcano-feature-card {
+  background: var(--volcano-card-bg);
+  border: 1px solid var(--volcano-card-border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  transition: transform var(--volcano-transition-base), box-shadow var(--volcano-transition-base);
+  height: 100%;
 }
 
-.volcano-viz-edge {
-  stroke: var(--volcano-lava);
-  stroke-width: 2;
-  opacity: 0.4;
-  transition: opacity 0.3s ease;
+.volcano-feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(255, 107, 53, 0.12);
+  border-color: var(--volcano-lava);
 }
 
-.volcano-viz-edge.active {
-  opacity: 1;
-  filter: drop-shadow(0 0 4px var(--volcano-lava));
-}
-
-.volcano-viz-pulse {
-  fill: var(--volcano-lava);
+/* Accessibility Focus States */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--volcano-lava);
+  outline-offset: 4px;
 }

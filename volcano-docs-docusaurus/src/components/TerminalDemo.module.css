@@ -1,0 +1,145 @@
+.terminalContainer {
+    width: 100%;
+    max-width: 500px;
+    background-color: var(--volcano-terminal-bg);
+    border: 1px solid rgba(255, 107, 53, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding: 1.5rem;
+    font-family: var(--ifm-font-family-monospace);
+    font-size: 0.9rem;
+    color: #f4f4f4;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.terminalHeader {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.dotRed {
+    background-color: #ff5f56;
+}
+
+.dotYellow {
+    background-color: #ffbd2e;
+}
+
+.dotGreen {
+    background-color: #27c93f;
+}
+
+.content {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.line {
+    display: flex;
+    align-items: center;
+    min-height: 1.2em;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.prompt {
+    color: var(--volcano-lava);
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.successTick {
+    color: #4ade80;
+    margin-right: 0.5rem;
+    font-weight: bold;
+}
+
+/* Typewriter Effect */
+.typingLine {
+    overflow: hidden;
+    white-space: nowrap;
+    border-right: 2px solid var(--volcano-lava);
+    width: 0;
+    animation:
+        typing 2s steps(30, end) forwards,
+        blink-caret 0.75s step-end infinite;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .typingLine {
+        animation: none;
+        width: 100%;
+        border-right: none;
+    }
+
+    .line {
+        animation: none;
+        opacity: 1;
+    }
+}
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 100%
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--volcano-lava)
+    }
+}
+
+.replayButton {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: 1px solid var(--volcano-gray);
+    color: var(--volcano-gray);
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    opacity: 0.5;
+}
+
+.replayButton:hover {
+    opacity: 1;
+    border-color: var(--volcano-lava);
+    color: var(--volcano-lava);
+}

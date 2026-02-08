@@ -1,195 +1,74 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import clsx from 'clsx';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
+import { motion } from 'framer-motion';
 
 import styles from './index.module.css';
+import TerminalDemo from '../components/TerminalDemo';
+import SchedulerDiagram from '../components/SchedulerDiagram';
 
-// Animated terminal install component
-function TerminalInstall() {
-  const [lines, setLines] = useState<number>(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setLines(prev => (prev < 6 ? prev + 1 : prev));
-    }, 400);
-    return () => clearInterval(timer);
-  }, []);
-
-  const terminalLines = [
-    { type: 'prompt', text: '$ volcanoctl install' },
-    { type: 'success', text: '✓ scheduler deployed' },
-    { type: 'success', text: '✓ plugins loaded' },
-    { type: 'success', text: '✓ queues configured' },
-    { type: 'success', text: '✓ gang scheduling enabled' },
-    { type: 'success', text: '✓ GPU plugin active' },
-  ];
-
-  return (
-    <div className="volcano-terminal">
-      {terminalLines.slice(0, lines).map((line, idx) => (
-        <div
-          key={idx}
-          className="volcano-terminal-line"
-          style={{ animationDelay: `${idx * 0.4}s` }}
-        >
-          <span className="volcano-terminal-prompt">{line.type === 'prompt' ? '$' : '✓'}</span>
-          <span className={line.type === 'success' ? 'volcano-terminal-success' : ''}>{line.text.replace('$ ', '').replace('✓ ', '')}</span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-// Animated SVG Visualization
-function VolcanoVisualization() {
-  const [activePulse, setActivePulse] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActivePulse(prev => (prev + 1) % 6);
-    }, 2000);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <svg viewBox="0 0 400 400" style={{ width: '100%', height: 'auto', maxHeight: '500px' }}>
-      {/* Background grid */}
-      <defs>
-        <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeOpacity="0.1" strokeWidth="0.5" />
-        </pattern>
-      </defs>
-
-      <rect width="400" height="400" fill="url(#grid)" />
-
-      {/* Central Scheduler Node */}
-      <g className="volcano-viz-node">
-        <circle cx="200" cy="200" r="30" fill="var(--ifm-color-primary)" opacity="0.2" />
-        <circle cx="200" cy="200" r="20" fill="var(--ifm-color-primary)" />
-        <text x="200" y="205" textAnchor="middle" fill="#fff" fontSize="10" fontWeight="bold">
-          Scheduler
-        </text>
-      </g>
-
-      {/* Plugin Nodes */}
-      {[
-        { x: 200, y: 100, name: 'Gang', angle: 0 },
-        { x: 286, y: 150, name: 'DRF', angle: 60 },
-        { x: 286, y: 250, name: 'Priority', angle: 120 },
-        { x: 200, y: 300, name: 'NodeOrder', angle: 180 },
-        { x: 114, y: 250, name: 'SLA', angle: 240 },
-        { x: 114, y: 150, name: 'TDM', angle: 300 },
-      ].map((plugin, idx) => (
-        <g key={idx} className="volcano-viz-node">
-          {/* Edge to center */}
-          <line
-            x1={plugin.x}
-            y1={plugin.y}
-            x2="200"
-            y2="200"
-            className={clsx('volcano-viz-edge', activePulse === idx && 'active')}
-          />
-
-          {/* Pulse animation */}
-          {activePulse === idx && (
-            <circle className="volcano-viz-pulse">
-              <animate
-                attributeName="cx"
-                from={plugin.x}
-                to="200"
-                dur="2s"
-                repeatCount="1"
-              />
-              <animate
-                attributeName="cy"
-                from={plugin.y}
-                to="200"
-                dur="2s"
-                repeatCount="1"
-              />
-            </circle>
-          )}
-
-          {/* Plugin node */}
-          <circle cx={plugin.x} cy={plugin.y} r="12" fill="var(--ifm-color-primary-light)" opacity="0.3" />
-          <circle cx={plugin.x} cy={plugin.y} r="8" fill="var(--ifm-color-primary)" />
-          <text
-            x={plugin.x}
-            y={plugin.y - 20}
-            textAnchor="middle"
-            fill="currentColor"
-            fontSize="9"
-            fontWeight="600"
-          >
-            {plugin.name}
-          </text>
-        </g>
-      ))}
-
-      {/* Worker Clusters */}
-      {[
-        { cx: 60, cy: 60 },
-        { cx: 340, cy: 60 },
-        { cx: 340, cy: 340 },
-        { cx: 60, cy: 340 },
-      ].map((cluster, idx) => (
-        <g key={idx} opacity="0.6">
-          <circle cx={cluster.cx} cy={cluster.cy} r="4" fill="currentColor" />
-          <circle cx={cluster.cx + 8} cy={cluster.cy + 8} r="3" fill="currentColor" />
-          <circle cx={cluster.cx - 8} cy={cluster.cy + 8} r="3" fill="currentColor" />
-        </g>
-      ))}
-    </svg>
-  );
-}
-
-// Hero Section - Using CSS Variables
+// Hero Section - Updated with animations and new components
 function HomepageHero() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      {/* Background is handled by CSS variables in custom.css */}
       <div className="volcano-hero-grid" style={{ position: 'relative', zIndex: 1 }}>
-        {/* Left Column */}
+
+        {/* Left Column: Content + Terminal */}
         <div className="volcano-hero-content">
-          <Heading as="h1" className="hero__title" style={{
-            fontSize: '3.5rem',
-            marginBottom: '1rem',
-            // color handled by CSS variable
-          }}>
-            Volcano
-          </Heading>
-          <p className="hero__subtitle" style={{
-            fontSize: '1.3rem',
-            marginBottom: '2rem',
-            // color handled by CSS variable
-          }}>
-            Cloud-Native Batch Scheduling for Kubernetes and AI Workloads
-          </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <Heading as="h1" className="hero__title" style={{
+              fontSize: '3.5rem',
+              marginBottom: '1rem',
+              lineHeight: 1.1
+            }}>
+              Volcano
+            </Heading>
+            <p className="hero__subtitle" style={{
+              fontSize: '1.3rem',
+              marginBottom: '2rem',
+              maxWidth: '600px'
+            }}>
+              Cloud-Native Batch Scheduling for Kubernetes, optimized for AI/ML, Big Data, and HPC workloads.
+            </p>
 
-          <div className={styles.buttons} style={{ marginBottom: '2rem' }}>
-            <Link
-              className="button button--primary button--lg"
-              to="/docs/intro"
-              style={{ marginRight: '1rem' }}>
-              Get Started →
-            </Link>
-            <Link
-              className="button button--secondary button--lg"
-              to="https://github.com/volcano-sh">
-              GitHub ★
-            </Link>
-          </div>
+            <div className={styles.buttons} style={{ marginBottom: '2.5rem' }}>
+              <Link
+                className="button button--primary button--lg"
+                to="/docs/intro"
+                style={{ marginRight: '1rem', padding: '0.8rem 2rem' }}>
+                Get Started →
+              </Link>
+              <Link
+                className="button button--secondary button--lg"
+                to="https://github.com/volcano-sh/volcano"
+                style={{ padding: '0.8rem 2rem' }}>
+                GitHub ★
+              </Link>
+            </div>
+          </motion.div>
 
-          <TerminalInstall />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="hidden md:block" // Hide terminal on very small screens if needed, but css handles it
+          >
+            <TerminalDemo />
+          </motion.div>
         </div>
 
-        {/* Right Column - SVG Visualization */}
-        <div className="volcano-hero-visual">
-          <VolcanoVisualization />
+        {/* Right Column: Interactive Diagram */}
+        <div className="volcano-hero-visual relative">
+          <SchedulerDiagram />
         </div>
+
       </div>
     </header>
   );
@@ -244,13 +123,20 @@ function FeatureGrid() {
         </Heading>
         <div className="row">
           {features.map((feature, idx) => (
-            <div key={idx} className="col col--3">
+            <motion.div
+              key={idx}
+              className="col col--3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: idx * 0.1 }}
+            >
               <div className="volcano-feature-card">
                 <div className="volcano-feature-icon">{feature.icon}</div>
                 <Heading as="h3">{feature.title}</Heading>
                 <p>{feature.description}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

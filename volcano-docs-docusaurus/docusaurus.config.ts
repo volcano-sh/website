@@ -9,6 +9,8 @@ const config: Config = {
   tagline: 'Cloud Native Batch Scheduling for Kubernetes',
   favicon: 'img/favicon.ico',
 
+  clientModules: [require.resolve('./src/client-modules.js')],
+
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
