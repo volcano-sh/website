@@ -20,8 +20,8 @@
   publish = "build"
 
 [build.environment]
-  # Use Node.js 18 for Docusaurus compatibility
-  NODE_VERSION = "18"
+  # Use Node.js 20 for Docusaurus compatibility (matches CI)
+  NODE_VERSION = "20"
   # Ensure npm uses clean installs
   NPM_FLAGS = "--legacy-peer-deps"
 
@@ -34,14 +34,14 @@
   command = "npm ci && npm run build"
 
 [context.deploy-preview.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 # Branch deploy settings
 [context.branch-deploy]
   command = "npm ci && npm run build"
 
 [context.branch-deploy.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 # ============================================================
 # LEGACY HUGO CONFIGURATION (preserved for reference)

@@ -4,3 +4,5 @@ public
 .vscode/*
 .DS_Store
 .hugo_build.lock
+# Local Netlify folder
+.netlify
