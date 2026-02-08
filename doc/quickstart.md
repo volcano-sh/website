@@ -23,7 +23,7 @@ volcano
         |-- nodeorder
         |-- predicates
         |-- priority
-        |-- prorortion
+        |-- proportion
 |-- webhooks
     |-- admission
         |-- queue

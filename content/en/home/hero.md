@@ -24,7 +24,7 @@ weight = 3
   label = '<i class="fas fa-download"></i> Install Now'
 +++
 
-An open platform to enable Edge computing :rocket:
+An open platform to enable Batch container computing :rocket:
 <div style="margin-top: -0.5rem;">
   <a id="academic-release" href="https://github.com/volcano-sh/volcano" data-repo="volcano-sh/volcano">
   Latest release <!-- V -->
