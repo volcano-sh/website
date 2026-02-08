@@ -5,8 +5,8 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'My Site',
-  tagline: 'Dinosaurs are cool',
+  title: 'Volcano',
+  tagline: 'Cloud Native Batch Scheduling for Kubernetes',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -22,8 +22,8 @@ const config: Config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'volcano-sh', // Usually your GitHub org/user name.
+  projectName: 'volcano', // Usually your repo name.
 
   onBrokenLinks: 'throw',
 
@@ -44,7 +44,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/volcano-sh/website/tree/main/volcano-docs-docusaurus/',
         },
         blog: {
           showReadingTime: true,
@@ -72,28 +72,32 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     colorMode: {
+      defaultMode: 'dark',
       respectPrefersColorScheme: true,
     },
     navbar: {
-      title: 'My Site',
+      title: 'Volcano',
       logo: {
-        alt: 'My Site Logo',
+        alt: 'Volcano Scheduler',
         src: 'img/logo.svg',
       },
       items: [
         {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
+          to: '/docs/intro',
           position: 'left',
-          label: 'Tutorial',
+          label: 'Docs',
         },
-        { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          to: '/docs/scheduler/intro',
+          position: 'left',
+          label: 'Scheduler',
+        },
         {
           type: 'docsVersionDropdown',
           position: 'right',
         },
         {
-          href: 'https://github.com/facebook/docusaurus',
+          href: 'https://github.com/volcano-sh',
           label: 'GitHub',
           position: 'right',
         },
@@ -106,7 +110,15 @@ const config: Config = {
           title: 'Docs',
           items: [
             {
-              label: 'Tutorial',
+              label: 'Scheduler',
+              to: '/docs/scheduler/intro',
+            },
+            {
+              label: 'Architecture',
+              to: '/docs/intro',
+            },
+            {
+              label: 'Getting Started',
               to: '/docs/intro',
             },
           ],
@@ -115,34 +127,30 @@ const config: Config = {
           title: 'Community',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: 'GitHub',
+              href: 'https://github.com/volcano-sh',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
-            },
-            {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: 'CNCF',
+              href: 'https://www.cncf.io',
             },
           ],
         },
         {
-          title: 'More',
+          title: 'Resources',
           items: [
             {
-              label: 'Blog',
-              to: '/blog',
+              label: 'Contributing',
+              href: 'https://github.com/volcano-sh/volcano/blob/master/CONTRIBUTING.md',
             },
             {
-              label: 'GitHub',
-              href: 'https://github.com/facebook/docusaurus',
+              label: 'Releases',
+              href: 'https://github.com/volcano-sh/volcano/releases',
             },
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} Volcano Authors. A CNCF Project.`,
     },
     prism: {
       theme: prismThemes.github,
