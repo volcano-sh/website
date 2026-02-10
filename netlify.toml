@@ -27,22 +27,35 @@
   NPM_CONFIG_LOGLEVEL = "verbose"
 
 # Production build settings
+[context.production]
+  base = "volcano-docs-docusaurus"
+  command = "rm -rf node_modules && npm ci && npm run build"
+  publish = "build"
+
 [context.production.environment]
+  NODE_VERSION = "20"
   NODE_ENV = "production"
+  NPM_CONFIG_LOGLEVEL = "verbose"
 
 # Deploy preview settings (for PRs)
 [context.deploy-preview]
+  base = "volcano-docs-docusaurus"
   command = "rm -rf node_modules && npm ci && npm run build"
+  publish = "build"
 
 [context.deploy-preview.environment]
   NODE_VERSION = "20"
+  NPM_CONFIG_LOGLEVEL = "verbose"
 
 # Branch deploy settings
 [context.branch-deploy]
+  base = "volcano-docs-docusaurus"
   command = "rm -rf node_modules && npm ci && npm run build"
+  publish = "build"
 
 [context.branch-deploy.environment]
   NODE_VERSION = "20"
+  NPM_CONFIG_LOGLEVEL = "verbose"
 
 # ============================================================
 # LEGACY HUGO CONFIGURATION (preserved for reference)
