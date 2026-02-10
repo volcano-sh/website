@@ -1,0 +1,93 @@
+.diagramContainer {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.desktopView {
+    display: block;
+    opacity: 1;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.mobileView {
+    display: none;
+}
+
+/* Mobile Breakpoint */
+@media (max-width: 768px) {
+    .desktopView {
+        display: none;
+    }
+
+    .mobileView {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+}
+
+.nodeCard {
+    padding: 1rem;
+    border: 1px solid var(--volcano-card-border);
+    border-radius: 8px;
+    background-color: var(--volcano-card-bg);
+    transition: transform 0.2s ease;
+}
+
+.nodeCard:active {
+    transform: scale(0.98);
+}
+
+.nodeTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--ifm-color-primary);
+    margin-bottom: 0.25rem;
+}
+
+.nodeDesc {
+    font-size: 0.9rem;
+    margin: 0;
+    color: var(--ifm-font-color-base);
+}
+
+/* SVG Specifics */
+.svgRoot {
+    width: 100%;
+    height: auto;
+    overflow: visible;
+}
+
+.schedulerCore circle {
+    transform-origin: center;
+}
+
+.schedulerCore:hover circle {
+    filter: drop-shadow(0 0 8px var(--ifm-color-primary));
+}
+
+.pluginNode {
+    cursor: pointer;
+    outline: none;
+}
+
+.pluginNode:focus-visible circle {
+    stroke: var(--ifm-color-primary-lightest);
+    stroke-width: 4px;
+}
+
+.tooltipRect {
+    fill: var(--volcano-terminal-bg);
+    rx: 4px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.tooltipText {
+    fill: #fff;
+    font-size: 10px;
+    text-anchor: middle;
+    dominant-baseline: middle;
+}
