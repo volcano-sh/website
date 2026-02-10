@@ -17,8 +17,8 @@
   # Clear cache to prevent stale lockfile issues
   command = "rm -rf node_modules && npm ci && npm run build"
   
-  # Publish the Docusaurus build output (relative to base directory)
-  publish = "build"
+  # Publish the Docusaurus build output (full path from repo root)
+  publish = "volcano-docs-docusaurus/build"
 
 [build.environment]
   # Use Node.js 20 for Docusaurus compatibility (matches CI)
@@ -30,7 +30,7 @@
 [context.production]
   base = "volcano-docs-docusaurus"
   command = "rm -rf node_modules && npm ci && npm run build"
-  publish = "build"
+  publish = "volcano-docs-docusaurus/build"
 
 [context.production.environment]
   NODE_VERSION = "20"
@@ -41,7 +41,7 @@
 [context.deploy-preview]
   base = "volcano-docs-docusaurus"
   command = "rm -rf node_modules && npm ci && npm run build"
-  publish = "build"
+  publish = "volcano-docs-docusaurus/build"
 
 [context.deploy-preview.environment]
   NODE_VERSION = "20"
@@ -51,7 +51,7 @@
 [context.branch-deploy]
   base = "volcano-docs-docusaurus"
   command = "rm -rf node_modules && npm ci && npm run build"
-  publish = "build"
+  publish = "volcano-docs-docusaurus/build"
 
 [context.branch-deploy.environment]
   NODE_VERSION = "20"
