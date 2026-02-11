@@ -1,0 +1,59 @@
+/**
+ * Volcano website - matches Hugo Academic theme
+ */
+
+/* Volcano primary red */
+:root {
+  --ifm-color-primary: #eb1616;
+  --ifm-color-primary-dark: #c91212;
+  --ifm-color-primary-darker: #bd1111;
+  --ifm-color-primary-darkest: #9b0e0e;
+  --ifm-color-primary-light: #ee3a3a;
+  --ifm-color-primary-lighter: #ef4646;
+  --ifm-color-primary-lightest: #f36d6d;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #eb1616;
+  --ifm-color-primary-dark: #c91212;
+  --ifm-color-primary-darker: #bd1111;
+  --ifm-color-primary-darkest: #9b0e0e;
+  --ifm-color-primary-light: #ee3a3a;
+  --ifm-color-primary-lighter: #ef4646;
+  --ifm-color-primary-lightest: #f36d6d;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* GitHub buttons - loaded from hero */
+.github-button {
+  display: inline-block;
+}
+
+/* Footer - OpenKruise-style light background */
+.footer {
+  background-color: #f8f8f8;
+}
+
+
+.footer__title {
+  color: #252b3a;
+}
+
+.footer__link-item {
+  color: #575d6d;
+}
+
+.footer__link-item:hover {
+  color: #c8000b;
+}
+
+.footer__copyright a {
+  color: #c8000b;
+}
+
+.footer__copyright a:hover {
+  color: #a60009;
+  text-decoration: underline;
+}

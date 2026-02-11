@@ -1,0 +1,89 @@
+/* Matches Hugo #required - bg_1.png background */
+.section {
+  padding: 4rem 0;
+  background-image: url('/img/bg_1.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.subtitle {
+  text-align: center;
+  color: #fff;
+  font-size: 18px;
+  width: 80%;
+  margin: 25px 10% -10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-top: 30px;
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 17px 10px;
+  background-color: #fff;
+  border-bottom-right-radius: 15px;
+  border-top-left-radius: 15px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+}
+
+.logo {
+  width: 100px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
+}
+
+.card h3 {
+  margin: 10px 0;
+  font-weight: 400;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.card p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: #333;
+  text-align: justify;
+}

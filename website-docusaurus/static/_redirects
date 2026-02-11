@@ -1,0 +1,14 @@
+###############################################
+# set server-side redirects in this file      #
+# see https://www.netlify.com/docs/redirects/ #
+###############################################
+
+# Redirect golang vanity imports for volcano.sh
+/volcano/* go-get=1 /golang/volcano.html 200
+/apis/* go-get=1 /golang/api.html 200
+
+# Redirect old Hugo URLs to Docusaurus
+/en/docs/* /docs/:splat 301
+/zh/docs/* /zh/docs/:splat 301
+/en/blog/* /blog/:splat 301
+/zh/blog/* /zh/blog/:splat 301
