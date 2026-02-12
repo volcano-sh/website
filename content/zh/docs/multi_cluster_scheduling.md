@@ -47,6 +47,3 @@ Volcano global主要包含两个组件：
 ## 使用指导
 
 请参考: [Volcano global deploy](https://github.com/volcano-sh/volcano-global/blob/main/docs/deploy/README.md)。
-
-如果希望在多集群环境下，以一个高层抽象来统一描述作业并自动拆分为多个跨集群的 Volcano Job，
-可以参考 [HyperJob](/zh/docs/hyperjob/) 概念文档。
