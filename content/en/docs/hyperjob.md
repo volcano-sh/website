@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-+++ 
-=======
 +++
->>>>>>> 21db252 (fix/refactor: Introduce HyperJob multi-cluster job splitting concept with comparison table, real-world use cases, and complete YAML examples from design doc. Removed architecture overview to keep focus on user-facing concepts)
 title = "HyperJob"
 description = "Multi-cluster job splitting and high-level scheduling with HyperJob"
 date = 2026-02-05
