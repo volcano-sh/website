@@ -28,7 +28,7 @@ HyperJob 主要解决以下问题：
 - 需要对实际运行在多个集群中的作业，仍然只保留 **一个统一的控制与状态视图**。
 
 HyperJob 以 Volcano Job 为执行单元，并结合 **Volcano Global** 与 **Karmada**，
-让多集群 AI 作业的使用体验尽量接近“在单集群中运行一个 Job”。
+让多集群 AI 作业的使用体验尽量接近"在单集群中运行一个 Job"。
 
 ## 核心特性与优势
 
@@ -45,7 +45,7 @@ HyperJob 以 Volcano Job 为执行单元，并结合 **Volcano Global** 与 **Ka
   - 集群选择、实例分布和资源放置由 HyperJob 控制面和 Volcano Global 共同完成。
 
 - **高层调度能力**
-  - HyperJob 扮演 **“Job 级别的元调度器（meta-scheduler）”** 角色。
+  - HyperJob 扮演 **"Job 级别的元调度器（meta-scheduler）"** 角色。
   - 负责确定多少副本下发到哪个集群，再由各集群内的 Volcano Job 完成批量调度
     （包括 Gang 调度、公平共享、队列优先级等）。
 
@@ -55,16 +55,17 @@ HyperJob 以 Volcano Job 为执行单元，并结合 **Volcano Global** 与 **Ka
 
 ## HyperJob 与普通 Volcano Job 的对比
 
-HyperJob 与 Volcano Job 同属一个调度体系，但关注的粒度不同：
+HyperJob 构建在 Volcano Job 之上，并非替代品。它将 Volcano 的能力扩展到多集群场景，同时在每个集群内保留 Volcano Job 的所有特性。
 
-| 对比项                     | Volcano Job                                      | HyperJob                                                                      |
-|----------------------------|--------------------------------------------------|-------------------------------------------------------------------------------|
-| 调度范围                   | 单集群                                           | 多集群                                                                        |
-| 执行单元                   | 单个集群中的一个 `Job`                          | 一个 HyperJob 对应多个底层 Volcano Job                                        |
-| 多集群感知                 | 不感知多集群                                    | 原生面向多集群的高层抽象                                                      |
-| 作业拆分                   | 不提供                                          | **内置自动拆分**                                                              |
-| 状态视图                   | 每个集群、每个 Job 各自管理                     | **统一的 HyperJob 状态视图**                                                 |
-| 典型使用场景               | 单集群即可满足资源与调度需求                    | 需要聚合多个集群资源或必须跨集群运行的作业                                   |
+| 对比项                  | Volcano Job                                      | HyperJob                                                                      |
+|-------------------------|--------------------------------------------------|-------------------------------------------------------------------------------|
+| **范围**                | 单集群                                           | 多集群                                                                        |
+| **抽象层级**            | 集群级原语（管理 Pod）                          | 元级原语（管理 Volcano Job）                                                  |
+| **主要用例**            | 批量工作负载调度                                | 跨异构集群的大规模训练                                                        |
+| **作业组成**            | 单个作业包含多个任务                            | 多个 Volcano Job 的组合                                                       |
+| **状态跟踪**            | 跟踪单个作业内的 Pod                            | 聚合多个集群中多个 Volcano Job 的状态                                         |
+
+HyperJob 专为训练需求超出单集群容量或需要利用不同集群的异构加速器资源的场景而设计。
 
 **适合直接使用 Volcano Job 的场景**
 
@@ -96,85 +97,102 @@ HyperJob 与 Volcano Job 同属一个调度体系，但关注的粒度不同：
   - 将训练任务拆分到不同地域或机房的集群中执行。
   - 可结合数据本地化、合规要求、链路延迟等因素进行策略控制。
 
-## 架构概览
+## HyperJob YAML 示例
 
-HyperJob 的典型工作流程如下（概念性描述）：
+### 场景 1：大规模训练作业拆分
 
-1. **用户在控制平面集群中提交一个 HyperJob。**
-2. HyperJob 控制器：
-   - 解析期望的副本数和资源需求。
-   - 根据 **拆分策略** 决定各目标集群的副本与资源分配。
-3. 对每个目标集群，控制器创建一个或多个 **底层 Volcano Job**。
-4. **Volcano Global** 与 **Karmada** 负责：
-   - 多集群的调度与 `ResourceBinding` 管理。
-   - 跨集群队列与作业优先级管理。
-   - 多租户公平调度与资源准入控制。
-5. HyperJob 持续跟踪所有子 Job 的状态，并将其 **聚合回 HyperJob 状态** 中。
-
-在该架构中：
-
-- HyperJob 关注 **作业级抽象与拆分逻辑**。
-- Volcano Job 关注 **单集群内的批量调度能力**。
-- Volcano Global + Karmada 关注 **多集群维度的资源协调与放置**。
-
-多集群架构的详细介绍，可参考
-[多集群AI作业调度](/zh/docs/multi_cluster_scheduling/) 与
-[Volcano Global](https://github.com/volcano-sh/volcano-global) 项目。
-
-## HyperJob YAML 示例（概念性）
-
-HyperJob 的具体 API 以 Volcano 设计与实现为准。
-下面示例为 **简化的概念示例**，用于帮助理解 HyperJob 如何描述一个逻辑作业及其跨集群拆分方式。
-权威、最新的字段定义请以
-[HyperJob 设计文档](https://github.com/volcano-sh/volcano/blob/master/docs/design/hyperjob-multi-cluster-job-splitting.md)
-及 Volcano 仓库中的 CRD 定义为准。
+研究团队希望训练一个需要 256 个 GPU 的大型语言模型，但他们最大的集群只有 128 个 GPU。使用 HyperJob，他们可以将训练作业拆分为两个子作业，每个子作业使用 128 个 GPU，并在两个集群上运行。
 
 ```yaml
-apiVersion: batch.volcano.sh/v1alpha1
+apiVersion: training.volcano.sh/v1alpha1
 kind: HyperJob
 metadata:
-  name: llm-train-hyperjob
+  name: llm-training
 spec:
-  # 逻辑作业的高层模板
-  template:
-    apiVersion: batch.volcano.sh/v1alpha1
-    kind: Job
-    spec:
-      minAvailable: 64
-      schedulerName: volcano
-      queue: global-ai
+  minAvailable: 2
+  maxDomains: 2
+  replicatedJobs:
+  - name: trainer
+    replicas: 2
+    templateSpec:
       tasks:
-        - name: trainer
-          replicas: 64
-          template:
-            spec:
-              containers:
-                - name: trainer
-                  image: example.com/llm-train:latest
-                  resources:
-                    requests:
-                      cpu: "8"
-                      memory: "64Gi"
-                      nvidia.com/gpu: "1"
-              restartPolicy: OnFailure
-
-  # 拆分策略（字段名称仅作示意，实际以实现为准）
-  splitPolicy:
-    strategy: ByCluster
-    clusters:
-      - name: cluster-a
-        replicas: 32
-      - name: cluster-b
-        replicas: 32
+      - name: worker
+        replicas: 128
+        template:
+          spec:
+            containers:
+            - name: trainer
+              image: training-image:v1
+              resources:
+                requests:
+                  nvidia.com/gpu: 1
 ```
 
-在真实环境中，HyperJob 规范可能还包括：
+### 场景 2：异构集群
 
-- 更精细的 **集群选择与约束条件**。
-- 描述如何将子 Job 状态 **聚合映射为 HyperJob 状态** 的字段。
-- 跨集群的 **重试、回滚与清理策略** 等高级能力。
+某组织拥有多个具有不同代次加速器的集群（例如 Ascend NPU 910B 和 910C）。他们需要在这些异构集群上运行训练作业。
 
-请始终参考最新的 Volcano 文档与代码获取准确 API。
+```yaml
+apiVersion: training.volcano.sh/v1alpha1
+kind: HyperJob
+metadata:
+  name: ascend-heterogeneous-training
+spec:
+  minAvailable: 2
+  replicatedJobs:
+  - name: trainer-910b
+    replicas: 1
+    clusterNames: ["cluster-ascend-910b-1", "cluster-ascend-910b-2"]
+    templateSpec:
+      tasks:
+      - name: worker
+        replicas: 64
+        template:
+          spec:
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: hardware-type
+                      operator: In
+                      values:
+                      - Ascend910B
+            containers:
+            - name: trainer
+              image: training-image:v1
+              resources:
+                requests:
+                  ascend910c: 1
+                limits:
+                  ascend910c: 1
+  - name: trainer-910c
+    replicas: 1
+    clusterNames: ["cluster-ascend-910c-1"]
+    templateSpec:
+      tasks:
+      - name: worker
+        replicas: 64
+        template:
+          spec:
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: hardware-type
+                      operator: In
+                      values:
+                      - Ascend910C
+            containers:
+            - name: trainer
+              image: training-image:v1
+              resources:
+                requests:
+                  ascend910c: 1
+                limits:
+                  ascend910c: 1
+```
 
 ## 相关概念与参考链接
 

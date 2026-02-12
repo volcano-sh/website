@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 +++ 
+=======
++++
+>>>>>>> 21db252 (fix/refactor: Introduce HyperJob multi-cluster job splitting concept with comparison table, real-world use cases, and complete YAML examples from design doc. Removed architecture overview to keep focus on user-facing concepts)
 title = "HyperJob"
 description = "Multi-cluster job splitting and high-level scheduling with HyperJob"
 date = 2026-02-05
@@ -55,21 +59,22 @@ HyperJob leverages Volcano Job as the basic execution unit and works together wi
 
 ## HyperJob vs. Standard Volcano Job
 
-Both HyperJob and Volcano Job are part of the same ecosystem, but they focus on different scopes:
+HyperJob is built on top of Volcano Job, not as a replacement. It extends Volcano's capabilities to multi-cluster scenarios while preserving all the features of Volcano Job within each cluster.
 
-| Aspect                        | Volcano Job                                             | HyperJob                                                                 |
-|-------------------------------|--------------------------------------------------------|--------------------------------------------------------------------------|
-| Scope                         | Single cluster                                         | Multiple clusters                                                        |
-| Execution unit                | One `Job` in one cluster                               | One logical HyperJob mapped to **multiple** underlying Volcano Jobs      |
-| Multi-cluster awareness       | Not aware                                              | Native multi-cluster abstraction                                        |
-| Job splitting                 | Not provided                                           | **Built-in automatic job splitting**                                    |
-| Status view                   | Per cluster, per job                                   | **Unified status** across clusters and child jobs                       |
-| When to use                   | Cluster is big enough; single-cluster scheduling only | Workloads need more capacity than one cluster or must span many clusters |
+| Aspect | Volcano Job | HyperJob |
+|--------|-------------|----------|
+| **Scope** | Single cluster | Multiple clusters |
+| **Abstraction Level** | Cluster-level primitive (manages Pods) | Meta-level primitive (manages Volcano Jobs) |
+| **Primary Use Case** | Batch workload scheduling | Large-scale training across heterogeneous clusters |
+| **Job Composition** | Single job with multiple tasks | Composition of multiple Volcano Jobs |
+| **Status Tracking** | Tracks pods within a single job | Aggregates status from multiple Volcano Jobs across clusters |
+
+HyperJob is designed for scenarios where training requirements exceed single cluster capacity or need to leverage heterogeneous accelerator resources across different clusters.
 
 **When to use Volcano Job**
 
 - You only run in a single cluster.
-- The workload size fits within that cluster’s resource capacity.
+- The workload size fits within that cluster's resource capacity.
 - You want straightforward integration with existing controllers or pipelines that already speak Volcano Job.
 
 **When to use HyperJob**
@@ -97,85 +102,102 @@ Both HyperJob and Volcano Job are part of the same ecosystem, but they focus on 
   - Distribute parts of a workload across clusters in different regions or data centers.
   - Useful for latency-sensitive scenarios or to comply with data locality requirements.
 
-## Architecture Overview
+## Example: HyperJob YAML
 
-At a high level, HyperJob works as follows (conceptual view):
+### Case 1: Large-scale Training Job Splitting
 
-1. **User submits a HyperJob** to a control-plane cluster.
-2. The HyperJob controller:
-   - Interprets the desired replicas and resources.
-   - Applies **splitting policies** (for example, per-cluster replica counts or resource quotas).
-3. For each target cluster, the controller creates one or more **underlying Volcano Jobs**.
-4. **Volcano Global** and **Karmada** handle:
-   - Multi-cluster scheduling and `ResourceBinding` management.
-   - Cross-cluster queue and priority handling.
-   - Fair sharing and admission control across clusters.
-5. HyperJob continuously watches the state of all child jobs and **aggregates status** back to the HyperJob resource.
-
-In this architecture:
-
-- HyperJob focuses on **job-level abstraction and splitting**.
-- Volcano Job focuses on **in-cluster batch scheduling**.
-- Volcano Global + Karmada focus on **multi-cluster coordination and placement**.
-
-For more details on the multi-cluster layer, see
-[Multi-Cluster AI Job Scheduling](/en/docs/multi_cluster_scheduling/) and the
-[Volcano Global](https://github.com/volcano-sh/volcano-global) project.
-
-## Example: HyperJob YAML (Conceptual)
-
-The exact HyperJob API is defined in the Volcano design and implementation.
-The following example is a **simplified conceptual** manifest to illustrate how a HyperJob can describe
-a logical job and its split across clusters. For the authoritative API, always refer to the
-[HyperJob design document](https://github.com/volcano-sh/volcano/blob/master/docs/design/hyperjob-multi-cluster-job-splitting.md)
-and the corresponding CRD definition in the Volcano repository.
+A research team wants to train a large language model that requires 256 GPUs, but their largest cluster only has 128 GPUs. Using HyperJob, they can split the training job into two sub-jobs, each with 128 GPUs, and run them across two clusters.
 
 ```yaml
-apiVersion: batch.volcano.sh/v1alpha1
+apiVersion: training.volcano.sh/v1alpha1
 kind: HyperJob
 metadata:
-  name: llm-train-hyperjob
+  name: llm-training
 spec:
-  # High-level description of the logical job
-  template:
-    apiVersion: batch.volcano.sh/v1alpha1
-    kind: Job
-    spec:
-      minAvailable: 64
-      schedulerName: volcano
-      queue: global-ai
+  minAvailable: 2
+  maxDomains: 2
+  replicatedJobs:
+  - name: trainer
+    replicas: 2
+    templateSpec:
       tasks:
-        - name: trainer
-          replicas: 64
-          template:
-            spec:
-              containers:
-                - name: trainer
-                  image: example.com/llm-train:latest
-                  resources:
-                    requests:
-                      cpu: "8"
-                      memory: "64Gi"
-                      nvidia.com/gpu: "1"
-              restartPolicy: OnFailure
-
-  # Conceptual splitting policy (names and fields are illustrative)
-  splitPolicy:
-    strategy: ByCluster
-    clusters:
-      - name: cluster-a
-        replicas: 32
-      - name: cluster-b
-        replicas: 32
+      - name: worker
+        replicas: 128
+        template:
+          spec:
+            containers:
+            - name: trainer
+              image: training-image:v1
+              resources:
+                requests:
+                  nvidia.com/gpu: 1
 ```
 
-In practice, the real HyperJob spec may include:
+### Case 2: Heterogeneous Clusters
 
-- More detailed **cluster selection** and **constraints**.
-- Fields to describe how to **map HyperJob status** from child jobs.
-- Policies for **retry, rollback, and cleanup** across clusters.
+An organization has multiple clusters with different generations of accelerators (e.g., Ascend NPU 910B and 910C). They need to run a training job across these heterogeneous clusters.
 
-Always check the latest Volcano documentation and code for the exact API.
+```yaml
+apiVersion: training.volcano.sh/v1alpha1
+kind: HyperJob
+metadata:
+  name: ascend-heterogeneous-training
+spec:
+  minAvailable: 2
+  replicatedJobs:
+  - name: trainer-910b
+    replicas: 1
+    clusterNames: ["cluster-ascend-910b-1", "cluster-ascend-910b-2"]
+    templateSpec:
+      tasks:
+      - name: worker
+        replicas: 64
+        template:
+          spec:
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: hardware-type
+                      operator: In
+                      values:
+                      - Ascend910B
+            containers:
+            - name: trainer
+              image: training-image:v1
+              resources:
+                requests:
+                  ascend910c: 1
+                limits:
+                  ascend910c: 1
+  - name: trainer-910c
+    replicas: 1
+    clusterNames: ["cluster-ascend-910c-1"]
+    templateSpec:
+      tasks:
+      - name: worker
+        replicas: 64
+        template:
+          spec:
+            affinity:
+              nodeAffinity:
+                requiredDuringSchedulingIgnoredDuringExecution:
+                  nodeSelectorTerms:
+                  - matchExpressions:
+                    - key: hardware-type
+                      operator: In
+                      values:
+                      - Ascend910C
+            containers:
+            - name: trainer
+              image: training-image:v1
+              resources:
+                requests:
+                  ascend910c: 1
+                limits:
+                  ascend910c: 1
+```
 
 ## Related Concepts and References
 
