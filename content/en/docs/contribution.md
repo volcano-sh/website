@@ -122,7 +122,7 @@ To make it easier for your PRs to receive reviews,
 
 * Follow [good coding guidelines](https://github.com/golang/go/wiki/CodeReviewComments).
 * Write [good commit messages](https://chris.beams.io/posts/git-commit/).
-* Break down large chunks of modification into smaller unites that are logically independent and easy to understand.
+* Break down large chunks of modification into smaller units that are logically independent and easy to understand.
 * Label your PRs properly so that they can be sent to appropriate reviewers. The bot will help you through the entire PR submission process.
 
 
