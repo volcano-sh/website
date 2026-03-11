@@ -136,7 +136,7 @@ completing表示job中至少有minAvailable个数的task已经完成，该job正
 
 * completed
 
-completing表示job中至少有minAvailable个数的task已经完成，该job已经完成了最后的清理工作。
+completed表示job中至少有minAvailable个数的task已经完成，该job已经完成了最后的清理工作。
 
 * terminating
 
