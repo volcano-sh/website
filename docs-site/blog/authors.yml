@@ -1,0 +1,49 @@
+volcano:
+  name: Volcano
+  url: https://volcano.sh
+  image_url: https://volcano.sh/img/volcano_logo.svg
+
+yi-guo:
+  name: Yi Guo
+  title: Tech-Leader
+
+yunzhi-cheng:
+  name: Yunzhi Cheng
+  title: Tech-Leader in Ruitian
+
+zhengyu-xu:
+  name: Zhengyu Xu
+  title: R&D in Ruitian
+
+junmao-li:
+  name: Junmao Li
+  title: System Architect in Pengcheng Laboratory
+
+jian-zhu:
+  name: Jian Zhu
+  title: Senior Architect in Leinao OS
+
+paddlepaddle-team:
+  name: PaddlePaddle Team
+  url: https://www.paddlepaddle.org/
+
+volcano-team:
+  name: Volcano Team
+  url: https://volcano.sh
+
+adam-korczynski:
+  name: Adam Korczynski
+  organization: Ada Logics
+
+xavier-chang:
+  name: Xavier Chang
+  title: Huawei and Volcano maintainer
+  organization: Huawei
+
+zhe-jin:
+  name: Zhe Jin
+  title: Senior Engineer in HUAWEI CLOUD
+
+yunzhi-cheng-ruitian:
+  name: Yunzhi Cheng
+  title: Ruitian Tech-Leader

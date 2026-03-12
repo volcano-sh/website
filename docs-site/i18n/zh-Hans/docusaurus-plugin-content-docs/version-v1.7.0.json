@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "v1.7.0",
+    "description": "The label for version v1.7.0"
+  },
+  "sidebar.docsSidebar.category.Home": {
+    "message": "Home",
+    "description": "The label for category Home in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for category Getting Started in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Concepts": {
+    "message": "Concepts",
+    "description": "The label for category Concepts in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Ecosystem": {
+    "message": "Ecosystem",
+    "description": "The label for category Ecosystem in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Scheduler": {
+    "message": "Scheduler",
+    "description": "The label for category Scheduler in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Plugins": {
+    "message": "Plugins",
+    "description": "The label for category Plugins in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.CLI": {
+    "message": "CLI",
+    "description": "The label for category CLI in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Contribution": {
+    "message": "Contribution",
+    "description": "The label for category Contribution in sidebar docsSidebar"
+  }
+}
