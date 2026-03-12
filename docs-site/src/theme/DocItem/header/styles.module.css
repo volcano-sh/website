@@ -1,0 +1,19 @@
+.header {
+  position: relative;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.lastUpdated {
+  position: absolute;
+  right: 0;
+  bottom: 0.5rem;
+  font-size: 0.85rem;
+  color: #6b6b6b;
+  font-style: italic;
+}

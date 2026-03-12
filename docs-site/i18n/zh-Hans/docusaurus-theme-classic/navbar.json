@@ -1,0 +1,14 @@
+{
+  "logo.alt": {
+    "message": "Volcano 徽标",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.Documentation": {
+    "message": "文档",
+    "description": "Navbar item with label Documentation"
+  },
+  "item.label.Blog": {
+    "message": "博客",
+    "description": "Navbar item with label Blog"
+  }
+}
