@@ -1,0 +1,140 @@
+/**
+ * Global CSS for Volcano Docusaurus site
+ * Cleaned + optimized + dark mode safe
+ */
+
+
+@font-face {
+  font-family: "HuaweiSans";
+  src: url("/fonts/HuaweiSans-Regular.woff2") format("woff2"),
+       url("/fonts/HuaweiSans-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Brand */
+  --ifm-color-primary: #c8000b;
+  --ifm-navbar-link-hover-color: #c8000b;
+
+  /* Typography */
+  --ifm-font-family-base: "HuaweiSans", Georgia, "Times New Roman", serif;
+  --ifm-heading-font-family: "HuaweiSans", Georgia, "Times New Roman", serif;
+  --ifm-font-size-base: 17px;
+
+  /* Heading scale */
+  --ifm-h1-font-size: 2.2rem;
+  --ifm-h2-font-size: 1.7rem;
+  --ifm-h3-font-size: 1.4rem;
+  --ifm-h4-font-size: 1.1rem;
+
+  /* Layout */
+  --ifm-container-width: 1140px;
+  --ifm-global-radius: 0.4rem;
+}
+
+[data-theme="dark"] {
+  --ifm-background-color: #1a1a1a;
+  --ifm-background-surface-color: #242526;
+}
+
+
+html, body {
+  font-family: var(--ifm-font-family-base);
+  line-height: 1.65;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.section-container,
+.whyContainer,
+.blogContainer,
+.supporters-section,
+.frameworksSection {
+  background: var(--ifm-background-color);
+}
+
+.reasonBox,
+.blogPostCard,
+.framework-card {
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  box-shadow: 0 2px 8px var(--ifm-color-emphasis-200);
+  transition: all .25s ease;
+}
+
+.reasonBox:hover,
+.blogPostCard:hover,
+.framework-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px var(--ifm-color-emphasis-300);
+}
+
+.markdown h1 {
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  padding-bottom: 2.5rem;
+  margin-bottom: 1.2rem;
+}
+
+[data-theme="dark"] .hero-title,
+[data-theme="dark"] .hero-subtitle {
+  color: var(--ifm-font-color-base-inverse);
+}
+
+.header-github-link,
+.header-x-link,
+.header-slack-link {
+  width: 32px;
+  height: 32px;
+  margin-left: 8px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  transition: opacity .2s ease;
+}
+
+.header-github-link { background-image: url("/img/github.svg"); }
+.header-x-link { background-image: url("/img/x.svg"); }
+.header-slack-link { background-image: url("/img/slack.svg"); }
+
+.header-github-link:hover,
+.header-x-link:hover,
+.header-slack-link:hover {
+  opacity: .75;
+}
+.footer {
+  background: #2b2a2b;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.footer__logo {
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: auto;
+  font-size: .9rem;
+  color: #fff;
+}
+
+.footer-content a {
+  color: #f05545;
+  text-decoration: none;
+}
+
+.footer-content a:hover {
+  text-decoration: underline;
+}
+
+.theme-edit-this-page {
+  display: none !important;
+}

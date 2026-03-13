@@ -1,0 +1,97 @@
+volcano:
+  name: Volcano
+  url: https://volcano.sh
+  image_url: https://volcano.sh/img/volcano_logo.svg
+
+yi-guo:
+  name: Yi Guo
+  title: Tech-Leader
+
+yunzhi-cheng:
+  name: Yunzhi Cheng
+  title: Tech-Leader in Ruitian
+
+zhengyu-xu:
+  name: Zhengyu Xu
+  title: R&D in Ruitian
+
+junmao-li:
+  name: Junmao Li
+  title: System Architect in Pengcheng Laboratory
+
+jian-zhu:
+  name: Jian Zhu
+  title: Senior Architect in Leinao OS
+
+paddlepaddle-team:
+  name: PaddlePaddle Team
+  url: https://www.paddlepaddle.org/
+
+volcano-team:
+  name: Volcano Team
+  url: https://volcano.sh
+
+adam-korczynski:
+  name: Adam Korczynski
+  organization: Ada Logics
+
+xavier-chang:
+  name: Xavier Chang
+  title: Huawei and Volcano maintainer
+  organization: Huawei
+
+zhe-jin:
+  name: Zhe Jin
+  title: Senior Engineer in HUAWEI CLOUD
+
+yunzhi-cheng-ruitian:
+  name: Yunzhi Cheng
+  title: Ruitian Tech-Leader
+
+Thor-wl:
+  name: Thor-wl
+  title: Volcano Contributor
+
+李灏/爱奇艺资深研发工程师:
+  name: 李灏
+  title: 爱奇艺资深研发工程师
+
+金喆/华为云容器批量计算资深工程师:
+  name: 金喆
+  title: 华为云容器批量计算资深工程师
+
+朱建/中科类脑平台事业部高级系统架构师:
+  name: 朱建
+  title: 中科类脑平台事业部高级系统架构师
+
+PaddlePaddle团队:
+  name: PaddlePaddle团队
+  url: https://www.paddlepaddle.org/
+
+Volcano团队:
+  name: Volcano团队
+  url: https://volcano.sh
+
+李俊茂/鹏城实验室人工智能中心系统架构师:
+  name: 李俊茂
+  title: 鹏城实验室人工智能中心系统架构师
+
+Volcano:
+  name: Volcano
+  url: https://volcano.sh
+
+程运之/锐天投资技术总监:
+  name: 程运之
+  title: 锐天投资技术总监
+
+徐征宇/锐天投资研发工程师:
+  name: 徐征宇
+  title: 锐天投资研发工程师
+
+程运之/锐天投资技术架构部研发总监:
+  name: 程运之
+  title: 锐天投资技术架构部研发总监
+
+郭一/小红书智能分发工程负责人:
+  name: 郭一
+  title: 小红书智能分发工程负责人

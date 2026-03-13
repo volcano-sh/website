@@ -1,0 +1,6 @@
+{
+  "copyright": {
+    "message": "\n        <div class=\"footer-content\">\n          <p>Volcano 是 <a href=\"https://www.cncf.io/\" target=\"_blank\" rel=\"noopener noreferrer\">云原生计算基金会</a>的孵化项目。</p>\n          <div class=\"footer__logo-container\">\n            <img class=\"footer__logo\" alt=\"云原生计算基金会徽标\" src=\"/img/landing/logo_cloudnative.png\" />\n          </div>\n          <p>Linux 基金会已注册商标并使用商标。有关 Linux 基金会的商标列表，请参阅我们的<a href=\"https://www.linuxfoundation.org/trademark-usage\" target=\"_blank\" rel=\"noopener noreferrer\">商标使用</a>页面。</p>\n          <p>2026 @ Volcano 项目作者。保留所有权利。</p>\n      ",
+    "description": "The footer copyright"
+  }
+}
