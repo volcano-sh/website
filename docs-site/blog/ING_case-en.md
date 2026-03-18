@@ -9,6 +9,7 @@ tags: ["case-study", "big-data", "analytics", "banking"]
 >On October 26, 2022, Krzysztof Adamski and Tinco Boekestijn from ING Group delivered a keynote speech "Efficient Scheduling Of High Performance Batch Computing For Analytics Workloads With Volcano" at KubeCon North America. The speech focused on how Volcano, a cloud native batch computing project, supports high-performance scheduling for big data analytics jobs on ING's data management platform.
 More details: [KubeCon + CloudNativeCon North America](https://events.linuxfoundation.org/archive/2022/kubecon-cloudnativecon-north-america/program/schedule/)
 
+<!-- truncate -->
 ## Introduction to ING
 
 Internationale Nederlanden Groep (ING), a global financial institution of Dutch origin, was created in 1991 with the merger of Dutch insurer Nationale-Nederlanden and national postal bank NMB Postbank.

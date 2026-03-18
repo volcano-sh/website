@@ -8,6 +8,7 @@ tags: ["release", "volcano", "kubernetes", "vgpu", "jobflow"]
 
 On January 9, 2024, UTC+8, Volcano version v1.8.2  was officially released. This version added the following new features:
 
+<!-- truncate -->
 - **Support for vGPU scheduling and isolation**
 
 - **Support for vGPU and user-defined resource preemption capabilities**
@@ -66,7 +67,7 @@ JobFlow is a lightweight task flow orchestration engine that focuses on Volcano'
 
 A demonstration of a JobFlow task running is shown below:
 
-<!-- <center> {{<figure library="1" src="./v1.8.2/jobflow.gif">}}</center> -->
+![JobFlow Demo](/img/blog/v1.8.2/jobflow.gif)
 
 For more information about JobFlow, please refer to:
 

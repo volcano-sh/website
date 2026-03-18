@@ -8,6 +8,7 @@ tags: ["case-study", "scientific-research", "preemption", "kubernetes"]
 
 >This article was firstly released at `Container Cube` on September 30th, 2020, refer to[鹏城实验室启智章鱼教你彻底摆脱Kubernetes集群资源抢占难题](https://mp.weixin.qq.com/s/h4T7KbAiQZTKepYcTcgdlA)  
 
+<!-- truncate -->
 ## Introduction to OpenI-Octopus
 
 OpenI-Octopus is a cluster management and resource scheduling system developed and maintained by Peng Cheng Laboratory, Peking University, and University of Science and Technology of China.

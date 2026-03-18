@@ -8,6 +8,7 @@ tags: ["case-study", "financial", "distributed-computing", "ruitian"]
 
 >This article was firstly released at `Container Cube` on December 24th, 2020, refer to[锐天投资基于Volcano的大规模分布式离线计算平台的应用实践](https://mp.weixin.qq.com/s/dC4IDNG7FMGLigNJaj_Qug)  
 
+<!-- truncate -->
 ## Service Scenarios and Solution Selection
 
 __Service Scenarios__

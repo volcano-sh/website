@@ -8,7 +8,9 @@ tags: ["kube-batch", "startup", "kubernetes", "scheduler"]
 
 # Tutorial of kube-batch
 
+
 This document describes how to run `kube-batch` as a batch scheduler for Kubernetes. To get the complete code, go to [master](https://github.com/kubernetes-sigs/kube-batch/tree/master).
+<!-- truncate -->
 
 ## 1. Prerequisites
 Before running `kube-batch`, you must start up a Kubernetes cluster (see [Creating a Cluster with Kubeadm](https://kubernetes.io/docs/setup/independent/create-cluster-kubeadm/)). To complete local testing and deployment, you can use Minikube (see [Running Kubernetes Locally with Minikube](https://kubernetes.io/docs/getting-started-guides/minikube/). You can also use [kind](https://github.com/kubernetes-sigs/kind) to run local Kubernetes clusters with Docker container "nodes".

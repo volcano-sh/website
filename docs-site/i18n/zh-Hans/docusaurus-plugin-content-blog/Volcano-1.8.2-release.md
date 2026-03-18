@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Volcano v1.8.2正式发布"
 description: "新增特性：支持vGPU调度及隔离、支持vGPU和用户自定义资源的抢占能力、新增JobFlow工作流编排引擎、节点负载感知调度与重调度支持多样化的监控系统、优化Volcano对通用服务调度的能力、优化Volcano charts包的发布与归档等"
 date: 2024-01-31
@@ -6,8 +6,9 @@ authors: ["volcano"]
 tags: ["Practice"]
 ---
 
-
 北京时间2024年1月9日，Volcano 社区 v1.8.2 版本正式发布，此次版本增加了以下新特性：
+
+<!-- truncate -->
 
 - **支持vGPU调度及隔离**
 
@@ -153,7 +154,6 @@ helm install volcano volcano-sh/volcano -n volcano-system --create-namespace
 ```shell
 helm install volcano volcano-sh/volcano -n volcano-system --create-namespace --version 1.8.2
 ```
-
 
 关于 Volcano charts 包的更多信息，请参考：
 

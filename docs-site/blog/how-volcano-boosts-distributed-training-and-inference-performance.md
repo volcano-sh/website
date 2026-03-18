@@ -8,7 +8,9 @@ tags: ["performance", "distributed-training", "inference", "kubecon"]
 
 ## The Growing Demand for LLM Workloads and Associated Challenges
 
+
 The increasing adoption of large language models (LLMs) has led to heightened demand for efficient AI training and inference workloads. As model size and complexity grow, distributed training and inference have become essential. However, this expansion introduces challenges in network communication, resource allocation, and fault recovery within large-scale distributed environments. These issues often create performance bottlenecks that hinder scalability.
+<!-- truncate -->
 
 ## Addressing Network Bottlenecks Through Topology-Aware Scheduling
 

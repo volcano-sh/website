@@ -10,6 +10,8 @@ tags: ["release", "volcano", "kubernetes", "scheduling"]
 
 As AI large model technology rapidly evolves, enterprises are placing higher demands on computing resource efficiency and application performance. For complex application scenarios such as AI, big data, and high-performance computing (HPC), efficiently utilizing accelerators like GPUs, ensuring high system availability, and managing resources with fine granularity are the core areas of focus for the Volcano community's continuous innovation.
 
+<!-- truncate -->
+
 Each version of Volcano is an active response to these challenges. With contributions from **over 1,000 developers from more than 30 countries, resulting in nearly 40,000 contributions**, Volcano has been adopted in production environments by more than 60 enterprises worldwide. Its scheduling performance and resource management capabilities have been widely proven in practice.
 
 Today, the **Volcano community officially releases v1.12.** This new version focuses on the core requirements of modern AI and big data scenarios, and introduces a series of key features and usability improvements:
@@ -47,7 +49,7 @@ Version 1.12 integrates the following key features:
 
 Related documentation:
 
-*   [Network Topology-Aware Scheduling Introduction and Usage](https://volcano.sh/en/docs/network_topology_aware_scheduling/)
+*   [Network Topology-Aware Scheduling Introduction and Usage](https://volcano.sh/docs/KeyFeatures/NetworkTopologyAware)
 *   [Network Topology-Aware Scheduling Design Document](https://github.com/volcano-sh/volcano/blob/master/docs/design/Network%20Topology%20Aware%20Scheduling.md)
 *   [HyperNode Auto-Discovery Design Document](https://github.com/volcano-sh/volcano/blob/master/docs/design/hyperNode-auto-discovery.md)
 *   [HyperNode Auto-Discovery Usage Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_hypernode_auto_discovery.md)
@@ -72,7 +74,7 @@ Volcano's GPU virtualization feature allows users to request partial GPU resourc
 **Volcano v1.12 introduces dynamic MIG partitioning and scheduling capabilities.** It can select the appropriate MIG instance size in real-time based on the user's requested GPU amount and uses a Best-Fit algorithm to reduce resource waste. It also supports GPU scoring strategies like BinPack and Spread to minimize resource fragmentation and improve GPU utilization. Users can request resources using the unified APIs `volcano.sh/vgpu-number`, `volcano.sh/vgpu-cores`, and `volcano.sh/vgpu-memory`, without needing to be aware of the underlying implementation details.
 
 *   Design Document: [Dynamic MIG Design Document](https://github.com/volcano-sh/volcano/blob/master/docs/design/dynamic-mig.md)
-*   Usage Guide: [Dynamic MIG Usage Guide](https://volcano.sh/en/docs/gpu_virtualization/)
+*   Usage Guide: [Dynamic MIG Usage Guide](https://volcano.sh/docs/KeyFeatures/GPUVirtualization)
 
 Related PRs:
 
@@ -85,7 +87,7 @@ Thanks to the following community developers for their contributions to this fea
 
 Kubernetes DRA (Dynamic Resource Allocation) is a native feature that provides a more flexible and powerful way to manage heterogeneous hardware resources in a cluster, such as GPUs, FPGAs, and high-performance network cards. It addresses the limitations of the traditional Device Plugin model in some advanced scenarios. Volcano v1.12 adds support for DRA, allowing the cluster to dynamically allocate and manage external resources, which enhances Volcano's integration with the Kubernetes ecosystem and improves the flexibility of resource management.
 
-*   Usage Guide: [Enabling DRA in Volcano](https://volcano.sh/en/docs/unified_scheduling/#2-1-2-enable-dra-dynamic-resource-allocation-in-volcano)
+*   Usage Guide: [Enabling DRA in Volcano](https://volcano.sh/docs/KeyFeatures/UnifiedScheduling)
 
 Related PR:
 

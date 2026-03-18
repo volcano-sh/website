@@ -8,7 +8,10 @@ tags: ["release", "volcano", "kubernetes", "scheduling"]
 
 # Volcano v1.11 released: A New Era of Cloud-Native Scheduling for AI and Big Data
 
+
 As the de facto standard in cloud-native batch computing, Volcano has been widely adopted across various scenarios, including AI, Big Data, and High-Performance Computing (HPC). With over 800 contributors from more than 30 countries and tens of thousands of code commits, Volcano has been deployed in production environments by over 60 enterprises worldwide. It provides the industry with excellent practical standards and solutions for cloud native batch computing.
+
+<!-- truncate -->
 
 As user scenarios grow increasingly complex, especially in the scenarios of LLMs, there is a heightened demand for performance, GPU resource utilization, and availability in both training and inference workloads. This has driven Volcano to continuously expand its capabilities and address core user needs. Over the course of 28 releases, Volcano has introduced a series of enhancements and optimizations tailored to batch computing scenarios, helping users seamlessly migrate their workloads to cloud-native platforms. These improvements have resolved numerous pain points, earning the platform widespread praise and fostering a vibrant community with over 30 approvers and reviewers, creating a win-win ecosystem.
 
@@ -54,8 +57,7 @@ To abstract away the differences in data center network types, Volcano defines a
 
 A HyperNode represents a network topology performance domain, typically mapped to a switch. Multiple HyperNodes connect hierarchically to form a tree structure. For example:
 
-<!--<div> {{</div><figure library="1" src="./network-topology/hypernode-example.png">}}
-</div>-->
+![HyperNode Network Topology Example](/img/network-topology/hypernode-example.png)
 
 - **Leaf HyperNodes** (s0, s1, s2, s3): Represent actual cluster nodes.
 - **Non-Leaf HyperNodes** (s4, s5, s6): Represent other HyperNodes.
@@ -140,9 +142,9 @@ Volcano will continue to refine network topology-aware scheduling, with future p
 
 For detailed design and user guide, please refer to:
 
-Design Document: **[Network Topology Aware Scheduling](https://volcano.sh/en/docs/network_topology_aware_schedulin)**.
+Design Document: **[Network Topology Aware Scheduling](https://volcano.sh/docs/KeyFeatures/NetworkTopologyAware)**.
 
-Usage Document: **[Network Topology Aware Scheduling | Volcano](https://volcano.sh/en/docs/network_topology_aware_scheduling)**.
+Usage Document: **[Network Topology Aware Scheduling | Volcano](https://volcano.sh/docs/KeyFeatures/NetworkTopologyAware)**.
 
 Sincerely thanks to community developers: **@ecosysbin, @weapons97, @Xu-Wentao, @penggu, @JesseStutler, @Monokaix** for their contributions!
 
@@ -166,7 +168,7 @@ Volcano’s elastic hierarchical queues offer the following key features to meet
 
 A simple hierarchical queue structure might look like this:
 
-<!--{{<figure library="1" src="hierarchical-queue-example.png" width="50%">}}-->
+![Hierarchical Queue Example](/img/doc/hierarchical-queue-example.png)
 
 - **Root Queue:** Manages global resource allocation.
 - **Department Queues:** Represent resource pools for different departments or teams.
@@ -199,10 +201,9 @@ Volcano Global enhances Karmada with the following features to meet the complex 
 3. **Job Priority Scheduling and Queuing:** Enables job-level priority scheduling and queuing across clusters, ensuring critical tasks are executed promptly.
 4. **Multi-Tenant Fair Scheduling:** Provides fair resource allocation across tenants, preventing resource contention.
 
-<!--<div> {{</div><figure library="1" src="./multi-cluster/volcano_global_design.svg">}}
-</div>-->
+![Volcano Global Architecture](/img/multi-cluster/volcano_global_design.svg)
 
-For detailed deployment and user guide, please refer to: **[Multi-Cluster AI Job Scheduling | Volcano](https://volcano.sh/en/docs/multi_cluster_scheduling/)**.
+For detailed deployment and user guide, please refer to: **[Multi-Cluster AI Job Scheduling | Volcano](https://volcano.sh/docs/KeyFeatures/MultiClusterScheduling)**.
 
 Sincerely thanks to community developers: **@Vacant2333, @MondayCha, @lowang-bh, @Monokaix** for their contributions!
 
@@ -233,9 +234,7 @@ Volcano’s cloud-native colocation solution provides end-to-end resource isolat
 
 **Enhanced OS:** Volcano implements fine-grained QoS guarantees at the kernel level, using cgroups to set resource limits for online and offline workloads, ensuring online workloads receive sufficient resources even under high load.
 
-<!--<div> {{</div><figure library="1" src="./colocation/architecture.png">}}
-Architecture
-</div>-->
+![Colocation Architecture](/img/colocation/architecture.png)
 
 #### **Core Capabilities: Balancing Resource Utilization and Stability**
 
@@ -247,7 +246,7 @@ Volcano’s cloud-native colocation solution offers the following key capabiliti
 - **CPU Burst:** Allows containers to temporarily exceed CPU limits, avoiding throttling during critical moments and improving responsiveness.
 - **Network Bandwidth Isolation:** Supports node-level network bandwidth limits, ensuring online workload network requirements.
 
-For detailed design and user guide, please refer to: **[Cloud Native Colocation | Volcano](https://volcano.sh/en/docs/colocation/)**.
+For detailed design and user guide, please refer to: **[Cloud Native Colocation | Volcano](https://volcano.sh/docs/KeyFeatures/cloudNativeColocation)**.
 
 Sincerely thanks to community developer: **@william-wang** for this contribution!
 
@@ -265,8 +264,7 @@ In Kubernetes clusters, dynamic workload changes often lead to uneven node resou
 - **Uneven Node Resource Utilization:** Balances node load when some nodes are overutilized while others are underutilized.
 - **Hotspot Node Management:** Migrates Pods from overloaded nodes to ensure stability.
 
-<!--<div> {{</div><figure library="1" src="./descheduler/descheduler_EN.svg">}}
-</div>-->
+![LoadAware Descheduling](/img/descheduler/descheduler_EN.svg)
 
 #### **Technical Highlights:**
 
@@ -282,7 +280,7 @@ In Kubernetes clusters, dynamic workload changes often lead to uneven node resou
 
   Users can customize descheduling intervals or trigger conditions based on business requirements , ensuring flexibility and controllability in scheduling.
 
-For detailed user guide, please refer to: **[Load-aware Descheduling | Volcano](https://volcano.sh/en/docs/descheduler/)**.
+For detailed user guide, please refer to: **[Load-aware Descheduling | Volcano](https://volcano.sh/docs/KeyFeatures/LoadAwareDescheduling)**.
 
 Sincerely thanks to community developer: **@Monokaix** for this contribution!
 

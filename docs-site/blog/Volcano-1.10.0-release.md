@@ -7,6 +7,7 @@ tags: ["release", "volcano", "kubernetes", "scheduling"]
 ---
 On Sep 19, 2024, UTC+8, Volcano version v1.10.0 was officially released. This version introduced the following new features:
 
+<!-- truncate -->
 - **Support Queue Priority Scheduling Strategy**
 
 - **Enable Fine-Grained GPU Resource Sharing and Reclaim**
@@ -91,15 +92,13 @@ For detailed instructions, please refer to the [Capacity Plugin User Guide](http
 
 The `capacity` plugin allocates cluster resources based on the `deserved` value set by the user, while the `proportion` plugin dynamically allocates resources according to queue weight. Users can select either the `capacity` or `proportion` plugin for queue management based on their specific needs.
 
-For more details on the proportion plugin, please visit: [Proportion Plugin](https://volcano.sh/en/docs/plugins/#proportion).
+For more details on the proportion plugin, please visit: [Proportion Plugin](https://volcano.sh/docs/Scheduler/Plugins/proportion).
 
 ### Introduce Pod Scheduling Readiness Support
 
 Once a Pod is created, it is considered ready for scheduling. In Kube-scheduler, it will try its best to find a suitable node to place all pending Pods. However, in reality, some Pods may be in a "lack of necessary resources" state for a long time. These Pods actually interfere with the decision-making and operation of the scheduler (and downstream components such as Cluster AutoScaler) in an unnecessary way, causing problems such as resource waste. Pod Scheduling Readiness is a new feature of Kube-sheduler. In Kubernetes v.1.30 GA, it has become a stable feature. It controls the scheduling timing of Pods by setting the schedulingGates field of the Pod.
 
-<!--<div> {{</div><figure library="1" src="./v1.10.0/podSchedulingGates.svg">}}
-Pod SchedulingGates
-</div>-->
+![Pod SchedulingGates](/img/blog/v1.10.0/podSchedulingGates.svg)
 
 In previous versions, Volcano has integrated all algorithms of the K8s default scheduler, fully covering the native scheduling functions of Kube-scheduler. Therefore, Volcano can completely replace Kube-scheduler as a unified scheduler under the cloud native platform, supporting unified scheduling of microservices and AI/big data workloads. In the latest version v1.10, Volcano has introduced Pod Scheduling Readiness scheduling capability to further meet users' scheduling needs in diverse scenarios.
 

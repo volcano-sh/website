@@ -9,6 +9,7 @@ tags: ["kubecon", "batch-computing", "ai", "big-data", "volcano"]
 Cloud native batch computing engine Volcano is designed for high-performance computing applications such as AI, big data, gene sequencing, and rendering, and supports mainstream general computing frameworks. More than 58,000 global developers joined us, among whom the in-house ones come from companies such as Huawei, AWS, Baidu, Tencent, JD, and Xiaohongshu. There are 3.7k+ Stars and 800+ Forks for the project. Volcano has been proven feasible for mass data computing and analytics, such as AI, big data, and gene sequencing. Supported frameworks include Spark, Flink, TensorFlow, PyTorch, Argo, MindSpore, Paddlepaddle, Kubeflow, MPI, Horovod, MXNet, KubeGene, and Ray. The ecosystem is thriving with more developers and use cases coming up.
 ![](/img/blog/volcano_logo.svg) 
 
+<!-- truncate -->
 As the industry-first cloud native batch computing project，Volcano was Open-sourced at KubeCon Shanghai in June 2019, it became an official CNCF project in April 2020. In April 2022, Volcano was promoted to a CNCF incubating project. By now, more than 600 global developers have committed code to the project. The community is seeing growing popularity among developers, partners, and users.
 
 ### Try new features in Volcano v1.8.2
