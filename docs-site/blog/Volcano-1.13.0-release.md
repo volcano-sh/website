@@ -10,6 +10,8 @@ tags: ["release", "volcano", "kubernetes", "llm", "scheduling"]
 
 On September 29, 2025 (Beijing Time), <a href="https://github.com/volcano-sh/volcano/releases/tag/v1.13.0">Volcano v1.13</a>[1] was officially released. This update brings functional enhancements across multiple areas, providing users with a more comprehensive cloud-native batch computing solution.
 
+<!-- truncate -->
+
 ## Release Highlights
 
 The v1.13.0 release includes the following major updates:
@@ -289,7 +291,7 @@ Related PRs: https://github.com/volcano-sh/volcano/pull/4409, https://github.com
 
 Sincerely thanks to community developers: @[ShuhanYan](https://github.com/ShuhanYan), @[Monokaix](https://github.com/Monokaix)
 
-Colocation documentation: https://volcano.sh/en/docs/colocation/
+Colocation documentation: https://volcano.sh/docs/KeyFeatures/cloudNativeColocation
 
 ## Support Custom OverSubscription Resource Names
 
@@ -305,7 +307,7 @@ Related PRs: https://github.com/volcano-sh/volcano/pull/4413, https://github.com
 
 Sincerely thanks to community developers: @[ShuhanYan](https://github.com/ShuhanYan), @[Monokaix](https://github.com/Monokaix)
 
-Colocation documentation: https://volcano.sh/en/docs/colocation/
+Colocation documentation: https://volcano.sh/docs/KeyFeatures/cloudNativeColocation
 
 ## Add Kubernetes 1.33 Support
 

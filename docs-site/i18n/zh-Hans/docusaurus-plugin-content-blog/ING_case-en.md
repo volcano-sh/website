@@ -1,4 +1,4 @@
-﻿---
+---
 title: "ING基于volcano的大数据分析平台应用实践"
 description: "volcano在ING大数据分析平台的落地实践过程"
 date: 2022-12-28
@@ -8,12 +8,13 @@ tags: ["Practice"]
 
 >2022年10月26日，ING集团在北美KubeCon发表了《Efficient Scheduling Of High Performance Batch Computing For Analytics Workloads With Volcano - Krzysztof Adamski & Tinco Boekestijn, ING》主题演讲，重点介绍了云原生批量计算项目Volcano如何在数据管理平台中为大数据分析作业提供高性能调度工作。详情参见：[KubeCon + CloudNativeCon North America](https://events.linuxfoundation.org/archive/2022/kubecon-cloudnativecon-north-america/program/schedule/)
 
+<!-- truncate -->
+
 ## ING背景介绍
 
 ING集团（荷兰语：Internationale Nederlanden Groep），亦名荷兰国际集团，是一个国际金融服务私营企业，成立于1991年，由荷兰最大的保险公司Nationale-Nederlanden，与荷兰的第三大银行NMB PostBank Group合并而成。
 
 ING集团的服务遍及全球40多个国家，核心业务是银行、保险及资产管理等。ING集团的全球职员大约56,000人，顾客5320万人，包括自然人、家庭，企业、政府及其他等，例如基金组织。
-
 
 ## 业务背景介绍
 
@@ -29,7 +30,6 @@ ING集团的服务遍及全球40多个国家，核心业务是银行、保险及
 - 严格的安全和合规措施
 - 所有的分析集中在同一个平台
 - 满足全球和本地需求
-
 
 ## 挑战与方案
 ![](/img/blog/ing-2.png)
@@ -55,7 +55,6 @@ __Kubernetes + Hadoop__
 
 ![](/img/blog/ing-4.png)
 Kubernetes和YARN共同工作时，由于Kubernetes和Hadoop资源是静态划分的，在正常办公时间，Hadoop应用和Kubernetes各自使用自身分配资源，即便spark任务压力大也无法借用更多资源。夜晚时间，集群中仅有批处理任务，Kubernetes资源全部空闲，却无法分配给Hadoop进行有效利用，对于调度平台来讲，这不是一种最佳的资源分配方式。
-
 
 __Kubernetes with Volcano__
 ![](/img/blog/ing-5.png)

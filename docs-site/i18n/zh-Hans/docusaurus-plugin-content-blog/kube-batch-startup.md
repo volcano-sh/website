@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Kube-Batch新手教程"
 description: "基于Kubernetes的调度器"
 date: 2019-01-28
@@ -8,6 +8,9 @@ tags: ["Tutorials"]
 # Kube-Batch新手速成
 
 本文档将展示如何将`kube-batch`作为基于Kubernetes的批量调度引擎运行起来。代码请参考[master](https://github.com/kubernetes-sigs/kube-batch/tree/master) 。
+
+<!-- truncate -->
+
 
 ## 1. 前置条件
 
@@ -117,7 +120,6 @@ qj-1      6         6            2h
 # kubectl get pod --all-namespaces
 ```
 
-
 ## 4. 为Pod创建PriorityClass
 
 `kube-batch`将根据优先级启动同一个QueueJob中的Pod。高优先级的Pod会先被启动。下面是个展示`PriorityClass`用法的例子：
@@ -167,7 +169,6 @@ spec:
 ```
 # kubectl create -f pod-config-ns01-r01.yaml
 ```
-
 
 请注意:
 

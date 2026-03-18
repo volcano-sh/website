@@ -8,6 +8,8 @@ tags: ["security", "audit", "volcano", "cncf"]
 
 Volcano is excited to announce the completion of our CNCF-funded security audit carried out by [Ada Logics](https://adalogics.com/) and facilitated by [OSTIF](https://ostif.org/) in collaboration with the Volcano maintainers. The audit was scoped to cover the Volcano source code, supply-chain risks and fuzzing. The auditing team identified 10 security issues which the Volcano security team has fixed with the completion of the audit. 
 
+<!-- truncate -->
+
 Volcano has addressed several infrastructure-level security issues by making targeted configuration changes that reduce risk and improve the default security posture of its default deployment. Below is a breakdown of each issue, the associated risks, and how Volcano resolved them, along with the resulting security improvements.
 
 One issue involved several Volcano components running with root privileges by default. Containers running as root pose an increased security risk in that if compromised, an attacker gains access to capabilities they can use to escalate their privileges. Volcano fixed this by configuring all components - including the scheduler, admission controller, controllers, and dashboard - to run as non-root by default. This change limits the scope of what an attacker can do inside a container and helps contain breaches more effectively.

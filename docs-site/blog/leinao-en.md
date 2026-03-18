@@ -9,6 +9,7 @@ tags: ["case-study", "cloud-os", "integration", "leinao"]
 >This article was firstly released at `Container Cube` on December 24th, 2020, refer to [Volcano在中科类脑云OS中的落地实践](https://mp.weixin.qq.com/s/HS6RzzqztBJsHQX7P5T5ww)
  
 
+
 ## Introduction to the Leinao cloud AI platform  
 
 The Leinao cloud AI platform includes an AI development platform, public service platform, AI visualized operations platform, and an AI community. 
@@ -19,7 +20,7 @@ The Leinao cloud AI platform includes an AI development platform, public service
 - The AI visualized operations platform helps managers make better informed decisions. 
   
 - The AI community is where AI developers and companies gather, exchange ideas, and improve their skills.
-
+<!-- truncate -->
  
 
 ## The architecture of Leinao cloud OS

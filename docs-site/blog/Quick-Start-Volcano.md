@@ -29,6 +29,7 @@ volcanosh/vk-controllers   latest              7b11606ebfb8        10 seconds ag
 **NOTE**: Ensure that the images are correctly loaded to your Kubernetes cluster. For example, if you are using [kind luster](https://github.com/kubernetes-sigs/kind), run the ```kind load docker-image <image-name>:<tag> ``` command for each image.
 ### 2. Helm Charts
 
+<!-- truncate -->
 Install Helm charts.
 ```
 helm install installer/chart --namespace <namespace> --name <specified-name>

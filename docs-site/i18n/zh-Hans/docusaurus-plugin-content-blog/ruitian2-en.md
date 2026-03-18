@@ -1,4 +1,4 @@
-﻿---
+---
 title: "锐天投资基于Volcano的大规模分布式离线计算平台的应用实践"
 description: "Volcano在金融领域的落地案例分享"
 date: 2021-06-15
@@ -7,6 +7,8 @@ tags: ["Practice"]
 ---
 
 >本文首发于容器魔方微信公众号，原文链接[锐天投资基于Volcano的大规模分布式离线计算平台的应用实践](https://mp.weixin.qq.com/s/dC4IDNG7FMGLigNJaj_Qug)  
+
+<!-- truncate -->
 
 ## 业务场景与技术选型
 
@@ -34,9 +36,7 @@ __Why Use Kubernetes？__
 
 - Go 语言符合公司技术栈
 
-
 __Why Use CephFS__
-
 
 存储部分我们使用的是CephFS，它是ceph提供的分布式文件存储的一种接口形式，ceph本身提供三种存储接口：S3、快存储以及CephFS。我们使用CephFS主要有以下几点原因：
 
@@ -56,11 +56,7 @@ __Why not default-scheduler__
 
 Default-scheduler无法满足我们需求的原因有4点：缺少队列调度、缺少公平调度、缺少多租户隔离、缺少高级调度策略，如Gang-Scheduling。最重要的是公平调度和高级调度策略。所谓的公平角度，是指当有很多人提交了非常多的任务排队正在等待时，应该来运行谁的任务？当集群空出来或有资源时，到底应该运行谁的任务？要完成这一点，每个队列映射于一个团队，基于队列的公平角度，每一个namespace对应一个用户，基于用户的公平调度，这两点都是必不可少的。所以在这两点上，default-scheduler完全没有办法满足我们的需求。
 
-
-
 因此我们求助了社区。kube-batch是社区下面的批处理调度器，它只是一个调度器，不提供除调度以外的任何解决方案，这也是我们没有使用kube-batch的最主要原因。要做一个批处理方案，不只需要调度器的功能，还需要对于环境及其他任务 CRD做一系列处理。没有及时处理的话很难作为平台来使用。
-
-
 
 ![](/img/blog/ruitian2-1.png)
 
@@ -78,7 +74,6 @@ __Why is Volcano__
 
 有了这样一个调度平台，基本可以满足我们的整体需求。
 
-
 ## 系统架构
 
 __服务架构__
@@ -95,21 +90,15 @@ __服务架构__
 
 - 基于 Batch Job 形式，扩展多种业务场景
 
-
 __多租户__
 
 ![](/img/blog/ruitian2-3.png)
 
 用户提交任务还会遇到多租户的问题。例如用户提交一个pod到集群，这个pod运行用户与Uid是什么？默认情况下，它的运行用户Uid是image制造者的Uid,相当于所有用户提交的pod的Uid变成同一个人,这是不行的，因为他们获取的数据和生成的数据互相之间是不能看的。
 
-
-
 在这种情况下，我们的解决方案是通过K8s Namespace做整个用户所有资源的隔离，namespace对应于一个用户，通过已有的LDAP服务和OIDC与开发信息对接，给用户一个认证，通过RBAC进行用户资源的授权，授权用户使用以下的一个Pod Security Policy，Pod Security Policy是直接限制用户提交时，必须采用SecurityContext写上其uid与gid是什么？用户运行时整个的环境全部以此为准。
 
-
-
 有了Pod Security Policy后，用户提交的pod必须以其uid和gid进行体现。但访问的数据都在Ceph上，也就是其gid和uid所能够访问的数据。以此来解决多租户的问题。
-
 
 __工作流__
 
@@ -117,12 +106,9 @@ __工作流__
 
 解决刚才所有的问题后，基础的工作流就出现了。本地渲染 Job Yaml 进行提交，用户所有的依赖数据同步 CephFS，并通过 PVC挂载 Pod，每个用户 Namespace 下，拥有自己目录的 PVC 权限，全部是通过IBS进行权限管控，以此来提交任务到整个集群运行。
 
-
 ## Volcano 的深度定制
 
 基础的提交框架平台我们选择了直接给用户提供库的形式，自研提交工具Jobctl，其开发完成后，自动支持两种使用方式，一种是命令行里面直接使用,另外一种是作为Python列表input到用户本身的notebook进行使用或直接体现到自己的Python脚本。Jobctl同时支持两种提交状态形式，一种是异步的，也就是说不停的向整个集群提交任务，任务提交完成后可直接退出；另一种是同步，job control提交完一个任务后，并且watch这个任务，当任务全部结束后，才返回给用户，这是返回给用户的工作流。
-
-
 
 有了Jobctl后，还可以对用户隔离整个K8s复杂性,同时支持命令行提交和 Python Lib 集成,并且提供最基础的按 replicas 并行与按天并行。
 
@@ -147,7 +133,6 @@ __MinSuccess__
 - minSuccess 个 Pod 结束，则任务结束
 
 - 解耦 Gang 所需 Task 数量和完成 Job 所需任务数量
-
 
 __NodeZone__
 
@@ -187,8 +172,6 @@ Volcano Exporter
 
 - 输出 Job 的开始完成时间
 
-
-
 WatchDog 组件
 
 - 注册 Informer，并收集 Metrics
@@ -197,20 +180,17 @@ WatchDog 组件
 
 - 自动更新队列的 Capability
 
-
 __任务状态面板__
 
 ![](/img/blog/ruitian2-14.png)
 
 上层来承载所有job的信息，并且会有一个状态表来表示任务完成情况，以此来大致判断任务的形式。下面的三点是CPU、memory和networks的资源使用情况。除了正坐标轴外，副坐标轴的一些竖线是指它浪费的集群资源。这些浪费的集群资源帮助用户实时判断任务运行状态的节点发生的浪费情况。所以我们需要通过这样的时间序列状态表，来提醒用户。
 
-
 __集群资源面板__
 
 ![](/img/blog/ruitian2-15.png)
 
 通过graph的话，对整体队列资源、 CPU、memory以及所有队列资源的使用，用户需要看到所有节点的资源使用情况，因为有些非常大的消耗任务，比如一个任务有可能需要申请300或500的内存，但并不是所有的信息都支持单个节点内存使用的，所以只有总体的内存使用率是不够的，还需要有每个节点内存使用率。
-
 
 ## 高并发场景下的挑战与解决方案
 
@@ -226,14 +206,11 @@ __问题1：单个Job对象过大__
 
 - 直接调整 Max Request Size，大量的 Object对 ETCD 造成冲击
 
-
-
 解决：
 
 - 通过单个 Task 多 Replica 的形式提交任务
 
 - Pod 内部通过 ENV plugin 插件提供的信息，以 Sharding 的形式读取参数
-
 
 __问题二：Out Of Cpu/Memory__
 
@@ -247,7 +224,6 @@ __问题二：Out Of Cpu/Memory__
 
 ![](/img/blog/ruitian2-18.png)
 
-
 问题：
 
 - 节点数少 + 大量短时任务不停调度
@@ -257,8 +233,6 @@ __问题二：Out Of Cpu/Memory__
 - Volcano 默认 session 间隔时间为 1s，造成 Cache Snapshot不一致
 
 - Out of CPU + Out of Memory
-
-
 
 解决：
 

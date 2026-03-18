@@ -8,6 +8,7 @@ tags: ["release", "volcano", "kubernetes", "scheduling", "gpu"]
 
 On May 21, 2024, UTC+8, Volcano version v1.9.0 was officially released. This version added the following new features:
 
+<!-- truncate -->
 - **Support elastic queue capacity scheduling**
 
 - **Supports affinity scheduling between queues and nodes**

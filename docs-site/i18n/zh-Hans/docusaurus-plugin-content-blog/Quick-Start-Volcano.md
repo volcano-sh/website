@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Volcano快速上手指南"
 description: "在Kubernetes集群中快速上手Volcano"
 date: 2019-03-28
@@ -29,6 +29,8 @@ volcanosh/vk-controllers   latest              7b11606ebfb8        10 seconds ag
 **请注意**: 您需要确保镜像被正确的加载到您的Kubernetes集群。举个例子，如果您使用的是[kind cluster](https://github.com/kubernetes-sigs/kind) ，
 为每个镜像执行命令```kind load docker-image <image-name>:<tag> ```。
 ### 2. Helm charts
+
+<!-- truncate -->
 
 最后，安装helm chart
 ```shell

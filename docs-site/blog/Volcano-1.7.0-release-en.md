@@ -15,9 +15,12 @@ Volcano 1.7.0 is now available with the following new features:
 - **multi-architecture images of Volcano**
 - **optimized queue status info**
 
-<!--{/* {{<figure library="1" src="volcano_logo.png" width="50%">}} */}-->
-Volcano is the industry-first cloud native batch computing project. Open-sourced at KubeCon Shanghai in June 2019, it became an official CNCF project in April 2020. In April 2022, Volcano was promoted to a CNCF incubating project. By now, more than 490 global developers have committed code to the project. The community is seeing growing popularity among developers, partners, and users.
 
+
+![volcano_logo.png](/img/blog/volcano_logo.png)
+
+Volcano is the industry-first cloud native batch computing project. Open-sourced at KubeCon Shanghai in June 2019, it became an official CNCF project in April 2020. In April 2022, Volcano was promoted to a CNCF incubating project. By now, more than 490 global developers have committed code to the project. The community is seeing growing popularity among developers, partners, and users.
+<!-- truncate -->
 ### Key Features
 
 #### 1. Enhanced Plugin for PyTorch Jobs

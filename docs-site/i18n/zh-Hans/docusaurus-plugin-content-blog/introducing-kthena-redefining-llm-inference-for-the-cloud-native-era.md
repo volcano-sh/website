@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Volcano社区发布Kthena子项目: 重新定义大模型智能推理"
 description: "Volcano 社区迎来了一个新的子项目 Kthena！Kthena 是一个专为 Kubernetes 设计的、云原生、高性能的 LLM 推理路由和编排、调度系统。"
 date: 2026-01-06
@@ -7,6 +7,8 @@ tags: ["Practice"]
 ---
 
 今天，我们激动地向全球开发者和 MLOps 工程师宣布，Volcano 社区迎来了一个新的子项目 Kthena！Kthena 是一个专为 Kubernetes 设计的、云原生、高性能的 LLM 推理路由和编排、调度系统。它旨在解决在生产环境中大规模编排、部署和服务 LLM 所面临的核心挑战，通过其独特的超节点拓扑感知的亲和性调度，KV Cache 感知的流量调度、Prefill/Decode 分离路由等高级功能，显著提升 GPU/NPU 资源利用率和吞吐，降低推理延迟，并赋予企业前所未有的灵活性和控制力。作为 Volcano 的子项目，Kthena将致力于帮助 Volcano 扩展除 AI 训练之外的边界，打造训推一体的完整解决方案。
+
+<!-- truncate -->
 
 ## LLM 服务化的“最后一公里”困境
 
@@ -21,7 +23,6 @@ tags: ["Practice"]
 为了攻克上述难题，Kthena 应运而生。它并非要取代现有的 LLM 服务框架（如 vLLM, sgLang），而是作为它们上层的智能“交通枢纽”和“调度中心”，深度集成于 Kubernetes 之中。
 
 ![](/img/blog/kthena-arch.svg)
-
 
 Kthena 的核心由两大组件构成：
 

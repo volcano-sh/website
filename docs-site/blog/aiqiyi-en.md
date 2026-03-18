@@ -8,6 +8,7 @@ tags: ["case-study", "deep-learning", "migration", "kubernetes"]
 
 >This article was firstly released at `Container Cube` on September 30th, 2020, refer to[揭秘爱奇艺深度学习平台云原生迁移实践](https://mp.weixin.qq.com/s/YtP-ZURRBr5-ba1eWfKS2A)  
 
+<!-- truncate -->
 ## Introduction to iQIYI Jarvis Deep Learning Platform
 
 __Overall Architecture of the Platform__
