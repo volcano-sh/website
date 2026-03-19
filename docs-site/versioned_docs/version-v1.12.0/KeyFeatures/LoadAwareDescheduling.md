@@ -29,7 +29,7 @@ In the process of kubernetes cluster governance, hotspots are often formed due t
 The native descheduler only supports load-aware scheduling based on Pod request, which evicts Pods on nodes with higher utilization rates, thus equalizing resource utilization among nodes and avoiding overheating of individual node. However, Pod request does not reflect the real resource utilization of the nodes, so Volcano implements descheduling based on the real load of the nodes, by querying the metrics exposed by nodes, more accurate descheduling is performed based on the real load of CPU and Memory.
 
 <!--<div style="text-align: center;"> 
-  <img src="/img/descheduler/descheduler_EN.svg" alt="LoadAware Descheduling" />
+  <img src="/img/blog/descheduler_EN.svg" alt="LoadAware Descheduling" />
 </div>-->
 
 The principle of LoadAware is shown in the figure above:

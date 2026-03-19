@@ -1,13 +1,10 @@
----
-
----
+﻿---
 title: "小红书基于Volcano的大规模离线与在线推荐模型训练实践"
 description: "小红书使用高性能批量计算平台Volcano的落地实践过程"
 date: 2021-05-27
 authors: ["郭一/小红书智能分发工程负责人"]
 tags: ["Practice"]
 ---
-
 <!-- truncate -->
 
 >本文2021年5月27日首发于容器魔方微信公众号，原文链接[小红书基于Volcano的大规模离线与在线推荐模型训练实践](https://mp.weixin.qq.com/s/nZXZx78EQoHzRj1-LqMPQQ)  

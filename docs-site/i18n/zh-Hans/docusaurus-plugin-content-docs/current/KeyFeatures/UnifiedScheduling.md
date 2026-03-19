@@ -25,7 +25,7 @@ Volcano 完全实现了 Kube-Scheduler 的 PreFilter-Filter 阶段，包括：
 
 > 1. 有关 DRA 的详细介绍，请参阅：[dynamic-resource-allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)
 
-> 2. 有关在 Volcano 中启用 DRA 的详细步骤，请参阅本文档后面的 [**2.1.2. 在 Volcano 中启用 DRA (动态资源分配)**](#2-1-2-在-volcano-中启用-dra-动态资源分配) 部分。
+> 2. 有关在 Volcano 中启用 DRA 的详细步骤，请参阅本文档后面的 [**2.1.2. 在 Volcano 中启用 DRA (动态资源分配)**](#dra-activation) 部分。
 
 除了兼容 kube-scheduler 中的大多数过滤器外，Volcano 还提供了 `节点过滤结果缓存` 增强功能：
 
@@ -63,7 +63,7 @@ data:
 > - 动态资源相关检查（如 CPU、内存使用情况）每次都会重新计算
 > - 当节点状态发生变化时，相关缓存会自动失效
 
-#### 2.1.2. 在 Volcano 中启用 DRA (动态资源分配)
+#### 2.1.2. 在 Volcano 中启用 DRA (动态资源分配) {#dra-activation}
 在 Volcano 调度器中启用动态资源分配 (DRA) 支持需要一些步骤。
 
 ##### 2.1.2.1 先决条件

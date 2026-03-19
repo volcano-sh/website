@@ -20,7 +20,7 @@ Job scheduling and management become increasingly complex and critical for high-
 
 Volcano is designed to cater to these requirements. In addition, Volcano inherits the design of Kubernetes APIs, allowing you to easily run applications that require high-performance computing on Kubernetes.
 ## Features
-### [Unified Scheduling](/en/docs/unified_scheduling/)
+### [Unified Scheduling](/docs/KeyFeatures/UnifiedScheduling)
 * Support native Kubernetes workload scheduling
 * Provide complete support for frameworks like PyTorch, TensorFlow, Spark, Flink, Ray through VolcanoJob
 * Unified scheduling for both online microservices and offline batch jobs to improve cluster resource utilization
@@ -39,7 +39,7 @@ Volcano is designed to cater to these requirements. In addition, Volcano inherit
 
 Volcano supports custom plugins and actions to implement more scheduling algorithms.
 
-### [Queue Resource Management](/en/docs/queue_resource_management/)
+### [Queue Resource Management](/docs/KeyFeatures/QueueResourceManagement)
 * Support multi-dimensional resource quota control (CPU, Memory, GPU, etc.)
 * Provide multi-level queue structure and resource inheritance
 * Support resource borrowing, reclaiming and preemption between queues
@@ -52,7 +52,7 @@ Volcano can schedule computing resources from multiple architectures:
 * Arm
 * Kunpeng
 * Ascend
-* GPU: Supports [GPU virtualization](/en/docs/v1-11-0/gpu_virtualization/) functionality, providing fine-grained GPU resource management
+* GPU: Supports [GPU virtualization](/docs/v1.11.0/KeyFeatures/GPUVirtualization) functionality, providing fine-grained GPU resource management
   * **vGPU Scheduling**: Supports virtualizing single physical GPU into multiple vGPUs for fine-grained GPU resource allocation
   * **Memory Isolation**: Supports setting independent memory limits for each vGPU to prevent memory conflicts between tasks
   * **Compute Allocation**: Supports allocating GPU by percentage for resource sharing

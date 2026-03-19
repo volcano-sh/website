@@ -17,7 +17,7 @@ Volcano 是一个用于高性能工作负载的云原生系统，已被 [Cloud N
 Volcano 旨在满足这些需求。此外，Volcano 继承了 Kubernetes API 的设计，使您可以轻松地在 Kubernetes 上运行需要高性能计算的应用程序。
 
 ## 功能特性
-### [统一调度](/zh-Hans/docs/unified_scheduling/)
+### [统一调度](/docs/KeyFeatures/UnifiedScheduling)
 * 支持原生 Kubernetes 工作负载调度
 * 通过 VolcanoJob 为 PyTorch、TensorFlow、Spark、Flink、Ray 等框架提供完整支持
 * 统一调度在线微服务和离线批处理作业，提高集群资源利用率
@@ -36,7 +36,7 @@ Volcano 旨在满足这些需求。此外，Volcano 继承了 Kubernetes API 的
 
 Volcano 支持自定义插件和动作以实现更多调度算法。
 
-### [队列资源管理](/zh-Hans/docs/queue_resource_management/)
+### [队列资源管理](/docs/KeyFeatures/QueueResourceManagement)
 * 支持多维资源配额控制（CPU、内存、GPU 等）
 * 提供多级队列结构和资源继承
 * 支持队列间的资源借用、回收和抢占
@@ -49,7 +49,7 @@ Volcano 可以调度来自多种架构的计算资源：
 * Arm
 * Kunpeng
 * Ascend
-* GPU: 支持多种 [GPU 虚拟化](/zh-Hans/docs/gpu_virtualization/) 技术，实现灵活的资源管理
+* GPU: 支持多种 [GPU 虚拟化](/docs/KeyFeatures/GPUVirtualization) 技术，实现灵活的资源管理
   * **Dynamic MIG Support (动态 MIG 支持)**：支持 NVIDIA 多实例 GPU (MIG) 的动态分区，提供硬件级隔离，将物理 GPU 分割成多个独立实例
   * **vCUDA Virtualization (vCUDA 虚拟化)**：在软件层面将物理 GPU 虚拟化为多个 vGPU 设备，实现资源共享和隔离
   * **Fine-Grained Resource Control (细粒度资源控制)**：为每个 GPU 实例提供专用的内存和计算分配
