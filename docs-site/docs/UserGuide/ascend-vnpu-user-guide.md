@@ -28,7 +28,7 @@ with support for more chip types to come
 
 **Description**:
 
-This mode is developed by a third-party community 'HAMi', which is the developer of [volcano-vgpu](./how_to_use_volcano_vgpu.md) feature. It supports vNPU feature for both Ascend 310 and Ascend 910. It also supports managing heterogeneous Ascend cluster(Cluster with multiple Ascend types, i.e. 910A,910B2,910B3,310P)
+This mode is developed by a third-party community 'HAMi', which is the developer of [volcano-vgpu](./volcano-vgpu-user-guide.md) feature. It supports vNPU feature for both Ascend 310 and Ascend 910. It also supports managing heterogeneous Ascend cluster(Cluster with multiple Ascend types, i.e. 910A,910B2,910B3,310P)
 
 **Use case**:
 

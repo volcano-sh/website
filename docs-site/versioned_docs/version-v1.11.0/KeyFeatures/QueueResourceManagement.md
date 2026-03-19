@@ -77,7 +77,7 @@ priority indicates the priority of this queue. During resource allocation and re
 
 * parent, *optional*
 
-This field is used to configure [hierarchical queues](/en/docs/hierarchical_queue). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
+This field is used to configure [hierarchical queues](/docs/KeyFeatures/HierarchicalQueue). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
 
 ## Status
 ### Open
@@ -93,6 +93,6 @@ This field is used to configure [hierarchical queues](/en/docs/hierarchical_queu
 #### default Queue
 When Volcano starts, it automatically creates queue `default` whose `weight` is `1`. Subsequent jobs that are not assigned to a queue will be assigned to queue `default`.
 #### root queue
-When Volcano starts, it also creates a queue named root by default. This queue is used when the [hierarchical queue](/en/docs/hierarchical_queue) feature is enabled, serving as the root queue for all queues, with the default queue being a child queue of the root queue.
+When Volcano starts, it also creates a queue named root by default. This queue is used when the [hierarchical queue](/docs/KeyFeatures/HierarchicalQueue) feature is enabled, serving as the root queue for all queues, with the default queue being a child queue of the root queue.
 
-> For more information on queue usage scenarios, please refer to [Queue Resource Management](/en/docs/queue_resource_management)
+> For more information on queue usage scenarios, please refer to [Queue Resource Management](/docs/KeyFeatures/QueueResourceManagement)

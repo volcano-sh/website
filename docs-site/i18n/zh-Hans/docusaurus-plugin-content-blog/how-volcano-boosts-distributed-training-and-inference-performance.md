@@ -1,4 +1,4 @@
----
+﻿---
 title: "Volcano 如何提升分布式训练和推理性能"
 description: "Volcano 参加 KubeCon + CloudNativeCon Europe 2025！"
 authors: ["volcano"]
@@ -16,9 +16,7 @@ The increasing adoption of large language models (LLMs) has led to heightened de
 
 In LLM training, model parallelism distributes workloads across multiple nodes, requiring frequent data exchanges. Network communication can become a bottleneck, particularly in heterogeneous environments with InfiniBand (IB), RoCE, or NVSwitch configurations. Communication efficiency depends on network topology—fewer switches between nodes typically result in lower latency and higher throughput.
 One approach to mitigating this challenge is Network Topology-Aware Scheduling, which optimizes workload placement to minimize cross-switch communication. A key component of this strategy is the HyperNode, an abstraction for representing network topology via Custom Resource Definitions (CRDs). Unlike label-based methods, HyperNode provides a hierarchical structure that reflects actual network layouts, improving management and optimization. Nodes within the same HyperNode communicate more efficiently than those spanning multiple layers.
-
-<!-- TODO: Add network topology diagram when available -->
-<!-- ![](/img/blog/hypernode-example.png) -->
+[](/img/blog/hypernode-example.png) 
 
 Topology constraints can also be specified for jobs through the networkTopology field, with options for strict (Hard Mode) or flexible (Soft Mode) enforcement. This granular control helps ensure workloads are deployed in optimal network environments, reducing latency and improving throughput.
 

@@ -46,7 +46,7 @@ Volcano 是一个社区驱动的开源项目，致力于打造健康、友好和
 
 ## 开始
 
-- 查看[安装文档](../installation) 了解更多关于编译和部署的细节。
+- 查看[安装文档](/docs/GettingStarted/Installation) 了解更多关于编译和部署的细节。
 
 ## 您的第一个贡献
 
@@ -67,7 +67,7 @@ Volcano 是一个社区驱动的开源项目，致力于打造健康、友好和
 和 [good first issue](https://github.com/volcano-sh/volcano/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22)
 标签的 issue 一般不需要您对 Volcano 有非常多的了解即可开始工作。
 我们会帮助新的贡献者针对这类 issue 开展工作。
-另一个开始贡献的好办法是寻找一个待完善的文档，比如一个缺少超链接或超链接不可用的文档。请查看[Contributing](#contributing) 下方的工作流程。
+另一个开始贡献的好办法是寻找一个待完善的文档，比如一个缺少超链接或超链接不可用的文档。请查看[贡献者工作流程](#贡献者工作流程) 下方的工作流程。
 
 #### 围绕一个 Issue 开展工作
 
