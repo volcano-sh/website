@@ -125,7 +125,7 @@ kind: Job
 metadata:
   name: tensorflow-dist-mnist
 spec:
-  minAvailable: 3   // There must be at least 3 available pods.
+  minAvailable: 3   # There must be at least 3 available pods.
   schedulerName: volcano    // Scheduler specified
   plugins:
     env: []
