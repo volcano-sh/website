@@ -1,6 +1,6 @@
 ---
-title = "Task Topology Plugin User Guide"
-date = 2026-02-03
+title: "Task Topology Plugin User Guide"
+date: 2026-02-03
 ---
 
 ## Environment setup
