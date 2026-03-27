@@ -1,6 +1,6 @@
 ---
-title: Network Topology Aware Scheduling User Guide
-date: '2026-02-03'
+title = "Network Topology Aware Scheduling User Guide"
+date = 2026-02-03
 ---
 
 
@@ -22,7 +22,7 @@ To shield the differences in data center network types, Volcano defines a new CR
 
 A HyperNode represents a network topology performance domain, typically mapped to a switch or tor. Multiple HyperNodes are connected hierarchically to form a tree structure. For example, the following diagram shows a network topology composed of multiple HyperNodes:
 
-![hypernode-tree-structure.png](/img/network-topology/hypernode-example.png)
+![hypernode-tree-structure.png](/img/doc/network-topology/hypernode-example.png)
 
 In this structure, the communication efficiency between nodes depends on the HyperNode hierarchy span between them. For example:
 
@@ -160,7 +160,7 @@ data:
 
 #### 3.2.1 Build via HyperNode Auto-Discovery (Recommended)
 
-Refers to [How to Use HyperNode Auto Discovery](/docs/UserGuide/hypernode-auto-discovery-user-guide)
+Refers to [How to Use HyperNode Auto Discovery](/en/docs/user-guide/how_to_use_hypernode_auto_discovery/)
 
 #### 3.2.2 Build Manually
 
@@ -301,4 +301,3 @@ Based on the following network topology, this chapter will demonstrate how workl
    network-topology-job-t0-1   1/1     Running   0          5s    192.168.0.11   node1
    ```
    Since the resources are all idle, the first pod, i.e., network-topology-job-t0-0, will be scheduled to any node. It is node0 in this example. Then, the second pod, i.e., network-topology-job-t0-1, must be scheduled to node1, node2 or node3. It is node1 in this example. This is because the resource utilization of HyperNode0 is currently higher than HyperNode1.
-   

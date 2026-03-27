@@ -75,7 +75,7 @@ spec:
   reclaimable: true
   deserved: # set the deserved field.
     cpu: 64
-    memeory: 128Gi
+    memory: 128Gi
     nvidia.com/a100: 40
     nvidia.com/v100: 80
 ```
@@ -199,8 +199,8 @@ Volcano 1.10.0 version includes hundreds of contributions from 36 community cont
 | **@xieyanker**      | **@lx1036**       | **@archlitchi**    |
 | **@hwdef**          | **@wangyang0616** | **@microyahoo**    |
 | **@snappyyouth**    | **@harshitasao**  | **@chenshiwei-io** |
-| **@TaiPark**        | **@Aakcht**       | **@ykcai-daniel**  |
-| **@lekaf974**       | **@JesseStutler** | **@belo4ya**       |
+| **@TaiPark**        | **@ykcai-daniel** | **@JesseStutler**  |
+| **@belo4ya**        |                   |                    |
 
 ## Reference
 
