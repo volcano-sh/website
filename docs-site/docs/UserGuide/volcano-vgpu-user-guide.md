@@ -1,6 +1,6 @@
 ---
-title = Volcano vGPU User Guide
-date = 2026-02-03
+title: "Volcano vGPU User Guide"
+date: 2026-02-03
 ---
 
 ## Background Knowledge of GPU Sharing Modes in Volcano

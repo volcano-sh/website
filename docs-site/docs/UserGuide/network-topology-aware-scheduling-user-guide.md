@@ -1,6 +1,6 @@
 ---
-title = "Network Topology Aware Scheduling User Guide"
-date = 2026-02-03
+title: "Network Topology Aware Scheduling User Guide"
+date: 2026-02-03
 ---
 
 
@@ -22,7 +22,7 @@ To shield the differences in data center network types, Volcano defines a new CR
 
 A HyperNode represents a network topology performance domain, typically mapped to a switch or tor. Multiple HyperNodes are connected hierarchically to form a tree structure. For example, the following diagram shows a network topology composed of multiple HyperNodes:
 
-![hypernode-tree-structure.png](/img/doc/network-topology/hypernode-example.png)
+![hypernode-tree-structure.png](/img/network-topology/hypernode-example.png)
 
 In this structure, the communication efficiency between nodes depends on the HyperNode hierarchy span between them. For example:
 
