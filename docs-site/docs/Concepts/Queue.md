@@ -51,7 +51,7 @@ deserved indicates the expected resource amount for all PodGroups in this queue.
 
 > **Note**:
 > 
-> 1. This field can only be configured when the capacity plugin is enabled, and must be less than or equal to the capability value. The proportion plugin uses weight to automatically calculate the queue's deserved value. For more information on using the capacity plugin, see: [capacity plugin user guide](https://github.com/volcano-sh/volcano/blob/5b817b1cdf3a5638ba38e934b44af051c9fb419e/docs/user-guide/how_to_use_capacity_plugin.md)
+> 1. This field can only be configured when the capacity plugin is enabled, and must be less than or equal to the capability value. The proportion plugin uses weight to automatically calculate the queue's deserved value. For more information on using the capacity plugin, see: [capacity plugin user guide](../UserGuide/capacity-plugin-user-guide.md)
 > 2. If the allocated resources of a queue exceed its configured deserved value, the queue cannot reclaim resources from other queues
 
 * weight, *optional*
@@ -78,7 +78,7 @@ priority indicates the priority of this queue. During resource allocation and re
 
 * parent, *optional*
 
-This field is used to configure [hierarchical queues](/docs/KeyFeatures/HierarchicalQueue). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
+This field is used to configure [hierarchical queues](../KeyFeatures/HierarchicalQueue.md). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
 
 ## Status
 ### Open
