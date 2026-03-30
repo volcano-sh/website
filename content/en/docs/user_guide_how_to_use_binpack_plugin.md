@@ -19,7 +19,7 @@ Binpack is well suited for:
 - **Big data pipelines** — short-lived query jobs in e-commerce or analytics that benefit from tight packing
 - **GPU clusters** — preventing partial GPU node occupancy by consolidating workloads onto fewer nodes
 
-For more detail on the scheduling algorithm, please see the [Plugins Introduction](../plugins/).
+For more detail on the scheduling algorithm, please see the [Plugins Introduction](../../scheduler/plugins/).
 
 ## Environment Setup
 
