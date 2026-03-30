@@ -121,9 +121,9 @@ data:
           binpack.memory: 1
 ```
 
-### Submit a VcJob
+### Submit a Job
 
-Submit a VcJob with 4 tasks, each requesting 1 CPU and 1Gi memory:
+Submit a Job with 4 tasks, each requesting 1 CPU and 1Gi memory:
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
