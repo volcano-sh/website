@@ -1,5 +1,5 @@
 .whyContainer {
-    background-color: var(--ifm-color-emphasis-100);
+    background-color: transparent;
     margin-top: 3.5rem;
     margin-bottom: 2.5rem;
     padding-top: 1.5rem;
@@ -11,7 +11,7 @@
     margin-bottom: 2.5rem;
     color: var(--ifm-font-color-base);
     font-size: 2rem;
-    font-weight: 500;
+    font-weight: 700;
   }
 
   /* Smaller spacing on narrow screens */
@@ -50,8 +50,8 @@
   }
   
   .reasonTitle {
-    font-size: 0.9rem;
-    font-weight: 400;
+    font-size: 1.05rem;
+    font-weight: 600;
     color: var(--ifm-font-color-base);
     margin-bottom: 1rem;
     margin-top: 0;
@@ -59,7 +59,7 @@
   
   .reasonContent {
     color: var(--ifm-font-color-secondary);
-    font-size: 0.7rem;
+    font-size: 0.88rem;
     line-height: 1.6;
     flex-grow: 1;
   }
@@ -111,12 +111,12 @@
     }
     
     .reasonTitle {
-      font-size: 1rem;
+      font-size: 1.05rem;
       margin-bottom: 0.75rem;
     }
     
     .reasonContent {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
     }
   }
   .reasonBoxLink {
@@ -135,4 +135,3 @@
     text-decoration: none !important;
     color: inherit !important;
   }
-  

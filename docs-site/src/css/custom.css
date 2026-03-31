@@ -3,24 +3,14 @@
  * Cleaned + optimized + dark mode safe
  */
 
-
-@font-face {
-  font-family: "HuaweiSans";
-  src: url("/fonts/HuaweiSans-Regular.woff2") format("woff2"),
-       url("/fonts/HuaweiSans-Regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   /* Brand */
   --ifm-color-primary: #c8000b;
   --ifm-navbar-link-hover-color: #c8000b;
 
-  /* Typography */
-  --ifm-font-family-base: "HuaweiSans", Georgia, "Times New Roman", serif;
-  --ifm-heading-font-family: "HuaweiSans", Georgia, "Times New Roman", serif;
+  /* Typography — Segoe UI stack */
+  --ifm-font-family-base: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  --ifm-heading-font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
   --ifm-font-size-base: 17px;
 
   /* Heading scale */
@@ -49,6 +39,11 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--ifm-heading-font-family);
   font-weight: 700;
   line-height: 1.25;
+}
+
+/* Bold text uses Segoe UI bold weight */
+b, strong {
+  font-weight: 700;
 }
 
 .section-container,
