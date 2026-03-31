@@ -5,7 +5,7 @@
   background-position: center;
   background-repeat: no-repeat;
   position: relative;
-  padding: 3.5rem 0; /* increased top/bottom spacing */
+  padding: 3.5rem 0;
 }
 
 .frameworks-container::before {
@@ -34,15 +34,15 @@
 .frameworksSection h1 {
   text-align: center;
   color: #fff;
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
 }
 
 .frameworks-subtitle {
   text-align: center;
   color: #fff;
-  font-size: 0.8rem;
+  font-size: 1rem;
   margin-bottom: 1.5rem;
   max-width: 800px;
   margin-left: auto;
@@ -103,7 +103,7 @@
 }
 
 .framework-name {
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
   color: #333;
@@ -123,9 +123,9 @@
 }
 
 .framework-description {
-  font-size: 0.60rem;
+  font-size: 0.82rem;
   color: #444;
-  line-height: 1.3;
+  line-height: 1.4;
 }
 
 /* Responsive styles */
@@ -142,11 +142,11 @@
   }
   
   .frameworksSection h1 {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
   
   .frameworks-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.95rem;
     margin-bottom: 2rem;
   }
   
@@ -164,7 +164,7 @@
   }
   
   .frameworksSection h1 {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
   
   .framework-card {
@@ -173,12 +173,12 @@
   }
   
   .framework-name {
-    font-size:  0.7rem;
+    font-size: 0.9rem;
     font-weight: 600;
   }
   
   .framework-description {
-    font-size: 0.6rem;
+    font-size: 0.78rem;
   }
 }
 

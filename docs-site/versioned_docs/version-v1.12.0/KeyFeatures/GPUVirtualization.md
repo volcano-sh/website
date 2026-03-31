@@ -61,14 +61,14 @@ To enable vGPU scheduling, the following components must be set up based on the 
 - **Validate Setup**:
   Ensure node allocatable resources include:
 
-<pre><code class="language-yaml">
+```yaml
   volcano.sh/vgpu-memory: "89424"
   volcano.sh/vgpu-number: "8"
-</code></pre>
+```
 
 - **Scheduler Config Update**:
 
-<pre><code class="language-yaml">
+```yaml
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -84,7 +84,7 @@ data:
         arguments:
           deviceshare.VGPUEnable: true   # enable vgpu plugin
           deviceshare.SchedulePolicy: binpack  # scheduling policy. binpack / spread
-</code></pre>
+```
 
 Check with:
 
@@ -96,7 +96,7 @@ kubectl get node {node-name} -o yaml
 
 **Pod Spec**:
 
-<pre><code class="language-yaml">
+```yaml
 metadata:
   name: hami-pod
   annotations:
@@ -111,7 +111,7 @@ spec:
         volcano.sh/vgpu-number: 1    # requesting 1 gpu cards
         volcano.sh/vgpu-cores: 50    # (optional)each vGPU uses 50%
         volcano.sh/vgpu-memory: 3000 # (optional)each vGPU uses 3G GPU memory
-</code></pre>
+```
 
 ### Dynamic MIG Usage
 
@@ -131,7 +131,7 @@ You can customize this configuration as needed. For more details, refer to the [
 
 - **Pod Spec with MIG Annotation**:
 
-<pre><code class="language-yaml">
+```yaml
 metadata:
   name: mig-pod
   annotations:
@@ -145,7 +145,7 @@ spec:
       limits:
         volcano.sh/vgpu-number: 1
         volcano.sh/vgpu-memory: 3000
-</code></pre>
+```
 
 Note: Actual memory allocated depends on best-fit MIG slice (e.g., request 3GB → 5GB slice used).
 

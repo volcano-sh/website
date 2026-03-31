@@ -6,9 +6,9 @@
 .blogContainer h1 {
   text-align: center;
   margin-bottom: 3rem;
-  color: #333;
+  color: var(--ifm-font-color-base);
   font-size: 2rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
 .blogEmptyMessage {
@@ -36,7 +36,7 @@
   padding: 1.5rem 0;
   transition: background-color 0.15s ease;
   cursor: pointer;
-  align-items: center; /* vertically center date + content */
+  align-items: center;
 }
 
 .blogPostCard:hover {
@@ -60,14 +60,14 @@
   color: var(--ifm-font-color-base);
   line-height: 1;
   text-align: center;
-  font-family: Georgia, 'Times New Roman', serif; /* serif for prominent day */
+  font-family: Georgia, 'Times New Roman', serif;
 }
 
 .blogPostMonthYear {
   margin-top: 6px;
   text-align: center;
   position: relative;
-  padding-left: 18px; /* space to accommodate the small slash */
+  padding-left: 18px;
 }
 
 .blogPostMonthYear::before {
@@ -84,14 +84,14 @@
 .blogPostMonth {
   color: var(--ifm-font-color-base);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
   text-transform: capitalize;
   letter-spacing: 0.6px;
 }
 
 .blogPostYear {
   color: var(--ifm-font-color-secondary);
-  font-size: 12px;
+  font-size: 13px;
   margin-top: 3px;
 }
 
@@ -104,9 +104,11 @@
 }
 
 .blogPostTitle {
-  font-size: 20px;
+  font-size: 1.25rem;
   padding-bottom: 6px;
   margin: 0;
+  font-weight: 700;
+  color: var(--ifm-font-color-base);
 }
 
 .blogPostTitle a {
@@ -121,7 +123,7 @@
 
 .blogPostAuthor {
   padding-right: 20px;
-  font-size: 12px;
+  font-size: 13px;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -136,7 +138,7 @@
 
 .blogPostDescription {
   color: var(--ifm-font-color-secondary);
-  font-size: 13px;
+  font-size: 0.9rem;
   line-height: 1.6;
   margin-top: 0.25rem;
 }
@@ -165,7 +167,7 @@
   align-items: center;
   min-width: 120px;
   padding-right: 24px;
-  border-right: 1px solid var(--ifm-color-emphasis-300); /* thin divider as in theme */
+  border-right: 1px solid var(--ifm-color-emphasis-300);
 }
 
 .article-date-number {
@@ -212,14 +214,6 @@
   color: var(--ifm-font-color-secondary);
   font-size: 0.95rem;
   white-space: nowrap;
-}
-
-.blogPostTitle {
-  font-family: Georgia, 'Times New Roman', serif;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin: 0;
-  color: var(--ifm-font-color-base);
 }
 
 /* Responsive styles */
@@ -269,6 +263,6 @@
   }
   
   .blogPostTitle {
-    font-size: 16px;
+    font-size: 1.1rem;
   }
 }

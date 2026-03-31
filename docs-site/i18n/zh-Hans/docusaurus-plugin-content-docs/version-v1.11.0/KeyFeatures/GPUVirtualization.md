@@ -59,14 +59,14 @@ Volcano主要支持以下两种GPU共享模式，用以实现vGPU调度并满足
 - **验证部署**：
   请确保节点的可分配资源（Allocatable Resources）中包含以下信息：
 
-<pre><code class="language-yaml">
+```yaml
   volcano.sh/vgpu-memory: "89424"
   volcano.sh/vgpu-number: "8"
-</code></pre>
+```
 
 - **更新调度器配置**：
 
-<pre><code class="language-yaml">
+```yaml
 kind: ConfigMap
 apiVersion: v1
 metadata:
@@ -82,7 +82,7 @@ data:
         arguments:
           deviceshare.VGPUEnable: true   # 启用vgpu插件
           deviceshare.SchedulePolicy: binpack  # 调度策略：binpack / spread
-</code></pre>
+```
 
 可通过以下命令检查：
 
@@ -94,7 +94,7 @@ kubectl get node {node-name} -o yaml
 
 **Pod配置示例**：
 
-<pre><code class="language-yaml">
+```yaml
 metadata:
   name: hami-pod
   annotations:
@@ -109,7 +109,7 @@ spec:
         volcano.sh/vgpu-number: 1    # 请求1张GPU卡
         volcano.sh/vgpu-cores: 50    # (可选)每个vGPU使用50%核心
         volcano.sh/vgpu-memory: 3000 # (可选)每个vGPU使用3G显存
-</code></pre>
+```
 
 ### Dynamic MIG使用方法
 
@@ -127,7 +127,7 @@ sudo nvidia-smi -mig 1
 
 - **带MIG注解的Pod配置示例**：
 
-<pre><code class="language-yaml">
+```yaml
 metadata:
   name: mig-pod
   annotations:
@@ -141,7 +141,7 @@ spec:
       limits:
         volcano.sh/vgpu-number: 1
         volcano.sh/vgpu-memory: 3000
-</code></pre>
+```
 
 注意：实际分配的显存大小取决于最匹配的MIG实例规格（例如：请求3GB显存，可能会分配到规格为5GB的MIG实例）。
 
