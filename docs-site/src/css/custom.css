@@ -25,8 +25,8 @@
 }
 
 [data-theme="dark"] {
-  --ifm-background-color: #1a1a1a;
-  --ifm-background-surface-color: #242526;
+  --ifm-background-color: #1b1b1d;
+  --ifm-background-surface-color: #1b1b1d;
 }
 
 
@@ -49,14 +49,12 @@ b, strong {
 .section-container,
 .whyContainer,
 .blogContainer,
-.supporters-section,
-.frameworksSection {
+.supporters-section {
   background: var(--ifm-background-color);
 }
 
 .reasonBox,
-.blogPostCard,
-.framework-card {
+.blogPostCard {
   background: var(--ifm-background-surface-color);
   border-radius: 8px;
   border: 1px solid var(--ifm-color-emphasis-300);
@@ -65,8 +63,7 @@ b, strong {
 }
 
 .reasonBox:hover,
-.blogPostCard:hover,
-.framework-card:hover {
+.blogPostCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 18px var(--ifm-color-emphasis-300);
 }

@@ -1,11 +1,11 @@
 .whyContainer {
-    background-color: #f8f9fa;
+    background-color: var(--ifm-background-color);
   }
   
   .whyContainer h1 {
     text-align: center;
     margin-bottom: 2.5rem;
-    color: #333;
+    color: var(--ifm-font-color-base);
     font-size: 2rem;
     font-weight: 700;
   }
@@ -19,7 +19,7 @@
   }
   
   .reasonBox {
-    background-color: #fff;
+    background-color: var(--ifm-background-surface-color);
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     padding: 1.5rem 1rem;
@@ -38,13 +38,13 @@
   .reasonTitle {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #333;
+    color: var(--ifm-font-color-base);
     margin-bottom: 1rem;
     margin-top: 0;
   }
   
   .reasonContent {
-    color: #666;
+    color: var(--ifm-font-color-secondary);
     font-size: 0.88rem;
     line-height: 1.6;
     flex-grow: 1;
