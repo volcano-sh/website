@@ -13,24 +13,20 @@
   url = "#about"
   weight = 2
 
-
+[[main]]
+  name = "Why Volcano"
+  url = "#required"
+  weight = 3
 
 [[main]]
   name = "Blog"
   url = "#posts"
   weight = 4
 
-
 [[main]]
-  name = "Why Volcano"
-  url = "#required"
-  weight = 3
-
-#[[main]]
-  #name = "Documentation"
-  #url = "docs/"
-  #weight = 6
-
+  name = "Documentation"
+  url = "/docs/"
+  weight = 6
 
 [[main_right]]
   name = "<i class=\"fab fa-github\" style=\"color: #000000; font-size: 1rem; line-height: 1.25\"></i>"
@@ -45,7 +41,6 @@
   weight = 20
 
 [[main_right]]
-  
   name = "<img src=\"/img/icon_slack.svg\" alt=\"slack\" style=\" font-size: 1rem; line-height: 1.25; width:20px; height:20px; margin-top: 9px;\">"
   post = ""
   url = "https://cloud-native.slack.com/archives/C011GJDQS0N"
@@ -74,10 +69,10 @@
   identifier = "features"
 
 [[docs]]
-name = "User Guide"
-weight = 5
-identifier = "user-guide"
-url = "/en/docs/user-guide/"
+  name = "User Guide"
+  weight = 5
+  identifier = "user-guide"
+  url = "/en/docs/user-guide/"
 
 [[docs]]
   name = "Ecosystem"
@@ -100,7 +95,7 @@ url = "/en/docs/user-guide/"
   identifier = "contribution"
 
 
-# Documentation version v1.12.0
+# Documentation version v1.12.0 (WORKING CONFIGURATION)
 
 [[v1-12-0]]
   name = "Home"
@@ -123,24 +118,46 @@ url = "/en/docs/user-guide/"
   identifier = "features"
 
 [[v1-12-0]]
-  name = "Ecosystem"
+  name = "User Guide"
   weight = 5
+  identifier = "user-guide"
+  url = "/en/docs/v1-12-0/user-guide/"
+
+# Plugins section (top-level, collapsible container)
+[[v1-12-0]]
+  name = "Plugins"
+  weight = 6
+  identifier = "plugins"
+
+# Scheduler section
+[[v1-12-0]]
+  name = "Scheduler"
+  weight = 7
+  identifier = "scheduler"
+
+# Continue with remaining sections
+[[v1-12-0]]
+  name = "Ecosystem"
+  weight = 8
   identifier = "ecosystem"
 
 [[v1-12-0]]
-  name = "Scheduler"
-  weight = 6
-  identifier = "scheduler"
-
-[[v1-12-0]]
   name = "CLI"
-  weight = 7
+  weight = 9
   identifier = "cli"
 
 [[v1-12-0]]
   name = "Contribution"
-  weight = 8
+  weight = 10
   identifier = "contribution"
+
+
+# Plugins menu for the Academic theme (required for frontmatter)
+[[plugins]]
+  name = "Plugins"
+  weight = 1
+  identifier = "plugins"
+
 
 # Documentation version v1.11.0
 
