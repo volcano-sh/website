@@ -52,16 +52,8 @@ actions: "enqueue, allocate, preempt"
 tiers:
 - plugins:
   - name: priority
-    arguments:
-      priority.default: 10
-      priority.preemption: true
+    # Priority plugin uses Pod PriorityClassName - no arguments needed
 ```
-### Configuration Parameters
-
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `priority.default` | Default priority value for jobs without explicit priority | 10 |
-| `priority.preemption` | Enable or disable preemption for priority scheduling | true |
 
 ## Usage Scenarios
 
@@ -72,11 +64,3 @@ Priority scheduling is suitable for workloads where certain jobs require faster 
 - **Real-time AI processing** where inference requests have higher priority
 - **Multi-tenant clusters** where different teams have different service levels
 
-## Metrics
-
-The plugin provides the following metrics:
-
-- `priority_preemption_count`: Number of preemption events triggered by priority
-- `priority_scheduling_latency`: Scheduling delay for high-priority jobs
-- `priority_allocation_ratio`: Resource allocation ratio across priority levels
-- `priority_job_starved`: Number of jobs starving due to priority constraints

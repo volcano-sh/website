@@ -81,10 +81,3 @@ BinPack is particularly useful for:
 - **High-concurrency services** with many small pods that can be packed onto fewer nodes
 - **Cloud cost optimization** where reducing node count minimizes infrastructure costs
 
-## Metrics
-
-The plugin provides the following metrics:
-
-- `binpack_node_score`: Score assigned to each node during scheduling
-- `binpack_resource_utilization`: Resource usage percentage after packing
-- `binpack_fragmentation_reduction`: Improvement in node fragmentation over time

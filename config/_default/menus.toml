@@ -95,7 +95,7 @@
   identifier = "contribution"
 
 
-# Documentation version v1.12.0 (WORKING CONFIGURATION)
+# Documentation version v1.12.0
 
 [[v1-12-0]]
   name = "Home"
@@ -150,13 +150,6 @@
   name = "Contribution"
   weight = 10
   identifier = "contribution"
-
-
-# Plugins menu for the Academic theme (required for frontmatter)
-[[plugins]]
-  name = "Plugins"
-  weight = 1
-  identifier = "plugins"
 
 
 # Documentation version v1.11.0

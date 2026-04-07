@@ -62,14 +62,10 @@ To enable the Gang plugin, add it to the scheduler configuration:
 
 ```yaml
 # scheduler configuration
-actions: "enqueue, allocate, preempt"
-tiers:
-- plugins:
-  - name: gang
     arguments:
-      gang.schedule.timeout: 600
-      gang.schedule.retry: 5
+      timeout: 600
 ```
+
 ### Configuration Parameters
 
 | Parameter | Description | Default |
@@ -86,11 +82,3 @@ Gang scheduling is typically used for:
 - **Batch processing workloads** with task dependencies
 - **Big data analytics** where partial execution is not meaningful
 
-## Metrics
-
-The plugin provides the following metrics:
-
-- `gang_job_ready`: Number of jobs ready for gang scheduling
-- `gang_job_starved`: Jobs that cannot be scheduled due to resource constraints
-- `gang_job_retry_count`: Number of retry attempts for gang jobs
-- `gang_scheduling_latency`: Time taken to schedule gang jobs
