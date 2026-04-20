@@ -63,7 +63,7 @@ data:
 > - Dynamic resource-related checks (like CPU, memory usage) are recalculated each time
 > - Related cache is automatically invalidated when node status changes
 
-#### 2.1.2. Enable DRA (Dynamic Resource Allocation) in Volcano {#2-1-2-enable-dra-dynamic-resource-allocation-in-volcano}
+#### 2.1.2. Enable DRA (Dynamic Resource Allocation) in Volcano
 There are some steps required to enable Dynamic Resource Allocation (DRA) support in the Volcano scheduler.
 
 ##### 2.1.2.1 Prerequisites

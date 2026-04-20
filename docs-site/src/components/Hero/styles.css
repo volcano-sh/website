@@ -12,13 +12,12 @@
   background-repeat: no-repeat;
 }
 
-/* No ::before pseudo-element on container — no gray overlay */
-
 .hero-content {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
+  margin-left: 10%;
   padding-left: 6rem;
   width: 50%;
   z-index: 2;
@@ -27,10 +26,8 @@
   padding-bottom: 7rem;
 }
 
-/* No ::before pseudo-element on content — no gray box */
-
 .hero-title {
-  font-size: 2.8rem;
+  font-size: 3rem;
   font-weight: 700;
   margin-bottom: 0.75rem;
   color: black;
@@ -40,7 +37,7 @@
 }
 
 .hero-subtitle {
-  font-size: 1.15rem;
+  font-size: 1.09rem;
   margin-bottom: 1.5rem;
   color: black;
   max-width: 600px;
@@ -58,7 +55,6 @@
   height: 30px;
 }
 
-/* GitHub button styling */
 .hero-actions .github-button {
   margin-right: 15px;
 }
@@ -70,8 +66,8 @@
 
 .hero-cta-button {
   display: inline-block;
-  padding: 0.4rem 1.4rem;
-  font-size: 0.9rem;
+  padding: 0.19rem 1rem;
+  font-size: 0.6rem;
   font-weight: 500;
   text-align: center;
   white-space: nowrap;
@@ -83,6 +79,7 @@
   color: #f05545;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
+  margin-bottom: 0.5rem;
 }
 
 .hero-cta-button:hover {
@@ -108,21 +105,21 @@
     height: auto;
     min-height: 350px;
   }
-  
+
   .hero-content {
     width: 60%;
     padding-left: 4rem;
   }
-  
+
   .hero-title {
-    font-size: 2.4rem;
+    font-size: 3rem;
   }
-  
+
   .hero-subtitle {
     font-size: 1.05rem;
     max-width: 400px;
   }
-  
+
   .hero-actions {
     flex-direction: row;
     align-items: center;
@@ -131,39 +128,38 @@
 }
 
 @media (max-width: 768px) {
-  /* No gray overlay — completely removed */
-  
+  .hero-image {
+    display: none;
+  }
+
   .hero-content {
     width: 100%;
+    margin-left: 0;
     padding: 2rem 1.5rem;
-    text-align: left;
-    align-items: flex-start;
-    z-index: 2;
+    padding-left: 0;
   }
-  
-  .hero-title {
-    font-size: 2.2rem;
+
+  .hero-container {
+    height: auto;
+    overflow: visible;
   }
-  
-  .hero-subtitle {
-    font-size: 1rem;
-    max-width: 100%;
-    padding-left: 10px;
+}
+
+html[lang="zh-CN"] .hero-content {
+  margin-left: 10%;
+  padding-left: 6rem;
+}
+
+@media (max-width: 996px) {
+  html[lang="zh-CN"] .hero-content {
+    margin-left: 10%;
+    padding-left: 5rem;
   }
-  
-  .hero-actions {
-    flex-direction: row;
-    align-items: center;
-    padding-left: 10px;
-    gap: 1rem;
-  }
-  
-  .github-button {
-    padding: 0.2rem 0.5rem;
-  }
-  
-  .hero-cta-button {
-    font-size: 0.85rem;
-    padding: 0.35rem 1rem;
+}
+
+@media (max-width: 768px) {
+  html[lang="zh-CN"] .hero-content {
+    margin-left: 0;
+    padding-left: 0;
   }
 }
