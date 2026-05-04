@@ -33,3 +33,4 @@ This section contains the User Guide for Volcano.
 * [Volcano Job Plugin -- SSH User Guide](/en/docs/user-guide/how_to_use_ssh_plugin/)
 * [Volcano Job Plugin -- SVC User Guide](/en/docs/user-guide/how_to_use_svc_plugin/)
 * [Volcano vGPU User Guide](/en/docs/user-guide/how_to_use_volcano_vgpu/)
+* [Scheduling Gates Queue Admission User Guide](/en/docs/user-guide/how_to_use_scheduling_gates_queue_admission/)
