@@ -22,7 +22,7 @@ The problem is described in detail in the [design document](https://github.com/v
 
 ## Solution
 
-This feature uses Kubernetes [`schedulingGates`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-scheduling-readiness/) to hold pods until the queue has capacity and while gated, pods are invisible to autoscalers. The gate is removed only after the queue capacity check passes, meaning, if the pod then can't schedule due to missing nodes, it gets marked `Unschedulable` legitimately, and autoscalers can respond correctly.
+This feature uses Kubernetes [`schedulingGates`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-scheduling-readiness/) to hold pods until the queue has capacity. While gated, pods are invisible to autoscalers. The gate is removed only after the queue capacity check passes and if the pod then cannot be scheduled due to missing nodes, it is marked as Unschedulable, allowing autoscalers to respond correctly.
 
 ## Prerequisites
 
@@ -129,11 +129,11 @@ kubectl get pod my-pod -o jsonpath='{.spec.schedulingGates}'
 
 ## Interaction with other Scheduling Gates
 
-If a pod has additional scheduling gates from other controllers (e.g., `example.com/my-gate`), Volcano will not remove its gate until the pod has **only the Volcano gate remaining**. This ensures Volcano does not interfere with other gate controllers.
+If a pod has additional scheduling gates from other controllers (*e.g.*, `example.com/my-gate`), Volcano will not remove its gate until the pod has **only the Volcano gate remaining**. This ensures Volcano does not interfere with other gate controllers and avoids reserving queue capacity for pods that are still blocked by external dependencies.
 
 ## Limitations
 
-- Once a pod's gate is removed, it reserves queue capacity until it is scheduled or deleted. If the pod remains unschedulable (*e.g.*, waiting for the autoscaler to add nodes), it continues to hold queue capacity, potentially blocking other pods. Additionally, the feature currently **does not implement a timeout** for reserved capacity. Operators should be aware that *ungated-but-unschedulable* pods can hold queue capacity indefinitely.
+- Once a pod's gate is removed, it reserves queue capacity until it is scheduled or deleted. If the pod remains unschedulable (*e.g.*, waiting for the autoscaler to add nodes), it continues to hold queue capacity, potentially blocking other pods. Additionally, the feature currently **does not implement a timeout** for reserved capacity. Operators should be aware that pods that have been ungated but remain unschedulable can hold queue capacity indefinitely.
 - The feature is **only implemented in the `capacity` plugin**. Users relying on the `proportion` plugin for queue resource management will still face false autoscaler scale-ups, as the scheduling gates mechanism is not yet integrated with `proportion`. Tracking issue: [#5271](https://github.com/volcano-sh/volcano/issues/5271).
 
 ## Related
