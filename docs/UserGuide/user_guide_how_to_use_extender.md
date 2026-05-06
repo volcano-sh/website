@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Extender User Guide"
 sidebar_position: 50
 ---
@@ -53,4 +53,4 @@ data:
 ```
 
 ### Verify Extender is working
-  The user can see in the log something like : 'Initialize extender plugin with configuration : {your configuration}'
+  The user can see in the log something like : `Initialize extender plugin with configuration : {your configuration}`

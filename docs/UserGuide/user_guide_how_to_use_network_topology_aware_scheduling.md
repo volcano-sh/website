@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Network Topology Aware Scheduling User Guide"
 sidebar_position: 50
 ---
@@ -160,7 +160,7 @@ data:
 
 #### 3.2.1 Build via HyperNode Auto-Discovery (Recommended)
 
-Refers to [How to Use HyperNode Auto Discovery](/en/docs/user-guide/how_to_use_hypernode_auto_discovery/)
+Refers to [How to Use HyperNode Auto Discovery](./user_guide_how_to_use_hypernode_auto_discovery.md)
 
 #### 3.2.2 Build Manually
 

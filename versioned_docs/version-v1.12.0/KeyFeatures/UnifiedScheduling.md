@@ -25,7 +25,7 @@ Volcano fully implements the PreFilter-Filter stages from Kube-Scheduler, includ
 
 > 1. For a detailed introduction to DRA, please refer to: [dynamic-resource-allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)
 
-> 2. For detailed steps on how to enable DRA in Volcano, please refer to the [**2.1.2. Enable DRA (Dynamic Resource Allocation) in Volcano**](#2-1-2-enable-dra-dynamic-resource-allocation-in-volcano) section later in this document.
+> 2. For detailed steps on how to enable DRA in Volcano, please refer to the [**2.1.2. Enable DRA (Dynamic Resource Allocation) in Volcano**](#212-enable-dra-dynamic-resource-allocation-in-volcano) section later in this document.
 
 In addition to being compatible with most of the filters in kube-scheduler, Volcano also provides the `Node Filtering Result Cache` enhancement feature:
 

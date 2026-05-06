@@ -1,6 +1,6 @@
 ---
-title: NUMA Aware User Guide
-date: '2026-02-03'
+title: "NUMA Aware User Guide"
+sidebar_position: 50
 ---
 
 
@@ -26,7 +26,7 @@ date: '2026-02-03'
       cpu: 1000m
    ```
 
-   2. Restart kubelet to take effect <br />
+   2. Restart kubelet to take effect <br/>
       Run the following:
 
       ```
@@ -97,7 +97,7 @@ node-3            4h8m
 
 ### Running volcano Job with topology policy
 
-Support the task-level topology policy and edit **spec.tasks.topologyPolicy** to specify whether to perform topology scheduling.<br /> The supported options are the same as [topology manager](https://v1-19.docs.kubernetes.io/docs/tasks/administer-cluster/topology-manager/) on kubelet:
+Support the task-level topology policy and edit **spec.tasks.topologyPolicy** to specify whether to perform topology scheduling.<br/> The supported options are the same as [topology manager](https://v1-19.docs.kubernetes.io/docs/tasks/administer-cluster/topology-manager/) on kubelet:
 
 ````
    1. single-numa-node

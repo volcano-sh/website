@@ -1,6 +1,6 @@
 ---
-title : Capacity Plugin User Guide
-date : 2026-02-03
+title: "Capacity Plugin User Guide"
+sidebar_position: 50
 ---
 
 
@@ -8,7 +8,7 @@ date : 2026-02-03
 
 Capacity plugin is a replacement of proportion plugin, but instead of dividing the queue's deserved resources by weight, it realizes elastic queue capacity management i.e., queue's resource borrowing and lending mechanism by specifying the amount of deserved resources for each dimension resource of the queue. 
 
-A queue can use the idle resources of other queues, and when other queues submit jobs, they can reclaim the resources that have been lent, and the amount of reclaimed resources is the amount of queue's deserved resources. For more detail, please see [Capacity Scheduling Design](https://github.com/volcano-sh/volcano/blob/master/docs/design/capacity-scheduling.md)
+A queue can use the idle resources of other queues, and when other queues submit jobs, they can reclaim the resources that have been lent, and the amount of reclaimed resources is the amount of queue's deserved resources. For more detail,  please see [Capacity scheduling design](https://github.com/volcano-sh/volcano/blob/master/docs/design/capacity-scheduling.md)
 
 ## Environment setup
 
