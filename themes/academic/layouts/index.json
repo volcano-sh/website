@@ -28,8 +28,8 @@
     {{/* Correct the title and URL for author profile pages. */}}
     {{- if eq .Section "author" -}}
       {{- $title = .Params.name -}}
-      {{- $dir := path.Base (path.Split .Path).Dir -}}
-      {{- with $.Site.GetPage (printf "/authors/%s" (path.Base (path.Split .Path).Dir)) -}}
+      {{- $dir := path.Base (path.Split .File.Dir).Dir -}}
+      {{- with $.Site.GetPage (printf "/authors/%s" (path.Base (path.Split .File.Dir).Dir)) -}}
         {{- $permalink = .Permalink -}}
         {{- $rel_permalink = .RelPermalink -}}
       {{- end -}}
@@ -54,7 +54,7 @@
     {{- end -}}
 
     {{- /* Add page to index. */ -}}
-    {{- $index = $index | append (dict "objectID" .UniqueID "date" .Date.UTC.Unix "publishdate" .PublishDate "lastmod" .Lastmod.UTC.Unix "expirydate" .ExpiryDate.UTC.Unix "lang" .Lang "permalink" $permalink "relpermalink" $rel_permalink "title" $title "summary" (plainify $desc) "content" .Plain "authors" $authors "kind" .Kind "type" .Type "section" .Section "tags" .Params.Tags "categories" .Params.Categories) -}}
+    {{- $index = $index | append (dict "objectID" (.RelPermalink | md5) "date" .Date.UTC.Unix "publishdate" .PublishDate "lastmod" .Lastmod.UTC.Unix "expirydate" .ExpiryDate.UTC.Unix "lang" .Lang "permalink" $permalink "relpermalink" $rel_permalink "title" $title "summary" (plainify $desc) "content" .Plain "authors" $authors "kind" .Kind "type" .Type "section" .Section "tags" .Params.Tags "categories" .Params.Categories) -}}
 
   {{- end -}}
 {{- end -}}
