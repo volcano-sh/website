@@ -1,7 +1,5 @@
 ---
-id: cli
 title: CLI
-
 ---
 ### 简介
 Volcano提供了命令行工具用于管理资源。

@@ -3,10 +3,11 @@ title: "Cron VolcanoJob"
 sidebar_position: 4
 ---
 
-### 简介
-Cron VolcanoJob，也称为 cronvcjob 或 cronvj，是 Volcano 中的一种自定义资源类型。用户现在可以基于预定义的计划定期创建和运行 Volcano Job，类似于 Kubernetes 原生的 CronJob，从而实现批量计算任务（如 AI 和大数据工作负载）的定时执行。
+### 定义
 
-### 示例
+Cron VolcanoJob, 简称cronvcjob，cronvj，是Volcano自定义的资源类型。用户现在可以根据预定义的调度计划定期创建和运行Volcano Job，类似于Kubernetes原生的CronJob，以实现批量计算任务(如AI和大数据)的定期执行。
+
+### 样例
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: CronJob
@@ -47,54 +48,51 @@ kubectl get vcjob
 ### 关键字段
 * schedule
 
-    必填。Volcano Job 执行的 cron 计划字符串。使用标准 cron 格式。
+    必填。用于Volcano Job 执行的 cron 计划字符串。使用标准 cron 格式。
 
 * timeZone
 
-    选填。计划的时区名称。默认为 kube-controller-manager 的本地时区。
+    可选。调度计划的时区名称。默认为 kube-controller-manager 的本地时区。
 
 * concurrencyPolicy
 
-    选填。指定如何管理 Cron VolcanoJob 创建的作业的并发执行。必须是以下之一：
+    可选。指定如何管理 Cron VolcanoJob 创建的 job 的并发执行。为下列规则中的一种：
     *   Allow（默认）：允许并发运行  
-    *   Forbid：如果前一个作业未完成，则跳过新作业  
-    *   Replace：取消当前正在运行的作业并启动新作业
-
-<!-- -->
+    *   Forbid：禁止并发运行，跳过新周期的执行 
+    *   Replace：取消当前运行的 job，并用新的 job 替换它
 
 * startingDeadlineSeconds
 
-    选填。如果作业错过了计划时间，启动作业的截止时间（秒）。
+  可选。如果 job 错过其计划时间，启动 job 的截止时间（秒）。
 
 * suspend
 
-    选填。如果设置为 true，所有后续执行将被挂起。
+  可选。如果设置为 true，所有后续执行将被暂停。
 
 * jobTemplate
 
-    必填。用于创建 Volcano Job 的模板。包含完整的 Volcano Job 规范。
+  必需。用于创建 Volcano Job 的模板。包含完整的 Volcano Job 规范。
 
 * successfulJobsHistoryLimit
 
-    选填。保留的成功完成作业的数量。默认为 3。
+  可选。要保留的成功完成 job 的数量。默认为 3。
 
 * failedJobsHistoryLimit
 
-    选填。保留的失败完成作业的数量。默认为 1。
+  可选。要保留的失败完成 job 的数量。默认为 1。
 
 <!-- -->
-
-### 用法
+### 使用场景
 * 定期模型训练
 
-在非高峰时段每天自动启动分布式模型训练任务，利用集群空闲时间进行大规模机器学习训练。
+每天凌晨自动启动分布式模型训练任务，利用集群空闲时段进行大规模机器学习训练。
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: CronJob
 metadata:
   name: daily-model-training
 spec:
-  schedule: "0 2 * * *"  # 每天凌晨 2 点运行
+  schedule: "0 2 * * *"  # 每天凌晨2点运行
   concurrencyPolicy: Forbid
   jobTemplate:
     spec:
@@ -108,19 +106,20 @@ spec:
         - replicas: 3  
           name: worker
           template:
-            # 训练 worker 配置
+            # 训练worker配置
 ```
 
 * 定时资源清理
 
-每周日晚上清理临时数据和日志文件，以释放集群存储空间。
+
+每周日晚上清理临时数据和日志文件，释放集群存储空间。
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: CronJob
 metadata:
   name: weekly-cleanup
 spec:
-  schedule: "0 22 * * 0"  # 每周日晚上 10 点运行
+  schedule: "0 22 * * 0"  # 每周日22点运行
   timeZone: "Asia/Shanghai"
   jobTemplate:
     spec:

@@ -3,10 +3,10 @@ title: "Volcano Job"
 sidebar_position: 3
 ---
 
-## 简介
-VolcanoJob，简称 vcjob，是 Volcano 的一个 CRD 对象。与 Kubernetes Job 不同，它提供了更多高级功能，如指定调度器、最小成员数、任务定义、生命周期管理、特定队列和特定优先级。VolcanoJob 非常适合机器学习、大数据应用和科学计算等高性能计算场景。
-
-## 示例
+### 定义
+Volcano Job，简称vcjob，是Volcano自定义的Job资源类型。区别于Kubernetes Job，vcjob提供了更多高级功能，如可指定调度器、支持最小运行pod数、
+支持task、支持生命周期管理、支持指定队列、支持优先级调度等。Volcano Job更加适用于机器学习、大数据、科学计算等高性能计算场景。
+### 样例
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -51,92 +51,114 @@ spec:
                   cpu: "1"
           restartPolicy: OnFailure
 ```
-## 关键字段
-### schedulerName
-`schedulerName` 指定调度该作业的调度器。目前，该值可以是 `volcano` 或 `default-scheduler`，默认选中 `volcano`。
+### 关键字段
+* schedulerName
 
-### minAvailable
-`minAvailable` 表示运行该作业所需的最小运行 Pod 数量。只有当运行的 Pod 数量不小于 `minAvailable` 时，作业才被视为 `running`。
+schedulerName表示该job的pod所使用的调度器，默认值为volcano，也可指定为default-scheduler。它也是tasks.template.spec.schedulerName的默认值。
 
-### volumes
-`volumes` 表示作业挂载的卷配置。它遵循 Kubernetes 中的卷配置要求。
+* minAvailable
 
-### tasks.replicas
-`tasks.replicas` 表示任务中的 Pod 副本数量。
+minAvailable表示运行该job所要运行的**最少**pod数量。只有当job中处于running状态的pod数量不小于minAvailable时，才认为该job运行正常。
 
-### tasks.template
-`tasks.template` 定义任务的 Pod 配置。它与 Kubernetes 中的 Pod 模板相同。
+* volumes
 
-### tasks.policies
-`tasks.policies` 定义任务的生命周期策略。
+volumes表示该job的挂卷配置。volumes配置遵从kubernetes volumes配置要求。
 
-### policies
-`policies` 定义当 `tasks.policies` 未设置时，所有任务的默认生命周期策略。
-  
-### plugins
-`plugins` 表示 Volcano 调度作业时使用的插件。
+* tasks.replicas
 
-### queue
-`queue` 表示作业所属的队列。
+tasks.replicas表示某个task pod的副本数。
 
-### priorityClassName
-`priorityClassName` 表示作业的优先级。用于抢占式调度。
+* tasks.template
 
-### maxRetry
-`maxRetry` 表示作业允许的最大重试次数。
+tasks.template表示某个task pod的具体配置定义。
 
-## 状态 (Status)
-### pending
-`pending` 表示作业正在等待被调度。
+* tasks.policies
 
-### aborting
-`aborting` 表示由于某些外部因素，作业正在中止。
+tasks.policies表示某个task的生命周期策略。
 
-### aborted
-`aborted` 表示由于某些外部因素，作业已中止。
+* policies
 
-### running
-`running` 表示至少有 `minAvailable` 个 Pod 正在运行。
+policies表示job中所有task的默认生命周期策略，在tasks.policies不配置时使用该策略。
 
-### restarting
-`restarting` 表示作业正在重启。
+* plugins
 
-### completing
-`completing` 表示至少有 `minAvailable` 个 Pod 处于 `completing` 状态。作业正在进行清理。
+plugins表示该job在调度过程中使用的插件。
 
-### completed
-`completed` 表示至少有 `minAvailable` 个 Pod 处于 `completed` 状态。作业已完成清理。
+* queue
 
-### terminating
-`terminating` 表示由于某些内部因素，作业正在终止。作业正在等待 Pod 释放资源。
+queue表示该job所属的队列。
 
-### terminated
-`terminated` 表示由于某些内部因素，作业已终止。
+* priorityClassName
 
-### failed
-`failed` 表示作业在经过 `maxRetry` 次尝试后仍然无法启动。
+priorityClassName表示该job优先级，在抢占调度和优先级排序中生效。
 
-## 用法
-### TensorFlow 工作负载
-创建一个包含 1 个 ps 和 3 个 worker 的 TensorFlow 工作负载。
+* maxRetry
+
+maxRetry表示当该job可以进行的最大重启次数。
+
+#### 资源状态
+* pending
+
+pending表示job还在等待调度中，处于排队的状态。
+
+* aborting
+
+aborting表示job因为某种外界原因正处于中止状态，即将进入aborted状态。
+
+* aborted
+
+aborted表示job因为某种外界原因已处于中止状态。
+
+* running
+
+running表示job中至少有minAvailable个pod正在运行状态。
+
+* restarting
+
+restarting表示job正处于重启状态，正在中止当前的job实例并重新创建新的实例。
+
+* completing
+
+completing表示job中至少有minAvailable个数的task已经完成，该job正在进行最后的清理工作。
+
+* completed
+
+completing表示job中至少有minAvailable个数的task已经完成，该job已经完成了最后的清理工作。
+
+* terminating
+
+terminating表示job因为某种内部原因正处于终止状态，正在等到pod或task释放资源。
+
+* terminated
+
+terminated表示job因为某种内部原因已经处于终止状态，job没有达到预期就结束了。
+
+* failed
+
+failed表示job经过了maxRetry次重启，依然没有正常启动。
+
+#### 使用场景
+* TensorFlow workload
+
+以tensorflow为例，创建一个具有1个ps和2个worker的工作负载。
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
   name: tensorflow-dist-mnist
 spec:
-  minAvailable: 3   // 至少需要 3 个可用 Pod
-  schedulerName: volcano    // 指定调度器
+  minAvailable: 3   // 该job的3个pod必须都可用
+  schedulerName: volcano    // 指定volcano为调度器
   plugins:
     env: []
     svc: []
-  policies: 
-    - event: PodEvicted // 当 Pod 被驱逐时重启作业
+  policies:
+    - event: PodEvicted // 当pod被驱逐时，重启该job
       action: RestartJob
   tasks:
-    - replicas: 1   // 指定 1 个 ps Pod
+    - replicas: 1   // 指定1个ps pod
       name: ps
-      template: // ps Pod 的定义
+      template: // ps pod的具体定义
         spec:
           containers:
             - command:
@@ -154,12 +176,12 @@ spec:
                   name: tfjob-port
               resources: {}
           restartPolicy: Never
-    - replicas: 2   // 指定 2 个 worker Pod
+    - replicas: 2   // 指定2个worker pod
       name: worker
       policies:
-        - event: TaskCompleted  // 当两个 worker Pod 完成任务时，作业被标记为完成
+        - event: TaskCompleted  // 2个worker完成任务时认为该job完成任务
           action: CompleteJob
-      template: // worker Pod 的定义
+      template: // worker pod的具体定义
         spec:
           containers:
             - command:
@@ -178,8 +200,10 @@ spec:
               resources: {}
           restartPolicy: Never
 ```
-### Argo 工作负载
-创建一个包含两个 Pod 副本的 Argo 工作负载。当至少有一个 Pod 副本正常工作时，工作负载被认为是正常的。
+
+* argo workload
+
+以argo为例，创建一个具有2个pod副本的工作负载，要求1个可用即可。
 ```shell
 apiVersion: argoproj.io/v1alpha1
 kind: Workflow
@@ -212,7 +236,7 @@ spec:
       action: create
       successCondition: status.state.phase = Completed
       failureCondition: status.state.phase = Failed
-      manifest: |           // VolcanoJob 的定义
+      manifest: |           // Volcano Job的具体定义
         apiVersion: batch.volcano.sh/v1alpha1
         kind: Job
         metadata:
@@ -252,9 +276,11 @@ spec:
                     requests:
                       cpu: "100m"
                 restartPolicy: OnFailure
-```  
-### MindSpore 工作负载
-创建一个包含 8 个 Pod 副本的 MindSpore 工作负载。当至少有一个 Pod 副本正常工作时，工作负载被认为是正常的。
+
+```
+* MindSpore
+
+以MindSpore为例，创建一个具有8个pod副本的工作负载，要求1个可用即可。
 ```shell
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -290,9 +316,10 @@ spec:
           restartPolicy: OnFailure
 
 ```
-## 注意
-### 支持的框架
-Volcano 支持几乎所有与其兼容的主流计算框架，包括：
+### 说明事项
+#### Volcano支持的计算框架
+
+Volcano对当前主流的计算框架均能很好的支持，具体如下：
 
 1. [Spark](https://spark.apache.org/)
 2. [TensorFlow](https://www.tensorflow.org/)
@@ -308,5 +335,6 @@ Volcano 支持几乎所有与其兼容的主流计算框架，包括：
 12. [KubeGene](https://github.com/volcano-sh/kubegene)
 13. [Cromwell](https://cromwell.readthedocs.io/)
 
-### volcano 或 default-scheduler
-与 default-scheduler 相比，Volcano 在批量计算方面进行了增强。它非常适合机器学习、大数据应用和科学计算等高性能计算场景。
+#### volcano和default-scheduler的选择
+
+与default-scheduler相比，volcano在批处理方面进行了增强。它更适用于高性能计算场景，如机器学习、大数据应用和科学计算。

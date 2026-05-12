@@ -1,30 +1,32 @@
 ---
-title: "架构设计"
+title: "架构"
 sidebar_position: 2
 ---
 
-## 整体架构
+## 架构概览
 
 
-[Volcano的应用场景](/img/doc/arch_1.png)
+![Volcano的应用场景](/img/doc/arch_1.png)
 
 
-Volcano是针对Kubernetes上运行的高性能工作负载而设计的。它遵循Kubernetes的设计和机制。
+Volcano与Kubernetes天然兼容，并为高性能计算而生。它遵循Kubernetes的设计理念和风格。
 
 
 ![Volcano架构](/img/doc/arch_2.PNG)
 
 
-Volcano由 **scheduler** / **controllermanager** / **admission** / **vcctl** 组成：
+Volcano由scheduler、controllermanager、admission和vcctl组成:
 
-### 调度器 (Scheduler)
-Volcano调度器基于动作（Actions）和插件（Plugins）将作业调度到最合适的节点。Volcano弥补了Kubernetes在支持多种作业调度算法方面的不足。
+## (Scheduler)
+Volcano scheduler通过一系列的action和plugin调度Job，并为它找到一个最适合的节点。与Kubernetes default-scheduler相比，Volcano与众不同的
+地方是它支持针对Job的多种调度算法。
 
-### 控制器管理器 (ControllerManager)
-Volcano控制器管理器管理自定义资源定义（CRD）的生命周期。您可以使用 **Queue CM**、**PodGroup CM** 和 **VCJob CM**。
+## (ControllerManager)
+Volcano controllermanager管理CRD资源的生命周期。它主要由**Queue ControllerManager**、 **PodGroupControllerManager**、 **VCJob
+ControllerManager**构成。
 
-### 准入控制 (Admission)
-Volcano Admission负责CRD API的校验。
+## (Admission)
+Volcano admission负责对CRD API资源进行校验。
 
-### 命令行工具 (vcctl)
-Volcano vcctl是Volcano的命令行客户端。 
+## (Vcctl)
+Volcano vcctl是Volcano的命令行客户端工具。
