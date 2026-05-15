@@ -80,6 +80,12 @@ identifier = "user-guide"
 url = "/en/docs/user-guide/"
 
 [[docs]]
+name = "用户指南"
+weight = 5
+identifier = "user-guide"
+url = "/zh/docs/user-guide/"
+
+[[docs]]
   name = "Ecosystem"
   weight = 6
   identifier = "ecosystem"
