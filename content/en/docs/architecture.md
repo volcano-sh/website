@@ -25,7 +25,7 @@ linktitle = "Architecture"
 Volcano is designed for high-performance workloads running on Kubernetes. It follows the design and mechanisms of Kubernetes.
 
 
-{{<figure library="1" src="arch_2.PNG" title="Volcano architecture">}}
+{{<figure library="1" src="arch_2.png" title="Volcano architecture">}}
 
 
 Volcano consists of **scheduler** / **controllermanager** / **admission** / **vcctl**:
