@@ -90,3 +90,8 @@ preserveTaxonomyNames = true
 [[params.versions]]
   name = "v1.7.0"
   url = "/en/docs/v1-7-0"
+
+[markup]
+  [markup.highlight]
+    style = "github"
+    noClasses = true

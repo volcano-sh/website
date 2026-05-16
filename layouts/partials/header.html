@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="generator" content="Source Themes Academic {{ .Site.Data.academic.version }}">
-  {{ .Hugo.Generator }}
+  {{ hugo.Generator }}
 
   {{ $scr := .Scratch }}
 
@@ -131,10 +131,10 @@
   {{ end }}
   {{ end }}
 
-  {{ if or .Site.RSSLink .RSSLink }}
-  <link rel="alternate" href="{{ .RSSLink | default .Site.RSSLink  }}" type="application/rss+xml" title="{{ .Site.Title }}">
-  <link rel="feed" href="{{ .RSSLink | default .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}">
-  {{ end }}
+  {{ with .OutputFormats.Get "rss" -}}
+  <link rel="alternate" href="{{ .Permalink }}" type="application/rss+xml" title="{{ $.Site.Title }}">
+  <link rel="feed" href="{{ .Permalink }}" type="application/rss+xml" title="{{ $.Site.Title }}">
+  {{ end -}}
 
   {{ partial "favicons" . }}
 

@@ -7,7 +7,7 @@ date = 2025-02-07
 lastmod = 2025-02-07
 datemonth = "Feb"
 dateyear = "2025"
-dateday = 07
+dateday = 7
 
 draft = false  # Is this a draft? true/false
 toc = true  # Show table of contents? true/false
@@ -161,7 +161,7 @@ Volcano将持续优化网络拓扑感知调度功能，未来计划：
 
 设计文档：**[Network Topology Aware Scheduling](https://volcano.sh/en/docs/network_topology_aware_scheduling/)**。
 
-使用文档：**[Network Topology Aware Scheduling | Volcano](*https://volcano.sh/en/docs/network_topology_aware_scheduling/*)**。
+使用文档：**[Network Topology Aware Scheduling | Volcano](https://volcano.sh/en/docs/network_topology_aware_scheduling/)**。
 
 由衷感谢社区开发者: **@ecosysbin, @weapons97, @Xu-Wentao,@penggu, @JesseStutler, @Monokaix** 对该特性的贡献！
 
