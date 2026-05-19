@@ -1,0 +1,9 @@
+# Netlify build config for Docusaurus (Phase 5 - after migration)
+# When switching from Hugo, update root netlify.toml to use this build
+
+[build]
+  command = "cd website-docusaurus && npm install && npm run build"
+  publish = "website-docusaurus/build"
+
+[build.environment]
+  NODE_VERSION = "20"

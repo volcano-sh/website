@@ -1,0 +1,71 @@
+/* Matches Hugo supporter section - white bg, separator line */
+.section {
+  padding: 4rem 0 3rem;
+  background-color: #fff;
+  margin-top: 3rem;
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  height: 2px;
+  background: linear-gradient(to right,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15),
+    rgba(255, 255, 255, 0)
+  );
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  font-size: 24px;
+  color: #252b3a;
+  font-weight: bold;
+  margin-bottom: 44px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+@media (max-width: 991px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 575px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.logoWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 140px;
+  padding: 10px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.logoWrap:hover {
+  opacity: 0.9;
+}
+
+.logo {
+  max-width: 100px;
+  max-height: 60px;
+  object-fit: contain;
+}
