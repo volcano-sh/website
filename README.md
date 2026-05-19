@@ -8,7 +8,7 @@ hosted at https://volcano.sh.
 We use [Hugo](https://gohugo.io/) to format and generate our website, and
 [Netlify](https://www.netlify.com/) to manage the deployment of the site. Hugo
 is an open-source static site generator that provides us with templates, content
-organisation in a standard directory structure, and a website generation engine.
+organization in a standard directory structure, and a website generation engine.
 You write the pages in Markdown, and Hugo wraps them up into a website.
 
 * Please see [How to contribute](https://github.com/volcano-sh/volcano/blob/master/contribute.md) for instructions on how to contribute, if you are not familiar with the
