@@ -4,3 +4,6 @@ public
 .vscode/*
 .DS_Store
 .hugo_build.lock
+
+#Ignore vscode AI rules
+.github\instructions\codacy.instructions.md
