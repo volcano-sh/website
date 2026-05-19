@@ -1,0 +1,50 @@
+name: Docusaurus Build
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    paths:
+      - 'volcano-docs-docusaurus/**'
+      - '.github/workflows/docs-build.yml'
+  pull_request:
+    branches:
+      - main
+      - master
+    paths:
+      - 'volcano-docs-docusaurus/**'
+      - '.github/workflows/docs-build.yml'
+
+jobs:
+  build:
+    name: Build Docusaurus Site
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: volcano-docs-docusaurus/package-lock.json
+      
+      - name: Install dependencies
+        run: |
+          cd volcano-docs-docusaurus
+          npm ci
+      
+      - name: Build site
+        run: |
+          cd volcano-docs-docusaurus
+          npm run build
+      
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: docusaurus-build
+          path: volcano-docs-docusaurus/build/
+          retention-days: 7

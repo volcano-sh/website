@@ -1,0 +1,63 @@
+{
+  "tutorialSidebar": [
+    "intro",
+    {
+      "type": "category",
+      "label": "Tutorial - Basics",
+      "items": [
+        "tutorial-basics/create-a-document",
+        "tutorial-basics/create-a-page",
+        "tutorial-basics/create-a-blog-post",
+        "tutorial-basics/markdown-features",
+        "tutorial-basics/deploy-your-site",
+        "tutorial-basics/congratulations"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Tutorial - Extras",
+      "items": [
+        "tutorial-extras/manage-docs-versions",
+        "tutorial-extras/translate-your-site"
+      ]
+    },
+    {
+      "type": "category",
+      "label": "Scheduler",
+      "link": {
+        "type": "doc",
+        "id": "scheduler/intro"
+      },
+      "items": [
+        {
+          "type": "category",
+          "label": "Plugins",
+          "items": [
+            "scheduler/plugins/gang",
+            "scheduler/plugins/binpack",
+            "scheduler/plugins/priority",
+            "scheduler/plugins/drf",
+            "scheduler/plugins/proportion",
+            "scheduler/plugins/task-topology",
+            "scheduler/plugins/predicates",
+            "scheduler/plugins/nodeorder",
+            "scheduler/plugins/sla",
+            "scheduler/plugins/tdm",
+            "scheduler/plugins/numa-aware"
+          ]
+        },
+        {
+          "type": "category",
+          "label": "Actions",
+          "items": [
+            "scheduler/actions/enqueue",
+            "scheduler/actions/allocate",
+            "scheduler/actions/backfill",
+            "scheduler/actions/preempt",
+            "scheduler/actions/reclaim"
+          ]
+        }
+      ]
+    }
+  ]
+}

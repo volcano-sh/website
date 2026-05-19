@@ -1,0 +1,371 @@
+/**
+ * Volcano Design System v2.0
+ * CNCF-grade production styling with lava/ember theme
+ * Fonts: Space Grotesk (Headers), Inter (Body), JetBrains Mono (Code)
+ */
+
+:root {
+  /* Volcano Color System */
+  --volcano-charcoal: #1a1a1a;
+  --volcano-charcoal-light: #2d2d2d;
+  --volcano-lava: #ff6b35;
+  --volcano-ember: #e84118;
+  --volcano-ember-dark: #c53615;
+  --volcano-glow: #ff8c5b;
+  --volcano-off-white: #f4f4f4;
+  --volcano-gray: #555555;
+  /* Darker gray for light mode */
+
+  /* Primary theme (lava/ember) */
+  --ifm-color-primary: #e84118;
+  --ifm-color-primary-dark: #d13a16;
+  --ifm-color-primary-darker: #c53615;
+  --ifm-color-primary-darkest: #a32d11;
+  --ifm-color-primary-light: #ea5534;
+  --ifm-color-primary-lighter: #ec6140;
+  --ifm-color-primary-lightest: #f07f5f;
+
+  /* Typography System */
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-heading-font-family: 'Space Grotesk', var(--ifm-font-family-base);
+  --ifm-font-family-monospace: 'JetBrains Mono', SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Background and text - LIGHT MODE DEFAULTS */
+  --ifm-background-color: #ffffff;
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-footer-background-color: #1a1a1a;
+  /* Footer stays dark */
+  --ifm-font-color-base: #1c1e21;
+
+  /* Hero Variables */
+  --ifm-hero-bg: #fff5f2;
+  --ifm-hero-text: #1a1a1a;
+
+  /* Component Variables */
+  --volcano-card-bg: #ffffff;
+  --volcano-card-border: rgba(232, 65, 24, 0.1);
+  --volcano-terminal-bg: #1a1a1a;
+
+  /* Animation Config */
+  --volcano-transition-base: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #ff6b35;
+  --ifm-color-primary-dark: #ff5619;
+  --ifm-color-primary-darker: #ff4a0f;
+
+  --ifm-background-color: #1a1a1a;
+  --ifm-background-surface-color: #2d2d2d;
+  --ifm-navbar-background-color: #1a1a1a;
+  --ifm-font-color-base: #f4f4f4;
+
+  --ifm-hero-bg: radial-gradient(circle at 50% -20%, #2d1b15 0%, #1a1a1a 100%);
+  --ifm-hero-text: #f4f4f4;
+  --volcano-gray: #9e9e9e;
+  --volcano-card-bg: #2d2d2d;
+  --volcano-card-border: rgba(255, 107, 53, 0.2);
+}
+
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    box-shadow: 0 0 0 0 rgba(232, 65, 24, 0.4);
+  }
+
+  70% {
+    box-shadow: 0 0 0 10px rgba(232, 65, 24, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(232, 65, 24, 0);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Base resets for animations if reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Hero Section */
+.hero--primary {
+  background: var(--ifm-hero-bg);
+  color: var(--ifm-hero-text);
+  position: relative;
+  overflow: hidden;
+  padding: 4rem 0;
+}
+
+/* Glow effect behind text */
+.hero--primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 30%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255, 107, 53, 0.15) 0%, transparent 70%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.hero__title {
+  color: var(--ifm-hero-text) !important;
+  font-family: var(--ifm-heading-font-family);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero__subtitle {
+  color: var(--ifm-hero-text) !important;
+  opacity: 0.9;
+  font-weight: 400;
+  margin-top: 1.5rem;
+}
+
+/* Buttons with Ripple */
+.button--primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.button--primary:hover {
+  animation: ripple 1s infinite;
+}
+
+/* Terminal Component */
+.volcano-terminal {
+  background: var(--volcano-terminal-bg);
+  border: 1px solid rgba(255, 107, 53, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 0.9rem;
+  color: #f4f4f4;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  text-align: left;
+  min-height: 240px;
+  position: relative;
+}
+
+.volcano-terminal-header {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.volcano-terminal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* Visualization Styles */
+.volcano-viz-container {
+  animation: float 6s ease-in-out infinite;
+}
+
+.volcano-viz-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.volcano-viz-node:hover circle {
+  filter: drop-shadow(0 0 8px var(--volcano-lava));
+}
+
+.volcano-viz-node:focus {
+  outline: 2px solid var(--volcano-lava);
+  border-radius: 50%;
+}
+
+/* Utility for mobile stacking */
+.volcano-hero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Section spacing */
+.volcano-section {
+  padding: 5rem 0;
+}
+
+.volcano-section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  position: relative;
+  font-family: var(--ifm-heading-font-family);
+}
+
+.volcano-section-title::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--volcano-lava), var(--volcano-ember));
+  margin: 1rem auto 0;
+  border-radius: 2px;
+}
+
+/* Use case blocks */
+.volcano-use-case {
+  background: var(--volcano-card-bg);
+  border-left: 3px solid var(--volcano-lava);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 1rem 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.volcano-use-case:hover {
+  transform: translateX(8px);
+  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.1);
+}
+
+/* Plugin carousel */
+.volcano-plugin-card {
+  background: var(--volcano-card-bg);
+  border: 1px solid var(--volcano-card-border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+}
+
+.volcano-plugin-card:hover {
+  border-color: var(--volcano-lava);
+  box-shadow: 0 4px 16px rgba(255, 107, 53, 0.2);
+}
+
+.volcano-plugin-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--volcano-lava);
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 996px) {
+  .volcano-hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    text-align: center;
+    padding: 0 1.5rem;
+  }
+
+  .hero--primary {
+    padding: 3rem 0;
+  }
+
+  .hero--primary::before {
+    display: none;
+    /* Remove heavy glow on mobile */
+  }
+
+  .volcano-terminal {
+    min-height: auto;
+  }
+
+  .volcano-viz-container {
+    animation: none;
+    /* Disable float on mobile to save battery */
+  }
+
+  .volcano-section {
+    padding: 3rem 0;
+  }
+
+  .volcano-section-title {
+    font-size: 2rem;
+  }
+}
+
+/* Feature Cards Grid */
+.volcano-feature-card {
+  background: var(--volcano-card-bg);
+  border: 1px solid var(--volcano-card-border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  transition: transform var(--volcano-transition-base), box-shadow var(--volcano-transition-base);
+  height: 100%;
+}
+
+.volcano-feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(255, 107, 53, 0.12);
+  border-color: var(--volcano-lava);
+}
+
+/* Accessibility Focus States */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--volcano-lava);
+  outline-offset: 4px;
+}
