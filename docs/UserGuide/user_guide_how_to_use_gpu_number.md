@@ -1,6 +1,6 @@
 ﻿---
 title: "GPU Number User guide"
-sidebar_position: 50
+
 ---
 
 

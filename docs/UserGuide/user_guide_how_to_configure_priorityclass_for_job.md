@@ -1,6 +1,6 @@
 ﻿---
 title: "How to configure priorityclass for job"
-sidebar_position: 50
+
 ---
 
 

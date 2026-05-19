@@ -1,6 +1,5 @@
 ﻿---
 title: "Volcano Job Policy User Guide"
-sidebar_position: 50
 ---
 
 ## Background

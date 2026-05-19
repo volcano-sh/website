@@ -1,6 +1,6 @@
 ﻿---
 title: "How to Enable Dynamic Resource Allocation (DRA) in Volcano Scheduler"
-sidebar_position: 50
+
 ---
 
 

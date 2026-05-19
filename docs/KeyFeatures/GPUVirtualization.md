@@ -1,5 +1,6 @@
 ---
 title: "GPU Virtualization"
+sidebar_position: 8
 ---
 
 ## Background Knowledge of GPU Sharing Modes in Volcano

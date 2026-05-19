@@ -1,6 +1,6 @@
 ﻿---
 title: "HyperNode Auto Discovery User Guide"
-sidebar_position: 50
+
 ---
 
 

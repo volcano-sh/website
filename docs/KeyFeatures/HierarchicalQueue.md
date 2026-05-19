@@ -1,5 +1,6 @@
 ---
 title: "Hierarchical Queue"
+sidebar_position: 6
 ---
 ## Background
 In multi-tenant scenarios, queues are a core mechanism for achieving fair scheduling, resource isolation, and task priority control. However, in the current version of Volcano, queues only support a flat structure and lack hierarchical concepts. In practical applications, different queues often belong to different departments, with hierarchical relationships between departments, leading to more refined requirements for resource allocation and preemption. To address this, Volcano latest version introduces the hierarchical queue feature, significantly enhancing queue capabilities. With this feature, users can achieve finer-grained resource quota management and preemption strategies based on hierarchical queues, building a more efficient unified scheduling platform.

@@ -1,6 +1,6 @@
 ---
 title: "NUMA Aware User Guide"
-sidebar_position: 50
+
 ---
 
 

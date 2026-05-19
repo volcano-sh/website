@@ -1,5 +1,6 @@
 ---
 title: "Multi-Cluster AI Job Scheduling"
+sidebar_position: 2
 ---
 
 ## Background

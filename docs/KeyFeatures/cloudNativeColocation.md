@@ -1,5 +1,6 @@
 ---
 title: "Cloud Native Colocation"
+sidebar_position: 3
 ---
 
 ## Background

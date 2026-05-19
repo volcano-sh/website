@@ -1,5 +1,6 @@
 ---
 title: "Installation"
+sidebar_position: 1
 ---
 
 The easiest way to get started with Volcano is to download the [release](https://github.com/volcano-sh/volcano/releases) package from GitHub and follow the following steps:

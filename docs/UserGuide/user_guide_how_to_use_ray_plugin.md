@@ -1,6 +1,5 @@
 ﻿---
 title: "Ray Plugin User Guide"
-sidebar_position: 50
 ---
 
 

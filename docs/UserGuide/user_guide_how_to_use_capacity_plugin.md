@@ -1,6 +1,6 @@
 ---
 title: "Capacity Plugin User Guide"
-sidebar_position: 50
+
 ---
 
 

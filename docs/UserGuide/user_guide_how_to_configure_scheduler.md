@@ -1,6 +1,6 @@
 ﻿---
 title: "How to Configure Scheduler"
-sidebar_position: 50
+
 ---
 
 

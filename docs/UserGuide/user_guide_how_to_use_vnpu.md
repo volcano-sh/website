@@ -1,6 +1,6 @@
 ---
 title: "Ascend vNPU User Guide"
-sidebar_position: 50
+
 ---
 
 ## Introduction

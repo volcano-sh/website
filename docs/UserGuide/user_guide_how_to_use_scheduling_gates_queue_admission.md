@@ -1,6 +1,6 @@
 ﻿---
 title: "Scheduling Gates Queue Admission User Guide"
-sidebar_position: 50
+
 ---
 
 ## Overview

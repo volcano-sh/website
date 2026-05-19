@@ -1,5 +1,6 @@
 ---
 title: "Tutorials"
+sidebar_position: 2
 ---
 This section provides guidance to help you quickly get started with Volcano, from deploying a basic Volcano Job/Deployment, to integrating with Volcano Queues
 ## Prerequisites

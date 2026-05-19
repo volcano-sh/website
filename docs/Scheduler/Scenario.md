@@ -1,5 +1,5 @@
 ---
-title: "Recommended Configurations for Common Scenarios"
+title: "Scenario & Configuration"
 sidebar_position: 4
 ---
 

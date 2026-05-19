@@ -1,6 +1,6 @@
 ﻿---
 title: "Nodegroup Plugin User Guide"
-sidebar_position: 50
+
 ---
 
 ## Introduction

@@ -4,23 +4,23 @@
     "description": "The label for version current"
   },
   "sidebar.docsSidebar.category.Home": {
-    "message": "首页",
+    "message": "主页",
     "description": "The label for category Home in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Getting Started": {
-    "message": "快速开始",
+    "message": "开始",
     "description": "The label for category Getting Started in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Concepts": {
-    "message": "核心概念",
+    "message": "概念",
     "description": "The label for category Concepts in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Key Features": {
-    "message": "核心特性",
+    "message": "关键特性",
     "description": "The label for category Key Features in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Ecosystem": {
-    "message": "生态系统",
+    "message": "生态",
     "description": "The label for category Ecosystem in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.User Guide": {
@@ -40,7 +40,7 @@
     "description": "The label for category CLI in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Contribution": {
-    "message": "参与贡献",
+    "message": "贡献",
     "description": "The label for category Contribution in sidebar docsSidebar"
   }
 }

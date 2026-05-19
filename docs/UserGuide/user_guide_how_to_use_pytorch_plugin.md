@@ -1,6 +1,5 @@
 ﻿---
 title: "Pytorch Plugin User Guide"
-sidebar_position: 50
 ---
 
 

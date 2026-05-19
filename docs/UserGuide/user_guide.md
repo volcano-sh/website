@@ -1,6 +1,6 @@
 ---
 title: "User Guide"
-sidebar_position: 9
+sidebar_position: 5
 ---
 
 This section contains the User Guide for Volcano.

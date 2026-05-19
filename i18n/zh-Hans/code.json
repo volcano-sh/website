@@ -12,25 +12,25 @@
     "message": "统一调度"
   },
   "Supports integrated job scheduling for both Kubernetes native workloads and mainstream computing frameworks (such as TensorFlow, Spark, PyTorch, Ray, Flink, etc.).": {
-    "message": "支持 Kubernetes 原生工作负载和主流计算框架（如 TensorFlow、Spark、PyTorch、Ray、Flink 等）的统一作业调度。"
+    "message": "支持 Kubernetes 原生负载及主流计算框架（如 TensorFlow、Spark、PyTorch、Ray、Flink等）的一体化作业调度。"
   },
   "Queue Management": {
     "message": "队列管理"
   },
   "Provides multi-level queue management capabilities, enabling fine-grained resource quota control and task priority scheduling.": {
-    "message": "提供多级队列管理能力，支持细粒度的资源配额控制和任务优先级调度。"
+    "message": "提供多层级队列管理能力，实现精细化资源配额控制和任务优先级调度。"
   },
   "Heterogeneous Device Support": {
     "message": "异构设备支持"
   },
   "Efficiently schedules heterogeneous devices like GPU and NPU, fully unleashing hardware computing potential.": {
-    "message": "高效调度 GPU、NPU 等异构设备，充分释放硬件算力潜能。"
+    "message": "高效调度GPU、NPU等异构设备，充分释放硬件算力潜力。"
   },
   "Network Topology Aware Scheduling": {
-    "message": "网络拓扑感知调度"
+    "message": "网络拓扑感知"
   },
   "Greatly enhancing model training efficiency in AI distributed training scenarios.": {
-    "message": "大幅提升 AI 分布式训练场景下的模型训练效率。"
+    "message": "支持网络拓扑感知调度，显著降低跨节点间的应用通信开销，在AI分布式训练场景中大幅提升模型训练效率。"
   },
   "Multi-cluster Scheduling": {
     "message": "多集群调度"
@@ -39,37 +39,73 @@
     "message": "支持跨集群作业调度，提升资源池管理能力，实现大规模负载均衡。"
   },
   "Online and Offline Workloads Colocation": {
-    "message": "在离线业务混部"
+    "message": "在离线混部"
   },
   "Enables online and offline workloads colocation, improving cluster resource utilization through intelligent colocation scheduling.": {
-    "message": "实现在线和离线工作负载混部，通过智能混部调度提升集群资源利用率。"
+    "message": "实现在线与离线任务混合部署，提升集群资源利用率。"
   },
   "Load Aware Descheduling": {
     "message": "负载感知重调度"
   },
   "Optimizing cluster load distribution and enhancing system stability.": {
-    "message": "优化集群负载分布，提升系统稳定性。"
+    "message": "支持负载感知重调度，优化集群负载分布，提升系统稳定性。"
   },
   "Multiple Scheduling Policies": {
     "message": "多种调度策略"
   },
   "Supports various scheduling strategies such as Gang scheduling, Fair-Share, Binpack, DeviceShare, NUMA-aware scheduling, Task Topology, etc.": {
-    "message": "支持 Gang 调度、Fair-Share、Binpack、DeviceShare、NUMA 感知调度、Task Topology 等多种调度策略。"
+    "message": "支持 Gang、Fair Share、Binpack、DeviceShare、Capacity、Proportion、NUMA aware、Task Topology等多种调度策略，优化资源利用效率。"
   },
   "Why Volcano": {
     "message": "为什么选择 Volcano"
   },
   "Cloud native batch scheduling system for compute-intensive workloads": {
-    "message": "面向计算密集型工作负载的云原生批量调度系统"
+    "message": "基于Kubernetes的高性能工作负载调度引擎"
   },
   "Learn More About Volcano": {
-    "message": "了解更多关于 Volcano"
+    "message": "深入了解Volcano"
   },
   "Rich Framework Support": {
     "message": "丰富的框架支持"
   },
   "Seamlessly integrate with mainstream computing frameworks for AI, big data, and scientific computing": {
     "message": "无缝集成 AI、大数据和科学计算领域的主流计算框架"
+  },
+  "Apache Spark™ is a unified analytics engine for large-scale data processing": {
+    "message": "Apache Spark™是用于大规模数据处理的统一分析引擎。"
+  },
+  "Apache Flink is a framework and distributed processing engine for stateful computations over unbounded and bounded data streams": {
+    "message": "Apache Flink是一个框架和分布式处理引擎，用于无限制和有限制的数据流上的状态计算。"
+  },
+  "An end-to-end open source machine learning platform": {
+    "message": "端到端开源机器学习平台。"
+  },
+  "An open source machine learning framework that accelerates the path from research prototypes to production deployment": {
+    "message": "一个开源的机器学习框架，可加快从研究原型到生产部署的过程。"
+  },
+  "Argo Workflows is an open source container-native workflow engine for orchestrating parallel jobs on Kubernetes. Argo Workflows is implemented as a Kubernetes CRD.": {
+    "message": "Argo Workflows是一个开源容器原生工作流引擎，用于在Kubernetes上协调并行作业。Argo Workflows作为Kubernetes CRD实施。"
+  },
+  "The all-scenario deep learning framework developed by Huawei.": {
+    "message": "华为开发的全场景深度学习框架。"
+  },
+  "Ray is a high-performance distributed computing framework that supports machine learning, deep learning, and distributed applications.": {
+    "message": "Ray是一个高性能分布式计算框架，支持机器学习、深度学习和分布式应用程序。"
+  },
+  "The Kubeflow project is dedicated to making deployments of machine learning (ML) workflows on Kubernetes simple, portable, and scalable.": {
+    "message": "Kubeflow项目致力于使Kubernetes上的机器学习（ML）工作流部署简单，可移植且可扩展."
+  },
+  "The Open MPI Project is an open source Message Passing Interface implementation that is developed and maintained by a consortium of academic, research, and industry partners.": {
+    "message": "OpenMPI项目是一个开源消息传递接口实现，由学术，研究和行业合作伙伴联盟开发和维护."
+  },
+  "Horovod is a distributed deep learning training framework for TensorFlow, Keras, PyTorch, and Apache MXNet.": {
+    "message": "Horovod是针对TensorFlow，Keras，PyTorch和Apache MXNet的分布式深度学习培训框架."
+  },
+  "A truly open source deep learning framework suited for flexible research prototyping and production.": {
+    "message": "一个真正的开源深度学习框架，适用于灵活的研究原型和生产."
+  },
+  "PaddlePaddle is an open source deep learning platform derived from industrial practice initiated by Baidu.": {
+    "message": "PaddlePaddle是一个由百度发起的工业实践衍生的开源深度学习平台."
   },
   "Supporters": {
     "message": "合作伙伴"

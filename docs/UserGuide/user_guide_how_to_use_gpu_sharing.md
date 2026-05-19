@@ -1,6 +1,6 @@
 ﻿---
 title: "GPU Sharing User guide"
-sidebar_position: 50
+
 ---
 
 

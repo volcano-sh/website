@@ -4,35 +4,35 @@
     "description": "The label for version v1.12.0"
   },
   "sidebar.docsSidebar.category.Home": {
-    "message": "Home",
+    "message": "主页",
     "description": "The label for category Home in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Getting Started": {
-    "message": "Getting Started",
+    "message": "开始",
     "description": "The label for category Getting Started in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Concepts": {
-    "message": "Concepts",
+    "message": "概念",
     "description": "The label for category Concepts in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Key Features": {
-    "message": "Key Features",
+    "message": "关键特性",
     "description": "The label for category Key Features in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Ecosystem": {
-    "message": "Ecosystem",
+    "message": "生态",
     "description": "The label for category Ecosystem in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Scheduler": {
-    "message": "Scheduler",
+    "message": "调度器",
     "description": "The label for category Scheduler in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.CLI": {
-    "message": "CLI",
+    "message": "命令行工具",
     "description": "The label for category CLI in sidebar docsSidebar"
   },
   "sidebar.docsSidebar.category.Contribution": {
-    "message": "Contribution",
+    "message": "贡献",
     "description": "The label for category Contribution in sidebar docsSidebar"
   }
 }

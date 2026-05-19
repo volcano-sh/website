@@ -1,6 +1,6 @@
 ﻿---
 title: "Volcano vGPU User Guide"
-sidebar_position: 50
+
 ---
 
 

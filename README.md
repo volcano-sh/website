@@ -1,32 +1,17 @@
 # Volcano Website
 
-## Creating and updating the docs
-
 Welcome to the GitHub repository for Volcano's public website. The docs are hosted at [https://volcano.sh](https://volcano.sh).
 
 We use [Docusaurus](https://docusaurus.io/) to format and generate our website, and [Netlify](https://www.netlify.com/) to manage the deployment of the site. Docusaurus is an open-source static site generator that provides us with templates, content organisation in a standard directory structure, and a website generation engine. You write the pages in Markdown (with YAML front matter), and Docusaurus wraps them up into a website.
 
-Please see [How to contribute](https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md) for instructions on how to contribute, if you are not familiar with the GitHub workflow.
+Please see [How to contribute](https://github.com/volcano-sh/volcano/blob/master/contribute.md) for instructions on how to contribute, if you are not familiar with the GitHub workflow.
 
-## Quickstart
+## Prerequisites
 
-Here's a quick guide to updating the docs. It assumes you're familiar with the GitHub workflow and you're happy to use the automated preview of your doc updates:
+You need the following installed locally:
 
-1. Fork the repo on GitHub.
-2. Make your changes and send a pull request (PR).
-3. If you're not yet ready for a review, add a comment to the PR saying it's a work in progress or add `[WIP]` in your PR's title. You can also add `/hold` in a comment to mark the PR as not ready for merge.
-4. Wait for the automated PR workflow to do some checks. When it's ready, you should see a comment like this: **deploy/netlify — Deploy preview ready!**
-5. Click **Details** to the right of "Deploy preview ready" to see a preview of your updates.
-6. Continue updating your doc until you're happy with it.
-7. When you're ready for a review, add a comment to the PR and assign a reviewer/approver.
-
-## Previewing your changes on a local website server
-
-If you'd like to preview your doc updates as you work, you can install Node.js and run a local Docusaurus dev server. This section shows you how.
-
-### Install Node.js
-
-You need **Node.js version 20 or higher**. See the [Node.js download page](https://nodejs.org/en/download/) for installation instructions. Here are some examples:
+- [Node.js](https://nodejs.org/) version 20 or higher
+- [npm](https://www.npmjs.com/) (comes bundled with Node.js)
 
 **Mac OS X:**
 ```bash
@@ -49,29 +34,48 @@ node --version
 npm --version
 ```
 
-### Run a local website server
+## Quickstart
 
-Follow the usual GitHub workflow to fork the repo on GitHub and clone it to your local machine, then use your local repo as input to the Docusaurus dev server:
+Here's a quick guide to adding or updating docs and previewing your changes locally.
 
-Install the dependencies (you only need to do this once, or when `package.json` changes):
-```bash
-npm install
-```
+1. Fork the repo on GitHub and clone it to your local machine:
 
-Start the website server. Make sure you run this command from the repo root directory:
-```bash
-npm run start
-```
-Your website is at **http://localhost:3000/**.
+   ```bash
+   git clone https://github.com/<your-username>/website.git
+   cd website
+   ```
 
-To preview the Chinese locale:
-```bash
-npm run start -- --locale zh-Hans
-```
+2. Install dependencies (you only need to do this once, or when `package.json` changes):
 
-Continue with the usual GitHub workflow to edit files, commit them, push the changes up to your fork, and create a pull request. See [GitHub's documentation on creating pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) for more details.
+   ```bash
+   npm install
+   ```
 
-While making the changes, you can preview them on your local version of the website at http://localhost:3000/. Note that if you have more than one local git branch, when you switch between git branches the local website reflects the files in the current branch.
+3. Start the local development server:
+
+   ```bash
+   npm run start
+   ```
+
+   The site is now live at **http://localhost:3000/** with hot-reload — any changes you save will be reflected immediately in the browser.
+
+   To preview the Chinese locale:
+   ```bash
+   npm run start -- --locale zh-Hans
+   ```
+
+4. Make your changes:
+
+   - To **add a new doc**, create a `.md` file in the appropriate category folder under `docs/` (see [How to add a new doc](#how-to-add-a-new-doc)).
+   - To **update an existing doc**, edit the corresponding `.md` file under `docs/`.
+   - To **add a blog post**, see [How to add a blog post](#how-to-add-a-blog-post).
+
+5. Preview your changes to make sure everything looks correct.
+
+6. Commit and push your changes. 
+
+7. Open a pull request on GitHub. See [GitHub's documentation on creating pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) for more details.
+
 
 ### Production build
 
@@ -150,8 +154,6 @@ Each category folder contains a `_category_.json` file that controls the categor
 
 ### Chinese translations
 
-Docusaurus uses a specific directory convention for translations. English docs go in `docs/`, and Chinese translations go under `i18n/zh-Hans/docusaurus-plugin-content-docs/current/`. 
-
 To add a Chinese translation:
 
 1. Create the same file at the matching path under the i18n directory. For example:
@@ -161,8 +163,10 @@ To add a Chinese translation:
 
 ## How to add a blog post
 
+### English blog posts
+
 1. Create a new `.md` file in the `blog/` directory.
-2. Add front matter:
+2. Add YAML front matter at the top of the file:
    ```yaml
    ---
    title: "Your Blog Post Title"
@@ -173,19 +177,89 @@ To add a Chinese translation:
    ---
    ```
    The `authors` field must match a key defined in `blog/authors.yml`.
+
 3. Use `<!-- truncate -->` to mark where the preview snippet ends on the blog listing page.
 
-## Versioning
+### Chinese translations
 
-Docs are versioned to match Volcano releases. The `docs/` folder always contains the latest (current) version. Past versions are frozen snapshots stored in `versioned_docs/`.
+To add a Chinese translation of a blog post:
 
-The list of versions is in `versions.json`. To create a new version when a release ships:
+1. Create the same `.md` file at the matching path under the `i18n` blog directory. For example:
+   - English: `blog/2025-06-01-my-post.md`
+   - Chinese: `i18n/zh-Hans/docusaurus-plugin-content-blog/2025-06-01-my-post.md`
+
+2. Translate the content, update the `title` and `description` in the front matter, and keep the same `date` and `authors`.
+
+## Versioning and archiving docs
+
+Docs are versioned to match Volcano releases.
+
+### How versioning works
+
+- The `docs/` directory is the **current** (in-development) version of the documentation.
+- When a new Volcano version is released, the current docs are frozen into a versioned snapshot stored in `versioned_docs/`.
+- The list of all released versions is maintained in `versions.json`.
+- Each frozen version has its own sidebar configuration in `versioned_sidebars/`.
+
+### Archiving a version for a new release
+
+When a new Volcano version ships (e.g., v1.13.0), follow **both** steps below to archive the English docs and the Chinese translations.
+
+#### Step 1 — Archive English docs (automated)
+
+Run the Docusaurus versioning command:
 
 ```bash
-npx docusaurus docs:version v1.14.0
+npx docusaurus docs:version v1.13.0
 ```
 
-This copies `docs/` into `versioned_docs/version-v1.14.0/` and updates `versions.json`. After that, update the version label in `docusaurus.config.js`.
+This command will:
+
+1. Copy the entire `docs/` directory into `versioned_docs/version-v1.13.0/`.
+2. Copy the current sidebar configuration into `versioned_sidebars/version-v1.13.0-sidebars.json`.
+3. Add `v1.13.0` to the `versions.json` file.
+
+> **Note:** This command **only** archives English documentation. Chinese translations must be archived manually.
+
+#### Step 2 — Archive Chinese translations (manual)
+
+The Docusaurus versioning command does not handle i18n files. You must manually copy the Chinese translations for the new version:
+
+1. Copy the current Chinese docs to a new versioned directory:
+
+   ```bash
+   cp -r i18n/zh-Hans/docusaurus-plugin-content-docs/current i18n/zh-Hans/docusaurus-plugin-content-docs/version-v1.13.0
+   ```
+
+   On Windows (PowerShell):
+   ```powershell
+   Copy-Item -Recurse i18n/zh-Hans/docusaurus-plugin-content-docs/current i18n/zh-Hans/docusaurus-plugin-content-docs/version-v1.13.0
+   ```
+
+2. If a `current.json` file exists (for label translations), copy it for the new version:
+
+   ```bash
+   cp i18n/zh-Hans/docusaurus-plugin-content-docs/current.json i18n/zh-Hans/docusaurus-plugin-content-docs/version-v1.13.0.json
+   ```
+
+3. Verify the new version directory was created successfully:
+
+   ```bash
+   ls i18n/zh-Hans/docusaurus-plugin-content-docs/
+   ```
+
+   You should see `version-v1.13.0/` and `version-v1.13.0.json` alongside the existing versions.
+
+#### Step 3 — Update configuration
+
+After archiving both English and Chinese docs:
+
+1. Update the version label in `docusaurus.config.js` to reflect the new current (next) version.
+2. Run `npm run build` to verify that the new version builds correctly for both locales.
+
+> **Note:** After archiving, the `docs/` folder and `i18n/.../current/` folder continue to be the working directories for the *next* release. All new documentation changes should go into those directories.
+
+For more details on how Docusaurus versioning works, see the [official Docusaurus versioning documentation](https://docusaurus.io/docs/versioning).
 
 ## Useful Docusaurus docs
 

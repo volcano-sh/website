@@ -1,6 +1,6 @@
 ﻿---
 title: "MPI Plugin User Guide"
-sidebar_position: 50
+
 ---
 
 

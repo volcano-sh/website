@@ -1,6 +1,5 @@
 ﻿---
 title: "Task Topology Plugin User Guide"
-sidebar_position: 50
 ---
 
 

@@ -100,7 +100,7 @@ export default function Frameworks() {
                   <img src={framework.logo} alt={`${framework.name} Logo`} />
                 </div>
                 <h3 className="framework-name">{framework.name}</h3>
-                <p className="framework-description">{framework.description}</p>
+                <p className="framework-description"><Translate>{framework.description}</Translate></p>
               </div>
             </a>
           ))}

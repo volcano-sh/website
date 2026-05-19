@@ -1,5 +1,4 @@
 ---
-id: podgroup
 title: PodGroup
 sidebar_position: 2
 ---

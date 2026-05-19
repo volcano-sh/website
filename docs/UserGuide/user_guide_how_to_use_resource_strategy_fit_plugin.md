@@ -1,6 +1,6 @@
 ﻿---
 title: "Resource Strategy Fit Plugin User Guide"
-sidebar_position: 50
+
 ---
 
 

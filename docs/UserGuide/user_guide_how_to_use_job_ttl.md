@@ -1,6 +1,6 @@
 ﻿---
 title: "Volcano Job Time to Live User Guide"
-sidebar_position: 50
+
 ---
 
 ## Background

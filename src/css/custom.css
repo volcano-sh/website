@@ -29,6 +29,10 @@
   --ifm-background-surface-color: #1b1b1d;
 }
 
+[data-theme="dark"] .navbar__logo img {
+  filter: brightness(0) invert(1) brightness(0.85);
+}
+
 
 html, body {
   font-family: var(--ifm-font-family-base);

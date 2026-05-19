@@ -1,5 +1,6 @@
 ---
 title: "Network Topology Aware Scheduling"
+sidebar_position: 1
 ---
 
 ## Background

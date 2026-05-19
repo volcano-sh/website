@@ -1,6 +1,6 @@
 ---
 title: "Extender User Guide"
-sidebar_position: 50
+
 ---
 
 
