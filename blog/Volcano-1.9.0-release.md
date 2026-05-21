@@ -59,7 +59,7 @@ spec:
 ```
 
 For a complete usage example of queue elastic capacity scheduling, please refer to:
-[How to use capacity plugin](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_capacity_plugin.md).
+[How to use capacity plugin](/docs/UserGuide/user_guide_how_to_use_capacity_plugin).
 
 For the elastic queue capacity design document, please refer to:
 [Capacity scheduling Design](https://github.com/volcano-sh/volcano/blob/master/docs/design/capacity-scheduling.md).
@@ -109,7 +109,7 @@ GPU Sharing is a GPU sharing and isolation solution introduced in Volcano v1.8, 
 
 - Spread: Prioritizes the use of idle GPU cards over shared cards that have already been allocated resources.
 
-For detailed usage documentation, please refer to: [How to use gpu sharing](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_gpu_sharing.md).
+For detailed usage documentation, please refer to: [How to use gpu sharing](/docs/UserGuide/user_guide_how_to_use_gpu_sharing).
 
 #### Volcano Support for Kubernetes v1.29
 

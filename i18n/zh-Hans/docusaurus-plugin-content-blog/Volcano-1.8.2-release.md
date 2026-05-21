@@ -39,7 +39,7 @@ Volcano是业界首个云原生批量计算项目，于2019年6月在上海 Kube
 
 - 如何使用 vGPU 功能：
 
-    https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_vgpu.md
+    /docs/KeyFeatures/GPUVirtualization
 
 - 如何增加新的异构算力共享策略：
 

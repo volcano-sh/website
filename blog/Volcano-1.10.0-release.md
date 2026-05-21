@@ -62,7 +62,7 @@ Volcano introduced the elastic queue capacity scheduling feature in version v1.9
 
 For detailed design information on elastic queue capacity scheduling, refer to the [Capacity Scheduling Design Document](https://github.com/volcano-sh/volcano/blob/master/docs/design/capacity-scheduling.md).
 
-For a step-by-step guide on using the capacity plugin, see the [Capacity Plugin User Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_capacity_plugin.md).
+For a step-by-step guide on using the capacity plugin, see the [Capacity Plugin User Guide](/docs/UserGuide/user_guide_how_to_use_capacity_plugin).
 
 Configure each dimension deserved resource samples for the queue:
 
@@ -88,11 +88,11 @@ For instructions on using the `Device Plugin` to report various GPU models, plea
 
 In version v1.10.0, the `capacity` plugin is the default for queue management. Note that the `capacity` and `proportion` plugins are incompatible, so after upgrading to v1.10.0, you must set the `deserved` field for queues to ensure proper functionality.
 
-For detailed instructions, please refer to the [Capacity Plugin User Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_capacity_plugin.md).
+For detailed instructions, please refer to the [Capacity Plugin User Guide](/docs/UserGuide/user_guide_how_to_use_capacity_plugin).
 
 The `capacity` plugin allocates cluster resources based on the `deserved` value set by the user, while the `proportion` plugin dynamically allocates resources according to queue weight. Users can select either the `capacity` or `proportion` plugin for queue management based on their specific needs.
 
-For more details on the proportion plugin, please visit: [Proportion Plugin](https://volcano.sh/docs/Scheduler/Plugins/proportion).
+For more details on the proportion plugin, please visit: [Proportion Plugin](/docs/Scheduler/Plugins/proportion).
 
 ### Introduce Pod Scheduling Readiness Support
 

@@ -64,7 +64,7 @@ Volcano中的队列调度涉及以下核心action：
 Volcano提供了两个核心的队列调度插件：
 
 #### capacity插件
-[capacity插件](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_capacity_plugin.md)支持通过显式配置deserverd值来设置队列资源应得量，如以下队列配置示例：
+[capacity插件](/docs/UserGuide/user_guide_how_to_use_capacity_plugin)支持通过显式配置deserverd值来设置队列资源应得量，如以下队列配置示例：
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1

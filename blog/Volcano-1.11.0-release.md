@@ -139,9 +139,9 @@ Volcano will continue to refine network topology-aware scheduling, with future p
 
 For detailed design and user guide, please refer to:
 
-Design Document: **[Network Topology Aware Scheduling](https://volcano.sh/docs/KeyFeatures/NetworkTopologyAware)**.
+Design Document: **[Network Topology Aware Scheduling](/docs/KeyFeatures/NetworkTopologyAware)**.
 
-Usage Document: **[Network Topology Aware Scheduling | Volcano](https://volcano.sh/docs/KeyFeatures/NetworkTopologyAware)**.
+Usage Document: **[Network Topology Aware Scheduling | Volcano](/docs/KeyFeatures/NetworkTopologyAware)**.
 
 Sincerely thanks to community developers: **@ecosysbin, @weapons97, @Xu-Wentao, @penggu, @JesseStutler, @Monokaix** for their contributions!
 
@@ -181,7 +181,7 @@ For detailed design and user guide, please refer to:
 
 Design Document: **[hierarchical-queue-on-capacity-plugin](https://github.com/volcano-sh/volcano/blob/master/docs/design/hierarchical-queue-on-capacity-plugin.md)**.
 
-Usage Document: **[Hierarchical Queue | Volcano](https://volcano.sh/zh/docs/hierarchical_queue/)**.
+Usage Document: **[Hierarchical Queue | Volcano](/docs/KeyFeatures/HierarchicalQueue)**.
 
 Sincerely thanks to community developer: **@Rui-Gan** for this contribution!
 
@@ -200,7 +200,7 @@ Volcano Global enhances Karmada with the following features to meet the complex 
 
 ![Volcano Global Architecture](/img/blog/volcano_global_design.svg)
 
-For detailed deployment and user guide, please refer to: **[Multi-Cluster AI Job Scheduling | Volcano](https://volcano.sh/docs/KeyFeatures/MultiClusterScheduling)**.
+For detailed deployment and user guide, please refer to: **[Multi-Cluster AI Job Scheduling | Volcano](/docs/KeyFeatures/MultiClusterScheduling)**.
 
 Sincerely thanks to community developers: **@Vacant2333, @MondayCha, @lowang-bh, @Monokaix** for their contributions!
 
@@ -243,7 +243,7 @@ Volcano’s cloud-native colocation solution offers the following key capabiliti
 - **CPU Burst:** Allows containers to temporarily exceed CPU limits, avoiding throttling during critical moments and improving responsiveness.
 - **Network Bandwidth Isolation:** Supports node-level network bandwidth limits, ensuring online workload network requirements.
 
-For detailed design and user guide, please refer to: **[Cloud Native Colocation | Volcano](https://volcano.sh/docs/KeyFeatures/cloudNativeColocation)**.
+For detailed design and user guide, please refer to: **[Cloud Native Colocation | Volcano](/docs/KeyFeatures/cloudNativeColocation)**.
 
 Sincerely thanks to community developer: **@william-wang** for this contribution!
 
@@ -277,7 +277,7 @@ In Kubernetes clusters, dynamic workload changes often lead to uneven node resou
 
   Users can customize descheduling intervals or trigger conditions based on business requirements , ensuring flexibility and controllability in scheduling.
 
-For detailed user guide, please refer to: **[Load-aware Descheduling | Volcano](https://volcano.sh/docs/KeyFeatures/LoadAwareDescheduling)**.
+For detailed user guide, please refer to: **[Load-aware Descheduling | Volcano](/docs/KeyFeatures/LoadAwareDescheduling)**.
 
 Sincerely thanks to community developer: **@Monokaix** for this contribution!
 
@@ -359,7 +359,7 @@ policies:
 - **Seamless Compatibility with Checkpointing:**  
   Perfectly integrates with checkpointing and resumption technologies in AI scenarios, ensuring efficient recovery of training tasks.
 
-For detailed design and user guide, please refer to: **[How to use job policy](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_job_policy.md)**.
+For detailed design and user guide, please refer to: **[How to use job policy](/docs/UserGuide/user_guide_how_to_use_job_policy)**.
 
 Sincerely thanks to community developer: **@bibibox** for this contribution!
 
@@ -387,7 +387,7 @@ Sincerely thanks to community developers: **@vie-serendipity, @dongjiang1989** f
 
 Volcano Jobs now support **PreemptionPolicy**, allowing users to configure whether Jobs can preempt other Pods. Jobs with `PreemptionPolicy: Never` will not preempt resources, ensuring stability.
 
-For configuration examples, please refer to: **[how to configure priorityclass for job](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_configure_priorityclass_for_job.md)**.
+For configuration examples, please refer to: **[how to configure priorityclass for job](/docs/UserGuide/user_guide_how_to_configure_priorityclass_for_job)**.
 
 Sincerely thanks to community developer: **@JesseStut** for this contribution!
 

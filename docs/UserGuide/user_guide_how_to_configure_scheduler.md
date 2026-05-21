@@ -1,4 +1,4 @@
-﻿---
+---
 title: "How to Configure Scheduler"
 
 ---
@@ -6,7 +6,7 @@ title: "How to Configure Scheduler"
 
 ## Requirements
 * Before reading the guidance, please make sure you are aware of basic concepts such as `action` `plugin` `session` `tier`
-`volcano job` `podgroup` `queue` and so on. If they are still strange to you, please refer to [Volcano Docs](https://volcano.sh/en/docs/)
+`volcano job` `podgroup` `queue` and so on. If they are still strange to you, please refer to [Volcano Docs](../Home/Introduction)
 for more details.
 * Before reading the guidance, please make sure you have general understanding of Volcano scheduling workflow.
 

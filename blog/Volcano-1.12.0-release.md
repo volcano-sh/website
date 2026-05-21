@@ -49,10 +49,10 @@ Version 1.12 integrates the following key features:
 
 Related documentation:
 
-*   [Network Topology-Aware Scheduling Introduction and Usage](https://volcano.sh/docs/KeyFeatures/NetworkTopologyAware)
+*   [Network Topology-Aware Scheduling Introduction and Usage](/docs/KeyFeatures/NetworkTopologyAware)
 *   [Network Topology-Aware Scheduling Design Document](https://github.com/volcano-sh/volcano/blob/master/docs/design/Network%20Topology%20Aware%20Scheduling.md)
 *   [HyperNode Auto-Discovery Design Document](https://github.com/volcano-sh/volcano/blob/master/docs/design/hyperNode-auto-discovery.md)
-*   [HyperNode Auto-Discovery Usage Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_hypernode_auto_discovery.md)
+*   [HyperNode Auto-Discovery Usage Guide](/docs/UserGuide/user_guide_how_to_use_hypernode_auto_discovery)
 
 Related PRs:
 
@@ -74,7 +74,7 @@ Volcano's GPU virtualization feature allows users to request partial GPU resourc
 **Volcano v1.12 introduces dynamic MIG partitioning and scheduling capabilities.** It can select the appropriate MIG instance size in real-time based on the user's requested GPU amount and uses a Best-Fit algorithm to reduce resource waste. It also supports GPU scoring strategies like BinPack and Spread to minimize resource fragmentation and improve GPU utilization. Users can request resources using the unified APIs `volcano.sh/vgpu-number`, `volcano.sh/vgpu-cores`, and `volcano.sh/vgpu-memory`, without needing to be aware of the underlying implementation details.
 
 *   Design Document: [Dynamic MIG Design Document](https://github.com/volcano-sh/volcano/blob/master/docs/design/dynamic-mig.md)
-*   Usage Guide: [Dynamic MIG Usage Guide](https://volcano.sh/docs/KeyFeatures/GPUVirtualization)
+*   Usage Guide: [Dynamic MIG Usage Guide](/docs/KeyFeatures/GPUVirtualization)
 
 Related PRs:
 
@@ -87,7 +87,7 @@ Thanks to the following community developers for their contributions to this fea
 
 Kubernetes DRA (Dynamic Resource Allocation) is a native feature that provides a more flexible and powerful way to manage heterogeneous hardware resources in a cluster, such as GPUs, FPGAs, and high-performance network cards. It addresses the limitations of the traditional Device Plugin model in some advanced scenarios. Volcano v1.12 adds support for DRA, allowing the cluster to dynamically allocate and manage external resources, which enhances Volcano's integration with the Kubernetes ecosystem and improves the flexibility of resource management.
 
-*   Usage Guide: [Enabling DRA in Volcano](https://volcano.sh/docs/KeyFeatures/UnifiedScheduling)
+*   Usage Guide: [Enabling DRA in Volcano](/docs/KeyFeatures/UnifiedScheduling)
 
 Related PR:
 

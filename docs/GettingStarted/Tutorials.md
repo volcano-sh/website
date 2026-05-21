@@ -4,7 +4,7 @@ sidebar_position: 2
 ---
 This section provides guidance to help you quickly get started with Volcano, from deploying a basic Volcano Job/Deployment, to integrating with Volcano Queues
 ## Prerequisites
-A Kubernetes cluster with Volcano components need to be installed successfully. If you haven't installed Volcano yet, please refer to [Installation](https://volcano.sh/en/docs/installation/).
+A Kubernetes cluster with Volcano components need to be installed successfully. If you haven't installed Volcano yet, please refer to [Installation](../GettingStarted/Installation).
 
 ## Quick Start: Deploy a Volcano Job
 This quick start guide will walk you through deploying a simple Volcano Job. By default, Volcano Jobs use the default queue if no specific queue is provided.

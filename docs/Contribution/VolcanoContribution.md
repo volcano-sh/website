@@ -39,12 +39,12 @@ To better communicate with developers in the Volcano community, please subscribe
 Volcano is an open-source project driven by the Volcano community, which strives to promote a healthy, friendly, and productive environment.
 The community is committed to developing a system that helps running high-performance workloads, such as AI, ML, and deep learning applications, on Kubernetes. Building such a system would be impossible without the support of community contributors with similar aspirations.
 
-- For details about the community roles, see [Community Membership](https://github.com/volcano-sh/website/blob/master/content/en/docs/membership.md). If you make significant contributions, you will have a more advanced role in the community.
+- For details about the community roles, see [Community Membership](../Contribution/communitymembership). If you make significant contributions, you will have a more advanced role in the community.
 
 
 ## Getting Started
 
-- For more information on building and deployment, see [setup](https://github.com/volcano-sh/website/blob/master/content/en/docs/installation.md).
+- For more information on building and deployment, see [setup](../GettingStarted/Installation).
 
 
 ## Your First Contribution

@@ -127,7 +127,7 @@ labels:
 
 感谢社区开发者：@[zhaoqi612](https://github.com/zhaoqi612)
 
-使用文档：[HyperNode Auto Discovery](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_hypernode_auto_discovery.md)。
+使用文档：[HyperNode Auto Discovery](/docs/UserGuide/user_guide_how_to_use_hypernode_auto_discovery)。
 
 ## 新增原生Ray框架支持
 
@@ -141,7 +141,7 @@ labels:
 
 设计文档：[Ray Framework Plugin Design Doc](https://github.com/volcano-sh/volcano/blob/master/docs/design/distributed-framework-plugins.md)。
 
-使用文档：[Ray Plugin User Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_ray_plugin.md)。
+使用文档：[Ray Plugin User Guide](/docs/UserGuide/user_guide_how_to_use_ray_plugin)。
 
 ## 新增HCCL插件支持
 
@@ -188,7 +188,7 @@ tiers:
 
 NodeGroup设计文档：[NodeGroup Design.](https://github.com/volcano-sh/volcano/blob/master/docs/design/node-group.md)
 
-NodeGroup使用文档：[NodeGroup User Guide.](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_nodegroup_plugin.md)
+NodeGroup使用文档：[NodeGroup User Guide.](/docs/UserGuide/user_guide_how_to_use_nodegroup_plugin)
 
 ## 引入ResourceStrategyFit插件
 
@@ -273,7 +273,7 @@ tiers:
 
 设计文档：[ResourceStrategyFit Design](https://github.com/volcano-sh/volcano/blob/master/docs/design/resource-strategy-fit-scheduling.md)
 
-使用文档：[ResourceStrategyFit User Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_resource_strategy_fit_plugin.md)
+使用文档：[ResourceStrategyFit User Guide](/docs/UserGuide/user_guide_how_to_use_resource_strategy_fit_plugin)
 
 ## 混部能力与操作系统解耦
 
@@ -289,7 +289,7 @@ helm install volcano . --create-namespace -n volcano-system --set custom.colocat
 
 感谢社区开发者：@[ShuhanYan](https://github.com/ShuhanYan), @[Monokaix](https://github.com/Monokaix)
 
-混部文档：https://volcano.sh/en/docs/colocation/
+混部文档：[Cloud Native Colocation](/docs/KeyFeatures/cloudNativeColocation)
 
 ## 支持自定义超卖资源名称
 
@@ -305,7 +305,7 @@ helm install volcano . --create-namespace -n volcano-system --set custom.colocat
 
 感谢社区开发者：@[ShuhanYan](https://github.com/ShuhanYan), @[Monokaix](https://github.com/Monokaix)
 
-混部文档：https://volcano.sh/en/docs/colocation/
+混部文档：[Cloud Native Colocation](/docs/KeyFeatures/cloudNativeColocation)
 
 ## 新增Kubernetes 1.33支持
 

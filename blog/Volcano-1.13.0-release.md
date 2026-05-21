@@ -128,7 +128,7 @@ Related PR: https://github.com/volcano-sh/volcano/pull/4629
 
 Sincerely thanks to community developer: @[zhaoqi612](https://github.com/zhaoqi612)
 
-Usage documentation: [HyperNode Auto Discovery](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_hypernode_auto_discovery.md).
+Usage documentation: [HyperNode Auto Discovery](/docs/UserGuide/user_guide_how_to_use_hypernode_auto_discovery).
 
 ## Add Native Ray Framework Support
 
@@ -142,7 +142,7 @@ Sincerely thanks to community developer: @[Wonki4](https://github.com/Wonki4)
 
 Design documentation: [Ray Framework Plugin Design Doc](https://github.com/volcano-sh/volcano/blob/master/docs/design/distributed-framework-plugins.md).
 
-Usage documentation: [Ray Plugin User Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_ray_plugin.md).
+Usage documentation: [Ray Plugin User Guide](/docs/UserGuide/user_guide_how_to_use_ray_plugin).
 
 ## Introduce HCCL Plugin Support
 
@@ -189,7 +189,7 @@ Sincerely thanks to community developers: @[JesseStutler](https://github.com/Jes
 
 NodeGroup design documentation: [NodeGroup Design.](https://github.com/volcano-sh/volcano/blob/master/docs/design/node-group.md)
 
-NodeGroup usage documentation: [NodeGroup User Guide.](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_nodegroup_plugin.md)
+NodeGroup usage documentation: [NodeGroup User Guide.](/docs/UserGuide/user_guide_how_to_use_nodegroup_plugin)
 
 ## Introduce ResourceStrategyFit Plugin
 
@@ -274,7 +274,7 @@ Sincerely thanks to community developers: @[LY-today](https://github.com/LY-toda
 
 Design documentation: [ResourceStrategyFit Design](https://github.com/volcano-sh/volcano/blob/master/docs/design/resource-strategy-fit-scheduling.md)
 
-Usage documentation: [ResourceStrategyFit User Guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_resource_strategy_fit_plugin.md)
+Usage documentation: [ResourceStrategyFit User Guide](/docs/UserGuide/user_guide_how_to_use_resource_strategy_fit_plugin)
 
 ## Decouple Colocation from OS
 
@@ -290,7 +290,7 @@ Related PRs: https://github.com/volcano-sh/volcano/pull/4409, https://github.com
 
 Sincerely thanks to community developers: @[ShuhanYan](https://github.com/ShuhanYan), @[Monokaix](https://github.com/Monokaix)
 
-Colocation documentation: https://volcano.sh/docs/KeyFeatures/cloudNativeColocation
+Colocation documentation: [Cloud Native Colocation](/docs/KeyFeatures/cloudNativeColocation)
 
 ## Support Custom OverSubscription Resource Names
 
@@ -306,7 +306,7 @@ Related PRs: https://github.com/volcano-sh/volcano/pull/4413, https://github.com
 
 Sincerely thanks to community developers: @[ShuhanYan](https://github.com/ShuhanYan), @[Monokaix](https://github.com/Monokaix)
 
-Colocation documentation: https://volcano.sh/docs/KeyFeatures/cloudNativeColocation
+Colocation documentation: [Cloud Native Colocation](/docs/KeyFeatures/cloudNativeColocation)
 
 ## Add Kubernetes 1.33 Support
 

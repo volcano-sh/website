@@ -38,7 +38,7 @@ For more information about vGPU, please refer to:
 
 - How to use the vGPU feature:
 
-    https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_vgpu.md
+    /docs/KeyFeatures/GPUVirtualization
 
 - How to add new heterogeneous arithmetic sharing strategies:
 

@@ -61,7 +61,7 @@ const config = {
           sidebarPath: require.resolve('./sidebar.js'),
           showLastUpdateTime: true,
           showLastUpdateAuthor: false,
-          editUrl: "https://github.com/volcano-sh/website/tree/main/",
+          editUrl: "https://github.com/volcano-sh/website/tree/master/",
           lastVersion: "current",
           versions: {
             current: {
@@ -77,7 +77,7 @@ const config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          editUrl: "https://github.com/volcano-sh/website/tree/main/",
+          editUrl: "https://github.com/volcano-sh/website/tree/master/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "warn",

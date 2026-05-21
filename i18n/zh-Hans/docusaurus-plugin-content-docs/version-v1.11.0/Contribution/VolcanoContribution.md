@@ -46,7 +46,7 @@ Volcano 是一个社区驱动的开源项目，致力于打造健康、友好和
 
 ## 开始
 
-- 查看[安装文档](/docs/GettingStarted/Installation) 了解更多关于编译和部署的细节。
+- 查看[安装文档](../GettingStarted/Installation) 了解更多关于编译和部署的细节。
 
 ## 您的第一个贡献
 

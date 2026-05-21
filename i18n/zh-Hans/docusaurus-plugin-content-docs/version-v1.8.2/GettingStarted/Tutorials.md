@@ -5,7 +5,7 @@ title: "快速开始"
 本节将指导您快速上手Volcano，内容涵盖从部署基础的Volcano Job/Deployment到与Volcano队列集成等。
 
 ## 前提条件
-您需要一个已成功安装Volcano组件的Kubernetes集群。如果尚未安装Volcano，请参考[安装文档](https://volcano.sh/en/docs/installation/)。
+您需要一个已成功安装Volcano组件的Kubernetes集群。如果尚未安装Volcano，请参考[安装文档](../GettingStarted/Installation)。
 
 ## 快速入门：部署一个Volcano Job
 本快速入门指南将引导您部署一个简单的Volcano Job。如果未指定队列，Volcano Job默认使用`default`队列。

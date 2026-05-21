@@ -28,9 +28,7 @@ In the process of kubernetes cluster governance, hotspots are often formed due t
 
 The native descheduler only supports load-aware scheduling based on Pod request, which evicts Pods on nodes with higher utilization rates, thus equalizing resource utilization among nodes and avoiding overheating of individual node. However, Pod request does not reflect the real resource utilization of the nodes, so Volcano implements descheduling based on the real load of the nodes, by querying the metrics exposed by nodes, more accurate descheduling is performed based on the real load of CPU and Memory.
 
-<!--<div style="text-align: center;"> 
-  <img src="/img/blog/descheduler_EN.svg" alt="LoadAware Descheduling" />
-</div>-->
+![LoadAware Descheduling](/img/doc/descheduler_EN.svg)
 
 The principle of LoadAware is shown in the figure above:
 
@@ -42,7 +40,7 @@ The principle of LoadAware is shown in the figure above:
 
 ### Prepare
 
-Install [prometheus](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus) or [prometheus-adaptor](https://github.com/prometheus-community/helm- c harts/tree/main/charts/prometheus-adapter), and [prometheus-node-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter), The real load of the node is exposed to the `Volcano descheduler` through node-exporter and prometheus.
+Install [prometheus](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus) or [prometheus-adaptor](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-adapter), and [prometheus-node-exporter](https://github.com/prometheus-community/helm-charts/tree/main/charts/prometheus-node-exporter), The real load of the node is exposed to the `Volcano descheduler` through node-exporter and prometheus.
 
 Add the following automatic discovery and node label replacement rules for the node-exporter service in the `scrape_configs` configuration of prometheus. This step is very important, otherwise `Volcano descheduler` cannot get the real load metrics of the node. For more details about `scrape_configs`, please refer to [Configuration | Prometheus](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config).
 
