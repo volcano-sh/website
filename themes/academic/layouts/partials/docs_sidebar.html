@@ -21,13 +21,31 @@
   <div class="docs-toc-item{{ if $current_page.IsMenuCurrent $menu_name . }} active{{ end }}">
     <a class="docs-toc-link" {{ if .URL }}href="{{ .URL }}"{{else if .HasChildren }}href="{{(index .Children 0).URL }}"{{end}} style="width: 77%;float: left;padding-right: 0px;">{{ .Name }}</a>
     <div style="width: 80px;height: 43px;position: relative;left: calc( 100% - 80px );">
-      <div style="width: 0px;height: 0px;border:5px solid #fff;border-top-color:rgba(0, 0, 0, .65);position: relative;top: 18px;left: calc(50% - 0px);" onclick="change({{.Weight}},{{.Name}})" class="change_dot" id="{{.Name}}"></div>
+      <div style="width: 0px;height: 0px;border:5px solid #fff;border-top-color:rgba(0, 0, 0, .65);position: relative;top: 18px;left: calc(50% - 0px);" onclick="toggleMenu('{{.Weight}}', '{{.Name}}')" class="change_dot" id="dot-{{.Name}}"></div>
     </div>
     {{- if .HasChildren }}
-    <ul class="nav docs-sidenav box" style="display: block;" id="{{.Weight}}">
+    <ul class="nav docs-sidenav box" style="display: block;" id="menu-{{.Weight}}">
+      {{ $parentIdentifier := .Identifier }}
       {{ range .Children }}
-      <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }}>
-        <a href="{{ .URL }}">{{ .Name }}</a>
+      <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }} style="padding-left: 15px;">
+        {{- if .HasChildren }}
+          {{/* Second-level item with children (e.g., Plugins) */}}
+          <a href="javascript:void(0);" onclick="toggleSubmenu('{{.Identifier}}')" style="display: flex; align-items: center; justify-content: space-between;">
+            <span>{{ .Name }}</span>
+            <div style="width: 0px;height: 0px;border:5px solid #fff;border-top-color:rgba(0, 0, 0, .65);margin-left: 5px;" class="change_dot submenu-arrow" id="dot-{{.Identifier}}"></div>
+          </a>
+          {{/* Third-level submenu (individual plugins) */}}
+          <ul class="nav docs-sidenav-nested box" style="display: none;" id="submenu-{{.Identifier}}">
+            {{ range .Children }}
+            <li {{ if $current_page.IsMenuCurrent $menu_name . }}class="active"{{ end }} style="padding-left: 30px;">
+              <a href="{{ .URL }}">{{ .Name }}</a>
+            </li>
+            {{ end }}
+          </ul>
+        {{- else }}
+          {{/* Regular second-level item without children */}}
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        {{- end }}
       </li>
       {{ end }}
     </ul>
@@ -37,26 +55,84 @@
   {{ end }}
   {{ end }}
 </nav>
+
 <script type="text/javascript">
-  // Save sidebar scroll position before navigation
+  // Toggle top-level menus
+  function toggleMenu(weight, name) {
+    var menu = document.getElementById('menu-' + weight);
+    var dot = document.getElementById('dot-' + name);
+    
+    if (menu && dot) {
+      if (menu.style.display === 'none') {
+        menu.style.display = 'block';
+        dot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
+        dot.style.borderRightColor = '#fff';
+        dot.style.left = 'calc(50% - 0px)';
+      } else {
+        menu.style.display = 'none';
+        dot.style.borderRightColor = 'rgba(0, 0, 0, .65)';
+        dot.style.borderTopColor = '#fff';
+        dot.style.left = 'calc(50% - 2px)';
+      }
+    }
+  }
+  
+  // Toggle second-level submenus (Plugins)
+  function toggleSubmenu(identifier) {
+    var submenu = document.getElementById('submenu-' + identifier);
+    var dot = document.getElementById('dot-' + identifier);
+    
+    if (submenu && dot) {
+      if (submenu.style.display === 'none') {
+        submenu.style.display = 'block';
+        dot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
+        dot.style.borderRightColor = '#fff';
+        dot.style.transform = 'rotate(0deg)';
+      } else {
+        submenu.style.display = 'none';
+        dot.style.borderRightColor = 'rgba(0, 0, 0, .65)';
+        dot.style.borderTopColor = '#fff';
+        dot.style.transform = 'rotate(-90deg)';
+      }
+    }
+  }
+  
+  // Auto-expand + scroll position
   document.addEventListener('DOMContentLoaded', function() {
     var sidebar = document.getElementById('docs-nav');
-    if (!sidebar) {
-      return;  // Early return if sidebar doesn't exist
-    }
+    if (!sidebar) return;
     
-    // Restore saved scroll position
+    // Auto-expand active menus
+    var activeItems = document.querySelectorAll('.docs-sidenav li.active');
+    activeItems.forEach(function(item) {
+      var parentSubmenu = item.closest('.docs-sidenav-nested');
+      if (parentSubmenu) {
+        parentSubmenu.style.display = 'block';
+        var submenuId = parentSubmenu.id.replace('submenu-', '');
+        var submenuDot = document.getElementById('dot-' + submenuId);
+        if (submenuDot) {
+          submenuDot.style.borderTopColor = 'rgba(0, 0, 0, .65)';
+          submenuDot.style.borderRightColor = '#fff';
+        }
+      }
+      
+      var parentMenu = item.closest('.box');
+      if (parentMenu && parentMenu.id.startsWith('menu-')) {
+        parentMenu.style.display = 'block';
+      }
+    });
+    
+    // Restore scroll position
     var savedScrollPos = sessionStorage.getItem('docs-sidebar-scroll');
     if (savedScrollPos) {
       sidebar.scrollTop = parseInt(savedScrollPos, 10);
     }
     
-    // Save scroll position before leaving page
+    // Save scroll on navigation
     window.addEventListener('beforeunload', function() {
       sessionStorage.setItem('docs-sidebar-scroll', sidebar.scrollTop);
     });
     
-    // Also save on link clicks within sidebar
     var sidebarLinks = sidebar.querySelectorAll('a');
     sidebarLinks.forEach(function(link) {
       link.addEventListener('click', function() {
@@ -65,7 +141,7 @@
     });
   });
 
-  function change(aaa){  // Removed unused 'name' parameter
+  function change(aaa) {  // Bug fix: removed unused parameter
     var ull = document.getElementsByClassName('box');
     var dots = document.getElementsByClassName('change_dot');
     
@@ -84,3 +160,29 @@
     }
   }
 </script>
+
+<style>
+.docs-sidenav-nested {
+  list-style: none;
+  padding-left: 0;
+}
+
+.docs-sidenav-nested li a {
+  display: block;
+  padding: 0.25rem 0;
+  text-decoration: none;
+}
+
+.docs-sidenav-nested li a:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.docs-sidenav-nested li.active > a {
+  font-weight: bold;
+  color: #d32f2f;
+}
+
+.submenu-arrow {
+  transition: transform 0.2s ease;
+}
+</style>
