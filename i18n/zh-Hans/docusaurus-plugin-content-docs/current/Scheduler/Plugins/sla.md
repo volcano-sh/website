@@ -2,38 +2,38 @@
 title: "SLA"
 ---
 
-## Overview
+## 概述
 
-When users submit jobs to Volcano, they may need to add particular constraints to jobs, for example, the longest Pending time to prevent jobs from starving. These constraints can be regarded as **Service Level Agreements (SLA)** which are agreed upon between Volcano and the user. The SLA plugin is provided to receive and enforce SLA settings for both individual jobs and the entire cluster.
+当用户向 Volcano 提交作业时，可能需要为作业添加特定约束，例如最长 Pending 时间以防止作业饥饿。这些约束可视为 Volcano 与用户之间约定的**服务级别协议（SLA）**。SLA 插件用于接收并执行针对单个作业和整个集群的 SLA 设置。
 
-## How It Works
+## 工作原理
 
-The SLA plugin monitors job waiting times and can take actions when SLA constraints are violated:
+SLA 插件监控作业的等待时间，并在 SLA 约束被违反时采取相应措施：
 
-- **JobWaitingTime**: Maximum time a job can wait in the pending state
-- **JobEnqueuedFn**: Checks if a job meets SLA requirements before being enqueued
+- **JobWaitingTime**：作业在 Pending 状态下允许等待的最长时间
+- **JobEnqueuedFn**：在作业入队前检查是否满足 SLA 要求
 
-When a job's waiting time exceeds the configured threshold, the scheduler can take corrective actions such as prioritizing the job or notifying administrators.
+当作业的等待时间超过配置的阈值时，调度器可采取纠正措施，例如提升作业优先级或通知管理员。
 
-## Scenario
+## 应用场景
 
-Users can customize SLA-related parameters in their own cluster according to business needs:
+用户可根据业务需求在自己的集群中自定义 SLA 相关参数：
 
-### Real-time Services
+### 实时服务
 
-For clusters with high real-time service requirements, `JobWaitingTime` can be set as small as possible to ensure jobs are scheduled quickly or flagged for attention.
+对于有高实时性要求的集群，可将 `JobWaitingTime` 设置得尽量小，以确保作业被快速调度或被标记为需关注。
 
-### Batch Computing
+### 批量计算
 
-For clusters primarily running bulk computing jobs, `JobWaitingTime` can be set larger to allow for more flexible scheduling over time.
+对于主要运行批量计算作业的集群，可将 `JobWaitingTime` 设置得较大，以允许更灵活的时间窗口内进行调度。
 
-### Multi-tenant Environments
+### 多租户环境
 
-In multi-tenant clusters, different queues or namespaces can have different SLA requirements based on their service tier.
+在多租户集群中，不同队列或命名空间可以根据其服务等级设置不同的 SLA 要求。
 
-## Configuration
+## 配置
 
-Enable the SLA plugin in the scheduler ConfigMap:
+在调度器 ConfigMap 中启用 SLA 插件：
 
 ```yaml
 tiers:
@@ -45,17 +45,17 @@ tiers:
       sla.JobWaitingTime: 10m
 ```
 
-### Configuration Parameters
+### 配置参数
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `sla.JobWaitingTime` | Maximum waiting time for a job | - |
+| 参数 | 说明 | 默认值 |
+|-----------|-------------|---------| 
+| `sla.JobWaitingTime` | 作业的最长等待时间 | - |
 
-The `JobWaitingTime` parameter can be specified using duration format (e.g., `5m`, `1h`, `30s`).
+`JobWaitingTime` 参数使用时长格式指定（例如 `5m`、`1h`、`30s`）。
 
-## Example
+## 示例
 
-### Cluster-wide SLA Configuration
+### 集群级 SLA 配置
 
 ```yaml
 apiVersion: v1
@@ -80,9 +80,9 @@ data:
       - name: nodeorder
 ```
 
-### Job with SLA Annotation
+### 带 SLA 注解的作业
 
-You can also specify SLA constraints at the job level:
+也可以在作业级别指定 SLA 约束：
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -105,14 +105,14 @@ spec:
           command: ["sleep", "3600"]
 ```
 
-In this example, if the job waits more than 10 minutes in the pending state, the SLA plugin will flag it for priority scheduling or administrative attention.
+在此示例中，若作业在 Pending 状态下等待超过 10 分钟，SLA 插件将其标记为需优先调度或提醒管理员关注。
 
-### Monitoring SLA Violations
+### 监控 SLA 违规
 
-Volcano exposes metrics that can be used to monitor SLA compliance:
+Volcano 暴露的指标可用于监控 SLA 合规情况：
 
-- Job waiting time metrics
-- SLA violation counts
-- Queue-level SLA statistics
+- 作业等待时间指标
+- SLA 违规计数
+- 队列级 SLA 统计数据
 
-These metrics can be integrated with monitoring systems like Prometheus to track SLA compliance across the cluster.
+这些指标可与 Prometheus 等监控系统集成，以跟踪整个集群的 SLA 合规状态。

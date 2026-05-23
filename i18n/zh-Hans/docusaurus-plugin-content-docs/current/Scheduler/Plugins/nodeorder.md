@@ -2,42 +2,42 @@
 title: Nodeorder
 ---
 
-## Overview
+## 概述
 
-The Nodeorder plugin is a scheduling optimization strategy that scores nodes from various dimensions through simulated assignments to find the node that is best suited for the current task. The scoring parameters are configured by the user.
+Nodeorder 插件是一种调度优化策略，通过模拟分配从多个维度对节点进行打分，以找到最适合当前任务的节点。打分参数由用户配置。
 
-## How It Works
+## 工作原理
 
-The Nodeorder plugin implements the **NodeOrderFn** to score all nodes for a task using a series of scoring algorithms. The node with the highest score is considered to be the most suitable node for the task.
+Nodeorder 插件实现了 **NodeOrderFn**，使用一系列打分算法对任务的所有候选节点进行评分。得分最高的节点被认为是最适合该任务的节点。
 
-Scoring dimensions include:
-- **Affinity**: Node and pod affinity/anti-affinity scores
-- **LeastRequestedResource**: Prefers nodes with more available resources
-- **MostRequestedResource**: Prefers nodes with fewer available resources (consolidation)
-- **BalancedResourceAllocation**: Prefers nodes with balanced resource usage
-- **ImageLocality**: Prefers nodes that already have the container images
+评分维度包括：
+- **Affinity（亲和性）**：节点和 Pod 亲和性/反亲和性分数
+- **LeastRequestedResource（最少请求资源）**：优先选择可用资源更多的节点
+- **MostRequestedResource（最多请求资源）**：优先选择可用资源较少的节点（用于整合）
+- **BalancedResourceAllocation（均衡资源分配）**：优先选择资源使用均衡的节点
+- **ImageLocality（镜像本地性）**：优先选择已缓存所需容器镜像的节点
 
-## Scenario
+## 应用场景
 
-The Nodeorder plugin provides scoring criteria across multiple dimensions for scheduling. The combination of different dimensions enables users to flexibly configure appropriate scheduling policies according to their own needs.
+Nodeorder 插件从多个维度提供调度评分标准。通过组合不同维度，用户可以根据自身需求灵活配置合适的调度策略。
 
-### Workload Distribution
+### 工作负载分布
 
-By adjusting weights for different scoring dimensions, you can control how workloads are distributed across the cluster:
-- Use **LeastRequestedResource** to spread workloads evenly
-- Use **MostRequestedResource** to consolidate workloads (similar to Binpack)
+通过调整不同评分维度的权重，可以控制工作负载在集群中的分布方式：
+- 使用 **LeastRequestedResource** 均匀分散工作负载
+- 使用 **MostRequestedResource** 整合工作负载（类似 Binpack）
 
-### Image Locality Optimization
+### 镜像本地性优化
 
-For large container images, using **ImageLocality** scoring can reduce pod startup time by preferring nodes that already have the required images.
+对于体积较大的容器镜像，使用 **ImageLocality** 打分可以通过优先选择已缓存所需镜像的节点来缩短 Pod 启动时间。
 
-### Affinity Optimization
+### 亲和性优化
 
-The **Affinity** dimension ensures that pods are placed according to their affinity and anti-affinity rules.
+**Affinity** 维度确保 Pod 按照其亲和性和反亲和性规则进行放置。
 
-## Configuration
+## 配置
 
-The Nodeorder plugin is enabled in the scheduler ConfigMap with configurable weights:
+Nodeorder 插件在调度器 ConfigMap 中启用，支持配置权重：
 
 ```yaml
 tiers:
@@ -54,27 +54,27 @@ tiers:
       nodeorder.imagelocality.enable: true
 ```
 
-### Configuration Parameters
+### 配置参数
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `nodeorder.weight` | Overall weight of the Nodeorder plugin | 1 |
-| `nodeorder.leastrequested.enable` | Enable least requested resource scoring | true |
-| `nodeorder.mostrequested.enable` | Enable most requested resource scoring | false |
-| `nodeorder.nodeaffinity.enable` | Enable node affinity scoring | true |
-| `nodeorder.podaffinity.enable` | Enable pod affinity scoring | true |
-| `nodeorder.balancedresource.enable` | Enable balanced resource scoring | true |
-| `nodeorder.imagelocality.enable` | Enable image locality scoring | true |
-| `nodeorder.leastrequested.weight` | Weight for least requested scoring | 1 |
-| `nodeorder.mostrequested.weight` | Weight for most requested scoring | 1 |
-| `nodeorder.nodeaffinity.weight` | Weight for node affinity scoring | 1 |
-| `nodeorder.podaffinity.weight` | Weight for pod affinity scoring | 1 |
-| `nodeorder.balancedresource.weight` | Weight for balanced resource scoring | 1 |
-| `nodeorder.imagelocality.weight` | Weight for image locality scoring | 1 |
+| 参数 | 说明 | 默认值 |
+|-----------|-------------|---------| 
+| `nodeorder.weight` | Nodeorder 插件的整体权重 | 1 |
+| `nodeorder.leastrequested.enable` | 启用最少请求资源打分 | true |
+| `nodeorder.mostrequested.enable` | 启用最多请求资源打分 | false |
+| `nodeorder.nodeaffinity.enable` | 启用节点亲和性打分 | true |
+| `nodeorder.podaffinity.enable` | 启用 Pod 亲和性打分 | true |
+| `nodeorder.balancedresource.enable` | 启用均衡资源打分 | true |
+| `nodeorder.imagelocality.enable` | 启用镜像本地性打分 | true |
+| `nodeorder.leastrequested.weight` | 最少请求打分的权重 | 1 |
+| `nodeorder.mostrequested.weight` | 最多请求打分的权重 | 1 |
+| `nodeorder.nodeaffinity.weight` | 节点亲和性打分的权重 | 1 |
+| `nodeorder.podaffinity.weight` | Pod 亲和性打分的权重 | 1 |
+| `nodeorder.balancedresource.weight` | 均衡资源打分的权重 | 1 |
+| `nodeorder.imagelocality.weight` | 镜像本地性打分的权重 | 1 |
 
-## Example
+## 示例
 
-### Configuration for Spreading Workloads
+### 分散工作负载的配置
 
 ```yaml
 apiVersion: v1
@@ -98,7 +98,7 @@ data:
           nodeorder.balancedresource.enable: true
 ```
 
-### Configuration for Consolidating Workloads
+### 整合工作负载的配置
 
 ```yaml
 apiVersion: v1
@@ -122,7 +122,7 @@ data:
           nodeorder.leastrequested.enable: false
 ```
 
-### Job with Pod Affinity
+### 带 Pod 亲和性的作业
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -151,4 +151,4 @@ spec:
           image: busybox
 ```
 
-The Nodeorder plugin will score nodes higher if they already have pods matching the affinity rules.
+Nodeorder 插件将对已存在符合亲和性规则 Pod 的节点给予更高的分数。

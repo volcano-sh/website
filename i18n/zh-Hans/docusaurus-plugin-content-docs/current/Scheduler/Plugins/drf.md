@@ -2,48 +2,48 @@
 title: DRF
 ---
 
-## Overview
+## 概述
 
-The full name of the DRF scheduling algorithm is **Dominant Resource Fairness**, which is a scheduling algorithm based on the container group's Dominant Resource. The Dominant Resource is the largest percentage of all required resources for a container group relative to the total cluster resources.
+DRF 调度算法的全称是**主资源公平性（Dominant Resource Fairness）**，它是一种基于容器组主资源的调度算法。主资源是指容器组所需的所有资源中，相对于集群总资源占比最大的那种资源。
 
-The DRF algorithm selects the container group with the smallest Dominant Resource share for priority scheduling. This approach can accommodate more jobs without allowing a single resource-heavy job to starve a large number of smaller jobs. The DRF scheduling algorithm ensures that in an environment where many types of resources coexist, the fair allocation principle is satisfied as much as possible.
+DRF 算法优先调度主资源份额最小的容器组。这种方式可以在不让单个资源密集型作业饿死大量小作业的前提下，承载更多的作业。DRF 调度算法确保在多种资源共存的环境中，尽可能地满足公平分配原则。
 
 ![Drf Plugin](/img/doc/drfjob.png)
 
-## How It Works
+## 工作原理
 
-The DRF plugin:
+DRF 插件的工作流程如下：
 
-1. **Observes Dominant Resource**: For each job, it identifies which resource (CPU, Memory, GPU, etc.) represents the largest share of cluster resources
-2. **Calculates Share Value**: Computes each job's share value based on its dominant resource usage
-3. **Prioritizes Lower Share**: Jobs with lower share values (using less of their dominant resource) get higher scheduling priority
+1. **观测主资源**：对于每个作业，识别哪种资源（CPU、内存、GPU 等）在集群资源中占比最大
+2. **计算份额值**：根据每个作业的主资源使用情况计算其份额值
+3. **优先调度低份额**：份额值较低（主资源使用较少）的作业获得更高的调度优先级
 
-Key functions implemented:
+实现的关键函数：
 
-- **JobOrderFn**: Orders jobs based on their dominant resource share, giving priority to jobs with smaller shares
-- **PreemptableFn**: Determines if a job can be preempted based on resource fairness calculations
+- **JobOrderFn**：根据作业的主资源份额对作业进行排序，优先调度份额较小的作业
+- **PreemptableFn**：根据资源公平性计算结果判断某个作业是否可被抢占
 
-The plugin attempts to calculate the total amount of resources allocated to the preemptor and preempted tasks, triggering preemption when the preemptor task has fewer resources.
+该插件尝试计算分配给抢占方和被抢占方任务的资源总量，当抢占方任务拥有的资源较少时触发抢占。
 
-## Scenario
+## 应用场景
 
-The DRF scheduling algorithm gives priority to the throughput of businesses in the cluster and is suitable for batch processing scenarios:
+DRF 调度算法优先保障集群中业务的吞吐量，适用于批处理场景：
 
-### AI Training
+### AI 训练
 
-Single AI training jobs benefit from DRF as it ensures fair resource allocation across multiple training workloads.
+单个 AI 训练作业可从 DRF 中受益，确保多个训练工作负载之间的公平资源分配。
 
-### Big Data Processing
+### 大数据处理
 
-Single big data calculation and query jobs can share resources fairly with other workloads in the cluster.
+单个大数据计算和查询作业可与集群中的其他工作负载公平共享资源。
 
-### Mixed Resource Workloads
+### 混合资源工作负载
 
-In environments with diverse resource requirements (CPU-intensive, Memory-intensive, GPU-intensive jobs), DRF ensures fair allocation across all resource dimensions.
+在资源需求多样化的环境中（CPU 密集型、内存密集型、GPU 密集型作业），DRF 可确保跨所有资源维度的公平分配。
 
-## Configuration
+## 配置
 
-The DRF plugin is configured in the scheduler ConfigMap:
+DRF 插件在调度器 ConfigMap 中配置：
 
 ```yaml
 tiers:
@@ -56,29 +56,29 @@ tiers:
   - name: proportion
 ```
 
-## Example
+## 示例
 
-Consider a cluster with the following resources:
-- 100 CPUs
-- 400 GB Memory
+假设集群拥有以下资源：
+- 100 个 CPU
+- 400 GB 内存
 
-And two jobs:
-- **Job A**: Each task requires 2 CPUs and 8 GB Memory
-- **Job B**: Each task requires 1 CPU and 32 GB Memory
+以及两个作业：
+- **作业 A**：每个任务需要 2 个 CPU 和 8 GB 内存
+- **作业 B**：每个任务需要 1 个 CPU 和 32 GB 内存
 
-For Job A:
-- CPU share per task: 2/100 = 2%
-- Memory share per task: 8/400 = 2%
-- Dominant resource: CPU and Memory are equal (2%)
+对于作业 A：
+- 每任务 CPU 份额：2/100 = 2%
+- 每任务内存份额：8/400 = 2%
+- 主资源：CPU 和内存相等（2%）
 
-For Job B:
-- CPU share per task: 1/100 = 1%
-- Memory share per task: 32/400 = 8%
-- Dominant resource: Memory (8%)
+对于作业 B：
+- 每任务 CPU 份额：1/100 = 1%
+- 每任务内存份额：32/400 = 8%
+- 主资源：内存（8%）
 
-With DRF, Job A would be scheduled first because its dominant resource share (2%) is smaller than Job B's (8%). This ensures that neither job can monopolize the cluster by requesting large amounts of a single resource.
+使用 DRF 时，作业 A 会被优先调度，因为其主资源份额（2%）小于作业 B（8%）。这确保了任何作业都无法通过大量申请单一资源来垄断集群。
 
-### VolcanoJob Example
+### VolcanoJob 示例
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1

@@ -1,41 +1,41 @@
 ---
 title: Gang
 ---
-## Overview
+## 概述
 
-The Gang scheduling strategy is one of the core scheduling algorithms of the Volcano Scheduler. It meets the scheduling requirements of "All or nothing" in the scheduling process and avoids the waste of cluster resources caused by arbitrary scheduling of Pods. The Gang scheduler algorithm observes whether the scheduled number of Pods under a Job meets the minimum number of runs. When the minimum number of runs of Job is satisfied, the scheduling action is executed for all Pods under the Job; otherwise, it is not executed.
+Gang 调度策略是 Volcano 调度器的核心调度算法之一。它满足调度过程中"全部成功或全部不执行"的调度需求，避免因 Pod 被随意调度而造成集群资源浪费。Gang 调度算法会观察一个 Job 下已调度的 Pod 数量是否满足最小运行数量要求。当满足 Job 的最小运行数量时，才对 Job 下的所有 Pod 执行调度操作；否则不执行。
 
 ![Gang Plugin](/img/doc/gang.png)
 
-## How It Works
+## 工作原理
 
-The Gang plugin considers tasks not in the `Ready` state (including Binding, Bound, Running, Allocated, Succeed, and Pipelined) as having a higher priority. It checks whether the resources allocated to the queue can meet the resources required by the task to run `minAvailable` pods after trying to evict some pods and reclaim resources. If yes, the Gang plugin will proceed with scheduling.
+Gang 插件将不处于 `Ready` 状态的任务（包括 Binding、Bound、Running、Allocated、Succeed 和 Pipelined 状态）视为具有更高优先级。在尝试驱逐部分 Pod 并回收资源后，它会检查队列中分配的资源是否能满足任务运行 `minAvailable` 个 Pod 所需的资源。如果满足，Gang 插件将继续进行调度。
 
-Key functions implemented by the Gang plugin:
+Gang 插件实现的关键函数：
 
-- **JobReadyFn**: Checks if a job has enough resources to meet its `minAvailable` requirement
-- **JobPipelinedFn**: Checks if a job can be pipelined
-- **JobValidFn**: Validates if a job's Gang constraint is satisfied
+- **JobReadyFn**：检查作业是否拥有足够的资源以满足 `minAvailable` 要求
+- **JobPipelinedFn**：检查作业是否可以进行流水线调度
+- **JobValidFn**：验证作业的 Gang 约束是否得到满足
 
-## Scenario
+## 应用场景
 
-The Gang scheduling algorithm based on the container group concept is well suited for scenarios that require multi-process collaboration:
+基于容器组概念的 Gang 调度算法非常适合需要多进程协同工作的场景：
 
-### AI and Deep Learning
+### AI 与深度学习
 
-AI scenes often contain complex processes including Data Ingestion, Data Analysts, Data Splitting, Trainers, Serving, and Logging. These require a group of containers to work together, making them suitable for the container-based Gang scheduling strategy.
+AI 场景通常包含复杂的流程，包括数据摄取、数据分析、数据拆分、训练、服务和日志记录等。这些流程需要一组容器协同工作，非常适合基于容器组的 Gang 调度策略。
 
-### MPI and HPC
+### MPI 与高性能计算
 
-Multi-thread parallel computing communication scenarios under the MPI computing framework are also suitable for Gang scheduling because master and slave processes need to work together. Containers under the container group are highly correlated, and there may be resource contention. Overall scheduling allocation can effectively solve deadlock situations.
+MPI 计算框架下的多线程并行计算通信场景同样适合 Gang 调度，因为主从进程需要协同工作。容器组中的容器高度相关，可能存在资源争用，整体调度分配可以有效解决死锁问题。
 
-### Resource Efficiency
+### 资源效率
 
-In the case of insufficient cluster resources, the Gang scheduling strategy can significantly improve the utilization of cluster resources by preventing partial job allocations that would waste resources waiting for other tasks.
+在集群资源不足的情况下，Gang 调度策略可通过防止部分作业分配（这会导致资源白白等待其他任务）来显著提高集群资源利用率。
 
-## Configuration
+## 配置
 
-The Gang plugin is typically enabled by default and configured in the scheduler ConfigMap:
+Gang 插件通常默认启用，在调度器 ConfigMap 中配置：
 
 ```yaml
 tiers:
@@ -45,9 +45,9 @@ tiers:
   - name: conformance
 ```
 
-## Example
+## 示例
 
-Here's an example of a VolcanoJob that uses Gang scheduling:
+以下是一个使用 Gang 调度的 VolcanoJob 示例：
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -55,7 +55,7 @@ kind: Job
 metadata:
   name: tensorflow-job
 spec:
-  minAvailable: 3  # Gang constraint: at least 3 pods must be schedulable
+  minAvailable: 3  # Gang 约束：至少 3 个 Pod 必须可调度
   schedulerName: volcano
   tasks:
   - replicas: 1
@@ -74,4 +74,4 @@ spec:
           image: tensorflow/tensorflow:latest
 ```
 
-In this example, the job will only be scheduled if all 3 pods (1 ps + 2 workers) can be allocated resources simultaneously.
+在此示例中，只有当全部 3 个 Pod（1 个 ps + 2 个 worker）能够同时获得资源分配时，作业才会被调度。

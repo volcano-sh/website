@@ -2,47 +2,47 @@
 title: "Task-topology"
 ---
 
-## Overview
+## 概述
 
-The Task-topology algorithm computes the priority of tasks and nodes based on the affinity and anti-affinity configuration between tasks within a Job. By configuring the affinity and anti-affinity policies between tasks within the Job and using the Task-topology algorithm, tasks with affinity configurations can be scheduled to the same node first, while tasks with anti-affinity configurations are scheduled to different nodes.
+Task-topology 算法根据 Job 内任务之间的亲和性和反亲和性配置来计算任务和节点的优先级。通过配置 Job 内任务之间的亲和性和反亲和性策略，并使用 Task-topology 算法，具有亲和性配置的任务将优先被调度到同一节点，而具有反亲和性配置的任务则被调度到不同节点。
 
-## How It Works
+## 工作原理
 
-The Task-topology plugin analyzes task relationships within a job and optimizes placement:
+Task-topology 插件分析作业内的任务关系并优化任务放置：
 
-- **Affinity**: Tasks that benefit from being on the same node (e.g., for fast local communication)
-- **Anti-affinity**: Tasks that should be on different nodes (e.g., for fault tolerance)
+- **亲和性（Affinity）**：适合放置在同一节点上的任务（例如，以实现快速本地通信）
+- **反亲和性（Anti-affinity）**：应放置在不同节点上的任务（例如，以实现容错）
 
-Key functions implemented:
+实现的关键函数：
 
-- **TaskOrderFn**: Orders tasks based on topology preferences
-- **NodeOrderFn**: Scores nodes based on how well they satisfy topology requirements
+- **TaskOrderFn**：根据拓扑偏好对任务进行排序
+- **NodeOrderFn**：根据节点满足拓扑要求的程度对节点打分
 
-## Scenario
+## 应用场景
 
-### Node Affinity
+### 节点亲和性
 
-#### Deep Learning and TensorFlow
+#### 深度学习与 TensorFlow
 
-Task-topology is important for improving computational efficiency in deep learning computing scenarios. Using TensorFlow computation as an example, configure the affinity between "ps" (parameter server) and "worker". The Task-topology algorithm enables "ps" and "worker" to be scheduled to the same node as much as possible, improving the efficiency of network and data interaction between them, thus improving computing efficiency.
+Task-topology 对于提高深度学习计算场景中的计算效率非常重要。以 TensorFlow 计算为例，配置"ps"（参数服务器）与"worker"之间的亲和性，Task-topology 算法能够使"ps"和"worker"尽可能被调度到同一节点，从而提高二者之间的网络和数据交互效率，进而提升计算效率。
 
-#### HPC and MPI
+#### HPC 与 MPI
 
-Tasks in HPC and MPI scenarios are highly synchronized and need high-speed network IO. Placing related tasks on the same node reduces network latency and improves performance.
+HPC 和 MPI 场景中的任务具有高度同步性，需要高速网络 IO。将相关任务放置在同一节点上可降低网络延迟，提升性能。
 
-### Anti-affinity
+### 反亲和性
 
-#### Parameter Server Distribution
+#### 参数服务器分布
 
-In TensorFlow computation, anti-affinity between "ps" instances can ensure they are distributed across different nodes for better load distribution.
+在 TensorFlow 计算中，"ps"实例之间的反亲和性可确保它们分布在不同节点上，以实现更好的负载均衡。
 
-#### High Availability
+#### 高可用性
 
-E-commerce service scenarios benefit from anti-affinity for master-slave backup and data disaster tolerance, ensuring that backup jobs continue to provide service after a primary job fails.
+电商服务场景可利用反亲和性实现主从备份和数据容灾，确保在主作业故障后备份作业能够继续提供服务。
 
-## Configuration
+## 配置
 
-Enable the Task-topology plugin in the scheduler:
+在调度器中启用 Task-topology 插件：
 
 ```yaml
 tiers:
@@ -55,9 +55,9 @@ tiers:
   - name: task-topology
 ```
 
-## Example
+## 示例
 
-### Job with Task Affinity
+### 带任务亲和性的作业
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -105,7 +105,7 @@ spec:
       - worker
 ```
 
-### Job with Task Anti-affinity
+### 带任务反亲和性的作业
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -130,4 +130,4 @@ spec:
       - master
 ```
 
-In this example, the two master replicas will be scheduled to different nodes to ensure high availability.
+在此示例中，两个 master 副本将被调度到不同节点，以确保高可用性。

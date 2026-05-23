@@ -2,54 +2,54 @@
 title: "Proportion"
 ---
 
-## Overview
+## 概述
 
-The Proportion scheduling algorithm uses the concept of **Queue** to control the proportion of total resources allocated in the cluster. Each queue is allocated a certain proportion of cluster resources.
+Proportion 调度算法通过**队列（Queue）**的概念来控制集群中各队列所分配的总资源比例。每个队列被分配一定比例的集群资源。
 
-For example, if there are three teams sharing a pool of resources on a cluster:
-- Team A can use up to 40% of the total cluster
-- Team B can use up to 30%
-- Team C can use up to 30%
+例如，如果三个团队共享一个集群的资源池：
+- 团队 A 最多可使用集群总量的 40%
+- 团队 B 最多可使用 30%
+- 团队 C 最多可使用 30%
 
-If the amount of work delivered exceeds the team's maximum available resources, the jobs will be queued.
+若提交的工作量超过团队最大可用资源，作业将进入排队状态。
 
-## How It Works
+## 工作原理
 
-The Proportion plugin manages resource allocation based on queue configurations:
+Proportion 插件基于队列配置管理资源分配：
 
-- **Queue Weight**: Each queue has a weight that determines its share of cluster resources
-- **Capability**: Maximum resources a queue can use
-- **Guarantee**: Minimum resources guaranteed to a queue
-- **Deserved Resources**: Resources a queue should receive based on its weight
+- **队列权重（Queue Weight）**：每个队列具有一个权重，决定其在集群资源中的份额
+- **上限（Capability）**：队列可使用的最大资源量
+- **保障（Guarantee）**：保障给队列的最小资源量
+- **应得资源（Deserved Resources）**：队列根据其权重应获得的资源量
 
-Key functions implemented:
+实现的关键函数：
 
-- **QueueOrderFn**: Orders queues for scheduling based on their resource utilization
-- **ReclaimableFn**: Determines if resources can be reclaimed from a queue
-- **OverusedFn**: Checks if a queue is using more than its deserved share
+- **QueueOrderFn**：根据资源利用情况对队列进行调度排序
+- **ReclaimableFn**：判断是否可以从某个队列回收资源
+- **OverusedFn**：检查某个队列是否使用了超过其应得份额的资源
 
-## Scenario
+## 应用场景
 
-The Proportion scheduling algorithm improves the flexibility and elasticity of cluster scheduling:
+Proportion 调度算法提高了集群调度的灵活性和弹性：
 
-### Multi-team Resource Sharing
+### 多团队资源共享
 
-The most typical scenario is when multiple development teams in a company share a cluster. This scheduling algorithm handles the requirements of shared resource allocation and isolation between different departments very well.
+最典型的场景是公司内多个开发团队共享一个集群。该调度算法能够很好地处理不同部门之间共享资源分配和隔离的需求。
 
-### Multi-service Mixed Scenarios
+### 多业务混合场景
 
-In environments with diverse workloads:
-- **Computation-intensive**: AI business
-- **Network IO-intensive**: MPI and HPC business
-- **Storage-intensive**: Big data business
+在工作负载多样化的环境中：
+- **计算密集型**：AI 业务
+- **网络 IO 密集型**：MPI 和 HPC 业务
+- **存储密集型**：大数据业务
 
-The Proportion scheduling algorithm can allocate shared resources according to demand through matching.
+Proportion 调度算法可以通过匹配按需分配共享资源。
 
-## Configuration
+## 配置
 
-### Queue Definition
+### 队列定义
 
-First, create queues with appropriate resource allocations:
+首先，创建具有适当资源分配的队列：
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -83,9 +83,9 @@ spec:
     memory: "60Gi"
 ```
 
-### Scheduler Configuration
+### 调度器配置
 
-Enable the Proportion plugin in the scheduler:
+在调度器中启用 Proportion 插件：
 
 ```yaml
 tiers:
@@ -99,11 +99,11 @@ tiers:
   - name: nodeorder
 ```
 
-## Example
+## 示例
 
-### Using Queues in VolcanoJob
+### 在 VolcanoJob 中使用队列
 
-Submit jobs to specific queues:
+将作业提交到指定队列：
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -128,9 +128,9 @@ spec:
               memory: "4Gi"
 ```
 
-### Queue with Guarantee and Capability
+### 带保障与上限的队列
 
-Create a queue with both minimum guarantee and maximum capability:
+创建同时具有最小保障和最大上限的队列：
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -149,7 +149,7 @@ spec:
   reclaimable: true
 ```
 
-In this configuration:
-- The queue is guaranteed at least 10 CPUs and 20Gi memory
-- It can use up to 50 CPUs and 100Gi memory when resources are available
-- Resources can be reclaimed from this queue when other queues need them
+在此配置中：
+- 该队列至少保障 10 个 CPU 和 20Gi 内存
+- 在资源可用时，最多可使用 50 个 CPU 和 100Gi 内存
+- 当其他队列需要资源时，可从该队列回收资源

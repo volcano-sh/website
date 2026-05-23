@@ -2,66 +2,66 @@
 title: "Numa-aware"
 ---
 
-## Overview
+## 概述
 
-When a node runs many CPU-bound pods, the workload can move to different CPU cores depending on whether the pod is throttled and which CPU cores are available at scheduling time. Many workloads are not sensitive to this migration and work fine without any intervention. However, in workloads where CPU cache affinity and scheduling latency significantly affect workload performance, special CPU management policies are needed to determine placement preferences on the node.
+当一个节点运行大量 CPU 密集型 Pod 时，工作负载可能会在不同的 CPU 核心之间迁移，这取决于 Pod 是否被限速以及调度时哪些 CPU 核心可用。许多工作负载对此迁移不敏感，无需任何干预即可正常运行。然而，对于 CPU 缓存亲和性和调度延迟会显著影响性能的工作负载，则需要特殊的 CPU 管理策略来确定节点上的放置偏好。
 
-## The Challenge
+## 挑战
 
-The CPU Manager and Topology Manager are Kubelet components that help with CPU placement. However, they have the following limitations:
+CPU 管理器（CPU Manager）和拓扑管理器（Topology Manager）是 Kubelet 的组件，用于辅助 CPU 放置。但它们存在以下局限性：
 
-1. **Scheduler Unawareness**: The scheduler is not topology-aware. This means a pod might be scheduled on a node only to fail due to the Topology Manager. This is unacceptable for TensorFlow jobs—if any worker or parameter server fails on a node, the entire job will fail.
+1. **调度器不感知拓扑**：调度器不具备拓扑感知能力。这意味着 Pod 可能被调度到某个节点后，因拓扑管理器的拒绝而失败。这对于 TensorFlow 作业是不可接受的——如果某个 worker 或 parameter server 在节点上启动失败，整个作业都将失败。
 
-2. **Node-level Only**: These managers operate at the node level, which results in an inability to match the best node for NUMA topology across the entire cluster.
+2. **仅限节点级别**：这些管理器仅在节点级别运行，无法在整个集群范围内为 NUMA 拓扑匹配最优节点。
 
-## How Numa-aware Plugin Works
+## Numa-aware 插件工作原理
 
-The Numa-aware plugin aims to address these limitations:
+Numa-aware 插件旨在解决上述局限性：
 
-- **CPU Resource Topology Scheduling**: Supports scheduling based on CPU topology
-- **Pod-level Topology Policies**: Supports topology policies at the pod level
+- **CPU 资源拓扑调度**：支持基于 CPU 拓扑的调度
+- **Pod 级别拓扑策略**：支持 Pod 级别的拓扑策略
 
-The plugin:
-1. Collects NUMA topology information from nodes
-2. Evaluates CPU and memory placement requirements
-3. Scores nodes based on NUMA affinity
-4. Ensures tasks are placed on nodes that can satisfy their topology requirements
+插件工作流程：
+1. 从节点收集 NUMA 拓扑信息
+2. 评估 CPU 和内存的放置需求
+3. 根据 NUMA 亲和性对节点打分
+4. 确保任务被放置在能满足其拓扑要求的节点上
 
-## Scenario
+## 应用场景
 
-Common scenarios for NUMA-aware scheduling are computation-intensive jobs that are sensitive to CPU parameters and scheduling delays:
+NUMA 感知调度常见于对 CPU 参数和调度延迟敏感的计算密集型作业：
 
-### Scientific Computing
+### 科学计算
 
-High-performance scientific calculations benefit from NUMA-aware scheduling to ensure optimal memory access patterns.
+高性能科学计算作业可通过 NUMA 感知调度确保最优的内存访问模式，从而受益。
 
-### Video Processing
+### 视频处理
 
-Video decoding workloads can achieve better performance when scheduled with NUMA awareness.
+视频解码工作负载在具有 NUMA 感知的调度下可获得更好的性能表现。
 
-### Animation Rendering
+### 动画渲染
 
-Animation rendering jobs that are CPU-intensive benefit from optimized CPU and memory placement.
+CPU 密集型的动画渲染作业可从优化的 CPU 和内存放置中获益。
 
-### Big Data Offline Processing
+### 大数据离线处理
 
-Large-scale data processing jobs can achieve better throughput with NUMA-optimized scheduling.
+大规模数据处理作业在经过 NUMA 优化的调度下可实现更高的吞吐量。
 
-## Configuration
+## 配置
 
-### Enable Topology Manager on Nodes
+### 在节点上启用拓扑管理器
 
-First, ensure the Kubelet is configured with topology management:
+首先，确保 Kubelet 配置了拓扑管理：
 
 ```yaml
-# kubelet configuration
+# kubelet 配置
 topologyManagerPolicy: single-numa-node
 cpuManagerPolicy: static
 ```
 
-### Scheduler Configuration
+### 调度器配置
 
-Enable the Numa-aware plugin:
+启用 Numa-aware 插件：
 
 ```yaml
 tiers:
@@ -76,27 +76,27 @@ tiers:
       numa-aware.weight: 10
 ```
 
-### Configuration Parameters
+### 配置参数
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `numa-aware.weight` | Weight of NUMA-aware scoring | 1 |
+| 参数 | 说明 | 默认值 |
+|-----------|-------------|---------| 
+| `numa-aware.weight` | NUMA 感知打分的权重 | 1 |
 
-## Example
+## 示例
 
-### Node with NUMA Topology
+### 带 NUMA 拓扑的节点
 
-A typical NUMA node might have:
-- 2 NUMA nodes
-- Each with 16 CPU cores
-- Each with 64GB memory
+一个典型的 NUMA 节点可能具有：
+- 2 个 NUMA 节点
+- 每个节点 16 个 CPU 核心
+- 每个节点 64GB 内存
 
 ```
 NUMA Node 0: CPU 0-15, 64GB Memory
 NUMA Node 1: CPU 16-31, 64GB Memory
 ```
 
-### Job Requiring NUMA Awareness
+### 需要 NUMA 感知的作业
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -126,12 +126,12 @@ spec:
               memory: "32Gi"
 ```
 
-In this example:
-- The job requests 8 CPUs and 32GB memory
-- The NUMA policy requires all resources from a single NUMA node
-- The scheduler will find a node that can satisfy this requirement from a single NUMA node
+在此示例中：
+- 作业申请 8 个 CPU 和 32GB 内存
+- NUMA 策略要求所有资源来自单个 NUMA 节点
+- 调度器将找到能够从单个 NUMA 节点满足此需求的节点
 
-### Pod with Topology Policy Annotation
+### 带拓扑策略注解的 Pod
 
 ```yaml
 apiVersion: v1
@@ -154,13 +154,13 @@ spec:
         memory: "16Gi"
 ```
 
-### NUMA Topology Policies
+### NUMA 拓扑策略
 
-The plugin supports several topology policies:
+该插件支持多种拓扑策略：
 
-| Policy | Description |
+| 策略 | 说明 |
 |--------|-------------|
-| `none` | No NUMA preference |
-| `best-effort` | Try to place on optimal NUMA node, but don't fail if not possible |
-| `restricted` | Only place on nodes that can satisfy the NUMA requirement |
-| `single-numa-node` | All resources must come from a single NUMA node |
+| `none` | 无 NUMA 偏好 |
+| `best-effort` | 尽量放置在最优 NUMA 节点，但不满足时不失败 |
+| `restricted` | 仅放置在能满足 NUMA 要求的节点上 |
+| `single-numa-node` | 所有资源必须来自单个 NUMA 节点 |

@@ -1,40 +1,40 @@
 ---
 title : "Predicates"
 ---
-## Overview
+## 概述
 
-The Predicates plugin determines whether a task can be bound to a node by using a series of evaluation algorithms. It filters out nodes that cannot accommodate the task based on various criteria including resource availability, node conditions, and special requirements like GPU resources.
+Predicates 插件通过一系列评估算法来判断任务是否可以绑定到某个节点。它根据多种标准对节点进行过滤，包括资源可用性、节点状态以及 GPU 资源等特殊需求。
 
-## How It Works
+## 工作原理
 
-The Predicates plugin calls various predicate functions with the pod and nodeInfo as parameters to evaluate and pre-select nodes for scheduling. It implements:
+Predicates 插件以 Pod 和 nodeInfo 作为参数，调用各种断言函数对节点进行评估和预选，以确定候选调度节点。它实现了：
 
-- **PredicateFn**: A function that returns true if a node can accommodate a task, false otherwise
+- **PredicateFn**：若节点能够承载任务则返回 true，否则返回 false
 
-The plugin evaluates multiple criteria:
-- Node resources (CPU, Memory, etc.)
-- Node conditions and taints
-- Pod affinity and anti-affinity rules
-- Volume constraints
-- GPU and other accelerator availability
+插件评估的多个标准：
+- 节点资源（CPU、内存等）
+- 节点状态和污点
+- Pod 亲和性和反亲和性规则
+- 存储卷约束
+- GPU 及其他加速器的可用性
 
-## Scenario
+## 应用场景
 
-### AI Workloads with GPU Requirements
+### 需要 GPU 的 AI 工作负载
 
-In AI scenarios where GPU resources are required, the Predicates plugin can quickly filter out nodes that have the required GPU resources for centralized scheduling.
+在需要 GPU 资源的 AI 场景中，Predicates 插件可以快速筛选出具备所需 GPU 资源的节点，以便集中调度。
 
-### Resource Filtering
+### 资源过滤
 
-The plugin ensures that only nodes with sufficient resources are considered for task placement, preventing scheduling failures due to resource constraints.
+该插件确保只有具备足够资源的节点才会被纳入任务放置的考量范围，防止因资源不足导致调度失败。
 
-### Node Condition Filtering
+### 节点状态过滤
 
-Nodes with conditions that prevent scheduling (e.g., NotReady, MemoryPressure, DiskPressure) are filtered out.
+处于不可调度状态的节点（例如 NotReady、MemoryPressure、DiskPressure）将被过滤掉。
 
-## Configuration
+## 配置
 
-The Predicates plugin is enabled in the scheduler ConfigMap:
+Predicates 插件在调度器 ConfigMap 中启用：
 
 ```yaml
 tiers:
@@ -47,9 +47,9 @@ tiers:
   - name: binpack
 ```
 
-### Configuration Parameters
+### 配置参数
 
-The Predicates plugin supports several configuration options:
+Predicates 插件支持多个配置选项：
 
 ```yaml
 tiers:
@@ -63,15 +63,15 @@ tiers:
       predicate.resources.nvidia.com/gpu.weight: 100
 ```
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `predicate.GPUSharingEnable` | Enable GPU sharing predicate | false |
-| `predicate.CacheEnable` | Enable predicate caching for performance | true |
-| `predicate.ProportionalEnable` | Enable proportional resource predicate | false |
+| 参数 | 说明 | 默认值 |
+|-----------|-------------|---------| 
+| `predicate.GPUSharingEnable` | 启用 GPU 共享断言 | false |
+| `predicate.CacheEnable` | 启用断言缓存以提升性能 | true |
+| `predicate.ProportionalEnable` | 启用比例资源断言 | false |
 
-## Example
+## 示例
 
-### Job Requiring GPU Resources
+### 需要 GPU 资源的作业
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -96,9 +96,9 @@ spec:
               nvidia.com/gpu: "1"
 ```
 
-The Predicates plugin will filter nodes to only include those with available GPU resources.
+Predicates 插件将对节点进行过滤，仅保留具有可用 GPU 资源的节点。
 
-### Job with Node Affinity
+### 带节点亲和性的作业
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -127,4 +127,4 @@ spec:
           image: busybox
 ```
 
-The Predicates plugin will ensure the job is only scheduled to nodes in the specified zone.
+Predicates 插件将确保作业仅被调度到指定可用区的节点上。

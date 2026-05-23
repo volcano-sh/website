@@ -2,44 +2,44 @@
 title: "Priority"
 ---
 
-## Overview
+## 概述
 
-The Priority Plugin provides the implementation of job and task sorting, as well as PreemptableFn—a function that calculates which jobs can be preempted. Jobs are sorted according to `priorityClassName`, and tasks are sorted in turn by `priorityClassName`, `createTime`, and `id`.
+Priority 插件提供了作业和任务排序的实现，以及 PreemptableFn——一个计算哪些作业可被抢占的函数。作业根据 `priorityClassName` 进行排序，任务则依次按 `priorityClassName`、`createTime` 和 `id` 排序。
 
 
-## How It Works
+## 工作原理
 
-The Priority plugin implements several key functions:
+Priority 插件实现了以下几个关键函数：
 
-- **JobOrderFn**: Compares two jobs and determines their relative priority based on `job.spec.priorityClassName`
-- **TaskOrderFn**: Compares two tasks and determines their relative priority by comparing `task.priorityClassName`, `task.createTime`, and `task.id` in order
-- **PreemptableFn**: Identifies tasks that can be preempted based on priority levels
+- **JobOrderFn**：比较两个作业，根据 `job.spec.priorityClassName` 确定其相对优先级
+- **TaskOrderFn**：比较两个任务，依次按 `task.priorityClassName`、`task.createTime` 和 `task.id` 确定其相对优先级
+- **PreemptableFn**：根据优先级级别识别可被抢占的任务
 
 
 ![fair-share](/img/doc/fair-share.png)
 
 
-## Scenario
+## 应用场景
 
-When the cluster runs multiple jobs but is low on resources, and each job has a different number of Pods waiting to be scheduled, using the Kubernetes default scheduler would result in jobs with more Pods ultimately getting more of the cluster's resources. In this case, the Volcano Scheduler provides algorithms that enable different jobs to share cluster resources in a fair-share manner.
+当集群运行多个作业但资源不足，且每个作业都有数量不等的 Pod 等待调度时，使用 Kubernetes 默认调度器会导致 Pod 数量较多的作业最终获得集群更多的资源。针对这种情况，Volcano 调度器提供了算法，使不同作业能够以公平共享的方式分配集群资源。
 
-### Custom Priority Levels
+### 自定义优先级
 
-The Priority Plugin enables users to customize their job and task priorities, and to configure scheduling policies at different levels according to their own needs. Priority is arranged according to Job's `priorityClassName` at the application level.
+Priority 插件使用户能够自定义作业和任务的优先级，并根据自身需求在不同级别配置调度策略。在应用层面，优先级按照 Job 的 `priorityClassName` 进行排列。
 
-### Real-time Requirements
+### 实时性要求
 
-For clusters with applications requiring high real-time performance, such as:
+对于运行有高实时性要求应用的集群，例如：
 
-- Financial services scenarios
-- IoT monitoring scenarios
-- Real-time analytics
+- 金融服务场景
+- IoT 监控场景
+- 实时分析
 
-The Priority Plugin can ensure that these high-priority workloads are scheduled first.
+Priority 插件可确保这些高优先级工作负载被优先调度。
 
-## Configuration
+## 配置
 
-The Priority plugin is typically placed in the first tier of plugins:
+Priority 插件通常放置在插件配置的第一层：
 
 ```yaml
 tiers:
@@ -49,11 +49,11 @@ tiers:
   - name: conformance
 ```
 
-## Example
+## 示例
 
-### Creating Priority Classes
+### 创建优先级类
 
-First, create the PriorityClasses in your cluster:
+首先，在集群中创建 PriorityClass：
 
 ```yaml
 apiVersion: scheduling.k8s.io/v1
@@ -73,9 +73,9 @@ globalDefault: false
 description: "Low priority for batch workloads"
 ```
 
-### Using Priority in VolcanoJob
+### 在 VolcanoJob 中使用优先级
 
-Then reference the priority class in your jobs:
+然后在作业中引用优先级类：
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -98,4 +98,4 @@ spec:
           command: ["sleep", "1000"]
 ```
 
-In this example, the job with `high-priority` will be scheduled before jobs with `low-priority` when resources are limited.
+在此示例中，当资源有限时，具有 `high-priority` 的作业将在 `low-priority` 作业之前被调度。

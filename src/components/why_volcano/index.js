@@ -26,7 +26,7 @@ const reasons = [
     title: <Translate>Heterogeneous Device Support</Translate>,
     content: (
       <>
-        <Translate>Efficiently schedules heterogeneous devices liKeyFeatures GPU and NPU, fully unleashing hardware computing potential.</Translate>
+        <Translate>Efficiently schedules heterogeneous devices like GPU and NPU, fully unleashing hardware computing potential.</Translate>
       </>
     ),
   },

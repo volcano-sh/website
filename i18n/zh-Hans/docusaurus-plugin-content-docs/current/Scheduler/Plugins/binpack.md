@@ -1,43 +1,43 @@
 ---
 title: Binpack
 ---
-## Overview
+## 概述
 
-The goal of the Binpack scheduling algorithm is to fill existing nodes as much as possible (trying not to allocate to empty nodes). In the concrete implementation, the Binpack scheduling algorithm scores the nodes that can accommodate the task, with higher scores indicating higher resource utilization rates. The Binpack algorithm can fill up nodes as much as possible, consolidating application loads on some nodes, which is very conducive to the Kubernetes cluster's node auto-scaling functionality.
+Binpack 调度算法的目标是尽可能填满现有节点（尽量不向空节点分配任务）。在具体实现中，Binpack 调度算法会对能够承载任务的节点进行打分，分数越高表示资源利用率越高。Binpack 算法能够尽可能地填满节点，将应用负载整合到部分节点上，这非常有利于 Kubernetes 集群的节点自动伸缩功能。
 
-## How It Works
+## 工作原理
 
-The Binpack algorithm is injected into the Volcano Scheduler process as a plugin and is applied during the node selection stage for Pods. When calculating the Binpack score, the Volcano Scheduler considers various resources requested by the Pod and averages them according to the weights configured for each resource.
+Binpack 算法以插件形式注入到 Volcano 调度器进程中，并在 Pod 的节点选择阶段生效。在计算 Binpack 分数时，Volcano 调度器会考虑 Pod 申请的各种资源，并根据每种资源配置的权重进行加权平均。
 
-Key characteristics:
+主要特性：
 
-- **Resource Weight**: Each resource type (CPU, Memory, GPU, etc.) can have a different weight in the scoring calculation, depending on the weight value configured by the administrator.
-- **Plugin Weight**: Different plugins also need to be assigned different weights when calculating node scores. The scheduler also sets score weights for the Binpack plugin.
-- **NodeOrderFn**: The plugin implements the NodeOrderFn to score nodes based on how efficiently they would be utilized after placing the task.
+- **资源权重**：每种资源类型（CPU、内存、GPU 等）在打分计算中可以设置不同的权重，具体取决于管理员配置的权重值。
+- **插件权重**：在计算节点分数时，不同插件也需要分配不同的权重。调度器同样会为 Binpack 插件设置分数权重。
+- **NodeOrderFn**：该插件实现了 NodeOrderFn，根据任务放置后节点的资源利用效率对节点进行打分。
 
-## Scenario
+## 应用场景
 
-The Binpack algorithm is beneficial for small jobs that can fill as many nodes as possible:
+Binpack 算法适用于能够尽可能填满节点的小型作业：
 
-### Big Data Scenarios
+### 大数据场景
 
-Single query jobs in big data processing benefit from Binpack by consolidating workloads and maximizing resource utilization on active nodes.
+大数据处理中的单次查询作业可通过 Binpack 将工作负载整合，最大化活跃节点的资源利用率。
 
-### E-commerce High Concurrency
+### 电商高并发
 
-Order generation in e-commerce flash sale scenarios can leverage Binpack to efficiently use available resources during peak loads.
+电商秒杀场景中的订单生成可利用 Binpack，在峰值负载期间高效使用可用资源。
 
-### AI Inference
+### AI 推理
 
-Single identification jobs in AI inference scenarios benefit from consolidated scheduling, reducing resource fragmentation.
+AI 推理场景中的单次识别作业可受益于整合调度，减少资源碎片化。
 
-### Internet Services
+### 互联网服务
 
-High concurrency service scenarios on the Internet benefit from Binpack by reducing fragmentation within nodes and reserving sufficient resource space on idle machines for Pods that have applied for more resource requests, maximizing the utilization of idle resources in the cluster.
+互联网高并发服务场景可通过 Binpack 减少节点内部碎片，并在空闲机器上为申请了较多资源的 Pod 预留足够的资源空间，最大化集群空闲资源的利用率。
 
-## Configuration
+## 配置
 
-The Binpack plugin is configured in the scheduler ConfigMap with optional weight parameters:
+Binpack 插件在调度器 ConfigMap 中配置，支持可选的权重参数：
 
 ```yaml
 tiers:
@@ -51,19 +51,19 @@ tiers:
       binpack.resources.nvidia.com/gpu: 2
 ```
 
-### Configuration Parameters
+### 配置参数
 
-| Parameter | Description | Default |
-|-----------|-------------|---------|
-| `binpack.weight` | Overall weight of the Binpack plugin score | 1 |
-| `binpack.cpu` | Weight for CPU resource in scoring | 1 |
-| `binpack.memory` | Weight for Memory resource in scoring | 1 |
-| `binpack.resources` | Additional resources to consider | - |
-| `binpack.resources.<resource>` | Weight for specific resource type | 1 |
+| 参数 | 说明 | 默认值 |
+|-----------|-------------|---------| 
+| `binpack.weight` | Binpack 插件分数的整体权重 | 1 |
+| `binpack.cpu` | CPU 资源在打分中的权重 | 1 |
+| `binpack.memory` | 内存资源在打分中的权重 | 1 |
+| `binpack.resources` | 需要纳入考量的额外资源 | - |
+| `binpack.resources.<resource>` | 特定资源类型的权重 | 1 |
 
-## Example
+## 示例
 
-Here's an example scheduler configuration that uses Binpack to prioritize node filling:
+以下是一个使用 Binpack 优先填满节点的调度器配置示例：
 
 ```yaml
 apiVersion: v1
@@ -88,4 +88,4 @@ data:
           binpack.memory: 1
 ```
 
-In this configuration, the Binpack plugin is given a weight of 10, and CPU is weighted twice as much as memory in the scoring calculation.
+在此配置中，Binpack 插件的权重为 10，CPU 在打分计算中的权重是内存的两倍。
