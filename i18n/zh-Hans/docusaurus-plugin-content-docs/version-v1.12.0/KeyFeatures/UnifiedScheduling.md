@@ -25,7 +25,7 @@ Volcano 完全实现了 Kube-Scheduler 的 PreFilter-Filter 阶段，包括：
 
 > 1. 关于DRA的详细介绍，请参考：[dynamic-resource-allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)
 
-> 2. 关于如何在Volcano中启用DRA的详细步骤，请参考本文档后续的[**2.1.2. 在Volcano中启用DRA (Dynamic Resource Allocation)**](#2-1-2-在volcano中启用dra-dynamic-resource-allocation)章节
+> 2. 关于如何在Volcano中启用DRA的详细步骤，请参考本文档后续的[**2.1.2. 在Volcano中启用DRA (Dynamic Resource Allocation)**](#dra-activation)章节
 
 除了兼容 Kubernetes 的过滤器外，Volcano 还提供了以下增强特性
 
