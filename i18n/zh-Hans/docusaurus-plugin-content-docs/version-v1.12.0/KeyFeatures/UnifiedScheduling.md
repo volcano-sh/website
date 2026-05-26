@@ -3,7 +3,7 @@ title: "统一调度"
 ---
 ## 1. 概述
 
-作为业界领先的云原生批处理系统调度器，Volcano 通过统一调度系统实现了对所有类型工作负载的支持：
+Volcano 作为业界领先的云原生批处理系统调度器，通过统一调度系统实现了对所有类型工作负载的支持：
 
 - 强大的批量调度能力：通过 VcJob 完美支持 Ray、TensorFlow、PyTorch、MindSpore、Spark、Flink 等主流 AI 和大数据框架
 - 完整的 Kubernetes 工作负载支持：直接调度 Deployment、StatefulSet、Job、DaemonSet 等原生工作负载
@@ -12,22 +12,22 @@ title: "统一调度"
 
 ## 2. 兼容 Kubernetes 调度能力
 
-Volcano 通过实现两个核心调度插件：predicates 和 nodeorder，实现了与 Kubernetes 调度机制的完全兼容。这些插件对应于 Kubernetes 调度框架中的 "PreFilter/Filter" 和 "Score" 阶段。
+Volcano 通过实现 predicates 和 nodeorder 这两个核心调度插件，完全兼容了 Kubernetes 的调度机制。这两个插件分别对应了 Kubernetes 调度框架中的”预过滤(PreFilter)/过滤(Filter)“和”打分(Score)“阶段。
 
 ### 2.1. predicates 插件
 Volcano 完全实现了 Kube-Scheduler 的 PreFilter-Filter 阶段，包括：
 
 - 基础资源过滤：节点可调度性、Pod 数量限制等
 - 亲和性/反亲和性：节点亲和性、Pod 间亲和性等
-- 资源约束：节点端口、卷限制等
+- 资源约束：节点端口、存储卷限制等
 - 拓扑分布：Pod 拓扑分布约束等
-- 动态资源分配 (DRA)：DRA 允许您在集群中灵活请求、分配和共享 GPU 等硬件资源。
+- 动态资源分配 (Dynamic Resource Allocation, DRA): DRA允许您在集群中灵活地请求、分配和共享GPU等硬件资源
 
-> 1. 有关 DRA 的详细介绍，请参阅：[dynamic-resource-allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)
+> 1. 关于DRA的详细介绍，请参考：[dynamic-resource-allocation](https://kubernetes.io/docs/concepts/scheduling-eviction/dynamic-resource-allocation/)
 
-> 2. 有关在 Volcano 中启用 DRA 的详细步骤，请参阅本文档后面的 [**2.1.2. 在 Volcano 中启用 DRA (动态资源分配)**](#dra-activation) 部分。
+> 2. 关于如何在Volcano中启用DRA的详细步骤，请参考本文档后续的[**2.1.2. 在Volcano中启用DRA (Dynamic Resource Allocation)**](#2-1-2-在volcano中启用dra-dynamic-resource-allocation)章节
 
-除了兼容 kube-scheduler 中的大多数过滤器外，Volcano 还提供了 `节点过滤结果缓存` 增强功能：
+除了兼容 Kubernetes 的过滤器外，Volcano 还提供了以下增强特性
 
 #### 2.1.1. 节点过滤结果缓存 (PredicateWithCache)
 当调度器为 Pod 选择节点时，需要执行一系列检查（如资源可用性、亲和性要求等）。这些检查结果可以被缓存。如果不久后需要调度配置相同的 Pod，可以重用先前的检查结果，避免重复的节点过滤计算，并在批量创建 Pod 时显著提高调度性能。
@@ -185,33 +185,63 @@ data:
           podtopologyspread.weight: 2   # 默认权重为 2
 ```
 
-## 3. 统一调度的优势
+## 3. 统一调度配置方式
 
-作为通用的批量计算系统，Volcano通过以下关键优势扩展了 Kubernetes 原生调度能力：
+通过配置 `schedulerName: volcano`，Volcano 可以统一调度 Kubernetes 原生工作负载和 Volcano 工作负载。
 
-### 3.1. 丰富的生态系统支持
-* **完整框架支持**
+### Kubernetes 原生工作负载
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test
+spec:
+  replicas: 1
+  template:
+    spec:
+      schedulerName: volcano  # 指定使用 Volcano 调度器
+  ...
+```
+
+### Volcano 工作负载
+```
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: test
+spec:
+  minAvailable: 1
+  schedulerName: volcano  # Volcano 工作负载默认使用 volcano 调度器
+  ...
+```
+
+### 统一调度的优势
+
+Volcano 作为一个通用的批量计算系统，在继承 Kubernetes 原生调度能力的基础上，具有以下突出优势：
+
+#### 丰富的生态支持
+* **完整的框架支持**
   - 支持 Ray、TensorFlow、PyTorch、MindSpore 等主流 AI 训练框架
   - 支持 Spark、Flink 等大数据处理框架
   - 支持 MPI 等高性能计算框架
 
 * **异构设备支持**
-  - 支持 GPU (CUDA/MIG) 调度
+  - 支持 GPU（CUDA/MIG）调度
   - 支持 NPU 调度
 
-### 3.2. 增强的调度能力
-* **Gang 调度**
-  - 支持作业级调度
-  - 防止资源碎片
-  - 适用于分布式训练场景
+#### 增强的调度能力
+* **Gang Scheduling**
+  - 支持作业的整体调度
+  - 避免资源碎片化
+  - 适用于分布式训练等场景
 
 * **队列资源管理**
   - 支持多租户资源隔离
   - 支持队列间资源借用和回收
   - 支持资源配额管理
 
-### 3.3. 统一资源管理
-* **统一资源视图**
-  - 统一管理 CPU、内存、GPU/NPU 和其他异构资源
-  - 实现资源共享和隔离
-  - 提高整体资源利用率
+#### 统一的资源管理
+* **资源视图统一**
+  - 统一管理 CPU、内存、GPU/NPU 等异构资源
+  - 实现资源共享与隔离
+  - 提升整体资源利用率

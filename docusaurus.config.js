@@ -17,8 +17,8 @@ const config = {
   organizationName: "volcano-sh",
   projectName: "website",
 
-  onBrokenLinks: "warn",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "throw",
 
   i18n: {
     defaultLocale: "en",
