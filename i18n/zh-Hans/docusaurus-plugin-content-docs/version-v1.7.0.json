@@ -1,0 +1,38 @@
+{
+  "version.label": {
+    "message": "v1.7.0",
+    "description": "The label for version v1.7.0"
+  },
+  "sidebar.docsSidebar.category.Home": {
+    "message": "主页",
+    "description": "The label for category Home in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Getting Started": {
+    "message": "开始",
+    "description": "The label for category Getting Started in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Concepts": {
+    "message": "概念",
+    "description": "The label for category Concepts in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Ecosystem": {
+    "message": "生态",
+    "description": "The label for category Ecosystem in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Scheduler": {
+    "message": "调度器",
+    "description": "The label for category Scheduler in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Plugins": {
+    "message": "插件",
+    "description": "The label for category Plugins in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.CLI": {
+    "message": "命令行工具",
+    "description": "The label for category CLI in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Contribution": {
+    "message": "贡献",
+    "description": "The label for category Contribution in sidebar docsSidebar"
+  }
+}

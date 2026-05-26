@@ -1,107 +1,270 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/8cf65901-dae4-4826-b32b-17feeebddc86/deploy-status)](https://app.netlify.com/sites/kind-montalcini-bed86a/deploys)
+# Volcano Website
 
-# Creating and updating the docs
+Welcome to the GitHub repository for Volcano's public website. The docs are hosted at [https://volcano.sh](https://volcano.sh).
 
-Welcome to the GitHub repository for Volcano's public website. The docs are
-hosted at https://volcano.sh.
+We use [Docusaurus](https://docusaurus.io/) to format and generate our website, and [Netlify](https://www.netlify.com/) to manage the deployment of the site. Docusaurus is an open-source static site generator that provides us with templates, content organisation in a standard directory structure, and a website generation engine. You write the pages in Markdown (with YAML front matter), and Docusaurus wraps them up into a website.
 
-We use [Hugo](https://gohugo.io/) to format and generate our website, and
-[Netlify](https://www.netlify.com/) to manage the deployment of the site. Hugo
-is an open-source static site generator that provides us with templates, content
-organisation in a standard directory structure, and a website generation engine.
-You write the pages in Markdown, and Hugo wraps them up into a website.
+Please see [How to contribute](https://github.com/volcano-sh/volcano/blob/master/contribute.md) for instructions on how to contribute, if you are not familiar with the GitHub workflow.
 
-* Please see [How to contribute](https://github.com/volcano-sh/volcano/blob/master/contribute.md) for instructions on how to contribute, if you are not familiar with the
-  GitHub workflow
+## Prerequisites
+
+You need the following installed locally:
+
+- [Node.js](https://nodejs.org/) version 20 or higher
+- [npm](https://www.npmjs.com/) (comes bundled with Node.js)
+
+**Mac OS X:**
+```bash
+brew install node
+```
+
+**Debian / Ubuntu:**
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+**Windows:**
+
+Download the installer from [https://nodejs.org](https://nodejs.org) and run it.
+
+Verify your installation:
+```bash
+node --version
+npm --version
+```
 
 ## Quickstart
 
-Here's a quick guide to updating the docs. It assumes you're familiar with the
-GitHub workflow and you're happy to use the automated preview of your doc
-updates:
+Here's a quick guide to adding or updating docs and previewing your changes locally.
 
-1. Fork the repo on GitHub.
-2. Make your changes and send a pull request (PR).
-3. If you're not yet ready for a review, add a comment to the PR saying it's a
-   work in progress or add `[WIP]` in your PRs title. You can also add `/hold` in a comment to mark the PR as not
-   ready for merge. (**Don't** add the Hugo declarative "draft = true" to the
-   page front matter, because that will prevent the auto-deployment of the
-   content preview described in the next point.)
-4. Wait for the automated PR workflow to do some checks. When it's ready,
-   you should see a comment like this: **deploy/netlify — Deploy preview ready!**
-5. Click **Details** to the right of "Deploy preview ready" to see a preview
-   of your updates.
-6. Continue updating your doc until you're happy with it.
-7. When you're ready for a review, add a comment to the PR and assign a
-   reviewer/approver.
+1. Fork the repo on GitHub and clone it to your local machine:
 
-## Previewing your changes on a local website server
+   ```bash
+   git clone https://github.com/<your-username>/website.git
+   cd website
+   ```
 
-If you'd like to preview your doc updates as you work, you can install Hugo
-and run a local server. This section shows you how.
+2. Install dependencies (you only need to do this once, or when `package.json` changes):
 
-### Install Hugo
+   ```bash
+   npm install
+   ```
 
-See the [Hugo installation guide][hugo-install]. Here are some examples:
+3. Start the local development server:
 
-#### Mac OS X:
+   ```bash
+   npm run start
+   ```
 
+   The site is now live at **http://localhost:3000/** with hot-reload — any changes you save will be reflected immediately in the browser.
+
+   To preview the Chinese locale:
+   ```bash
+   npm run start -- --locale zh-Hans
+   ```
+
+4. Make your changes:
+
+   - To **add a new doc**, create a `.md` file in the appropriate category folder under `docs/` (see [How to add a new doc](#how-to-add-a-new-doc)).
+   - To **update an existing doc**, edit the corresponding `.md` file under `docs/`.
+   - To **add a blog post**, see [How to add a blog post](#how-to-add-a-blog-post).
+
+5. Preview your changes to make sure everything looks correct.
+
+6. Commit and push your changes. 
+
+7. Open a pull request on GitHub. See [GitHub's documentation on creating pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request) for more details.
+
+
+### Production build
+
+To generate a full production build (useful for catching broken links or build errors):
 ```bash
-brew install hugo
+npm run build
 ```
 
-#### Debian:
+You can serve the production build locally with:
+```bash
+npm run serve
+```
 
-1. Download the Debian package from the [Hugo website][hugo-install].
-   Make sure to install the Hugo version specified by the `HUGO_VERSION` environment variable in the [`netlify.toml`](netlify.toml#L6) file.
-   For example, [hugo_0.57.2_Linux-64bit.deb][hugo_0.57.2_Linux-64bit.deb].
-2. Install the package using `dpkg`:
+## Project structure
+
+Here's how the repository is organised:
+
+```
+website/
+├── docs/                       # English documentation (default locale, source of truth)
+│   ├── Home/                   # Introduction & overview
+│   ├── GettingStarted/         # Installation & tutorials
+│   ├── Concepts/               # Queue, Job, PodGroup, etc.
+│   ├── KeyFeatures/            # GPU virtualisation, colocation, etc.
+│   ├── Scheduler/              # Scheduler plugins & actions
+│   ├── UserGuide/              # How-to guides
+│   ├── CLI/                    # CLI reference
+│   ├── Ecosystem/              # Spark, TensorFlow, Flink integrations
+│   └── Contribution/           # Contribution guidelines
+│
+├── blog/                       # Blog posts (Markdown files + authors.yml)
+├── versioned_docs/             # Frozen doc snapshots for past releases
+├── versioned_sidebars/         # Sidebar snapshots for past releases
+│
+├── i18n/zh-Hans/               # Chinese (Simplified) translations
+│   ├── docusaurus-plugin-content-docs/
+│   │   ├── current/            # Translations for the current (latest) docs
+│   │   └── version-v1.12.0/    # Translations for v1.12.0, etc.
+│   └── docusaurus-plugin-content-blog/
+│
+│
+├── src/                        # Custom React components, pages, CSS
+├── static/img/                 # Images and static assets
+├── plugins/                    # Custom Docusaurus plugins
+│
+├── docusaurus.config.js        # Main Docusaurus configuration
+├── sidebar.js                  # Sidebar configuration (auto-generated from dirs)
+├── versions.json               # List of released doc versions
+├── package.json                # Dependencies and npm scripts
+└── netlify.toml                # Netlify deployment configuration
+```
+
+## How to add a new doc
+
+### English docs
+
+1. Pick the category folder your doc belongs to under `docs/` (e.g., `docs/UserGuide/`, `docs/Concepts/`).
+2. Create a new `.md` file in that folder.
+3. Add YAML front matter at the top of the file:
+   ```yaml
+   ---
+   title: "Your Page Title"
+   sidebar_position: 3
+   ---
+   ```
+4. Write your content in Markdown below the front matter.
+5. The sidebar is auto-generated from the directory structure, so your new doc will show up automatically.
+
+Each category folder contains a `_category_.json` file that controls the category label and its position in the sidebar:
+```json
+{
+  "label": "Key Features",
+  "position": 4
+}
+```
+
+### Chinese translations
+
+To add a Chinese translation:
+
+1. Create the same file at the matching path under the i18n directory. For example:
+   - English: `docs/Concepts/Queue.md`
+   - Chinese: `i18n/zh-Hans/docusaurus-plugin-content-docs/current/Concepts/Queue.md`
+2. Translate the content and update the `title` in the front matter.
+
+## How to add a blog post
+
+### English blog posts
+
+1. Create a new `.md` file in the `blog/` directory.
+2. Add YAML front matter at the top of the file:
+   ```yaml
+   ---
+   title: "Your Blog Post Title"
+   description: "Brief summary of the post"
+   authors: ["volcano"]
+   date: 2025-06-01
+   tags: ["release"]
+   ---
+   ```
+   The `authors` field must match a key defined in `blog/authors.yml`.
+
+3. Use `<!-- truncate -->` to mark where the preview snippet ends on the blog listing page.
+
+### Chinese translations
+
+To add a Chinese translation of a blog post:
+
+1. Create the same `.md` file at the matching path under the `i18n` blog directory. For example:
+   - English: `blog/2025-06-01-my-post.md`
+   - Chinese: `i18n/zh-Hans/docusaurus-plugin-content-blog/2025-06-01-my-post.md`
+
+2. Translate the content, update the `title` and `description` in the front matter, and keep the same `date` and `authors`.
+
+## Versioning and archiving docs
+
+Docs are versioned to match Volcano releases.
+
+### How versioning works
+
+- The `docs/` directory is the **current** (in-development) version of the documentation.
+- When a new Volcano version is released, the current docs are frozen into a versioned snapshot stored in `versioned_docs/`.
+- The list of all released versions is maintained in `versions.json`.
+- Each frozen version has its own sidebar configuration in `versioned_sidebars/`.
+
+### Archiving a version for a new release
+
+When a new Volcano version ships (e.g., v1.13.0), follow **both** steps below to archive the English docs and the Chinese translations.
+
+#### Step 1 — Archive English docs (automated)
+
+Run the Docusaurus versioning command:
+
+```bash
+npx docusaurus docs:version v1.13.0
+```
+
+This command will:
+
+1. Copy the entire `docs/` directory into `versioned_docs/version-v1.13.0/`.
+2. Copy the current sidebar configuration into `versioned_sidebars/version-v1.13.0-sidebars.json`.
+3. Add `v1.13.0` to the `versions.json` file.
+
+> **Note:** This command **only** archives English documentation. Chinese translations must be archived manually.
+
+#### Step 2 — Archive Chinese translations (manual)
+
+The Docusaurus versioning command does not handle i18n files. You must manually copy the Chinese translations for the new version:
+
+1. Copy the current Chinese docs to a new versioned directory:
 
    ```bash
-   sudo dpkg -i hugo_0.57.2_Linux-64bit.deb
+   cp -r i18n/zh-Hans/docusaurus-plugin-content-docs/current i18n/zh-Hans/docusaurus-plugin-content-docs/version-v1.13.0
    ```
 
-3. Verify your installation:
+   On Windows (PowerShell):
+   ```powershell
+   Copy-Item -Recurse i18n/zh-Hans/docusaurus-plugin-content-docs/current i18n/zh-Hans/docusaurus-plugin-content-docs/version-v1.13.0
+   ```
+
+2. If a `current.json` file exists (for label translations), copy it for the new version:
 
    ```bash
-   hugo version
+   cp i18n/zh-Hans/docusaurus-plugin-content-docs/current.json i18n/zh-Hans/docusaurus-plugin-content-docs/version-v1.13.0.json
    ```
 
-### Run a local website server
-
-Follow the usual GitHub workflow to fork the repo on GitHub and clone it to your
-local machine, then use your local repo as input to your Hugo web server:
-
-1. Ensure you are in your target branch:
+3. Verify the new version directory was created successfully:
 
    ```bash
-   git branch
+   ls i18n/zh-Hans/docusaurus-plugin-content-docs/
    ```
 
-2. Start your website server. Make sure you run this command from the
-   `/website/` directory, so that Hugo can find the config files it needs:
+   You should see `version-v1.13.0/` and `version-v1.13.0.json` alongside the existing versions.
 
-   ```bash
-   hugo server -D
-   ```
+#### Step 3 — Update configuration
 
-3. Your website is at [http://localhost:1313/](http://localhost:1313/).
+After archiving both English and Chinese docs:
 
-4. Continue with the usual GitHub workflow to edit files, commit them, push the
-   changes up to your fork, and create a pull request. See [GitHub's documentation on creating pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork) for more details.
+1. Update the version label in `docusaurus.config.js` to reflect the new current (next) version.
+2. Run `npm run build` to verify that the new version builds correctly for both locales.
 
-5. While making the changes, you can preview them on your local version of the
-   website at [http://localhost:1313/](http://localhost:1313/). Note that if you
-   have more than one local git branch, when you switch between git branches the
-   local website reflects the files in the current branch.
+> **Note:** After archiving, the `docs/` folder and `i18n/.../current/` folder continue to be the working directories for the *next* release. All new documentation changes should go into those directories.
 
-Useful Hugo docs:
+For more details on how Docusaurus versioning works, see the [official Docusaurus versioning documentation](https://docusaurus.io/docs/versioning).
 
-- [Hugo installation guide](https://gohugo.io/getting-started/installing/)
-- [Hugo basic usage](https://gohugo.io/getting-started/usage/)
-- [Hugo site directory structure](https://gohugo.io/getting-started/directory-structure/)
-- [hugo server reference](https://gohugo.io/commands/hugo_server/)
-- [hugo new reference](https://gohugo.io/commands/hugo_new/)
+## Useful Docusaurus docs
 
-[hugo-install]: https://gohugo.io/getting-started/installing/
-[hugo_0.57.2_Linux-64bit.deb]: https://github.com/gohugoio/hugo/releases/download/v0.57.2/hugo_0.57.2_Linux-64bit.deb
+- [Docusaurus installation guide](https://docusaurus.io/docs/installation)
+- [Docs — creating docs](https://docusaurus.io/docs/create-doc)
+- [Docs — i18n tutorial](https://docusaurus.io/docs/i18n/tutorial)
+- [Docs — versioning](https://docusaurus.io/docs/versioning)
+- [Docs — blog](https://docusaurus.io/docs/blog)
