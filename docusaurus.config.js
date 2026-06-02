@@ -14,6 +14,33 @@ const config = {
   url: "https://volcano.sh",
   baseUrl: "/",
 
+  favicon: "img/favicons/favicon.ico",
+
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "apple-touch-icon",
+        href: "/img/favicons/apple-touch-icon.png",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "manifest",
+        href: "/img/favicons/site.webmanifest",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "mask-icon",
+        href: "/img/favicons/safari-pinned-tab.svg",
+        color: "#eb341a",
+      },
+    },
+  ],
+
   organizationName: "volcano-sh",
   projectName: "website",
 
