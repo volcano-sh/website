@@ -104,7 +104,7 @@ const supporters = [
     imgSrc: "img/landing/logo_zhongkeleinao.png",
     imgWidth: "100px",
     imgHeight: "60px",
-    url: "http://www.leinao.ai/"
+    url: "https://www.leinao.ai/"
   },
   {
     imgSrc: "img/landing/logo_bibdr.png",
@@ -122,7 +122,7 @@ const supporters = [
     imgSrc: "img/landing/logo_qiezi.png",
     imgWidth: "100px",
     imgHeight: "60px",
-    url: "https://shareit.one/"
+    url: "https://www.ushareit.com/"
   },
   {
     imgSrc: "img/landing/logo_vivo.png",

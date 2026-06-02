@@ -91,7 +91,7 @@ const config = {
   ],
 
   themeConfig: {
-    image: "img/docusaurus-social-card.jpg",
+    image: "img/landing/volcano_logo.png",
     navbar: {
       title: "",
       logo: {
