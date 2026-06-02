@@ -90,7 +90,7 @@ tiers:
 
 Related PRs: [#5250](https://github.com/volcano-sh/volcano/pull/5250), [#4780](https://github.com/volcano-sh/volcano/pull/4780), [#5170](https://github.com/volcano-sh/volcano/pull/5170)
 
-Sincerely thanks to community developer: \@[vzhou-p](https://github.com/vzhou-p)
+Sincerely thanks to community developer: &#64;[vzhou-p](https://github.com/vzhou-p)
 
 ---
 
@@ -155,7 +155,7 @@ spec:
 
 Related PR: [#5058](https://github.com/volcano-sh/volcano/pull/5058)
 
-Sincerely thanks to community developer: \@[xu-wentao](https://github.com/xu-wentao)
+Sincerely thanks to community developer: &#64;[xu-wentao](https://github.com/xu-wentao)
 
 ---
 
@@ -213,7 +213,7 @@ custom:
 
 Related PRs: [#5098](https://github.com/volcano-sh/volcano/pull/5098), [#5132](https://github.com/volcano-sh/volcano/pull/5132), [#4990](https://github.com/volcano-sh/volcano/pull/4990)
 
-Sincerely thanks to community developers: \@[lixmgl](https://github.com/lixmgl), \@[agrawalcodes](https://github.com/agrawalcodes)
+Sincerely thanks to community developers: &#64;[lixmgl](https://github.com/lixmgl), &#64;[agrawalcodes](https://github.com/agrawalcodes)
 
 ---
 
@@ -244,7 +244,7 @@ Related PRs: [#5305](https://github.com/volcano-sh/volcano/pull/5305), [#5215](h
 
 User Guide: [Benchmark README](https://github.com/volcano-sh/volcano/blob/master/benchmark/README.md)
 
-Sincerely thanks to community developers: \@[JesseStutler](https://github.com/JesseStutler), \@[3th4novo](https://github.com/3th4novo)
+Sincerely thanks to community developers: &#64;[JesseStutler](https://github.com/JesseStutler), &#64;[3th4novo](https://github.com/3th4novo)
 
 ---
 
@@ -293,7 +293,7 @@ Related Issue: [#4710](https://github.com/volcano-sh/volcano/issues/4710)
 
 Related PRs: [#5033](https://github.com/volcano-sh/volcano/pull/5033), [#4727](https://github.com/volcano-sh/volcano/pull/4727)
 
-Sincerely thanks to community developer: \@[devzizu](https://github.com/devzizu)
+Sincerely thanks to community developer: &#64;[devzizu](https://github.com/devzizu)
 
 ---
 
@@ -326,7 +326,7 @@ spec:
 
 Related PR: [#5110](https://github.com/volcano-sh/volcano/pull/5110)
 
-Sincerely thanks to community developer: \@[ruanwenjun](https://github.com/ruanwenjun)
+Sincerely thanks to community developer: &#64;[ruanwenjun](https://github.com/ruanwenjun)
 
 ---
 
@@ -336,7 +336,7 @@ Adds `ancestorReclaimLevel` configuration and documents hierarchical queue recla
 
 Related PR: [#5115](https://github.com/volcano-sh/volcano/pull/5115)
 
-Sincerely thanks to community developer: \@[hajnalmt](https://github.com/hajnalmt)
+Sincerely thanks to community developer: &#64;[hajnalmt](https://github.com/hajnalmt)
 
 ---
 
@@ -350,7 +350,7 @@ v1.15.0 brings several enhancements to GPU and vGPU scheduling:
 
 Related PRs: [#5213](https://github.com/volcano-sh/volcano/pull/5213), [#5235](https://github.com/volcano-sh/volcano/pull/5235), [#5049](https://github.com/volcano-sh/volcano/pull/5049)
 
-Sincerely thanks to community developers: \@[ckyuto](https://github.com/ckyuto), \@[archlitchi](https://github.com/archlitchi), \@[goyalankit](https://github.com/goyalankit)
+Sincerely thanks to community developers: &#64;[ckyuto](https://github.com/ckyuto), &#64;[archlitchi](https://github.com/archlitchi), &#64;[goyalankit](https://github.com/goyalankit)
 
 ---
 
@@ -360,7 +360,7 @@ v1.15.0 now supports pod-level resource request and limit configuration in Volca
 
 Related PR: [#5020](https://github.com/volcano-sh/volcano/pull/5020)
 
-Sincerely thanks to community developer: \@[Tau721](https://github.com/Tau721)
+Sincerely thanks to community developer: &#64;[Tau721](https://github.com/Tau721)
 
 ---
 
@@ -370,7 +370,7 @@ The Volcano version keeps pace with the Kubernetes community releases. v1.15 sup
 
 Related PRs: [#5000](https://github.com/volcano-sh/volcano/pull/5000), [#5039](https://github.com/volcano-sh/volcano/pull/5039), [#5062](https://github.com/volcano-sh/volcano/pull/5062)
 
-Sincerely thanks to community developers: \@[guoqinwill](https://github.com/guoqinwill), \@[hajnalmt](https://github.com/hajnalmt)
+Sincerely thanks to community developers: &#64;[guoqinwill](https://github.com/guoqinwill), &#64;[hajnalmt](https://github.com/hajnalmt)
 
 ---
 
@@ -380,7 +380,7 @@ v1.15.0 relaxes MPI validation for single-master MPI jobs and adds Argo MPI work
 
 Related PRs: [#4956](https://github.com/volcano-sh/volcano/pull/4956), [#5117](https://github.com/volcano-sh/volcano/pull/5117)
 
-Sincerely thanks to community developers: \@[kingeasternsun](https://github.com/kingeasternsun), \@[jrbe228](https://github.com/jrbe228)
+Sincerely thanks to community developers: &#64;[kingeasternsun](https://github.com/kingeasternsun), &#64;[jrbe228](https://github.com/jrbe228)
 
 ---
 
@@ -394,11 +394,11 @@ v1.15.0 includes the webhook request body size mitigation for **CVE-2026-44247**
 
 - **Core scheduler stability and capacity correctness**: Improves transaction rollback, preemption/reclaim correctness, queue and inqueue accounting, victim ordering, event-handler synchronization, and scheduler cache safety. Together, they improve scheduler stability under high contention and concurrent event processing. ([#5073](https://github.com/volcano-sh/volcano/pull/5073), [#5180](https://github.com/volcano-sh/volcano/pull/5180), [#5010](https://github.com/volcano-sh/volcano/pull/5010), [#5011](https://github.com/volcano-sh/volcano/pull/5011), [#5067](https://github.com/volcano-sh/volcano/pull/5067), [#5141](https://github.com/volcano-sh/volcano/pull/5141), [#5142](https://github.com/volcano-sh/volcano/pull/5142), [#5113](https://github.com/volcano-sh/volcano/pull/5113), [#5100](https://github.com/volcano-sh/volcano/pull/5100), [#5130](https://github.com/volcano-sh/volcano/pull/5130), [#5176](https://github.com/volcano-sh/volcano/pull/5176), [#5091](https://github.com/volcano-sh/volcano/pull/5091), [#4973](https://github.com/volcano-sh/volcano/pull/4973), [#5172](https://github.com/volcano-sh/volcano/pull/5172), [#5178](https://github.com/volcano-sh/volcano/pull/5178), [#5086](https://github.com/volcano-sh/volcano/pull/5086))
 
-Sincerely thanks to community developers: \@[hzxuzhonghu](https://github.com/hzxuzhonghu), \@[Sanchit2662](https://github.com/Sanchit2662), \@[Aman-Cool](https://github.com/Aman-Cool), \@[hajnalmt](https://github.com/hajnalmt), \@[goyalpalak18](https://github.com/goyalpalak18), \@[guoqinwill](https://github.com/guoqinwill), \@[qi-min](https://github.com/qi-min), \@[zhifei92](https://github.com/zhifei92)
+Sincerely thanks to community developers: &#64;[hzxuzhonghu](https://github.com/hzxuzhonghu), &#64;[Sanchit2662](https://github.com/Sanchit2662), &#64;[Aman-Cool](https://github.com/Aman-Cool), &#64;[hajnalmt](https://github.com/hajnalmt), &#64;[goyalpalak18](https://github.com/goyalpalak18), &#64;[guoqinwill](https://github.com/guoqinwill), &#64;[qi-min](https://github.com/qi-min), &#64;[zhifei92](https://github.com/zhifei92)
 
 - **Agent Scheduler stability enhancements**: Fixes multi-worker optimistic concurrency conflicts, prevents a shared action instance from reusing different framework/cycle state, registers the missing CSI manager, improves binder node priority behavior when nodes are waiting to be checked, fixes inaccurate E2E duration metrics, and adds e2e coverage. ([#5154](https://github.com/volcano-sh/volcano/pull/5154), [#5153](https://github.com/volcano-sh/volcano/pull/5153), [#5221](https://github.com/volcano-sh/volcano/pull/5221), [#5163](https://github.com/volcano-sh/volcano/pull/5163), [#4991](https://github.com/volcano-sh/volcano/pull/4991))
 
-Sincerely thanks to community developers: \@[JesseStutler](https://github.com/JesseStutler), \@[qi-min](https://github.com/qi-min), \@[agrawalcodes](https://github.com/agrawalcodes)
+Sincerely thanks to community developers: &#64;[JesseStutler](https://github.com/JesseStutler), &#64;[qi-min](https://github.com/qi-min), &#64;[agrawalcodes](https://github.com/agrawalcodes)
 
 ---
 
@@ -432,7 +432,7 @@ Whether for managing resource contention in large-scale AI clusters, optimizing 
 
 **Experience Volcano v1.15.0 now and step into a new era of efficient, gang-aware, and observable scheduling!**
 
-**v1.15.0 release:** <https://github.com/volcano-sh/volcano/releases/tag/v1.15.0>
+**v1.15.0 release:** [https://github.com/volcano-sh/volcano/releases/tag/v1.15.0](https://github.com/volcano-sh/volcano/releases/tag/v1.15.0)
 
 ---
 
@@ -440,19 +440,19 @@ Whether for managing resource contention in large-scale AI clusters, optimizing 
 
 Volcano v1.15.0 includes contributions from 45 community members. Sincerely thanks to all contributors:
 
-| \@[0YHR0](https://github.com/0YHR0)                 | \@[3th4novo](https://github.com/3th4novo)                   | \@[aadhil2k4](https://github.com/aadhil2k4)             |
-| :-------------------------------------------------- | :---------------------------------------------------------- | :------------------------------------------------------ |
-| \@[Aman-Cool](https://github.com/Aman-Cool)         | \@[agrawalcodes](https://github.com/agrawalcodes)           | \@[aniketchawardol](https://github.com/aniketchawardol) |
-| \@[archlitchi](https://github.com/archlitchi)       | \@[ckyuto](https://github.com/ckyuto)                       | \@[dafu-wu](https://github.com/dafu-wu)                 |
-| \@[dengaosong](https://github.com/dengaosong)       | \@[devzizu](https://github.com/devzizu)                     | \@[DSFans2014](https://github.com/DSFans2014)           |
-| \@[FAUST-BENCHOU](https://github.com/FAUST-BENCHOU) | \@[goyalankit](https://github.com/goyalankit)               | \@[goyalpalak18](https://github.com/goyalpalak18)       |
-| \@[guoqinwill](https://github.com/guoqinwill)       | \@[hajnalmt](https://github.com/hajnalmt)                   | \@[hwdef](https://github.com/hwdef)                     |
-| \@[hzxuzhonghu](https://github.com/hzxuzhonghu)     | \@[JesseStutler](https://github.com/JesseStutler)           | \@[jiahuat](https://github.com/jiahuat)                 |
-| \@[jrbe228](https://github.com/jrbe228)             | \@[katara-Jayprakash](https://github.com/katara-Jayprakash) | \@[kingeasternsun](https://github.com/kingeasternsun)   |
-| \@[kitianFresh](https://github.com/kitianFresh)     | \@[kube-gopher](https://github.com/kube-gopher)             | \@[lixmgl](https://github.com/lixmgl)                   |
-| \@[madmecodes](https://github.com/madmecodes)       | \@[ouyangshengjia](https://github.com/ouyangshengjia)       | \@[pierluigilenoci](https://github.com/pierluigilenoci) |
-| \@[pmady](https://github.com/pmady)                 | \@[praveen0raj](https://github.com/praveen0raj)             | \@[qi-min](https://github.com/qi-min)                   |
-| \@[ruanwenjun](https://github.com/ruanwenjun)       | \@[Sanchit2662](https://github.com/Sanchit2662)             | \@[SquareCatFirst](https://github.com/SquareCatFirst)   |
-| \@[t2wang](https://github.com/t2wang)               | \@[Tau721](https://github.com/Tau721)                       | \@[vzhou-p](https://github.com/vzhou-p)                 |
-| \@[wangyang0616](https://github.com/wangyang0616)   | \@[xu-wentao](https://github.com/xu-wentao)                 | \@[Yashika0724](https://github.com/Yashika0724)         |
-| \@[zhifei92](https://github.com/zhifei92)           |                                                             |                                                         |
+| &#64;[0YHR0](https://github.com/0YHR0)                 | &#64;[3th4novo](https://github.com/3th4novo)                   | &#64;[aadhil2k4](https://github.com/aadhil2k4)             |
+| :----------------------------------------------------- | :------------------------------------------------------------- | :--------------------------------------------------------- |
+| &#64;[Aman-Cool](https://github.com/Aman-Cool)         | &#64;[agrawalcodes](https://github.com/agrawalcodes)           | &#64;[aniketchawardol](https://github.com/aniketchawardol) |
+| &#64;[archlitchi](https://github.com/archlitchi)       | &#64;[ckyuto](https://github.com/ckyuto)                       | &#64;[dafu-wu](https://github.com/dafu-wu)                 |
+| &#64;[dengaosong](https://github.com/dengaosong)       | &#64;[devzizu](https://github.com/devzizu)                     | &#64;[DSFans2014](https://github.com/DSFans2014)           |
+| &#64;[FAUST-BENCHOU](https://github.com/FAUST-BENCHOU) | &#64;[goyalankit](https://github.com/goyalankit)               | &#64;[goyalpalak18](https://github.com/goyalpalak18)       |
+| &#64;[guoqinwill](https://github.com/guoqinwill)       | &#64;[hajnalmt](https://github.com/hajnalmt)                   | &#64;[hwdef](https://github.com/hwdef)                     |
+| &#64;[hzxuzhonghu](https://github.com/hzxuzhonghu)     | &#64;[JesseStutler](https://github.com/JesseStutler)           | &#64;[jiahuat](https://github.com/jiahuat)                 |
+| &#64;[jrbe228](https://github.com/jrbe228)             | &#64;[katara-Jayprakash](https://github.com/katara-Jayprakash) | &#64;[kingeasternsun](https://github.com/kingeasternsun)   |
+| &#64;[kitianFresh](https://github.com/kitianFresh)     | &#64;[kube-gopher](https://github.com/kube-gopher)             | &#64;[lixmgl](https://github.com/lixmgl)                   |
+| &#64;[madmecodes](https://github.com/madmecodes)       | &#64;[ouyangshengjia](https://github.com/ouyangshengjia)       | &#64;[pierluigilenoci](https://github.com/pierluigilenoci) |
+| &#64;[pmady](https://github.com/pmady)                 | &#64;[praveen0raj](https://github.com/praveen0raj)             | &#64;[qi-min](https://github.com/qi-min)                   |
+| &#64;[ruanwenjun](https://github.com/ruanwenjun)       | &#64;[Sanchit2662](https://github.com/Sanchit2662)             | &#64;[SquareCatFirst](https://github.com/SquareCatFirst)   |
+| &#64;[t2wang](https://github.com/t2wang)               | &#64;[Tau721](https://github.com/Tau721)                       | &#64;[vzhou-p](https://github.com/vzhou-p)                 |
+| &#64;[wangyang0616](https://github.com/wangyang0616)   | &#64;[xu-wentao](https://github.com/xu-wentao)                 | &#64;[Yashika0724](https://github.com/Yashika0724)         |
+| &#64;[zhifei92](https://github.com/zhifei92)           |                                                                |                                                            |
