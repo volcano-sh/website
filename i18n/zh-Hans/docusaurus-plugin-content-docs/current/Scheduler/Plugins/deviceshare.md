@@ -38,4 +38,4 @@ tiers:
       - name: binpack
 ```
 
-> **Note:** For specific guides on how to configure your workloads to request shared GPUs or NPUs, please refer to the dedicated guides for [GPU Sharing](../UserGuide/user_guide_how_to_use_gpu_sharing) and [vNPU](../UserGuide/user_guide_how_to_use_vnpu).
+> **Note:** For specific guides on how to configure your workloads to request shared GPUs or NPUs, please refer to the dedicated guides for [GPU Sharing](../../UserGuide/user_guide_how_to_use_gpu_sharing) and [vNPU](../../UserGuide/user_guide_how_to_use_vnpu).

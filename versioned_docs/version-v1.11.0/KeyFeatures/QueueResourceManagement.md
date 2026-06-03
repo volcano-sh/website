@@ -50,7 +50,7 @@ deserved indicates the expected resource amount for all PodGroups in this queue.
 
 > **Note**:
 > 
-> 1. This field can only be configured when the capacity plugin is enabled, and must be less than or equal to the capability value. The proportion plugin uses weight to automatically calculate the queue's deserved value. For more information on using the capacity plugin, see: [capacity plugin user guide](/docs/Plugins/user_guide_how_to_use_capacity_plugin)
+> 1. This field can only be configured when the capacity plugin is enabled, and must be less than or equal to the capability value. The proportion plugin uses weight to automatically calculate the queue's deserved value. For more information on using the capacity plugin, see: [capacity plugin user guide](/docs/Scheduler/Plugins/capacity)
 > 2. If the allocated resources of a queue exceed its configured deserved value, the queue cannot reclaim resources from other queues
 
 * weight, *optional*
