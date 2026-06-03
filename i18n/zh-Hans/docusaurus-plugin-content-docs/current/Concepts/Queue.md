@@ -52,7 +52,7 @@ deserved表示该queue内所有podgroup的资源应得量，若该queue已分配
 
 **注意**：
 
-1. 该字段只有在capacity插件开启时可按需配置，需要小于等于capability值，proportion插件使用weight来自动计算queue的deserved值。capacity插件使用文档详见：[capacity plugin User Guide](/docs/Plugins/user_guide_how_to_use_capacity_plugin)
+1. 该字段只有在capacity插件开启时可按需配置，需要小于等于capability值，proportion插件使用weight来自动计算queue的deserved值。capacity插件使用文档详见：[capacity plugin User Guide](../Scheduler/Plugins/capacity.md)
 > 2. 若queue中已分配的资源量超过了自己配置的deserved值，则queue不可再回收其他队列中的资源
 <!--目前capacity插件使用指导文档引用的是github中的链接，后续若官方网站文档中添加了中文的capacity插件使用指导，则替换为官方网站中的文档链接-->
 
