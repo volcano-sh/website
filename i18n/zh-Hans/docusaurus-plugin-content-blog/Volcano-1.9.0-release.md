@@ -59,7 +59,7 @@ spec:
     nvidia.com/v100: 80
 ```
 
-队列弹性容量调度的完整使用例子，请参考：[How to use capacity plugin](/docs/UserGuide/user_guide_how_to_use_capacity_plugin).
+队列弹性容量调度的完整使用例子，请参考：[How to use capacity plugin](/docs/Plugins/user_guide_how_to_use_capacity_plugin).
 
 关于弹性队列容量设计文档，请参考[Capacity scheduling Design](https://github.com/volcano-sh/volcano/blob/master/docs/design/capacity-scheduling.md).
 
@@ -94,7 +94,7 @@ metadata:
         - <groupname3>
 ```
 
-该功能对应的调度插件名为nodegroup，完整使用例子请参考：[How to use nodegroup plugin](/docs/UserGuide/user_guide_how_to_use_nodegroup_plugin).
+该功能对应的调度插件名为nodegroup，完整使用例子请参考：[How to use nodegroup plugin](/docs/Plugins/user_guide_how_to_use_nodegroup_plugin).
 
 详细设计文档请参考：[The nodegroup design](https://github.com/volcano-sh/volcano/blob/master/docs/design/node-group.md).
 

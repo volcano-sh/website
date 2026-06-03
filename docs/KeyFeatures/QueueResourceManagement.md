@@ -64,7 +64,7 @@ Queue scheduling in Volcano involves the following core actions:
 Volcano provides two core queue scheduling plugins:
 
 #### capacity plugin
-[capacity plugin](/docs/UserGuide/user_guide_how_to_use_capacity_plugin) supports setting queue's deserved resource amount through explicit configuration, as shown in this example:
+[capacity plugin](/docs/Plugins/user_guide_how_to_use_capacity_plugin) supports setting queue's deserved resource amount through explicit configuration, as shown in this example:
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1

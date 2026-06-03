@@ -1,5 +1,5 @@
 ---
-title: "Capacity Plugin User Guide"
+title: Capacity
 
 ---
 

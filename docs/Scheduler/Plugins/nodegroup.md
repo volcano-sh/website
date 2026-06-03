@@ -1,5 +1,5 @@
 ﻿---
-title: "Nodegroup Plugin User Guide"
+title: Nodegroup
 
 ---
 

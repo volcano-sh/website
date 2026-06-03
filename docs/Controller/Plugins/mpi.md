@@ -1,5 +1,5 @@
 ﻿---
-title: "MPI Plugin User Guide"
+title: MPI
 
 ---
 
