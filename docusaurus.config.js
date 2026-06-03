@@ -110,6 +110,11 @@ const config = {
           onUntruncatedBlogPosts: "warn",
         },
 
+        gtag: {
+          trackingID: "G-GN2GSDH4JQ",
+          anonymizeIP: true,
+        },
+
         theme: {
           customCss: "./src/css/custom.css",
         },
