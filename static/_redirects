@@ -7,3 +7,135 @@
 # Redirect golang vanity imports for volcano.sh
 /volcano/* go-get=1 /golang/volcano.html 200
 /apis/* go-get=1 /golang/api.html 200
+
+# ---------------------------------------------------------------------------
+# Redirect legacy (Hugo) documentation URLs to the new Docusaurus structure.
+# The old site served docs under /<locale>/docs/<slug>/ (with per-version
+# prefixes such as /en/docs/v1-10-0/<slug>/). Those URLs are still indexed by
+# search engines and now 404, so map them to their new equivalents.
+# ---------------------------------------------------------------------------
+
+# Strip the version prefix from old versioned doc URLs so they fall through to
+# the non-versioned rules below (which point at the latest docs).
+/en/docs/v1-7-0/*                                       /en/docs/:splat                               301
+/en/docs/v1-8-2/*                                       /en/docs/:splat                               301
+/en/docs/v1-9-0/*                                       /en/docs/:splat                               301
+/en/docs/v1-10-0/*                                      /en/docs/:splat                               301
+/en/docs/v1-11-0/*                                      /en/docs/:splat                               301
+/en/docs/v1-12-0/*                                      /en/docs/:splat                               301
+
+/zh/docs/v1-7-0/*                                       /zh/docs/:splat                               301
+/zh/docs/v1-8-2/*                                       /zh/docs/:splat                               301
+/zh/docs/v1-9-0/*                                       /zh/docs/:splat                               301
+/zh/docs/v1-10-0/*                                      /zh/docs/:splat                               301
+/zh/docs/v1-11-0/*                                      /zh/docs/:splat                               301
+/zh/docs/v1-12-0/*                                      /zh/docs/:splat                               301
+
+# Scheduler plugin pages (must come before the generic /scheduler rules).
+/en/docs/scheduler/plugins/binpack                      /docs/Scheduler/Plugins/binpack               301
+/en/docs/scheduler/plugins/drf                          /docs/Scheduler/Plugins/drf                   301
+/en/docs/scheduler/plugins/gang                         /docs/Scheduler/Plugins/gang                  301
+/en/docs/scheduler/plugins/nodeorder                    /docs/Scheduler/Plugins/nodeorder             301
+/en/docs/scheduler/plugins/numa-aware                   /docs/Scheduler/Plugins/numa_aware            301
+/en/docs/scheduler/plugins/predicates                   /docs/Scheduler/Plugins/predicates            301
+/en/docs/scheduler/plugins/priority                     /docs/Scheduler/Plugins/priority              301
+/en/docs/scheduler/plugins/proportion                   /docs/Scheduler/Plugins/proportion            301
+/en/docs/scheduler/plugins/sla                          /docs/Scheduler/Plugins/sla                   301
+/en/docs/scheduler/plugins/task-topology                /docs/Scheduler/Plugins/tasktopology          301
+/en/docs/scheduler/plugins/tdm                          /docs/Scheduler/Plugins/tdm                   301
+
+/zh/docs/scheduler/plugins/binpack                      /zh-Hans/docs/Scheduler/Plugins/binpack       301
+/zh/docs/scheduler/plugins/drf                          /zh-Hans/docs/Scheduler/Plugins/drf           301
+/zh/docs/scheduler/plugins/gang                         /zh-Hans/docs/Scheduler/Plugins/gang          301
+/zh/docs/scheduler/plugins/nodeorder                    /zh-Hans/docs/Scheduler/Plugins/nodeorder     301
+/zh/docs/scheduler/plugins/numa-aware                   /zh-Hans/docs/Scheduler/Plugins/numa_aware    301
+/zh/docs/scheduler/plugins/predicates                   /zh-Hans/docs/Scheduler/Plugins/predicates    301
+/zh/docs/scheduler/plugins/priority                     /zh-Hans/docs/Scheduler/Plugins/priority      301
+/zh/docs/scheduler/plugins/proportion                   /zh-Hans/docs/Scheduler/Plugins/proportion    301
+/zh/docs/scheduler/plugins/sla                          /zh-Hans/docs/Scheduler/Plugins/sla           301
+/zh/docs/scheduler/plugins/task-topology                /zh-Hans/docs/Scheduler/Plugins/tasktopology  301
+/zh/docs/scheduler/plugins/tdm                          /zh-Hans/docs/Scheduler/Plugins/tdm           301
+
+# User guide pages: old /docs/user-guide/<name>/ -> /docs/UserGuide/user_guide_<name>
+/en/docs/user-guide/                                    /docs/UserGuide/user_guide                    301
+/en/docs/user-guide/*                                   /docs/UserGuide/user_guide_:splat             301
+
+/zh/docs/user-guide/                                    /zh-Hans/docs/UserGuide/user_guide            301
+/zh/docs/user-guide/*                                   /zh-Hans/docs/UserGuide/user_guide_:splat     301
+
+# Individual documentation pages.
+/en/docs/queue                                          /docs/Concepts/Queue                          301
+/en/docs/podgroup                                       /docs/Concepts/PodGroup                       301
+/en/docs/vcjob                                          /docs/Concepts/VolcanoJob                     301
+/en/docs/cron_volcanojob                                /docs/Concepts/CronVolcanoJob                 301
+/en/docs/cli                                            /docs/CLI/cli                                 301
+/en/docs/contribution                                   /docs/Contribution/VolcanoContribution        301
+/en/docs/membership                                     /docs/Contribution/communitymembership        301
+/en/docs/flink_on_volcano                               /docs/Ecosystem/FlinkOnVolcano                301
+/en/docs/kubeflow_on_volcano                            /docs/Ecosystem/KubeflowOnVolcano             301
+/en/docs/mpi_on_volcano                                 /docs/Ecosystem/MPIOnVolcano                  301
+/en/docs/mindspore_on_volcano                           /docs/Ecosystem/MindSporeOnVolcano            301
+/en/docs/pp_on_volcano                                  /docs/Ecosystem/PaddlePaddleOnVolcano         301
+/en/docs/ray_on_volcano                                 /docs/Ecosystem/RayOnVolcano                  301
+/en/docs/spark_on_volcano                               /docs/Ecosystem/SparkOnVolcano                301
+/en/docs/tf_on_volcano                                  /docs/Ecosystem/TensorFlowOnVolcano           301
+/en/docs/installation                                   /docs/GettingStarted/Installation             301
+/en/docs/tutorials                                      /docs/GettingStarted/Tutorials                301
+/en/docs/architecture                                   /docs/Home/Architecture                       301
+/en/docs/gpu_virtualization                             /docs/KeyFeatures/GPUVirtualization           301
+/en/docs/hierarchical_queue                             /docs/KeyFeatures/HierarchicalQueue           301
+/en/docs/descheduler                                    /docs/KeyFeatures/LoadAwareDescheduling       301
+/en/docs/multi_cluster_scheduling                       /docs/KeyFeatures/MultiClusterScheduling      301
+/en/docs/network_topology_aware_scheduling              /docs/KeyFeatures/NetworkTopologyAware        301
+/en/docs/queue_resource_management                      /docs/KeyFeatures/QueueResourceManagement     301
+/en/docs/unified_scheduling                             /docs/KeyFeatures/UnifiedScheduling           301
+/en/docs/colocation                                     /docs/KeyFeatures/cloudNativeColocation       301
+/en/docs/actions                                        /docs/Scheduler/Actions                       301
+/en/docs/scheduler                                      /docs/Scheduler/Overview                      301
+/en/docs/schduler_introduction                          /docs/Scheduler/Overview                      301
+/en/docs/plugins                                        /docs/Scheduler/Overview                      301
+/en/docs/scheduler/plugins                              /docs/Scheduler/Overview                      301
+
+/zh/docs/queue                                          /zh-Hans/docs/Concepts/Queue                  301
+/zh/docs/podgroup                                       /zh-Hans/docs/Concepts/podgroup               301
+/zh/docs/vcjob                                          /zh-Hans/docs/Concepts/VolcanoJob             301
+/zh/docs/cron_volcanojob                                /zh-Hans/docs/Concepts/CronVolcanoJob         301
+/zh/docs/cli                                            /zh-Hans/docs/CLI/Commandline                 301
+/zh/docs/contribution                                   /zh-Hans/docs/Contribution/VolcanoContribution 301
+/zh/docs/membership                                     /zh-Hans/docs/Contribution/communitymembership 301
+/zh/docs/flink_on_volcano                               /zh-Hans/docs/Ecosystem/FlinkOnVolcano        301
+/zh/docs/kubeflow_on_volcano                            /zh-Hans/docs/Ecosystem/KubeflowOnVolcano     301
+/zh/docs/mpi_on_volcano                                 /zh-Hans/docs/Ecosystem/MPIOnVolcano          301
+/zh/docs/mindspore_on_volcano                           /zh-Hans/docs/Ecosystem/MindSporeOnVolcano    301
+/zh/docs/pp_on_volcano                                  /zh-Hans/docs/Ecosystem/PaddlePaddleOnVolcano 301
+/zh/docs/ray_on_volcano                                 /zh-Hans/docs/Ecosystem/RayOnVolcano          301
+/zh/docs/spark_on_volcano                               /zh-Hans/docs/Ecosystem/SparkOnVolcano        301
+/zh/docs/tf_on_volcano                                  /zh-Hans/docs/Ecosystem/TensorFlowOnVolcano   301
+/zh/docs/installation                                   /zh-Hans/docs/GettingStarted/Installation     301
+/zh/docs/tutorials                                      /zh-Hans/docs/GettingStarted/Tutorials        301
+/zh/docs/architecture                                   /zh-Hans/docs/Home/Architecture               301
+/zh/docs/gpu_virtualization                             /zh-Hans/docs/KeyFeatures/GPUVirtualization   301
+/zh/docs/hierarchical_queue                             /zh-Hans/docs/KeyFeatures/HierarchicalQueue   301
+/zh/docs/descheduler                                    /zh-Hans/docs/KeyFeatures/LoadAwareDescheduling 301
+/zh/docs/multi_cluster_scheduling                       /zh-Hans/docs/KeyFeatures/MultiClusterScheduling 301
+/zh/docs/network_topology_aware_scheduling              /zh-Hans/docs/KeyFeatures/NetworkTopologyAware 301
+/zh/docs/queue_resource_management                      /zh-Hans/docs/KeyFeatures/QueueResourceManagement 301
+/zh/docs/unified_scheduling                             /zh-Hans/docs/KeyFeatures/UnifiedScheduling   301
+/zh/docs/colocation                                     /zh-Hans/docs/KeyFeatures/cloudNativeColocation 301
+/zh/docs/actions                                        /zh-Hans/docs/Scheduler/Actions               301
+/zh/docs/scheduler                                      /zh-Hans/docs/Scheduler/Overview              301
+/zh/docs/schduler_introduction                          /zh-Hans/docs/Scheduler/Overview              301
+/zh/docs/plugins                                        /zh-Hans/docs/Scheduler/Overview              301
+/zh/docs/scheduler/plugins                              /zh-Hans/docs/Scheduler/Overview              301
+
+# Documentation home.
+/en/docs/                                               /docs/Home/Introduction                       301
+/zh/docs/                                               /zh-Hans/docs/Home/Introduction               301
+
+# Any remaining legacy doc URL falls back to the documentation home.
+/en/docs/*                                              /docs/Home/Introduction                       301
+/zh/docs/*                                              /zh-Hans/docs/Home/Introduction               301
+
+# Legacy locale home pages.
+/en/                                                    /                                             301
+/zh/                                                    /zh-Hans/                                     301
