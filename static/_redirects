@@ -14,5 +14,5 @@
 /blog/aiqiyi-en /en/blog/aiqiyi-en/ 301
 
 # Ensure Chinese localized path is also covered
-/zh/blog/aiqiyi-en/ /zh/blog/aiqiyi-en/ 301
-/zh/blog/aiqiyi-en /zh/blog/aiqiyi-en/ 301
+/zh/blog/aiqiyi-en/ /zh-Hans/blog/aiqiyi-en/ 301
+/zh/blog/aiqiyi-en /zh-Hans/blog/aiqiyi-en/ 301
