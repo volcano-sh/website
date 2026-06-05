@@ -8,6 +8,7 @@
 /volcano/* go-get=1 /golang/volcano.html 200
 /apis/* go-get=1 /golang/api.html 200
 
+<<<<<<< HEAD
 # ---------------------------------------------------------------------------
 # Redirect legacy (Hugo) documentation URLs to the new Docusaurus structure.
 # The old site served docs at /<locale>/docs/<slug>/ and per-version copies at
@@ -231,3 +232,13 @@
 # Legacy locale home pages.
 /en/                                                       /                                              301
 /zh/                                                       /zh-Hans/                                      301
+=======
+# Redirect old blog URL to localized English path
+# This ensures links to /blog/aiqiyi-en/ land on the current /en/blog/aiqiyi-en/
+/blog/aiqiyi-en/ /en/blog/aiqiyi-en/ 301
+/blog/aiqiyi-en /en/blog/aiqiyi-en/ 301
+
+# Ensure Chinese localized path is also covered
+/zh/blog/aiqiyi-en/ /zh-Hans/blog/aiqiyi-en/ 301
+/zh/blog/aiqiyi-en /zh-Hans/blog/aiqiyi-en/ 301
+>>>>>>> 76b9422 (fix: use /zh-Hans for Chinese blog redirect)
