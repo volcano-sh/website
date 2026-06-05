@@ -7,3 +7,12 @@
 # Redirect golang vanity imports for volcano.sh
 /volcano/* go-get=1 /golang/volcano.html 200
 /apis/* go-get=1 /golang/api.html 200
+
+# Redirect old blog URL to localized English path
+# This ensures links to /blog/aiqiyi-en/ land on the current /en/blog/aiqiyi-en/
+/blog/aiqiyi-en/ /en/blog/aiqiyi-en/ 301
+/blog/aiqiyi-en /en/blog/aiqiyi-en/ 301
+
+# Ensure Chinese localized path is also covered
+/zh/blog/aiqiyi-en/ /zh/blog/aiqiyi-en/ 301
+/zh/blog/aiqiyi-en /zh/blog/aiqiyi-en/ 301
