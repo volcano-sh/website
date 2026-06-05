@@ -234,9 +234,9 @@
 /zh/                                                       /zh-Hans/                                      301
 =======
 # Redirect old blog URL to localized English path
-# This ensures links to /blog/aiqiyi-en/ land on the current /en/blog/aiqiyi-en/
-/blog/aiqiyi-en/ /en/blog/aiqiyi-en/ 301
-/blog/aiqiyi-en /en/blog/aiqiyi-en/ 301
+# The default English locale is served at the root. Keep /blog/aiqiyi-en/ as the final target,
+# and normalize the non-trailing slash URL to the trailing slash version.
+/blog/aiqiyi-en /blog/aiqiyi-en/ 301
 
 # Ensure Chinese localized path is also covered
 /zh/blog/aiqiyi-en/ /zh-Hans/blog/aiqiyi-en/ 301
