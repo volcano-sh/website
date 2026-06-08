@@ -123,6 +123,10 @@
 # Any remaining legacy doc URL (unknown/old page) falls back to the docs home.
 /en/docs/*                                                 /docs/Home/Introduction                        301
 
+# Legacy blog URLs: old /en/blog/<slug>/ -> new /blog/<slug>/ (default locale).
+/en/blog/*                                                 /blog/:splat                                   301
+/en/blog                                                   /blog                                          301
+
 # ===== locale: zh =====
 
 # Scheduler plugin pages (most specific; listed before /scheduler).
@@ -227,6 +231,10 @@
 
 # Any remaining legacy doc URL (unknown/old page) falls back to the docs home.
 /zh/docs/*                                                 /zh-Hans/docs/Home/Introduction                301
+
+# Legacy blog URLs: old /zh/blog/<slug>/ -> new /zh-Hans/blog/<slug>/.
+/zh/blog/*                                                 /zh-Hans/blog/:splat                            301
+/zh/blog                                                   /zh-Hans/blog                                   301
 
 # Legacy locale home pages.
 /en/                                                       /                                              301
