@@ -30,4 +30,4 @@ sidebar_position: 5
 * [Volcano Job 插件 -- SSH 用户指南](./user_guide_how_to_use_ssh_plugin.md)
 * [Volcano Job 插件 -- SVC 用户指南](./user_guide_how_to_use_svc_plugin.md)
 * [Volcano vGPU 用户指南](./user_guide_how_to_use_volcano_vgpu.md)
-* [Scheduling Gates Queue Admission 用户指南](./user_guide_how_to_use_scheduling_gates_queue_admission.md)
+
