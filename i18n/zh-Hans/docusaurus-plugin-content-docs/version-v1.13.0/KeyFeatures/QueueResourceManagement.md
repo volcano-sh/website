@@ -4,7 +4,7 @@ title: "队列资源管理"
 
 ## 功能概述
 
-[队列](/docs/Concepts/Queue)是Volcano的核心概念之一，用于支持多租户场景下的资源分配与任务调度。通过队列，用户可以实现多租资源分配、任务优先级控制、资源抢占与回收等功能，显著提升集群的资源利用率和任务调度效率。
+[队列](../Concepts/Queue.md)是Volcano的核心概念之一，用于支持多租户场景下的资源分配与任务调度。通过队列，用户可以实现多租资源分配、任务优先级控制、资源抢占与回收等功能，显著提升集群的资源利用率和任务调度效率。
 
 ## 核心特性
 
@@ -28,7 +28,7 @@ title: "队列资源管理"
 
 ### 2.层级队列管理
 
-   * 支持多[层级队列](/docs/KeyFeatures/HierarchicalQueue)结构
+   * 支持多[层级队列](../KeyFeatures/HierarchicalQueue.md)结构
    * 提供父子队列间的资源继承与隔离
    * 兼容Yarn式的资源管理模式，便于大数据工作负载迁移
    * 支持跨层级队列的资源共享与回收
@@ -64,7 +64,7 @@ Volcano中的队列调度涉及以下核心action：
 Volcano提供了两个核心的队列调度插件：
 
 #### capacity插件
-[capacity插件](/docs/UserGuide/user_guide_how_to_use_capacity_plugin)支持通过显式配置deserverd值来设置队列资源应得量，如以下队列配置示例：
+[capacity插件](../UserGuide/user_guide_how_to_use_capacity_plugin.md)支持通过显式配置deserverd值来设置队列资源应得量，如以下队列配置示例：
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -80,7 +80,7 @@ spec:
     memory: "40Gi"
 ```
 
-capacity插件通过精确的资源配置来进行配额控制，结合[层级队列](/docs/KeyFeatures/HierarchicalQueue)能实现更加精细的多租资源分配，也便于大数据工作负载迁移到Kubernetes集群上
+capacity插件通过精确的资源配置来进行配额控制，结合[层级队列](../KeyFeatures/HierarchicalQueue.md)能实现更加精细的多租资源分配，也便于大数据工作负载迁移到Kubernetes集群上
 
 > **注意**：当使用 Cluster Autoscaler 或 Karpenter 等集群弹性伸缩组件时，集群资源总量会动态变化。此时使用 capacity 插件需要手动调整队列的 deserverd 值以适应资源变化。
 

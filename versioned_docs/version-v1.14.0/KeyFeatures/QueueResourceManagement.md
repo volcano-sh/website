@@ -5,7 +5,7 @@ sidebar_position: 5
 
 ## Overview
 
-[Queue](/docs/Concepts/Queue) is one of the core concepts in Volcano, designed to support resource allocation and task scheduling in multi-tenant scenarios. Through queues, users can implement multi-tenant resource allocation, task priority control, resource preemption and reclamation, significantly improving cluster resource utilization and task scheduling efficiency.
+[Queue](../Concepts/Queue.md) is one of the core concepts in Volcano, designed to support resource allocation and task scheduling in multi-tenant scenarios. Through queues, users can implement multi-tenant resource allocation, task priority control, resource preemption and reclamation, significantly improving cluster resource utilization and task scheduling efficiency.
 
 ## Core Features
 
@@ -28,7 +28,7 @@ sidebar_position: 5
 
 ### 2. Hierarchical Queue Management
 
-   * Supports [hierarchical queue](/docs/KeyFeatures/HierarchicalQueue) structure
+   * Supports [hierarchical queue](../KeyFeatures/HierarchicalQueue.md) structure
    * Provides resource inheritance and isolation between parent and child queues
    * Compatible with Yarn-style resource management mode, facilitating big data workload migration
    * Supports cross-level queue resource sharing and reclamation
@@ -64,7 +64,7 @@ Queue scheduling in Volcano involves the following core actions:
 Volcano provides two core queue scheduling plugins:
 
 #### capacity plugin
-[capacity plugin](/docs/UserGuide/user_guide_how_to_use_capacity_plugin) supports setting queue's deserved resource amount through explicit configuration, as shown in this example:
+[capacity plugin](../UserGuide/user_guide_how_to_use_capacity_plugin.md) supports setting queue's deserved resource amount through explicit configuration, as shown in this example:
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -80,7 +80,7 @@ spec:
     memory: "40Gi"
 ```
 
-The capacity plugin enables quota control through precise resource configuration. Combined with [hierarchical queues](/docs/KeyFeatures/HierarchicalQueue), it can achieve more fine-grained multi-tenant resource allocation and facilitates big data workload migration to Kubernetes clusters.
+The capacity plugin enables quota control through precise resource configuration. Combined with [hierarchical queues](../KeyFeatures/HierarchicalQueue.md), it can achieve more fine-grained multi-tenant resource allocation and facilitates big data workload migration to Kubernetes clusters.
 
 > **Note**: When using cluster autoscaling components like Cluster Autoscaler or Karpenter, total cluster resources change dynamically. In this case, using capacity plugin requires manual adjustment of queue's deserverd values to adapt to resource changes.
 

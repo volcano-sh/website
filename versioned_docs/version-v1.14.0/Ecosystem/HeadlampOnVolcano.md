@@ -27,7 +27,7 @@ Watch the demo to see the Volcano plugin in Headlamp, including the plugin catal
 
 Before using the plugin, make sure the following components are available:
 
-- A Kubernetes cluster with [Volcano installed](/docs/GettingStarted/Installation)
+- A Kubernetes cluster with [Volcano installed](../GettingStarted/Installation)
 - A working kubeconfig for the cluster
 - [Headlamp](https://headlamp.dev/docs/latest/installation/) installed as a desktop app or deployed in the cluster
 
@@ -102,7 +102,7 @@ For local development, see the [Volcano Headlamp plugin source](https://github.c
 
 ## References
 
-- [Volcano installation](/docs/GettingStarted/Installation)
+- [Volcano installation](../GettingStarted/Installation)
 - [Headlamp installation](https://headlamp.dev/docs/latest/installation/)
 - [Headlamp plugin building and shipping](https://headlamp.dev/docs/latest/development/plugins/building/)
 - [Volcano Headlamp plugin](https://github.com/headlamp-k8s/plugins/tree/main/volcano)

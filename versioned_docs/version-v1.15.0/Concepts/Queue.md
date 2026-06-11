@@ -94,6 +94,6 @@ This field is used to configure [hierarchical queues](../KeyFeatures/Hierarchica
 #### default Queue
 When Volcano starts, it automatically creates queue `default` whose `weight` is `1`. Subsequent jobs that are not assigned to a queue will be assigned to queue `default`.
 #### root queue
-When Volcano starts, it also creates a queue named root by default. This queue is used when the [hierarchical queue](/docs/KeyFeatures/HierarchicalQueue) feature is enabled, serving as the root queue for all queues, with the default queue being a child queue of the root queue.
+When Volcano starts, it also creates a queue named root by default. This queue is used when the [hierarchical queue](../KeyFeatures/HierarchicalQueue.md) feature is enabled, serving as the root queue for all queues, with the default queue being a child queue of the root queue.
 
-> For more information on queue usage scenarios, please refer to [Queue Resource Management](/docs/KeyFeatures/QueueResourceManagement)
+> For more information on queue usage scenarios, please refer to [Queue Resource Management](../KeyFeatures/QueueResourceManagement.md)
