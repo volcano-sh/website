@@ -1,5 +1,5 @@
 ---
-title: "Volcano v1.15 Released: Gang-Aware Preemption, DRA Queue Quota, and Unified Scheduling at Scale"
+title: "Volcano v1.15 Released: Gang-Granularity Preemption, DRA Queue Quota, and More Scheduling Enhancements"
 description: "New Features: Gang-Aware Preemption and Resource Reclamation, DRA Queue Quota in Capacity Plugin, Pluggable Multi-Sharding Policies, Volcano Benchmark and Performance Observability, Scheduling Gates for Queue Admission, Kubernetes 1.35 support, and more"
 authors: ["volcano"]
 date: 2026-05-30
@@ -15,11 +15,25 @@ tags:
   ]
 ---
 
-# Volcano v1.15 Released: Gang-Aware Preemption, DRA Queue Quota, and Unified Scheduling at Scale
+# Volcano v1.15 Released: Gang-Granularity Preemption, DRA Queue Quota, and More Scheduling Enhancements
 
-On May 30, 2026 (Beijing Time), [Volcano v1.15](https://github.com/volcano-sh/volcano/releases/tag/v1.15.0) was officially released. This update further strengthens Volcano as a unified scheduling platform for converged general-purpose and AI computing at scale, bringing significant enhancements in gang-aware eviction, dynamic resource allocation quota management, pluggable sharding policies, performance observability, and queue admission control.
+As batch training, inference, AI Agent, HPC, big-data and other diverse workloads are increasingly co-located in the same Kubernetes cluster, the scheduler must make higher-quality decisions under intensifying resource contention while preserving job-level semantics, queue fairness, topology affinity, and operational stability. v1.15.0 delivers enhancements across the scheduling core, heterogeneous resource management, multi-scheduler coordination, and performance observability.
+
+The most notable new capability is **Gang-Aware Preemption and Resource Reclamation**: preemption decisions are evaluated at gang granularity on both the preemptor and victim sides — the preemptor is placed as a whole gang, and victim candidates are organized and evaluated at job/gang granularity, preferring surplus replicas to avoid per-Pod random eviction that disrupts multiple training jobs while the preemptor itself still cannot start. In addition, v1.15.0 introduces DRA queue quota in the capacity plugin, a pluggable multi-sharding policy framework, a Benchmark and performance observability tool, Kubernetes 1.35 support, NodeGroup preferred ordering, Agent Scheduler stability fixes, GPU/vGPU incremental enhancements, and Scheduling Gates for queue admission control.
 
 <!-- truncate -->
+
+## Highlights
+
+This release focuses on the following directions:
+
+- **Gang-Aware Preemption and Resource Reclamation**: Organizes victim candidates at job/gang granularity, distinguishes surplus replicas from critical replicas, preferentially evicts surplus replicas to reduce task disruption, and simulates whole-gang placement before committing evictions to confirm the preemptor can actually start — avoiding the situation where per-Pod preemption disrupts multiple training jobs while the preemptor itself still cannot run.
+- **DRA Queue Quota**: The capacity plugin brings DRA `ResourceClaim` into Volcano's existing queue capacity model, enabling DRA device resources to be managed through queue quota.
+- **Pluggable Multi-Sharding Policy**: Sharding Controller supports composing multiple sharding policies via ConfigMap, with runtime hot-reload.
+- **Volcano Benchmark Framework**: Provides one-click performance test environment setup and report output, supporting Kind/KWOK and existing clusters.
+- **Scheduling Gates for Queue Admission**: Distinguishes "queue quota insufficient" from "cluster resources insufficient", preventing autoscalers from triggering unnecessary scale-ups due to queue limits.
+
+In addition, v1.15.0 includes Kubernetes 1.35 support, NodeGroup preferred ordering, Agent Scheduler stability enhancements, GPU/vGPU incremental enhancements, and security fixes. These are briefly covered later in this post and are equally important for production readiness and ecosystem compatibility.
 
 ## Release Highlights
 
@@ -28,53 +42,45 @@ The v1.15.0 release includes the following major updates:
 **Scheduling and Preemption Enhancements**
 
 - [Gang-Aware Preemption and Resource Reclamation (Alpha)](#gang-aware-preemption-and-resource-reclamation-alpha)
-- [NodeGroup Preferred Ordering for Queues](#nodegroup-preferred-ordering-for-queues)
+- [NodeGroup Preferred Ordering for Queues](#nodegroup-preferred-ordering)
 - [Capacity Ancestor Reclaim Level](#capacity-ancestor-reclaim-level)
 
 **Resource Management and Scheduling Enhancements**
 
-- [DRA Queue Quota in Capacity Plugin](#dra-queue-quota-in-capacity-plugin)
-- [Pluggable Multi-Sharding Policy Support (Alpha)](#pluggable-multi-sharding-policy-support-alpha)
-- [GPU and vGPU Incremental Improvements](#gpu-and-vgpu-incremental-improvements)
+- [DRA Queue Quota in Capacity Plugin](#dra-queue-quota)
+- [Pluggable Multi-Sharding Policy Support (Alpha)](#pluggable-multi-sharding-policy-alpha)
+- [GPU and vGPU Incremental Improvements](#gpuvgpu-incremental-enhancements)
 - [Pod-Level Resource Request and Limit Settings](#pod-level-resource-request-and-limit-settings)
 
 **Performance and Observability Enhancements**
 
-- [Volcano Benchmark and Performance Observability](#volcano-benchmark-and-performance-observability)
+- [Volcano Benchmark and Performance Observability](#volcano-benchmark-framework)
 - [Scheduling Gates for Queue Admission (Alpha)](#scheduling-gates-for-queue-admission-alpha)
-
-**Ecosystem and Compatibility**
-
-- [Kubernetes 1.35 Support](#kubernetes-135-support)
-- [MPI Validation and Argo MPI Examples](#mpi-validation-and-argo-mpi-examples)
 
 **Security and Stability**
 
-- [Webhook Request Body Size Mitigation for CVE-2026-44247](#security-fixes-included)
-- [Core Scheduler Stability and Correctness Improvements](#stability-and-correctness-highlights)
+- [Webhook Request Body Size Mitigation for CVE-2026-44247](#security-fix)
+- [Core Scheduler Stability and Correctness Improvements](#agent-scheduler-stability-enhancements)
 
 ---
 
-## Gang-Aware Preemption and Resource Reclamation (Alpha)
+## Key Features
 
-Volcano's legacy `preempt` and `reclaim` actions are task-centric. For gang-style jobs, evicting individual tasks from many different victim jobs can create wide disruption without guaranteeing that the pending gang can be scheduled afterward. Some scheduling systems only make the preemptor gang-aware: they try to place the incoming gang as a unit, but still choose victims task by task. That can protect the incoming job while randomly breaking multiple victim gangs.
+### 1. Gang-Aware Preemption and Resource Reclamation (Alpha)
 
-Volcano v1.15.0 makes both sides of the eviction decision gang-aware. Victim jobs are ordered and selected at job/gang granularity, so the scheduler can reason about the disruption cost of breaking a victim gang instead of treating every task as an interchangeable victim. This distinction is important even when HyperNode topology is not used, because the scheduler still avoids spreading arbitrary partial evictions across unrelated jobs.
+In distributed workloads such as large model training and HPC, a Job typically requires multiple Pods running simultaneously to be meaningful. If preemption decisions are made at the individual Pod level, the scheduler may evict one Pod from each of several running training jobs — on the surface this frees resources, but in reality it breaks multiple jobs, and the preemptor gang may still not be able to gather enough `minAvailable` Pods to start successfully.
 
-This matters especially for training-style workloads. A task-by-task victim loop can evict one replica from many different jobs. If each job depends on gang semantics, one scheduling cycle may break every victim job while still failing to place the incoming gang. Volcano now groups candidate victim tasks by job and evaluates victim bundles. When bundle splitting is available, the scheduler treats resources above the gang requirement, such as `replicas - minAvailable`, as lower-cost safe bundles before considering whole-job disruption.
+v1.15.0 introduces Gang-Aware Preemption and Resource Reclamation, making both the preemptor and victim sides evaluate at gang granularity, avoiding the scenario where "a bunch of Pods are freed but nobody can run."
 
-When HyperNode topology is configured, the new actions additionally scope victim search to HyperNode candidates. Volcano evaluates preemption and reclaim inside a selected topology scope rather than freely preempting across topology domains.
+**On the victim side**, Volcano organizes preemption candidates at job/gang granularity rather than treating all Pods as interchangeable victims. Each candidate job's Pods are classified into surplus replicas (those above `minAvailable`) and critical replicas. The scheduler preferentially selects surplus replicas — evicting them does not break the victim job — and avoids touching critical replicas as much as possible. This is fundamentally different from the legacy per-Pod selection approach that does not account for disruption cost.
 
-**Alpha Feature Notice**: Gang-aware preemption and reclamation is alpha and must be enabled explicitly through `gangPreempt` and `gangReclaim`. Do not configure them together with the legacy `preempt` and `reclaim` actions in the same scheduler action list.
+**On the preemptor side**, the scheduler incrementally accumulates reclaimable resources. Once the accumulated amount is sufficient to cover the preemptor gang's total requirement, it first performs a placement simulation — verifying on the projected resource view that the preemptor gang can be scheduled as a whole — and only commits evictions after the simulation passes. This prevents the situation where "Pods are preempted but the preemptor still cannot start."
 
-### Key Capabilities
+Regardless of whether HyperNode topology is enabled, this mechanism reduces task disruption from random preemption. When HyperNode topology is enabled, Volcano additionally constrains victim search to the selected topology scope, preventing cross-topology-domain preemption.
 
-- **Preemptor-gang placement**: Evaluates whether the incoming gang can be placed as a whole before eviction is selected.
-- **Victim-gang awareness**: Groups victim candidates by job/gang, prioritizes lower-cost victim bundles such as replicas above `minAvailable`, and avoids spreading partial disruption across many jobs.
-- **Topology-scoped eviction**: When HyperNode topology is enabled, searches victims inside the selected topology scope instead of freely preempting across topology domains.
-- **Policy-aware victim ordering**: Uses priority for `gangPreempt` and queue fairness for `gangReclaim`, with efficiency used as a secondary ordering signal.
+This feature is currently Alpha and requires explicitly configuring the two new actions `gangPreempt` and `gangReclaim`. Future versions will continue evaluating whether to merge the Gang-Aware eviction mechanism with the legacy `preempt` and `reclaim` actions.
 
-### Configuration
+Configuration:
 
 ```yaml
 actions: "enqueue, allocate, backfill, gangPreempt, gangReclaim"
@@ -88,53 +94,36 @@ tiers:
       - name: binpack
 ```
 
-Related PRs: [#5250](https://github.com/volcano-sh/volcano/pull/5250), [#4780](https://github.com/volcano-sh/volcano/pull/4780), [#5170](https://github.com/volcano-sh/volcano/pull/5170)
+Related PRs: [volcano-sh#5250](https://github.com/volcano-sh/volcano/pull/5250), [volcano-sh#4780](https://github.com/volcano-sh/volcano/pull/4780), [volcano-sh#5170](https://github.com/volcano-sh/volcano/pull/5170)
 
 Sincerely thanks to community developer: &#64;[vzhou-p](https://github.com/vzhou-p)
 
 ---
 
-## DRA Queue Quota in Capacity Plugin
+### 2. DRA Queue Quota
 
-Previous Volcano releases already supported scheduling Pods that request Kubernetes Dynamic Resource Allocation (DRA) resources. The missing part was queue quota: DRA `ResourceClaim` requests were not accounted against `capability`, `deserved`, or `guarantee`, so queues could not control DRA resource usage the same way they control CPU, memory, and extended resources.
+Kubernetes Dynamic Resource Allocation (DRA) provides a more flexible model for device resource requests. Previous Volcano versions already supported scheduling Pods that use DRA resources, but queue quota did not yet cover DRA `ResourceClaim`.
 
-Kubernetes DRA introduces `DeviceClass`, `ResourceClaim`, `ResourceClaimTemplate`, and `ResourceSlice`, while Volcano queues already manage quota through `capability`, `deserved`, and `guarantee`. v1.15.0 brings DRA resources into that queue quota model instead of requiring a separate DRA-only quota API.
+v1.15.0 closes this gap in the capacity plugin, bringing DRA resources into Volcano's existing queue quota system. Users can still use the `capability`, `deserved`, and `guarantee` capacity model to manage queue resources, with no need to maintain a separate quota API for DRA.
 
-The capacity plugin now accounts DRA resource requests for queue enqueue and allocation decisions. Operators can limit whole devices or consumable device dimensions such as virtual GPU cores and memory. Shared ResourceClaims are deduplicated so multiple pods referencing the same logical claim do not inflate queue usage.
+Two types of resource controls are currently supported:
 
-**Compatibility Note**: DRA quota requires Kubernetes DRA support and a DRA-capable driver.
+- Whole-card/whole-device count quota based on `DeviceClass`
+- Consumable-dimension quota such as virtual GPU cores or memory
 
-### Key Capabilities
+When multiple Pods reference the same shared `ResourceClaim`, Volcano automatically deduplicates, preventing the same resource from being double-counted in queue usage.
 
-- **Whole-device quota**: Controls DRA `DeviceClass` device counts at queue level.
-- **Consumable-capacity quota**: Controls device dimensions such as cores or memory through queue quota.
-- **Existing queue semantics**: Applies the same `capability`, `deserved`, and `guarantee` model used by other queue resources.
-- **ResourceClaim-aware accounting**: Accounts direct claims, template-created claims, and shared claims without inflating queue usage.
+This way, cluster administrators can use the same queue capacity model to uniformly manage CPU, memory, extended resources, and DRA device resources.
 
-### Configuration
+Configuration:
 
 ```yaml
-kind: ConfigMap
-apiVersion: v1
-metadata:
-  name: volcano-scheduler-configmap
-  namespace: volcano-system
-data:
-  volcano-scheduler.conf: |
-    actions: "enqueue, allocate, backfill, reclaim"
-    tiers:
-    - plugins:
-      - name: priority
-      - name: gang
-      - name: conformance
-    - plugins:
-      - name: drf
-      - name: predicates
+tiers:
+  - plugins:
       - name: capacity
         arguments:
           capacity.DynamicResourceAllocationEnable: true
           capacity.DRAConsumableCapacityEnable: true
-      - name: nodeorder
 ```
 
 ```yaml
@@ -143,38 +132,35 @@ kind: Queue
 metadata:
   name: ml-team
 spec:
-  reclaimable: true
   capability:
     cpu: "100"
     memory: "200Gi"
-    "nvidia.com/gpu": "4"
     "deviceclass/gpu.nvidia.com": "8"
     "cores.deviceclass/hami-core-gpu.project-hami.io": "800"
     "memory.deviceclass/hami-core-gpu.project-hami.io": "320Gi"
 ```
 
-Related PR: [#5058](https://github.com/volcano-sh/volcano/pull/5058)
+Related PR: [volcano-sh#5058](https://github.com/volcano-sh/volcano/pull/5058)
 
 Sincerely thanks to community developer: &#64;[xu-wentao](https://github.com/xu-wentao)
 
 ---
 
-## Pluggable Multi-Sharding Policy Support (Alpha)
+### 3. Pluggable Multi-Sharding Policy (Alpha)
 
-The v1.14.0 Sharding Controller introduced dynamic node scheduling shards for multi-scheduler deployments. v1.15.0 builds on that architecture by adding pluggable multi-sharding policy support. Instead of relying only on fixed scheduler-level shard parameters, operators can configure an ordered policy pipeline per scheduler shard.
+In multi-scheduler architectures, different schedulers typically serve different workload types and have different requirements for candidate node scope. v1.15.0 enhances the Sharding Controller to support composing multiple sharding strategies through a pluggable policy pipeline.
 
-The policy framework runs `filter`, `sort`, and `select` phases per scheduler. Built-in policies support allocation-rate filtering/scoring, warmup-node preference, and node count limiting. Policy configuration can be supplied through a ConfigMap and hot-reloaded at runtime. Invalid updates are rejected while the previous valid configuration remains active.
+Each scheduler shard can be configured with an ordered set of policies covering filter, score, and select phases. Built-in policies include:
 
-**Alpha Feature Notice**: The multi-sharding policy framework is still evolving. Existing top-level sharding fields remain supported for compatibility, while new configurations should use the policy-based format.
+- `allocation-rate`: Filters and scores nodes by resource utilization
+- `warmup`: Prioritizes warmup nodes
+- `node-limit`: Constrains the node count range per shard
 
-### Key Capabilities
+Policies are configured via ConfigMap and support runtime hot-reload. If a new configuration fails validation, the system retains the previous valid configuration to avoid introducing risk from online changes.
 
-- **Composable shard policies**: Supports filter, scorer, and selector policies in one ordered pipeline.
-- **Built-in policy set**: Provides `allocation-rate`, `warmup`, and `node-limit` policies.
-- **Per-scheduler shard profiles**: Allows Volcano and Agent Scheduler shards to use different policy chains and utilization ranges.
-- **ConfigMap live reload**: Applies valid sharding policy updates without restarting the controller.
+This makes multi-scheduler node sharding more adaptable to different cluster sizes and workload profiles, and provides a clear interface for future sharding policy extensions.
 
-### Configuration
+Configuration:
 
 ```yaml
 custom:
@@ -203,35 +189,28 @@ custom:
               maxCPUUtil: 1.0
           - name: warmup
             weight: 2
-          - name: node-limit
-            arguments:
-              minNodes: 1
-              maxNodes: 100
-    shardSyncPeriod: "60s"
-    enableNodeEventTrigger: true
 ```
 
-Related PRs: [#5098](https://github.com/volcano-sh/volcano/pull/5098), [#5132](https://github.com/volcano-sh/volcano/pull/5132), [#4990](https://github.com/volcano-sh/volcano/pull/4990)
+Related PRs: [volcano-sh#5098](https://github.com/volcano-sh/volcano/pull/5098), [volcano-sh#5132](https://github.com/volcano-sh/volcano/pull/5132), [volcano-sh#4990](https://github.com/volcano-sh/volcano/pull/4990)
 
 Sincerely thanks to community developers: &#64;[lixmgl](https://github.com/lixmgl), &#64;[agrawalcodes](https://github.com/agrawalcodes)
 
 ---
 
-## Volcano Benchmark and Performance Observability
+### 4. Volcano Benchmark Framework
 
-Scheduler performance work needs more than ad hoc test scripts. Contributors and operators need a framework that can set up the environment, run standard workloads, collect performance data, and produce comparable reports with minimal manual steps.
+Scheduler performance optimization requires stable, reproducible baselines. v1.15.0 introduces a Benchmark framework that supports one-click environment deployment, standard scenario execution, and performance report output.
 
-v1.15.0 introduces a benchmark framework for one-click deployment and one-click performance output. It supports local Kind + KWOK environments as well as existing Kubernetes clusters, so contributors can reproduce scheduler performance cases locally and operators can evaluate Volcano in real cluster environments.
+The framework supports two types of environments:
 
-### Key Capabilities
+- Local Kind + KWOK environments for developers to quickly reproduce and analyze scheduling performance issues
+- Existing Kubernetes clusters for users to evaluate Volcano's scheduling throughput and latency in real environments
 
-- **Local benchmark environment**: Runs repeatable benchmark scenarios with Kind and KWOK.
-- **Existing-cluster benchmark mode**: Runs the same framework against bare-metal, cloud-managed, or self-hosted Kubernetes clusters.
-- **Gang, pod, and topology scenarios**: Covers VolcanoJob gang scheduling, bare pod scheduling, KWOK topology labels, and HyperNode generation.
-- **Metrics and reports**: Collects audit-exporter reports, pod timestamp fallback reports, test logs, and Grafana dashboards.
-- **Scheduler performance metrics**: Expands scheduler/controller metrics for throughput and latency analysis.
+Test scenarios cover VolcanoJob gang scheduling, bare Pod scheduling, KWOK topology labels, and HyperNode generation. Combined with scheduler/controller metrics, audit-exporter reports, and Grafana dashboards, this helps quickly pinpoint scheduling performance bottlenecks.
 
-### Quick Start
+For users new to Volcano, the framework also makes it easy to run a round of tests on their own cluster and quickly understand actual scheduling throughput and latency characteristics.
+
+Quick start:
 
 ```bash
 cd benchmark
@@ -240,7 +219,7 @@ make test-gang-env JOBS=10 REPLICAS=100 MIN_AVAILABLE=100
 make cleanup-all
 ```
 
-Related PRs: [#5305](https://github.com/volcano-sh/volcano/pull/5305), [#5215](https://github.com/volcano-sh/volcano/pull/5215), [#5163](https://github.com/volcano-sh/volcano/pull/5163), [#5221](https://github.com/volcano-sh/volcano/pull/5221)
+Related PRs: [volcano-sh#5305](https://github.com/volcano-sh/volcano/pull/5305), [volcano-sh#5215](https://github.com/volcano-sh/volcano/pull/5215), [volcano-sh#5163](https://github.com/volcano-sh/volcano/pull/5163), [volcano-sh#5221](https://github.com/volcano-sh/volcano/pull/5221)
 
 User Guide: [Benchmark README](https://github.com/volcano-sh/volcano/blob/master/benchmark/README.md)
 
@@ -248,34 +227,27 @@ Sincerely thanks to community developers: &#64;[JesseStutler](https://github.com
 
 ---
 
-## Scheduling Gates for Queue Admission (Alpha)
+### 5. Scheduling Gates for Queue Admission (Alpha)
 
-Volcano can mark pods as `Unschedulable` when they are blocked by queue capacity rather than cluster capacity. Cluster Autoscaler and Karpenter commonly interpret `Unschedulable` pods as a signal to add nodes, which can cause unnecessary scale-ups when the actual blocker is queue admission.
+When Pods cannot be scheduled due to insufficient queue capacity, Cluster Autoscaler or Karpenter may misidentify them as blocked by insufficient cluster resources, triggering unnecessary scale-ups.
 
-Scheduling Gates for Queue Admission uses Kubernetes `schedulingGates` to hold opted-in pods until Volcano determines that the queue has capacity. While gated, pods are invisible to autoscaler scale-up logic. After the gate is removed, normal scheduling proceeds. If the pod still cannot fit any node, autoscalers receive a legitimate scale-up signal.
+v1.15.0 introduces Scheduling Gates for Queue Admission. Once enabled via annotation, when queue capacity is insufficient, Volcano uses Kubernetes native `schedulingGates` to hold the Pod out of scheduling, making it invisible to autoscalers and preventing scale-up. After the queue frees up capacity, Volcano removes the gate and the Pod resumes normal scheduling.
 
-**Alpha Feature Notice**: Scheduling Gates for Queue Admission is disabled by default and must be enabled on both the scheduler and webhook-manager.
+This effectively distinguishes "queue quota insufficient" from "cluster resources insufficient", preventing unnecessary scale-ups caused by queue quota limits.
 
-### Key Capabilities
+This feature is currently Alpha and requires enabling `SchedulingGatesQueueAdmission` on both the scheduler and webhook-manager.
 
-- **Per-pod opt-in**: Uses the `scheduling.volcano.sh/queue-allocation-gate: "true"` annotation.
-- **Autoscaler-friendly queue admission**: Keeps queue-blocked pods gated so autoscalers do not scale up for quota-only blockers.
-- **Queue capacity protection**: Tracks ungated-but-not-yet-bound pods in the capacity plugin to avoid queue over-admission.
-- **External gate coexistence**: Keeps the Volcano gate in place while other scheduling gates remain.
-
-### Configuration
+Configuration:
 
 ```bash
-helm install volcano volcano/volcano --namespace volcano-system --create-namespace \
-  --set custom.scheduler_feature_gates="SchedulingGatesQueueAdmission=true" \
-  --set custom.admission_feature_gates="SchedulingGatesQueueAdmission=true"
+helm install volcano volcano/volcano --namespace volcano-system --create-namespace   --set custom.scheduler_feature_gates="SchedulingGatesQueueAdmission=true"   --set custom.admission_feature_gates="SchedulingGatesQueueAdmission=true"
 ```
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-pod
+  name: queue-gated-pod
   annotations:
     scheduling.volcano.sh/queue-allocation-gate: "true"
 spec:
@@ -283,25 +255,33 @@ spec:
   containers:
     - name: worker
       image: nginx
-      resources:
-        requests:
-          cpu: "1"
-          memory: "1Gi"
 ```
 
-Related Issue: [#4710](https://github.com/volcano-sh/volcano/issues/4710)
+Related Issue: [volcano-sh#4710](https://github.com/volcano-sh/volcano/issues/4710)
 
-Related PRs: [#5033](https://github.com/volcano-sh/volcano/pull/5033), [#4727](https://github.com/volcano-sh/volcano/pull/4727)
+Related PRs: [volcano-sh#5033](https://github.com/volcano-sh/volcano/pull/5033), [volcano-sh#4727](https://github.com/volcano-sh/volcano/pull/4727)
 
 Sincerely thanks to community developer: &#64;[devzizu](https://github.com/devzizu)
 
 ---
 
-## NodeGroup Preferred Ordering for Queues
+## Other Notable Enhancements
 
-The NodeGroup plugin now adds `enablePreferredOrder` support so that the order of `preferredDuringSchedulingIgnoredDuringExecution` in queue affinity is meaningful. Earlier nodegroups receive higher scores, allowing queues to prefer fixed resource pools before fallback pools.
+### Kubernetes 1.35 Support
 
-### Configuration
+v1.15.0 updates Kubernetes dependencies, generated code, fake clients, informers, volumebinding integration, CI/lint tooling, and compatibility documentation to support Kubernetes 1.35.
+
+Related PRs: [volcano-sh#5000](https://github.com/volcano-sh/volcano/pull/5000), [volcano-sh#5039](https://github.com/volcano-sh/volcano/pull/5039), [volcano-sh#5062](https://github.com/volcano-sh/volcano/pull/5062)
+
+Sincerely thanks to community developers: &#64;[guoqinwill](https://github.com/guoqinwill), &#64;[hajnalmt](https://github.com/hajnalmt)
+
+---
+
+### NodeGroup Preferred Ordering
+
+The NodeGroup plugin adds `enablePreferredOrder`, making the order of `preferredDuringSchedulingIgnoredDuringExecution` in queue affinity affect scheduling scores. Earlier NodeGroups receive higher scores — suitable for scenarios like "prefer fixed resource pools, falling back to elastic pools when capacity runs out."
+
+Configuration:
 
 ```yaml
 tiers:
@@ -324,135 +304,135 @@ spec:
         - spark-serverless
 ```
 
-Related PR: [#5110](https://github.com/volcano-sh/volcano/pull/5110)
+Related PR: [volcano-sh#5110](https://github.com/volcano-sh/volcano/pull/5110)
 
 Sincerely thanks to community developer: &#64;[ruanwenjun](https://github.com/ruanwenjun)
 
 ---
 
-## Capacity Ancestor Reclaim Level
+### Capacity Ancestor Reclaim Level
 
 Adds `ancestorReclaimLevel` configuration and documents hierarchical queue reclaim behavior. This allows operators to control how many ancestor levels are considered when hierarchical queues reclaim resources.
 
-Related PR: [#5115](https://github.com/volcano-sh/volcano/pull/5115)
+Related PR: [volcano-sh#5115](https://github.com/volcano-sh/volcano/pull/5115)
 
 Sincerely thanks to community developer: &#64;[hajnalmt](https://github.com/hajnalmt)
 
 ---
 
-## GPU and vGPU Incremental Improvements
+### Agent Scheduler Stability Enhancements
 
-v1.15.0 brings several enhancements to GPU and vGPU scheduling:
+v1.15.0 fixes Agent Scheduler multi-worker optimistic concurrency conflicts, shared action instance reuse of framework/cycle state, missing CSI manager registration, binder node priority handling, and E2E duration metric issues, with additional E2E coverage.
 
-- **GPU exclusivity support**: Adds GPU exclusivity support to the deviceshare plugin via the `deviceshare.GPUExclusiveRules` argument for label-based exclusive physical GPU use on supported HAMi-core nodes.
-- **vGPU preemption support**: Adds vGPU preemption support to the deviceshare plugin.
-- **Same-PodGroup vGPU collision prevention**: Prevents pods in the same PodGroup from using the same physical vGPU device when disallowed.
+These fixes primarily improve scheduling stability for latency-sensitive AI Agent workloads.
 
-Related PRs: [#5213](https://github.com/volcano-sh/volcano/pull/5213), [#5235](https://github.com/volcano-sh/volcano/pull/5235), [#5049](https://github.com/volcano-sh/volcano/pull/5049)
-
-Sincerely thanks to community developers: &#64;[ckyuto](https://github.com/ckyuto), &#64;[archlitchi](https://github.com/archlitchi), &#64;[goyalankit](https://github.com/goyalankit)
-
----
-
-## Pod-Level Resource Request and Limit Settings
-
-v1.15.0 now supports pod-level resource request and limit configuration in Volcano Job pod templates, giving users more granular control over resource allocation at the pod level within a VolcanoJob.
-
-Related PR: [#5020](https://github.com/volcano-sh/volcano/pull/5020)
-
-Sincerely thanks to community developer: &#64;[Tau721](https://github.com/Tau721)
-
----
-
-## Kubernetes 1.35 Support
-
-The Volcano version keeps pace with the Kubernetes community releases. v1.15 supports the latest Kubernetes v1.35 release, ensuring functionality and reliability through comprehensive UT and E2E test cases. This includes updates to Kubernetes dependencies, generated APIs, fake clients, informers, volumebinding integration, CI/lint tooling, and Dockerfile Kubernetes version.
-
-Related PRs: [#5000](https://github.com/volcano-sh/volcano/pull/5000), [#5039](https://github.com/volcano-sh/volcano/pull/5039), [#5062](https://github.com/volcano-sh/volcano/pull/5062)
-
-Sincerely thanks to community developers: &#64;[guoqinwill](https://github.com/guoqinwill), &#64;[hajnalmt](https://github.com/hajnalmt)
-
----
-
-## MPI Validation and Argo MPI Examples
-
-v1.15.0 relaxes MPI validation for single-master MPI jobs and adds Argo MPI workflow examples, making it easier to run MPI workloads with Volcano in Argo Workflows environments.
-
-Related PRs: [#4956](https://github.com/volcano-sh/volcano/pull/4956), [#5117](https://github.com/volcano-sh/volcano/pull/5117)
-
-Sincerely thanks to community developers: &#64;[kingeasternsun](https://github.com/kingeasternsun), &#64;[jrbe228](https://github.com/jrbe228)
-
----
-
-## Security Fixes Included
-
-v1.15.0 includes the webhook request body size mitigation for **CVE-2026-44247**. This limits admission webhook request bodies and fixes a denial-of-service risk where an oversized request body could cause the webhook server to run out of memory.
-
----
-
-## Stability and Correctness Highlights
-
-- **Core scheduler stability and capacity correctness**: Improves transaction rollback, preemption/reclaim correctness, queue and inqueue accounting, victim ordering, event-handler synchronization, and scheduler cache safety. Together, they improve scheduler stability under high contention and concurrent event processing. ([#5073](https://github.com/volcano-sh/volcano/pull/5073), [#5180](https://github.com/volcano-sh/volcano/pull/5180), [#5010](https://github.com/volcano-sh/volcano/pull/5010), [#5011](https://github.com/volcano-sh/volcano/pull/5011), [#5067](https://github.com/volcano-sh/volcano/pull/5067), [#5141](https://github.com/volcano-sh/volcano/pull/5141), [#5142](https://github.com/volcano-sh/volcano/pull/5142), [#5113](https://github.com/volcano-sh/volcano/pull/5113), [#5100](https://github.com/volcano-sh/volcano/pull/5100), [#5130](https://github.com/volcano-sh/volcano/pull/5130), [#5176](https://github.com/volcano-sh/volcano/pull/5176), [#5091](https://github.com/volcano-sh/volcano/pull/5091), [#4973](https://github.com/volcano-sh/volcano/pull/4973), [#5172](https://github.com/volcano-sh/volcano/pull/5172), [#5178](https://github.com/volcano-sh/volcano/pull/5178), [#5086](https://github.com/volcano-sh/volcano/pull/5086))
-
-Sincerely thanks to community developers: &#64;[hzxuzhonghu](https://github.com/hzxuzhonghu), &#64;[Sanchit2662](https://github.com/Sanchit2662), &#64;[Aman-Cool](https://github.com/Aman-Cool), &#64;[hajnalmt](https://github.com/hajnalmt), &#64;[goyalpalak18](https://github.com/goyalpalak18), &#64;[guoqinwill](https://github.com/guoqinwill), &#64;[qi-min](https://github.com/qi-min), &#64;[zhifei92](https://github.com/zhifei92)
-
-- **Agent Scheduler stability enhancements**: Fixes multi-worker optimistic concurrency conflicts, prevents a shared action instance from reusing different framework/cycle state, registers the missing CSI manager, improves binder node priority behavior when nodes are waiting to be checked, fixes inaccurate E2E duration metrics, and adds e2e coverage. ([#5154](https://github.com/volcano-sh/volcano/pull/5154), [#5153](https://github.com/volcano-sh/volcano/pull/5153), [#5221](https://github.com/volcano-sh/volcano/pull/5221), [#5163](https://github.com/volcano-sh/volcano/pull/5163), [#4991](https://github.com/volcano-sh/volcano/pull/4991))
+Related PRs: [volcano-sh#5154](https://github.com/volcano-sh/volcano/pull/5154), [volcano-sh#5153](https://github.com/volcano-sh/volcano/pull/5153), [volcano-sh#5221](https://github.com/volcano-sh/volcano/pull/5221), [volcano-sh#5163](https://github.com/volcano-sh/volcano/pull/5163), [volcano-sh#4991](https://github.com/volcano-sh/volcano/pull/4991)
 
 Sincerely thanks to community developers: &#64;[JesseStutler](https://github.com/JesseStutler), &#64;[qi-min](https://github.com/qi-min), &#64;[agrawalcodes](https://github.com/agrawalcodes)
 
 ---
 
-## Upgrade Instructions
+### GPU/vGPU Incremental Enhancements
 
-To upgrade to Volcano v1.15.0 after the release is published:
+v1.15.0 makes several enhancements to the deviceshare plugin, including GPU exclusive support, vGPU preemption support, and preventing Pods in the same PodGroup from using the same physical vGPU device when sharing is disallowed.
+
+Related PRs: [volcano-sh#5213](https://github.com/volcano-sh/volcano/pull/5213), [volcano-sh#5235](https://github.com/volcano-sh/volcano/pull/5235), [volcano-sh#5049](https://github.com/volcano-sh/volcano/pull/5049)
+
+Sincerely thanks to community developers: &#64;[ckyuto](https://github.com/ckyuto), &#64;[archlitchi](https://github.com/archlitchi), &#64;[goyalankit](https://github.com/goyalankit)
+
+---
+
+### Pod-Level Resource Request and Limit Settings
+
+v1.15.0 now supports pod-level resource request and limit configuration in Volcano Job pod templates, giving users more granular control over resource allocation at the pod level within a VolcanoJob.
+
+Related PR: [volcano-sh#5020](https://github.com/volcano-sh/volcano/pull/5020)
+
+Sincerely thanks to community developer: &#64;[Tau721](https://github.com/Tau721)
+
+---
+
+### MPI Validation and Argo MPI Examples
+
+v1.15.0 relaxes MPI validation for single-master MPI jobs and adds Argo MPI workflow examples, making it easier to run MPI workloads with Volcano in Argo Workflows environments.
+
+Related PRs: [volcano-sh#4956](https://github.com/volcano-sh/volcano/pull/4956), [volcano-sh#5117](https://github.com/volcano-sh/volcano/pull/5117)
+
+Sincerely thanks to community developers: &#64;[kingeasternsun](https://github.com/kingeasternsun), &#64;[jrbe228](https://github.com/jrbe228)
+
+---
+
+### Security Fix
+
+v1.15.0 includes webhook request body size mitigation for **CVE-2026-44247**. This limits admission webhook request body size to prevent oversized requests from exhausting webhook server memory.
+
+---
+
+### Core Scheduler Stability and Correctness
+
+Improves transaction rollback, preemption/reclaim correctness, queue and inqueue accounting, victim ordering, event-handler synchronization, and scheduler cache safety. Together, they improve scheduler stability under high contention and concurrent event processing.
+
+Related PRs: [volcano-sh#5073](https://github.com/volcano-sh/volcano/pull/5073), [volcano-sh#5180](https://github.com/volcano-sh/volcano/pull/5180), [volcano-sh#5010](https://github.com/volcano-sh/volcano/pull/5010), [volcano-sh#5011](https://github.com/volcano-sh/volcano/pull/5011), [volcano-sh#5067](https://github.com/volcano-sh/volcano/pull/5067), [volcano-sh#5141](https://github.com/volcano-sh/volcano/pull/5141), [volcano-sh#5142](https://github.com/volcano-sh/volcano/pull/5142), [volcano-sh#5113](https://github.com/volcano-sh/volcano/pull/5113), [volcano-sh#5100](https://github.com/volcano-sh/volcano/pull/5100), [volcano-sh#5130](https://github.com/volcano-sh/volcano/pull/5130), [volcano-sh#5176](https://github.com/volcano-sh/volcano/pull/5176), [volcano-sh#5091](https://github.com/volcano-sh/volcano/pull/5091), [volcano-sh#4973](https://github.com/volcano-sh/volcano/pull/4973), [volcano-sh#5172](https://github.com/volcano-sh/volcano/pull/5172), [volcano-sh#5178](https://github.com/volcano-sh/volcano/pull/5178), [volcano-sh#5086](https://github.com/volcano-sh/volcano/pull/5086)
+
+Sincerely thanks to community developers: &#64;[hzxuzhonghu](https://github.com/hzxuzhonghu), &#64;[Sanchit2662](https://github.com/Sanchit2662), &#64;[Aman-Cool](https://github.com/Aman-Cool), &#64;[hajnalmt](https://github.com/hajnalmt), &#64;[goyalpalak18](https://github.com/goyalpalak18), &#64;[guoqinwill](https://github.com/guoqinwill), &#64;[qi-min](https://github.com/qi-min), &#64;[zhifei92](https://github.com/zhifei92)
+
+---
+
+## Summary
+
+The core change in v1.15.0 is Gang-Aware Preemption and Resource Reclamation, which elevates preemption decisions from per-Pod granularity to gang granularity, performing holistic evaluation on both the preemptor and victim sides, reducing cascading task failures from random eviction in distributed training scenarios. DRA Queue Quota brings DRA device resources into the existing queue capacity model, keeping heterogeneous resources consistent with CPU and memory in quota management. Pluggable Multi-Sharding Policy, the Benchmark framework, and Agent Scheduler stability fixes respectively improve multi-scheduler coordination, performance baseline establishment, and latency-sensitive workload scheduling capabilities.
+
+Volcano will continue to evolve its unified scheduling platform capabilities and engineering quality for AI training, inference, Agent, HPC, and big-data colocation scenarios.
+
+---
+
+## Upgrade Notes
+
+Upgrade to v1.15.0 via Helm or YAML:
 
 ```bash
-# Using Helm
 helm repo update
 helm upgrade volcano volcano-sh/volcano --version 1.15.0
+```
 
-# Using kubectl
+```bash
 kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/v1.15.0/installer/volcano-development.yaml
 ```
 
-**Upgrade Notes**:
-
-- Gang-aware preemption and reclamation is opt-in. Configure `gangPreempt` and `gangReclaim` explicitly, and do not use them together with legacy `preempt` and `reclaim` actions in the same scheduler action list.
-- `SchedulingGatesQueueAdmission` is opt-in and must be enabled on both scheduler and webhook-manager.
-- DRA scheduling integration is enabled by default to align with Kubernetes 1.34+ behavior. Set `predicate.DynamicResourceAllocationEnable: false` if DRA scheduling integration should be disabled.
-- DRA queue quota requires Kubernetes DRA support and a DRA-capable driver.
+- Gang-Aware Preemption and Resource Reclamation is currently Alpha — explicitly configure the two new actions `gangPreempt` and `gangReclaim`. It is not recommended to configure the new `gangPreempt`/`gangReclaim` and legacy `preempt`/`reclaim` actions in the same scheduler action list.
+- Scheduling Gates for Queue Admission is Alpha and must be enabled on both the scheduler and webhook-manager.
+- DRA scheduling integration is enabled by default to align with Kubernetes 1.34+ DRA defaults. To disable, set `predicate.DynamicResourceAllocationEnable: false`.
+- DRA Queue Quota requires Kubernetes DRA support and an available DRA driver.
 
 ---
 
-## Conclusion: Volcano v1.15.0 Continues to Lead Cloud-Native Batch Computing
+## References
 
-Volcano v1.15.0 is not just a technological advancement but a continuation of innovation in cloud-native batch computing. With gang-aware preemption protecting workload semantics, DRA queue quota bringing dynamic resources into the fairness model, pluggable sharding enabling flexible multi-scheduler deployments, and the benchmark framework providing production-ready observability, Volcano v1.15.0 delivers powerful features and flexible solutions for AI training, inference, HPC, and big data scheduling at scale.
+This post focuses on the main capabilities in v1.15.0. For the full API Changes, Bug Fixes, dependency updates, testing and maintenance items, and contributor list, please refer to the official Release Note and related documentation.
 
-Whether for managing resource contention in large-scale AI clusters, optimizing heterogeneous accelerator scheduling, or ensuring queue fairness across diverse workloads, Volcano v1.15.0 provides the robust foundation needed for modern batch computing.
-
-**Experience Volcano v1.15.0 now and step into a new era of efficient, gang-aware, and observable scheduling!**
-
-**v1.15.0 release:** [https://github.com/volcano-sh/volcano/releases/tag/v1.15.0](https://github.com/volcano-sh/volcano/releases/tag/v1.15.0)
+- Release Note: <https://github.com/volcano-sh/volcano/releases/tag/v1.15.0>
+- Full Changelog: <https://github.com/volcano-sh/volcano/compare/v1.14.0...v1.15.0>
 
 ---
 
-## Acknowledgments
+## Acknowledgements
 
-Volcano v1.15.0 includes contributions from 45 community members. Sincerely thanks to all contributors:
+Volcano v1.15 had 43 community contributors. Sincere thanks to every contributor — your efforts drive Volcano forward, making it an ever stronger and more stable unified scheduling platform!
 
-| &#64;[0YHR0](https://github.com/0YHR0)                 | &#64;[3th4novo](https://github.com/3th4novo)                   | &#64;[aadhil2k4](https://github.com/aadhil2k4)             |
-| :----------------------------------------------------- | :------------------------------------------------------------- | :--------------------------------------------------------- |
-| &#64;[Aman-Cool](https://github.com/Aman-Cool)         | &#64;[agrawalcodes](https://github.com/agrawalcodes)           | &#64;[aniketchawardol](https://github.com/aniketchawardol) |
-| &#64;[archlitchi](https://github.com/archlitchi)       | &#64;[ckyuto](https://github.com/ckyuto)                       | &#64;[dafu-wu](https://github.com/dafu-wu)                 |
-| &#64;[dengaosong](https://github.com/dengaosong)       | &#64;[devzizu](https://github.com/devzizu)                     | &#64;[DSFans2014](https://github.com/DSFans2014)           |
-| &#64;[FAUST-BENCHOU](https://github.com/FAUST-BENCHOU) | &#64;[goyalankit](https://github.com/goyalankit)               | &#64;[goyalpalak18](https://github.com/goyalpalak18)       |
-| &#64;[guoqinwill](https://github.com/guoqinwill)       | &#64;[hajnalmt](https://github.com/hajnalmt)                   | &#64;[hwdef](https://github.com/hwdef)                     |
-| &#64;[hzxuzhonghu](https://github.com/hzxuzhonghu)     | &#64;[JesseStutler](https://github.com/JesseStutler)           | &#64;[jiahuat](https://github.com/jiahuat)                 |
-| &#64;[jrbe228](https://github.com/jrbe228)             | &#64;[katara-Jayprakash](https://github.com/katara-Jayprakash) | &#64;[kingeasternsun](https://github.com/kingeasternsun)   |
-| &#64;[kitianFresh](https://github.com/kitianFresh)     | &#64;[kube-gopher](https://github.com/kube-gopher)             | &#64;[lixmgl](https://github.com/lixmgl)                   |
-| &#64;[madmecodes](https://github.com/madmecodes)       | &#64;[ouyangshengjia](https://github.com/ouyangshengjia)       | &#64;[pierluigilenoci](https://github.com/pierluigilenoci) |
-| &#64;[pmady](https://github.com/pmady)                 | &#64;[praveen0raj](https://github.com/praveen0raj)             | &#64;[qi-min](https://github.com/qi-min)                   |
-| &#64;[ruanwenjun](https://github.com/ruanwenjun)       | &#64;[Sanchit2662](https://github.com/Sanchit2662)             | &#64;[SquareCatFirst](https://github.com/SquareCatFirst)   |
-| &#64;[t2wang](https://github.com/t2wang)               | &#64;[Tau721](https://github.com/Tau721)                       | &#64;[vzhou-p](https://github.com/vzhou-p)                 |
-| &#64;[wangyang0616](https://github.com/wangyang0616)   | &#64;[xu-wentao](https://github.com/xu-wentao)                 | &#64;[Yashika0724](https://github.com/Yashika0724)         |
-| &#64;[zhifei92](https://github.com/zhifei92)           |                                                                |                                                            |
+|                    |                        |                      |
+| ------------------ | ---------------------- | -------------------- |
+| &#64;0YHR0         | &#64;3th4novo          | &#64;aadhil2k4       |
+| &#64;Aman-Cool     | &#64;agrawalcodes      | &#64;aniketchawardol |
+| &#64;archlitchi    | &#64;ckyuto            | &#64;dafu-wu         |
+| &#64;dengaosong    | &#64;devzizu           | &#64;DSFans2014      |
+| &#64;FAUST-BENCHOU | &#64;goyalankit        | &#64;goyalpalak18    |
+| &#64;guoqinwill    | &#64;hajnalmt          | &#64;hwdef           |
+| &#64;hzxuzhonghu   | &#64;JesseStutler      | &#64;jiahuat         |
+| &#64;jrbe228       | &#64;katara-Jayprakash | &#64;kingeasternsun  |
+| &#64;kitianFresh   | &#64;kube-gopher       | &#64;lixmgl          |
+| &#64;madmecodes    | &#64;ouyangshengjia    | &#64;pierluigilenoci |
+| &#64;pmady         | &#64;praveen0raj       | &#64;qi-min          |
+| &#64;ruanwenjun    | &#64;Sanchit2662       | &#64;SquareCatFirst  |
+| &#64;t2wang        | &#64;Tau721            | &#64;vzhou-p         |
+| &#64;wangyang0616  | &#64;xu-wentao         | &#64;Yashika0724     |
+| &#64;zhifei92      |                        |                      |
