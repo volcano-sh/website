@@ -39,26 +39,26 @@ tags:
 
 **调度与抢占增强**
 
-- [Gang-Aware Preemption and Resource Reclamation（Alpha）](#gang-aware-preemption-and-resource-reclamationalpha)
+- [Gang-Aware Preemption and Resource Reclamation（Alpha）](#1-gang-aware-preemption-and-resource-reclamationalpha)
 - [NodeGroup Preferred Ordering](#nodegroup-preferred-ordering)
 - [Capacity Ancestor Reclaim Level](#capacity-ancestor-reclaim-level)
 
 **资源管理与调度增强**
 
-- [DRA Queue Quota](#dra-queue-quota)
-- [Pluggable Multi-Sharding Policy（Alpha）](#pluggable-multi-sharding-policyalpha)
-- [GPU/vGPU 增量增强](#gpuvgpu增量增强)
+- [DRA Queue Quota](#2-dra-queue-quota)
+- [Pluggable Multi-Sharding Policy（Alpha）](#3-pluggable-multi-sharding-policyalpha)
+- [GPU/vGPU 增量增强](#gpuvgpu-增量增强)
 - [Pod-Level Resource Request and Limit Settings](#pod-level-resource-request-and-limit-settings)
 
 **性能与可观测增强**
 
-- [Volcano Benchmark 框架](#volcano-benchmark框架)
-- [Scheduling Gates for Queue Admission（Alpha）](#scheduling-gates-for-queue-admissionalpha)
+- [Volcano Benchmark 框架](#4-volcano-benchmark-框架)
+- [Scheduling Gates for Queue Admission（Alpha）](#5-scheduling-gates-for-queue-admissionalpha)
 
 **安全与稳定性**
 
 - [Webhook Request Body Size Mitigation for CVE-2026-44247](#安全修复)
-- [Core Scheduler 稳定性与正确性修复](#agent-scheduler稳定性增强)
+- [Core Scheduler 稳定性与正确性修复](#core-scheduler-稳定性与正确性修复)
 
 ---
 
@@ -413,8 +413,8 @@ kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/v1.15.0/in
 
 本文重点介绍 v1.15.0 的主要能力。完整的 API Changes、Bug Fixes、依赖更新、测试与维护项和贡献者列表，请参考正式 Release Note 及相关文档。
 
-- Release Note: <https://github.com/volcano-sh/volcano/releases/tag/v1.15.0>
-- Full Changelog: <https://github.com/volcano-sh/volcano/compare/v1.14.0...v1.15.0>
+- Release Note: [Release Note](https://github.com/volcano-sh/volcano/releases/tag/v1.15.0)
+- Full Changelog: [Full Changelog](https://github.com/volcano-sh/volcano/compare/v1.14.0...v1.15.0)
 
 ---
 

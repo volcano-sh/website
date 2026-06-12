@@ -41,26 +41,26 @@ The v1.15.0 release includes the following major updates:
 
 **Scheduling and Preemption Enhancements**
 
-- [Gang-Aware Preemption and Resource Reclamation (Alpha)](#gang-aware-preemption-and-resource-reclamation-alpha)
+- [Gang-Aware Preemption and Resource Reclamation (Alpha)](#1-gang-aware-preemption-and-resource-reclamation-alpha)
 - [NodeGroup Preferred Ordering for Queues](#nodegroup-preferred-ordering)
 - [Capacity Ancestor Reclaim Level](#capacity-ancestor-reclaim-level)
 
 **Resource Management and Scheduling Enhancements**
 
-- [DRA Queue Quota in Capacity Plugin](#dra-queue-quota)
-- [Pluggable Multi-Sharding Policy Support (Alpha)](#pluggable-multi-sharding-policy-alpha)
+- [DRA Queue Quota in Capacity Plugin](#2-dra-queue-quota)
+- [Pluggable Multi-Sharding Policy Support (Alpha)](#3-pluggable-multi-sharding-policy-alpha)
 - [GPU and vGPU Incremental Improvements](#gpuvgpu-incremental-enhancements)
 - [Pod-Level Resource Request and Limit Settings](#pod-level-resource-request-and-limit-settings)
 
 **Performance and Observability Enhancements**
 
-- [Volcano Benchmark and Performance Observability](#volcano-benchmark-framework)
-- [Scheduling Gates for Queue Admission (Alpha)](#scheduling-gates-for-queue-admission-alpha)
+- [Volcano Benchmark and Performance Observability](#4-volcano-benchmark-framework)
+- [Scheduling Gates for Queue Admission (Alpha)](#5-scheduling-gates-for-queue-admission-alpha)
 
 **Security and Stability**
 
 - [Webhook Request Body Size Mitigation for CVE-2026-44247](#security-fix)
-- [Core Scheduler Stability and Correctness Improvements](#agent-scheduler-stability-enhancements)
+- [Core Scheduler Stability and Correctness Improvements](#core-scheduler-stability-and-correctness)
 
 ---
 
@@ -410,8 +410,8 @@ kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/v1.15.0/in
 
 This post focuses on the main capabilities in v1.15.0. For the full API Changes, Bug Fixes, dependency updates, testing and maintenance items, and contributor list, please refer to the official Release Note and related documentation.
 
-- Release Note: <https://github.com/volcano-sh/volcano/releases/tag/v1.15.0>
-- Full Changelog: <https://github.com/volcano-sh/volcano/compare/v1.14.0...v1.15.0>
+- Release Note: [Release Note](https://github.com/volcano-sh/volcano/releases/tag/v1.15.0)
+- Full Changelog: [Full Changelog](https://github.com/volcano-sh/volcano/compare/v1.14.0...v1.15.0)
 
 ---
 
