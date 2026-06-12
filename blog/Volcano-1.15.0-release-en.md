@@ -96,7 +96,7 @@ tiers:
 
 Related PRs: [volcano-sh#5250](https://github.com/volcano-sh/volcano/pull/5250), [volcano-sh#4780](https://github.com/volcano-sh/volcano/pull/4780), [volcano-sh#5170](https://github.com/volcano-sh/volcano/pull/5170)
 
-Sincerely thanks to community developer: &#64;[vzhou-p](https://github.com/vzhou-p)
+Sincerely thanks to community developer: \@[vzhou-p](https://github.com/vzhou-p)
 
 ---
 
@@ -142,7 +142,7 @@ spec:
 
 Related PR: [volcano-sh#5058](https://github.com/volcano-sh/volcano/pull/5058)
 
-Sincerely thanks to community developer: &#64;[xu-wentao](https://github.com/xu-wentao)
+Sincerely thanks to community developer: \@[xu-wentao](https://github.com/xu-wentao)
 
 ---
 
@@ -193,7 +193,7 @@ custom:
 
 Related PRs: [volcano-sh#5098](https://github.com/volcano-sh/volcano/pull/5098), [volcano-sh#5132](https://github.com/volcano-sh/volcano/pull/5132), [volcano-sh#4990](https://github.com/volcano-sh/volcano/pull/4990)
 
-Sincerely thanks to community developers: &#64;[lixmgl](https://github.com/lixmgl), &#64;[agrawalcodes](https://github.com/agrawalcodes)
+Sincerely thanks to community developers: \@[lixmgl](https://github.com/lixmgl), \@[agrawalcodes](https://github.com/agrawalcodes)
 
 ---
 
@@ -223,7 +223,7 @@ Related PRs: [volcano-sh#5305](https://github.com/volcano-sh/volcano/pull/5305),
 
 User Guide: [Benchmark README](https://github.com/volcano-sh/volcano/blob/master/benchmark/README.md)
 
-Sincerely thanks to community developers: &#64;[JesseStutler](https://github.com/JesseStutler), &#64;[3th4novo](https://github.com/3th4novo)
+Sincerely thanks to community developers: \@[JesseStutler](https://github.com/JesseStutler), \@[3th4novo](https://github.com/3th4novo)
 
 ---
 
@@ -261,7 +261,7 @@ Related Issue: [volcano-sh#4710](https://github.com/volcano-sh/volcano/issues/47
 
 Related PRs: [volcano-sh#5033](https://github.com/volcano-sh/volcano/pull/5033), [volcano-sh#4727](https://github.com/volcano-sh/volcano/pull/4727)
 
-Sincerely thanks to community developer: &#64;[devzizu](https://github.com/devzizu)
+Sincerely thanks to community developer: \@[devzizu](https://github.com/devzizu)
 
 ---
 
@@ -273,7 +273,7 @@ v1.15.0 updates Kubernetes dependencies, generated code, fake clients, informers
 
 Related PRs: [volcano-sh#5000](https://github.com/volcano-sh/volcano/pull/5000), [volcano-sh#5039](https://github.com/volcano-sh/volcano/pull/5039), [volcano-sh#5062](https://github.com/volcano-sh/volcano/pull/5062)
 
-Sincerely thanks to community developers: &#64;[guoqinwill](https://github.com/guoqinwill), &#64;[hajnalmt](https://github.com/hajnalmt)
+Sincerely thanks to community developers: \@[guoqinwill](https://github.com/guoqinwill), \@[hajnalmt](https://github.com/hajnalmt)
 
 ---
 
@@ -306,7 +306,7 @@ spec:
 
 Related PR: [volcano-sh#5110](https://github.com/volcano-sh/volcano/pull/5110)
 
-Sincerely thanks to community developer: &#64;[ruanwenjun](https://github.com/ruanwenjun)
+Sincerely thanks to community developer: \@[ruanwenjun](https://github.com/ruanwenjun)
 
 ---
 
@@ -316,7 +316,7 @@ Adds `ancestorReclaimLevel` configuration and documents hierarchical queue recla
 
 Related PR: [volcano-sh#5115](https://github.com/volcano-sh/volcano/pull/5115)
 
-Sincerely thanks to community developer: &#64;[hajnalmt](https://github.com/hajnalmt)
+Sincerely thanks to community developer: \@[hajnalmt](https://github.com/hajnalmt)
 
 ---
 
@@ -328,7 +328,7 @@ These fixes primarily improve scheduling stability for latency-sensitive AI Agen
 
 Related PRs: [volcano-sh#5154](https://github.com/volcano-sh/volcano/pull/5154), [volcano-sh#5153](https://github.com/volcano-sh/volcano/pull/5153), [volcano-sh#5221](https://github.com/volcano-sh/volcano/pull/5221), [volcano-sh#5163](https://github.com/volcano-sh/volcano/pull/5163), [volcano-sh#4991](https://github.com/volcano-sh/volcano/pull/4991)
 
-Sincerely thanks to community developers: &#64;[JesseStutler](https://github.com/JesseStutler), &#64;[qi-min](https://github.com/qi-min), &#64;[agrawalcodes](https://github.com/agrawalcodes)
+Sincerely thanks to community developers: \@[JesseStutler](https://github.com/JesseStutler), \@[qi-min](https://github.com/qi-min), \@[agrawalcodes](https://github.com/agrawalcodes)
 
 ---
 
@@ -338,7 +338,7 @@ v1.15.0 makes several enhancements to the deviceshare plugin, including GPU excl
 
 Related PRs: [volcano-sh#5213](https://github.com/volcano-sh/volcano/pull/5213), [volcano-sh#5235](https://github.com/volcano-sh/volcano/pull/5235), [volcano-sh#5049](https://github.com/volcano-sh/volcano/pull/5049)
 
-Sincerely thanks to community developers: &#64;[ckyuto](https://github.com/ckyuto), &#64;[archlitchi](https://github.com/archlitchi), &#64;[goyalankit](https://github.com/goyalankit)
+Sincerely thanks to community developers: \@[ckyuto](https://github.com/ckyuto), \@[archlitchi](https://github.com/archlitchi), \@[goyalankit](https://github.com/goyalankit)
 
 ---
 
@@ -348,7 +348,7 @@ v1.15.0 now supports pod-level resource request and limit configuration in Volca
 
 Related PR: [volcano-sh#5020](https://github.com/volcano-sh/volcano/pull/5020)
 
-Sincerely thanks to community developer: &#64;[Tau721](https://github.com/Tau721)
+Sincerely thanks to community developer: \@[Tau721](https://github.com/Tau721)
 
 ---
 
@@ -358,7 +358,7 @@ v1.15.0 relaxes MPI validation for single-master MPI jobs and adds Argo MPI work
 
 Related PRs: [volcano-sh#4956](https://github.com/volcano-sh/volcano/pull/4956), [volcano-sh#5117](https://github.com/volcano-sh/volcano/pull/5117)
 
-Sincerely thanks to community developers: &#64;[kingeasternsun](https://github.com/kingeasternsun), &#64;[jrbe228](https://github.com/jrbe228)
+Sincerely thanks to community developers: \@[kingeasternsun](https://github.com/kingeasternsun), \@[jrbe228](https://github.com/jrbe228)
 
 ---
 
@@ -374,7 +374,7 @@ Improves transaction rollback, preemption/reclaim correctness, queue and inqueue
 
 Related PRs: [volcano-sh#5073](https://github.com/volcano-sh/volcano/pull/5073), [volcano-sh#5180](https://github.com/volcano-sh/volcano/pull/5180), [volcano-sh#5010](https://github.com/volcano-sh/volcano/pull/5010), [volcano-sh#5011](https://github.com/volcano-sh/volcano/pull/5011), [volcano-sh#5067](https://github.com/volcano-sh/volcano/pull/5067), [volcano-sh#5141](https://github.com/volcano-sh/volcano/pull/5141), [volcano-sh#5142](https://github.com/volcano-sh/volcano/pull/5142), [volcano-sh#5113](https://github.com/volcano-sh/volcano/pull/5113), [volcano-sh#5100](https://github.com/volcano-sh/volcano/pull/5100), [volcano-sh#5130](https://github.com/volcano-sh/volcano/pull/5130), [volcano-sh#5176](https://github.com/volcano-sh/volcano/pull/5176), [volcano-sh#5091](https://github.com/volcano-sh/volcano/pull/5091), [volcano-sh#4973](https://github.com/volcano-sh/volcano/pull/4973), [volcano-sh#5172](https://github.com/volcano-sh/volcano/pull/5172), [volcano-sh#5178](https://github.com/volcano-sh/volcano/pull/5178), [volcano-sh#5086](https://github.com/volcano-sh/volcano/pull/5086)
 
-Sincerely thanks to community developers: &#64;[hzxuzhonghu](https://github.com/hzxuzhonghu), &#64;[Sanchit2662](https://github.com/Sanchit2662), &#64;[Aman-Cool](https://github.com/Aman-Cool), &#64;[hajnalmt](https://github.com/hajnalmt), &#64;[goyalpalak18](https://github.com/goyalpalak18), &#64;[guoqinwill](https://github.com/guoqinwill), &#64;[qi-min](https://github.com/qi-min), &#64;[zhifei92](https://github.com/zhifei92)
+Sincerely thanks to community developers: \@[hzxuzhonghu](https://github.com/hzxuzhonghu), \@[Sanchit2662](https://github.com/Sanchit2662), \@[Aman-Cool](https://github.com/Aman-Cool), \@[hajnalmt](https://github.com/hajnalmt), \@[goyalpalak18](https://github.com/goyalpalak18), \@[guoqinwill](https://github.com/guoqinwill), \@[qi-min](https://github.com/qi-min), \@[zhifei92](https://github.com/zhifei92)
 
 ---
 
@@ -419,20 +419,20 @@ This post focuses on the main capabilities in v1.15.0. For the full API Changes,
 
 Volcano v1.15 had 43 community contributors. Sincere thanks to every contributor — your efforts drive Volcano forward, making it an ever stronger and more stable unified scheduling platform!
 
-|                    |                        |                      |
-| ------------------ | ---------------------- | -------------------- |
-| &#64;0YHR0         | &#64;3th4novo          | &#64;aadhil2k4       |
-| &#64;Aman-Cool     | &#64;agrawalcodes      | &#64;aniketchawardol |
-| &#64;archlitchi    | &#64;ckyuto            | &#64;dafu-wu         |
-| &#64;dengaosong    | &#64;devzizu           | &#64;DSFans2014      |
-| &#64;FAUST-BENCHOU | &#64;goyalankit        | &#64;goyalpalak18    |
-| &#64;guoqinwill    | &#64;hajnalmt          | &#64;hwdef           |
-| &#64;hzxuzhonghu   | &#64;JesseStutler      | &#64;jiahuat         |
-| &#64;jrbe228       | &#64;katara-Jayprakash | &#64;kingeasternsun  |
-| &#64;kitianFresh   | &#64;kube-gopher       | &#64;lixmgl          |
-| &#64;madmecodes    | &#64;ouyangshengjia    | &#64;pierluigilenoci |
-| &#64;pmady         | &#64;praveen0raj       | &#64;qi-min          |
-| &#64;ruanwenjun    | &#64;Sanchit2662       | &#64;SquareCatFirst  |
-| &#64;t2wang        | &#64;Tau721            | &#64;vzhou-p         |
-| &#64;wangyang0616  | &#64;xu-wentao         | &#64;Yashika0724     |
-| &#64;zhifei92      |                        |                      |
+|                 |                     |                   |
+| --------------- | ------------------- | ----------------- |
+| \@0YHR0         | \@3th4novo          | \@aadhil2k4       |
+| \@Aman-Cool     | \@agrawalcodes      | \@aniketchawardol |
+| \@archlitchi    | \@ckyuto            | \@dafu-wu         |
+| \@dengaosong    | \@devzizu           | \@DSFans2014      |
+| \@FAUST-BENCHOU | \@goyalankit        | \@goyalpalak18    |
+| \@guoqinwill    | \@hajnalmt          | \@hwdef           |
+| \@hzxuzhonghu   | \@JesseStutler      | \@jiahuat         |
+| \@jrbe228       | \@katara-Jayprakash | \@kingeasternsun  |
+| \@kitianFresh   | \@kube-gopher       | \@lixmgl          |
+| \@madmecodes    | \@ouyangshengjia    | \@pierluigilenoci |
+| \@pmady         | \@praveen0raj       | \@qi-min          |
+| \@ruanwenjun    | \@Sanchit2662       | \@SquareCatFirst  |
+| \@t2wang        | \@Tau721            | \@vzhou-p         |
+| \@wangyang0616  | \@xu-wentao         | \@Yashika0724     |
+| \@zhifei92      |                     |                   |
