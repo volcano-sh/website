@@ -2,24 +2,24 @@
 title: DeviceShare
 ---
 
-## Introduction
+## 介绍
 
-The **DeviceShare Plugin** is an advanced resource scheduling plugin in Volcano that provides a common framework for sharing specialized hardware devices (like GPUs, NPUs, FPGAs) across multiple pods. 
+**DeviceShare Plugin** 是 Volcano 中的高级资源调度插件，它提供了一个通用框架，用于跨多个 Pod 共享专用硬件设备（如 GPU、NPU、FPGA）。
 
-Rather than implementing fragmented logic for each new hardware accelerator, Volcano exposes a unified `Devices` interface. The `deviceshare` plugin leverages this interface to perform robust allocation, node filtering, and resource tracking for shared devices.
+Volcano 没有为每个新的硬件加速器实现碎片化的逻辑，而是公开了一个统一的“设备”接口。 “deviceshare”插件利用此接口对共享设备执行稳健的分配、节点过滤和资源跟踪。
 
-## Mechanism
+## 机制
 
-The DeviceShare plugin works in conjunction with device-specific implementations. It exposes standard scheduling operations such as `Predicate` (filtering nodes based on available device capacity) and `Allocate`/`Release` (assigning portions of a device to specific pods).
+DeviceShare 插件与特定于设备的实现结合使用。它公开了标准调度操作，例如“Predicate”（根据可用设备容量过滤节点）和“Allocate”/“Release”（将设备的一部分分配给特定的 Pod）。
 
-Currently, the `deviceshare` plugin serves as the underlying engine powering features like:
-- **GPU Sharing**: Allowing multiple pods to request fractions of a single physical GPU's memory.
-- **vGPU and vNPU**: Virtualizing accelerator slices.
-- **GPU Exclusive**: Restricting a pod to exclusively own a GPU to avoid contention.
+目前，“deviceshare”插件充当底层引擎，支持以下功能：
+- **GPU 共享**：允许多个 Pod 请求单个物理 GPU 内存的一部分。
+- **vGPU 和 vNPU**：虚拟化加速器切片。
+- **GPU Exclusive**：限制 Pod 独占 GPU 以避免争用。
 
-## Configuration and Usage
+## 配置与使用
 
-The `deviceshare` plugin is typically enabled implicitly when you enable device sharing predicates in the Volcano scheduler config map. However, if you are developing custom device sharing logic or need to explicitly declare it, it can be configured in your `volcano-scheduler-configmap`:
+当您在 Volcano 调度程序配置映射中启用设备共享谓词时，通常会隐式启用“deviceshare”插件。但是，如果您正在开发自定义设备共享逻辑或需要显式声明它，则可以在“volcano-scheduler-configmap”中进行配置：
 
 ```yaml
 actions: "enqueue, allocate, backfill"
@@ -38,4 +38,4 @@ tiers:
       - name: binpack
 ```
 
-> **Note:** For specific guides on how to configure your workloads to request shared GPUs or NPUs, please refer to the dedicated guides for [GPU Sharing](../../UserGuide/user_guide_how_to_use_gpu_sharing) and [vNPU](../../UserGuide/user_guide_how_to_use_vnpu).
+> **注意：** 有关如何配置工作负载以请求共享 GPU 或 NPU 的具体指南，请参阅 [GPU 共享](../../UserGuide/user_guide_how_to_use_gpu_sharing) 和 [vNPU](../../UserGuide/user_guide_how_to_use_vnpu) 的专用指南。

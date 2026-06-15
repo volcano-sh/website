@@ -2,26 +2,26 @@
 title: PDB
 ---
 
-## Introduction
+## 介绍
 
-When users deploy highly available jobs or applications on Volcano, they often need to limit the number of pod replicas that can be evicted or destroyed simultaneously to avoid downtime. This constraint is managed via Kubernetes **PodDisruptionBudget (PDB)** resources.
+当用户在 Volcano 上部署高可用作业或应用程序时，他们通常需要限制可以同时驱逐或销毁的 pod 副本数量，以避免停机。此约束通过 Kubernetes **PodDisruptionBudget (PDB)** 资源进行管理。
 
-The **PDB Plugin** ensures that Volcano respects user-defined PDB constraints during the scheduling process, specifically during eviction actions like `reclaim`, `preempt`, and `shuffle`.
+**PDB 插件** 确保 Volcano 在调度过程中尊重用户定义的 PDB 约束，特别是在“回收”、“抢占”和“洗牌”等驱逐操作期间。
 
-## Prerequisites
+## 先决条件
 
-- Your Kubernetes version must be 1.21 or later.
-- You must have created valid `PodDisruptionBudget` resources for your workloads.
+- 您的 Kubernetes 版本必须是 1.21 或更高版本。
+- 您必须为您的工作负载创建有效的“PodDisruptionBudget”资源。
 
-## Mechanism
+## 机制
 
-The PDB Plugin registers several functions (`ReclaimableFn`, `PreemptableFn`, and `VictimTasksFn`) under the `reclaim`, `preempt`, and `shuffle` actions. It maintains a cache of PDBs using `v1.PodDisruptionBudgetLister`. 
+PDB 插件在“reclaim”、“preempt”和“shuffle”操作下注册了多个函数（“ReclaimableFn”、“PreemptableFn”和“VictimTasksFn”）。它使用“v1.PodDisruptionBudgetLister”维护 PDB 缓存。
 
-During eviction scenarios, the plugin filters out tasks whose eviction would violate the configured PDB constraints. It calculates the `DisruptedPods` (pods whose eviction was processed but not yet observed by the PDB controller) and ensures the remaining available replicas satisfy the budget.
+在驱逐场景中，插件会过滤掉其驱逐将违反配置的 PDB 约束的任务。它计算“DisruptedPods”（已处理驱逐但尚未被 PDB 控制器观察到的 Pod）并确保剩余的可用副本满足预算。
 
-## Configuration
+## 配置
 
-To enable the PDB Plugin, update the `volcano-scheduler-configmap` to include the `pdb` plugin in your configuration tiers.
+要启用 PDB 插件，请更新“volcano-scheduler-configmap”以在配置层中包含“pdb”插件。
 
 ```yaml
 actions: "reclaim, preempt, shuffle"
@@ -40,4 +40,4 @@ tiers:
   - name: binpack
 ```
 
-*Note: The PDB plugin will be actively invoked when actions like `reclaim`, `preempt`, or `shuffle` are executed in the scheduler workflow.*
+*注意：当调度程序工作流程中执行“reclaim”、“preempt”或“shuffle”等操作时，将主动调用 PDB 插件。*

@@ -2,24 +2,24 @@
 title: Overcommit
 ---
 
-## Introduction
+## 介绍
 
-In typical cluster environments, the scheduler calculates available idle resources strictly based on physical node capacity minus allocated resources. However, when cluster resources are nearly fully utilized, many PodGroups are rejected from entering the scheduling pipeline and are left completely un-enqueued, which might not be desirable for scenarios where you want the scheduler to tolerate a larger backlog of `pending` pods.
+在典型的集群环境中，调度程序严格根据物理节点容量减去分配的资源来计算可用的空闲资源。但是，当集群资源几乎完全利用时，许多 PodGroup 会被拒绝进入调度管道，并且完全不排队，这对于您希望调度程序容忍大量“待处理”Pod 的场景来说可能并不理想。
 
-The **Overcommit Plugin** allows the scheduler to artificially inflate the apparent "idle resources" of the cluster by applying an `overcommit-factor`. This permits more jobs to be enqueued and wait in the scheduling pipeline than the physical resources might typically allow.
+**过度使用插件**允许调度程序通过应用“过度使用因子”人为地增加集群的明显“空闲资源”。这允许比物理资源通常允许的更多作业在调度管道中排队和等待。
 
-## Mechanism
+## 机制
 
-The Overcommit plugin evaluates whether a job can be enqueued based on the requested `MinResources` of the PodGroup and the expanded idle resources.
+Overcommit插件根据PodGroup请求的MinResources和扩展的空闲资源来评估作业是否可以入队。
 
-Expanded idle resource is calculated as:
-`Idle Resource = (Total Resource * overcommit-factor) - Used Resource`
+扩展闲置资源计算公式为：
+`空闲资源 = (总资源 * 过量使用系数) - 已使用资源`
 
-If the job's minimal requested resources can fit into this expanded idle resource pool, the job is permitted to be enqueued.
+如果作业的最小请求资源可以放入此扩展的空闲资源池中，则允许作业入队。
 
-## Configuration
+## 配置
 
-To use the Overcommit Plugin, add it to your `volcano-scheduler-configmap` under the `enqueue` tier, and provide an `overcommit-factor`.
+要使用 Overcommit 插件，请将其添加到“enqueue”层下的“volcano-scheduler-configmap”中，并提供“overcommit-factor”。
 
 ```yaml
 actions: "enqueue, allocate, backfill"
@@ -39,6 +39,6 @@ tiers:
       - name: binpack
 ```
 
-### Arguments
+### 参数
 
-- **`overcommit-factor`**: A float value greater than or equal to `1.0`. For example, `1.2` means the scheduler will pretend the cluster has 20% more total resources when deciding whether to enqueue jobs into the pipeline. If a value less than `1.0` is provided, the plugin will automatically fallback to the default value of `1.2`.
+- **`overcommit-factor`**：大于或等于 `1.0` 的浮点值。例如，“1.2”表示调度程序在决定是否将作业排队到管道中时，会假装集群的总资源增加了 20%。如果提供的值小于“1.0”，插件将自动回退到默认值“1.2”。

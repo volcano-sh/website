@@ -4,30 +4,30 @@ title: Capacity
 ---
 
 
-## Introduction
+## 介绍
 
-Capacity plugin is a replacement of proportion plugin, but instead of dividing the queue's deserved resources by weight, it realizes elastic queue capacity management i.e., queue's resource borrowing and lending mechanism by specifying the amount of deserved resources for each dimension resource of the queue. 
+容量插件是比例插件的替代，但不是按权重划分队列应得资源，而是通过指定队列每个维度资源应得资源量来实现弹性队列容量管理，即队列的资源借入和借出机制。
 
-A queue can use the idle resources of other queues, and when other queues submit jobs, they can reclaim the resources that have been lent, and the amount of reclaimed resources is the amount of queue's deserved resources. For more detail,  please see [Capacity scheduling design](https://github.com/volcano-sh/volcano/blob/master/docs/design/capacity-scheduling.md)
+一个队列可以使用其他队列的空闲资源，当其他队列提交作业时，可以回收已借出的资源，回收的资源量就是该队列应得的资源量。更多详情请参见【容量调度设计】(https://github.com/volcano-sh/volcano/blob/master/docs/design/capacity-scheduling.md)
 
-## Environment setup
+## 环境设置
 
-### Install volcano
+### 安装火山
 
-Refer to [Install Guide](https://github.com/volcano-sh/volcano/blob/master/installer/README.md) to install volcano.
+参考【安装指南】(https://github.com/volcano-sh/volcano/blob/master/installer/README.md)安装volcano。
 
-After installed, update the scheduler configuration:
+安装后，更新调度程序配置：
 
 ```shell
 kubectl edit cm -n volcano-system volcano-scheduler-configmap
 ```
 
-Please make sure
+请确保
 
-- reclaim action is enabled.
-- capacity plugin is enabled and proportion plugin is removed.
+- 回收操作已启用。
+- 启用容量插件并删除比例插件。
 
-Note:  capacity and proportion plugin are in conflict, the two plugins cannot be used together.
+注意：容量和比例插件是冲突的，两个插件不能一起使用。
 
 ```yaml
 kind: ConfigMap
@@ -53,9 +53,9 @@ data:
       - name: binpack
 ```
 
-## Config queue's deserved resources
+## 配置队列应有的资源
 
-Assume there are two nodes and two queues named queue1 and queue2 in your kubernetes cluster, and each node has 4 CPU and 16Gi memory, then there will be total 8 CPU and 32Gi memory in your cluster.
+假设您的 kubernetes 集群中有两个节点和两个队列，分别名为queue1和queue2，每个节点有4个CPU和16Gi内存，那么集群中总共有8个CPU和32Gi内存。
 
 ```yaml
 allocatable:
@@ -64,7 +64,7 @@ allocatable:
   pods: "110"
 ```
 
-config queue1's deserved field with 2 cpu and 8Gi memory.
+配置queue1的应有字段，具有2个cpu和8Gi内存。
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -78,7 +78,7 @@ spec:
     memory: 8Gi
 ```
 
-config queue2's deserved field with 6 cpu and 24Gi memory.
+配置queue2的应有字段，具有6个cpu和24Gi内存。
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -92,9 +92,9 @@ spec:
     memory: 24Gi
 ```
 
-## Submit pods to each queue
+## 将 pod 提交到每个队列
 
-First, submit a deployment named demo-1 to queue1 with replicas=8 and each pod requests 1 cpu and 4Gi memory, because queue2 is idle, so queue1 can use the whole clusters' resources, and you can see that 8 pods are in Running state.
+首先向queue1提交一个名为demo-1的部署，replicas=8，每个pod请求1个cpu和4Gi内存，因为queue2空闲，所以queue1可以使用整个集群的资源，可以看到有8个pod处于Running状态。
 
 ```yaml
 apiVersion: apps/v1
@@ -125,7 +125,7 @@ spec:
         - containerPort: 80
 ```
 
-Expected result:
+预期结果：
 
 ```shell
 $ kubectl get po                                                                                             
@@ -140,7 +140,7 @@ demo-1-7bc649f544-nv424   1/1     Running   0          5s
 demo-1-7bc649f544-zd6d9   1/1     Running   0          5s
 ```
 
-Then submit a deployment named demo-2 to queue2 with replicas=8 and each pod requests 1 cpu and 4Gi memory.
+然后向queue2提交一个名为demo-2的部署，replicas=8，每个pod请求1个cpu和4Gi内存。
 
 ```yaml
 apiVersion: apps/v1
@@ -171,9 +171,9 @@ spec:
         - containerPort: 80
 ```
 
-Because queue1 occupied queue2's resources, so queue2 will reclaim its deserved resources with 6 cpu and 24Gi memory. And each pod of demo-2 request 1 cpu and 4Gi memory, so there will be 6 Pods in Running state of demo-2,  and demo-1's pods will be evicted. 
+由于queue1占用了queue2的资源，所以queue2会用6个cpu和24Gi内存回收其应得的资源。而 demo-2 的每个 pod 请求 1 个 cpu 和 4Gi 内存，因此 demo-2 会有 6 个 Pod 处于 Running 状态，demo-1 的 pod 将被驱逐。
 
-Finally, you can see that there are 2 Running pods in demo-1(belongs to queue1), and 6 Running pods in demo-2(belongs to queue2), which meets queue's deserved resources respectively.
+最后可以看到demo-1（属于queue1）有2个正在运行的pod，demo-2（属于queue2）有6个正在运行的pod，分别满足了队列应得的资源。
 
 ```shell
 $ kubectl get po                                                                                             

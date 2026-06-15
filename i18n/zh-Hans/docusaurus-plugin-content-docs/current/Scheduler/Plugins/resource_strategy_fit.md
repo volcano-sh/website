@@ -1,36 +1,36 @@
-﻿---
+---
 title: Resource Strategy Fit
 
 ---
 
 
-## Introduction
+## 介绍
 
-The **Resource Strategy Fit Plugin** is a Volcano scheduler plugin that provides intelligent resource allocation strategies for pod scheduling. It supports both global configuration and pod-level annotations to optimize resource utilization across different workloads.
+**资源策略适配插件**是一个 Volcano 调度器插件，为 Pod 调度提供智能资源分配策略。它支持全局配置和 Pod 级注释，以优化不同工作负载的资源利用率。
 
-## Key Features
+## 主要特点
 
-- **Multiple Scoring Strategies**: Supports `LeastAllocated` and `MostAllocated` strategies
-- **Resource-Specific Configuration**: Configure different strategies for different resource types (CPU, Memory, GPU, etc.)
-- **Pod-Level Override**: Allow individual pods to override global configuration via annotations
-- **Weighted Scoring**: Fine-tune resource importance with configurable weights
-- **Wildcard Support**: Use wildcard patterns for resource matching
+- **多种评分策略**：支持“最少分配”和“最多分配”策略
+- **特定于资源的配置**：针对不同的资源类型（CPU、内存、GPU等）配置不同的策略
+- **Pod-Level Override**：允许单个 Pod 通过注释覆盖全局配置
+- **加权评分**：通过可配置的权重微调资源重要性
+- **通配符支持**：使用通配符模式进行资源匹配
 
-## Installation
+## 安装
 
-### 1. Install Volcano
+### 1. 安装火山
 
-Refer to [Install Guide](https://github.com/volcano-sh/volcano/blob/master/installer/README.md) to install Volcano.
+请参考【安装指南】(https://github.com/volcano-sh/volcano/blob/master/installer/README.md)安装Volcano。
 
-### 2. Configure the Plugin
+### 2. 配置插件
 
-Update the Volcano scheduler configuration:
+更新 Volcano 调度程序配置：
 
 ```bash
 kubectl edit cm -n volcano-system volcano-scheduler-configmap
 ```
 
-Add the `resource-strategy-fit` plugin to your configuration:
+将 `resource-strategy-fit` 插件添加到您的配置中：
 
 ```yaml
 kind: ConfigMap
@@ -64,18 +64,18 @@ data:
               weight: 2
 ```
 
-## Global Configuration
+## 全局配置
 
-### Basic Configuration
+### 基本配置
 
-The plugin supports two main scoring strategies:
+该插件支持两种主要的评分策略：
 
-| Strategy | Description | Use Case |
+| 策略 | 描述 | 使用场景 |
 |----------|-------------|----------|
-| `LeastAllocated` | Prefers nodes with more available resources | General workloads, load balancing |
-| `MostAllocated` | Prefers nodes with higher resource utilization | GPU workloads, resource consolidation |
+| `LeastAllocated` | 倾向于选择可用资源较多的节点 | 通用工作负载、负载均衡 |
+| `MostAllocated` | 倾向于选择资源利用率较高的节点 | GPU 工作负载、资源整合 |
 
-### Configuration Parameters
+### 配置参数
 
 ```yaml
 arguments:
@@ -92,9 +92,9 @@ arguments:
       weight: 2
 ```
 
-### Advanced Configuration Examples
+### 高级配置示例
 
-#### 1. GPU-Optimized Configuration
+#### 1. GPU 优化配置
 
 ```yaml
 arguments:
@@ -114,7 +114,7 @@ arguments:
       weight: 3
 ```
 
-#### 2. Mixed Strategy Configuration
+#### 2. 混合策略配置
 
 ```yaml
 arguments:
@@ -131,20 +131,20 @@ arguments:
       weight: 2
 ```
 
-## Pod-Level Configuration
+## Pod 级配置
 
-### Pod Annotations
+### Pod 注释
 
-Individual pods can override the global configuration using annotations:
+各个 Pod 可以使用注释覆盖全局配置：
 
-| Annotation Key | Description | Example |
+| 注解键 | 描述 | 示例 |
 |----------------|-------------|---------|
-| `volcano.sh/resource-strategy-scoring-type` | Override scoring strategy | `"LeastAllocated"` or `"MostAllocated"` |
-| `volcano.sh/resource-strategy-weight` | Override resource weights | `{"cpu": 2, "memory": 1, "nvidia.com/gpu": 3}` |
+| `volcano.sh/resource-strategy-scoring-type` | 覆盖评分策略 | `"LeastAllocated"` 或 `"MostAllocated"` |
+| `volcano.sh/resource-strategy-weight` | 覆盖资源权重 | `{"cpu": 2, "memory": 1, "nvidia.com/gpu": 3}` |
 
-### Pod-Level Examples
+### Pod 级示例
 
-#### 1. Override Strategy for Specific Pod
+#### 1. 覆盖特定 Pod 的策略
 
 ```yaml
 apiVersion: v1
@@ -170,7 +170,7 @@ spec:
   schedulerName: volcano
 ```
 
-#### 2. Custom Resource Weights
+#### 2. 自定义资源权重
 
 ```yaml
 apiVersion: v1
@@ -192,9 +192,9 @@ spec:
   schedulerName: volcano
 ```
 
-## Volcano Job Integration
+## 火山工作整合
 
-### Basic Volcano Job
+### 基本火山工作
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -229,7 +229,7 @@ spec:
         restartPolicy: Never
 ```
 
-### Multi-Task Job with Different Strategies
+### 具有不同策略的多任务作业
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -276,11 +276,11 @@ spec:
               memory: "4Gi"
 ```
 
-## Use Cases
+## 使用案例
 
-### 1. GPU Workload Optimization
+### 1. GPU 工作负载优化
 
-For GPU-intensive workloads, use `MostAllocated` strategy to consolidate GPU usage:
+对于 GPU 密集型工作负载，请使用“MostAllocation”策略来整合 GPU 使用情况：
 
 ```yaml
 # Global configuration
@@ -295,9 +295,9 @@ arguments:
       weight: 1
 ```
 
-### 2. Load Balancing
+### 2. 负载均衡
 
-For general workloads, use `LeastAllocated` strategy to distribute load evenly:
+对于一般工作负载，使用“LeastAllocation”策略来均匀分配负载：
 
 ```yaml
 # Global configuration
@@ -312,9 +312,9 @@ arguments:
       weight: 1
 ```
 
-### 3. Mixed Workloads
+### 3. 混合工作负载
 
-Combine different strategies for different resource types:
+针对不同的资源类型结合不同的策略：
 
 ```yaml
 # Global configuration
@@ -332,11 +332,11 @@ arguments:
       weight: 5
 ```
 
-## Troubleshooting
+## 故障排除
 
-### Verify Plugin Configuration
+### 验证插件配置
 
-Check the scheduler logs to ensure the plugin is loaded correctly:
+检查调度程序日志以确保插件正确加载：
 
 ```bash
 kubectl logs -n volcano-system deployment/volcano-scheduler | grep "resource-strategy-fit"
@@ -347,16 +347,16 @@ Expected output:
 Initialize resource-strategy-fit plugin with configuration: {resourceStrategyFitWeight: 10, resources: {...}}
 ```
 
-### Common Issues
+### 常见问题
 
-1. **Plugin not loaded**: Ensure the plugin is included in the scheduler configuration
-2. **Invalid annotations**: Check JSON format for pod-level weight annotations
-3. **Resource not found**: Verify resource names match exactly (case-sensitive)
-4. **Scoring not working**: Check plugin weight and resource weights are properly configured
+1. **插件未加载**：确保插件包含在调度程序配置中
+2. **无效注解**：检查Pod级别权重注解的JSON格式
+3. **找不到资源**：验证资源名称是否完全匹配（区分大小写）
+4. **评分不起作用**：检查插件权重和资源权重是否正确配置
 
-### Debug Information
+### 调试信息
 
-Enable debug logging to see scoring decisions:
+启用调试日志记录以查看评分决策：
 
 ```yaml
 # Add to scheduler configuration
@@ -366,11 +366,11 @@ arguments:
   logLevel: 4  # Enable debug logging
 ```
 
-## Best Practices
+## 最佳实践
 
-1. **Start with global configuration** for consistent behavior across all workloads
-2. **Use pod-level annotations sparingly** for specific workload requirements
-3. **Test different strategies** to find optimal configuration for your use case
-4. **Monitor resource utilization** after applying the plugin
-5. **Use appropriate weights** to balance different resource types
-6. **Consider workload characteristics** when choosing between `LeastAllocated` and `MostAllocated`
+1. **从全局配置开始**，以在所有工作负载中保持一致的行为
+2. **针对特定工作负载需求谨慎使用 pod 级注释**
+3. **测试不同的策略**以找到适合您的用例的最佳配置
+4. **应用插件后监控资源利用率**
+5. **使用适当的权重**来平衡不同的资源类型
+6. **在“LeastAllocation”和“MostAlowned”之间进行选择时，请考虑工作负载特征**

@@ -1,28 +1,28 @@
-﻿---
+---
 title: CDP
 
 ---
 
 
-## Background
-When we need to enable elastic training or serving, preemptible job's pods can be preempted or back to running repeatedly, if no cooldown protection set, these pods can be preempted again after they just started for a short time, this may cause service stability dropped.
-So we add "cdp" plugin to ensure preemptible job's pods can run for at least some time set by user.
+## 背景
+当我们需要启用弹性训练或服务时，抢占式作业的 Pod 可以被抢占或重复重新运行，如果没有设置冷却保护，这些 Pod 可能会在刚启动一段时间后再次被抢占，这可能会导致服务稳定性下降。
+因此，我们添加“cdp”插件来确保抢占式作业的 pod 可以至少运行用户设置的一段时间。
 
-## Environment setup
+## 环境设置
 
-### Install volcano
+### 安装火山
 
-Refer to [Install Guide](https://github.com/volcano-sh/volcano/blob/master/installer/README.md) to install volcano.
+参考【安装指南】(https://github.com/volcano-sh/volcano/blob/master/installer/README.md)安装volcano。
 
-### Update scheduler configmap
+### 更新调度程序配置图
 
-After installed, update the scheduler configuration:
+安装后，更新调度程序配置：
 
 ```shell
 kubectl edit configmap -n volcano-system volcano-scheduler-configmap
 ```
 
-Register `cdp` plugin in configmap while enable `preempt` action
+在 configmap 中注册 `cdp` 插件，同时启用 `preempt` 操作
 
 ```yaml
 kind: ConfigMap
@@ -50,11 +50,11 @@ data:
       - name: binpack
 ```
 
-### Running Jobs
+### 正在运行的作业
 
-Take a simple volcano job as sample.
+以一个简单的火山作业为例。
 
-original job yaml is as below, which has "ps" and "worker" task
+原始作业yaml如下，其中有“ps”和“worker”任务
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -113,20 +113,20 @@ spec:
 
 ```
 
-#### Edit yaml of vcjob
+#### 编辑vcjob的yaml
 
-1. add annotations in volcano job in format below.
-   1. `volcano.sh/preemptable` annotation indicates that job or task is preemptable
-   2. `volcano.sh/cooldown-time` annotation indicates cooldown time for the entire job or dedicated task. Value for the annotation indicates cooldown time, valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". 
+1. 按照下面的格式在火山作业中添加注释。
+   1. `volcano.sh/preemptable` 注解表示作业或任务是可抢占的
+   2.`volcano.sh/cooldown-time`注释表示整个作业或专用任务的冷却时间。注释的值表示冷却时间，有效的时间单位为“ns”、“us”（或“μs”）、“ms”、“s”、“m”、“h”。
 
         ```yaml
             volcano.sh/preemptable: "true"
             volcano.sh/cooldown-time: "600s"
         ```
 
-**Example 1**
+**示例1**
 
-Add annotation to entire job, then "ps" and "worker" task can be preempted and all have cooldown time support.
+为整个作业添加注释，然后“ps”和“worker”任务可以被抢占，并且都有冷却时间支持。
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -140,9 +140,9 @@ spec:
   ... # below keep the same
 ```
 
-**Example 2**
+**示例2**
 
-Add annotation to dedicated task, as shown below, only "worker" can be preempted and have cooldown time support.
+为专用任务添加注解，如下图，只有“worker”可以抢占，并且有冷却时间支持。
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
