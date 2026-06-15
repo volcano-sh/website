@@ -2,6 +2,6 @@
 title: Overview
 ---
 
-## Introduction
+## 介绍
 
-The Volcano Job Controller manages the lifecycle of jobs and dynamically configures job environments using plugins such as SSH, SVC, MPI, and PyTorch.
+Volcano 作业控制器管理作业的生命周期，并使用 SSH、SVC、MPI 和 PyTorch 等插件动态配置作业环境。
