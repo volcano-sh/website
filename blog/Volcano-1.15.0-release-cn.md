@@ -35,33 +35,6 @@ tags:
 
 此外，v1.15.0 还包含 Kubernetes 1.35 支持、NodeGroup preferred ordering、Agent Scheduler 稳定性增强、GPU/vGPU 增量增强以及安全修复。它们会在后文简要介绍，对生产可用性和生态兼容性同样重要。
 
-## Release Highlights
-
-**调度与抢占增强**
-
-- [Gang-Aware Preemption and Resource Reclamation（Alpha）](#1-gang-aware-preemption-and-resource-reclamationalpha)
-- [NodeGroup Preferred Ordering](#nodegroup-preferred-ordering)
-- [Capacity Ancestor Reclaim Level](#capacity-ancestor-reclaim-level)
-
-**资源管理与调度增强**
-
-- [DRA Queue Quota](#2-dra-queue-quota)
-- [Pluggable Multi-Sharding Policy（Alpha）](#3-pluggable-multi-sharding-policyalpha)
-- [GPU/vGPU 增量增强](#gpuvgpu-增量增强)
-- [Pod-Level Resource Request and Limit Settings](#pod-level-resource-request-and-limit-settings)
-
-**性能与可观测增强**
-
-- [Volcano Benchmark 框架](#4-volcano-benchmark-框架)
-- [Scheduling Gates for Queue Admission（Alpha）](#5-scheduling-gates-for-queue-admissionalpha)
-
-**安全与稳定性**
-
-- [Webhook Request Body Size Mitigation for CVE-2026-44247](#安全修复)
-- [Core Scheduler 稳定性与正确性修复](#core-scheduler-稳定性与正确性修复)
-
----
-
 ## 重点特性
 
 ### 1. Gang-Aware Preemption and Resource Reclamation（Alpha）
@@ -95,6 +68,8 @@ tiers:
 相关资料：
 
 - 相关 PR：[volcano-sh#5250](https://github.com/volcano-sh/volcano/pull/5250), [volcano-sh#4780](https://github.com/volcano-sh/volcano/pull/4780), [volcano-sh#5170](https://github.com/volcano-sh/volcano/pull/5170)
+- 设计文档：[Gang-Aware Eviction Design](https://github.com/volcano-sh/volcano/blob/release-1.15/docs/design/gang-aware-eviction-design.md)
+- 设计文档：[EvictableFn Evolution for Gang Eviction](https://github.com/volcano-sh/volcano/blob/release-1.15/docs/design/evictablefn-evolution-for-gang-eviction.md)
 - 感谢社区开发者：\@[vzhou-p](https://github.com/vzhou-p)
 
 ---
@@ -142,6 +117,8 @@ spec:
 相关资料：
 
 - 相关 PR：[volcano-sh#5058](https://github.com/volcano-sh/volcano/pull/5058)
+- 设计文档：[DeviceClass Quota Support in Capacity Plugin](https://github.com/volcano-sh/volcano/blob/release-1.15/docs/design/capacity-dra-support.md)
+- 使用文档：[DeviceClass Quota User Guide](https://github.com/volcano-sh/volcano/blob/release-1.15/docs/user-guide/how_to_use_dra_quota.md)
 - 感谢社区开发者：\@[xu-wentao](https://github.com/xu-wentao)
 
 ---
@@ -194,6 +171,7 @@ custom:
 相关资料：
 
 - 相关 PR：[volcano-sh#5098](https://github.com/volcano-sh/volcano/pull/5098), [volcano-sh#5132](https://github.com/volcano-sh/volcano/pull/5132), [volcano-sh#4990](https://github.com/volcano-sh/volcano/pull/4990)
+- 使用文档：[How to Configure Sharding via ConfigMap](https://github.com/volcano-sh/volcano/blob/release-1.15/docs/user-guide/how_to_configure_sharding_configmap.md)
 - 感谢社区开发者：\@[lixmgl](https://github.com/lixmgl), \@[agrawalcodes](https://github.com/agrawalcodes)
 
 ---
@@ -264,6 +242,8 @@ spec:
 
 - 相关 Issue：[volcano-sh#4710](https://github.com/volcano-sh/volcano/issues/4710)
 - 相关 PR：[volcano-sh#5033](https://github.com/volcano-sh/volcano/pull/5033), [volcano-sh#4727](https://github.com/volcano-sh/volcano/pull/4727)
+- 设计文档：[Gate-Controlled Scheduling for Cluster Autoscalers Compatibility](https://github.com/volcano-sh/volcano/blob/release-1.15/docs/design/scheduling-gates-queue-admission.md)
+- 使用文档：[How to Use Scheduling Gates for Queue Admission](https://github.com/volcano-sh/volcano/blob/release-1.15/docs/user-guide/how_to_use_scheduling_gates_queue_admission.md)
 - 感谢社区开发者：\@[devzizu](https://github.com/devzizu)
 
 ---
@@ -274,13 +254,7 @@ spec:
 
 v1.15.0 更新了 Kubernetes 依赖、生成代码、fake client、informer、volumebinding 集成、CI/lint 工具链以及兼容性文档，支持 Kubernetes 1.35。
 
-相关 PR：[volcano-sh#5000](https://github.com/volcano-sh/volcano/pull/5000), [volcano-sh#5039](https://github.com/volcano-sh/volcano/pull/5039), [volcano-sh#5062](https://github.com/volcano-sh/volcano/pull/5062)
-
-感谢社区开发者：\@[guoqinwill](https://github.com/guoqinwill), \@[hajnalmt](https://github.com/hajnalmt)
-
----
-
-### NodeGroup Preferred Ordering
+### NodeGroup preferred ordering
 
 NodeGroup plugin 新增 `enablePreferredOrder`，Queue 中 `preferredDuringSchedulingIgnoredDuringExecution` 的顺序会影响调度打分。靠前的 NodeGroup 会获得更高分数，适合"优先使用固定资源池，资源不足时再 fallback 到弹性资源池"的场景。
 
@@ -307,21 +281,9 @@ spec:
         - spark-serverless
 ```
 
-相关 PR：[volcano-sh#5110](https://github.com/volcano-sh/volcano/pull/5110)
+相关配置可参考：
 
-感谢社区开发者：\@[ruanwenjun](https://github.com/ruanwenjun)
-
----
-
-### Capacity Ancestor Reclaim Level
-
-新增 `ancestorReclaimLevel` 配置并完善分层队列 reclaim 行为文档，允许管理员控制分层队列回收资源时考虑的祖先层级数量。
-
-相关 PR：[volcano-sh#5115](https://github.com/volcano-sh/volcano/pull/5115)
-
-感谢社区开发者：\@[hajnalmt](https://github.com/hajnalmt)
-
----
+[Preferred Nodegroup Priority Ordering](https://github.com/volcano-sh/volcano/blob/release-1.15/docs/user-guide/how_to_use_nodegroup_plugin.md#preferred-nodegroup-priority-ordering)
 
 ### Agent Scheduler 稳定性增强
 
@@ -329,55 +291,13 @@ v1.15.0 修复了 Agent Scheduler 多 worker 乐观并发冲突、共享 action 
 
 这些修复主要提升了延迟敏感型 AI Agent 工作负载的调度稳定性。
 
-相关 PR：[volcano-sh#5154](https://github.com/volcano-sh/volcano/pull/5154), [volcano-sh#5153](https://github.com/volcano-sh/volcano/pull/5153), [volcano-sh#5221](https://github.com/volcano-sh/volcano/pull/5221), [volcano-sh#5163](https://github.com/volcano-sh/volcano/pull/5163), [volcano-sh#4991](https://github.com/volcano-sh/volcano/pull/4991)
-
-感谢社区开发者：\@[JesseStutler](https://github.com/JesseStutler), \@[qi-min](https://github.com/qi-min), \@[agrawalcodes](https://github.com/agrawalcodes)
-
----
-
 ### GPU/vGPU 增量增强
 
 v1.15.0 对 deviceshare plugin 做了多项增强，包括 GPU exclusive 支持、vGPU preemption 支持，以及在不允许共享时避免同一 PodGroup 内的 Pod 使用同一张物理 vGPU 设备。
 
-相关 PR：[volcano-sh#5213](https://github.com/volcano-sh/volcano/pull/5213), [volcano-sh#5235](https://github.com/volcano-sh/volcano/pull/5235), [volcano-sh#5049](https://github.com/volcano-sh/volcano/pull/5049)
-
-感谢社区开发者：\@[ckyuto](https://github.com/ckyuto), \@[archlitchi](https://github.com/archlitchi), \@[goyalankit](https://github.com/goyalankit)
-
----
-
-### Pod-Level Resource Request and Limit Settings
-
-v1.15.0 现支持在 Volcano Job pod 模板中配置 pod-level 资源 request 和 limit，让用户在 VolcanoJob 内对 pod 级别的资源分配有更细粒度的控制。
-
-相关 PR：[volcano-sh#5020](https://github.com/volcano-sh/volcano/pull/5020)
-
-感谢社区开发者：\@[Tau721](https://github.com/Tau721)
-
----
-
-### MPI Validation and Argo MPI Examples
-
-v1.15.0 放宽了单 master MPI 作业的验证条件，并新增了 Argo MPI workflow 示例，让用户在 Argo Workflows 环境中运行 MPI 负载更加便捷。
-
-相关 PR：[volcano-sh#4956](https://github.com/volcano-sh/volcano/pull/4956), [volcano-sh#5117](https://github.com/volcano-sh/volcano/pull/5117)
-
-感谢社区开发者：\@[kingeasternsun](https://github.com/kingeasternsun), \@[jrbe228](https://github.com/jrbe228)
-
----
-
 ### 安全修复
 
-v1.15.0 包含 webhook request body size mitigation，用于修复**CVE-2026-44247**相关的拒绝服务风险。该修复限制 admission webhook 请求体大小，避免超大请求导致 webhook server 内存耗尽。
-
----
-
-### Core Scheduler 稳定性与正确性修复
-
-改进了事务回滚、抢占/回收正确性、队列及 inqueue 资源统计、victim 排序、事件处理器同步以及调度器缓存安全性。综合起来，这些修复提升了高并发和并发事件处理下的调度器稳定性。
-
-相关 PR：[volcano-sh#5073](https://github.com/volcano-sh/volcano/pull/5073), [volcano-sh#5180](https://github.com/volcano-sh/volcano/pull/5180), [volcano-sh#5010](https://github.com/volcano-sh/volcano/pull/5010), [volcano-sh#5011](https://github.com/volcano-sh/volcano/pull/5011), [volcano-sh#5067](https://github.com/volcano-sh/volcano/pull/5067), [volcano-sh#5141](https://github.com/volcano-sh/volcano/pull/5141), [volcano-sh#5142](https://github.com/volcano-sh/volcano/pull/5142), [volcano-sh#5113](https://github.com/volcano-sh/volcano/pull/5113), [volcano-sh#5100](https://github.com/volcano-sh/volcano/pull/5100), [volcano-sh#5130](https://github.com/volcano-sh/volcano/pull/5130), [volcano-sh#5176](https://github.com/volcano-sh/volcano/pull/5176), [volcano-sh#5091](https://github.com/volcano-sh/volcano/pull/5091), [volcano-sh#4973](https://github.com/volcano-sh/volcano/pull/4973), [volcano-sh#5172](https://github.com/volcano-sh/volcano/pull/5172), [volcano-sh#5178](https://github.com/volcano-sh/volcano/pull/5178), [volcano-sh#5086](https://github.com/volcano-sh/volcano/pull/5086)
-
-感谢社区开发者：\@[hzxuzhonghu](https://github.com/hzxuzhonghu), \@[Sanchit2662](https://github.com/Sanchit2662), \@[Aman-Cool](https://github.com/Aman-Cool), \@[hajnalmt](https://github.com/hajnalmt), \@[goyalpalak18](https://github.com/goyalpalak18), \@[guoqinwill](https://github.com/guoqinwill), \@[qi-min](https://github.com/qi-min), \@[zhifei92](https://github.com/zhifei92)
+v1.15.0 包含 webhook request body size mitigation，用于修复 **CVE-2026-44247** 相关的拒绝服务风险。该修复限制 admission webhook 请求体大小，避免超大请求导致 webhook server 内存耗尽。
 
 ---
 
@@ -413,8 +333,8 @@ kubectl apply -f https://raw.githubusercontent.com/volcano-sh/volcano/v1.15.0/in
 
 本文重点介绍 v1.15.0 的主要能力。完整的 API Changes、Bug Fixes、依赖更新、测试与维护项和贡献者列表，请参考正式 Release Note 及相关文档。
 
-- Release Note: [Release Note](https://github.com/volcano-sh/volcano/releases/tag/v1.15.0)
-- Full Changelog: [Full Changelog](https://github.com/volcano-sh/volcano/compare/v1.14.0...v1.15.0)
+- [Release Note](https://github.com/volcano-sh/volcano/releases/tag/v1.15.0)
+- [Full Changelog](https://github.com/volcano-sh/volcano/compare/v1.14.0...v1.15.0)
 
 ---
 
