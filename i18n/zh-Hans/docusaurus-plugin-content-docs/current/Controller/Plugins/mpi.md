@@ -1,38 +1,38 @@
-﻿---
+---
 title: MPI
 
 ---
 
 
-## Introduction
+## 介绍
 
-**MPI plugin** is designed to optimize the user experience when running MPI jobs, it not only allows users to write less yaml, but also ensures the normal operation of MPI jobs.
+**MPI插件**旨在优化运行MPI作业时的用户体验，它不仅可以让用户编写更少的yaml，而且可以保证MPI作业的正常运行。
 
-## How the MPI Plugin Works
+## MPI 插件的工作原理
 
-The MPI plugin will do three things:
+MPI 插件将做三件事：
 
-* Open ports used by MPI for all containers of the job
-* Force open `ssh` and `svc` plugins
-* add `MPI_HOST` environment variable for master pod, this environment variable includes the worker's domain name, It is used by the `--host` parameter of `mpiexec`
+* 打开 MPI 用于作业的所有容器的端口
+* 强制打开`ssh`和`svc`插件
+*为主pod添加`MPI_HOST`环境变量，该环境变量包含worker的域名，由`mpiexec`的`--host`参数使用
 
-## Parameters of the MPI Plugin
+## MPI 插件参数
 
-### Key Points
+### 要点
 
-* If `master` or `worker` is configured, please ensure that the tasks corresponding to their values exist, and the roles of these tasks correspond to the meaning of the parameters
-* If `port` is configured, make the port value of `sshd` the same as the value of the parameter.
-* If the `gang` plugin is enabled, then make sure that the value of `minAvailable` is **equal** to the number of `replicas of the worker`.
+* 如果配置了`master`或`worker`，请确保其值对应的任务存在，并且这些任务的角色与参数的含义相对应
+* 如果配置了“port”，则使“sshd”的端口值与参数值相同。
+* 如果启用了“gang”插件，请确保“minAvailable”的值**等于**“worker 的副本”数量。
 
-### Arguments
+### 参数
 
-| ID   | Name   | Type   | Default Value | Required | Description                        | Example            |
+| ID   | 名称   | 类型   | 默认值 | 是否必填 | 描述                        | 示例            |
 | ---- | ------ | ------ | ------------- | -------- | ---------------------------------- | ------------------ |
-| 1    | master | string | master        | No       | Name of MPI master                 | --master=mpimaster |
-| 2    | worker | string | worker        | No       | Name of MPI worker                 | --worker=mpiworker |
-| 3    | port   | string | 22            | No       | The port to open for the container | --port=5000        |
+| 1    | master | string | master        | 否       | MPI 主节点名称 | --master=mpimaster |
+| 2    | worker | string | worker        | 否       | MPI 工作节点名称 | --worker=mpiworker |
+| 3    | port   | string | 22            | 否       | 为容器打开的端口 | --port=5000        |
 
-## Examples
+## 示例
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1

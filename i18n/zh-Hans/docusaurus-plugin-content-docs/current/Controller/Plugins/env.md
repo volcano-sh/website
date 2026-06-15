@@ -1,22 +1,22 @@
-﻿---
+---
 title: Env
 
 ---
 
 
-## Background
-**Env Plugin** is designed for business that a pod should be aware of its index in the task such as [MPI](https://www.open-mpi.org/)
-and [TensorFlow](https://tensorflow.google.cn/). The indices will be registered as **environment variables** automatically
-when the Volcano job is created. For example, a tensorflow job consists of *1* ps and *2* workers. And each worker maps 
-to a slice of raw data. In order to make the workers be aware of its target slice, they get their index in the environment
-variables.
+## 背景
+**Env Plugin** 是为业务而设计的，pod 应该知道其在任务中的索引，例如 [MPI](https://www.open-mpi.org/)
+和[TensorFlow](https://tensorflow.google.cn/)。索引将自动注册为**环境变量**
+当 Volcano 作业创建时。例如，一个张量流作业由 *1* ps 和 *2* 个worker 组成。以及每个工人的地图 
+到原始数据切片。为了让工作人员了解其目标切片，他们在环境中获取索引
+变量。
 
-## Key Points
-* The index keys of the environment variables are `VK_TASK_INDEX` and `VC_TASK_INDEX`, they have the same value.
-* The value of the indices is a number which ranges from `0` to `length - 1`. The `length` equals to the number of replicas 
-of the task. It is also the index of the pod in the task. 
+## 要点
+* 环境变量的索引键是`VK_TASK_INDEX`和`VC_TASK_INDEX`，它们具有相同的值。
+* 索引的值是一个范围从“0”到“length - 1”的数字。 “长度”等于副本数 
+的任务。它也是任务中 pod 的索引。
 
-## Examples
+## 示例
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
@@ -77,16 +77,14 @@ spec:
               resources: {}
           restartPolicy: Never
 ```
-## Note:
-* When config env plugin in the tensorflow job above, all the pods will have 2 environment variables `VK_TASK_INDEX` and 
-`VC_TASK_INDEX`. The environment variables registered in the `ps` pod are as follows.
+## 注意：
+* 在上述 TensorFlow 作业中配置 env 插件时，所有 Pod 都将拥有 2 个环境变量 `VK_TASK_INDEX` 和 `VC_TASK_INDEX`。在 `ps` Pod 中注册的环境变量如下。
 ```
 [root@tensorflow-dist-mnist-ps-0 /] env | grep TASK_INDEX
 VK_TASK_INDEX=0
 VC_TASK_INDEX=0
 ```
-* Considering the 2 workers, you will get that their names are `tensorflow-dist-mnist-worker-0` and
-`tensorflow-dist-mnist-worker-1`. And the corresponding values of the index environment variables are `0` and `1`.
+* 考虑到 2 个 worker，您会发现它们的名称分别为 `tensorflow-dist-mnist-worker-0` 和 `tensorflow-dist-mnist-worker-1`。索引环境变量的对应值分别为 `0` 和 `1`。
 ```
 [root@tensorflow-dist-mnist-worker-0 /] env | grep TASK_INDEX
 VK_TASK_INDEX=0
@@ -98,7 +96,7 @@ VK_TASK_INDEX=1
 VC_TASK_INDEX=1
 ```
 
-## Note:
-* Because of historical reasons, environment variables `VK_TASK_INDEX` and `VC_TASK_INDEX` both exist, `VK_TASK_INDEX` will
-be **deprecated** in the future releases.
-* No value are needed when register env plugin in the volcano job.
+## 注意：
+* 由于历史原因，环境变量`VK_TASK_INDEX`和`VC_TASK_INDEX`同时存在，`VK_TASK_INDEX`将会
+在未来版本中**弃用**。
+* 在火山作业中注册 env 插件时不需要任何值。

@@ -1,44 +1,44 @@
-﻿---
+---
 title: SVC
 ---
 
-## Background
+## 背景
 
-**SVC Plugin** is designed for the communication for pods within a volcano job, which is essential for workloads such as
-[TensorFlow](https://tensorflow.google.cn/) and [MPI](https://www.open-mpi.org/). For example, it is necessary for
-`tensorflow job` to contact with each other between `ps` and `worker`. Volcano job plugin `svc` enable pods within a job
-to visit each other by domain.
+**SVC 插件** 专为火山作业中的 Pod 通信而设计，这对于以下工作负载至关重要
+[TensorFlow](https://tensorflow.google.cn/) 和 [MPI](https://www.open-mpi.org/)。例如，需要
+“tensorflow job”用于在“ps”和“worker”之间相互联系。 Volcano 作业插件 `svc` 在作业中启用 Pod
+通过域互相访问。
 
-## Key Points
+## 要点
 
-- Once `svc` plugin is configured, value of field `hostname` under `spec` will be filled out to be **the pod name** for
-  all pods under the job automatically. Namely, `pod.spec.hostname` is `pod.metadata.name`.
-- Once `svc` plugin is configured, value of field `subdomain` under `spec` will be filled out to be **the job name** for
-  all pods under the job automatically. Namely, `pod.spec.subdomain` is `job.metadata.name`.
-- Once `svc` plugin is configured, environment variables `VC_%s_NUM` will be registered to all the containers(including
-  initContainers) under the job automatically. `%s` will be replaced by the **task name** which the pod belongs to. The value
-  of the environment variable is the **task replicas**. The number of the environment variables depends on the number of tasks,
-  which is usually `2` for most AI and Big Data jobs contains 2 roles. For example, a Spark job contains `driver` and `executor`.
-- Once `svc` plugin is configured, environment variables `VC_%s_HOSTS` will be registered to all the containers(including
-  initContainers) under the job automatically. `%s` will be replaced by the **task name** which the pod belongs to. The value
-  of the environment variable are the domains of all the pods under the task. The number of the environment variables depends
-  on the number of tasks, which is usually `2` for most AI and Big Data jobs contains 2 roles. For example, a TensorFlow job
-  contains `ps` and `worker`.
-- A configmap whose name joins job-name and `svc` with `-` will be created automatically, which contains replicas of all
-  tasks and domains of all pods under the task. It will be mounted as a volume for all pods under the job and serves as the
-  host files under the directory `/etc/volcano/`.
-- A headless service whose name is the same with job will be created.
-- If `disable-network-policy` is set to be false, a `NetworkPolicy` object with the type `Ingress` will be created for
-  the job.
+- 配置完`svc`插件后，`spec`下的`hostname`字段的值将被填写为**pod名称**
+  自动执行该作业下的所有 Pod。即，“pod.spec.hostname”是“pod.metadata.name”。
+- 一旦配置了`svc`插件，`spec`下的字段`subdomain`的值将被填写为**作业名称**
+  自动执行该作业下的所有 Pod。即，“pod.spec.subdomain”是“job.metadata.name”。
+- 一旦配置了`svc`插件，环境变量`VC_%s_NUM`将被注册到所有容器（包括
+  initContainers）会自动在作业下进行。 `%s` 将替换为 pod 所属的**任务名称**。价值
+  环境变量的值是**任务副本**。环境变量的数量取决于任务的数量，
+  对于大多数人工智能和大数据工作来说，通常是“2”，包含 2 个角色。例如，Spark作业包含“driver”和“executor”。
+- 一旦配置了 svc 插件，环境变量 VC_%s_HOSTS 将被注册到所有容器（包括
+  initContainers）会自动在作业下进行。 `%s` 将替换为 pod 所属的**任务名称**。价值
+  环境变量的值是该任务下所有 pod 的域。环境变量的数量取决于
+  任务数量，对于大多数人工智能和大数据工作包含 2 个角色，通常为“2”。例如，TensorFlow 作业
+  包含`ps`和`worker`。
+- 将自动创建一个名为 job-name 和 `svc` 并带有 `-` 的 configmap，其中包含所有作业的副本
+  任务以及该任务下所有 pod 的域。它将作为作业下所有 pod 的卷进行挂载，并作为
+  目录 `/etc/volcano/` 下的主机文件。
+- 将创建一个与作业名称相同的无头服务。
+- 如果“disable-network-policy”设置为 false，则会创建一个“Ingress”类型的“NetworkPolicy”对象
+  工作。
 
-## Arguments
+## 参数
 
-| ID  | Name                          | Value          | Default Value | Required | Description                                          | Example                                     |
+| ID  | 名称                          | 值          | 默认值 | 是否必填 | 描述                                          | 示例                                     |
 | --- | ----------------------------- | -------------- | ------------- | -------- | ---------------------------------------------------- | ------------------------------------------- |
-| 1   | `publish-not-ready-addresses` | `true`/`false` | `false`       | N        | whether publish the pod address when it is not ready | svc: ["--publish-not-ready-addresses=true"] |
-| 2   | `disable-network-policy`      | `true`/`false` | `false`       | N        | whether disable network policy for the job           | svc: ["--disable-network-policy=true"]      |
+| 1   | `publish-not-ready-addresses` | `true`/`false` | `false`       | 否        | pod 未就绪时是否发布 pod 地址 | svc: ["--publish-not-ready-addresses=true"] |
+| 2   | `disable-network-policy`      | `true`/`false` | `false`       | 否        | 是否禁用作业的网络策略 | svc: ["--disable-network-policy=true"]      |
 
-## Examples
+## 示例
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -104,10 +104,10 @@ spec:
           restartPolicy: Never
 ```
 
-## Note:
+## 笔记：
 
-- Fields `hostname` and `subdomain` have been added to the pods under job `tensorflow-dist-mnist`. The following is part
-  yaml of the `ps` pod.
+- 字段“hostname”和“subdomain”已添加到作业“tensorflow-dist-mnist”下的 Pod 中。以下为部分内容
+  `ps` pod 的 yaml。
 
 ```yaml
 apiVersion: v1
@@ -232,7 +232,7 @@ status:
   startTime: "2022-04-13T02:08:17Z"
 ```
 
-- Host information is registered to all pods under the job. The following are registered environment variables for `ps` pod.
+- 主机信息注册到作业下的所有 Pod 中。以下是`ps` pod 的注册环境变量。
 
 ```
 [root@tensorflow-dist-mnist-ps-0 /] env | grep VC
@@ -242,7 +242,7 @@ VC_WORKER_NUM=2
 VC_WORKER_HOSTS=tensorflow-dist-mnist-worker-0.tensorflow-dist-mnist,tensorflow-dist-mnist-worker-1.tensorflow-dist-mnist  ## worker pods domains
 ```
 
-- The host files added under `/etc/volcano` are as follows.
+- `/etc/volcano`下添加的主机文件如下。
 
 ```
 [root@tensorflow-dist-mnist-ps-0 /] ls /etc/volcano/
@@ -254,7 +254,7 @@ tensorflow-dist-mnist-worker-0.tensorflow-dist-mnist
 tensorflow-dist-mnist-worker-1.tensorflow-dist-mnist
 ```
 
-- The headless service `tensorflow-dist-mnist` generated for the job is as follows.
+- 为作业生成的无头服务“tensorflow-dist-mnist”如下。
 
 ```yaml
 apiVersion: v1
@@ -288,7 +288,7 @@ status:
   loadBalancer: {}
 ```
 
-- The configmap `tensorflow-dist-mnist-svc` generated for the job is as follows.
+- 为作业生成的配置映射“tensorflow-dist-mnist-svc”如下。
 
 ```yaml
 apiVersion: v1
@@ -317,7 +317,7 @@ metadata:
   uid: c4f3db21-6857-451f-b8b8-bbd5aa8b06ec
 ```
 
-- The networkpolicy `tensorflow-dist-mnist` generated for the job is as follows.
+- 为作业生成的网络策略“tensorflow-dist-mnist”如下。
 
 ```yaml
 apiVersion: networking.k8s.io/v1
@@ -350,7 +350,7 @@ spec:
     - Ingress
 ```
 
-## Note
+## 笔记
 
-- DNS plugin is required in your Kubernetes cluster such as `corndns`.
-- Kubernetes version >= v1.14
+- Kubernetes 集群中需要 DNS 插件，例如“corndns”。
+- Kubernetes 版本 >= v1.14

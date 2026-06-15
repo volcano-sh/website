@@ -2,25 +2,25 @@
 title: HCCLRank
 ---
 
-## Introduction
+## 介绍
 
-In distributed AI training, particularly when using Ascend NPUs (Neural Processing Units) or MindSpore frameworks, the compute nodes need a deterministic rank or index to communicate over HCCL (Huawei Collective Communication Library).
+在分布式人工智能训练中，特别是在使用Ascend NPU（神经处理单元）或MindSpore框架时，计算节点需要确定性的排名或索引才能通过HCCL（华为集体通信库）进行通信。
 
-The **HCCLRank Plugin** is a Volcano Job plugin that automatically injects a `hccl/rankIndex` annotation into the Pods of a Volcano Job. It calculates a unique rank for each pod based on its task type (`master` or `worker`) and its replica index.
+**HCCLRank 插件** 是一个 Volcano 作业插件，它会自动将 `hccl/rankIndex` 注释注入到 Volcano 作业的 Pod 中。它根据每个 Pod 的任务类型（“master”或“worker”）及其副本索引计算其唯一排名。
 
-## Mechanism
+## 机制
 
-During the Pod creation phase (`OnPodCreate`), the HCCLRank Plugin intercepts the pod and adds the `hccl/rankIndex` annotation to it.
+在 Pod 创建阶段 (`OnPodCreate`)，HCCLRank 插件会拦截 pod 并向其添加 `hccl/rankIndex` 注释。
 
-The calculation is as follows:
-- **Master Role**: Rank = Pod Index
-- **Worker Role**: Rank = (Total Master Replicas) + Pod Index
+计算如下：
+- **主角色**：排名 = Pod 指数
+- **工作者角色**：排名=（主副本总数）+ Pod 索引
 
-If the Pod already has a `RANK` environment variable defined in its container specifications, the plugin will use that value instead and simply map it to the `hccl/rankIndex` annotation.
+如果 Pod 的容器规范中已经定义了“RANK”环境变量，则插件将使用该值，并将其简单地映射到“hccl/rankIndex”注释。
 
-## Configuration
+## 配置
 
-To enable the HCCLRank plugin, configure it within the Volcano job controller's configuration or add it to the `plugins` field of your `VolcanoJob` spec.
+要启用 HCCLRank 插件，请在 Volcano 作业控制器的配置中对其进行配置，或将其添加到“VolcanoJob”规范的“plugins”字段中。
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -51,9 +51,9 @@ spec:
               image: my-ascend-image
 ```
 
-### Arguments
+### 参数
 
-The HCCLRank plugin supports overriding the default task names used to identify master and worker roles:
+HCCLRank 插件支持覆盖用于识别主角色和辅助角色的默认任务名称：
 
-- **`--master`**: The name of the master role task in your Job spec. Default is `master`.
-- **`--worker`**: The name of the worker role task in your Job spec. Default is `worker`.
+- **`--master`**：作业规范中主角色任务的名称。默认为“master”。
+- **`--worker`**：作业规范中辅助角色任务的名称。默认是“工人”。
