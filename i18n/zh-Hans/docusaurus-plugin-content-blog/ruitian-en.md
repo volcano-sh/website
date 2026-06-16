@@ -8,7 +8,7 @@ tags: ["Practice"]
 
 >本文2021年1月5日首发于容器魔方微信公众号，原文链接[基于Volcano的锐天离线高性能计算最佳实践](https://mp.weixin.qq.com/s/FDYExtj93lCrXmiFRozBPA)  
 
-<!-- truncate -->
+{/* truncate */}
 
 Volcano是一个基于Kubernetes的云原生批量计算平台，也是CNCF的首个批量计算项目。
 

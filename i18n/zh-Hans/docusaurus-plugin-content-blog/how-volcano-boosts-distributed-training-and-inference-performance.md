@@ -10,7 +10,7 @@ tags: ["performance", "distributed-training", "inference", "kubecon"]
 
 The increasing adoption of large language models (LLMs) has led to heightened demand for efficient AI training and inference workloads. As model size and complexity grow, distributed training and inference have become essential. However, this expansion introduces challenges in network communication, resource allocation, and fault recovery within large-scale distributed environments. These issues often create performance bottlenecks that hinder scalability.
 
-<!-- truncate -->
+{/* truncate */}
 
 ## Addressing Network Bottlenecks Through Topology-Aware Scheduling
 
@@ -25,8 +25,8 @@ Topology constraints can also be specified for jobs through the networkTopology 
 As AI workloads expand, single Kubernetes clusters may no longer suffice for large-scale training and inference. While multiple clusters can address this limitation, managing them efficiently presents challenges.
 The Volcano Global subproject extends scheduling capabilities to multi-cluster environments, integrating with Karmada to enable cross-cluster scheduling for distributed workloads. Features such as Queue Priority Scheduling, Job Priority Scheduling, and Multi-Tenant Fair Scheduling help optimize resource allocation and ensure equitable access across tenants. This approach simplifies multi-cluster management while supporting scalable AI workloads.
 
-<!-- TODO: Add multi-cluster architecture diagram when available -->
-<!-- ![](/img/blog/volcano_global_design.svg) -->
+{/* TODO: Add multi-cluster architecture diagram when available */}
+{/* ![](/img/blog/volcano_global_design.svg) */}
 
 ## Improving Stability with Fine-Grained Fault Recovery
 

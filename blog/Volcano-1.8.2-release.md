@@ -8,7 +8,7 @@ tags: ["release", "volcano", "kubernetes", "vgpu", "jobflow"]
 
 On January 9, 2024, UTC+8, Volcano version v1.8.2  was officially released. This version added the following new features:
 
-<!-- truncate -->
+{/* truncate */}
 - **Support for vGPU scheduling and isolation**
 
 - **Support for vGPU and user-defined resource preemption capabilities**

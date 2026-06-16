@@ -28,9 +28,9 @@ Volcano Global enhances Karmada with the following features to meet the complex 
 
 ## Architecture
 
-<!--<div style="text-align: center;"> 
+{/*<div style="text-align: center;"> 
   <img src="/img/blog/volcano_global_design.svg" alt="Volcano Global Architecture" />
-</div>-->
+</div>*/}
 
 Volcano Global consists of two components:
 

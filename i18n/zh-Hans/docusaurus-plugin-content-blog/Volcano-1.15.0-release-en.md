@@ -21,7 +21,7 @@ tags:
 
 本次最值得关注的新增能力是 **Gang-Aware Preemption and Resource Reclamation**：抢占决策在抢占方与被抢占方两侧均以 Gang 为整体进行评估——抢占方按 Gang 整体进行放置，被抢占候选者同样按 Gang 粒度进行排序和评估，优先驱逐冗余副本，避免逐 Pod 随机驱逐打断多个训练任务而抢占方自身仍无法启动的情况。此外，v1.15.0 在 capacity 插件中引入了 DRA 队列配额，新增了可插拔的多分片策略框架以及 Benchmark 与性能可观测工具，支持 Kubernetes 1.35，并在 NodeGroup 调度优先级、Agent Scheduler 稳定性、GPU/vGPU 及队列准入控制等方面做了补充增强。
 
-<!-- truncate -->
+{/* truncate */}
 
 ## 版本亮点
 

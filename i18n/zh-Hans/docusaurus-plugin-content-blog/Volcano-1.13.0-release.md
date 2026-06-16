@@ -9,7 +9,7 @@ tags: ["Practice"]
 # Volcano v1.13 重磅发布！大模型训练与推理等调度能力全面增强
 
 北京时间2025年9月29日，<a href="https://github.com/volcano-sh/volcano/releases/tag/v1.13.0">Volcano v1.13 版本</a>[1]正式发布。本次更新在多方面进行了功能增强，为用户提供更完善的云原生批量计算解决方案。
-<!-- truncate-->
+{/* truncate*/}
 ## 版本亮点
 
 v1.13.0版本的主要更新包括：

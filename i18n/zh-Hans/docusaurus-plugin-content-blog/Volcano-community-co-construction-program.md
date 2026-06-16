@@ -8,7 +8,7 @@ tags: ["Tutorials"]
 
     随着人工智能技术的高速发展，以及大语言模型的推广应用，各行各业对智能算力的需求呈爆发式增长，除了AI芯片等硬件设备的支持，对于AI任务的高性能智能调度也是重中之重。
 
-<!-- truncate -->
+{/* truncate */}
 
 ![](/img/blog/volcano_logo.svg)
 

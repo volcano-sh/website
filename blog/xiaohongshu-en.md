@@ -8,7 +8,7 @@ tags: ["case-study", "recommendation", "xiaohongshu", "content-engine"]
 
 >This article was firstly released at `Container Cube` on May 27th, 2021, refer to [小红书基于Volcano的大规模离线与在线推荐模型训练实践](https://mp.weixin.qq.com/s/nZXZx78EQoHzRj1-LqMPQQ)
  
-<!-- truncate -->
+{/* truncate */}
 
 ## Introduction to Xiaohongshu  
 

@@ -8,7 +8,7 @@ tags: ["Practice"]
 
 北京时间2024年1月9日，Volcano 社区 v1.8.2 版本正式发布，此次版本增加了以下新特性：
 
-<!-- truncate -->
+{/* truncate */}
 
 - **支持vGPU调度及隔离**
 

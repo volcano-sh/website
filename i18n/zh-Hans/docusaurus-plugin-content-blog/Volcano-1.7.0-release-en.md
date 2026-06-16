@@ -18,7 +18,7 @@ tags: ["Practice"]
 ![](/img/blog/volcano_logo.svg)
 Volcano是业界首个云原生批量计算项目，于2019年6月在上海KubeCon正式开源，并在2020年4月成为CNCF官方项目。2022年4月，Volcano正式晋级为CNCF孵化项目。Volcano社区开源以来，受到众多开发者、合作伙伴和用户的认可和支持。截止目前，累计有490+全球开发者向项目贡献了代码。
 
-<!-- truncate -->
+{/* truncate */}
 
 ### Volcano v1.7.0 关键特性介绍
 

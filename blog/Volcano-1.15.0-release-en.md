@@ -21,7 +21,7 @@ As batch training, inference, AI Agent, HPC, big-data and other diverse workload
 
 The most notable new capability is **Gang-Aware Preemption and Resource Reclamation**: preemption decisions are evaluated at gang granularity on both the preemptor and victim sides — the preemptor is placed as a whole gang, and victim candidates are organized and evaluated at job/gang granularity, preferring surplus replicas to avoid per-Pod random eviction that disrupts multiple training jobs while the preemptor itself still cannot start. In addition, v1.15.0 introduces DRA queue quota in the capacity plugin, a pluggable multi-sharding policy framework, a Benchmark and performance observability tool, Kubernetes 1.35 support, NodeGroup preferred ordering, Agent Scheduler stability fixes, GPU/vGPU incremental enhancements, and Scheduling Gates for queue admission control.
 
-<!-- truncate -->
+{/* truncate */}
 
 ## Highlights
 

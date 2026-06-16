@@ -20,7 +20,7 @@ The Leinao cloud AI platform includes an AI development platform, public service
 - The AI visualized operations platform helps managers make better informed decisions. 
   
 - The AI community is where AI developers and companies gather, exchange ideas, and improve their skills.
-<!-- truncate -->
+{/* truncate */}
  
 
 ## The architecture of Leinao cloud OS
@@ -47,15 +47,15 @@ More importantly, Volcano allows you to configure retry policies for distributed
 
 Volcano provides enhanced job APIs.  
 
-<!--![](leinao-en2.png)-->  
+{/*![](leinao-en2.png)*/}  
 
 Volcano improves many aspects of default-scheduler.
 
-<!--![](leinao-en3.png)--> 
+{/*![](leinao-en3.png)*/} 
 
 Default-scheduler and Volcano work differently in a couple of other ways as well.
 
-<!--![](leinao-en4.png)--> 
+{/*![](leinao-en4.png)*/} 
 
 
 

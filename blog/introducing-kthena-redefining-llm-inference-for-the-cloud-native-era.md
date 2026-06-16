@@ -11,7 +11,7 @@ Today, the [Volcano](https://volcano.sh/) community is proud to announce the lau
 Kthena is a cloud-native, high-performance system for LLM inference routing, orchestration, and scheduling, tailored specifically for Kubernetes. Engineered to address the complexity of serving LLMs at production scale, Kthena delivers granular control and enhanced flexibility. Through features like topology-aware scheduling, KV Cache-aware routing, and Prefill-Decode (PD) disaggregation, it significantly improves GPU/NPU utilization and throughput while minimizing latency.
 
 As a sub-project of Volcano, Kthena extends Volcano’s capabilities beyond AI training, creating a unified, end-to-end solution for the entire AI lifecycle.
-<!-- truncate -->
+{/* truncate */}
 
 ## The "Last Mile" Challenge of LLM Serving
 

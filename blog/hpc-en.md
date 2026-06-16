@@ -12,7 +12,7 @@ tags: ["hpc", "case-study", "meteorological", "wrf"]
 
 
 Kubernetes has become the de facto standard for cloud native application orchestration and management. An increasing number of applications are being reconstructed or built to employ Kubernetes. High performance computing (HPC) is a popular distributed computing mode and is widely used in many fields. For users who have deployed HPC applications and are eager to containerize and manage their applications using Kubernetes, Volcano, CNCF's first distributed scheduling system for batch computing, is a good choice. Volcano supports multiple types of computing frameworks, such as Spark, TensorFlow, and Message Passing Interface (MPI). This article uses a traditional HPC application, the Weather Research and Forecasting (WRF) model, as an example to describe how Volcano works for HPC applications.
-<!-- truncate -->
+{/* truncate */}
 
 
 ## About HPC

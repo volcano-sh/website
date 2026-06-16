@@ -11,7 +11,7 @@ tags: ["paddlepaddle", "distributed-training", "ai", "framework"]
 
 PaddlePaddle is a deep learning framework open-sourced by Baidu in September 2016. It aims to provide a secure, easy-to-use, and scalable deep learning platform.
 
-<!-- truncate -->
+{/* truncate */}
 
 
 
