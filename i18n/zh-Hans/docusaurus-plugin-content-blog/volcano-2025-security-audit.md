@@ -8,7 +8,7 @@ tags: ["security", "audit", "volcano", "cncf"]
 
 Volcano 很高兴地宣布，我们已完成了由 CNCF 资助的安全审计工作。此次审计由 [Ada Logics](https://adalogics.com/) 负责执行，[OSTIF](https://ostif.org/) 负责协调，并得到了 Volcano 维护者团队的通力协作。此次审计的范围涵盖了 Volcano 的源代码、供应链风险以及模糊测试（fuzzing）环节。审计团队共识别出 10 个安全问题，Volcano 安全团队已在审计工作结束的同时完成了对这些问题的修复。
 
-<!-- truncate -->
+{/* truncate */}
 
 Volcano 通过实施针对性的配置变更，解决了若干基础设施层面的安全问题；这些变更有效降低了风险，并提升了其默认部署环境下的整体安全态势。下文将详细列出每一个安全问题及其关联风险，并阐述 Volcano 采取的解决措施，同时展示由此带来的安全改进成果。
 

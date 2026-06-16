@@ -8,7 +8,7 @@ tags: ["Practice"]
 
 >本文首发于容器魔方微信公众号，原文链接[锐天投资基于Volcano的大规模分布式离线计算平台的应用实践](https://mp.weixin.qq.com/s/dC4IDNG7FMGLigNJaj_Qug)  
 
-<!-- truncate -->
+{/* truncate */}
 
 ## 业务场景与技术选型
 

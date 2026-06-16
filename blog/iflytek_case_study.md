@@ -10,7 +10,7 @@ tags: ["case-study", "iflytek", "ai", "infrastructure", "award"]
 
 
 [HONG KONG, CHINA — June 10, 2025] — The Cloud Native Computing Foundation (CNCF) today announced that iFlytek has won the CNCF End-User Case Study Competition. The CNCF, which is committed to building a sustainable ecosystem for cloud native software, recognized iFlytek for its innovative use of Volcano. The company shared its success in large-scale AI model training at the KubeCon + CloudNativeCon China conference, held in Hong Kong from June 10-11.
-<!-- truncate -->
+{/* truncate */}
 
 ### iFlytek's Challenges
 

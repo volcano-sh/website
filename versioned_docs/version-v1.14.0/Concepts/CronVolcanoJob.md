@@ -59,7 +59,7 @@ kubectl get vcjob
     *   Forbid: Skip new run if previous job hasn‘t completed  
     *   Replace: Cancel currently running job and start new
 
-<!-- -->
+{/* */}
 
 * startingDeadlineSeconds
 
@@ -81,7 +81,7 @@ kubectl get vcjob
 
     Optional. Number of failed finished jobs to retain. Defaults to 1.
 
-<!-- -->
+{/* */}
 
 ### Usage
 * Periodic Model Training

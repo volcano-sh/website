@@ -8,7 +8,7 @@ tags: ["Practice"]
 
 >本文2021年6月1日首发于容器魔方微信公众号，原文链接[鹏城实验室启智章鱼教你彻底摆脱Kubernetes集群资源抢占难题](https://mp.weixin.qq.com/s/h4T7KbAiQZTKepYcTcgdlA)  
 
-<!-- truncate -->
+{/* truncate */}
 
 ## 启智章鱼平台介绍
 

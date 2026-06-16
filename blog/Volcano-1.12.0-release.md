@@ -10,7 +10,7 @@ tags: ["release", "volcano", "kubernetes", "scheduling"]
 
 As AI large model technology rapidly evolves, enterprises are placing higher demands on computing resource efficiency and application performance. For complex application scenarios such as AI, big data, and high-performance computing (HPC), efficiently utilizing accelerators like GPUs, ensuring high system availability, and managing resources with fine granularity are the core areas of focus for the Volcano community's continuous innovation.
 
-<!-- truncate -->
+{/* truncate */}
 
 Each version of Volcano is an active response to these challenges. With contributions from **over 1,000 developers from more than 30 countries, resulting in nearly 40,000 contributions**, Volcano has been adopted in production environments by more than 60 enterprises worldwide. Its scheduling performance and resource management capabilities have been widely proven in practice.
 

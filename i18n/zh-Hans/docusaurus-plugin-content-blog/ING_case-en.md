@@ -8,7 +8,7 @@ tags: ["Practice"]
 
 >2022年10月26日，ING集团在北美KubeCon发表了《Efficient Scheduling Of High Performance Batch Computing For Analytics Workloads With Volcano - Krzysztof Adamski & Tinco Boekestijn, ING》主题演讲，重点介绍了云原生批量计算项目Volcano如何在数据管理平台中为大数据分析作业提供高性能调度工作。详情参见：[KubeCon + CloudNativeCon North America](https://events.linuxfoundation.org/archive/2022/kubecon-cloudnativecon-north-america/program/schedule/)
 
-<!-- truncate -->
+{/* truncate */}
 
 ## ING背景介绍
 

@@ -8,7 +8,7 @@ tags: ["Practice"]
 
 >本文2020年9月30日首发于容器魔方微信公众号，原文链接[揭秘爱奇艺深度学习平台云原生迁移实践](https://mp.weixin.qq.com/s/YtP-ZURRBr5-ba1eWfKS2A)  
 
-<!-- truncate -->
+{/* truncate */}
 
 ## Jarvis深度学习平台介绍
 

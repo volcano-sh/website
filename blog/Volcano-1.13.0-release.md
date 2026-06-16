@@ -9,7 +9,7 @@ tags: ["release", "volcano", "kubernetes", "llm", "scheduling"]
 # Volcano v1.13 Released: Comprehensive Enhancement of Scheduling Capabilities for LLM Training and Inference
 
 On September 29, 2025 (Beijing Time), [Volcano v1.13] (https://github.com/volcano-sh/volcano/releases/tag/v1.13.0)[1] was officially released. This update brings functional enhancements across multiple areas, providing users with a more comprehensive cloud-native batch computing solution.
-<!-- truncate -->
+{/* truncate */}
 
 ## Release Highlights
 

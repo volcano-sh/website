@@ -9,7 +9,7 @@ tags: ["kubecon", "batch-computing", "ai", "big-data", "volcano"]
 云原生批量计算引擎 Volcano 专为 AI、大数据、基因测序、渲染等高性能计算应用场景而设计，并支持各类主流的通用计算框架。目前，全球已有超过 58,000 名开发者加入了 Volcano 社区，其中核心贡献者来自华为、AWS、百度、腾讯、京东、小红书等知名企业。该项目在 GitHub 上已获得超过 3700 个 Star 和 800 多个 Fork。Volcano 已被证实能够胜任 AI、大数据、基因测序等领域的海量数据计算与分析任务。其支持的计算框架涵盖 Spark、Flink、TensorFlow、PyTorch、Argo、MindSpore、PaddlePaddle、Kubeflow、MPI、Horovod、MXNet、KubeGene 以及 Ray。随着越来越多的开发者和应用案例涌现，Volcano 的生态系统正呈现出蓬勃发展的态势。
 ![](/img/blog/volcano_logo.svg)
 
-<!-- truncate -->
+{/* truncate */}
 
 作为业界首个云原生批量计算项目，Volcano 于 2019 年 6 月在 KubeCon 上海峰会上正式开源，并于 2020 年 4 月正式成为 CNCF（云原生计算基金会）的官方项目。2022 年 4 月，Volcano 成功晋级为 CNCF 孵化项目。截至目前，全球已有超过 600 名开发者为该项目提交了代码。Volcano 社区正日益受到开发者、合作伙伴及用户的广泛关注与青睐。 ### 体验 Volcano v1.8.2 的新特性
 

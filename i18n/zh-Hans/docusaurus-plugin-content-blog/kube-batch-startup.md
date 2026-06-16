@@ -9,7 +9,7 @@ tags: ["Tutorials"]
 
 本文档将展示如何将`kube-batch`作为基于Kubernetes的批量调度引擎运行起来。代码请参考[master](https://github.com/kubernetes-sigs/kube-batch/tree/master) 。
 
-<!-- truncate -->
+{/* truncate */}
 
 
 ## 1. 前置条件

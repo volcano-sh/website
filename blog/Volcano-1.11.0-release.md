@@ -9,7 +9,7 @@ tags: ["release", "volcano", "kubernetes", "scheduling"]
 # Volcano v1.11 released: A New Era of Cloud-Native Scheduling for AI and Big Data
 
 As the de facto standard in cloud-native batch computing, Volcano has been widely adopted across various scenarios, including AI, Big Data, and High-Performance Computing (HPC). With over 800 contributors from more than 30 countries and tens of thousands of code commits, Volcano has been deployed in production environments by over 60 enterprises worldwide. It provides the industry with excellent practical standards and solutions for cloud native batch computing.
-<!-- truncate -->
+{/* truncate */}
 As user scenarios grow increasingly complex, especially in the scenarios of LLMs, there is a heightened demand for performance, GPU resource utilization, and availability in both training and inference workloads. This has driven Volcano to continuously expand its capabilities and address core user needs. Over the course of 28 releases, Volcano has introduced a series of enhancements and optimizations tailored to batch computing scenarios, helping users seamlessly migrate their workloads to cloud-native platforms. These improvements have resolved numerous pain points, earning the platform widespread praise and fostering a vibrant community with over 30 approvers and reviewers, creating a win-win ecosystem.
 
 The new release of Volcano will mark a new milestone in the New Year 2025, where the community will introduce a series of major features that will continue to deepen its focus on areas such as CNAI (Cloud Native AI) and Big Data, with key features including:

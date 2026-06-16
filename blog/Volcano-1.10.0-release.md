@@ -7,7 +7,7 @@ tags: ["release", "volcano", "kubernetes", "scheduling"]
 ---
 On Sep 19, 2024, UTC+8, Volcano version v1.10.0 was officially released. This version introduced the following new features:
 
-<!-- truncate -->
+{/* truncate */}
 - **Support Queue Priority Scheduling Strategy**
 
 - **Enable Fine-Grained GPU Resource Sharing and Reclaim**
@@ -28,7 +28,7 @@ On Sep 19, 2024, UTC+8, Volcano version v1.10.0 was officially released. This ve
 
 - **Optimize Helm Chart Installation And Upgrade Processes**
 
-<!--{{<figure library="1" src="volcano_logo.png" width="50%">}}-->
+{/*{{<figure library="1" src="volcano_logo.png" width="50%">}}*/}
 Volcano is the industry-first cloud native batch computing project. Open-sourced at KubeCon Shanghai in June 2019, it became an official CNCF project in April 2020. In April 2022, Volcano was promoted to a CNCF incubating project. By now, more than 600 global developers have committed code to the project. The community is seeing growing popularity among developers, partners, and users.
 
 ## Key Features

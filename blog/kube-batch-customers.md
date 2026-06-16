@@ -15,4 +15,4 @@ tags: ["kube-batch", "customers", "kubernetes", "scheduler"]
 | [FfDL](https://github.com/IBM/FfDL)  | [@animeshsingh](https://github.com/animeshsingh)| |  |
 | [MOGU Inc](https://www.mogujie.com)  | [@jiaxuanzhou](https://github.com/jiaxuanzhou)| Production | The scheduler for offline training of tiny+ |
 
-<!-- truncate -->
+{/* truncate */}

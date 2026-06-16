@@ -8,7 +8,7 @@ tags: ["case-study", "financial", "hpc", "ruitian"]
 
 >This article was firstly released at `Container Cube` on January 5th, 2021, refer to [基于Volcano的锐天离线高性能计算最佳实践](https://mp.weixin.qq.com/s/FDYExtj93lCrXmiFRozBPA)
 
-<!-- truncate -->
+{/* truncate */}
 ## Why Volcano  
 
 Ruitian Capital is a private equity investment firm committed to helping customers achieve returns by using diverse range of trading strategies. Ruitian offline computing clusters are dedicated to strategy development and big data processing. The clusters analyze large volumes of data to help develop quantitative models for stock and futures trading.  

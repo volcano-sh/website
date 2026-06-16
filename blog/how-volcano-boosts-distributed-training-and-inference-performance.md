@@ -10,15 +10,15 @@ tags: ["performance", "distributed-training", "inference", "kubecon"]
 
 
 The increasing adoption of large language models (LLMs) has led to heightened demand for efficient AI training and inference workloads. As model size and complexity grow, distributed training and inference have become essential. However, this expansion introduces challenges in network communication, resource allocation, and fault recovery within large-scale distributed environments. These issues often create performance bottlenecks that hinder scalability.
-<!-- truncate -->
+{/* truncate */}
 
 ## Addressing Network Bottlenecks Through Topology-Aware Scheduling
 
 In LLM training, model parallelism distributes workloads across multiple nodes, requiring frequent data exchanges. Network communication can become a bottleneck, particularly in heterogeneous environments with InfiniBand (IB), RoCE, or NVSwitch configurations. Communication efficiency depends on network topology—fewer switches between nodes typically result in lower latency and higher throughput.
 One approach to mitigating this challenge is Network Topology-Aware Scheduling, which optimizes workload placement to minimize cross-switch communication. A key component of this strategy is the HyperNode, an abstraction for representing network topology via Custom Resource Definitions (CRDs). Unlike label-based methods, HyperNode provides a hierarchical structure that reflects actual network layouts, improving management and optimization. Nodes within the same HyperNode communicate more efficiently than those spanning multiple layers.
 
-<!-- TODO: Add network topology diagram when available -->
-<!-- ![](/img/blog/network-topology/hypernode-example.png) -->
+{/* TODO: Add network topology diagram when available */}
+{/* ![](/img/blog/network-topology/hypernode-example.png) */}
 
 Topology constraints can also be specified for jobs through the networkTopology field, with options for strict (Hard Mode) or flexible (Soft Mode) enforcement. This granular control helps ensure workloads are deployed in optimal network environments, reducing latency and improving throughput.
 
@@ -27,8 +27,8 @@ Topology constraints can also be specified for jobs through the networkTopology 
 As AI workloads expand, single Kubernetes clusters may no longer suffice for large-scale training and inference. While multiple clusters can address this limitation, managing them efficiently presents challenges.
 The Volcano Global subproject extends scheduling capabilities to multi-cluster environments, integrating with Karmada to enable cross-cluster scheduling for distributed workloads. Features such as Queue Priority Scheduling, Job Priority Scheduling, and Multi-Tenant Fair Scheduling help optimize resource allocation and ensure equitable access across tenants. This approach simplifies multi-cluster management while supporting scalable AI workloads.
 
-<!-- TODO: Add multi-cluster architecture diagram when available -->
-<!-- ![](/img/blog/multi-cluster/volcano_global_design.svg) -->
+{/* TODO: Add multi-cluster architecture diagram when available */}
+{/* ![](/img/blog/multi-cluster/volcano_global_design.svg) */}
 
 ## Improving Stability with Fine-Grained Fault Recovery
 

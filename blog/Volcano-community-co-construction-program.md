@@ -8,7 +8,7 @@ tags: ["community", "co-construction", "partners", "volcano", "huawei"]
 
 As artificial intelligence (AI) technologies advance and large language models (LLMs) grow more popular, the demand for AI compute has been booming. This has generated huge demand for high-performance scheduling for the AI and for hardware like AI chips.
 
-<!-- truncate -->
+{/* truncate */}
 ![](/img/blog/volcano_logo.svg)
 
 

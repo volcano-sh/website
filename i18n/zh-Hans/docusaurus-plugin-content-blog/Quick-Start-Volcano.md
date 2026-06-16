@@ -30,7 +30,7 @@ volcanosh/vk-controllers   latest              7b11606ebfb8        10 seconds ag
 为每个镜像执行命令```kind load docker-image <image-name>:<tag> ```。
 ### 2. Helm charts
 
-<!-- truncate -->
+{/* truncate */}
 
 最后，安装helm chart
 ```shell
