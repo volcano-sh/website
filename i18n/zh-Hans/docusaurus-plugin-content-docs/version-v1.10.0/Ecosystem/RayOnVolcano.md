@@ -200,4 +200,4 @@ ray job submit --address http://localhost:8265 -- python -c "import ray; ray.ini
 ### 了解更多
 
 - 有关KubeRay集成的详细信息，请访问[KubeRay Volcano调度器文档](https://docs.ray.io/en/latest/cluster/kubernetes/k8s-ecosystem/volcano.html#kuberay-integration-with-volcano)
-- 有关Volcano Job Ray插件的详细信息，请参阅[Volcano Ray插件指南](/docs/UserGuide/user_guide_how_to_use_ray_plugin)
+- 有关Volcano Job Ray插件的详细信息，请参阅[Volcano Ray插件指南](/docs/Controller/Plugins/ray)

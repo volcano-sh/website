@@ -42,5 +42,9 @@
   "sidebar.docsSidebar.category.Contribution": {
     "message": "贡献",
     "description": "The label for category Contribution in sidebar docsSidebar"
+  },
+  "sidebar.docsSidebar.category.Controller": {
+    "message": "控制器",
+    "description": "The label for category Controller in sidebar docsSidebar"
   }
 }
