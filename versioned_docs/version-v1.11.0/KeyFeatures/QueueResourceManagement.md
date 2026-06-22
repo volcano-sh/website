@@ -95,4 +95,4 @@ When Volcano starts, it automatically creates queue `default` whose `weight` is 
 #### root queue
 When Volcano starts, it also creates a queue named root by default. This queue is used when the [hierarchical queue](HierarchicalQueue.md) feature is enabled, serving as the root queue for all queues, with the default queue being a child queue of the root queue.
 
-> For more information on queue usage scenarios, please refer to [Queue Resource Management](QueueResourceManagement.md)
+> For more information on queue usage scenarios, please refer to Queue Resource Management
