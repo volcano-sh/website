@@ -2,7 +2,7 @@
 title: "Volcano v1.14 重磅发布！迈向 AI 统一调度新纪元"
 description: "新特性：AI Agent 工作负载极速调度、动态节点分片机制、网络拓扑感知调度增强、NPU 和 vNPU 支持、CPU Burst 和 Cgroup V2 支持等"
 authors: ["volcano"]
-date: 2025-11-30
+date: 2026-1-30
 tags:
   ["release", "volcano", "kubernetes", "scheduling", "agent", "sharding", "npu"]
 ---

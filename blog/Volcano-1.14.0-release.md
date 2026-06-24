@@ -2,7 +2,7 @@
 title: "Volcano v1.14 Released: Entering a New Era of Unified AI Scheduling"
 description: "New Features: Agent Scheduler for AI Agent workloads, Dynamic Node Sharding, Network Topology-Aware Scheduling, NPU and vNPU support, CPU Burst and Cgroup V2 support, and more"
 authors: ["volcano"]
-date: 2025-11-30
+date: 2026-1-30
 tags:
   ["release", "volcano", "kubernetes", "scheduling", "agent", "sharding", "npu"]
 ---
