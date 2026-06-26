@@ -9,7 +9,7 @@ tags:
 
 # Volcano v1.14 Released: Entering a New Era of Unified AI Scheduling
 
-[Volcano](https://volcano.sh/en/) community [v1.14]([volcano-sh/volcano v1.14.0](https://github.com/volcano-sh/volcano/releases/tag/v1.14.0)) is now officially released. As AI workloads evolve from single offline training to diverse scenarios including online inference and AI Agents, the scheduling system faces unprecedented challenges. v1.14 delivers architecture-level innovations that maintain Volcano's advantages in large-scale batch computing while closing the gap for latency-sensitive workloads, taking a solid step toward the goal of becoming a "unified scheduling platform for AI training, inference, RL, and Agent scenarios."
+[Volcano](https://volcano.sh/en/) community [v1.14](https://github.com/volcano-sh/volcano/releases/tag/v1.14.0) is now officially released. As AI workloads evolve from single offline training to diverse scenarios including online inference and AI Agents, the scheduling system faces unprecedented challenges. v1.14 delivers architecture-level innovations that maintain Volcano's advantages in large-scale batch computing while closing the gap for latency-sensitive workloads, taking a solid step toward the goal of becoming a "unified scheduling platform for AI training, inference, RL, and Agent scenarios."
 
 <!-- truncate -->
 
@@ -77,7 +77,7 @@ Configuration:
 # Parameter format: name:type:min_util:max_util:prefer_warmup:min_nodes:max_nodes
 ```
 
-Related PR: volcano-sh#4777
+Related PR: [volcano-sh#4777](https://github.com/volcano-sh/volcano/pull/4777)
 
 Design Doc: [Sharding Controller Design](https://github.com/volcano-sh/volcano/blob/v1.14.0/docs/design/sharding_controller.md)
 
@@ -97,7 +97,7 @@ Core capabilities:
 - Enhanced scheduling queue: Optimized queue mechanism supporting urgent task retries, ensuring critical tasks are not blocked.
 - Unified platform integration: Seamlessly collaborates with the Batch Scheduler through the Sharding Controller, sharing cluster resources.
 
-Related PRs: volcano-sh#4804, volcano-sh#4801, volcano-sh#4805
+Related PRs: [volcano-sh#4804](https://github.com/volcano-sh/volcano/pull/4804), [volcano-sh#4801](https://github.com/volcano-sh/volcano/pull/4801), [volcano-sh#4805](https://github.com/volcano-sh/volcano/pull/4805)
 
 Design Doc: [Agent Scheduler Design](https://github.com/volcano-sh/volcano/blob/v1.14.0/docs/design/agent-scheduler.md)
 
@@ -146,7 +146,7 @@ spec:
                   nvidia.com/gpu: 8
 ```
 
-Related PRs: volcano-sh#4721, volcano-sh#4810, volcano-sh#4795, volcano-sh#4785, volcano-sh#4889
+Related PRs: [volcano-sh#4721](https://github.com/volcano-sh/volcano/pull/4721), [volcano-sh#4810](https://github.com/volcano-sh/volcano/pull/4810), [volcano-sh#4795](https://github.com/volcano-sh/volcano/pull/4795), [volcano-sh#4785](https://github.com/volcano-sh/volcano/pull/4785), [volcano-sh#4889](https://github.com/volcano-sh/volcano/pull/4889)
 
 Design Doc: [Network Topology Aware Scheduling](https://github.com/volcano-sh/volcano/blob/v1.14.0/docs/design/Network%20Topology%20Aware%20Scheduling.md)
 
@@ -209,7 +209,7 @@ spec:
 
 CPU Burst capability has been extended to general-purpose operating systems. Meanwhile, Volcano Agent now fully supports Cgroup V2 environments with automatic detection of Cgroup version and driver type (e.g., systemd driver), running seamlessly on modern Linux distributions without manual intervention.
 
-Related PRs: volcano-sh#4632, volcano-sh#4945, volcano-sh#4913, volcano-sh#4984
+Related PRs: [volcano-sh#4632](https://github.com/volcano-sh/volcano/pull/4632), [volcano-sh#4945](https://github.com/volcano-sh/volcano/pull/4945), [volcano-sh#4913](https://github.com/volcano-sh/volcano/pull/4913), [volcano-sh#4984](https://github.com/volcano-sh/volcano/pull/4984)
 
 Design Docs: [CPU Throttle Design](https://github.com/volcano-sh/volcano/blob/v1.14.0/docs/design/cpu-throttle-design.md), [Agent Cgroup V2 Adaptation](https://github.com/volcano-sh/volcano/blob/v1.14.0/docs/design/agent-cgroup-v2-adaptation.md)
 
@@ -247,7 +247,7 @@ Scheduler configuration:
     deviceshare.SchedulePolicy: binpack # or spread
 ```
 
-Related PRs: volcano-sh#4656, volcano-sh#4717
+Related PRs: [volcano-sh#4656](https://github.com/volcano-sh/volcano/pull/4656), [volcano-sh#4717](https://github.com/volcano-sh/volcano/pull/4717)
 
 User Guide: [How to Use vNPU](https://github.com/volcano-sh/volcano/blob/v1.14.0/docs/user-guide/how_to_use_vnpu.md)
 
@@ -304,7 +304,7 @@ Core capabilities:
 - Declarative API: DataSourceClaim / DataSource CRDs using a "declare-cache" pattern.
 - Automatic affinity injection: Transforms data locality into ClusterAffinity constraints injected into ResourceBinding.
 
-See: [Volcano Global v0.3.0 Release Notes]([volcano-sh/volcano-global v0.3.0](https://github.com/volcano-sh/volcano-global/releases/tag/v0.3.0))
+See: [Volcano Global v0.3.0 Release Notes](https://github.com/volcano-sh/volcano-global/releases/tag/v0.3.0)
 
 Contributors: [@JesseStutler](https://github.com/JesseStutler), [@fx147](https://github.com/fx147), [@Monokaix](https://github.com/Monokaix), [@zhoujinyu](https://github.com/zhoujinyu), [@anryko](https://github.com/anryko), [@tanberBro](https://github.com/tanberBro)
 
@@ -319,7 +319,7 @@ Core enhancements:
 - Queue management enhancements: Edit Queue quotas and weights online, with direct YAML modification support.
 - Security hardening: Default configuration with SELinux, Seccomp, non-root execution, and privilege escalation prevention for production safety.
 
-See: [Volcano Dashboard v0.2.0 Release Notes]([volcano-sh/dashboard v0.2.0](https://github.com/volcano-sh/dashboard/releases/tag/v0.2.0))
+See: [Volcano Dashboard v0.2.0 Release Notes](https://github.com/volcano-sh/dashboard/releases/tag/v0.2.0)
 
 Contributors: [@vzhou-p](https://github.com/vzhou-p), [@Shrutim1505](https://github.com/Shrutim1505), [@JesseStutler](https://github.com/JesseStutler), [@karanBRAVO](https://github.com/karanBRAVO), [@Sayan4444](https://github.com/Sayan4444), [@jayesh9747](https://github.com/jayesh9747), [@Alivestars24](https://github.com/Alivestars24), [@kuldeep](https://github.com/kuldeep), [@Monokaix](https://github.com/Monokaix)
 
@@ -335,7 +335,7 @@ Key improvements:
 - Enhanced Capacity Plugin logic: Fixed `reclaimableFn` and `preemptiveFn` to correctly handle scalar resources and prevent incorrect preemption decisions.
 - Stability improvements: Resolved edge cases in resource computation, preventing scheduling deadlocks and erroneous evictions.
 
-Related PRs: volcano-sh#4794, volcano-sh#4659, volcano-sh#4919
+Related PRs: [volcano-sh#4794](https://github.com/volcano-sh/volcano/pull/4794), [volcano-sh#4659](https://github.com/volcano-sh/volcano/pull/4659), [volcano-sh#4919](https://github.com/volcano-sh/volcano/pull/4919)
 
 Contributors: [@guoqinwill](https://github.com/guoqinwill), [@hajnalmt](https://github.com/hajnalmt)
 
@@ -343,7 +343,7 @@ Contributors: [@guoqinwill](https://github.com/guoqinwill), [@hajnalmt](https://
 
 Volcano keeps pace with the Kubernetes community. v1.14 fully supports the latest Kubernetes v1.34, with comprehensive unit tests and E2E tests ensuring functionality and stability.
 
-Related PR: volcano-sh#4704
+Related PR: [volcano-sh#4704](https://github.com/volcano-sh/volcano/pull/4704)
 
 Contributors: [@suyiiyii](https://github.com/suyiiyii), [@tunedev](https://github.com/tunedev)
 
@@ -363,8 +363,8 @@ Meanwhile, Volcano Global v0.3.0 extends multi-cluster capabilities through Hype
 
 Volcano v1.14 ecosystem releases (including Volcano Global v0.3.0 and Dashboard v0.2.0) had 55 community contributors. Sincere thanks to every contributor!
 
-|                |                   |                 |
-| -------------- | ----------------- | --------------- |
+|                 |                    |                  |
+| --------------- | ------------------ | ---------------- |
 | \@3sunny        | \@3th4novo         | \@acsoto         |
 | \@Aman-Cool     | \@archlitchi       | \@dafu-wu        |
 | \@DSFans2014    | \@FAUST-BENCHOU    | \@fengruotj      |
@@ -380,4 +380,4 @@ Volcano v1.14 ecosystem releases (including Volcano Global v0.3.0 and Dashboard 
 | \@ssfffss       | \@suyiiyii         | \@Tau721         |
 | \@tunedev       | \@wangyang0616     | \@weapons97      |
 | \@Wonki4        | \@zhaoqi612        | \@zhengchenyu    |
-| \@zjj2wry       |
+| \@zjj2wry       |                    |                  |
