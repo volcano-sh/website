@@ -42,8 +42,6 @@ tiers:
           interval: 5m           ## Optional. Frequency at which the strategies are called. Default is 5m.
           metricsPeriod: 5m      ## Optional. The duration of metrics to consider. Default is 5m.
           strategies:            ## Required. Strategies to execute in order.
-            - name: offlineOnly
-            - name: lowPriorityFirst
             - name: lowNodeUtilization
               params:
                 thresholds:
@@ -54,12 +52,6 @@ tiers:
                   "cpu" : 50     ## Target utilization to reach for balance
                   "memory": 50
                   "pods": 50
-          queueSelector:         ## Optional. Select workloads in specified queues as potential evictees. All queues by default.
-            - default
-            - test-queue
-          labelSelector:         ## Optional. Select workloads with specified labels as potential evictees. All labels by default.
-            business: offline
-            team: test
   - plugins:
       - name: overcommit
       - name: drf
@@ -68,5 +60,7 @@ tiers:
       - name: nodeorder
       - name: binpack
 ```
+
+> **Warning:** Currently, only the `lowNodeUtilization` strategy is registered and wired up in the scheduler code as a victim strategy. The other strategies described in the "Rescheduling Strategies" section above (offlineOnly, lowPriorityFirst, shortLifeTimeFirst, bigObjectFirst, moreReplicasFirst) are defined in the design but are **not yet implemented**. The `queueSelector` and `labelSelector` filter fields are also not yet parsed by the current code.
 
 > **Note:** The rescheduling decisions consider metrics collected from Prometheus. Ensure your metrics configuration is correctly set up as it evaluates real node resource utilization instead of requested resource amounts.

@@ -1,5 +1,5 @@
-﻿---
-title: MPI
+---
+title: Message Passing Interface (MPI)
 
 ---
 

@@ -24,7 +24,7 @@ This section contains the User Guide for Volcano.
 * [Pytorch Plugin User Guide](../Controller/Plugins/pytorch.md)
 * [Ray Plugin User Guide](../Controller/Plugins/ray.md)
 * [Resource Strategy Fit Plugin User Guide](../Scheduler/Plugins/resource_strategy_fit.md)
-* [Task Topology Plugin User Guide](../Scheduler/Plugins/task_topology.md)
+* [Task Topology Plugin User Guide](../Scheduler/Plugins/tasktopology.md)
 * [HyperNode Auto Discovery User Guide](./user_guide_how_to_use_hypernode_auto_discovery.md)
 * [Volcano Job Plugin -- Env User Guide](../Controller/Plugins/env.md)
 * [Volcano Job Plugin -- SSH User Guide](../Controller/Plugins/ssh.md)

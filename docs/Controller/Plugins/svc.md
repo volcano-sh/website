@@ -1,5 +1,5 @@
-﻿---
-title: SVC
+---
+title: Service (SVC)
 ---
 
 ## Background
@@ -139,13 +139,13 @@ metadata:
 spec:
   containers:
   - command:
-      - sh
-        - -c
-        - |
-        PS_HOST=`cat /etc/volcano/ps.host | sed 's/$/&:2222/g' | sed 's/^/"/;s/$/"/' | tr "\n" ","`;    ## Get host domain from host files generated
-        WORKER_HOST=`cat /etc/volcano/worker.host | sed 's/$/&:2222/g' | sed 's/^/"/;s/$/"/' | tr "\n" ","`;
-        export TF_CONFIG={\"cluster\":{\"ps\":[${PS_HOST}],\"worker\":[${WORKER_HOST}]},\"task\":{\"type\":\"ps\",\"index\":${VK_TASK_INDEX}},\"environment\":\"cloud\"};
-        python /var/tf_dist_mnist/dist_mnist.py
+    - sh
+    - -c
+    - |
+      PS_HOST=`cat /etc/volcano/ps.host | sed 's/$/&:2222/g' | sed 's/^/"/;s/$/"/' | tr "\n" ","`;    ## Get host domain from host files generated
+      WORKER_HOST=`cat /etc/volcano/worker.host | sed 's/$/&:2222/g' | sed 's/^/"/;s/$/"/' | tr "\n" ","`;
+      export TF_CONFIG={\"cluster\":{\"ps\":[${PS_HOST}],\"worker\":[${WORKER_HOST}]},\"task\":{\"type\":\"ps\",\"index\":${VK_TASK_INDEX}},\"environment\":\"cloud\"};
+      python /var/tf_dist_mnist/dist_mnist.py
     env:
     - name: VK_TASK_INDEX
       value: "0"

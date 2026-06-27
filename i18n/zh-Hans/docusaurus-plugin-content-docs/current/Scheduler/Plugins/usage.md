@@ -46,7 +46,7 @@ tiers:
       - name: binpack
 
 metrics:                               # metrics server related configuration
-  type: prometheus                     # Optional. The metrics source type. Supports "prometheus", "prometheus_adapt", and "elasticsearch". prometheus by default.
+  type: prometheus                     # Optional. The metrics source type. Supports "prometheus", "prometheus_adaptor", and "elasticsearch". prometheus by default.
   address: http://192.168.0.10:9090    # Mandatory. The metrics source address.
   interval: 30s                        # Optional. The scheduler pulls metrics from Prometheus with this interval, 30s by default.
 ```
@@ -93,11 +93,9 @@ metrics:
   type: elasticsearch                  
   address: http://192.168.0.10:9200    
   interval: 30s                        
-  tls:                                 
-    insecureSkipVerify: "false"        
-  elasticsearch:                       
-    index: "custom-index-name"         # Optional. "metricbeat-*" by default
-    username: ""                       
-    password: ""                       
-    hostnameFieldName: "host.hostname" # Optional. "host.hostname" by default
+  tls.insecureSkipVerify: "false"                         # TLS skip verify setting
+  elasticsearch.index: "custom-index-name"                # Optional. "metricbeat-*" by default
+  elasticsearch.username: ""                              # Optional. Elasticsearch username
+  elasticsearch.password: ""                              # Optional. Elasticsearch password
+  elasticsearch.hostnameFieldName: "host.hostname"        # Optional. "host.hostname" by default
 ```

@@ -24,7 +24,7 @@ sidebar_position: 5
 * [PyTorch 插件用户指南](../Controller/Plugins/pytorch.md)
 * [Ray 插件用户指南](../Controller/Plugins/ray.md)
 * [Resource Strategy Fit 插件用户指南](../Scheduler/Plugins/resource_strategy_fit.md)
-* [Task Topology 插件用户指南](../Scheduler/Plugins/task_topology.md)
+* [Task Topology 插件用户指南](../Scheduler/Plugins/tasktopology.md)
 * [HyperNode 自动发现用户指南](./user_guide_how_to_use_hypernode_auto_discovery.md)
 * [Volcano Job 插件 -- Env 用户指南](../Controller/Plugins/env.md)
 * [Volcano Job 插件 -- SSH 用户指南](../Controller/Plugins/ssh.md)

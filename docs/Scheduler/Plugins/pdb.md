@@ -1,5 +1,5 @@
 ---
-title: PDB
+title: Pod Disruption Budget (PDB)
 ---
 
 ## Introduction

@@ -1,5 +1,5 @@
-﻿---
-title: CDP
+---
+title: Cooldown Protection (CDP)
 
 ---
 
