@@ -180,7 +180,7 @@ const config = {
           <div class="footer__logo-container">
             <img class="footer__logo" alt="Cloud Native Computing Foundation Logo" src="/img/landing/logo_cloudnative.png" />
           </div>
-          <p>The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener noreferrer">Trademark Usage</a> page.</p>
+          <p>Copyright Volcano a Series of LF Projects, LLC. For website terms of use, trademark policy and other project policies please see <a href="https://lfprojects.org/policies/" target="_blank" rel="noopener noreferrer">LF Projects Policies</a>.</p>
           <p>${new Date().getFullYear()} @ Volcano Project Authors. All rights reserved.</p>
       `,
     },
