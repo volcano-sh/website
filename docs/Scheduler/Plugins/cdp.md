@@ -1,5 +1,5 @@
-﻿---
-title: "Cooldown Protection Plugin User Guide"
+---
+title: Cooldown Protection (CDP)
 
 ---
 

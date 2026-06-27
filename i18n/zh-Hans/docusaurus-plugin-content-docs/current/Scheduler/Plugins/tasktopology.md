@@ -131,3 +131,33 @@ spec:
 ```
 
 在此示例中，两个 master 副本将被调度到不同节点，以确保高可用性。
+
+## 传统注解用法 (Legacy Annotation Usage)
+
+在较早的版本中（或在使用特定算子如 kubeflow/tf-operator 时），Task Topology 也支持通过 Job 或 Pod 上的注解（Annotations）来进行配置。
+
+### 更新调度器配置
+
+注册 `task-topology` 插件并可配置权重参数：
+
+```yaml
+    - plugins:
+      - name: task-topology
+        arguments:
+          task-topology.weight: 10
+```
+
+### 使用注解配置
+
+以 tensorflow job 为例：
+
+1. 在 volcano job 或 tensorflow job 中添加以下格式的注解：
+   1. `affinity` 注解表示任务之间有联系，因此应将它们分配到相同的节点；
+   2. `anti-affinity` 注解表示任务之间没有联系，因此应将它们分配到不同的节点；
+   3. `task-order` 注解表示分配任务的顺序。例如，`ps,worker` 意味着调度器应优先调度 `ps` 任务。当所有 `ps` 任务分配完成后，调度器开始调度 `worker` 任务。**此注解不是必填项。**
+
+```yaml
+    volcano.sh/task-topology-affinity: "ps,worker;ps,evaluator"
+    volcano.sh/task-topology-anti-affinity: "ps;worker,chief;chief,evaluator"
+    volcano.sh/task-topology-task-order: "ps,worker,chief,evaluator"
+```
