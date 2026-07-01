@@ -181,7 +181,7 @@ const config = {
             <img class="footer__logo" alt="Cloud Native Computing Foundation Logo" src="/img/landing/logo_cloudnative.png" />
           </div>
           <p>The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener noreferrer">Trademark Usage</a> page.</p>
-          <p>${new Date().getFullYear()} @ Volcano Project Authors. All rights reserved.</p>
+          <p>© ${new Date().getFullYear()} Volcano Project Authors. All rights reserved.</p>
       `,
     },
     prism: {
