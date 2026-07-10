@@ -47,10 +47,13 @@ const config = {
   onBrokenLinks: "throw",
   markdown: {
     format: "detect",
+    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: "throw",
     },
   },
+
+  themes: ["@docusaurus/theme-mermaid"],
 
   i18n: {
     defaultLocale: "en",
