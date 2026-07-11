@@ -142,7 +142,7 @@ Sincerely thanks to community developer: @[Wonki4](https://github.com/Wonki4)
 
 Design documentation: [Ray Framework Plugin Design Doc](https://github.com/volcano-sh/volcano/blob/master/docs/design/distributed-framework-plugins.md).
 
-Usage documentation: [Ray Plugin User Guide](/docs/UserGuide/user_guide_how_to_use_ray_plugin).
+Usage documentation: [Ray Plugin User Guide](/docs/Controller/Plugins/ray).
 
 ## Introduce HCCL Plugin Support
 
@@ -189,7 +189,7 @@ Sincerely thanks to community developers: @[JesseStutler](https://github.com/Jes
 
 NodeGroup design documentation: [NodeGroup Design.](https://github.com/volcano-sh/volcano/blob/master/docs/design/node-group.md)
 
-NodeGroup usage documentation: [NodeGroup User Guide.](/docs/UserGuide/user_guide_how_to_use_nodegroup_plugin)
+NodeGroup usage documentation: [NodeGroup User Guide.](/docs/Scheduler/Plugins/nodegroup)
 
 ## Introduce ResourceStrategyFit Plugin
 
@@ -274,7 +274,7 @@ Sincerely thanks to community developers: @[LY-today](https://github.com/LY-toda
 
 Design documentation: [ResourceStrategyFit Design](https://github.com/volcano-sh/volcano/blob/master/docs/design/resource-strategy-fit-scheduling.md)
 
-Usage documentation: [ResourceStrategyFit User Guide](/docs/UserGuide/user_guide_how_to_use_resource_strategy_fit_plugin)
+Usage documentation: [ResourceStrategyFit User Guide](/docs/Scheduler/Plugins/resource_strategy_fit)
 
 ## Decouple Colocation from OS
 

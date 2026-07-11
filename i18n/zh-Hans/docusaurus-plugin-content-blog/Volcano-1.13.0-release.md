@@ -141,7 +141,7 @@ labels:
 
 设计文档：[Ray Framework Plugin Design Doc](https://github.com/volcano-sh/volcano/blob/master/docs/design/distributed-framework-plugins.md)。
 
-使用文档：[Ray Plugin User Guide](/docs/UserGuide/user_guide_how_to_use_ray_plugin)。
+使用文档：[Ray Plugin User Guide](/docs/Controller/Plugins/ray)。
 
 ## 新增HCCL插件支持
 
@@ -188,7 +188,7 @@ tiers:
 
 NodeGroup设计文档：[NodeGroup Design.](https://github.com/volcano-sh/volcano/blob/master/docs/design/node-group.md)
 
-NodeGroup使用文档：[NodeGroup User Guide.](/docs/UserGuide/user_guide_how_to_use_nodegroup_plugin)
+NodeGroup使用文档：[NodeGroup User Guide.](/docs/Scheduler/Plugins/nodegroup)
 
 ## 引入ResourceStrategyFit插件
 
@@ -273,7 +273,7 @@ tiers:
 
 设计文档：[ResourceStrategyFit Design](https://github.com/volcano-sh/volcano/blob/master/docs/design/resource-strategy-fit-scheduling.md)
 
-使用文档：[ResourceStrategyFit User Guide](/docs/UserGuide/user_guide_how_to_use_resource_strategy_fit_plugin)
+使用文档：[ResourceStrategyFit User Guide](/docs/Scheduler/Plugins/resource_strategy_fit)
 
 ## 混部能力与操作系统解耦
 

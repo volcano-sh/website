@@ -1,5 +1,5 @@
 ﻿---
-title: "Pytorch Plugin User Guide"
+title: Pytorch
 ---
 
 

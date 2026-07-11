@@ -143,3 +143,51 @@ The Numa-Aware Plugin aims to address these limitations.
 #### Scenario
 
 Common scenarios for NUMA-Aware are computation-intensive jobs that are sensitive to CPU parameters, scheduling delays. Such as scientific calculation, video decoding, animation rendering, big data offline processing and other specific scenes.
+
+### Usage
+
+#### Overview
+The Usage-based scheduling plugin evaluates actual real-time resource utilization (e.g., CPU, Memory) collected from monitoring systems like Prometheus instead of only depending on requested resources. It prevents new pods from being scheduled onto overloaded nodes and actively balances the cluster workload.
+
+#### Scenario
+Useful in clusters experiencing unbalanced node resource consumption where some nodes are overburdened while others remain idle despite having similar requested resources.
+
+### Rescheduling
+
+#### Overview
+The Rescheduling plugin periodically rebalances the cluster by evaluating real resource utilization. It actively evicts pods from heavily utilized nodes and shuffles them to under-utilized nodes based on configured target thresholds and strategies like LowNodeUtilization or OfflineOnly.
+
+#### Scenario
+Perfect for long-running clusters where dynamic workload lifecycles lead to fragmentation and resource imbalances over time.
+
+### ResourceQuota
+
+#### Overview
+The ResourceQuota plugin interfaces with Kubernetes' native `ResourceQuota` objects to ensure that a PodGroup is only enqueued if there is sufficient resource capacity in its namespace.
+
+#### Scenario
+Highly beneficial in multi-tenant environments to prevent jobs from entering the scheduling pipeline and clogging the queue when they have no chance of running due to namespace quota restrictions.
+
+### Pod Disruption Budget (PDB)
+
+#### Overview
+The PDB Plugin ensures that Volcano respects user-defined Kubernetes PodDisruptionBudget (PDB) constraints during any eviction-based scheduling actions, such as `reclaim`, `preempt`, and `shuffle`.
+
+#### Scenario
+Crucial for highly available workloads where simultaneous eviction of multiple replicas could result in service disruption.
+
+### Overcommit
+
+#### Overview
+The Overcommit Plugin allows the scheduler to artificially inflate the apparent "idle resources" of the cluster by a configurable factor (e.g., 1.2), permitting more jobs to enqueue in the scheduling pipeline than the physical capacity.
+
+#### Scenario
+Useful when administrators want the scheduler to tolerate a larger backlog of `pending` pods waiting for resources without rejecting them outright during peak loads.
+
+### DeviceShare
+
+#### Overview
+The DeviceShare Plugin provides a unified framework for sharing specialized hardware devices such as GPUs, NPUs, and FPGAs across multiple pods.
+
+#### Scenario
+Ideal for advanced AI/ML environments needing granular hardware sharing, like vGPU, vNPU, and GPU exclusive deployments.
