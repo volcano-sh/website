@@ -118,11 +118,7 @@ b, strong {
 }
 
 .footer-content a {
-  color: #f05545;
-  text-decoration: none;
-}
-
-.footer-content a:hover {
+  color: #f26b58;
   text-decoration: underline;
 }
 
