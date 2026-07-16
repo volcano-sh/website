@@ -126,6 +126,7 @@ export default function Frameworks() {
                     alt={`${framework.name} Logo`}
                     width={framework.logoWidth}
                     height={framework.logoHeight}
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="framework-name">{framework.name}</h3>

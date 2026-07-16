@@ -170,6 +170,7 @@ export default function Supporters() {
                 className="supporter-image"
                 width={supporter.imgWidth}
                 height={supporter.imgHeight}
+                loading="lazy"
               />
             </a>
           ))}

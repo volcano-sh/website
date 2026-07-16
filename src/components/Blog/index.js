@@ -54,6 +54,7 @@ export default function Blog() {
                       src="/img/icon_user.svg"
                       alt="user"
                       className="blogUserIcon"
+                      loading="lazy"
                     />
                     <span>{author}</span>
                   </div>

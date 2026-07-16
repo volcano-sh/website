@@ -180,7 +180,7 @@ const config = {
         <div class="footer-content">
           <p>Volcano is a <a href="https://www.cncf.io/" target="_blank" rel="noopener noreferrer">Cloud Native Computing Foundation</a> incubating project.</p>
           <div class="footer__logo-container">
-            <img class="footer__logo" alt="Cloud Native Computing Foundation Logo" src="/img/landing/logo_cloudnative.png" width="320" height="51" />
+            <img class="footer__logo" alt="Cloud Native Computing Foundation Logo" src="/img/landing/logo_cloudnative.png" width="320" height="51" loading="lazy" />
           </div>
           <p>The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener noreferrer">Trademark Usage</a> page.</p>
           <p>${new Date().getFullYear()} @ Volcano Project Authors. All rights reserved.</p>
