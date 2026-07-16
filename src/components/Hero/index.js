@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import clsx from "clsx";
+import Head from "@docusaurus/Head";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Translate from "@docusaurus/Translate";
@@ -22,6 +23,20 @@ export default function Hero() {
 
   return (
     <div className="hero-container">
+      <Head>
+        <link
+          rel="preload"
+          as="image"
+          href="/img/landing/banner_02.webp"
+          fetchpriority="high"
+        />
+      </Head>
+      <img
+        className="hero-background-image"
+        src="/img/landing/banner_02.webp"
+        alt=""
+        fetchpriority="high"
+      />
       <div className="hero-content">
         <h1 className="hero-title">Volcano</h1>
         <p className="hero-subtitle"><Translate>Cloud native batch scheduling system for compute-intensive workloads</Translate></p>
