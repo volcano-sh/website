@@ -44,7 +44,7 @@ metadata:
 
 ### 为每个 NodeGroup 配置 Queue 资源上限
 
-使用 `volcano.sh/nodegroup-resource-limits` 注解限制 Queue 最多可从各个 NodeGroup 分配多少资源。
+使用 `volcano.sh/nodegroup-resource-limits` 注解限制 Queue 最多可从各个 NodeGroup 分配的资源量。
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -75,7 +75,7 @@ spec:
 allocated(Q, G) + task request <= limit(Q, G)
 ```
 
-如果调度后的资源用量超过配置的上限，插件会拒绝将该任务调度到此节点。其他允许使用的 NodeGroup 仍可参与调度，因此 Queue 可以优先使用 `groupname1`，并在达到 `groupname1` 的逻辑资源上限后将任务调度到 `groupname2`。
+如果调度后的累计资源用量超过配置的上限，插件会拒绝将该任务调度到此节点。其他允许使用的 NodeGroup 仍可参与调度，因此 Queue 可以优先使用 `groupname1`，并在达到 `groupname1` 的逻辑资源上限后将任务调度到 `groupname2`。
 
 只有为 NodeGroup 显式列出的资源维度会受到限制。例如，`{"groupname2": {"cpu": "50"}}` 仅限制 `groupname2` 中的 CPU 用量，不会为该 NodeGroup 添加内存上限。
 
