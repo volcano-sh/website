@@ -82,7 +82,7 @@ export default function Frameworks() {
   return (
     <div className="frameworks-container">
       <Container className="frameworksSection">
-        <h1><Translate>Rich Framework Support</Translate></h1>
+        <h2><Translate>Rich Framework Support</Translate></h2>
         <p className="frameworks-subtitle">
           <Translate>Seamlessly integrate with mainstream computing frameworks for AI, big data, and scientific computing</Translate>
         </p>

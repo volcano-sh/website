@@ -24,9 +24,9 @@ export default function Blog() {
 
   return (
     <Container className="blogContainer">
-      <h1>
+      <h2>
         <Translate>Recent Posts</Translate>
-      </h1>
+      </h2>
       {recentPosts.length > 0 ? (
         <div className="blogPostsContainer">
           {recentPosts.map((post, idx) => {
