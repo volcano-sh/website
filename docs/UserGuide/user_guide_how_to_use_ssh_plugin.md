@@ -5,7 +5,7 @@ title: "Volcano Job Plugin -- SSH User Guide"
 
 
 ## Background
-**SSH Plugin** is designed for the login without password for pods within a volcano job , which is necessary for workloads 
+**SSH Plugin** is designed for the login without password for pods within a volcano job, which is necessary for workloads 
 such as [MPI](https://www.open-mpi.org/). It often works with `SVC` plugin.
 
 ## Key Points
