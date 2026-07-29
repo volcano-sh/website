@@ -264,7 +264,7 @@ data:
    network-topology-job-t0-6   1/1     Running   0          5s    192.168.0.16   node6
    network-topology-job-t0-7   1/1     Running   0          5s    192.168.0.17   node7
    ```
-   本例中，整个 Job 被调度到 HyperNode2（Node0~Node7）。第一个分区（Pod0~Pod3）调度到 HyperNode0（Node0~Node3），第二个分区（Pod4~Pod7）调度到 HyperNode1（Node4~Node7），各分区均满足各自的网络拓扑约束。
+   在此示例中，整个 Job 被调度到 HyperNode2（节点 Node0–Node7）内。第一个分区（Pod0–Pod3）被调度到 HyperNode0（节点 Node0–Node3）内；第二个分区（Pod4–Pod7）被调度到 HyperNode1（节点 Node4–Node7）内。每个分区都满足其各自的网络拓扑约束。
 
 #### 3.3.3 部署未配置网络拓扑约束的 Volcano Job
 
