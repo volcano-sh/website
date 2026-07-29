@@ -147,6 +147,48 @@ const supporters = [
     imgWidth: "100px",
     imgHeight: "60px",
     url: "https://www.openinnovation.ai/"
+  },
+  {
+    imgSrc: "img/landing/logo_iflytek.png",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://www.iflytek.com/"
+  },
+  {
+    imgSrc: "img/landing/logo_kingsoftcloud.png",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://www.ksyun.com/"
+  },
+  {
+    imgSrc: "img/landing/logo_momenta.png",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://www.momenta.cn/"
+  },
+  {
+    imgSrc: "img/landing/logo_infrawaves.png",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://infrawaves.com/"
+  },
+  {
+    imgSrc: "img/landing/logo_zoom.png",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://www.zoom.com/"
+  },
+  {
+    imgSrc: "img/landing/logo_aumovio.png",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://aumovio.com/"
+  },
+  {
+    imgSrc: "img/landing/logo_feedzai.png",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://www.feedzai.com/"
   }
 ];
 
