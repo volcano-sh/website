@@ -1,5 +1,5 @@
 ---
-title: "Capacity Plugin User Guide"
+title: Capacity
 
 ---
 
@@ -49,8 +49,30 @@ data:
         enablePreemptable: false
       - name: predicates
       - name: capacity # add this field and remove proportion plugin.
+        arguments:
+          # See Arguments section below for available options
       - name: nodeorder
       - name: binpack
+```
+
+## Arguments
+
+The capacity plugin supports the following optional arguments in the scheduler configuration:
+
+| Name | Type | Default | Description |
+| --- | --- | --- | --- |
+| `ancestorReclaimLevel` | int | -1 (unlimited) | Controls how many levels up in the queue hierarchy resources can be reclaimed. A value of `1` means only reclaim from the direct parent, `2` from the grandparent, etc. `-1` means unlimited reclaim depth. |
+| `capacity.DynamicResourceAllocationEnable` | bool | false | Enables Dynamic Resource Allocation (DRA) support in the capacity plugin, allowing the scheduler to handle DRA resource claims. |
+| `capacity.DRAConsumableCapacityEnable` | bool | false | Enables consumable capacity tracking for DRA resources, ensuring DRA resource claims are tracked against queue capacity limits. |
+
+### Example with Arguments
+
+```yaml
+- name: capacity
+  arguments:
+    ancestorReclaimLevel: 2
+    capacity.DynamicResourceAllocationEnable: true
+    capacity.DRAConsumableCapacityEnable: true
 ```
 
 ## Config queue's deserved resources

@@ -1,5 +1,5 @@
 ---
-title: "TDM"
+title: "Time Division Multiplexing (TDM)"
 ---
 ## 概述
 

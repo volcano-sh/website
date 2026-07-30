@@ -1,5 +1,5 @@
 ---
-title: DRF
+title: Dominant Resource Fairness (DRF)
 ---
 
 ## 概述

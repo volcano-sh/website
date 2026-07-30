@@ -1,5 +1,5 @@
-﻿---
-title: "Nodegroup Plugin User Guide"
+---
+title: Nodegroup
 
 ---
 
@@ -115,6 +115,41 @@ tiers:
       - name: nodegroup
         arguments:
           strict: false
+```
+
+### Nodegroup Plugin `enablePreferredOrder` Configuration
+
+`enablePreferredOrder` is a boolean argument that controls how preferred node groups are scored during scheduling.
+
+- When `enablePreferredOrder: false` (the default), all preferred node groups receive the same score during the scoring phase.
+- When `enablePreferredOrder: true`, preferred node groups are scored based on their **list order** in the queue's `preferredDuringSchedulingIgnoredDuringExecution` array. Node groups listed earlier receive a higher score, providing deterministic preference ordering.
+
+```yaml
+# scheduler configuration
+actions: "allocate, backfill, preempt, reclaim"
+tiers:
+  - plugins:
+      - name: priority
+      - name: gang
+      - name: conformance
+  - plugins:
+      - name: drf
+      - name: predicates
+      - name: proportion
+      - name: nodegroup
+        arguments:
+          strict: false
+          enablePreferredOrder: true
+```
+
+With the above configuration and the following queue setup, tasks will prefer `groupname1` over `groupname2` because `groupname1` appears first in the preferred list:
+
+```yaml
+affinity:
+  nodeGroupAffinity:
+    preferredDuringSchedulingIgnoredDuringExecution:
+      - groupname1   # Highest preference (scored highest)
+      - groupname2   # Lower preference
 ```
 
 ### Hierarchical Queue Configuration
