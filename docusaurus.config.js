@@ -6,9 +6,11 @@ const config = {
   title: "Volcano",
   tagline: "Cloud native batch scheduling system",
 
-
   future: {
     v4: true,
+    // v4 turns on fasterByDefault, which requires the @docusaurus/faster
+    // package. We don't depend on it yet, so this must stay explicit.
+    faster: false,
   },
 
   url: "https://volcano.sh",
@@ -45,7 +47,16 @@ const config = {
   projectName: "website",
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  markdown: {
+    mdx1Compat: {
+      comments: true,
+      admonitions: true,
+      headingIds: true,
+    },
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
+  },
 
   i18n: {
     defaultLocale: "en",
@@ -85,7 +96,7 @@ const config = {
       "classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebar.js'),
+          sidebarPath: require.resolve("./sidebar.js"),
           showLastUpdateTime: true,
           showLastUpdateAuthor: false,
           editUrl: "https://github.com/volcano-sh/website/tree/master/",
