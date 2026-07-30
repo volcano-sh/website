@@ -48,6 +48,16 @@ When you directly use `kubectl apply -f` to install Volcano, you need to add or 
 --feature-gates=DynamicResourceAllocation=true
 ```
 
+### Enable prioritized device requests (optional)
+
+Kubernetes v1.36 introduces prioritized DRA device requests through the `FirstAvailable` field. When Pods use this field, enable the `DRAPrioritizedList` feature gate together with `DynamicResourceAllocation`:
+
+```yaml
+--feature-gates=DynamicResourceAllocation=true,DRAPrioritizedList=true
+```
+
+Volcano uses the Kubernetes DRA score to prefer nodes that satisfy an earlier device request alternative. No additional Volcano scheduler configuration is required.
+
 ## 3. Configure Volcano Scheduler Plugins
 After installing Volcano, you need to configure the Volcano scheduler's plugin configuration to enable the DRA plugin within the predicates plugin arguments.
 
