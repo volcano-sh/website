@@ -197,33 +197,27 @@ Use the `stress` tool to apply pressure to the nginx Pod.
 wrk -H "Accept-Encoding: deflate, gzip" -t 2 -c 8 -d 120  --latency --timeout 2s http://$(kubectl get svc nginx -o jsonpath='{.spec.clusterIP}')
 ```
 
-#### Checking CPU Throttling
+#### Checking CPU Throttling and Burst Configuration
 
-Check the CPU throttling status of the Pod's container. We can see that `nr_bursts` and `burst_time` are not zero, while `nr_throttled` and `throttled_time` are relatively small, indicating that the Pod has used burst CPU quotas.
-
-```bash
-cat /sys/fs/cgroup/cpu/kubepods/burstable/podd2988e14-83bc-4d3d-931a-59f8a3174396/cpu.stat # replace nginx pod uid in your Kubernetes cluster.
-nr_periods 1210
-nr_throttled 9
-throttled_time 193613865
-nr_bursts 448
-burst_time 6543701690
-```
-
-If we set the Pod's annotation `volcano.sh/enable-quota-burst=false` (disabling CPU Burst) and perform another stress test, `nr_throttled` and `throttled_time` will be relatively large, indicating strict CPU throttling, while `nr_bursts` and `burst_time` will be zero, indicating no CPU Burst occurred.
+The commands below must be run in the cgroup of the actual container process. Replace `/sys/fs/cgroup/<container-cgroup>` with that cgroup's path. These commands use the cgroup v2 interface:
 
 ```bash
-cat /sys/fs/cgroup/cpu/kubepods/burstable/podeeb542c6-b667-4da4-9ac9-86ced4e93fbb/cpu.stat #replace nginx pod uid in your Kubernetes cluster.
-nr_periods 1210
-nr_throttled 488
-throttled_time 10125826283
-nr_bursts 0
-burst_time 0
+cd /sys/fs/cgroup/<container-cgroup>
+uname -r
+cat cpu.max
+test -e cpu.max.burst && cat cpu.max.burst || echo "cpu.max.burst is unsupported"
+cat cpu.stat
 ```
+
+A non-zero `cpu.max.burst` value means that CPU Burst is configured for the cgroup. The `cpu.stat` file always reports the regular CPU accounting fields, such as `nr_periods`, `nr_throttled`, and `throttled_usec`. The later `nr_bursts` and `burst_usec` fields are kernel-dependent accounting fields: their absence does not mean that CPU Burst is disabled or that no burst occurred. If `cpu.max.burst` is missing, the host kernel does not expose the cgroup v2 CPU Burst interface and Volcano cannot enable CPU Burst on that node.
+
+`nr_throttled` records periods in which the normal CPU quota was exceeded. A non-zero value therefore indicates quota throttling, not necessarily a failure to configure CPU Burst. With sustained load, throttling can still occur after the available burst budget is used.
+
+The cgroup v1 interface uses different file and counter names. Do not use the v1 `burst_time` example to interpret cgroup v2 output; on cgroup v2, the expected burst accounting field is `burst_usec` when the running kernel provides it.
 
 #### Notes
 
-CPU Burst relies on Linux kernel functionality. This feature is only effective on hosts with Linux kernel versions >= 5.14 and certain Linux distributions (e.g., OpenEuler 22.03 SP2 or later).
+CPU Burst relies on Linux kernel functionality and the cgroup CPU controller. On cgroup v2, verify that the target cgroup exposes `cpu.max.burst`; if it is missing, the host kernel does not support configuring CPU Burst through this interface. Volcano's application-level colocation features, such as unified scheduling, dynamic resource oversubscription, and node-pressure eviction, are supported on generic-purpose operating systems such as Ubuntu and CentOS. Kernel-level CPU, memory, and network isolation or suppression remains dependent on the capabilities of the host OS and kernel.
 
 ### Dynamic Resource Oversubscription Example
 
@@ -357,7 +351,7 @@ If the online job is stopped to release node resource pressure, the **Volcano Ag
 
 #### Notes
 
-The **Volcano Agent** defines a QoS resource model for online and offline jobs and provides application-level guarantees for online jobs (e.g., evicting offline jobs under node resource pressure). Meanwhile, CPU and memory isolation and suppression are guaranteed at the OS level by the **host kernel**. Note that the Volcano Agent currently only supports **openEuler 22.03 SP2** and later versions, so ensure the correct OS type and version when using this feature.
+The **Volcano Agent** defines a QoS resource model for online and offline jobs and provides application-level guarantees for online jobs (e.g., evicting offline jobs under node resource pressure). Volcano supports these application-level colocation capabilities on generic-purpose operating systems such as Ubuntu and CentOS. CPU and memory isolation and suppression are guaranteed at the OS level by the **host kernel** and therefore depend on the host OS and kernel capabilities. When using kernel-level colocation features, ensure that the required kernel interfaces are available.
 
 In the egress network bandwidth isolation mechanism, the bandwidth usage of offline jobs is limited, especially when online jobs require more bandwidth. To achieve finer bandwidth control, three watermark parameters are typically defined to dynamically adjust the bandwidth allocation for offline jobs.
 
@@ -523,7 +517,7 @@ For containers in Pods with the CPU Burst feature enabled, their CPU usage can b
 
 You can specify a custom burst quota by setting the Pod's annotation `volcano.sh/quota-burst-time`. For example:
 
-If a container's CPU limit is 4 cores, the Volcano Agent defaults the container's CGroup `cpu.cfs_quota_us` value to `400000` (the CFS base period is `100000`, so 4 cores correspond to `4 * 100000 = 400000`). This means the container can burst up to 4 additional CPU cores at a time. If you set `volcano.sh/quota-burst-time=200000`, the container can only burst up to 2 additional CPU cores at a time.
+On cgroup v2, if a container's CPU limit is 4 cores, the Volcano Agent sets the quota in `cpu.max` using the CFS base period of `100000` microseconds (4 cores corresponds to `400000 100000`). The burst budget is exposed through `cpu.max.burst`; a value of `400000` allows up to 4 additional CPU cores during a scheduling period. If you set `volcano.sh/quota-burst-time=200000`, the cgroup's `cpu.max.burst` value is limited to `200000`, allowing up to 2 additional CPU cores at a time. On cgroup v1, the equivalent quota and accounting interfaces use different names.
 
 #### Dynamic Resource Oversubscription
 
