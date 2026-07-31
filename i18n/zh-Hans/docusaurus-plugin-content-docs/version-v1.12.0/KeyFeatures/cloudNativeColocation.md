@@ -210,33 +210,27 @@ spec:
 wrk -H "Accept-Encoding: deflate, gzip" -t 2 -c 8 -d 120  --latency --timeout 2s http://$(kubectl get svc nginx -o jsonpath='{.spec.clusterIP}')
 ```
 
-#### 检查CPU限流情况
+#### 检查 CPU 限流和突发配置
 
-检查 Pod 容器的 CPU 限流状态，我们可以看到 `nr_bursts` 和 `burst_time` 不为 0，而 `nr_throttled` 和 `throttled_time` 是一个较小的值，这表明 Pod 已经使用了突发的 CPU 配额。
-
-```bash
-cat /sys/fs/cgroup/cpu/kubepods/burstable/podd2988e14-83bc-4d3d-931a-59f8a3174396/cpu.stat # replace nginx pod uid in your kubernetes cluster.
-nr_periods 1210
-nr_throttled 9
-throttled_time 193613865
-nr_bursts 448
-burst_time 6543701690
-```
-
-如果我们设置 Pod 的注解 `volcano.sh/enable-quota-burst=false`（禁用 Pod 的 CPU Burst）并进行另一次压力测试，`nr_throttled` 和 `throttled_time` 将会是一个相对较大的值，这表明 Pod 的 CPU 被严格限制；而 `nr_bursts` 和 `burst_time` 为 0，表明 Pod 的 CPU Burst 没有发生。
+以下命令必须在实际容器进程所在的 cgroup 中执行。请将 `/sys/fs/cgroup/<container-cgroup>` 替换为该 cgroup 的路径。以下命令使用 cgroup v2 接口：
 
 ```bash
-cat /sys/fs/cgroup/cpu/kubepods/burstable/podeeb542c6-b667-4da4-9ac9-86ced4e93fbb/cpu.stat #replace nginx pod uid in your kubernetes cluster.
-nr_periods 1210
-nr_throttled 488
-throttled_time 10125826283
-nr_bursts 0
-burst_time 0
+cd /sys/fs/cgroup/<container-cgroup>
+uname -r
+cat cpu.max
+test -e cpu.max.burst && cat cpu.max.burst || echo "cpu.max.burst is unsupported"
+cat cpu.stat
 ```
+
+非零的 `cpu.max.burst` 值表示该 cgroup 已配置 CPU Burst。`cpu.stat` 始终会报告 `nr_periods`、`nr_throttled` 和 `throttled_usec` 等常规 CPU 统计字段。较新的 `nr_bursts` 和 `burst_usec` 字段取决于内核版本；缺少这些字段并不表示 CPU Burst 未启用或没有发生突发。如果缺少 `cpu.max.burst`，则说明主机内核没有公开 cgroup v2 的 CPU Burst 接口，Volcano 无法在该节点启用 CPU Burst。
+
+`nr_throttled` 表示超过常规 CPU 配额的调度周期数。该值非零表示发生了配额限流，并不一定表示 CPU Burst 配置失败。持续高负载时，突发配额耗尽后仍可能发生限流。
+
+cgroup v1 使用不同的文件名和统计字段。请勿使用 v1 的 `burst_time` 示例解释 cgroup v2 的输出；在 cgroup v2 中，如果运行中的内核提供突发统计字段，应使用 `burst_usec`。
 
 #### 说明
 
-CPU Burst 依赖于 Linux 内核提供的功能，该特性仅在主机使用的 Linux 内核版本 >= 5.14 以及某些 Linux 发行版（如 OpenEuler 22.03 SP2 或更高版本）上生效。
+CPU Burst 依赖 Linux 内核功能和 cgroup CPU 控制器。在 cgroup v2 中，请确认目标 cgroup 暴露了 `cpu.max.burst`；如果缺少该文件，则主机内核不支持通过此接口配置 CPU Burst。Volcano 的应用级混部功能（例如统一调度、动态资源超卖和节点压力驱逐）支持 Ubuntu、CentOS 等通用操作系统。内核级 CPU、内存和网络隔离或抑制仍取决于主机操作系统和内核的能力。
 
 ### 动态资源超卖示例
 
@@ -370,7 +364,7 @@ Events:
 
 #### 说明
 
-**Volcano Agent** 为在线作业和离线作业定义了一个 QoS（服务质量）资源模型，并为在线作业提供了应用级别的保障机制（例如在节点资源压力下驱逐离线作业）。同时，CPU 和内存的隔离与抑制由**主机内核**（Host Kernel）在操作系统级别提供保障。需要注意的是，目前 Volcano Agent 仅适配 **openEuler 22.03 SP2** 及更高版本，因此使用该功能时请确保使用正确的操作系统类型和版本。
+**Volcano Agent** 为在线作业和离线作业定义了一个 QoS（服务质量）资源模型，并为在线作业提供了应用级别的保障机制（例如在节点资源压力下驱逐离线作业）。Volcano 的这些应用级混部能力支持 Ubuntu、CentOS 等通用操作系统。CPU 和内存的隔离与抑制由**主机内核**（Host Kernel）在操作系统级别提供保障，因此取决于主机操作系统和内核的能力。使用内核级混部功能时，请确认所需的内核接口可用。
 
 ### 出口网络带宽保障示例
 
@@ -563,7 +557,7 @@ Connecting to host 192.168.2.30, port 5201
 
 你可以通过设置 Pod 的注解 `volcano.sh/quota-burst-time` 来指定自定义的突增配额。例如：
 
-如果一个容器的 CPU 限制为 4 核，Volcano Agent 默认会将容器的 CGroup `cpu.cfs_quota_us` 值设置为 `400000`（CFS 的基本周期为 `100000`，因此 4 核 CPU 对应 `4 * 100000 = 400000`）。这意味着容器在某一时刻最多可以额外使用 4 核 CPU。如果你设置 `volcano.sh/quota-burst-time=200000`，则表示容器在某一时刻最多只能额外使用 2 核 CPU。
+在 cgroup v2 中，如果一个容器的 CPU 限制为 4 核，Volcano Agent 会使用 `100000` 微秒的 CFS 基本周期在 `cpu.max` 中设置配额（4 核对应 `400000 100000`）。突发配额通过 `cpu.max.burst` 暴露；值为 `400000` 表示每个调度周期最多可额外使用 4 核 CPU。如果设置 `volcano.sh/quota-burst-time=200000`，则 cgroup 的 `cpu.max.burst` 值会限制为 `200000`，表示每个调度周期最多可额外使用 2 核 CPU。cgroup v1 使用不同的配额和统计接口。
 
 #### 动态资源超卖
 
