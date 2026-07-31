@@ -39,6 +39,16 @@ const config = {
         color: "#eb341a",
       },
     },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preload",
+        href: "/img/landing/banner_02.jpg",
+        as: "image",
+        fetchpriority: "high",
+        media: "(min-width: 769px)",
+      },
+    },
   ],
 
   organizationName: "volcano-sh",
@@ -129,6 +139,8 @@ const config = {
       logo: {
         alt: "Volcano Logo",
         src: "img/landing/volcano_logo.png",
+        width: 203,
+        height: 34,
       },
       items: [
         {
@@ -150,16 +162,19 @@ const config = {
           href: "https://github.com/volcano-sh/",
           position: "right",
           className: "header-github-link header-icon",
+          "aria-label": "GitHub",
         },
         {
           href: "https://x.com/volcano_sh",
           position: "right",
           className: "header-x-link header-icon",
+          "aria-label": "X",
         },
         {
           to: "https://cloud-native.slack.com/?redir=%2Farchives%2FC011GJDQS0N%3Fname%3DC011GJDQS0N",
           position: "right",
           className: "header-slack-link header-icon",
+          "aria-label": "Slack",
         },
         {
           type: "localeDropdown",
@@ -178,7 +193,7 @@ const config = {
         <div class="footer-content">
           <p>Volcano is a <a href="https://www.cncf.io/" target="_blank" rel="noopener noreferrer">Cloud Native Computing Foundation</a> incubating project.</p>
           <div class="footer__logo-container">
-            <img class="footer__logo" alt="Cloud Native Computing Foundation Logo" src="/img/landing/logo_cloudnative.png" />
+            <img class="footer__logo" alt="Cloud Native Computing Foundation Logo" src="/img/landing/logo_cloudnative.png" width="320" height="51" />
           </div>
           <p>The Linux Foundation has registered trademarks and uses trademarks. For a list of trademarks of The Linux Foundation, please see our <a href="https://www.linuxfoundation.org/trademark-usage" target="_blank" rel="noopener noreferrer">Trademark Usage</a> page.</p>
           <p>© ${new Date().getFullYear()} Volcano Project Authors. All rights reserved.</p>

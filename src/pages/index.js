@@ -12,11 +12,13 @@ export default function Home() {
       title=""
       description="Cloud native batch scheduling system for compute-intensive workloads"
     >
-      <Hero />
-      <WhyVolcano />
-      <Frameworks />
-      <Blog />
-      <Supporters />
+      <main>
+        <Hero />
+        <WhyVolcano />
+        <Frameworks />
+        <Blog />
+        <Supporters />
+      </main>
     </Layout>
   );
 }

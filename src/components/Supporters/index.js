@@ -167,6 +167,8 @@ export default function Supporters() {
               <img
                 src={supporter.imgSrc}
                 alt="Supporter Logo"
+                width={parseInt(supporter.imgWidth, 10)}
+                height={parseInt(supporter.imgHeight, 10)}
                 className="supporter-image"
               />
             </a>
