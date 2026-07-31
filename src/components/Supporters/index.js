@@ -6,146 +6,146 @@ import './styles.css';
 const supporters = [
   {
     imgSrc: "img/landing/logo_huawei.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.huawei.com"
   },
   {
     imgSrc: "img/landing/logo_bilibili.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.bilibili.com/"
   },
   {
     imgSrc: "img/landing/logo_360.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.360.cn/"
   },
   {
     imgSrc: "img/landing/logo_tencent.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.tencent.com/"
   },
   {
     imgSrc: "img/landing/logo_baidu.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.baidu.com/"
   },
   {
     imgSrc: "img/landing/logo_4paradigm.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.4paradigm.com/"
   },
   {
     imgSrc: "img/landing/logo_iqiyi.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.iqiyi.com/"
   },
   {
     imgSrc: "img/landing/logo_redbook.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.xiaohongshu.com/"
   },
   {
     imgSrc: "img/landing/logo_vips.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.vip.com/"
   },
   {
     imgSrc: "img/landing/logo_didi.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://es.didichuxing.com/"
   },
   {
     imgSrc: "img/landing/logo_jd.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.jd.com/"
   },
   {
     imgSrc: "img/landing/logo_bosszhipin.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.zhipin.com/?sid=sem_pz_bdpc_dasou_title"
   },
   {
     imgSrc: "img/landing/logo_jianxinjinke.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "http://www.ccb.com/cn/home/indexv3.html"
   },
   {
     imgSrc: "img/landing/logo_qvtoutiao.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.qutoutiao.net/"
   },
   {
     imgSrc: "img/landing/logo_ruitian.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.ruitiancapital.com/#/"
   },
   {
     imgSrc: "img/landing/logo_boyun.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.bocloud.com.cn/"
   },
   {
     imgSrc: "img/landing/logo_zhongkeleinao.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.leinao.ai/"
   },
   {
     imgSrc: "img/landing/logo_bibdr.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "http://www.bibdr.org/nd.jsp?id=53"
   },
   {
     imgSrc: "img/landing/logo_yunzhisheng.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://dev.hivoice.cn/"
   },
   {
     imgSrc: "img/landing/logo_qiezi.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.ushareit.com/"
   },
   {
     imgSrc: "img/landing/logo_vivo.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.vivo.com.cn/"
   },
   {
     imgSrc: "img/landing/logo_xiwangzu.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.grandomics.com/"
   },
   {
     imgSrc: "img/landing/logo_ktnexr.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://github.com/nexr/"
   },
   {
     imgSrc: "img/landing/logo_openinnovation.png",
-    imgWidth: "100px",
-    imgHeight: "60px",
+    imgWidth: 100,
+    imgHeight: 60,
     url: "https://www.openinnovation.ai/"
   }
 ];
@@ -168,6 +168,9 @@ export default function Supporters() {
                 src={supporter.imgSrc}
                 alt="Supporter Logo"
                 className="supporter-image"
+                width={supporter.imgWidth}
+                height={supporter.imgHeight}
+                loading="lazy"
               />
             </a>
           ))}

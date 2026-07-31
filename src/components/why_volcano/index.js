@@ -109,9 +109,9 @@ const featureLinks = [
 export default function Why() {
   return (
     <Container className="whyContainer">
-      <h1>
+      <h2>
         <Translate>Why Volcano</Translate>
-      </h1>
+      </h2>
       <div className="reasonBoxContainer">
       {reasons.map((item, index) => {
       let docLink = featureLinks[index]?.link;

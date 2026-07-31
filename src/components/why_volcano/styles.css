@@ -6,7 +6,7 @@
     padding-bottom: 1.5rem;
   }
   
-  .whyContainer h1 {
+  .whyContainer h2 {
     text-align: center;
     margin-bottom: 2.5rem;
     color: var(--ifm-font-color-base);
@@ -78,7 +78,7 @@
       gap: 1rem;
     }
     
-    .whyContainer h1 {
+    .whyContainer h2 {
       font-size: 2rem;
       margin-bottom: 1.5rem;
     }
@@ -94,7 +94,7 @@
       gap: 1rem;
     }
     
-    .whyContainer h1 {
+    .whyContainer h2 {
       font-size: 1.8rem;
       margin-bottom: 1.5rem;
     }

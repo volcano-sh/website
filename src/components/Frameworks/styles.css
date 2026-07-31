@@ -1,6 +1,6 @@
 .frameworks-container {
   width: 100%;
-  background-image: url('/img/landing/bg_1.png');
+  background-image: url('/img/landing/bg_1.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31,7 +31,7 @@
   z-index: 2;
 }
 
-.frameworksSection h1 {
+.frameworksSection h2 {
   text-align: center;
   color: #fff;
   font-size: 1.6rem;
@@ -141,7 +141,7 @@
     gap: 1.2rem;
   }
   
-  .frameworksSection h1 {
+  .frameworksSection h2 {
     font-size: 1.4rem;
   }
   
@@ -163,7 +163,7 @@
     padding : 1rem;
   }
   
-  .frameworksSection h1 {
+  .frameworksSection h2 {
     font-size: 1.3rem;
   }
   
