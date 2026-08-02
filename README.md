@@ -64,6 +64,14 @@ Here's a quick guide to adding or updating docs and previewing your changes loca
    npm run start -- --locale zh-Hans
    ```
 
+   To use the **Ask AI** assistant locally (docs RAG + Netlify AI Gateway), run with the Netlify CLI instead:
+
+   ```bash
+   npx netlify-cli@latest dev
+   ```
+
+   Then open **http://localhost:8888/**. Production deploys on Netlify use AI Gateway automatically (credit-based plan required).
+
 4. Make your changes:
 
    - To **add a new doc**, create a `.md` file in the appropriate category folder under `docs/` (see [How to add a new doc](#how-to-add-a-new-doc)).
@@ -118,8 +126,11 @@ website/
 │
 │
 ├── src/                        # Custom React components, pages, CSS
+│   └── components/AskAI/       # Floating Ask AI chat widget
 ├── static/img/                 # Images and static assets
 ├── plugins/                    # Custom Docusaurus plugins
+├── netlify/functions/ask-ai/   # Ask AI RAG API (Netlify Function)
+├── scripts/build-docs-index.mjs# Builds docs chunk index for Ask AI
 │
 ├── docusaurus.config.js        # Main Docusaurus configuration
 ├── sidebar.js                  # Sidebar configuration (auto-generated from dirs)
@@ -127,6 +138,21 @@ website/
 ├── package.json                # Dependencies and npm scripts
 └── netlify.toml                # Netlify deployment configuration
 ```
+
+## Ask AI
+
+The site includes an **Ask AI** floating assistant that answers questions from the official English docs (RAG):
+
+1. `npm run build:ask-ai-index` chunks `docs/` into `netlify/functions/ask-ai/docs-index.json` (also runs on `prestart` / `prebuild`).
+2. `POST /api/ask-ai` retrieves relevant chunks and calls an LLM via [Netlify AI Gateway](https://docs.netlify.com/build/ai-gateway/overview/).
+3. The widget in `src/components/AskAI` is mounted site-wide from `src/theme/Root.js`.
+
+Optional env vars:
+
+- `ASK_AI_MODEL` — model id (default `gpt-5-mini`)
+- `OPENAI_API_KEY` — only needed if you are not using Netlify AI Gateway
+
+Run retrieval checks with `npm run test:ask-ai`.
 
 ## How to add a new doc
 
