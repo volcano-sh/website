@@ -84,7 +84,7 @@ They can grasp the big picture of the project and features in the project.
 
 - Participates in release planning
 - Maintains project code quality
-- Ensures the forward/backword compatibility of APIs based on feature graduation criteria
+- Ensures the forward/backward compatibility of APIs based on feature graduation criteria
 - Analyzes and proposes new features/enhancements in the Volcano project
 - Demonstrates sound technical judgment
 - Mentors contributors and approvers

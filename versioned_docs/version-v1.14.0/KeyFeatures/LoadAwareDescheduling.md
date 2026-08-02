@@ -15,7 +15,7 @@ Volcano decheduler's capability is based on https://github.com/kubernetes-sigs/d
 
 ### Descheduling via crontab or fixed interval
 
-Users can deploy the  `Volcano descheduler` as a Deploment type workload instead of a cronJob. Then specify the command line parameters to run the descheduler according to cronTab expression or fixed interval.
+Users can deploy the  `Volcano descheduler` as a Deployment type workload instead of a cronJob. Then specify the command line parameters to run the descheduler according to cronTab expression or fixed interval.
 
 **cronTab scheduled task**: Specify the parameter `--descheduling-interval-cron-expression='0 0 * * *'`, which means to run descheduling once every morning.
 

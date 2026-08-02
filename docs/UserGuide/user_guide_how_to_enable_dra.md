@@ -34,7 +34,7 @@ so you need to set the startup parameters of kube-apiserver to manually register
 
 ## 2. Install Volcano With DRA feature gates enabled
 When installing Volcano, you need to enable the DRA related feature gates, e.g., `DynamicResourceAllocation` must be enabled when you need to use DRA, 
-you can also choose to enable the `DRAAdminAccess` feature gate to manage devices as your need.
+you can also choose to enable the `DRAAdminAccess` feature gate to manage devices as needed.
 
 When you are using helm to install Volcano, you can use following command to install Volcano with DRA feature gates enabled:
 ```bash
@@ -82,7 +82,7 @@ tiers:
 
 ## 4. Deploy a DRA Driver
 To utilize Dynamic Resource Allocation, you need to deploy a DRA driver in your cluster. The driver is responsible for managing the lifecycle of dynamic resources.
-For example, you can refer to the [kubernetes-sigs/dra-example-driver](https://github.com/kubernetes-sigs/dra-example-driver) to deploy a example DRA driver for testing.
+For example, you can refer to the [kubernetes-sigs/dra-example-driver](https://github.com/kubernetes-sigs/dra-example-driver) to deploy an example DRA driver for testing.
 
 For some DRA Drivers which have already been used in actual production, you can refer to:
 - [NVIDIA/k8s-dra-driver-gpu](https://github.com/NVIDIA/k8s-dra-driver-gpu)

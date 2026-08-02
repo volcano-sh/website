@@ -121,7 +121,7 @@ export default function Why() {
       }
 
   return (
-    <Link KeyFeaturesy={index} to={docLink} className="reasonBoxLink">
+    <Link key={index} to={docLink} className="reasonBoxLink">
       <div className="reasonBox">
         <p className="reasonTitle">{item.title}</p>
         <div className="reasonContent">{item.content}</div>
