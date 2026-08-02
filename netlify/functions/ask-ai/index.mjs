@@ -3,33 +3,77 @@ import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import OpenAI from "openai";
-import { retrieve } from "./retrieve.mjs";
+import { buildIdf, retrieve } from "./retrieve.mjs";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const MAX_QUESTION_LEN = 500;
 const MAX_HISTORY = 6;
+const RATE_LIMIT = 20;
+const RATE_WINDOW_MS = 60 * 60 * 1000;
 
 const SYSTEM = `You are the Ask AI assistant for Volcano (https://volcano.sh), a CNCF cloud-native batch scheduling system.
 
 Rules:
-- Answer ONLY using the provided documentation context. If the context is insufficient, say you don't know and suggest related docs links from the context when possible.
+- Answer ONLY using the provided documentation context. If the context is insufficient, say you do not know and point to the closest related doc URLs from the context.
 - Do not invent APIs, flags, or behavior not present in the context.
 - Prefer concise, practical answers. Use short bullet lists when helpful.
-- At the end, add a "Sources:" section listing the documentation URLs you used (from the context only).
+- Do not add a Sources section; the UI lists sources separately.
 - If the user asks something unrelated to Volcano, politely decline.`;
 
+/** @type {{ chunks: any[], idf: Map<string, number> } | null} */
+let cachedIndex = null;
+
+/** @type {Map<string, number[]>} */
+const hitsByIp = new Map();
+
 function loadIndex() {
+  if (cachedIndex) return cachedIndex;
   const raw = readFileSync(join(__dirname, "docs-index.json"), "utf8");
-  return JSON.parse(raw);
+  const parsed = JSON.parse(raw);
+  cachedIndex = {
+    chunks: parsed.chunks,
+    idf: buildIdf(parsed.chunks),
+  };
+  return cachedIndex;
+}
+
+function clientIp(req) {
+  const forwarded = req.headers.get("x-forwarded-for");
+  if (forwarded) return forwarded.split(",")[0].trim();
+  return req.headers.get("x-nf-client-connection-ip") || "unknown";
+}
+
+function rateLimited(ip) {
+  const now = Date.now();
+  const prev = (hitsByIp.get(ip) || []).filter((t) => now - t < RATE_WINDOW_MS);
+  if (prev.length >= RATE_LIMIT) {
+    hitsByIp.set(ip, prev);
+    return true;
+  }
+  prev.push(now);
+  hitsByIp.set(ip, prev);
+  return false;
 }
 
 function corsHeaders(origin) {
-  const allowed =
-    origin && /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/.test(origin)
-      ? origin
-      : "https://volcano.sh";
+  let allow = "https://volcano.sh";
+  if (origin) {
+    try {
+      const { hostname, protocol } = new URL(origin);
+      if (
+        (hostname === "localhost" || hostname === "127.0.0.1") &&
+        (protocol === "http:" || protocol === "https:")
+      ) {
+        allow = origin;
+      } else if (hostname === "volcano.sh" || hostname.endsWith(".netlify.app")) {
+        allow = origin;
+      }
+    } catch {
+      // keep default
+    }
+  }
   return {
-    "Access-Control-Allow-Origin": allowed,
+    "Access-Control-Allow-Origin": allow,
     "Access-Control-Allow-Methods": "POST, OPTIONS",
     "Access-Control-Allow-Headers": "Content-Type",
   };
@@ -60,6 +104,14 @@ export default async (req) => {
     return json(405, { error: "Method not allowed" }, headers);
   }
 
+  if (rateLimited(clientIp(req))) {
+    return json(
+      429,
+      { error: "Too many questions. Please try again later." },
+      headers,
+    );
+  }
+
   let body;
   try {
     body = await req.json();
@@ -72,7 +124,7 @@ export default async (req) => {
   if (question.length > MAX_QUESTION_LEN) {
     return json(
       400,
-      { error: `question must be ≤ ${MAX_QUESTION_LEN} characters` },
+      { error: `question must be <= ${MAX_QUESTION_LEN} characters` },
       headers,
     );
   }
@@ -92,13 +144,16 @@ export default async (req) => {
     );
   }
 
-  const sources = retrieve(index.chunks, question, { topK: 6 });
+  const sources = retrieve(index.chunks, question, {
+    topK: 6,
+    idf: index.idf,
+  });
   if (!sources.length) {
     return json(
       200,
       {
         answer:
-          "I couldn't find relevant Volcano documentation for that question. Try asking about Queues, VolcanoJob, the scheduler, or installation — or browse the docs at /docs/Home/Introduction.",
+          "I could not find relevant Volcano documentation for that question. Try asking about Queues, VolcanoJob, the scheduler, or installation, or browse /docs/Home/Introduction.",
         sources: [],
       },
       headers,
@@ -110,7 +165,7 @@ export default async (req) => {
       503,
       {
         error:
-          "AI Gateway is not available. Deploy on Netlify with a credit-based plan, or set OPENAI_API_KEY for local use. Run via `netlify dev` for local AI Gateway access.",
+          "Ask AI backend is not configured. Use netlify dev locally, or ensure Netlify AI Gateway / OPENAI_API_KEY is available in deploy.",
       },
       headers,
     );
@@ -144,7 +199,7 @@ export default async (req) => {
     });
     const answer =
       res.output_text?.trim() ||
-      "I couldn't generate an answer. Please try again or check the documentation.";
+      "I could not generate an answer. Please try again or check the documentation.";
 
     const seen = new Set();
     const uniqueSources = [];

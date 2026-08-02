@@ -16,23 +16,48 @@ export default function AskAI() {
   const [messages, setMessages] = useState([]);
   const listRef = useRef(null);
   const inputRef = useRef(null);
+  const busyRef = useRef(false);
+  const messagesRef = useRef([]);
+
+  useEffect(() => {
+    busyRef.current = busy;
+  }, [busy]);
+
+  useEffect(() => {
+    messagesRef.current = messages;
+  }, [messages]);
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
 
   useEffect(() => {
-    const onOpen = () => setOpen(true);
+    const onOpen = (event) => {
+      if (event.target?.closest?.(".ask-ai-nav-btn")) {
+        event.preventDefault();
+        setOpen(true);
+        return;
+      }
+      if (event.type === "volcano-ask-ai-open") setOpen(true);
+    };
+
+    // Delegate so the navbar button still works after client-side navigations.
+    document.addEventListener("click", onOpen);
     window.addEventListener("volcano-ask-ai-open", onOpen);
-
-    const buttons = document.querySelectorAll(".ask-ai-nav-btn");
-    buttons.forEach((btn) => btn.addEventListener("click", onOpen));
-
     return () => {
+      document.removeEventListener("click", onOpen);
       window.removeEventListener("volcano-ask-ai-open", onOpen);
-      buttons.forEach((btn) => btn.removeEventListener("click", onOpen));
     };
   }, []);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKey = (event) => {
+      if (event.key === "Escape") setOpen(false);
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
 
   useEffect(() => {
     if (listRef.current) {
@@ -42,14 +67,14 @@ export default function AskAI() {
 
   const ask = useCallback(async (question) => {
     const q = question.trim();
-    if (!q || busy) return;
+    if (!q || busyRef.current) return;
 
     setError(null);
     setBusy(true);
     setInput("");
     setMessages((prev) => [...prev, { role: "user", content: q }]);
 
-    const history = messages
+    const history = messagesRef.current
       .filter((m) => m.role === "user" || m.role === "assistant")
       .map((m) => ({ role: m.role, content: m.content }));
 
@@ -74,12 +99,12 @@ export default function AskAI() {
     } catch (e) {
       setError(
         e.message ||
-          "Ask AI is unavailable. Use `netlify dev` locally, or check the Netlify AI Gateway on deploy.",
+          "Ask AI is unavailable. Run with netlify dev locally, or check the Ask AI backend on deploy.",
       );
     } finally {
       setBusy(false);
     }
-  }, [busy, messages]);
+  }, []);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -92,6 +117,7 @@ export default function AskAI() {
         <div
           className={styles.panel}
           role="dialog"
+          aria-modal="true"
           aria-label="Ask AI about Volcano"
         >
           <div className={styles.header}>
@@ -156,7 +182,7 @@ export default function AskAI() {
 
             {busy && (
               <div className={styles.assistantMsg}>
-                <div className={styles.bubble}>Thinking…</div>
+                <div className={styles.bubble}>Looking up docs...</div>
               </div>
             )}
 
@@ -169,7 +195,7 @@ export default function AskAI() {
               className={styles.input}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about Volcano…"
+              placeholder="Ask about Volcano..."
               maxLength={500}
               disabled={busy}
               aria-label="Question"

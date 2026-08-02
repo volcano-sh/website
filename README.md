@@ -141,18 +141,15 @@ website/
 
 ## Ask AI
 
-The site includes an **Ask AI** floating assistant that answers questions from the official English docs (RAG):
+Ask AI answers questions from the English docs:
 
-1. `npm run build:ask-ai-index` chunks `docs/` into `netlify/functions/ask-ai/docs-index.json` (also runs on `prestart` / `prebuild`).
-2. `POST /api/ask-ai` retrieves relevant chunks and calls an LLM via [Netlify AI Gateway](https://docs.netlify.com/build/ai-gateway/overview/).
-3. The widget in `src/components/AskAI` is mounted site-wide from `src/theme/Root.js`.
+1. `npm run build:ask-ai-index` builds `netlify/functions/ask-ai/docs-index.json` (also on `prestart` / `prebuild`).
+2. `POST /api/ask-ai` retrieves chunks and calls an LLM (Netlify AI Gateway, or `OPENAI_API_KEY`).
+3. UI: `src/components/AskAI`, mounted from `src/theme/Root.js`.
 
-Optional env vars:
-
-- `ASK_AI_MODEL` — model id (default `gpt-5-mini`)
-- `OPENAI_API_KEY` — only needed if you are not using Netlify AI Gateway
-
-Run retrieval checks with `npm run test:ask-ai`.
+Env vars: `ASK_AI_MODEL` (default `gpt-5-mini`), optional `OPENAI_API_KEY`.
+Checks: `npm run test:ask-ai`.
+Production needs a Netlify credit-based plan for AI Gateway, or a configured OpenAI key.
 
 ## How to add a new doc
 

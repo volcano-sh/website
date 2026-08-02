@@ -1,6 +1,5 @@
 /**
- * Lightweight keyword retrieval over docs chunks.
- * ponytail: TF-IDF + title/URL boosts; swap for embeddings if recall dips.
+ * Keyword retrieval over docs chunks (TF-IDF + title/URL boosts).
  */
 import process from "node:process";
 import { pathToFileURL } from "node:url";
@@ -52,7 +51,7 @@ function countMatches(text, token) {
   return (text.match(re) || []).length;
 }
 
-function buildIdf(chunks) {
+export function buildIdf(chunks) {
   const df = new Map();
   for (const chunk of chunks) {
     const seen = new Set(tokenize(`${chunk.title} ${chunk.content}`));
@@ -71,7 +70,9 @@ function scoreChunk(tokens, chunk, idf) {
   const url = chunk.url.toLowerCase();
   const body = chunk.content.toLowerCase();
   let score = 0;
-  const aboutScheduler = tokens.some((t) => t === "scheduler" || t === "scheduling");
+  const aboutScheduler = tokens.some(
+    (t) => t === "scheduler" || t === "scheduling",
+  );
 
   for (const t of tokens) {
     const w = idf.get(t) || 1;
@@ -83,13 +84,10 @@ function scoreChunk(tokens, chunk, idf) {
     if (urlHits) score += 8 * w * urlHits;
     if (bodyHits) score += w * Math.min(bodyHits, 4);
 
-    // Exact concept-page boost: /docs/Concepts/Queue for token "queue"
     if (url.includes(`/concepts/${t}`)) score += 20 * w;
-    // Section boost: /docs/Scheduler/... for token "scheduler"
     if (url.includes(`/docs/${t}/`) || url.includes(`/${t}/`)) score += 10 * w;
   }
 
-  // Prefer overview / getting-started pages over deep how-tos when tied
   if (/\/(overview|introduction|installation)$/i.test(chunk.url)) score += 10;
   if (/\/userguide\//i.test(chunk.url)) score -= 2;
   if (/\/keyfeatures\//i.test(chunk.url) && aboutScheduler) score -= 8;
@@ -97,20 +95,19 @@ function scoreChunk(tokens, chunk, idf) {
   return score;
 }
 
-export function retrieve(chunks, query, { topK = 6 } = {}) {
+export function retrieve(chunks, query, { topK = 6, idf } = {}) {
   const tokens = expandTokens(tokenize(query));
   if (!tokens.length) return [];
 
-  const idf = buildIdf(chunks);
+  const weights = idf || buildIdf(chunks);
   return chunks
-    .map((chunk) => ({ chunk, score: scoreChunk(tokens, chunk, idf) }))
+    .map((chunk) => ({ chunk, score: scoreChunk(tokens, chunk, weights) }))
     .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score)
     .slice(0, topK)
     .map((r) => r.chunk);
 }
 
-// Runnable check: node netlify/functions/ask-ai/retrieve.mjs
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const sample = [
     {
