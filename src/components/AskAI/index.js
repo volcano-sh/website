@@ -200,15 +200,16 @@ export default function AskAI() {
         </div>
       )}
 
-      <button
-        type="button"
-        className={styles.fab}
-        onClick={() => setOpen((v) => !v)}
-        aria-expanded={open}
-        aria-label={open ? "Close Ask AI" : "Open Ask AI"}
-      >
-        {open ? "Close" : "Ask AI"}
-      </button>
+      {!open && (
+        <button
+          type="button"
+          className={styles.fab}
+          onClick={() => setOpen(true)}
+          aria-label="Open Ask AI"
+        >
+          Ask AI
+        </button>
+      )}
     </div>
   );
 }
