@@ -2,10 +2,9 @@ import process from "node:process";
 import { readFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import OpenAI from "openai";
 import { buildIdf, retrieve } from "./retrieve.mjs";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const FN_DIR = dirname(fileURLToPath(import.meta.url));
 const MAX_QUESTION_LEN = 500;
 const MAX_HISTORY = 6;
 const RATE_LIMIT = 20;
@@ -24,7 +23,9 @@ const hitsByIp = new Map();
 
 function loadIndex() {
   if (cachedIndex) return cachedIndex;
-  const parsed = JSON.parse(readFileSync(join(__dirname, "docs-index.json"), "utf8"));
+  const parsed = JSON.parse(
+    readFileSync(join(FN_DIR, "docs-index.json"), "utf8"),
+  );
   cachedIndex = { chunks: parsed.chunks, idf: buildIdf(parsed.chunks) };
   return cachedIndex;
 }
@@ -57,7 +58,10 @@ function corsHeaders(origin) {
         (protocol === "http:" || protocol === "https:")
       ) {
         allow = origin;
-      } else if (hostname === "volcano.sh" || hostname.endsWith(".netlify.app")) {
+      } else if (
+        hostname === "volcano.sh" ||
+        hostname.endsWith(".netlify.app")
+      ) {
         allow = origin;
       }
     } catch {
@@ -84,6 +88,42 @@ function buildContext(chunks) {
     .join("\n\n---\n\n");
 }
 
+async function callModel(messages) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey && !process.env.OPENAI_BASE_URL) {
+    throw new Error("missing OPENAI_API_KEY");
+  }
+
+  const base = (process.env.OPENAI_BASE_URL || "https://api.openai.com/v1").replace(
+    /\/$/,
+    "",
+  );
+  const model = process.env.ASK_AI_MODEL || "gpt-4o-mini";
+
+  const res = await fetch(`${base}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(apiKey ? { Authorization: `Bearer ${apiKey}` } : {}),
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.2,
+      messages,
+    }),
+  });
+
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) {
+    const msg = data?.error?.message || `model error (${res.status})`;
+    throw new Error(msg);
+  }
+
+  const text = data?.choices?.[0]?.message?.content?.trim();
+  if (!text) throw new Error("empty model response");
+  return text;
+}
+
 export default async (req) => {
   const headers = corsHeaders(req.headers.get("origin") || "");
 
@@ -107,7 +147,11 @@ export default async (req) => {
   const question = String(body?.question || "").trim();
   if (!question) return json(400, { error: "question is required" }, headers);
   if (question.length > MAX_QUESTION_LEN) {
-    return json(400, { error: `question too long (max ${MAX_QUESTION_LEN})` }, headers);
+    return json(
+      400,
+      { error: `question too long (max ${MAX_QUESTION_LEN})` },
+      headers,
+    );
   }
 
   const history = Array.isArray(body?.history)
@@ -118,10 +162,17 @@ export default async (req) => {
   try {
     index = loadIndex();
   } catch {
-    return json(503, { error: "Docs index missing. Run npm run build:ask-ai-index" }, headers);
+    return json(
+      503,
+      { error: "Docs index missing. Run npm run build:ask-ai-index" },
+      headers,
+    );
   }
 
-  const sources = retrieve(index.chunks, question, { topK: 6, idf: index.idf });
+  const sources = retrieve(index.chunks, question, {
+    topK: 6,
+    idf: index.idf,
+  });
   if (!sources.length) {
     return json(
       200,
@@ -139,34 +190,26 @@ export default async (req) => {
       503,
       {
         error:
-          "Ask AI is not configured. Run with `netlify dev`, or set OPENAI_API_KEY / Netlify AI Gateway.",
+          "Ask AI is not configured. Run with `netlify dev`, or set OPENAI_API_KEY.",
       },
       headers,
     );
   }
 
-  const input = [];
+  const messages = [{ role: "system", content: SYSTEM }];
   for (const turn of history) {
     if (!turn || typeof turn.content !== "string") continue;
     if (turn.role === "user" || turn.role === "assistant") {
-      input.push({ role: turn.role, content: turn.content.slice(0, 2000) });
+      messages.push({ role: turn.role, content: turn.content.slice(0, 2000) });
     }
   }
-  input.push({
+  messages.push({
     role: "user",
     content: `Documentation context:\n\n${buildContext(sources)}\n\n---\n\nQuestion: ${question}`,
   });
 
   try {
-    const client = new OpenAI();
-    const res = await client.responses.create({
-      model: process.env.ASK_AI_MODEL || "gpt-5-mini",
-      instructions: SYSTEM,
-      input,
-    });
-    const answer =
-      res.output_text?.trim() ||
-      "Could not generate an answer. Please try again.";
+    const answer = await callModel(messages);
 
     const seen = new Set();
     const uniqueSources = [];
@@ -179,7 +222,11 @@ export default async (req) => {
     return json(200, { answer, sources: uniqueSources }, headers);
   } catch (e) {
     console.error("ask-ai error", e);
-    return json(500, { error: "Failed to generate answer" }, headers);
+    return json(
+      500,
+      { error: e.message || "Failed to generate answer" },
+      headers,
+    );
   }
 };
 

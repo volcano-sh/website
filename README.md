@@ -144,7 +144,7 @@ Docs Q&A widget backed by `POST /api/ask-ai`.
 
 - Index: `npm run build:ask-ai-index` (also runs on `prestart` / `prebuild`)
 - Local: `npx netlify-cli@latest dev`
-- Optional env: `ASK_AI_MODEL`, `OPENAI_API_KEY`
+- Optional env: `ASK_AI_MODEL` (default `gpt-4o-mini`), `OPENAI_API_KEY`
 - Check retrieval: `npm run test:ask-ai`
 
 ## How to add a new doc

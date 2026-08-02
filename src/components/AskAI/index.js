@@ -76,7 +76,13 @@ export default function AskAI() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: q, history }),
       });
-      const data = await res.json().catch(() => ({}));
+      const raw = await res.text();
+      let data = {};
+      try {
+        data = raw ? JSON.parse(raw) : {};
+      } catch {
+        data = { error: raw.slice(0, 200) };
+      }
       if (!res.ok) {
         throw new Error(data.error || `Request failed (${res.status})`);
       }
