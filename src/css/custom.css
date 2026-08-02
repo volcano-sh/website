@@ -86,13 +86,12 @@ b, strong {
   margin-left: 8px;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: 20px;
   transition: opacity .2s ease;
 }
 
-.header-github-link { background-image: url("/img/github.svg"); }
-.header-x-link { background-image: url("/img/x.svg"); }
-.header-slack-link { background-image: url("/img/slack.svg"); }
+.header-github-link { background-image: url("/img/github.svg"); background-size: 23px; }
+.header-x-link { background-image: url("/img/x.svg"); background-size: 18px; }
+.header-slack-link { background-image: url("/img/slack.svg"); background-size: 22px; }
 
 .header-github-link:hover,
 .header-x-link:hover,
@@ -128,4 +127,15 @@ b, strong {
 
 .theme-edit-this-page {
   display: none !important;
+}
+
+
+[data-theme="dark"] .header-github-link,
+[data-theme="dark"] .header-x-link {
+  filter: invert(1) brightness(100%);
+}
+
+[data-theme="dark"] .navbar__logo {
+
+  filter: invert(1) hue-rotate(180deg) brightness(1.1);
 }
