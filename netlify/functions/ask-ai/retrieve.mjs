@@ -1,6 +1,3 @@
-/**
- * Keyword retrieval over docs chunks (TF-IDF + title/URL boosts).
- */
 import process from "node:process";
 import { pathToFileURL } from "node:url";
 
@@ -59,9 +56,7 @@ export function buildIdf(chunks) {
   }
   const n = chunks.length || 1;
   const idf = new Map();
-  for (const [t, c] of df) {
-    idf.set(t, Math.log(1 + n / (1 + c)));
-  }
+  for (const [t, c] of df) idf.set(t, Math.log(1 + n / (1 + c)));
   return idf;
 }
 
@@ -70,20 +65,14 @@ function scoreChunk(tokens, chunk, idf) {
   const url = chunk.url.toLowerCase();
   const body = chunk.content.toLowerCase();
   let score = 0;
-  const aboutScheduler = tokens.some(
-    (t) => t === "scheduler" || t === "scheduling",
-  );
+  const aboutScheduler = tokens.some((t) => t === "scheduler" || t === "scheduling");
 
   for (const t of tokens) {
     const w = idf.get(t) || 1;
-    const titleHits = countMatches(title, t);
-    const urlHits = countMatches(url.replace(/\//g, " "), t);
+    if (countMatches(title, t)) score += 12 * w;
+    if (countMatches(url.replace(/\//g, " "), t)) score += 8 * w;
     const bodyHits = countMatches(body, t);
-
-    if (titleHits) score += 12 * w * titleHits;
-    if (urlHits) score += 8 * w * urlHits;
     if (bodyHits) score += w * Math.min(bodyHits, 4);
-
     if (url.includes(`/concepts/${t}`)) score += 20 * w;
     if (url.includes(`/docs/${t}/`) || url.includes(`/${t}/`)) score += 10 * w;
   }
@@ -91,14 +80,12 @@ function scoreChunk(tokens, chunk, idf) {
   if (/\/(overview|introduction|installation)$/i.test(chunk.url)) score += 10;
   if (/\/userguide\//i.test(chunk.url)) score -= 2;
   if (/\/keyfeatures\//i.test(chunk.url) && aboutScheduler) score -= 8;
-
   return score;
 }
 
 export function retrieve(chunks, query, { topK = 6, idf } = {}) {
   const tokens = expandTokens(tokenize(query));
   if (!tokens.length) return [];
-
   const weights = idf || buildIdf(chunks);
   return chunks
     .map((chunk) => ({ chunk, score: scoreChunk(tokens, chunk, weights) }))
@@ -108,23 +95,18 @@ export function retrieve(chunks, query, { topK = 6, idf } = {}) {
     .map((r) => r.chunk);
 }
 
+// quick smoke: node netlify/functions/ask-ai/retrieve.mjs
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  const sample = [
-    {
-      title: "Queue",
-      url: "/docs/Concepts/Queue",
-      content: "Queue is a collection of PodGroups used for resource division.",
-    },
-    {
-      title: "VolcanoJob",
-      url: "/docs/Concepts/VolcanoJob",
-      content: "VolcanoJob defines a batch job for scheduling.",
-    },
-  ];
-  const hits = retrieve(sample, "What is a Queue in Volcano?");
+  const hits = retrieve(
+    [
+      { title: "Queue", url: "/docs/Concepts/Queue", content: "Queue is a collection of PodGroups." },
+      { title: "VolcanoJob", url: "/docs/Concepts/VolcanoJob", content: "VolcanoJob defines a batch job." },
+    ],
+    "What is a Queue in Volcano?",
+  );
   if (hits[0]?.url !== "/docs/Concepts/Queue") {
-    console.error("retrieve check failed", hits);
+    console.error("retrieve failed", hits);
     process.exit(1);
   }
-  console.log("retrieve.mjs ok", hits.map((h) => h.url));
+  console.log("retrieve ok");
 }

@@ -32,22 +32,14 @@ export default function AskAI() {
   }, [open]);
 
   useEffect(() => {
-    const onOpen = (event) => {
+    const onClick = (event) => {
       if (event.target?.closest?.(".ask-ai-nav-btn")) {
         event.preventDefault();
         setOpen(true);
-        return;
       }
-      if (event.type === "volcano-ask-ai-open") setOpen(true);
     };
-
-    // Delegate so the navbar button still works after client-side navigations.
-    document.addEventListener("click", onOpen);
-    window.addEventListener("volcano-ask-ai-open", onOpen);
-    return () => {
-      document.removeEventListener("click", onOpen);
-      window.removeEventListener("volcano-ask-ai-open", onOpen);
-    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
   }, []);
 
   useEffect(() => {
@@ -97,19 +89,11 @@ export default function AskAI() {
         },
       ]);
     } catch (e) {
-      setError(
-        e.message ||
-          "Ask AI is unavailable. Run with netlify dev locally, or check the Ask AI backend on deploy.",
-      );
+      setError(e.message || "Ask AI is unavailable right now.");
     } finally {
       setBusy(false);
     }
   }, []);
-
-  const onSubmit = (e) => {
-    e.preventDefault();
-    ask(input);
-  };
 
   return (
     <div className={styles.root}>
@@ -118,32 +102,27 @@ export default function AskAI() {
           className={styles.panel}
           role="dialog"
           aria-modal="true"
-          aria-label="Ask AI about Volcano"
+          aria-label="Ask AI"
         >
           <div className={styles.header}>
             <div>
               <div className={styles.title}>Ask AI</div>
-              <div className={styles.subtitle}>
-                Answers from official Volcano docs
-              </div>
+              <div className={styles.subtitle}>Based on Volcano docs</div>
             </div>
             <button
               type="button"
               className={styles.iconBtn}
               onClick={() => setOpen(false)}
-              aria-label="Close Ask AI"
+              aria-label="Close"
             >
-              ×
+              x
             </button>
           </div>
 
           <div className={styles.messages} ref={listRef}>
             {messages.length === 0 && (
               <div className={styles.welcome}>
-                <p>
-                  Ask questions about Volcano concepts, scheduling, and
-                  contributing. Answers include links to the docs.
-                </p>
+                <p>Ask about Volcano concepts, scheduling, or contributing.</p>
                 <div className={styles.suggestions}>
                   {SUGGESTIONS.map((s) => (
                     <button
@@ -163,9 +142,7 @@ export default function AskAI() {
             {messages.map((m, i) => (
               <div
                 key={i}
-                className={
-                  m.role === "user" ? styles.userMsg : styles.assistantMsg
-                }
+                className={m.role === "user" ? styles.userMsg : styles.assistantMsg}
               >
                 <div className={styles.bubble}>{m.content}</div>
                 {m.sources?.length > 0 && (
@@ -182,20 +159,26 @@ export default function AskAI() {
 
             {busy && (
               <div className={styles.assistantMsg}>
-                <div className={styles.bubble}>Looking up docs...</div>
+                <div className={styles.bubble}>Searching docs...</div>
               </div>
             )}
 
             {error && <div className={styles.error}>{error}</div>}
           </div>
 
-          <form className={styles.form} onSubmit={onSubmit}>
+          <form
+            className={styles.form}
+            onSubmit={(e) => {
+              e.preventDefault();
+              ask(input);
+            }}
+          >
             <input
               ref={inputRef}
               className={styles.input}
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              placeholder="Ask about Volcano..."
+              placeholder="Ask a question"
               maxLength={500}
               disabled={busy}
               aria-label="Question"

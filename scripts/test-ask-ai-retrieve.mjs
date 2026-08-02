@@ -1,12 +1,10 @@
-#!/usr/bin/env node
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { retrieve } from "../netlify/functions/ask-ai/retrieve.mjs";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const indexPath = path.join(
-  __dirname,
+  path.dirname(fileURLToPath(import.meta.url)),
   "..",
   "netlify",
   "functions",
@@ -17,38 +15,25 @@ const indexPath = path.join(
 const index = JSON.parse(fs.readFileSync(indexPath, "utf8"));
 
 const cases = [
-  {
-    q: "What is a Queue in Volcano?",
-    expectUrlPart: "/docs/Concepts/Queue",
-  },
-  {
-    q: "How do I deploy Volcano on Kubernetes?",
-    expectUrlPart: "/docs/GettingStarted/Installation",
-  },
-  {
-    q: "How does the scheduler work?",
-    expectUrlPart: "/docs/Scheduler/Overview",
-  },
-  {
-    q: "How can I start contributing to Volcano?",
-    expectUrlPart: "/docs/Contribution",
-  },
+  ["What is a Queue in Volcano?", "/docs/Concepts/Queue"],
+  ["How do I deploy Volcano on Kubernetes?", "/docs/GettingStarted/Installation"],
+  ["How does the scheduler work?", "/docs/Scheduler/Overview"],
+  ["How can I start contributing to Volcano?", "/docs/Contribution"],
 ];
 
 let failed = 0;
-for (const c of cases) {
-  const hits = retrieve(index.chunks, c.q, { topK: 6 });
-  const ok = hits.some((h) => h.url.includes(c.expectUrlPart));
-  if (!ok) {
+for (const [q, expect] of cases) {
+  const hits = retrieve(index.chunks, q, { topK: 6 });
+  if (!hits.some((h) => h.url.includes(expect))) {
     failed++;
-    console.error("FAIL", c.q, "→", hits.map((h) => h.url));
+    console.error("FAIL", q, hits.map((h) => h.url));
   } else {
-    console.log("ok", c.q, "→", hits[0].url);
+    console.log("ok", q, "->", hits[0].url);
   }
 }
 
 if (failed) {
-  console.error(`${failed} retrieval case(s) failed`);
+  console.error(failed + " failed");
   process.exit(1);
 }
-console.log(`retrieval checks passed (${index.chunks.length} chunks)`);
+console.log("ok,", index.chunks.length, "chunks");

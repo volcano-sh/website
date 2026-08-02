@@ -11,29 +11,21 @@ const MAX_HISTORY = 6;
 const RATE_LIMIT = 20;
 const RATE_WINDOW_MS = 60 * 60 * 1000;
 
-const SYSTEM = `You are the Ask AI assistant for Volcano (https://volcano.sh), a CNCF cloud-native batch scheduling system.
+const SYSTEM = `You answer questions about Volcano (https://volcano.sh) using only the documentation context below.
 
-Rules:
-- Answer ONLY using the provided documentation context. If the context is insufficient, say you do not know and point to the closest related doc URLs from the context.
-- Do not invent APIs, flags, or behavior not present in the context.
-- Prefer concise, practical answers. Use short bullet lists when helpful.
-- Do not add a Sources section; the UI lists sources separately.
-- If the user asks something unrelated to Volcano, politely decline.`;
+- If the context is not enough, say you don't know and mention the closest doc URLs from the context.
+- Don't invent APIs or behavior.
+- Keep answers short. Bullet lists are fine.
+- Don't add a Sources section; the UI shows links.
+- Decline off-topic questions.`;
 
-/** @type {{ chunks: any[], idf: Map<string, number> } | null} */
 let cachedIndex = null;
-
-/** @type {Map<string, number[]>} */
 const hitsByIp = new Map();
 
 function loadIndex() {
   if (cachedIndex) return cachedIndex;
-  const raw = readFileSync(join(__dirname, "docs-index.json"), "utf8");
-  const parsed = JSON.parse(raw);
-  cachedIndex = {
-    chunks: parsed.chunks,
-    idf: buildIdf(parsed.chunks),
-  };
+  const parsed = JSON.parse(readFileSync(join(__dirname, "docs-index.json"), "utf8"));
+  cachedIndex = { chunks: parsed.chunks, idf: buildIdf(parsed.chunks) };
   return cachedIndex;
 }
 
@@ -69,7 +61,7 @@ function corsHeaders(origin) {
         allow = origin;
       }
     } catch {
-      // keep default
+      // ignore bad Origin
     }
   }
   return {
@@ -93,23 +85,16 @@ function buildContext(chunks) {
 }
 
 export default async (req) => {
-  const origin = req.headers.get("origin") || "";
-  const headers = corsHeaders(origin);
+  const headers = corsHeaders(req.headers.get("origin") || "");
 
   if (req.method === "OPTIONS") {
     return new Response(null, { status: 204, headers });
   }
-
   if (req.method !== "POST") {
     return json(405, { error: "Method not allowed" }, headers);
   }
-
   if (rateLimited(clientIp(req))) {
-    return json(
-      429,
-      { error: "Too many questions. Please try again later." },
-      headers,
-    );
+    return json(429, { error: "Rate limit exceeded. Try again later." }, headers);
   }
 
   let body;
@@ -122,11 +107,7 @@ export default async (req) => {
   const question = String(body?.question || "").trim();
   if (!question) return json(400, { error: "question is required" }, headers);
   if (question.length > MAX_QUESTION_LEN) {
-    return json(
-      400,
-      { error: `question must be <= ${MAX_QUESTION_LEN} characters` },
-      headers,
-    );
+    return json(400, { error: `question too long (max ${MAX_QUESTION_LEN})` }, headers);
   }
 
   const history = Array.isArray(body?.history)
@@ -137,23 +118,16 @@ export default async (req) => {
   try {
     index = loadIndex();
   } catch {
-    return json(
-      503,
-      { error: "Docs index missing. Run: npm run build:ask-ai-index" },
-      headers,
-    );
+    return json(503, { error: "Docs index missing. Run npm run build:ask-ai-index" }, headers);
   }
 
-  const sources = retrieve(index.chunks, question, {
-    topK: 6,
-    idf: index.idf,
-  });
+  const sources = retrieve(index.chunks, question, { topK: 6, idf: index.idf });
   if (!sources.length) {
     return json(
       200,
       {
         answer:
-          "I could not find relevant Volcano documentation for that question. Try asking about Queues, VolcanoJob, the scheduler, or installation, or browse /docs/Home/Introduction.",
+          "No matching docs found. Try asking about Queues, VolcanoJob, the scheduler, or installation.",
         sources: [],
       },
       headers,
@@ -165,58 +139,47 @@ export default async (req) => {
       503,
       {
         error:
-          "Ask AI backend is not configured. Use netlify dev locally, or ensure Netlify AI Gateway / OPENAI_API_KEY is available in deploy.",
+          "Ask AI is not configured. Run with `netlify dev`, or set OPENAI_API_KEY / Netlify AI Gateway.",
       },
       headers,
     );
   }
 
-  const context = buildContext(sources);
   const input = [];
-
   for (const turn of history) {
     if (!turn || typeof turn.content !== "string") continue;
     if (turn.role === "user" || turn.role === "assistant") {
-      input.push({
-        role: turn.role,
-        content: turn.content.slice(0, 2000),
-      });
+      input.push({ role: turn.role, content: turn.content.slice(0, 2000) });
     }
   }
-
   input.push({
     role: "user",
-    content: `Documentation context:\n\n${context}\n\n---\n\nQuestion: ${question}`,
+    content: `Documentation context:\n\n${buildContext(sources)}\n\n---\n\nQuestion: ${question}`,
   });
 
   try {
     const client = new OpenAI();
-    const model = process.env.ASK_AI_MODEL || "gpt-5-mini";
     const res = await client.responses.create({
-      model,
+      model: process.env.ASK_AI_MODEL || "gpt-5-mini",
       instructions: SYSTEM,
       input,
     });
     const answer =
       res.output_text?.trim() ||
-      "I could not generate an answer. Please try again or check the documentation.";
+      "Could not generate an answer. Please try again.";
 
     const seen = new Set();
     const uniqueSources = [];
     for (const s of sources) {
       if (seen.has(s.url)) continue;
       seen.add(s.url);
-      uniqueSources.push({ title: s.title.split(" — ")[0], url: s.url });
+      uniqueSources.push({ title: s.title.split(" - ")[0], url: s.url });
     }
 
     return json(200, { answer, sources: uniqueSources }, headers);
   } catch (e) {
     console.error("ask-ai error", e);
-    return json(
-      500,
-      { error: "Failed to generate answer. Please try again." },
-      headers,
-    );
+    return json(500, { error: "Failed to generate answer" }, headers);
   }
 };
 

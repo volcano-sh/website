@@ -64,13 +64,13 @@ Here's a quick guide to adding or updating docs and previewing your changes loca
    npm run start -- --locale zh-Hans
    ```
 
-   To use the **Ask AI** assistant locally (docs RAG + Netlify AI Gateway), run with the Netlify CLI instead:
+   For Ask AI locally (needs the Netlify function):
 
    ```bash
    npx netlify-cli@latest dev
    ```
 
-   Then open **http://localhost:8888/**. Production deploys on Netlify use AI Gateway automatically (credit-based plan required).
+   Open http://localhost:8888/
 
 4. Make your changes:
 
@@ -126,11 +126,10 @@ website/
 │
 │
 ├── src/                        # Custom React components, pages, CSS
-│   └── components/AskAI/       # Floating Ask AI chat widget
 ├── static/img/                 # Images and static assets
 ├── plugins/                    # Custom Docusaurus plugins
-├── netlify/functions/ask-ai/   # Ask AI RAG API (Netlify Function)
-├── scripts/build-docs-index.mjs# Builds docs chunk index for Ask AI
+├── netlify/functions/          # Netlify Functions (Ask AI)
+├── scripts/                    # Build helpers
 │
 ├── docusaurus.config.js        # Main Docusaurus configuration
 ├── sidebar.js                  # Sidebar configuration (auto-generated from dirs)
@@ -141,15 +140,12 @@ website/
 
 ## Ask AI
 
-Ask AI answers questions from the English docs:
+Docs Q&A widget backed by `POST /api/ask-ai`.
 
-1. `npm run build:ask-ai-index` builds `netlify/functions/ask-ai/docs-index.json` (also on `prestart` / `prebuild`).
-2. `POST /api/ask-ai` retrieves chunks and calls an LLM (Netlify AI Gateway, or `OPENAI_API_KEY`).
-3. UI: `src/components/AskAI`, mounted from `src/theme/Root.js`.
-
-Env vars: `ASK_AI_MODEL` (default `gpt-5-mini`), optional `OPENAI_API_KEY`.
-Checks: `npm run test:ask-ai`.
-Production needs a Netlify credit-based plan for AI Gateway, or a configured OpenAI key.
+- Index: `npm run build:ask-ai-index` (also runs on `prestart` / `prebuild`)
+- Local: `npx netlify-cli@latest dev`
+- Optional env: `ASK_AI_MODEL`, `OPENAI_API_KEY`
+- Check retrieval: `npm run test:ask-ai`
 
 ## How to add a new doc
 

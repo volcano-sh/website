@@ -8,14 +8,14 @@
 
 .fab {
   border: none;
-  border-radius: 999px;
-  padding: 0.85rem 1.25rem;
+  border-radius: 8px;
+  padding: 0.75rem 1.1rem;
   background: var(--ifm-color-primary);
   color: #fff;
   font-weight: 700;
   font-size: 0.95rem;
   cursor: pointer;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 2px 8px var(--ifm-color-emphasis-200);
 }
 
 .fab:hover {
@@ -31,8 +31,8 @@
   background: var(--ifm-background-surface-color, #fff);
   color: var(--ifm-font-color-base);
   border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 12px;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  border-radius: 8px;
+  box-shadow: 0 8px 18px var(--ifm-color-emphasis-300);
   overflow: hidden;
 }
 
@@ -61,7 +61,7 @@
   border: none;
   background: transparent;
   color: inherit;
-  font-size: 1.4rem;
+  font-size: 1.1rem;
   line-height: 1;
   cursor: pointer;
   padding: 0 0.2rem;
@@ -126,7 +126,7 @@
 
 .bubble {
   padding: 0.65rem 0.8rem;
-  border-radius: 10px;
+  border-radius: 8px;
   font-size: 0.9rem;
   line-height: 1.45;
   white-space: pre-wrap;
