@@ -146,7 +146,7 @@ const supporters = [
     imgSrc: "img/landing/logo_openinnovation.png",
     imgWidth: "100px",
     imgHeight: "60px",
-    url: "https://www.openinnovation.ai/"
+    url: "https://openinnovation.ai/"
   }
 ];
 
