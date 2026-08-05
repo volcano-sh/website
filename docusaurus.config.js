@@ -145,6 +145,12 @@ const config = {
           dropdownActiveClassDisabled: false,
         },
         { to: "/blog", label: "Blog", position: "left" },
+        {
+          type: "html",
+          position: "left",
+          value:
+            '<button type="button" class="navbar__item navbar__link ask-ai-nav-btn">Ask AI</button>',
+        },
 
         {
           href: "https://github.com/volcano-sh/",

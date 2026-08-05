@@ -7,9 +7,11 @@
 # Generated files
 .docusaurus
 .cache-loader
+netlify/functions/ask-ai/docs-index.json
 
 # Misc
 .DS_Store
+deno.lock
 .env.local
 .env.development.local
 .env.test.local
@@ -21,3 +23,6 @@ yarn-error.log*
 
 
 
+
+# Local Netlify folder
+.netlify

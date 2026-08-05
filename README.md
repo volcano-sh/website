@@ -64,6 +64,14 @@ Here's a quick guide to adding or updating docs and previewing your changes loca
    npm run start -- --locale zh-Hans
    ```
 
+   For Ask AI locally (needs the Netlify function):
+
+   ```bash
+   npx netlify-cli@latest dev
+   ```
+
+   Open http://localhost:8888/
+
 4. Make your changes:
 
    - To **add a new doc**, create a `.md` file in the appropriate category folder under `docs/` (see [How to add a new doc](#how-to-add-a-new-doc)).
@@ -120,6 +128,8 @@ website/
 ├── src/                        # Custom React components, pages, CSS
 ├── static/img/                 # Images and static assets
 ├── plugins/                    # Custom Docusaurus plugins
+├── netlify/functions/          # Netlify Functions (Ask AI)
+├── scripts/                    # Build helpers
 │
 ├── docusaurus.config.js        # Main Docusaurus configuration
 ├── sidebar.js                  # Sidebar configuration (auto-generated from dirs)
@@ -127,6 +137,15 @@ website/
 ├── package.json                # Dependencies and npm scripts
 └── netlify.toml                # Netlify deployment configuration
 ```
+
+## Ask AI
+
+Docs Q&A widget backed by `POST /api/ask-ai`.
+
+- Index: `npm run build:ask-ai-index` (also runs on `prestart` / `prebuild`)
+- Local: `npx netlify-cli@latest dev`
+- Optional env: `ASK_AI_MODEL` (default `gpt-4o-mini`), `OPENAI_API_KEY`
+- Check retrieval: `npm run test:ask-ai`
 
 ## How to add a new doc
 
