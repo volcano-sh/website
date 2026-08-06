@@ -6,9 +6,9 @@ const config = {
   title: "Volcano",
   tagline: "Cloud native batch scheduling system",
 
-
   future: {
     v4: true,
+    faster: false,
   },
 
   url: "https://volcano.sh",
@@ -45,7 +45,15 @@ const config = {
   projectName: "website",
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "throw",
+  markdown: {
+    format: "detect",
+    mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+    },
+  },
+
+  themes: ["@docusaurus/theme-mermaid"],
 
   i18n: {
     defaultLocale: "en",
@@ -85,7 +93,7 @@ const config = {
       "classic",
       {
         docs: {
-          sidebarPath: require.resolve('./sidebar.js'),
+          sidebarPath: require.resolve("./sidebar.js"),
           showLastUpdateTime: true,
           showLastUpdateAuthor: false,
           editUrl: "https://github.com/volcano-sh/website/tree/master/",

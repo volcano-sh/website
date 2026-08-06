@@ -129,3 +129,9 @@ b, strong {
 .theme-edit-this-page {
   display: none !important;
 }
+
+/* Center Mermaid diagrams within the content column */
+.docusaurus-mermaid-container {
+  display: flex;
+  justify-content: center;
+}
