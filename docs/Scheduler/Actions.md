@@ -42,7 +42,7 @@ In a cluster, besides workloads that require explicit resource requests, there a
 
 #### Overview
 
-The preempt action is used for resource preemption between jobs in a queue , or between tasks in a job.The preempt action is a preemption step in the scheduling process, which is used to deal with high-priority scheduling problems. It is used for preemption between jobs in the same queue, or between tasks under the same job.
+The preempt action is used for resource preemption between jobs in a queue, or between tasks in a job. The preempt action is a preemption step in the scheduling process, which is used to deal with high-priority scheduling problems. It is used for preemption between jobs in the same queue, or between tasks under the same job.
 
 #### Scenario
 

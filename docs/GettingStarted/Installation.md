@@ -28,7 +28,7 @@ You can also replace `master` of above url with specific tag/branch (such as `re
 
 ### Install from code
 
-If you don't have a Kubernetes cluster, try one-click install from code base.This way is only available for x86_64 temporarily.
+If you don't have a Kubernetes cluster, try one-click install from code base. This way is only available for x86_64 temporarily.
 
 ```
 git clone https://github.com/volcano-sh/volcano.git

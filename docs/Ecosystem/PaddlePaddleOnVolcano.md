@@ -208,7 +208,7 @@ Deploy under the cluster terminal.
 kubectl apply -f ctr-volcano.yaml
 ```
 
-Query if the job is running properly.If the PodGroup cannot meet the scheduling conditions, check that the cluster has sufficient resources available.
+Query if the job is running properly. If the PodGroup cannot meet the scheduling conditions, check that the cluster has sufficient resources available.
 
 ```
 kubectl get podgroup
