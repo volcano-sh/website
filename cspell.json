@@ -1,0 +1,57 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "import": [
+    "@cspell/dict-en-common-misspellings/cspell-ext.json",
+    "@cspell/dict-markdown/cspell-ext.json",
+    "@cspell/dict-k8s/cspell-ext.json"
+  ],
+  "dictionaries": [
+    "en_us",
+    "companies",
+    "softwareTerms",
+    "typescript",
+    "node",
+    "npm",
+    "html",
+    "css",
+    "bash",
+    "docker",
+    "k8s",
+    "project-terms"
+  ],
+  "dictionaryDefinitions": [
+    {
+      "name": "project-terms",
+      "path": "./.cspell/project-words.txt",
+      "addWords": true
+    }
+  ],
+  "ignorePaths": [
+    "node_modules/**",
+    "package-lock.json",
+    "build/**",
+    ".docusaurus/**",
+    "static/**",
+    "i18n/**",
+    "versioned_docs/**",
+    "versioned_sidebars/**",
+    "assets/**",
+    "src/**",
+    "plugins/**"
+  ],
+  "overrides": [
+    {
+      "filename": "**/*.{md,mdx}",
+      "ignoreRegExpList": [
+        "MarkdownLink",
+        "MarkdownCodeBlocks",
+        "/`[^`]+`/g",
+        "/https?:\\/\\/[^\\s)]+/g",
+        "/<[A-Za-z][^>]*>/g"
+      ]
+    }
+  ],
+  "allowCompoundWords": false,
+  "useGitignore": true
+}

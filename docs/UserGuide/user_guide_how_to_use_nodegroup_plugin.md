@@ -5,7 +5,7 @@ title: "Nodegroup Plugin User Guide"
 
 ## Introduction
 
-**Nodegroup plugin** is designed to isolate resources by assigning labels to nodes and set node label affinty on Queue.
+**Nodegroup plugin** is designed to isolate resources by assigning labels to nodes and set node label affinity on Queue.
 
 ## Usage
 
@@ -82,7 +82,7 @@ spec:
 EOF
 ```
 
-### validate queue affinity and antiAffinity rules is effected
+### Validate that queue affinity and antiAffinity rules take effect
 
 Query pod information and verify whether the pod has been scheduled on the correct node. The pod should be scheduled on nodes with
 label `nodeGroupAffinity.requiredDuringSchedulingIgnoredDuringExecution` or `nodeGroupAffinity.preferredDuringSchedulingIgnoredDuringExecution`. If not, the pod should be scheduled on nodes with label of `nodeGroupAntiAffinity.preferredDuringSchedulingIgnoredDuringExecution`. Specifically, the pod must not be scheduled on nodes with the label `nodeGroupAntiAffinity.requiredDuringSchedulingIgnoredDuringExecution`.

@@ -7,7 +7,7 @@ sidebar_position: 6
 
 ### Spark introduction
 
-Spark is a fast and versatile big data clustering computing system. It provides high-level APIs for Scala, Java, Python, and R, as well as an optimization engine that supports a generic computational graph for data analysis. It also supports a rich set of advanced tools, including Spark SQL for SQL and Dataframes, MLLib for machine learning, GraphX for graphics processing, and Spark Streaming for Streaming.
+Spark is a fast and versatile big data cluster computing system. It provides high-level APIs for Scala, Java, Python, and R, as well as an optimization engine that supports a generic computational graph for data analysis. It also supports a rich set of advanced tools, including Spark SQL for SQL and Dataframes, MLLib for machine learning, GraphX for graphics processing, and Spark Streaming for Streaming.
 
 ### Spark on Volcano
 
