@@ -155,16 +155,19 @@ const config = {
           href: "https://github.com/volcano-sh/",
           position: "right",
           className: "header-github-link header-icon",
+          "aria-label": "GitHub",
         },
         {
           href: "https://x.com/volcano_sh",
           position: "right",
           className: "header-x-link header-icon",
+          "aria-label": "X (Twitter)",
         },
         {
-          to: "https://cloud-native.slack.com/?redir=%2Farchives%2FC011GJDQS0N%3Fname%3DC011GJDQS0N",
+          href: "https://cloud-native.slack.com/?redir=%2Farchives%2FC011GJDQS0N%3Fname%3DC011GJDQS0N",
           position: "right",
           className: "header-slack-link header-icon",
+          "aria-label": "Slack",
         },
         {
           type: "localeDropdown",

@@ -13,7 +13,7 @@ Spark is a fast and versatile big data clustering computing system. It provides 
 
 Currently, there are two ways to support the integration of Spark on Kubernetes and volcano.
 - Spark on Kubernetes native support: maintained by the [Apache Spark community](https://github.com/apache/spark) and Volcano community
-- Spark Operator support: maintained by the [GoogleCloudPlatform community](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator) and Volcano community
+- Spark Operator support: maintained by the [Kubeflow community](https://github.com/kubeflow/spark-operator) and Volcano community
 
 #### Spark on Kubernetes native support (spark-submit)
 
@@ -24,7 +24,7 @@ Spark on Kubernetes with Volcano as a custom scheduler is supported since Spark 
 Install Spark-Operator through Helm.
 
 ```
-$ helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+$ helm repo add spark-operator https://kubeflow.github.io/spark-operator
 
 $ helm install my-release spark-operator/spark-operator --namespace spark-operator --create-namespace
 ```

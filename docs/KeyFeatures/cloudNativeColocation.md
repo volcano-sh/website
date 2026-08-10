@@ -82,6 +82,10 @@ Offline workloads typically use various types of resources, so resource isolatio
 
 - **Network:** Network isolation ensures egress bandwidth guarantees for online jobs. It is based on the node's total bandwidth and uses cgroup, tc, and eBPF technologies to suppress the egress bandwidth of offline jobs for online workloads.
 
+![Network isolation technical solution](/img/colocation/network.png)
+
+![Online and offline workload bandwidth watermarks](/img/colocation/watermark.png)
+
 The figure above shows the technical solution for network isolation. By injecting rate-limiting programs into the kernel using eBPF, packet forwarding is controlled to achieve rate limiting. The cgroup eBPF can label packets of online and offline workloads to distinguish their traffic. The tc eBPF sets three watermarks: online workload watermark, offline workload high watermark, and offline workload low watermark. When online workload traffic exceeds the watermark, the bandwidth of offline workloads is limited, with the upper limit set to the offline workload low watermark, yielding to online traffic. When online workload traffic is below the watermark, the bandwidth limit for offline workloads is lifted, with the upper limit set to the offline workload high watermark, improving resource utilization. Additionally, the packet sending time (EDT) can be calculated based on the bandwidth of offline traffic to implement rate limiting for offline workloads.
 
 ### CPU Burst
@@ -92,7 +96,11 @@ The CPU Burst capability of the Volcano agent provides an elastic throttling mec
 
 When CPU Burst is not enabled, the container's CPU usage is strictly limited to the CPU limit, and bursting is not possible. As shown below:
 
+![CPU Burst disabled](/img/colocation/cpu-burst1-EN.png)
+
 When CPU Burst is enabled, the container's CPU usage can exceed the limit, enabling bursting. As shown below:
+
+![CPU Burst enabled](/img/colocation/cpu-burst2-EN.png)
 
 With the CPU Burst capability provided by the Volcano agent, high-priority workloads can avoid throttling at critical moments, ensuring the stability of latency-sensitive workloads.
 
