@@ -5,7 +5,7 @@ import { themes as prismThemes } from "prism-react-renderer";
 const config = {
   title: "Volcano",
   tagline: "Cloud native batch scheduling system",
-
+  favicon: "img/favicons/favicon.ico",
 
   future: {
     v4: true,

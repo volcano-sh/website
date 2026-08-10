@@ -1,5 +1,5 @@
 ---
-title: "SLA"
+title: "Service Level Agreement (SLA)"
 ---
 
 ## Overview

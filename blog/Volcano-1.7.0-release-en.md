@@ -33,7 +33,7 @@ Other enhanced plugins include those for TensorFlow, MPI, and PyTorch Jobs. They
 Volcano also provides an extended development framework for you to tailor Job plugins to your needs.
 
 Design Documentation: [Pytorch-plugin](https://github.com/volcano-sh/volcano/blob/master/docs/design/distributed-framework-plugins.md#pytorch-plugin)<br />
-User Guide: [Pytorch Plugin User Guide](/docs/UserGuide/user_guide_how_to_use_pytorch_plugin)<br />
+User Guide: [Pytorch Plugin User Guide](/docs/Controller/Plugins/pytorch)<br />
 Issue：[#2292](https://github.com/volcano-sh/volcano/issues/2292)<br />
 
 

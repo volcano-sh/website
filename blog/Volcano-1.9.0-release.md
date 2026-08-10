@@ -59,7 +59,7 @@ spec:
 ```
 
 For a complete usage example of queue elastic capacity scheduling, please refer to:
-[How to use capacity plugin](/docs/UserGuide/user_guide_how_to_use_capacity_plugin).
+[How to use capacity plugin](/docs/Scheduler/Plugins/capacity).
 
 For the elastic queue capacity design document, please refer to:
 [Capacity scheduling Design](https://github.com/volcano-sh/volcano/blob/master/docs/design/capacity-scheduling.md).
