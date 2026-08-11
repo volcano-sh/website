@@ -3,38 +3,38 @@ title: "TDM"
 ---
 ## 概述
 
-TDM 的全称是**时分复用（Time Division Multiplexing）**。在混合部署环境中，部分节点可能同时属于 Kubernetes 集群和 YARN 集群。对于这些节点，Kubernetes 和 YARN 集群可以通过时分复用的方式共享这些资源。
+TDM 的全称是**时分复用**。在共置环境中，某些节点可能同时属于 Kubernetes 集群和 YARN 集群。对于这些节点，Kubernetes和YARN集群可以通过分时复用的方式使用这些资源。
 
-TDM 插件将这些节点标记为`可撤销节点`。在节点的可撤销时间窗口内，TDM 插件会尝试将`可抢占任务`调度到`可撤销节点`上。在可撤销时间窗口结束后，TDM 插件会将`可撤销节点`上的`可抢占任务`驱逐。
+TDM 插件将这些节点标记为“可撤销节点”。在节点的可撤销时间窗口内，TDM插件将尝试将“可抢占任务”分派给“可撤销节点”。在可撤销时间窗口之外，TDM 插件会从“可撤销节点”中逐出“可抢占任务”。
 
-TDM 插件提升了 Volcano 调度过程中节点资源的时分复用能力。
+TDM插件提高了Volcano调度过程中节点资源的时分复用能力。
 
-## 工作原理
+## 它是如何运作的
 
 TDM 插件管理基于时间的资源共享：
 
-1. **可撤销节点（Revocable Nodes）**：被标记为可撤销的节点，可在多个编排系统之间共享
-2. **可撤销时间窗口（Revocable Time Windows）**：定义节点对 Kubernetes 工作负载可用的时间段
-3. **可抢占任务（Preemptable Tasks）**：在可撤销时间窗口结束时可被驱逐的任务
+1. **可撤销节点**：标记为可撤销的节点，可以在编排系统之间共享
+2. **可撤销时间窗口**：定义节点可用于 Kubernetes 工作负载的时间段
+3. **Preemptable Tasks**：可撤销时间窗口结束时可以被驱逐的任务
 
-关键函数：
+主要功能：
 
-- **PredicateFn**：检查任务是否可以在当前时间窗口内被调度到可撤销节点上
-- **PreemptableFn**：根据时间约束判断任务是否应被驱逐
+- **PredicateFn**：检查当前时间窗口内是否可以在可撤销节点上调度任务
+- **PreemptableFn**：确定是否应根据时间限制驱逐任务
 
-## 应用场景
+## 设想
 
-### ToB 业务
+### ToB业务
 
-在 ToB（企业对企业）场景中，云厂商为商家提供基于云的资源，不同商家采用不同的容器编排框架（Kubernetes、YARN 等）。TDM 插件提高了公共节点资源的时分复用效率，进一步提升资源利用率。
+在ToB（Business-to-Business）场景中，云厂商为商户提供基于云的资源，不同商户采用不同的容器编排框架（Kubernetes、YARN等）。 TDM插件提高了普通节点资源的分时效率，进一步提高了资源利用率。
 
 ### 混合集群
 
-同时运行 Kubernetes 和 Hadoop/YARN 工作负载的组织可以使用 TDM 在两个系统之间共享物理节点，通过基于时间的调度确保工作负载互不干扰。
+同时运行 Kubernetes 和 Hadoop/YARN 工作负载的组织可以使用 TDM 在两个系统之间共享物理节点，并通过基于时间的调度确保工作负载不会相互干扰。
 
 ### 成本优化
 
-通过启用时分复用，组织可以在不同时间段跨不同工作负载类型共享节点，从而最大化硬件基础设施的利用率。
+通过启用时分复用，组织可以在不同时间段内跨不同工作负载类型共享节点，从而最大限度地利用其硬件基础设施。
 
 ## 配置
 
@@ -47,9 +47,9 @@ kubectl label node <node-name> volcano.sh/revocable-node=true
 kubectl annotate node <node-name> volcano.sh/revocable-zone="zone-a"
 ```
 
-### 调度器配置
+### 调度程序配置
 
-启用带时间窗口配置的 TDM 插件：
+启用具有时间窗口配置的 TDM 插件：
 
 ```yaml
 tiers:
@@ -66,25 +66,25 @@ tiers:
 
 ### 配置参数
 
-| 参数 | 说明 | 格式 |
+| 参数 | 描述 | 格式 |
 |-----------|-------------|--------|
 | `tdm.revocable-zone.<zone-name>` | 可撤销区域的时间窗口 | `<start-cron>:<end-cron>` |
 
-时间窗口使用 Cron 表达式指定：
-- `0 8 * * *` 表示"每天 8:00 AM"
-- `0 18 * * *` 表示"每天 6:00 PM"
+时间窗口使用 cron 表达式指定：
+- `0 8 * * *` 表示“每天上午 8:00”
+- `0 18 * * *` 表示“每天下午 6:00”
 
-## 示例
+## 例子
 
 ### 可撤销节点配置
 
 ```bash
-# 将节点标记为 zone-a 中的可撤销节点
+# Mark a node as revocable in zone-a
 kubectl label node worker-node-1 volcano.sh/revocable-node=true
 kubectl annotate node worker-node-1 volcano.sh/revocable-zone=zone-a
 ```
 
-### 带 TDM 的调度器 ConfigMap
+### 带有 TDM 的调度程序 ConfigMap
 
 ```yaml
 apiVersion: v1
@@ -103,14 +103,14 @@ data:
       - name: predicates
       - name: tdm
         arguments:
-          # zone-a 在每天 8 AM 至 6 PM 期间对 Kubernetes 可用
+          # zone-a is available for Kubernetes from 8 AM to 6 PM
           tdm.revocable-zone.zone-a: "0 8 * * *:0 18 * * *"
       - name: nodeorder
 ```
 
 ### 可抢占作业
 
-提交一个可被调度到可撤销节点上的作业：
+提交一个可以在可撤销节点上调度的作业：
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -133,7 +133,7 @@ spec:
           command: ["sleep", "3600"]
 ```
 
-在此示例中：
-- 作业被标记为可抢占
-- 在配置的时间窗口内，可被调度到可撤销节点上
-- 时间窗口结束时，作业将被驱逐
+在这个例子中：
+- 该作业被标记为可抢占
+- 可以在配置的时间窗口内将其安排在可撤销节点上
+- 时间窗口结束后将被驱逐

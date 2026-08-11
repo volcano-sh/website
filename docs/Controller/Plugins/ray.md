@@ -1,5 +1,5 @@
 ﻿---
-title: "Ray Plugin User Guide"
+title: Ray
 ---
 
 

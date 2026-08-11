@@ -1,5 +1,5 @@
 ﻿---
-title: "Volcano Job Plugin -- SSH User Guide"
+title: SSH
 
 ---
 

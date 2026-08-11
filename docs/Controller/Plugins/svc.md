@@ -1,5 +1,5 @@
 ﻿---
-title: "Volcano Job Plugin -- SVC User Guide"
+title: SVC
 ---
 
 ## Background

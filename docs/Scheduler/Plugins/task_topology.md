@@ -1,5 +1,5 @@
 ﻿---
-title: "Task Topology Plugin User Guide"
+title: Task Topology
 ---
 
 

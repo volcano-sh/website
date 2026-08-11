@@ -1,5 +1,5 @@
 ﻿---
-title: "Resource Strategy Fit Plugin User Guide"
+title: Resource Strategy Fit
 
 ---
 
