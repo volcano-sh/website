@@ -103,6 +103,21 @@ b, strong {
   background: #2b2a2b;
   text-align: center;
   padding: 2rem 0;
+  --ifm-footer-title-color: #fff;
+  --ifm-footer-link-color: rgba(255, 255, 255, 0.75);
+  --ifm-footer-color: #fff;
+}
+
+.footer__title {
+  color: var(--ifm-footer-title-color);
+}
+
+.footer__link-item {
+  color: var(--ifm-footer-link-color);
+}
+
+.footer__link-item:hover {
+  color: #fff;
 }
 
 .footer__logo {

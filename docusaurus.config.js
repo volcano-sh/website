@@ -150,6 +150,13 @@ const config = {
           dropdownActiveClassDisabled: false,
         },
         { to: "/blog", label: "Blog", position: "left" },
+        { to: "/community", label: "Community", position: "left" },
+        {
+          type: "doc",
+          docId: "Contribution/VolcanoContribution",
+          label: "Contribute",
+          position: "left",
+        },
 
         {
           href: "https://github.com/volcano-sh/",
@@ -178,7 +185,45 @@ const config = {
     },
     footer: {
       style: "light",
-      links: [],
+      links: [
+        {
+          title: "Docs",
+          items: [
+            { label: "Introduction", to: "/docs/Home/Introduction" },
+            { label: "Installation", to: "/docs/GettingStarted/Installation" },
+            { label: "User Guide", to: "/docs/UserGuide/user_guide" },
+          ],
+        },
+        {
+          title: "Community",
+          items: [
+            { label: "Community", to: "/community" },
+            {
+              label: "Slack",
+              href: "https://cloud-native.slack.com/archives/C011GJDQS0N",
+            },
+            { label: "GitHub", href: "https://github.com/volcano-sh/" },
+            { label: "Blog", to: "/blog" },
+          ],
+        },
+        {
+          title: "Contribute",
+          items: [
+            {
+              label: "Contributing Guide",
+              to: "/docs/Contribution/VolcanoContribution",
+            },
+            {
+              label: "Community Membership",
+              to: "/docs/Contribution/communitymembership",
+            },
+            {
+              label: "Code of Conduct",
+              href: "https://github.com/volcano-sh/website/blob/master/CODE_OF_CONDUCT.md",
+            },
+          ],
+        },
+      ],
       copyright: `
         <div class="footer-content">
           <p>Volcano is a <a href="https://www.cncf.io/" target="_blank" rel="noopener noreferrer">Cloud Native Computing Foundation</a> incubating project.</p>
