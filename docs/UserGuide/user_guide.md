@@ -31,3 +31,4 @@ This section contains the User Guide for Volcano.
 * [Volcano Job Plugin -- SVC User Guide](./user_guide_how_to_use_svc_plugin.md)
 * [Volcano vGPU User Guide](./user_guide_how_to_use_volcano_vgpu.md)
 * [Scheduling Gates Queue Admission User Guide](./user_guide_how_to_use_scheduling_gates_queue_admission.md)
+* [NamespaceQueue User Guide](./user_guide_how_to_use_namespace_queue.md)
