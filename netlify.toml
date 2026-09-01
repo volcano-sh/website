@@ -4,3 +4,16 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[functions."ask-ai"]
+  included_files = ["netlify/functions/ask-ai/docs-index.json"]
+
+[dev]
+  command = "npm run start"
+  targetPort = 3000
+  port = 8888
+  autoLaunch = false

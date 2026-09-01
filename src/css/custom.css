@@ -78,6 +78,22 @@ b, strong {
   color: var(--ifm-font-color-base-inverse);
 }
 
+.ask-ai-nav-btn {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--ifm-navbar-link-color);
+  font: inherit;
+  font-weight: var(--ifm-font-weight-semibold);
+  cursor: pointer;
+  padding: var(--ifm-navbar-item-padding-vertical)
+    var(--ifm-navbar-item-padding-horizontal);
+}
+
+.ask-ai-nav-btn:hover {
+  color: var(--ifm-navbar-link-hover-color);
+}
+
 .header-github-link,
 .header-x-link,
 .header-slack-link {
