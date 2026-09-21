@@ -1,0 +1,59 @@
+name: CI Quality Gate
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: '0.57.2'
+          extended: true
+
+      - name: Build
+        run: hugo --minify
+
+      - name: Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-site
+          path: public/
+
+  link-checker:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: public-site
+          path: public/
+
+      - name: Lychee Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          # Check both source Markdown and generated HTML
+          args: >
+            --verbose
+            --no-progress
+            --exclude-mail
+            "./**/*.md"
+            "./public/**/*.html"
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
