@@ -1,6 +1,58 @@
 {
+  "link.title.Docs": {
+    "message": "文档",
+    "description": "Title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "社区",
+    "description": "Title of the footer links column with title=Community in the footer"
+  },
+  "link.title.Contribute": {
+    "message": "贡献",
+    "description": "Title of the footer links column with title=Contribute in the footer"
+  },
+  "link.item.label.Introduction": {
+    "message": "简介",
+    "description": "Label for footer link with label=Introduction linking to /docs/Home/Introduction"
+  },
+  "link.item.label.Installation": {
+    "message": "安装",
+    "description": "Label for footer link with label=Installation linking to /docs/GettingStarted/Installation"
+  },
+  "link.item.label.User Guide": {
+    "message": "用户指南",
+    "description": "Label for footer link with label=User Guide linking to /docs/UserGuide/user_guide"
+  },
+  "link.item.label.Community": {
+    "message": "社区",
+    "description": "Label for footer link with label=Community linking to /community"
+  },
+  "link.item.label.Slack": {
+    "message": "Slack",
+    "description": "Label for footer link with label=Slack"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "Label for footer link with label=GitHub"
+  },
+  "link.item.label.Blog": {
+    "message": "博客",
+    "description": "Label for footer link with label=Blog linking to /blog"
+  },
+  "link.item.label.Contributing Guide": {
+    "message": "贡献指南",
+    "description": "Label for footer link with label=Contributing Guide"
+  },
+  "link.item.label.Community Membership": {
+    "message": "社区成员身份",
+    "description": "Label for footer link with label=Community Membership"
+  },
+  "link.item.label.Code of Conduct": {
+    "message": "行为准则",
+    "description": "Label for footer link with label=Code of Conduct"
+  },
   "copyright": {
-    "message": "\n        <div class=\"footer-content\">\n          <p>Volcano是 <a href=\"https://www.cncf.io/\" target=\"_blank\" rel=\"noopener noreferrer\">云原生计算基金会</a> 孵化项目</p>\n          <div class=\"footer__logo-container\">\n            <img class=\"footer__logo\" alt=\"云原生计算基金会徽标\" src=\"/img/landing/logo_cloudnative.png\" />\n          </div>\n          <p>Linux基金会已注册并使用其商标。有关Linux基金会的商标列表，请参见 <a href=\"https://www.linuxfoundation.org/trademark-usage\" target=\"_blank\" rel=\"noopener noreferrer\">商标使用</a> 页面。</p>\n          <p>版权所有 © 2025 Volcano 项目作者所有。保留一切权利。</p>\n      ",
+    "message": "\n        <div class=\"footer-content\">\n          <p>Volcano是 <a href=\"https://www.cncf.io/\" target=\"_blank\" rel=\"noopener noreferrer\">云原生计算基金会</a> 孵化项目</p>\n          <div class=\"footer__logo-container\">\n            <img class=\"footer__logo\" alt=\"云原生计算基金会徽标\" src=\"/img/landing/logo_cloudnative.png\" />\n          </div>\n          <p>Linux基金会已注册并使用其商标。有关Linux基金会的商标列表，请参见 <a href=\"https://www.linuxfoundation.org/trademark-usage\" target=\"_blank\" rel=\"noopener noreferrer\">商标使用</a> 页面。</p>\n          <p>版权所有 © 2026 Volcano 项目作者所有。保留一切权利。</p>\n      ",
     "description": "The footer copyright"
   }
 }

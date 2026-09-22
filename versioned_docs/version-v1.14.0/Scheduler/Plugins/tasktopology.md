@@ -53,7 +53,21 @@ tiers:
   - name: predicates
   - name: nodeorder
   - name: task-topology
+    arguments:
+      task-topology.weight: 10
 ```
+
+## Annotations
+
+Configure task topology through annotations on the Job. The Volcano Job controller propagates these annotations to the PodGroup, from which the plugin reads them.
+
+| Annotation | Description |
+| --- | --- |
+| `volcano.sh/task-topology-affinity` | Defines task groups that prefer the same node. Separate groups with semicolons (`;`) and task names within a group with commas (`,`), for example, `"ps,worker;ps,evaluator"`. A group containing one task name defines self-affinity between replicas of that task. |
+| `volcano.sh/task-topology-anti-affinity` | Defines task groups that prefer different nodes. It uses the same group format, for example, `"ps;worker,chief"`. A group containing one task name defines self-anti-affinity between replicas of that task. |
+| `volcano.sh/task-topology-task-order` | Defines the task allocation priority as a comma-separated list. Earlier task names have higher priority; for example, `"ps,worker"` prioritizes `ps` before `worker`. This annotation is optional and affects tasks that participate in an affinity or anti-affinity group. |
+
+Task names in these annotations must match tasks in the Job, and a task name must not be repeated within the same group. Invalid topology annotations are ignored for the Job. Affinity and anti-affinity are scoring preferences rather than hard scheduling constraints.
 
 ## Example
 
@@ -64,6 +78,9 @@ apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
   name: tensorflow-job
+  annotations:
+    volcano.sh/task-topology-affinity: "ps,worker"
+    volcano.sh/task-topology-task-order: "ps,worker"
 spec:
   schedulerName: volcano
   minAvailable: 3
@@ -97,13 +114,9 @@ spec:
   plugins:
     env: []
     svc: []
-  topologyPolicy:
-    mode: affinity
-    tiers:
-    - tasks:
-      - ps
-      - worker
 ```
+
+The plugin prioritizes `ps` tasks before `worker` tasks and gives nodes running tasks from the same affinity group a higher score.
 
 ### Job with Task Anti-affinity
 
@@ -112,6 +125,8 @@ apiVersion: batch.volcano.sh/v1alpha1
 kind: Job
 metadata:
   name: ha-service
+  annotations:
+    volcano.sh/task-topology-anti-affinity: "master"
 spec:
   schedulerName: volcano
   minAvailable: 2
@@ -123,11 +138,6 @@ spec:
         containers:
         - name: master
           image: my-service:latest
-  topologyPolicy:
-    mode: anti-affinity
-    tiers:
-    - tasks:
-      - master
 ```
 
-In this example, the two master replicas will be scheduled to different nodes to ensure high availability.
+In this example, nodes that already run a `master` replica receive a lower score, so the two replicas prefer different nodes.

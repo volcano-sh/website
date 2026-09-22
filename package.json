@@ -16,6 +16,7 @@
   "dependencies": {
     "@docusaurus/core": "3.9.2",
     "@docusaurus/preset-classic": "3.9.2",
+    "@docusaurus/theme-mermaid": "3.9.2",
     "@easyops-cn/docusaurus-search-local": "^0.55.0",
     "@iarna/toml": "^2.2.5",
     "@mdx-js/react": "^3.0.0",
@@ -47,6 +48,8 @@
     "node": ">=20.0"
   },
   "overrides": {
-    "webpack": "5.105.4"
+    "webpack": "5.105.4",
+    "@docusaurus/theme-common": "3.9.2",
+    "@docusaurus/plugin-content-docs": "3.9.2"
   }
 }
