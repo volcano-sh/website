@@ -1,58 +1,40 @@
 ---
 title: "NamespaceQueue 用户指南"
+
 ---
 
 ## 简介
 
-`NamespaceQueue` 是 Volcano 提供的命名空间级队列资源。用户可以在自己的 namespace 中管理队列，而不需要创建或修改集群级 `Queue` 的权限。
+`NamespaceQueue` 是命名空间级别的队列。租户可以在自己的 namespace 中创建和管理队列，而不需要创建集群级 `Queue` 的权限。
 
-NamespaceQueue 与 `Queue` 使用一致的资源管理语义，包括 `capability`、`deserved`、`guarantee`、`reclaimable`、优先级和层级调度。NamespaceQueue 是 Alpha 特性，默认关闭。
+它与 `Queue` 使用一致的资源语义（`capability`、`deserved`、`guarantee`、`reclaimable`、`priority`），并支持层级结构。每棵 NamespaceQueue 树都挂载在一个已经为该 namespace 授权的集群 `Queue` 之下。
+
+NamespaceQueue 是 Alpha 特性，默认关闭。
 
 ## 启用 NamespaceQueue
 
 ### 使用 Helm 安装
 
-设置 `custom.namespace_queue_enable`，即可在 Volcano 组件中启用该特性。默认允许在集群 Queue 下创建 5 层 NamespaceQueue。
-
 ```shell
 helm upgrade --install volcano volcano-sh/volcano \
-  --namespace volcano-system \
-  --create-namespace \
-  --set custom.namespace_queue_enable=true \
-  --set custom.namespace_queue_max_depth=5
+  --namespace volcano-system --create-namespace \
+  --set custom.namespace_queue_enable=true
 ```
+
+该参数会为 scheduler、controller manager 和 admission 开启 `NamespaceQueue` Feature Gate，注册 NamespaceQueue 校验 Webhook，并使用带有 `capacity` 插件的调度器配置（设置了 `custom.scheduler_config_override` 时除外）。
 
 ### 使用 YAML 文件安装
 
-在 scheduler、controller manager 和 admission service 中添加以下 Feature Gate：
+为 `volcano-scheduler`、`volcano-controllers` 和 `volcano-admission` 三个 Deployment 添加 Feature Gate：
 
 ```shell
 --feature-gates=NamespaceQueue=true
 ```
 
-如果已有 `--feature-gates` 配置，请在原配置后追加 `NamespaceQueue=true`。同时在 admission service 和 controller manager 中设置相同的层级深度：
-
-```shell
---max-namespacequeue-depth=5
-```
-
-如果启用了 agent scheduler，也需要在其中启用该 Feature Gate。
-
-## 配置队列调度插件
-
-NamespaceQueue 会被转换为与集群级 Queue 相同的内部 `QueueInfo` 模型。消费这一公共模型的插件可以沿用相同的调度路径，包括 `priority`、`gang`、`predicates`、`nodeorder`、`binpack`、`nodegroup` 和 `extender`。这种兼容不会为插件增加 NamespaceQueue 专用字段，插件自身的配置和字段要求仍然适用。
-
-资源份额插件对 NamespaceQueue 的字段语义有所不同：
-
-- `capacity` 直接使用 NamespaceQueue 的 `capability`、`deserved` 和 `guarantee` 字段，并支持层级资源限制。如果需要为每个 NamespaceQueue 显式配置资源值，请使用该插件。详细信息请参考 [Capacity 插件用户指南](./user_guide_how_to_use_capacity_plugin.md)。
-- 在当前实现中，`proportion` 也可以通过公共队列模型接收 NamespaceQueue。NamespaceQueue 没有独立的 `weight` 字段，因此规范化后的 weight 为 `1`，不能按 NamespaceQueue 单独配置。这与为集群级 Queue 配置不同 weight 并不等价；只有在可以接受这一默认 weight 行为，并且已针对当前 scheduler 配置验证结果时，才建议使用 `proportion`。
-
-当前官方验证的 NamespaceQueue 资源份额路径是 `capacity`。其他插件在消费公共 `QueueInfo` 模型中已有字段时可以保持兼容，但如果插件依赖 NamespaceQueue 专用字段或行为，则不会因为使用了公共模型而自动获得支持。
-
-`capacity` 和 `proportion` 与集群级 Queue 一样不能同时启用。其他插件可以根据 scheduler 配置及其所需字段启用。
+NamespaceQueue 依赖支持层级的 `capacity` 插件。请确认调度器配置中包含该插件，并且没有同时启用 `proportion`：
 
 ```yaml
-actions: "enqueue, allocate, backfill, reclaim"
+actions: "enqueue, allocate, backfill"
 tiers:
 - plugins:
   - name: priority
@@ -60,12 +42,17 @@ tiers:
 - plugins:
   - name: predicates
   - name: capacity
+    enableHierarchy: true
   - name: nodeorder
 ```
 
-## 配置集群级 Queue
+集群 Queue 之下默认最多允许 5 层 NamespaceQueue。如需调整，请同时在 controller manager 和 admission 上设置 `--max-namespacequeue-depth`。
 
-集群管理员需要先授权 namespace，NamespaceQueue 才能将集群级 Queue 作为父队列。在 Queue 的 `spec.allowedNamespaces` 中添加 namespace：
+## 使用方法
+
+### 1. 在集群 Queue 上授权 namespace
+
+集群管理员在父 `Queue` 中列出允许使用的 namespace：
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -73,39 +60,45 @@ kind: Queue
 metadata:
   name: research
 spec:
-  parent: root
+  weight: 1
   allowedNamespaces:
     - team-a
 ```
 
-通配符 `"*"` 表示允许所有 namespace，并且必须是列表中的唯一值。省略或设置为空列表表示不允许 NamespaceQueue 挂载。
+`allowedNamespaces: ["*"]` 表示允许所有 namespace。该字段为空时，任何 NamespaceQueue 都无法挂载到该 Queue。
 
-启用 NamespaceQueue 后，如果集群级 `default` Queue 是新创建的，Volcano 会将其初始化为 `allowedNamespaces: ["*"]`。已有的非空 `allowedNamespaces` 配置会被保留，因此使用 default 作为父队列前请先检查它的配置。
+### 2. 授予租户权限
 
-## 配置 Namespace 权限
-
-在租户 namespace 中绑定 Volcano 提供的 editor role。虽然该 role 是 ClusterRole，但 RoleBinding 会使权限保持在指定 namespace 内：
+仅允许租户管理自己 namespace 下的 NamespaceQueue：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: namespacequeue-admin
+  namespace: team-a
+rules:
+- apiGroups: ["scheduling.volcano.sh"]
+  resources: ["namespacequeues"]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: namespacequeue-editor
+  name: namespacequeue-admin
   namespace: team-a
 roleRef:
   apiGroup: rbac.authorization.k8s.io
-  kind: ClusterRole
-  name: namespacequeue-editor-role
+  kind: Role
+  name: namespacequeue-admin
 subjects:
 - kind: User
   name: team-a-user
 ```
 
-只需要查看权限时，可以绑定 `namespacequeue-viewer-role`。
+### 3. 创建 NamespaceQueue
 
-## 创建 NamespaceQueue
-
-租户可以在自己的 namespace 中创建 NamespaceQueue。下面的 `cluster/research` 指向前面配置的集群级 Queue：
+`parent` 使用 `cluster/<name>` 指向集群 Queue，使用不带前缀的名称指向同 namespace 下的另一个 NamespaceQueue。省略时默认为 `cluster/default`。
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -127,44 +120,13 @@ spec:
       memory: 40Gi
   reclaimable: true
   priority: 10
-  dequeueStrategy: traverse
-  state: Open
 ```
 
-```shell
-kubectl apply -f namespacequeue.yaml
-kubectl get namespacequeue -n team-a
-kubectl describe namespacequeue training -n team-a
-```
+对于每一种资源，取值需要满足 `guarantee <= deserved <= capability`。
 
-每个资源维度应满足：
+### 4. 提交作业
 
-```text
-guarantee <= deserved <= capability
-```
-
-子 NamespaceQueue 可以通过同 namespace 中的队列名称引用父队列：
-
-```yaml
-apiVersion: scheduling.volcano.sh/v1beta1
-kind: NamespaceQueue
-metadata:
-  name: inference
-  namespace: team-a
-spec:
-  parent: training
-  deserved:
-    cpu: "20"
-  state: Open
-```
-
-不支持使用 `cluster/root` 或跨 namespace 的 NamespaceQueue 作为父队列。同一个 namespace 只能有一个 NamespaceQueue 子树直接挂载到同一个集群级 Queue。
-
-## 提交工作负载
-
-### Volcano Job
-
-在 Job 的 `spec.queue` 中使用 `namespace/<name>`，即可引用 Job 所在 namespace 中的 NamespaceQueue：
+使用 `namespace/<name>` 作为队列引用。系统会自动使用作业所在的 namespace，因此不支持跨 namespace 引用。
 
 ```yaml
 apiVersion: batch.volcano.sh/v1alpha1
@@ -184,91 +146,80 @@ spec:
         containers:
         - name: worker
           image: busybox
-          command: ["sh", "-c", "sleep 30"]
+          command: ["sh", "-c", "sleep 300"]
           resources:
             requests:
               cpu: "1"
         restartPolicy: Never
 ```
 
-### PodGroup
+`PodGroup.spec.queue` 和 `scheduling.volcano.sh/queue-name` 注解同样支持 `namespace/<name>`。不带前缀的值（例如 `research`）仍然指向集群 Queue。
 
-PodGroup 使用相同的队列引用方式：
-
-```yaml
-apiVersion: scheduling.volcano.sh/v1beta1
-kind: PodGroup
-metadata:
-  name: training-podgroup
-  namespace: team-a
-spec:
-  minMember: 1
-  queue: namespace/training
-```
-
-### Queue annotation
-
-原有 annotation 也支持 `namespace/` 前缀：
-
-```yaml
-metadata:
-  annotations:
-    scheduling.volcano.sh/queue-name: namespace/training
-```
-
-不带前缀的 `default` 或 `research` 仍然表示集群级 Queue。引用 NamespaceQueue 时必须使用 `namespace/` 前缀。系统会自动使用工作负载所在的 namespace，不支持跨 namespace 引用。
-
-## 查看状态和事件
+### 5. 查看状态
 
 ```shell
 kubectl get nq -n team-a
-kubectl get nq training -n team-a -o yaml
 kubectl describe nq training -n team-a
-kubectl get events -n team-a \
-  --field-selector=involvedObject.kind=NamespaceQueue,involvedObject.name=training
 ```
 
-`status.state` 表示 NamespaceQueue 的实际生命周期状态：`Open`、`Closing`、`Closed` 或 `Unknown`。status 还包括 PodGroup 计数（`pending`、`inqueue`、`running`、`unknown`、`completed`）、scheduler 管理的 `allocated` 资源以及 `reservation` 信息。
+`status` 中包含生命周期 `state`、PodGroup 计数（`pending`、`inqueue`、`running`、`completed`）以及已分配资源 `allocated`。只有 `Ready` 条件为 `True` 时，Job 和 PodGroup 才会被接收。`Authorized` 条件表示父 Queue 是否允许该 namespace。
 
-`Authorized` condition 表示 namespace 是否被集群父 Queue 授权。`Ready` condition 表示父队列链、层级约束、资源约束和生命周期是否允许调度。只有期望状态和实际状态都是 `Open`，并且当前 generation 的 `Ready=True` 时，NamespaceQueue 才可以参与调度。
+## 典型场景
 
-常见的失败原因包括 `NamespaceNotAllowed`、`ParentNotFound`、`ParentNotReady`、`ParentConstraintViolation`、`HierarchyCycle`、`QueueClosing` 和 `QueueClosed`。
+### 场景一：把团队配额拆分为子队列
 
-队列资源指标使用队列 identity 作为 `queue_name` label。NamespaceQueue 使用 `<namespace>/<name>`，例如：
+团队 A 拥有上面的 `training` 队列，现在希望划出一部分给在线推理。创建一个指向 `training` 的子 NamespaceQueue：
 
-```text
-volcano_queue_allocated_milli_cpu{queue_name="team-a/training"}
+```yaml
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: NamespaceQueue
+metadata:
+  name: inference
+  namespace: team-a
+spec:
+  parent: training
+  capability:
+    cpu: "40"
+  deserved:
+    cpu: "20"
+  guarantee:
+    resource:
+      cpu: "10"
 ```
 
-## 关闭和删除 NamespaceQueue
+子队列受所有祖先队列 `capability` 的限制，且所有子队列的 `guarantee` 之和不能超过父队列。推理作业使用 `queue: namespace/inference` 提交。
 
-修改父队列或删除资源前，需要先将期望状态设置为 `Closed`：
+### 场景二：不同团队使用同名队列
+
+NamespaceQueue 是命名空间级资源，`team-a` 和 `team-b` 可以各自拥有名为 `training` 的队列，二者互相隔离，并分别挂载到授权了各自 namespace 的集群 Queue 上。监控指标使用 `<namespace>/<name>` 作为 `queue_name` 标签，例如 `team-a/training`。
+
+### 场景三：从集群 Queue 迁移到 NamespaceQueue
+
+1. 将 namespace 加入集群 Queue 的 `allowedNamespaces`。
+2. 创建 `parent: cluster/<queue-name>` 的 NamespaceQueue，并等待 `Ready` 变为 `True`。
+3. 将作业的队列改为 `namespace/<name>`。
+
+如需回滚，把队列引用改回集群 Queue 即可。使用不带前缀队列名的已有作业不受影响。
+
+## 删除 NamespaceQueue
+
+NamespaceQueue 仍有作业、预留资源或子队列时无法删除。请先删除作业和子队列，再删除该队列：
 
 ```shell
-kubectl patch nq training -n team-a --type=merge \
-  -p '{"spec":{"state":"Closed"}}'
+kubectl delete nq inference training -n team-a
 ```
 
-队列会先进入 `Closing`。当活跃 PodGroup 以及 scheduler 管理的资源完成释放后，队列变为 `Closed`。队列处于 Closing 或 Closed 时，不会接收新的工作负载；正在运行的工作负载不会被强制驱逐。
+如果删除时提示 `must be drained before deletion`，请等待 `status.allocated` 清空后重试。集群 Queue 同样如此：存在已挂载的 NamespaceQueue 时无法删除。
 
-删除父 NamespaceQueue 前，需要先删除子 NamespaceQueue。存在活跃工作负载、reservation 或子队列时，NamespaceQueue finalizer 会阻止删除，直到队列关闭并完成 drain。
+## 常见问题排查
 
-## 从集群级 Queue 迁移
+| 现象 | 排查方向 |
+| --- | --- |
+| `Authorized` 为 `False`（`NamespaceNotAllowed`） | 父 Queue 的 `allowedNamespaces` 中缺少该 namespace |
+| `Ready` 为 `False`（`ParentNotFound`、`ParentNotReady`） | `parent` 名称是否正确，以及父队列自身的状态 |
+| `Ready` 为 `False`（`ParentConstraintViolation`） | `guarantee <= deserved <= capability` 以及父队列的限制 |
+| `Ready` 为 `False`（`HierarchyDepthExceeded`、`HierarchyCycle`） | 层级深度限制和父队列链 |
+| Job 或 PodGroup 被拒绝 | 队列是否 `Ready=True`，引用是否为 `namespace/<name>` |
+| Pod 一直 `Pending` | 调度器是否使用 `enableHierarchy: true` 的 `capacity` 插件，队列的 `capability` 是否足够 |
 
-已有工作负载继续使用集群级 Queue，因为不带前缀的 queue 引用保持原有语义。可以按以下步骤逐步迁移：
-
-1. 在现有集群级 Queue 中授权租户 namespace。
-2. 创建 `parent: cluster/<queue-name>` 的 NamespaceQueue。
-3. 等待 `Authorized=True` 和 `Ready=True`。
-4. 将选定的 Job、PodGroup 或 annotation 改为 `namespace/<namespacequeue-name>`。
-
-需要回滚时，将 queue 引用恢复为原来的集群级 Queue 名称。在所有 NamespaceQueue 已迁移或关闭并 drain 前，不要从 `allowedNamespaces` 中移除 namespace。
-
-## 常见问题
-
-- 如果提示 NamespaceQueue feature disabled，请在 admission service、controller manager 和 scheduler 中启用 `NamespaceQueue=true`。
-- 如果 NamespaceQueue 未授权，请检查父 Queue 的 `allowedNamespaces`。
-- 如果 NamespaceQueue 未 Ready，请检查父队列状态、层级深度以及 `guarantee <= deserved <= capability` 关系。
-- 如果工作负载没有被调度，请确认使用了 `namespace/<name>`、目标队列为 `Ready=True`，并且配置的资源份额插件支持 NamespaceQueue 字段。
-
-实现细节请参考 [NamespaceQueue 设计文档](https://github.com/volcano-sh/volcano/blob/master/docs/design/namespace-queue.md) 和 [NamespaceQueue E2E 测试](https://github.com/volcano-sh/volcano/blob/master/test/e2e/namespacequeue/namespacequeue_test.go)。
+更多细节请参考 [NamespaceQueue 设计文档](https://github.com/volcano-sh/volcano/blob/master/docs/design/namespace-queue.md)。
