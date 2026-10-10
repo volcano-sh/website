@@ -14,14 +14,14 @@ sidebar_position: 5
    * Supports multi-dimensional resource quota control (CPU, Memory, GPU, NPU, etc.)
    * Provides three-level resource configuration mechanism:
       * capability: Upper limit of queue resource usage
-      * deserverd: Deserved resource amount (when no other queues submit jobs, jobs in this queue can exceed the deserverd value; when multiple queues submit jobs and cluster resources are insufficient, resources exceeding the deserverd value can be reclaimed by other queues)
+      * deserved: Deserved resource amount (when no other queues submit jobs, jobs in this queue can exceed the deserved value; when multiple queues submit jobs and cluster resources are insufficient, resources exceeding the deserved value can be reclaimed by other queues)
       * guarantee: Reserved resource amount (reserved resources can only be used by this queue, other queues cannot use them)
 
       > Recommendations and Notes: 
       >
-      > 1. When configuring three-level resources, follow: guarantee ≤ deserverd ≤ capability;
-      > 2. guarantee/capability can be configured as needed, deserverd value must be configured when capacity plugin is enabled;
-      > 3. deserverd configuration recommendations: In peer queue scenarios, the sum of deserverd values of all queues equals the total cluster resources; In hierarchical queue scenarios, the sum of child queues' deserverd values equals the parent queue's deserverd value, but cannot exceed it.
+      > 1. When configuring three-level resources, follow: `guarantee <= deserved <= capability`;
+      > 2. guarantee/capability can be configured as needed, deserved value must be configured when capacity plugin is enabled;
+      > 3. deserved configuration recommendations: In peer queue scenarios, the sum of deserved values of all queues equals the total cluster resources; In hierarchical queue scenarios, the sum of child queues' deserved values equals the parent queue's deserved value, but cannot exceed it.
       > 4. capability configuration notes: In hierarchical queue scenarios, child queue's capability value cannot exceed parent queue's capability value. If child queue's capability is not set, it will inherit parent queue's capability value.
 
    * Supports dynamic resource quota adjustment
@@ -82,10 +82,10 @@ spec:
 
 The capacity plugin enables quota control through precise resource configuration. Combined with [hierarchical queues](/docs/KeyFeatures/HierarchicalQueue), it can achieve more fine-grained multi-tenant resource allocation and facilitates big data workload migration to Kubernetes clusters.
 
-> **Note**: When using cluster autoscaling components like Cluster Autoscaler or Karpenter, total cluster resources change dynamically. In this case, using capacity plugin requires manual adjustment of queue's deserverd values to adapt to resource changes.
+> **Note**: When using cluster autoscaling components like Cluster Autoscaler or Karpenter, total cluster resources change dynamically. In this case, using capacity plugin requires manual adjustment of queue's deserved values to adapt to resource changes.
 
 #### proportion plugin
-Unlike the capacity plugin, the proportion plugin automatically calculates queue's deserved resource amount by configuring queue Weight values, without explicitly configuring deserverd values:
+Unlike the capacity plugin, the proportion plugin automatically calculates queue's deserved resource amount by configuring queue Weight values, without explicitly configuring deserved values:
 
 ```yaml
 apiVersion: scheduling.volcano.sh/v1beta1
@@ -99,16 +99,16 @@ spec:
     memory: "40Gi"
 ```
 
-When total cluster resource is `total_resource`, each queue's deserverd value is calculated as:
+When total cluster resource is `total_resource`, each queue's deserved value is calculated as:
 ```
 queue_deserved = (queue_weight / total_weight) * total_resource
 ```
 
 Where `queue_weight` represents current queue's weight, `total_weight` represents sum of all queue weights, `total_resource` represents total cluster resources.
 
-Compared to capacity plugin, capacity plugin allows direct configuration of queue's deserverd value, while proportion plugin automatically calculates queue's deserverd value through weight ratio. When cluster resources change (e.g., through Cluster Autoscaler or Karpenter scaling), proportion plugin automatically recalculates each queue's deserverd value based on weight ratios, requiring no manual intervention.
+Compared to capacity plugin, capacity plugin allows direct configuration of queue's deserved value, while proportion plugin automatically calculates queue's deserved value through weight ratio. When cluster resources change (e.g., through Cluster Autoscaler or Karpenter scaling), proportion plugin automatically recalculates each queue's deserved value based on weight ratios, requiring no manual intervention.
 
-> **Important Note**: The actual deserverd value is dynamically adjusted. If calculated `queue_deserved` is greater than total resource requests of PodGroups waiting to be scheduled in the queue, the final deserverd value will be set to the total request amount to avoid over-reservation of resources and improve overall utilization.
+> **Important Note**: The actual deserved value is dynamically adjusted. If calculated `queue_deserved` is greater than total resource requests of PodGroups waiting to be scheduled in the queue, the final deserved value will be set to the total request amount to avoid over-reservation of resources and improve overall utilization.
 
 > **Note**: 
 > 1. capacity plugin and proportion plugin must be used exclusively, they cannot be used simultaneously
