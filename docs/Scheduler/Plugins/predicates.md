@@ -1,5 +1,5 @@
 ---
-title : "Predicates"
+title: "Predicates"
 ---
 ## Overview
 

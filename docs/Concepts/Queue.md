@@ -66,7 +66,7 @@ deserved indicates the expected resource amount for all PodGroups in this queue.
 
 * capability, *optional*
 
-`capability` indicates the upper limit of resources the queue can use. It is a hard constraint.If this field is not set, the queue's capability will be set to realCapability (total cluster resources minus the total guarantee values of other queues).
+`capability` indicates the upper limit of resources the queue can use. It is a hard constraint. If this field is not set, the queue's capability will be set to realCapability (total cluster resources minus the total guarantee values of other queues).
 
 * reclaimable, *optional*
 

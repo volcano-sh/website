@@ -209,7 +209,7 @@ spec:
 
 ## How the Nodegroup Plugin Works
 
-The nodegroup design document provides the most detailed information about the node group. There are some tips to help avoid certain issues.These tips are based on a four-nodes cluster and vcjob called job-1:
+The nodegroup design document provides the most detailed information about the node group. There are some tips to help avoid certain issues. These tips are based on a four-node cluster and vcjob called job-1:
 
 | Node  | Label      |
 | ----- | ---------- |
