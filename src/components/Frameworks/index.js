@@ -97,9 +97,9 @@ export default function Frameworks() {
             >
               <div className="framework-card">
                 <div className="framework-logo">
-                  <img src={framework.logo} alt={`${framework.name} Logo`} />
+                  <img src={framework.logo} alt={`${framework.name} Logo`} width="80" height="80" />
                 </div>
-                <h3 className="framework-name">{framework.name}</h3>
+                <h2 className="framework-name">{framework.name}</h2>
                 <p className="framework-description"><Translate>{framework.description}</Translate></p>
               </div>
             </a>

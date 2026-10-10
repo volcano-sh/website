@@ -27,6 +27,7 @@
 }
 
 .supporter-image {
+  width: auto;
   max-width: 100%;
   height: auto;
   max-height: 150px;
