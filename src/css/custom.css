@@ -78,6 +78,97 @@ b, strong {
   color: var(--ifm-font-color-base-inverse);
 }
 
+/* Navbar layout & responsiveness */
+.navbar__brand {
+  flex-shrink: 0;
+  min-width: fit-content;
+}
+
+.navbar__logo {
+  flex-shrink: 0;
+}
+
+.navbar__inner {
+  flex-wrap: nowrap;
+}
+
+/* Medium viewport responsiveness: 997px - 1280px */
+@media (min-width: 997px) and (max-width: 1280px) {
+  :root {
+    --ifm-navbar-item-padding-horizontal: 0.5rem;
+    --ifm-navbar-padding-horizontal: 0.75rem;
+  }
+
+  .navbar__logo {
+    height: 1.85rem;
+  }
+
+  /* Compact search input */
+  .navbar__search-input {
+    width: 9rem;
+    transition: width 0.2s ease;
+  }
+
+  .navbar__search-input:focus {
+    width: 11.5rem;
+  }
+
+  [class*="navbarSearchContainer"] kbd {
+    display: none;
+  }
+
+  /* Compact social icons */
+  .header-github-link,
+  .header-x-link,
+  .header-slack-link {
+    width: 28px;
+    height: 28px;
+    margin-left: 4px;
+    background-size: 18px;
+  }
+}
+
+/* Tighter medium viewport: 997px - 1100px */
+@media (min-width: 997px) and (max-width: 1100px) {
+  :root {
+    --ifm-navbar-item-padding-horizontal: 0.25rem;
+    --ifm-navbar-padding-horizontal: 0.5rem;
+  }
+
+  .navbar__brand {
+    margin-right: 0.4rem;
+  }
+
+  .navbar__item {
+    font-size: 0.88rem;
+  }
+
+  .navbar__logo {
+    height: 1.65rem;
+  }
+
+  [class*="navbarSearchContainer"] {
+    padding: 0 4px;
+  }
+
+  .navbar__search-input {
+    width: 5.5rem;
+  }
+
+  .navbar__search-input:focus {
+    width: 9.5rem;
+  }
+
+  .header-github-link,
+  .header-x-link,
+  .header-slack-link {
+    width: 24px;
+    height: 24px;
+    margin-left: 3px;
+    background-size: 16px;
+  }
+}
+
 .header-github-link,
 .header-x-link,
 .header-slack-link {
