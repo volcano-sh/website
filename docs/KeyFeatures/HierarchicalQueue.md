@@ -135,3 +135,99 @@ spec:
 When cluster resources are insufficient for pod requirement, pod's resources can be reclaimed. For pods in different queues, they will first reclaim pods in sibling queues (if the allocated resources of the sibling queue exceed the `deserved` value). If the resources in sibling queues are still insufficient to meet the pod's requirements, the hierarchical structure of the queues (i.e., ancestor queues) will be traversed upward to find sufficient resources. For example, if job-a and job-c are submitted first and the cluster resources are insufficient for job-b, job-b will first reclaim job-a. If reclaiming job-a does not meet the resource requirements, job-c will then be considered for reclaiming.
 
 Note that in the current version, users can only submit jobs to **leaf queues**. If tasks have already been submitted to a parent queue, child queues cannot be created under that queue. This ensures effective management of resources and tasks across different levels in the queue hierarchy. Additionally, the sum of the `deserved`/`guarantee` values of child queues cannot exceed the `deserved`/`guarantee` values configured for the parent queue. Each child queue's `capability` values cannot exceed the `capability` limits of the parent queue. If a queue does not specify the `capability` value for a certain resource dimension, it will inherit the `capability` from its parent queue. If the parent queue and all ancestor queues do not specify it, the value will finally inherit from the root queue. By default, the root queue's `capability` is set to the total available resources of that dimension in the cluster.
+
+### Hierarchical NamespaceQueues
+
+A cluster-scoped `Queue` can only be created by a cluster administrator. To let tenants build their own part of the hierarchy, Volcano provides `NamespaceQueue`, a namespace-scoped queue with the same resource fields as `Queue` (`capability`, `deserved`, `guarantee`, `reclaimable`, `priority`). NamespaceQueue is an Alpha feature and is disabled by default. See the [NamespaceQueue User Guide](../UserGuide/user_guide_how_to_use_namespace_queue.md) for how to enable it, grant tenant permissions and check queue status.
+
+NamespaceQueues extend the cluster queue tree downward:
+
+- The top of every NamespaceQueue tree is attached to a cluster `Queue`. The cluster Queue must list the namespace in `spec.allowedNamespaces` (`["*"]` allows every namespace). If the field is empty, no NamespaceQueue can attach to it.
+- In a NamespaceQueue, `parent: cluster/<name>` points to a cluster Queue, and `parent: <name>` points to another NamespaceQueue in the same namespace. If `parent` is omitted, it defaults to `cluster/default`.
+- The hierarchy rules above apply to the whole tree, including NamespaceQueues: a queue is limited by the `capability` of every ancestor, and the total `guarantee` of the children must fit in the parent. For every resource, a NamespaceQueue must satisfy `guarantee <= deserved <= capability`.
+- By default, up to 5 NamespaceQueue levels are allowed below a cluster Queue. To change it, set `--max-namespacequeue-depth` on both the controller manager and admission.
+- Workloads reference a NamespaceQueue as `namespace/<name>`, which always resolves in the workload's own namespace. An unprefixed name such as `child-queue-b` still refers to a cluster Queue.
+
+The following example lets namespace `team-b` divide the resources of `child-queue-b` from the example above into its own sub-queues:
+
+```
+root                                (cluster Queue)
+└── child-queue-b                   (cluster Queue, allowedNamespaces: [team-b])
+    └── team-b/training             (NamespaceQueue)
+        └── team-b/inference        (NamespaceQueue)
+```
+
+```
+# Cluster administrator: authorize namespace team-b on child-queue-b
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: Queue
+metadata:
+  name: child-queue-b
+spec:
+  reclaimable: true
+  parent: root
+  deserved:
+    cpu: 64
+    memory: 128Gi
+  allowedNamespaces:
+    - team-b
+---
+# Tenant: the parent of training is the cluster Queue child-queue-b
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: NamespaceQueue
+metadata:
+  name: training
+  namespace: team-b
+spec:
+  parent: cluster/child-queue-b
+  reclaimable: true
+  capability:
+    cpu: 64
+    memory: 128Gi
+  deserved:
+    cpu: 32
+    memory: 64Gi
+---
+# Tenant: the parent of inference is the NamespaceQueue training in the same namespace
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: NamespaceQueue
+metadata:
+  name: inference
+  namespace: team-b
+spec:
+  parent: training
+  reclaimable: true
+  capability:
+    cpu: 32
+    memory: 64Gi
+  deserved:
+    cpu: 16
+    memory: 32Gi
+---
+# Submit a sample vc-job to the NamespaceQueue inference
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: job-inference
+  namespace: team-b
+spec:
+  queue: namespace/inference
+  schedulerName: volcano
+  minAvailable: 1
+  tasks:
+    - replicas: 1
+      name: test
+      template:
+        spec:
+          containers:
+            - image: alpine
+              command: ["/bin/sh", "-c", "sleep 1000"]
+              imagePullPolicy: IfNotPresent
+              name: alpine
+              resources:
+                requests:
+                  cpu: "1"
+                  memory: 2Gi
+```
+
+Note that a cluster Queue cannot be deleted while a NamespaceQueue is attached to it, and a NamespaceQueue cannot be deleted while it still has workloads, reserved resources or child queues.
