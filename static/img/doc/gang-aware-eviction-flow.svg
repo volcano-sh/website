@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-labelledby="title desc">
+  <title id="title">Gang-aware preemption and reclamation flow</title>
+  <desc id="desc">Victims are grouped by gang, filtered and ranked, then whole-gang placement is simulated before eviction is committed.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#53657d"/>
+    </marker>
+    <style>
+      .box { fill: #fff; stroke: #aeb8c6; stroke-width: 2; rx: 10; }
+      .safe { fill: #f1faf5; stroke: #2f8c5a; }
+      .decision { fill: #f4f8ff; stroke: #3976d3; }
+      .commit { fill: #fff7f2; stroke: #e05a2a; }
+      .title { font: 600 19px Arial, sans-serif; fill: #202b3c; text-anchor: middle; }
+      .text { font: 15px Arial, sans-serif; fill: #455468; text-anchor: middle; }
+      .line { fill: none; stroke: #53657d; stroke-width: 2.5; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="420" fill="#fafbfd"/>
+
+  <rect class="box" x="35" y="140" width="190" height="105"/>
+  <text class="title" x="130" y="178">Pending gang</text>
+  <text class="text" x="130" y="206">Total request and</text>
+  <text class="text" x="130" y="228">minAvailable</text>
+
+  <rect class="box safe" x="270" y="85" width="220" height="215"/>
+  <text class="title" x="380" y="123">Build victim bundles</text>
+  <text class="text" x="380" y="158">Group by Job / Gang</text>
+  <text class="text" x="380" y="191">Prefer surplus replicas</text>
+  <text class="text" x="380" y="224">Protect critical replicas</text>
+  <text class="text" x="380" y="257">Apply plugin filters</text>
+
+  <rect class="box decision" x="535" y="120" width="215" height="145"/>
+  <text class="title" x="642" y="160">Accumulate resources</text>
+  <text class="text" x="642" y="193">Add bundles in order</text>
+  <text class="text" x="642" y="222">until total demand</text>
+  <text class="text" x="642" y="244">can be covered</text>
+
+  <rect class="box decision" x="795" y="120" width="180" height="145"/>
+  <text class="title" x="885" y="160">Simulate</text>
+  <text class="text" x="885" y="193">Place the complete</text>
+  <text class="text" x="885" y="222">preemptor gang on the</text>
+  <text class="text" x="885" y="244">projected resources</text>
+
+  <rect class="box commit" x="1020" y="140" width="150" height="105"/>
+  <text class="title" x="1095" y="178">Commit</text>
+  <text class="text" x="1095" y="207">Evict victims</text>
+  <text class="text" x="1095" y="230">and nominate</text>
+
+  <path class="line" d="M225 192 H270"/>
+  <path class="line" d="M490 192 H535"/>
+  <path class="line" d="M750 192 H795"/>
+  <path class="line" d="M975 192 H1020"/>
+
+  <path class="line" d="M885 265 C885 345 650 345 650 266"/>
+  <text class="text" x="765" y="370">Simulation fails: select the next bundle and retry</text>
+</svg>

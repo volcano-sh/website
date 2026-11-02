@@ -58,6 +58,7 @@ Volcano Job and PodGroup can set the topology constraints of the job through the
     - `hard`: Hard constraint, tasks within the job must be deployed within the same HyperNode.
     - `soft`: Soft constraint, tasks are deployed within the same HyperNode as much as possible.
 - **highestTierAllowed**: Used with `hard` mode, indicating the highest tier of HyperNode allowed for job deployment. This field is not required when `mode` is `soft`.
+- **highestTierName**: An alternative to `highestTierAllowed` that identifies the boundary by `HyperNode.spec.tierName`, for example `rack` or `zone`. The two fields cannot be configured together.
 
 For example, the following configuration means the job can only be deployed within HyperNodes of tier 2 or lower, such as s4 and s5, and their child nodes s0, s1, s2, s3. Otherwise, the job will remain in the Pending state:
 
@@ -69,6 +70,79 @@ spec:
 ```
 
 Through this scheduling strategy, users can precisely control the network topology constraints of the job, ensuring that the job runs in the best performance domain that meets the conditions, thereby significantly improving training efficiency.
+
+#### Partition and SubGroup Scheduling
+
+A large distributed Job may not fit into one low-tier network domain even though communication within each model-parallel or data-parallel group must remain local. Volcano v1.14 supports two-level topology-aware scheduling for this case: the Job-level policy defines the outer placement boundary, while each SubGroup can use a tighter topology boundary.
+
+For a Volcano Job, `tasks[].partitionPolicy` divides the replicas of one Task into fixed-size partitions:
+
+```yaml
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: llm-training
+spec:
+  schedulerName: volcano
+  minAvailable: 8
+  networkTopology:
+    mode: hard
+    highestTierName: zone
+  tasks:
+    - name: trainer
+      replicas: 8
+      partitionPolicy:
+        totalPartitions: 2
+        partitionSize: 4
+        minPartitions: 2
+        networkTopology:
+          mode: hard
+          highestTierName: rack
+      template:
+        spec:
+          containers:
+            - name: trainer
+              image: training-image:v1
+```
+
+In this example, all eight replicas must remain within one `zone`, while each four-Pod partition must fit within one `rack`. The following fields control partition behavior:
+
+| Field | Meaning |
+|-------|---------|
+| `totalPartitions` | Number of partitions created from the Task. `totalPartitions * partitionSize` must equal `replicas`. |
+| `partitionSize` | Number of Pods in each partition and the Gang size of the generated SubGroup. |
+| `minPartitions` | Minimum number of partitions whose resource requirements must be satisfied before scheduling starts. |
+| `networkTopology` | Topology constraint applied independently to every partition. |
+
+The Job Controller labels the Pods in each partition with `volcano.sh/partition-id` and converts the policy into `PodGroup.spec.subGroupPolicy`. Users managing Pods and PodGroups directly can express the same grouping explicitly:
+
+```yaml
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: PodGroup
+metadata:
+  name: llm-training
+spec:
+  minMember: 8
+  networkTopology:
+    mode: hard
+    highestTierName: zone
+  subGroupPolicy:
+    - name: trainer
+      subGroupSize: 4
+      minSubGroups: 2
+      labelSelector:
+        matchLabels:
+          volcano.sh/task-spec: trainer
+      matchLabelKeys:
+        - volcano.sh/partition-id
+      networkTopology:
+        mode: hard
+        highestTierName: rack
+```
+
+`labelSelector` selects the Pods governed by the policy. `matchLabelKeys` then groups matching Pods that have the same values for those keys. Each resulting SubGroup is scheduled as a Gang of `subGroupSize` members, and `minSubGroups` defines how many complete SubGroups must be feasible before the workload can proceed. Job-level `minAvailable` or PodGroup-level `minMember` remains in effect, so the scheduler must satisfy both levels of Gang constraints.
+
+The scheduler evaluates candidate HyperNodes from lower to higher tiers. It first finds a feasible HyperNode for the Job, then places its SubGroups within that search scope. When several domains are feasible at the same tier, HyperNode-level bin packing prefers the domain with higher relevant resource utilization, leaving other topology domains available for larger workloads.
 
 #### HyperNode Auto-Discovery: Simplifying Network Topology Management
 
@@ -445,3 +519,9 @@ Since the `spec.networkTopology.highestTierAllowed` of the Job is set to 2, the 
 * TLS certificate verification should be enabled in production environments to prevent MITM attacks.
 * Monitor the Volcano controller logs for errors.
 * Set a reasonable discovery interval to avoid overloading the network topology data source.
+
+## References
+
+- [Volcano v1.14.0 release notes](https://github.com/volcano-sh/volcano/releases/tag/v1.14.0)
+- [Network topology-aware scheduling user guide](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_network_topology_aware_scheduling.md)
+- [Network topology-aware scheduling design](https://github.com/volcano-sh/volcano/blob/master/docs/design/Network%20Topology%20Aware%20Scheduling.md)
