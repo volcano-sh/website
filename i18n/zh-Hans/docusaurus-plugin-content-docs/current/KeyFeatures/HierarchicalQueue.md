@@ -135,3 +135,99 @@ spec:
 当集群资源不足以满足 Pod 需求时，可以回收 Pod 的资源。对于不同队列中的 Pod，它们将首先回收兄弟队列中的 Pod（如果兄弟队列的已分配资源超过 `deserved` 值）。如果兄弟队列中的资源仍然不足以满足 Pod 的需求，则会向上遍历队列的层级结构（即祖先队列）以寻找足够的资源。例如，如果 job-a 和 job-c 先提交，而集群资源不足以运行 job-b，则 job-b 将首先回收 job-a。如果回收 job-a 不能满足资源要求，则随后将考虑回收 job-c。
 
 请注意，在当前版本中，用户只能向 **叶子队列** 提交作业。如果任务已提交给父队列，则无法在该队列下创建子队列。这确保了对队列层级结构中不同级别的资源和任务进行有效管理。此外，子队列的 `deserved`/`guarantee` 值之和不能超过为父队列配置的 `deserved`/`guarantee` 值。每个子队列的 `capability` 值不能超过父队列的 `capability` 限制。如果队列未指定某个资源维度的 `capability` 值，它将继承其父队列的 `capability`。如果父队列和所有祖先队列都未指定，则该值最终将继承自 root 队列。默认情况下，root 队列的 `capability` 设置为集群中该维度的总可用资源。
+
+### 层级 NamespaceQueue
+
+集群级别的 `Queue` 只能由集群管理员创建。为了让租户能够构建属于自己的那部分层级结构，Volcano 提供了 `NamespaceQueue`。它是命名空间级别的队列，具有与 `Queue` 相同的资源字段（`capability`、`deserved`、`guarantee`、`reclaimable`、`priority`）。NamespaceQueue 是 Alpha 特性，默认关闭。关于如何启用该特性、为租户授权以及查看队列状态，请参阅 [NamespaceQueue 用户指南](../UserGuide/user_guide_how_to_use_namespace_queue.md)。
+
+NamespaceQueue 将集群队列树向下延伸：
+
+- 每棵 NamespaceQueue 树的顶层都挂载在一个集群 `Queue` 下。该集群 Queue 必须在 `spec.allowedNamespaces` 中列出对应的命名空间（`["*"]` 表示允许所有命名空间）。如果该字段为空，则任何 NamespaceQueue 都不能挂载到该队列下。
+- 在 NamespaceQueue 中，`parent: cluster/<name>` 指向一个集群 Queue，`parent: <name>` 指向同一命名空间中的另一个 NamespaceQueue。如果未设置 `parent`，默认值为 `cluster/default`。
+- 上文的层级规则适用于包括 NamespaceQueue 在内的整棵树：队列受所有祖先队列 `capability` 的限制，子队列的 `guarantee` 之和不能超过父队列。对于每个资源维度，NamespaceQueue 都必须满足 `guarantee <= deserved <= capability`。
+- 默认情况下，一个集群 Queue 之下最多允许 5 层 NamespaceQueue。如需修改，请在 controller manager 和 admission 上同时设置 `--max-namespacequeue-depth`。
+- 工作负载使用 `namespace/<name>` 引用 NamespaceQueue，该引用始终在工作负载自身所在的命名空间中解析。不带前缀的名称（例如 `child-queue-b`）仍然指向集群 Queue。
+
+以下示例允许命名空间 `team-b` 将上文示例中 `child-queue-b` 的资源划分到自己的子队列中：
+
+```
+root                                (集群 Queue)
+└── child-queue-b                   (集群 Queue，allowedNamespaces: [team-b])
+    └── team-b/training             (NamespaceQueue)
+        └── team-b/inference        (NamespaceQueue)
+```
+
+```
+# 集群管理员：在 child-queue-b 上授权命名空间 team-b
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: Queue
+metadata:
+  name: child-queue-b
+spec:
+  reclaimable: true
+  parent: root
+  deserved:
+    cpu: 64
+    memory: 128Gi
+  allowedNamespaces:
+    - team-b
+---
+# 租户：training 的父队列是集群 Queue child-queue-b
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: NamespaceQueue
+metadata:
+  name: training
+  namespace: team-b
+spec:
+  parent: cluster/child-queue-b
+  reclaimable: true
+  capability:
+    cpu: 64
+    memory: 128Gi
+  deserved:
+    cpu: 32
+    memory: 64Gi
+---
+# 租户：inference 的父队列是同一命名空间中的 NamespaceQueue training
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: NamespaceQueue
+metadata:
+  name: inference
+  namespace: team-b
+spec:
+  parent: training
+  reclaimable: true
+  capability:
+    cpu: 32
+    memory: 64Gi
+  deserved:
+    cpu: 16
+    memory: 32Gi
+---
+# 提交一个示例 vc-job 到 NamespaceQueue inference
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: job-inference
+  namespace: team-b
+spec:
+  queue: namespace/inference
+  schedulerName: volcano
+  minAvailable: 1
+  tasks:
+    - replicas: 1
+      name: test
+      template:
+        spec:
+          containers:
+            - image: alpine
+              command: ["/bin/sh", "-c", "sleep 1000"]
+              imagePullPolicy: IfNotPresent
+              name: alpine
+              resources:
+                requests:
+                  cpu: "1"
+                  memory: 2Gi
+```
+
+请注意，当有 NamespaceQueue 挂载在集群 Queue 下时，该集群 Queue 不能被删除；当 NamespaceQueue 中仍有工作负载、预留资源或子队列时，该 NamespaceQueue 也不能被删除。
