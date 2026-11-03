@@ -10,7 +10,7 @@ Spark是一款快速通用的大数据集群计算系统。它提供了Scala、J
 
 当前，有两种方式可以支持Spark和Volcano集成：
 - Spark on Kubernetes native支持: 由[Apache Spark社区](https://github.com/apache/spark)和Volcano社区共同维护。
-- Spark Operator支持: 由[GoogleCloudPlatform community](https://github.com/GoogleCloudPlatform/spark-on-k8s-operator)和Volcano社区共同维护。
+- Spark Operator支持: 由[Kubeflow community](https://github.com/kubeflow/spark-operator)和Volcano社区共同维护。
 
 #### Spark on Kubernetes native支持 (spark-submit)
 
@@ -21,7 +21,7 @@ Spark是一款快速通用的大数据集群计算系统。它提供了Scala、J
 通过helm安装spark-operator。
 
 ```
-$ helm repo add spark-operator https://googlecloudplatform.github.io/spark-on-k8s-operator
+$ helm repo add spark-operator https://kubeflow.github.io/spark-operator
 
 $ helm install my-release spark-operator/spark-operator --namespace spark-operator --create-namespace
 ```
