@@ -89,6 +89,44 @@ This field is used to configure [hierarchical queues](/docs/KeyFeatures/Hierarch
 `Closing` indicates that the queue is becoming unavailable. It is a transient state. A `Closing` queue cannot accept any new PodGroups.
 ### Unknown
 `Unknown` indicates that the queue status is unknown because of unexpected situations such as network jitter.
+
+## Multi-tenant Example
+
+In a multi-tenant cluster, each team can have their own Queue with separate resource limits. Here's an example with two teams:
+
+```yaml
+# Team A's queue - gets 4 CPUs guaranteed
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: Queue
+metadata:
+  name: team-a
+spec:
+  capability:
+    cpu: "8"
+    memory: 16Gi
+  guarantee:
+    resource:
+      cpu: "4"
+      memory: 8Gi
+  reclaimable: true
+---
+# Team B's queue - gets 4 CPUs guaranteed
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: Queue
+metadata:
+  name: team-b
+spec:
+  capability:
+    cpu: "8"
+    memory: 16Gi
+  guarantee:
+    resource:
+      cpu: "4"
+      memory: 8Gi
+  reclaimable: true
+```
+
+Each team submits their jobs to their own queue. If Team A's jobs are idle, Team B can use the extra resources, and vice versa.
   
 ## Note
 #### default Queue
