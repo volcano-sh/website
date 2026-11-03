@@ -1,7 +1,7 @@
 volcano:
   name: Volcano
   url: https://volcano.sh
-  image_url: https://volcano.sh/img/volcano_logo.svg
+  image_url: https://volcano.sh/img/blog/volcano_logo.svg
 
 yi-guo:
   name: Yi Guo
