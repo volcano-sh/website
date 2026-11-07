@@ -17,7 +17,7 @@ sidebar_position: 8
 
 当前有两种方式可以在Volcano上部署Ray集群：
 
-1. **KubeRay Operator方式**：通过集成Volcano调度器的KubeRay Operator实现`RayCluster`, `RayService`和`RayJob`资源的自动化部署和管理
+1. **KubeRay Operator方式**：通过集成Volcano调度器的KubeRay Operator，直接支持`RayCluster`和`RayJob`资源的自动化部署和管理。`RayService`本身不创建PodGroup，而是通过其创建的`RayCluster`间接获得gang调度，该路径未经过验证
 2. **Volcano Job (vcjob) 方式**：通过Volcano Job配合Ray插件直接部署Ray集群
 
 以上两种方式都可以充分利用Volcano强大的调度能力，包括gang调度和网络拓扑感知调度，以实现最优的资源分配。
@@ -26,87 +26,9 @@ sidebar_position: 8
 
 [KubeRay](https://docs.ray.io/en/latest/cluster/kubernetes/index.html) 是一个开源的Kubernetes Operator，可以简化在Kubernetes上运行Ray的流程。它通过Kubernetes原生的工具和API实现Ray集群的自动化部署、扩缩容和管理。
 
-#### KubeRay与Volcano集成
+{/* This is a raw anchor so that Docusaurus does not add the /zh-Hans/ locale prefix. The broken-link checker does not cover it. It targets the English heading "Method 1: Using KubeRay Operator" in docs/Ecosystem/RayOnVolcano.md, so update it if that heading or page is renamed. */}
 
-从KubeRay v1.5.1版本开始，所有KubeRay资源（RayJob、RayCluster和RayService）均支持Volcano的高级调度特性，包括gang调度和网络拓扑感知调度。该集成能够优化资源分配并提升分布式AI/ML工作负载的性能。
-
-#### 支持的标签
-
-在RayJob和RayCluster资源的metadata部分，可以使用以下标签配置Volcano调度：
-
-| 标签 | 描述 | 是否必需 |
-|------|------|----------|
-| `ray.io/priority-class-name` | 为Pod调度分配[Kubernetes](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass)优先级类 | 否 |
-| `volcano.sh/queue-name` | 指定资源提交的Volcano队列 | 否 |
-| `volcano.sh/network-topology-mode` | 配置网络拓扑感知调度模式 | 否 |
-| `volcano.sh/network-topology-highest-tier-allowed` | 设置调度允许的最高网络层级 | 否 |
-
-#### 自动扩缩容行为
-
-KubeRay与Volcano的集成会根据自动扩缩容是否启用采用不同的gang调度策略：
-
-- **启用自动扩缩容时**：使用`minReplicas`进行gang调度
-- **禁用自动扩缩容时**：使用期望的副本数进行gang调度
-
-这确保了在支持灵活扩缩容行为的同时，gang调度约束能够得到正确维护。
-
-以下是包含详细说明的配置示例。有关完整的配置选项，请参阅[KubeRay Volcano调度器文档](https://docs.ray.io/en/latest/cluster/kubernetes/k8s-ecosystem/volcano.html#kuberay-integration-with-volcano)。
-
-
-#### 环境要求
-
-在使用KubeRay部署Ray之前，请确保：
-
-- 已安装Volcano的Kubernetes集群正常运行
-- 已安装支持Volcano批处理调度器的KubeRay Operator：
-
-```bash
-# Install KubeRay Operator with Volcano integration
-$ helm install kuberay-operator kuberay/kuberay-operator --version 1.5.1 --set batchScheduler.name=volcano
-```
-
-#### 部署示例
-
-##### RayCluster示例
-
-使用Volcano调度部署RayCluster：
-
-```bash
-# Download the sample RayCluster configuration with Volcano labels
-$ curl -LO https://raw.githubusercontent.com/ray-project/kuberay/v1.5.1/ray-operator/config/samples/ray-cluster.volcano-scheduler.yaml
-
-# Apply the configuration
-$ kubectl apply -f ray-cluster.volcano-scheduler.yaml
-
-# Verify the RayCluster deployment
-$ kubectl get pod -l ray.io/cluster=test-cluster-0
-
-# Expected output:
-# NAME                                 READY   STATUS    RESTARTS   AGE
-# test-cluster-0-head-jj9bg            1/1     Running   0          36s
-```
-
-##### RayJob示例
-
-从KubeRay v1.5.1版本开始支持RayJob与Volcano的集成：
-
-```bash
-# Download the sample RayJob configuration with Volcano queue integration
-$ curl -LO https://raw.githubusercontent.com/ray-project/kuberay/v1.5.1/ray-operator/config/samples/ray-job.volcano-scheduler-queue.yaml
-
-# Apply the configuration
-$ kubectl apply -f ray-job.volcano-scheduler-queue.yaml
-
-# Monitor the job execution
-$ kubectl get pod
-
-# Expected output:
-# NAME                                             READY   STATUS      RESTARTS   AGE
-# rayjob-sample-0-k449j-head-rlgxj                 1/1     Running     0          93s
-# rayjob-sample-0-k449j-small-group-worker-c6dt8   1/1     Running     0          93s
-# rayjob-sample-0-k449j-small-group-worker-cq6xn   1/1     Running     0          93s
-# rayjob-sample-0-qmm8s                            0/1     Completed   0          32s
-```
+KubeRay与Volcano集成的完整说明（包括支持的标签、PodGroup的计算规则、RayCluster和RayJob的部署示例，以及网络拓扑感知调度的配置）已在英文文档中更新。请参阅英文版<a href="/docs/Ecosystem/RayOnVolcano#method-1-using-kuberay-operator">Ray on Volcano</a>中的 “Method 1: Using KubeRay Operator” 一节。
 
 ### 方法二：使用Volcano Job配合Ray插件
 

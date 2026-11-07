@@ -11,7 +11,9 @@
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
     "write-translations": "docusaurus write-translations",
-    "write-heading-ids": "docusaurus write-heading-ids"
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "test": "node --test test/source/frameworks.test.mjs test/source/logos.test.mjs test/source/ecosystem-docs.test.mjs test/source/zh-pointer.test.mjs",
+    "test:build": "node --test test/build/homepage.test.mjs test/build/ecosystem-pages.test.mjs"
   },
   "dependencies": {
     "@docusaurus/core": "3.9.2",

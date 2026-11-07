@@ -75,6 +75,24 @@ const frameworks = [
     logo: "img/landing/volcano_paddle.png",
     description: "PaddlePaddle is an open source deep learning platform derived from industrial practice initiated by Baidu.",
     url: "https://www.paddlepaddle.org.cn/"
+  },
+  {
+    name: "KubeRay",
+    logo: "img/landing/ray_logo.png",
+    description: "KubeRay is a Kubernetes operator that deploys and manages Ray clusters, jobs, and services.",
+    url: "https://github.com/ray-project/kuberay"
+  },
+  {
+    name: "Grove",
+    logo: "img/landing/grove_logo.svg",
+    description: "Grove is a Kubernetes API for orchestrating multi-component AI inference workloads with gang scheduling and multi-level autoscaling.",
+    url: "https://github.com/ai-dynamo/grove"
+  },
+  {
+    name: "LeaderWorkerSet",
+    logo: "img/landing/lws_logo.svg",
+    description: "LeaderWorkerSet is a Kubernetes API for deploying groups of pods as a unit of replication for multi-host AI/ML inference.",
+    url: "https://lws.sigs.k8s.io/"
   }
 ];
 
