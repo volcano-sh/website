@@ -201,6 +201,12 @@ const supporters = [
     imgWidth: "100px",
     imgHeight: "60px",
     url: "https://zuoyebang.com/"
+  },
+  {
+    imgSrc: "img/landing/logo_wordfully.svg",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://wordfully.ai/"
   }
 ];
 
