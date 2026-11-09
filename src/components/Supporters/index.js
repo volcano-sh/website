@@ -203,7 +203,7 @@ const supporters = [
     url: "https://zuoyebang.com/"
   },
   {
-    imgSrc: "img/landing/logo_wordfully.png",
+    imgSrc: "img/landing/logo_wordfully.svg",
     imgWidth: "100px",
     imgHeight: "60px",
     url: "https://wordfully.ai/"
