@@ -14,7 +14,7 @@ Volcano的重调度能力在 [https://github.com/kubernetes-sigs/descheduler.git
 
 ### 支持按照crontab定时任务和固定时间间隔进行重调度
 
-用户可以把`Volcano descheduler`部署为一个Deploment类型的工作负载。然后在命令行参数指定按照cronTab定时运行或者固定时间间隔运行重调度组件，而无需把重调度组件部署成一个cronJob类型的工作负载。
+用户可以把`Volcano descheduler`部署为一个Deployment类型的工作负载。然后在命令行参数指定按照cronTab定时运行或者固定时间间隔运行重调度组件，而无需把重调度组件部署成一个cronJob类型的工作负载。
 
 **cronTab定时任务**: 指定参数`--descheduling-interval-cron-expression='0 0 * * *'`，表示每天凌晨运行一次重调度。
 
