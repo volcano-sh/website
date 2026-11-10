@@ -51,7 +51,7 @@ deserved indicates the expected resource amount for all PodGroups in this queue.
 
 > **Note**:
 > 
-> 1. This field can only be configured when the capacity plugin is enabled, and must be less than or equal to the capability value. The proportion plugin uses weight to automatically calculate the queue's deserved value. For more information on using the capacity plugin, see: [capacity plugin user guide](/docs/UserGuide/user_guide_how_to_use_capacity_plugin)
+> 1. This field can only be configured when the capacity plugin is enabled, and must be less than or equal to the capability value. The proportion plugin uses weight to automatically calculate the queue's deserved value. For more information on using the capacity plugin, see: capacity plugin user guide
 > 2. If the allocated resources of a queue exceed its configured deserved value, the queue cannot reclaim resources from other queues
 
 * weight, *optional*
@@ -78,7 +78,7 @@ priority indicates the priority of this queue. During resource allocation and re
 
 * parent, *optional*
 
-This field is used to configure [hierarchical queues](/docs/KeyFeatures/HierarchicalQueue). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
+This field is used to configure [hierarchical queues](../KeyFeatures/HierarchicalQueue.md). parent specifies the parent queue. If parent is not specified, the queue will be set as a child queue of the root queue by default.
 
 ## Status
 ### Open
@@ -94,6 +94,6 @@ This field is used to configure [hierarchical queues](/docs/KeyFeatures/Hierarch
 #### default Queue
 When Volcano starts, it automatically creates queue `default` whose `weight` is `1`. Subsequent jobs that are not assigned to a queue will be assigned to queue `default`.
 #### root queue
-When Volcano starts, it also creates a queue named root by default. This queue is used when the [hierarchical queue](/docs/KeyFeatures/HierarchicalQueue) feature is enabled, serving as the root queue for all queues, with the default queue being a child queue of the root queue.
+When Volcano starts, it also creates a queue named root by default. This queue is used when the [hierarchical queue](../KeyFeatures/HierarchicalQueue.md) feature is enabled, serving as the root queue for all queues, with the default queue being a child queue of the root queue.
 
-> For more information on queue usage scenarios, please refer to [Queue Resource Management](/docs/KeyFeatures/QueueResourceManagement)
+> For more information on queue usage scenarios, please refer to [Queue Resource Management](../KeyFeatures/QueueResourceManagement.md)
