@@ -57,6 +57,7 @@ Volcano Job和PodGroup可以通过`networkTopology`字段设置作业的拓扑�
     - `hard`：硬约束，作业内的任务必须部署在同一个HyperNode内。
     - `soft`：软约束，尽可能将作业部署在同一个HyperNode下。
 - **highestTierAllowed**：与`hard`模式配合使用，表示作业允许跨到哪层HyperNode部署，soft模式下无需配置该字段。
+- **highestTierName**：`highestTierAllowed` 的替代配置，通过 `HyperNode.spec.tierName` 指定边界，例如 `rack` 或 `zone`。两个字段不能同时配置。
 
 例如，以下配置表示作业只能部署在2层及以下的HyperNode内，如s4和s5，以及更低层的tier: s4和s5的子节点s0，s1，s2，s3，否则作业将处于Pending状态：
 
@@ -68,6 +69,79 @@ spec:
 ```
 
 通过这种调度策略，用户可以精确控制作业的网络拓扑约束，确保作业在满足条件的最佳性能域运行，从而显著提升训练效率。
+
+#### Partition 与 SubGroup 调度
+
+大型分布式作业可能无法完整放入一个低层级网络域，但模型并行或数据并行组内的通信仍需要保持在局部范围。Volcano v1.14 针对此类场景支持两级拓扑感知调度：Job 级策略定义外层放置边界，每个 SubGroup 可以配置更严格的拓扑边界。
+
+对于 Volcano Job，`tasks[].partitionPolicy` 将一个 Task 的副本划分为固定大小的 Partition：
+
+```yaml
+apiVersion: batch.volcano.sh/v1alpha1
+kind: Job
+metadata:
+  name: llm-training
+spec:
+  schedulerName: volcano
+  minAvailable: 8
+  networkTopology:
+    mode: hard
+    highestTierName: zone
+  tasks:
+    - name: trainer
+      replicas: 8
+      partitionPolicy:
+        totalPartitions: 2
+        partitionSize: 4
+        minPartitions: 2
+        networkTopology:
+          mode: hard
+          highestTierName: rack
+      template:
+        spec:
+          containers:
+            - name: trainer
+              image: training-image:v1
+```
+
+该示例要求全部 8 个副本位于同一个 `zone`，同时每个包含 4 个 Pod 的 Partition 必须位于同一个 `rack`。各字段的含义如下：
+
+| 字段 | 含义 |
+|------|------|
+| `totalPartitions` | Task 划分出的 Partition 数量；`totalPartitions * partitionSize` 必须等于 `replicas`。 |
+| `partitionSize` | 每个 Partition 的 Pod 数量，也是生成的 SubGroup 的 Gang 大小。 |
+| `minPartitions` | 开始调度前，资源条件至少需要满足的 Partition 数量。 |
+| `networkTopology` | 独立应用于每个 Partition 的拓扑约束。 |
+
+Job Controller 会为各 Partition 中的 Pod 添加 `volcano.sh/partition-id` 标签，并将策略转换为 `PodGroup.spec.subGroupPolicy`。直接管理 Pod 和 PodGroup 的用户可以显式配置相同的分组关系：
+
+```yaml
+apiVersion: scheduling.volcano.sh/v1beta1
+kind: PodGroup
+metadata:
+  name: llm-training
+spec:
+  minMember: 8
+  networkTopology:
+    mode: hard
+    highestTierName: zone
+  subGroupPolicy:
+    - name: trainer
+      subGroupSize: 4
+      minSubGroups: 2
+      labelSelector:
+        matchLabels:
+          volcano.sh/task-spec: trainer
+      matchLabelKeys:
+        - volcano.sh/partition-id
+      networkTopology:
+        mode: hard
+        highestTierName: rack
+```
+
+`labelSelector` 选择受该策略管理的 Pod，`matchLabelKeys` 再将这些 Pod 按指定标签的相同取值分组。每个 SubGroup 以 `subGroupSize` 为 Gang 大小进行调度，`minSubGroups` 定义工作负载继续执行前至少需要满足的完整 SubGroup 数量。Job 级 `minAvailable` 或 PodGroup 级 `minMember` 仍然生效，因此调度器必须同时满足两级 Gang 约束。
+
+调度器按 HyperNode 层级从低到高评估候选域，先为 Job 找到可行的 HyperNode，再在该范围内放置各 SubGroup。同一层级存在多个可行域时，HyperNode 级 Bin Packing 会优先选择相关资源利用率更高的域，为后续大型工作负载保留更完整的拓扑域。
 
 #### HyperNode自动发现：简化网络拓扑管理
 
@@ -442,3 +516,9 @@ spec:
 *   应在生产环境中启用TLS证书验证以防止中间人攻击。
 *   监控Volcano控制器日志以获取错误信息。
 *   设置合理的发现间隔以避免网络拓扑数据源过载。
+
+## 参考资料
+
+- [Volcano v1.14.0 Release Notes](https://github.com/volcano-sh/volcano/releases/tag/v1.14.0)
+- [网络拓扑感知调度用户指南](https://github.com/volcano-sh/volcano/blob/master/docs/user-guide/how_to_use_network_topology_aware_scheduling.md)
+- [网络拓扑感知调度设计文档](https://github.com/volcano-sh/volcano/blob/master/docs/design/Network%20Topology%20Aware%20Scheduling.md)
