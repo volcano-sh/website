@@ -107,6 +107,15 @@
   "PaddlePaddle is an open source deep learning platform derived from industrial practice initiated by Baidu.": {
     "message": "PaddlePaddle是一个由百度发起的工业实践衍生的开源深度学习平台."
   },
+  "KubeRay is a Kubernetes operator that deploys and manages Ray clusters, jobs, and services.": {
+    "message": "KubeRay是一个Kubernetes Operator，用于部署和管理Ray集群、作业和服务。"
+  },
+  "Grove is a Kubernetes API for orchestrating multi-component AI inference workloads with gang scheduling and multi-level autoscaling.": {
+    "message": "Grove是一个Kubernetes API，用于编排由多个组件构成的AI推理工作负载，支持Gang调度和多层级自动扩缩容。"
+  },
+  "LeaderWorkerSet is a Kubernetes API for deploying groups of pods as a unit of replication for multi-host AI/ML inference.": {
+    "message": "LeaderWorkerSet是一个Kubernetes API，可将一组Pod作为复制单元进行部署，用于多主机AI/ML推理。"
+  },
   "Supporters": {
     "message": "合作伙伴"
   },
