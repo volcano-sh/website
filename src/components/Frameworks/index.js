@@ -75,6 +75,27 @@ const frameworks = [
     logo: "img/landing/volcano_paddle.png",
     description: "PaddlePaddle is an open source deep learning platform derived from industrial practice initiated by Baidu.",
     url: "https://www.paddlepaddle.org.cn/"
+  },
+  {
+    name: "KubeRay",
+    logo: "img/landing/ray_logo.png",
+    description: "KubeRay is a Kubernetes operator that deploys and manages Ray clusters, jobs, and services.",
+    url: "https://github.com/ray-project/kuberay"
+  },
+  // Grove logo: supplied by a Volcano maintainer in the volcano-sh/website#601 review
+  // (https://github.com/user-attachments/assets/46113f3b-46a7-461e-ae79-04268f75c542).
+  // ai-dynamo/grove ships no logo asset. Committed unmodified (460x460 PNG).
+  {
+    name: "Grove",
+    logo: "img/landing/grove_logo.png",
+    description: "Grove is a Kubernetes API for orchestrating multi-component AI inference workloads with gang scheduling and multi-level autoscaling.",
+    url: "https://github.com/ai-dynamo/grove"
+  },
+  {
+    name: "LeaderWorkerSet",
+    logo: "img/landing/lws_logo.svg",
+    description: "LeaderWorkerSet is a Kubernetes API for deploying groups of pods as a unit of replication for multi-host AI/ML inference.",
+    url: "https://lws.sigs.k8s.io/"
   }
 ];
 
