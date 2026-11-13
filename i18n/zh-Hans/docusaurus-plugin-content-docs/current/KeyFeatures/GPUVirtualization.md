@@ -84,10 +84,32 @@ data:
           deviceshare.SchedulePolicy: binpack  # 调度策略：binpack / spread
 ```
 
-可通过以下命令检查：
+重启Volcano调度器和准入控制器，以确保在创建vGPU工作负载前应用更新后的配置：
+
+```bash
+kubectl rollout restart deployment/volcano-scheduler -n volcano-system
+kubectl rollout restart deployment/volcano-admission -n volcano-system
+kubectl rollout status deployment/volcano-scheduler -n volcano-system
+kubectl rollout status deployment/volcano-admission -n volcano-system
+```
+
+重启前创建的Pod必须重新创建，否则设备插件可能会在分配设备时拒绝Pod，并报告类似以下错误：
+
+```text
+UnexpectedAdmissionError: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod
+```
+
+通过以下命令检查节点资源：
 
 ```bash
 kubectl get node {node-name} -o yaml
+```
+
+创建vGPU Pod后，检查Volcano是否添加了设备分配注解：
+
+```bash
+kubectl get pod {pod-name} -o yaml | grep -E \
+  'volcano.sh/(devices-to-allocate|vgpu-ids-new|vgpu-node)'
 ```
 
 ### HAMI-core使用方法

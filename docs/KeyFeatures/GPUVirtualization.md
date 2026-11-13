@@ -87,10 +87,35 @@ data:
           deviceshare.SchedulePolicy: binpack  # scheduling policy. binpack / spread
 ```
 
-Check with:
+Restart the Volcano scheduler and admission controller so that the updated
+configuration is used before creating vGPU workloads:
+
+```bash
+kubectl rollout restart deployment/volcano-scheduler -n volcano-system
+kubectl rollout restart deployment/volcano-admission -n volcano-system
+kubectl rollout status deployment/volcano-scheduler -n volcano-system
+kubectl rollout status deployment/volcano-admission -n volcano-system
+```
+
+Pods that were created before the restart must be recreated. Otherwise, the
+device plugin can reject them during allocation with an error similar to:
+
+```text
+UnexpectedAdmissionError: Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod
+```
+
+Check the node resources with:
 
 ```bash
 kubectl get node {node-name} -o yaml
+```
+
+After creating a vGPU pod, verify that Volcano added the device allocation
+annotations:
+
+```bash
+kubectl get pod {pod-name} -o yaml | grep -E \
+  'volcano.sh/(devices-to-allocate|vgpu-ids-new|vgpu-node)'
 ```
 
 ### HAMI-core Usage
