@@ -155,7 +155,7 @@ kubectl label node $node volcano.sh/colocation=true # replace $node with real no
 
 #### 开启CPU Burst
 
-部署一个Deploment并暴露类型为 Cluster IP 的service，Pod 的注解 `volcano.sh/enable-quota-burst: "true"` 表示为 Pod 开启CPU Burst功能。
+部署一个Deployment并暴露类型为 Cluster IP 的service，Pod 的注解 `volcano.sh/enable-quota-burst: "true"` 表示为 Pod 开启CPU Burst功能。
 
 ```yaml
 apiVersion: apps/v1
