@@ -253,7 +253,7 @@ In Kubernetes clusters, dynamic workload changes often lead to uneven node resou
 
 #### **Core Capabilities:**
 
-- **Load-Aware Scheduling:** Monitors real CPU and memory load metrics to dynamically adjust Pod distribution, avoiding reliance on Pod Request-based scheduling.
+- **Load-Aware Descheduling:** Monitors real CPU and memory load metrics to dynamically adjust Pod distribution, avoiding reliance on Pod Request-based scheduling.
 - **Timed and Dynamic Triggers:** Supports CronTab-based or fixed-interval descheduling to adapt to different scenarios.
 
 #### **Use Cases:**

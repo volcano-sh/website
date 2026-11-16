@@ -10,11 +10,11 @@ To address the above issues, `Volcano descheduler` can evict Pods that do not co
 
 ## Features
 
-Volcano decheduler's capability is based on https://github.com/kubernetes-sigs/descheduler.git, with the following new features:
+Volcano descheduler's capability is based on https://github.com/kubernetes-sigs/descheduler.git, with the following new features:
 
 ### Descheduling via crontab or fixed interval
 
-Users can deploy the  `Volcano descheduler` as a Deploment type workload instead of a cronJob. Then specify the command line parameters to run the descheduler according to cronTab expression or fixed interval.
+Users can deploy the  `Volcano descheduler` as a Deployment type workload instead of a cronJob. Then specify the command line parameters to run the descheduler according to cronTab expression or fixed interval.
 
 **cronTab scheduled task**: Specify the parameter `--descheduling-interval-cron-expression='0 0 * * *'`, which means to run descheduling once every morning.
 
@@ -120,7 +120,7 @@ In addition to the above `LoadAware plugin` enhancements, `Volcano descheduler` 
 
 When the Pods on the node with relatively high resource utilization are evicted, we expect that the new created Pods should avoid being scheduled to the node with relatively high resource utilization again. Therefore, the `Volcano scheduler` also needs to enable the  plugin `usage` based on real load awareness, for detailed description and configuration of `usage`, please refer to: [volcano usage plugin](https://github.com/volcano-sh/volcano/blob/master/docs/design/usage-based-scheduling.md).
 
-## Trouble shotting
+## Troubleshooting
 
 When the configuration parameter `metrics.type` of the LoadAware plugin is set to `prometheus`, `Volcano scheduler` queries the actual utilization of cpu and memory through the following `PromQL` statement. When the expected eviction behavior does not occur, you can query it manually through prometheus, check whether the node metrics are correctly exposed, and compare it with the log of `Volcano descheduler` to judge its actual behavior.
 
