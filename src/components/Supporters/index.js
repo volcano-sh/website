@@ -207,6 +207,12 @@ const supporters = [
     imgWidth: "100px",
     imgHeight: "60px",
     url: "https://wordfully.ai/"
+  },
+  {
+    imgSrc: "img/landing/logo_sensetime.svg",
+    imgWidth: "100px",
+    imgHeight: "60px",
+    url: "https://www.sensetime.com/"
   }
 ];
 
