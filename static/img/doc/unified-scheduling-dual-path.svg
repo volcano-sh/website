@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title desc">
+  <title id="title">Volcano dual-path scheduling architecture</title>
+  <desc id="desc">Batch and latency-sensitive workloads are routed to dedicated schedulers coordinated by the Sharding Controller and NodeShard resources.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#53657d"/>
+    </marker>
+    <style>
+      .box { fill: #fff; stroke: #aeb8c6; stroke-width: 2; rx: 10; }
+      .accent { fill: #f4f8ff; stroke: #3976d3; }
+      .control { fill: #fff7f2; stroke: #e05a2a; }
+      .title { font: 600 22px Arial, sans-serif; fill: #202b3c; text-anchor: middle; }
+      .text { font: 16px Arial, sans-serif; fill: #455468; text-anchor: middle; }
+      .line { fill: none; stroke: #53657d; stroke-width: 2.5; marker-end: url(#arrow); }
+      .dash { fill: none; stroke: #e05a2a; stroke-width: 2.5; stroke-dasharray: 8 7; marker-end: url(#arrow); }
+    </style>
+  </defs>
+
+  <rect width="1200" height="520" fill="#fafbfd"/>
+
+  <rect class="box" x="70" y="45" width="430" height="82"/>
+  <text class="title" x="285" y="80">Batch and elastic workloads</text>
+  <text class="text" x="285" y="108">AI training · HPC · big data</text>
+
+  <rect class="box" x="700" y="45" width="430" height="82"/>
+  <text class="title" x="915" y="80">Latency-sensitive workloads</text>
+  <text class="text" x="915" y="108">AI Agent · short-lived Pods</text>
+
+  <path class="line" d="M285 127 V190"/>
+  <path class="line" d="M915 127 V190"/>
+
+  <rect class="box accent" x="70" y="190" width="430" height="112"/>
+  <text class="title" x="285" y="230">Volcano Batch Scheduler</text>
+  <text class="text" x="285" y="260">Session-based scheduling</text>
+  <text class="text" x="285" y="284">Gang, queue, topology and fairness policies</text>
+
+  <rect class="box accent" x="700" y="190" width="430" height="112"/>
+  <text class="title" x="915" y="230">Agent Scheduler</text>
+  <text class="text" x="915" y="260">Fast-path, multi-worker scheduling</text>
+  <text class="text" x="915" y="284">Optimistic conflict handling</text>
+
+  <rect class="box control" x="465" y="345" width="270" height="112"/>
+  <text class="title" x="600" y="386">Sharding Controller</text>
+  <text class="text" x="600" y="416">Policy chain</text>
+  <text class="text" x="600" y="440">filter → sort → select</text>
+
+  <rect class="box" x="70" y="370" width="280" height="72"/>
+  <text class="title" x="210" y="401">NodeShard: volcano</text>
+  <text class="text" x="210" y="427">Batch candidate nodes</text>
+
+  <rect class="box" x="850" y="370" width="280" height="72"/>
+  <text class="title" x="990" y="401">NodeShard: agent</text>
+  <text class="text" x="990" y="427">Fast-path candidate nodes</text>
+
+  <path class="dash" d="M465 390 H350"/>
+  <path class="dash" d="M735 390 H850"/>
+  <path class="line" d="M210 370 C210 335 250 330 285 302"/>
+  <path class="line" d="M990 370 C990 335 950 330 915 302"/>
+
+  <text class="text" x="600" y="492">Both paths schedule against the same Kubernetes cluster through policy-derived node shards.</text>
+</svg>
