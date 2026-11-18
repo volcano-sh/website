@@ -20,7 +20,7 @@ Job scheduling and management become increasingly complex and critical for high-
 
 Volcano is designed to cater to these requirements. In addition, Volcano inherits the design of Kubernetes APIs, allowing you to easily run applications that require high-performance computing on Kubernetes.
 ## Features
-### [Unified Scheduling](/docs/KeyFeatures/UnifiedScheduling)
+### [Unified Scheduling](../KeyFeatures/UnifiedScheduling.md)
 * Support native Kubernetes workload scheduling
 * Provide complete support for frameworks like PyTorch, TensorFlow, Spark, Flink, Ray through VolcanoJob
 * Unified scheduling for both online microservices and offline batch jobs to improve cluster resource utilization
@@ -39,7 +39,7 @@ Volcano is designed to cater to these requirements. In addition, Volcano inherit
 
 Volcano supports custom plugins and actions to implement more scheduling algorithms.
 
-### [Queue Resource Management](/docs/KeyFeatures/QueueResourceManagement)
+### [Queue Resource Management](../KeyFeatures/QueueResourceManagement.md)
 * Support multi-dimensional resource quota control (CPU, Memory, GPU, etc.)
 * Provide multi-level queue structure and resource inheritance
 * Support resource borrowing, reclaiming and preemption between queues
@@ -52,7 +52,7 @@ Volcano can schedule computing resources from multiple architectures:
 * Arm
 * Kunpeng
 * Ascend
-* GPU: Supports multiple [GPU virtualization](/docs/KeyFeatures/GPUVirtualization) technologies for flexible resource management
+* GPU: Supports multiple [GPU virtualization](../KeyFeatures/GPUVirtualization.md) technologies for flexible resource management
   * **Dynamic MIG Support**: Enables dynamic partitioning of NVIDIA Multi-Instance GPUs (MIG), providing hardware-level isolation to segment a physical GPU into multiple independent instances
   * **vCUDA Virtualization**: Virtualizes physical GPUs into multiple vGPU devices at the software level for resource sharing and isolation
   * **Fine-Grained Resource Control**: Provides dedicated memory and compute allocation for each GPU instance
