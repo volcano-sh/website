@@ -86,11 +86,11 @@ Volcano SLO Agent实时计算Pod已经申请但未使用的资源，将这部分
 
 - **Network:** 网络隔离实现了对在线作业的出口网络带宽保障，它基于整机的带宽大小，并通过cgroup + tc + ebpf技术，实现在线作业对离线作业的出口网络带宽压制。
 
-<!-- ![网络隔离技术方案](img/colocation/network.png) -->
+![网络隔离技术方案](/img/colocation/network.png)
+
+![在离线作业带宽限制示意图](/img/colocation/watermark.png)
 
 上图为网络隔离的技术方案，通过ebpf将限速程序注入到kernel，实现对报文转发的控制，从而达到限速的目的。cgroup ebpf可以为在离线业务的的报文设置不同的标签以区分在线和离线业务流量，tc ebpf可以设置三个水位线：在线业务水位线，离线业务高水位线和离线业务低水位线。当在线业务流量超过水位线时，限制离线作水位带宽，离线业务带宽使用上限为离线业务低水位线，避让在线流量；当在线业务流量低于水位线时，放开对离线作业的带宽限制，离线业务带宽使用上限为离线业务高水位线，提高资源利用率，同时可以根据离线流量带宽计算报文的发送时间（EDT），实现离线作业流量限速。
-
-<!-- ![在离线作业带宽限制示意图](img/colocation/watermark.png) -->
 
 
 ### CPU Burst
@@ -101,11 +101,11 @@ Volcano agent的CPU Burst能力提供了一种可以短暂突破CPU Limit值的�
 
 当未开启CPU Burst时，容器可以使用的CPU配额会被限制在Limit以内，无法实现Burst。如下图所示：
 
-<!-- ![未开启CPU Burst](img/colocation/cpu-burst1.png) -->
+![未开启CPU Burst](/img/colocation/cpu-burst1.png)
 
 开启CPU Burst后，容器使用的CPU配额可以突破Limit限制，实现Burst。如下图所示：
 
-<!-- ![开启CPU Burst](img/colocation/cpu-burst2.png) -->
+![开启CPU Burst](/img/colocation/cpu-burst2.png)
 
 通过Volcano agent提供的CPU Burst能力，可以避免高优业务在关键时刻被限流，保障时延敏感型业务的稳定性。
 
