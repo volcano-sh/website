@@ -22,6 +22,15 @@ export default function Hero() {
 
   return (
     <div className="hero-container">
+      <img
+        className="hero-background"
+        src="/img/landing/banner_02.jpg"
+        alt=""
+        width="1920"
+        height="541"
+        fetchPriority="high"
+        aria-hidden="true"
+      />
       <div className="hero-content">
         <h1 className="hero-title">Volcano</h1>
         <p className="hero-subtitle"><Translate>Cloud native batch scheduling system for compute-intensive workloads</Translate></p>

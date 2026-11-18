@@ -46,9 +46,9 @@ export default function Blog() {
                   </div>
                 </div>
                 <div className="blogPostContent">
-                  <h3 className="blogPostTitle">
+                  <h2 className="blogPostTitle">
                     <Link to={post.permalink}>{post.title}</Link>
-                  </h3>
+                  </h2>
                   <div className="blogPostAuthor">
                     <img
                       src="/img/icon_user.svg"
