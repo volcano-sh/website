@@ -87,11 +87,29 @@ data:
           deviceshare.SchedulePolicy: binpack  # scheduling policy. binpack / spread
 ```
 
-Check with:
+Check the node resources with:
 
 ```bash
 kubectl get node {node-name} -o yaml
 ```
+
+`volcano-scheduler` hot-reloads `volcano-scheduler.conf` after kubelet syncs the
+updated ConfigMap (typically within about a minute), so restarting Volcano
+components is not required. Wait for the configuration reload before creating
+vGPU pods.
+
+After creating a vGPU pod, verify that Volcano added the device allocation
+annotations:
+
+```bash
+kubectl get pod {pod-name} -o yaml | grep -E \
+  'volcano.sh/(devices-to-allocate|vgpu-ids-new|vgpu-node)'
+```
+
+If a pod was created before the updated configuration took effect and lacks
+these annotations, kubelet may reject it with `UnexpectedAdmissionError:
+Allocate failed due to rpc error: code = Unknown desc = cannot get valid pod`;
+recreate the pod after the reload completes.
 
 ### HAMI-core Usage
 
