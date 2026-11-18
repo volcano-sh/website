@@ -51,7 +51,7 @@ $ tail log/flink-*-taskexecutor-*.out
 
 ##### 1. The deployment of the component
 
-Deploying a Flink Cluster requires creating two deploys, a Service, and a ConfigMap. The scheduling strategy is Volcano.The contents of `flink-configuration-configmap.yaml` are shown below.
+Deploying a Flink Cluster requires creating two deploys, a Service, and a ConfigMap. The scheduling strategy is Volcano. The contents of `flink-configuration-configmap.yaml` are shown below.
 
 ```
 apiVersion: v1
@@ -118,7 +118,7 @@ data:
     logger.netty.level = OFF
 ```
 
-Service is used to provide services for the REST and UI ports of the JobManager.The contents of `jobManager-Service.yaml` are as follows.
+Service is used to provide services for the REST and UI ports of the JobManager. The contents of `jobManager-Service.yaml` are as follows.
 
 ```
 apiVersion: v1
@@ -263,4 +263,4 @@ Once the Flink payload is created, you need to publish the service externally。
 - If you use Huawei Cloud CCE for testing, go to the "Workloads - Stateless Loads" page of CCE. Select Flink-JobManager and click Access Mode.
 - Click "Add Service", select node access, and enter container port bit 8081.
 - Click Network Management in CCE, you can see the service we just added, and visit the link for external publication.
-- Go to the Dashboard page of Flink and click Submit New Job to submit the task. Here you have the option to submit an officially-provided WordCount sample.The directory is `flink-1.12.2/examples/streaming/WordCount.jar`
+- Go to the Dashboard page of Flink and click Submit New Job to submit the task. Here you have the option to submit an officially-provided WordCount sample. The directory is `flink-1.12.2/examples/streaming/WordCount.jar`
